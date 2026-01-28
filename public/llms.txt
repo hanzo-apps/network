@@ -1,0 +1,29 @@
+# Hanzo Network
+
+> Decentralized AI compute network and infrastructure.
+
+## About
+Hanzo Network is a decentralized AI compute network providing distributed GPU clusters, model training infrastructure, and inference serving at scale. It enables distributed AI workloads across a global network of compute providers, offering cost-effective access to high-performance GPUs for training, fine-tuning, and serving AI models.
+
+## Key Features
+- Decentralized GPU compute marketplace
+- Distributed training across multiple nodes
+- Model serving and inference at scale
+- Global network of compute providers
+- Automatic load balancing and failover
+- Cost-effective GPU access (A100, H100, H200)
+- Support for PyTorch, JAX, and custom frameworks
+- Encrypted data transfer and model privacy
+- Pay-per-use pricing with no lock-in
+- Integration with Hanzo AI platform
+
+## Links
+- [Website](https://hanzo.network)
+- [Hanzo AI](https://hanzo.ai)
+- [Documentation](https://docs.hanzo.ai/network)
+- [Network Status](https://status.hanzo.network)
+- [GitHub](https://github.com/hanzoai)
+
+## Contact
+- Support: support@hanzo.ai
+- Network Operations: network@hanzo.ai
