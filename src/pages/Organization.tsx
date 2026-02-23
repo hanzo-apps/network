@@ -194,9 +194,9 @@ const Organization = () => {
                     <TableCell>
                       <span className={`px-2 py-1 rounded-full text-xs ${
                         member.role === 'Owner' 
-                          ? 'bg-purple-900/10 text-purple-300' 
+                          ? 'bg-neutral-800/10 text-neutral-300' 
                           : member.role === 'Admin' 
-                            ? 'bg-blue-900/10 text-blue-300' 
+                            ? 'bg-neutral-800/10 text-neutral-300' 
                             : 'bg-gray-900/20 text-neutral-300'
                       }`}>
                         {member.role}
@@ -216,7 +216,7 @@ const Organization = () => {
                           <DropdownMenuItem className="text-[var(--white)] hover:bg-gray-900/30">
                             Change Role
                           </DropdownMenuItem>
-                          <DropdownMenuItem className="text-red-400 hover:bg-red-900/10 hover:text-red-300">
+                          <DropdownMenuItem className="text-neutral-400 hover:bg-neutral-800/10 hover:text-neutral-300">
                             Remove
                           </DropdownMenuItem>
                         </DropdownMenuContent>

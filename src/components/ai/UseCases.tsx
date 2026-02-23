@@ -9,43 +9,43 @@ const UseCases = () => {
       icon: MessageSquare,
       title: 'Conversational AI',
       description: 'Build intelligent chatbots, virtual assistants, and customer support agents with natural language understanding.',
-      color: 'bg-blue-500/20',
-      textColor: 'text-blue-400'
+      color: 'bg-neutral-600/20',
+      textColor: 'text-neutral-400'
     },
     {
       icon: Brain,
       title: 'Generative Content',
       description: 'Create text, images, code, and other content with AI-powered generation and customization.',
-      color: 'bg-purple-500/20',
-      textColor: 'text-purple-400'
+      color: 'bg-neutral-600/20',
+      textColor: 'text-neutral-400'
     },
     {
       icon: Search,
       title: 'Knowledge Retrieval',
       description: 'Implement semantic search, question answering, and information extraction from your data.',
-      color: 'bg-green-500/20',
-      textColor: 'text-green-400'
+      color: 'bg-neutral-500/20',
+      textColor: 'text-neutral-400'
     },
     {
       icon: Bot,
       title: 'Autonomous Agents',
       description: 'Deploy AI agents that can perform complex tasks, make decisions, and execute workflows autonomously.',
-      color: 'bg-pink-500/20',
-      textColor: 'text-pink-400'
+      color: 'bg-neutral-500/20',
+      textColor: 'text-neutral-400'
     },
     {
       icon: FileCode,
       title: 'Developer Tooling',
       description: 'Enhance your development workflow with AI-powered code generation, debugging, and documentation.',
-      color: 'bg-yellow-500/20',
-      textColor: 'text-yellow-400'
+      color: 'bg-neutral-500/20',
+      textColor: 'text-neutral-400'
     },
     {
       icon: Headphones,
       title: 'Voice & Speech',
       description: 'Convert speech to text, text to speech, and analyze voice interactions with advanced AI models.',
-      color: 'bg-red-500/20',
-      textColor: 'text-red-400'
+      color: 'bg-neutral-600/20',
+      textColor: 'text-neutral-400'
     }
   ];
 
@@ -53,8 +53,8 @@ const UseCases = () => {
     <section className="py-24 px-4 sm:px-6 lg:px-8 bg-[var(--black)] relative">
       {/* Background elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 right-0 w-72 h-72 bg-purple-900/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-900/10 rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2"></div>
+        <div className="absolute top-1/4 right-0 w-72 h-72 bg-neutral-800/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-neutral-800/10 rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2"></div>
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
@@ -132,14 +132,14 @@ console.log(response);`}
             </div>
             <div className="lg:w-1/2 bg-gray-950 p-8 flex flex-col">
               <h4 className="text-lg font-semibold text-[var(--white)] mb-4 flex items-center">
-                <BookOpen className="h-4 w-4 mr-2 text-purple-400" />
+                <BookOpen className="h-4 w-4 mr-2 text-neutral-400" />
                 Documentation Example
               </h4>
               <div className="flex flex-col h-full space-y-4 overflow-y-auto">
                 <div className="bg-gray-900 rounded-lg p-4">
                   <div className="flex items-center mb-2">
-                    <Database className="h-4 w-4 text-blue-400 mr-2" />
-                    <h5 className="text-blue-400 font-medium">Vector Search</h5>
+                    <Database className="h-4 w-4 text-neutral-400 mr-2" />
+                    <h5 className="text-neutral-400 font-medium">Vector Search</h5>
                   </div>
                   <pre className="text-xs text-neutral-300 overflow-x-auto">
 {`// Create a vector store
@@ -161,8 +161,8 @@ const results = await vectorStore.search(
 
                 <div className="bg-gray-900 rounded-lg p-4">
                   <div className="flex items-center mb-2">
-                    <Bot className="h-4 w-4 text-green-400 mr-2" />
-                    <h5 className="text-green-400 font-medium">AI Agents</h5>
+                    <Bot className="h-4 w-4 text-neutral-400 mr-2" />
+                    <h5 className="text-neutral-400 font-medium">AI Agents</h5>
                   </div>
                   <pre className="text-xs text-neutral-300 overflow-x-auto">
 {`// Create an agent with tools

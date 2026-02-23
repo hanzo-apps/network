@@ -21,7 +21,7 @@ import {
 } from "lucide-react";
 
 // Brand color
-const BRAND_COLOR = "#fd4444";
+const BRAND_COLOR = "#ffffff";
 
 // Proof chips data - communicates the vertical stack
 const PROOF_CHIPS = [
@@ -100,9 +100,9 @@ const HeroSection = () => {
       {/* Browser chrome */}
       <div className="flex items-center gap-2 px-4 py-2.5 border-b border-neutral-800 bg-neutral-900">
         <div className="flex gap-1.5">
-          <div className="w-3 h-3 rounded-full bg-red-500/80" />
-          <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-          <div className="w-3 h-3 rounded-full bg-green-500/80" />
+          <div className="w-3 h-3 rounded-full bg-neutral-600/80" />
+          <div className="w-3 h-3 rounded-full bg-neutral-500/80" />
+          <div className="w-3 h-3 rounded-full bg-neutral-500/80" />
         </div>
         <div className="flex-1 mx-4">
           <div className="bg-neutral-800 rounded-md px-3 py-1 text-xs text-neutral-400 text-center max-w-[200px] mx-auto">
@@ -116,7 +116,7 @@ const HeroSection = () => {
         {/* Left nav */}
         <div className="w-[140px] lg:w-[160px] border-r border-neutral-800 bg-neutral-950 p-2 hidden sm:block">
           <div className="flex items-center gap-2 px-2 py-2 mb-3">
-            <div className="w-6 h-6 rounded-md bg-gradient-to-br from-[#fd4444] to-[#fd4444]/60 flex items-center justify-center">
+            <div className="w-6 h-6 rounded-md bg-gradient-to-br from-white to-white/60 flex items-center justify-center">
               <span className="text-white text-[10px] font-bold">H</span>
             </div>
             <span className="text-white text-xs font-medium">Hanzo</span>
@@ -127,7 +127,7 @@ const HeroSection = () => {
                 key={item.label}
                 className={`flex items-center gap-2 px-2 py-1.5 rounded-md text-[11px] cursor-pointer transition-colors ${
                   item.active
-                    ? "bg-[#fd4444]/20 text-[#fd4444]"
+                    ? "bg-white/20 text-white"
                     : "text-neutral-400 hover:bg-neutral-800 hover:text-neutral-300"
                 }`}
               >
@@ -143,8 +143,8 @@ const HeroSection = () => {
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-white text-sm font-medium">Project Overview</h3>
             <div className="flex items-center gap-2">
-              <div className="px-2 py-1 rounded-md bg-green-500/20 text-green-400 text-[10px] flex items-center gap-1">
-                <div className="w-1.5 h-1.5 rounded-full bg-green-500" />
+              <div className="px-2 py-1 rounded-md bg-neutral-500/20 text-neutral-400 text-[10px] flex items-center gap-1">
+                <div className="w-1.5 h-1.5 rounded-full bg-neutral-500" />
                 All systems operational
               </div>
             </div>
@@ -158,7 +158,7 @@ const HeroSection = () => {
                 <span className="text-[10px] text-neutral-500">Deployments</span>
               </div>
               <div className="text-lg font-semibold text-white">24</div>
-              <div className="text-[10px] text-green-400">+3 this week</div>
+              <div className="text-[10px] text-neutral-400">+3 this week</div>
             </div>
             <div className="bg-neutral-900 rounded-lg p-3 border border-neutral-800">
               <div className="flex items-center gap-2 mb-1">
@@ -196,7 +196,7 @@ const HeroSection = () => {
             ].map((deploy) => (
               <div key={deploy.name} className="flex items-center justify-between p-2.5 rounded-lg bg-neutral-900 border border-neutral-800">
                 <div className="flex items-center gap-2">
-                  <div className={`w-2 h-2 rounded-full ${deploy.status === "live" ? "bg-green-500" : "bg-yellow-500 animate-pulse"}`} />
+                  <div className={`w-2 h-2 rounded-full ${deploy.status === "live" ? "bg-neutral-500" : "bg-neutral-500 animate-pulse"}`} />
                   <span className="text-sm text-white">{deploy.name}</span>
                   <span className="text-[10px] text-neutral-500 px-1.5 py-0.5 bg-neutral-800 rounded">{deploy.region}</span>
                 </div>
@@ -215,9 +215,9 @@ const HeroSection = () => {
       {/* Terminal header */}
       <div className="flex items-center gap-2 px-3 py-2 border-b border-neutral-800 bg-neutral-900 shrink-0">
         <div className="flex gap-1.5">
-          <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
-          <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
-          <div className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
+          <div className="w-2.5 h-2.5 rounded-full bg-neutral-600/80" />
+          <div className="w-2.5 h-2.5 rounded-full bg-neutral-500/80" />
+          <div className="w-2.5 h-2.5 rounded-full bg-neutral-500/80" />
         </div>
         <span className="ml-2 text-[10px] text-neutral-500 font-mono">terminal</span>
         <div className="ml-auto flex items-center gap-2">
@@ -226,7 +226,7 @@ const HeroSection = () => {
             className="p-1 rounded hover:bg-neutral-800 transition-colors"
           >
             {copied ? (
-              <Check className="h-3 w-3 text-green-500" />
+              <Check className="h-3 w-3 text-neutral-400" />
             ) : (
               <Copy className="h-3 w-3 text-neutral-500" />
             )}
@@ -244,16 +244,16 @@ const HeroSection = () => {
             className={`mb-1 ${
               line.type === "command" ? "text-neutral-300" :
               line.type === "success" ? "text-neutral-400" :
-              line.type === "prompt" ? "text-yellow-400" : "text-neutral-400"
+              line.type === "prompt" ? "text-neutral-400" : "text-neutral-400"
             }`}
           >
             {line.type === "success" && (
-              <span className="text-green-500">✓ </span>
+              <span className="text-neutral-400">✓ </span>
             )}
             {line.type === "prompt" && (
-              <span className="text-yellow-500">? </span>
+              <span className="text-neutral-400">? </span>
             )}
-            <span className={line.highlight ? "text-[#fd4444]" : ""}>
+            <span className={line.highlight ? "text-white" : ""}>
               {line.text.replace(/^[✓?]\s*/, "")}
             </span>
           </motion.div>
@@ -286,7 +286,7 @@ const HeroSection = () => {
       <div className="bg-neutral-950 p-2.5 flex-1 overflow-hidden flex flex-col">
         <div className="flex items-center justify-between mb-2 shrink-0">
           <div className="flex items-center gap-1.5">
-            <div className="w-5 h-5 rounded-md bg-[#fd4444] flex items-center justify-center">
+            <div className="w-5 h-5 rounded-md bg-white flex items-center justify-center">
               <span className="text-white text-[7px] font-bold">H</span>
             </div>
             <span className="text-white text-[10px] font-medium">Hanzo</span>
@@ -302,8 +302,8 @@ const HeroSection = () => {
           className="bg-neutral-900 rounded-lg p-2 border border-neutral-800 mb-2 shrink-0"
         >
           <div className="flex items-center gap-1.5 mb-0.5">
-            <div className="w-1.5 h-1.5 rounded-full bg-green-500" />
-            <span className="text-[9px] text-green-400 font-medium">Deploy Complete</span>
+            <div className="w-1.5 h-1.5 rounded-full bg-neutral-500" />
+            <span className="text-[9px] text-neutral-400 font-medium">Deploy Complete</span>
           </div>
           <div className="text-[10px] text-white">docs-api is now live</div>
           <div className="text-[8px] text-neutral-500 mt-0.5 truncate">https://docs-api.acme.dev</div>
@@ -313,8 +313,8 @@ const HeroSection = () => {
           <div className="bg-neutral-900 rounded-lg p-1.5 border border-neutral-800">
             <div className="text-[8px] text-neutral-500">Status</div>
             <div className="flex items-center gap-1">
-              <div className="w-1.5 h-1.5 rounded-full bg-green-500" />
-              <span className="text-[9px] text-green-400">All systems operational</span>
+              <div className="w-1.5 h-1.5 rounded-full bg-neutral-500" />
+              <span className="text-[9px] text-neutral-400">All systems operational</span>
             </div>
           </div>
           <div className="bg-neutral-900 rounded-lg p-1.5 border border-neutral-800">
@@ -339,7 +339,7 @@ const HeroSection = () => {
           onClick={() => setMobileTab(tab)}
           className={`flex-1 px-3 py-2 text-xs font-medium rounded-md transition-colors capitalize ${
             mobileTab === tab
-              ? "bg-[#fd4444] text-white"
+              ? "bg-white text-black"
               : "text-neutral-400 hover:text-white"
           }`}
         >

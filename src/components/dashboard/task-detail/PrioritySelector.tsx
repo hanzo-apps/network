@@ -9,8 +9,8 @@ interface PrioritySelectorProps {
 const PrioritySelector: React.FC<PrioritySelectorProps> = ({ priority, onChange }) => {
   const priorityOptions = [
     { value: "low", label: "Low", color: "bg-gray-500" },
-    { value: "medium", label: "Medium", color: "bg-yellow-500" },
-    { value: "high", label: "High", color: "bg-red-500" }
+    { value: "medium", label: "Medium", color: "bg-neutral-500" },
+    { value: "high", label: "High", color: "bg-neutral-600" }
   ];
 
   return (

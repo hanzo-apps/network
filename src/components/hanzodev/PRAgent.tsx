@@ -14,9 +14,9 @@ const PRAgent = () => {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
           >
-            <div className="bg-purple-900/20 border border-purple-500/30 rounded-full px-4 py-1 inline-flex items-center mb-6">
-              <GitPullRequest className="h-4 w-4 mr-2 text-purple-400" />
-              <span className="text-sm font-medium text-purple-300">PR Agent</span>
+            <div className="bg-neutral-800/20 border border-neutral-500/30 rounded-full px-4 py-1 inline-flex items-center mb-6">
+              <GitPullRequest className="h-4 w-4 mr-2 text-neutral-400" />
+              <span className="text-sm font-medium text-neutral-300">PR Agent</span>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               Resolve Pull Requests 10x Faster.
@@ -27,8 +27,8 @@ const PRAgent = () => {
 
             <div className="space-y-6">
               <div className="flex gap-4">
-                <div className="bg-purple-900/20 p-3 rounded-lg">
-                  <MessageSquare className="h-6 w-6 text-purple-400" />
+                <div className="bg-neutral-800/20 p-3 rounded-lg">
+                  <MessageSquare className="h-6 w-6 text-neutral-400" />
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold mb-1">Fast revisions.</h3>
@@ -39,8 +39,8 @@ const PRAgent = () => {
               </div>
 
               <div className="flex gap-4">
-                <div className="bg-purple-900/20 p-3 rounded-lg">
-                  <Clock className="h-6 w-6 text-purple-400" />
+                <div className="bg-neutral-800/20 p-3 rounded-lg">
+                  <Clock className="h-6 w-6 text-neutral-400" />
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold mb-1">Acclerate not just your product development, but your code quality.</h3>
@@ -51,8 +51,8 @@ const PRAgent = () => {
               </div>
 
               <div className="flex gap-4">
-                <div className="bg-purple-900/20 p-3 rounded-lg">
-                  <Shield className="h-6 w-6 text-purple-400" />
+                <div className="bg-neutral-800/20 p-3 rounded-lg">
+                  <Shield className="h-6 w-6 text-neutral-400" />
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold mb-1">AI Agents You Can Trust.</h3>
@@ -74,9 +74,9 @@ const PRAgent = () => {
             <div className="bg-gray-800/50 border border-gray-700/50 rounded-lg overflow-hidden">
               <div className="p-4 bg-gray-900/70 border-b border-gray-700/50">
                 <div className="flex space-x-2">
-                  <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                  <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                  <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                  <div className="w-3 h-3 rounded-full bg-neutral-600"></div>
+                  <div className="w-3 h-3 rounded-full bg-neutral-500"></div>
+                  <div className="w-3 h-3 rounded-full bg-neutral-500"></div>
                 </div>
               </div>
               <div className="p-6">
@@ -93,7 +93,7 @@ const PRAgent = () => {
                   </div>
 
                   <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 rounded-full bg-purple-700 flex items-center justify-center text-xs font-bold">H</div>
+                    <div className="w-8 h-8 rounded-full bg-neutral-700 flex items-center justify-center text-xs font-bold">H</div>
                     <div>
                       <div className="font-medium">Hanzo Dev</div>
                       <div className="text-neutral-400 text-sm">1 hour ago</div>
@@ -101,8 +101,8 @@ const PRAgent = () => {
                         <p>I've added comprehensive error handling with try/catch blocks and implemented proper ARIA attributes to improve accessibility. The changes have been committed to the PR.</p>
                       </div>
                       <div className="bg-gray-800/70 rounded mt-3 p-2 text-sm border border-gray-700">
-                        <div className="text-green-400">+ 15 lines added</div>
-                        <div className="text-red-400">- 3 lines removed</div>
+                        <div className="text-neutral-400">+ 15 lines added</div>
+                        <div className="text-neutral-400">- 3 lines removed</div>
                       </div>
                     </div>
                   </div>
@@ -110,16 +110,16 @@ const PRAgent = () => {
 
                 <div className="flex justify-between items-center text-sm">
                   <div className="flex items-center gap-2">
-                    <div className="w-6 h-6 rounded-full bg-green-500 flex items-center justify-center text-black">✓</div>
-                    <span className="text-green-400">Changes approved</span>
+                    <div className="w-6 h-6 rounded-full bg-neutral-500 flex items-center justify-center text-black">✓</div>
+                    <span className="text-neutral-400">Changes approved</span>
                   </div>
                   <div className="text-neutral-400">Ready to merge</div>
                 </div>
               </div>
             </div>
 
-            <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-purple-500/20 rounded-full blur-3xl"></div>
-            <div className="absolute -top-6 -left-6 w-24 h-24 bg-blue-500/20 rounded-full blur-3xl"></div>
+            <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-neutral-600/20 rounded-full blur-3xl"></div>
+            <div className="absolute -top-6 -left-6 w-24 h-24 bg-neutral-600/20 rounded-full blur-3xl"></div>
           </motion.div>
         </div>
       </div>

@@ -14,27 +14,27 @@ const PlatformDashboard = () => {
       <div className="bg-gray-800/90 p-3 flex items-center justify-between">
         <div className="flex items-center space-x-2">
           <div className="flex space-x-1.5">
-            <div className="w-3 h-3 rounded-full bg-red-500"></div>
-            <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-            <div className="w-3 h-3 rounded-full bg-green-500"></div>
+            <div className="w-3 h-3 rounded-full bg-neutral-600"></div>
+            <div className="w-3 h-3 rounded-full bg-neutral-500"></div>
+            <div className="w-3 h-3 rounded-full bg-neutral-500"></div>
           </div>
           <div className="text-xs text-neutral-400">Hanzo AI Engineering Platform</div>
         </div>
         <div className="flex space-x-3">
           <button 
-            className={`px-3 py-1 rounded-md text-xs ${activeSection === "models" ? "bg-purple-900/60 text-purple-200" : "bg-gray-800 text-neutral-400"}`} 
+            className={`px-3 py-1 rounded-md text-xs ${activeSection === "models" ? "bg-neutral-800/60 text-neutral-200" : "bg-gray-800 text-neutral-400"}`} 
             onClick={() => setActiveSection("models")}
           >
             AI Models
           </button>
           <button 
-            className={`px-3 py-1 rounded-md text-xs ${activeSection === "observability" ? "bg-purple-900/60 text-purple-200" : "bg-gray-800 text-neutral-400"}`} 
+            className={`px-3 py-1 rounded-md text-xs ${activeSection === "observability" ? "bg-neutral-800/60 text-neutral-200" : "bg-gray-800 text-neutral-400"}`} 
             onClick={() => setActiveSection("observability")}
           >
             Observability
           </button>
           <button 
-            className={`px-3 py-1 rounded-md text-xs ${activeSection === "analytics" ? "bg-purple-900/60 text-purple-200" : "bg-gray-800 text-neutral-400"}`} 
+            className={`px-3 py-1 rounded-md text-xs ${activeSection === "analytics" ? "bg-neutral-800/60 text-neutral-200" : "bg-gray-800 text-neutral-400"}`} 
             onClick={() => setActiveSection("analytics")}
           >
             Analytics

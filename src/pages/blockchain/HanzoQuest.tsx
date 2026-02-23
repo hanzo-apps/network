@@ -19,7 +19,7 @@ const HanzoQuest = () => {
       tagline="Gamified engagement and loyalty programs"
       description="Build engaging quest systems and loyalty programs. Users complete tasks, earn points, and claim rewards—NFTs, tokens, or real-world perks. Drive engagement and retention with gamification."
       icon={Trophy}
-      accentColor="#eab308"
+      accentColor="#a3a3a3"
       features={[
         {
           icon: Target,

@@ -33,7 +33,7 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({
         <ToggleGroupItem 
           value="light" 
           aria-label="Light mode"
-          className={`relative ${getRoundingClass()} data-[state=on]:text-yellow-500 ${itemHeight} flex items-center justify-center`}
+          className={`relative ${getRoundingClass()} data-[state=on]:text-neutral-400 ${itemHeight} flex items-center justify-center`}
         >
           {mode === "light" && (
             <motion.div 
@@ -50,7 +50,7 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({
         <ToggleGroupItem 
           value="dark" 
           aria-label="Dark mode"
-          className={`relative ${getRoundingClass()} data-[state=on]:text-purple-400 ${itemHeight} flex items-center justify-center`}
+          className={`relative ${getRoundingClass()} data-[state=on]:text-neutral-400 ${itemHeight} flex items-center justify-center`}
         >
           {mode === "dark" && (
             <motion.div 
@@ -67,7 +67,7 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({
         <ToggleGroupItem 
           value="system" 
           aria-label="System preference"
-          className={`relative ${getRoundingClass()} data-[state=on]:text-blue-400 ${itemHeight} flex items-center justify-center`}
+          className={`relative ${getRoundingClass()} data-[state=on]:text-neutral-400 ${itemHeight} flex items-center justify-center`}
         >
           {mode === "system" && (
             <motion.div 

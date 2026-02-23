@@ -88,7 +88,7 @@ const WebAnalytics = () => {
 
   return (
     <section className="py-32 px-4 sm:px-6 lg:px-8 bg-[var(--black)] relative">
-      <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-purple-800 via-transparent to-transparent"></div>
+      <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-neutral-800 via-transparent to-transparent"></div>
       
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
@@ -115,7 +115,7 @@ const WebAnalytics = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="flex"
               >
-                <div className="mr-4 mt-1 bg-purple-900/30 p-2 rounded-lg text-purple-400">
+                <div className="mr-4 mt-1 bg-neutral-800/30 p-2 rounded-lg text-neutral-400">
                   {feature.icon}
                 </div>
                 <div>
@@ -137,7 +137,7 @@ const WebAnalytics = () => {
             <div className="bg-gray-900/30 rounded-xl p-6 border border-gray-800">
               <div className="flex justify-between items-center mb-4">
                 <h3 className="text-lg font-medium">Live User Activity</h3>
-                <div className="bg-green-500 animate-pulse h-2 w-2 rounded-full"></div>
+                <div className="bg-neutral-500 animate-pulse h-2 w-2 rounded-full"></div>
               </div>
               
               <div className="h-80 w-full relative">
@@ -154,7 +154,7 @@ const WebAnalytics = () => {
                     {/* Chart lines */}
                     <motion.path
                       d="M0,80 C10,70 20,85 30,60 C40,40 50,55 60,30 C70,40 80,20 90,10 L100,20"
-                      stroke="#8B5CF6"
+                      stroke="#a3a3a3"
                       strokeWidth="2"
                       fill="none"
                       variants={lineVariants}
@@ -163,7 +163,7 @@ const WebAnalytics = () => {
                     />
                     <motion.path
                       d="M0,90 C15,80 25,75 35,70 C45,65 55,60 65,50 C75,70 85,60 95,40 L100,50"
-                      stroke="#33C3F0"
+                      stroke="#a3a3a3"
                       strokeWidth="2"
                       fill="none"
                       variants={lineVariants}
@@ -173,12 +173,12 @@ const WebAnalytics = () => {
                     
                     {/* Data points */}
                     {[
-                      { x: 30, y: 60, color: "#8B5CF6" },
-                      { x: 60, y: 30, color: "#8B5CF6" },
-                      { x: 90, y: 10, color: "#8B5CF6" },
-                      { x: 35, y: 70, color: "#33C3F0" },
-                      { x: 65, y: 50, color: "#33C3F0" },
-                      { x: 95, y: 40, color: "#33C3F0" }
+                      { x: 30, y: 60, color: "#a3a3a3" },
+                      { x: 60, y: 30, color: "#a3a3a3" },
+                      { x: 90, y: 10, color: "#a3a3a3" },
+                      { x: 35, y: 70, color: "#a3a3a3" },
+                      { x: 65, y: 50, color: "#a3a3a3" },
+                      { x: 95, y: 40, color: "#a3a3a3" }
                     ].map((point, i) => (
                       <motion.circle
                         key={i}
@@ -217,7 +217,7 @@ const WebAnalytics = () => {
                     <span>Users</span>
                     <span className="font-bold">876</span>
                   </div>
-                  <div className="text-green-400 text-right mt-1">+24.5%</div>
+                  <div className="text-neutral-400 text-right mt-1">+24.5%</div>
                 </motion.div>
               </div>
               

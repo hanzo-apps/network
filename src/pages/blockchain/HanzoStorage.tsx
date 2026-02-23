@@ -19,7 +19,7 @@ const HanzoStorage = () => {
       tagline="Decentralized storage, simple API"
       description="Store NFT metadata, user content, and application data on IPFS, Arweave, or Filecoin. A simple API abstracts the complexity of decentralized storage."
       icon={HardDrive}
-      accentColor="#14b8a6"
+      accentColor="#a3a3a3"
       features={[
         {
           icon: Globe,

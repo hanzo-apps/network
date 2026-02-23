@@ -19,7 +19,7 @@ const HanzoPay = () => {
       tagline="Crypto payments made simple"
       description="A complete payment gateway bridging fiat and crypto. Accept stablecoins, process card payments, enable on/off-ramps, and handle compliance—all through a single API."
       icon={CreditCard}
-      accentColor="#22c55e"
+      accentColor="#a3a3a3"
       features={[
         {
           icon: Wallet,

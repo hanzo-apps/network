@@ -20,7 +20,7 @@ import {
 } from "lucide-react";
 import { CodeTabs } from "@/components/ui/code-block";
 
-const BRAND_COLOR = "#fd4444";
+const BRAND_COLOR = "#ffffff";
 
 // Multi-language code examples for the API section
 const API_CODE_EXAMPLES = [
@@ -135,7 +135,7 @@ const DeveloperExperienceSection = () => {
             </p>
             <Link
               to="/extensions"
-              className="inline-flex items-center px-5 py-2.5 rounded-full text-sm font-medium transition-colors bg-[#fd4444] text-white hover:opacity-90"
+              className="inline-flex items-center px-5 py-2.5 rounded-full text-sm font-medium transition-colors bg-white text-black hover:opacity-90"
             >
               Install the IDE extension
               <ArrowRight className="ml-2 h-4 w-4" />
@@ -146,24 +146,24 @@ const DeveloperExperienceSection = () => {
           <div className="rounded-xl border border-neutral-800 bg-neutral-900/80 overflow-hidden">
             <div className="flex items-center gap-2 px-4 py-3 border-b border-neutral-800 bg-neutral-950">
               <div className="flex gap-1.5">
-                <div className="w-3 h-3 rounded-full bg-red-500/80" />
-                <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                <div className="w-3 h-3 rounded-full bg-green-500/80" />
+                <div className="w-3 h-3 rounded-full bg-neutral-600/80" />
+                <div className="w-3 h-3 rounded-full bg-neutral-500/80" />
+                <div className="w-3 h-3 rounded-full bg-neutral-500/80" />
               </div>
               <span className="ml-2 text-xs text-neutral-500">VS Code - Hanzo Extension</span>
             </div>
             <div className="p-4 space-y-3 bg-neutral-950">
               <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-neutral-900 border border-neutral-800">
-                <MonitorUp className="w-4 h-4 text-[#fd4444]" />
+                <MonitorUp className="w-4 h-4 text-white" />
                 <span className="text-sm text-neutral-300">Reading repo structure...</span>
               </div>
               <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-neutral-900 border border-neutral-800">
-                <Check className="w-4 h-4 text-green-500" />
+                <Check className="w-4 h-4 text-neutral-400" />
                 <span className="text-sm text-neutral-300">Edited 4 files cohesively</span>
               </div>
-              <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-green-500/10 border border-green-500/30">
-                <Check className="w-4 h-4 text-green-500" />
-                <span className="text-sm text-green-400">All tests passing</span>
+              <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-neutral-500/10 border border-neutral-500/30">
+                <Check className="w-4 h-4 text-neutral-400" />
+                <span className="text-sm text-neutral-400">All tests passing</span>
               </div>
             </div>
           </div>
@@ -181,9 +181,9 @@ const DeveloperExperienceSection = () => {
           <div className="order-2 lg:order-1 rounded-xl border border-neutral-800 bg-neutral-900/80 overflow-hidden">
             <div className="flex items-center gap-2 px-4 py-3 border-b border-neutral-800 bg-neutral-950">
               <div className="flex gap-1.5">
-                <div className="w-3 h-3 rounded-full bg-red-500/80" />
-                <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                <div className="w-3 h-3 rounded-full bg-green-500/80" />
+                <div className="w-3 h-3 rounded-full bg-neutral-600/80" />
+                <div className="w-3 h-3 rounded-full bg-neutral-500/80" />
+                <div className="w-3 h-3 rounded-full bg-neutral-500/80" />
               </div>
               <span className="ml-2 text-xs text-neutral-500 font-mono">terminal</span>
               <button
@@ -191,7 +191,7 @@ const DeveloperExperienceSection = () => {
                 className="ml-auto p-1 rounded hover:bg-neutral-800 transition-colors"
               >
                 {copied ? (
-                  <Check className="h-3 w-3 text-green-500" />
+                  <Check className="h-3 w-3 text-neutral-400" />
                 ) : (
                   <Copy className="h-3 w-3 text-neutral-500" />
                 )}
@@ -200,29 +200,29 @@ const DeveloperExperienceSection = () => {
             <div className="p-4 font-mono text-sm bg-neutral-950">
               <div className="mb-2">
                 <span className="text-neutral-500">$ </span>
-                <span className="text-purple-400">curl</span>
+                <span className="text-neutral-400">curl</span>
                 <span className="text-neutral-300"> -fsSL </span>
-                <span className="text-blue-400">hanzo.sh/install.sh</span>
+                <span className="text-neutral-400">hanzo.sh/install.sh</span>
                 <span className="text-neutral-300"> | </span>
-                <span className="text-purple-400">sh</span>
+                <span className="text-neutral-400">sh</span>
               </div>
               <div className="mb-4">
                 <span className="text-neutral-500">$ </span>
-                <span className="text-purple-400">hanzo</span>
-                <span className="text-cyan-400"> dev</span>
-                <span className="text-green-400"> "Fix rate limiting. Add metrics. Add tests. Open a PR."</span>
+                <span className="text-neutral-400">hanzo</span>
+                <span className="text-neutral-400"> dev</span>
+                <span className="text-neutral-400"> "Fix rate limiting. Add metrics. Add tests. Open a PR."</span>
               </div>
-              <div className="text-green-400 mb-1">
-                <span className="text-green-500">✓ </span>Plan created
+              <div className="text-neutral-400 mb-1">
+                <span className="text-neutral-400">✓ </span>Plan created
               </div>
-              <div className="text-green-400 mb-1">
-                <span className="text-green-500">✓ </span>Implementation complete
+              <div className="text-neutral-400 mb-1">
+                <span className="text-neutral-400">✓ </span>Implementation complete
               </div>
-              <div className="text-green-400 mb-1">
-                <span className="text-green-500">✓ </span>Tests passing (12/12)
+              <div className="text-neutral-400 mb-1">
+                <span className="text-neutral-400">✓ </span>Tests passing (12/12)
               </div>
-              <div className="text-[#fd4444]">
-                <span className="text-green-500">✓ </span>PR opened: #247
+              <div className="text-white">
+                <span className="text-neutral-400">✓ </span>PR opened: #247
               </div>
             </div>
           </div>
@@ -333,7 +333,7 @@ const DeveloperExperienceSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="rounded-2xl border border-[#fd4444]/30 bg-gradient-to-br from-[#fd4444]/10 to-transparent p-8 md:p-12"
+          className="rounded-2xl border border-white/30 bg-gradient-to-br from-white/10 to-transparent p-8 md:p-12"
         >
           <div className="grid lg:grid-cols-2 gap-8 items-start">
             <div>

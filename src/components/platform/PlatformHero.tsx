@@ -13,7 +13,7 @@ import {
   Copy,
 } from "lucide-react";
 
-const BRAND_COLOR = "#fd4444";
+const BRAND_COLOR = "#ffffff";
 
 const FEATURES = [
   { id: "self-host", label: "Self-Host", icon: Server },
@@ -108,9 +108,9 @@ hanzo deploy --prod`,
     <div className="rounded-xl border border-neutral-700 bg-neutral-900/95 backdrop-blur-sm overflow-hidden shadow-2xl">
       <div className="flex items-center gap-2 px-4 py-3 border-b border-neutral-800 bg-neutral-950">
         <div className="flex gap-1.5">
-          <div className="w-3 h-3 rounded-full bg-red-500/80" />
-          <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-          <div className="w-3 h-3 rounded-full bg-green-500/80" />
+          <div className="w-3 h-3 rounded-full bg-neutral-600/80" />
+          <div className="w-3 h-3 rounded-full bg-neutral-500/80" />
+          <div className="w-3 h-3 rounded-full bg-neutral-500/80" />
         </div>
         <AnimatePresence mode="wait">
           <motion.span
@@ -212,7 +212,7 @@ const PlatformHero = () => {
                 target="_blank"
                 rel="noreferrer noopener"
                 className="inline-flex items-center px-6 py-3 rounded-full font-medium transition-all hover:opacity-90 text-sm"
-                style={{ backgroundColor: BRAND_COLOR, color: "#ffffff" }}
+                style={{ backgroundColor: BRAND_COLOR, color: "#000000" }}
               >
                 <Github className="mr-2 h-4 w-4" />
                 Star on GitHub
@@ -240,7 +240,7 @@ const PlatformHero = () => {
                   onClick={handleCopy}
                   className="text-neutral-500 hover:text-white transition-colors"
                 >
-                  {copied ? <Check className="h-3.5 w-3.5 text-green-500" /> : <Copy className="h-3.5 w-3.5" />}
+                  {copied ? <Check className="h-3.5 w-3.5 text-neutral-400" /> : <Copy className="h-3.5 w-3.5" />}
                 </button>
               </div>
             </motion.div>
@@ -261,7 +261,7 @@ const PlatformHero = () => {
                     onClick={() => setActiveFeature(feature.id)}
                     className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all ${
                       isActive
-                        ? "bg-[#fd4444] text-white"
+                        ? "bg-white text-black"
                         : "bg-neutral-900 border border-neutral-800 text-neutral-400 hover:text-white hover:border-neutral-700"
                     }`}
                   >

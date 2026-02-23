@@ -22,7 +22,7 @@ const AuditFeatures = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <div className="inline-flex p-2 rounded-full bg-indigo-900/20 border border-indigo-500/20 text-indigo-400 mb-4">
+          <div className="inline-flex p-2 rounded-full bg-neutral-800/20 border border-neutral-500/20 text-neutral-400 mb-4">
             <History className="h-6 w-6" />
           </div>
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
@@ -40,11 +40,11 @@ const AuditFeatures = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="relative rounded-xl border border-indigo-500/20 bg-[var(--black)]/50 overflow-hidden p-6"
+            className="relative rounded-xl border border-neutral-500/20 bg-[var(--black)]/50 overflow-hidden p-6"
           >
-            <div className="absolute top-0 right-0 h-20 w-20 bg-indigo-500/10 rounded-bl-full"></div>
-            <div className="bg-indigo-900/20 p-3 rounded-lg inline-flex mb-4">
-              <Eye className="h-8 w-8 text-indigo-400" />
+            <div className="absolute top-0 right-0 h-20 w-20 bg-neutral-500/10 rounded-bl-full"></div>
+            <div className="bg-neutral-800/20 p-3 rounded-lg inline-flex mb-4">
+              <Eye className="h-8 w-8 text-neutral-400" />
             </div>
             <h3 className="text-xl font-semibold mb-3">Real-Time Monitoring</h3>
             <p className="text-neutral-400 mb-4">
@@ -53,15 +53,15 @@ const AuditFeatures = () => {
             </p>
             <ul className="space-y-2">
               <li className="flex items-start">
-                <CheckCircle className="h-5 w-5 text-indigo-400 mr-2 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="h-5 w-5 text-neutral-400 mr-2 mt-0.5 flex-shrink-0" />
                 <span className="text-neutral-300">Live screen sharing capability</span>
               </li>
               <li className="flex items-start">
-                <CheckCircle className="h-5 w-5 text-indigo-400 mr-2 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="h-5 w-5 text-neutral-400 mr-2 mt-0.5 flex-shrink-0" />
                 <span className="text-neutral-300">Activity dashboards and alerts</span>
               </li>
               <li className="flex items-start">
-                <CheckCircle className="h-5 w-5 text-indigo-400 mr-2 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="h-5 w-5 text-neutral-400 mr-2 mt-0.5 flex-shrink-0" />
                 <span className="text-neutral-300">Performance metrics tracking</span>
               </li>
             </ul>
@@ -72,11 +72,11 @@ const AuditFeatures = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="relative rounded-xl border border-indigo-500/20 bg-[var(--black)]/50 overflow-hidden p-6"
+            className="relative rounded-xl border border-neutral-500/20 bg-[var(--black)]/50 overflow-hidden p-6"
           >
-            <div className="absolute top-0 right-0 h-20 w-20 bg-indigo-500/10 rounded-bl-full"></div>
-            <div className="bg-indigo-900/20 p-3 rounded-lg inline-flex mb-4">
-              <GitCommit className="h-8 w-8 text-indigo-400" />
+            <div className="absolute top-0 right-0 h-20 w-20 bg-neutral-500/10 rounded-bl-full"></div>
+            <div className="bg-neutral-800/20 p-3 rounded-lg inline-flex mb-4">
+              <GitCommit className="h-8 w-8 text-neutral-400" />
             </div>
             <h3 className="text-xl font-semibold mb-3">Comprehensive Audit Logs</h3>
             <p className="text-neutral-400 mb-4">
@@ -85,15 +85,15 @@ const AuditFeatures = () => {
             </p>
             <ul className="space-y-2">
               <li className="flex items-start">
-                <CheckCircle className="h-5 w-5 text-indigo-400 mr-2 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="h-5 w-5 text-neutral-400 mr-2 mt-0.5 flex-shrink-0" />
                 <span className="text-neutral-300">Tamper-proof logging system</span>
               </li>
               <li className="flex items-start">
-                <CheckCircle className="h-5 w-5 text-indigo-400 mr-2 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="h-5 w-5 text-neutral-400 mr-2 mt-0.5 flex-shrink-0" />
                 <span className="text-neutral-300">Full record of all decisions and actions</span>
               </li>
               <li className="flex items-start">
-                <CheckCircle className="h-5 w-5 text-indigo-400 mr-2 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="h-5 w-5 text-neutral-400 mr-2 mt-0.5 flex-shrink-0" />
                 <span className="text-neutral-300">Advanced search and filtering options</span>
               </li>
             </ul>
@@ -104,11 +104,11 @@ const AuditFeatures = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="relative rounded-xl border border-indigo-500/20 bg-[var(--black)]/50 overflow-hidden p-6"
+            className="relative rounded-xl border border-neutral-500/20 bg-[var(--black)]/50 overflow-hidden p-6"
           >
-            <div className="absolute top-0 right-0 h-20 w-20 bg-indigo-500/10 rounded-bl-full"></div>
-            <div className="bg-indigo-900/20 p-3 rounded-lg inline-flex mb-4">
-              <Shield className="h-8 w-8 text-indigo-400" />
+            <div className="absolute top-0 right-0 h-20 w-20 bg-neutral-500/10 rounded-bl-full"></div>
+            <div className="bg-neutral-800/20 p-3 rounded-lg inline-flex mb-4">
+              <Shield className="h-8 w-8 text-neutral-400" />
             </div>
             <h3 className="text-xl font-semibold mb-3">Enterprise Security</h3>
             <p className="text-neutral-400 mb-4">
@@ -117,15 +117,15 @@ const AuditFeatures = () => {
             </p>
             <ul className="space-y-2">
               <li className="flex items-start">
-                <CheckCircle className="h-5 w-5 text-indigo-400 mr-2 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="h-5 w-5 text-neutral-400 mr-2 mt-0.5 flex-shrink-0" />
                 <span className="text-neutral-300">SOC 2, HIPAA, GDPR, and CCPA compliant</span>
               </li>
               <li className="flex items-start">
-                <CheckCircle className="h-5 w-5 text-indigo-400 mr-2 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="h-5 w-5 text-neutral-400 mr-2 mt-0.5 flex-shrink-0" />
                 <span className="text-neutral-300">End-to-end encryption for all data</span>
               </li>
               <li className="flex items-start">
-                <CheckCircle className="h-5 w-5 text-indigo-400 mr-2 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="h-5 w-5 text-neutral-400 mr-2 mt-0.5 flex-shrink-0" />
                 <span className="text-neutral-300">Single sign-on (SSO) and SCIM support</span>
               </li>
             </ul>
@@ -137,31 +137,31 @@ const AuditFeatures = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="bg-indigo-900/10 border border-indigo-500/20 rounded-xl p-8 text-center"
+          className="bg-neutral-800/10 border border-neutral-500/20 rounded-xl p-8 text-center"
         >
           <div className="flex justify-center gap-8 flex-wrap">
             <div className="flex items-center">
-              <Lock className="h-6 w-6 text-indigo-400 mr-2" />
+              <Lock className="h-6 w-6 text-neutral-400 mr-2" />
               <span className="text-neutral-300">SOC 2 Type II</span>
             </div>
             <div className="flex items-center">
-              <Lock className="h-6 w-6 text-indigo-400 mr-2" />
+              <Lock className="h-6 w-6 text-neutral-400 mr-2" />
               <span className="text-neutral-300">HIPAA</span>
             </div>
             <div className="flex items-center">
-              <Lock className="h-6 w-6 text-indigo-400 mr-2" />
+              <Lock className="h-6 w-6 text-neutral-400 mr-2" />
               <span className="text-neutral-300">GDPR</span>
             </div>
             <div className="flex items-center">
-              <Lock className="h-6 w-6 text-indigo-400 mr-2" />
+              <Lock className="h-6 w-6 text-neutral-400 mr-2" />
               <span className="text-neutral-300">CCPA</span>
             </div>
             <div className="flex items-center">
-              <Lock className="h-6 w-6 text-indigo-400 mr-2" />
+              <Lock className="h-6 w-6 text-neutral-400 mr-2" />
               <span className="text-neutral-300">ISO 27001</span>
             </div>
             <div className="flex items-center">
-              <Bookmark className="h-6 w-6 text-indigo-400 mr-2" />
+              <Bookmark className="h-6 w-6 text-neutral-400 mr-2" />
               <span className="text-neutral-300">99.9% Uptime SLA</span>
             </div>
           </div>

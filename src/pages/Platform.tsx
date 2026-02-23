@@ -13,7 +13,7 @@ import { motion } from "framer-motion";
 import { Github, Cloud, Server, Lock, Code2, Network, Terminal, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const BRAND_COLOR = "#fd4444";
+const BRAND_COLOR = "#ffffff";
 
 const DeploymentOptions = () => {
   return (
@@ -40,7 +40,7 @@ const DeploymentOptions = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="bg-neutral-900/50 border border-neutral-800 rounded-xl p-6 hover:border-[#fd4444]/30 transition-colors"
+            className="bg-neutral-900/50 border border-neutral-800 rounded-xl p-6 hover:border-white/30 transition-colors"
           >
             <div
               className="w-12 h-12 rounded-lg flex items-center justify-center mb-4"
@@ -54,20 +54,20 @@ const DeploymentOptions = () => {
             </p>
             <ul className="space-y-2 text-sm text-neutral-500">
               <li className="flex items-center gap-2">
-                <span className="text-[#fd4444]">✓</span> Docker & Kubernetes ready
+                <span className="text-white">✓</span> Docker & Kubernetes ready
               </li>
               <li className="flex items-center gap-2">
-                <span className="text-[#fd4444]">✓</span> Air-gapped deployments
+                <span className="text-white">✓</span> Air-gapped deployments
               </li>
               <li className="flex items-center gap-2">
-                <span className="text-[#fd4444]">✓</span> No external dependencies
+                <span className="text-white">✓</span> No external dependencies
               </li>
             </ul>
             <a
               href="https://github.com/hanzoai/platform"
               target="_blank"
               rel="noreferrer noopener"
-              className="inline-flex items-center mt-6 text-sm text-[#fd4444] hover:text-[#fd6666]"
+              className="inline-flex items-center mt-6 text-sm text-white hover:text-[#e5e5e5]"
             >
               <Github className="w-4 h-4 mr-2" />
               View on GitHub
@@ -80,13 +80,13 @@ const DeploymentOptions = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="bg-neutral-900/50 border border-neutral-800 rounded-xl p-6 hover:border-blue-500/30 transition-colors"
+            className="bg-neutral-900/50 border border-neutral-800 rounded-xl p-6 hover:border-neutral-500/30 transition-colors"
           >
             <div
               className="w-12 h-12 rounded-lg flex items-center justify-center mb-4"
-              style={{ backgroundColor: "#3b82f620" }}
+              style={{ backgroundColor: "#a3a3a320" }}
             >
-              <Cloud className="w-6 h-6 text-blue-500" />
+              <Cloud className="w-6 h-6 text-neutral-400" />
             </div>
             <h3 className="text-xl font-bold text-white mb-2">Hanzo Cloud</h3>
             <p className="text-neutral-400 text-sm mb-4">
@@ -94,18 +94,18 @@ const DeploymentOptions = () => {
             </p>
             <ul className="space-y-2 text-sm text-neutral-500">
               <li className="flex items-center gap-2">
-                <span className="text-blue-500">✓</span> 35+ global regions
+                <span className="text-neutral-400">✓</span> 35+ global regions
               </li>
               <li className="flex items-center gap-2">
-                <span className="text-blue-500">✓</span> Zero-config deployments
+                <span className="text-neutral-400">✓</span> Zero-config deployments
               </li>
               <li className="flex items-center gap-2">
-                <span className="text-blue-500">✓</span> 99.99% SLA
+                <span className="text-neutral-400">✓</span> 99.99% SLA
               </li>
             </ul>
             <Link
               to="/cloud"
-              className="inline-flex items-center mt-6 text-sm text-blue-400 hover:text-blue-300"
+              className="inline-flex items-center mt-6 text-sm text-neutral-400 hover:text-neutral-300"
             >
               Explore Cloud
               <ArrowRight className="w-4 h-4 ml-2" />
@@ -118,13 +118,13 @@ const DeploymentOptions = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
-            className="bg-neutral-900/50 border border-neutral-800 rounded-xl p-6 hover:border-purple-500/30 transition-colors"
+            className="bg-neutral-900/50 border border-neutral-800 rounded-xl p-6 hover:border-neutral-500/30 transition-colors"
           >
             <div
               className="w-12 h-12 rounded-lg flex items-center justify-center mb-4"
-              style={{ backgroundColor: "#8b5cf620" }}
+              style={{ backgroundColor: "#a3a3a320" }}
             >
-              <Network className="w-6 h-6 text-purple-500" />
+              <Network className="w-6 h-6 text-neutral-400" />
             </div>
             <h3 className="text-xl font-bold text-white mb-2">Hybrid</h3>
             <p className="text-neutral-400 text-sm mb-4">
@@ -132,18 +132,18 @@ const DeploymentOptions = () => {
             </p>
             <ul className="space-y-2 text-sm text-neutral-500">
               <li className="flex items-center gap-2">
-                <span className="text-purple-500">✓</span> Data residency compliance
+                <span className="text-neutral-400">✓</span> Data residency compliance
               </li>
               <li className="flex items-center gap-2">
-                <span className="text-purple-500">✓</span> Edge + origin architecture
+                <span className="text-neutral-400">✓</span> Edge + origin architecture
               </li>
               <li className="flex items-center gap-2">
-                <span className="text-purple-500">✓</span> Unified management
+                <span className="text-neutral-400">✓</span> Unified management
               </li>
             </ul>
             <Link
               to="/enterprise"
-              className="inline-flex items-center mt-6 text-sm text-purple-400 hover:text-purple-300"
+              className="inline-flex items-center mt-6 text-sm text-neutral-400 hover:text-neutral-300"
             >
               Contact Sales
               <ArrowRight className="w-4 h-4 ml-2" />
@@ -175,7 +175,7 @@ const OpenSourceBenefits = () => {
 
           <div className="grid md:grid-cols-3 gap-8">
             <div className="space-y-4">
-              <Code2 className="h-10 w-10 text-[#fd4444]" />
+              <Code2 className="h-10 w-10 text-white" />
               <h4 className="text-lg font-bold text-white">MIT Licensed</h4>
               <p className="text-neutral-400 text-sm">
                 Use it commercially, modify it freely. No vendor lock-in, no surprise licensing changes.
@@ -183,7 +183,7 @@ const OpenSourceBenefits = () => {
             </div>
 
             <div className="space-y-4">
-              <Lock className="h-10 w-10 text-[#fd4444]" />
+              <Lock className="h-10 w-10 text-white" />
               <h4 className="text-lg font-bold text-white">Data Sovereignty</h4>
               <p className="text-neutral-400 text-sm">
                 Your code, your data, your infrastructure. Complete control over your stack.
@@ -191,7 +191,7 @@ const OpenSourceBenefits = () => {
             </div>
 
             <div className="space-y-4">
-              <Terminal className="h-10 w-10 text-[#fd4444]" />
+              <Terminal className="h-10 w-10 text-white" />
               <h4 className="text-lg font-bold text-white">Developer First</h4>
               <p className="text-neutral-400 text-sm">
                 Built by developers, for developers. Extensive docs, active community, responsive maintainers.

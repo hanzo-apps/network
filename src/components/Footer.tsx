@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 
-const BRAND_COLOR = "#fd4444";
+const BRAND_COLOR = "#ffffff";
 
 // Footer navigation data matching the design
 const footerLinks = {
@@ -231,7 +231,7 @@ const Footer = () => {
                   className="absolute right-2 top-1/2 -translate-y-1/2 w-6 h-6 rounded flex items-center justify-center transition-colors hover:opacity-80"
                   style={{ backgroundColor: BRAND_COLOR }}
                 >
-                  <Send className="w-3 h-3 text-white" />
+                  <Send className="w-3 h-3 text-black" />
                 </button>
               </div>
 

@@ -127,7 +127,7 @@ const CopyButton = ({ text }: { text: string }) => {
       className="p-2 hover:bg-white/10 rounded transition-colors"
       title="Copy to clipboard"
     >
-      {copied ? <Check className="h-4 w-4 text-green-400" /> : <Copy className="h-4 w-4 text-neutral-400" />}
+      {copied ? <Check className="h-4 w-4 text-neutral-400" /> : <Copy className="h-4 w-4 text-neutral-400" />}
     </button>
   );
 };
@@ -166,7 +166,7 @@ export default function Products() {
             <div className="bg-neutral-900/50 rounded-2xl p-6 max-w-2xl mx-auto mb-10 border border-neutral-800">
               <p className="text-sm text-neutral-400 mb-3">Get started in seconds</p>
               <div className="flex items-center justify-between bg-black rounded-xl p-4 font-mono">
-                <code className="text-green-400">curl -fsSL hanzo.sh/install.sh | sh</code>
+                <code className="text-neutral-400">curl -fsSL hanzo.sh/install.sh | sh</code>
                 <CopyButton text="curl -fsSL hanzo.sh/install.sh | sh" />
               </div>
             </div>
@@ -174,7 +174,7 @@ export default function Products() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 size="lg"
-                className="bg-[#fd4444] text-white hover:bg-[#e03333]"
+                className="bg-white text-black hover:bg-neutral-300"
                 asChild
               >
                 <Link to="/pricing">
@@ -302,7 +302,7 @@ export default function Products() {
                                   {product.shortName}
                                 </h3>
                                 {product.status === 'beta' && (
-                                  <span className="text-[10px] px-1.5 py-0.5 rounded bg-yellow-500/20 text-yellow-400">beta</span>
+                                  <span className="text-[10px] px-1.5 py-0.5 rounded bg-neutral-500/20 text-neutral-400">beta</span>
                                 )}
                                 {product.status === 'coming' && (
                                   <span className="text-[10px] px-1.5 py-0.5 rounded bg-neutral-500/20 text-neutral-400">soon</span>
@@ -359,7 +359,7 @@ export default function Products() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"
-              className="bg-[#fd4444] text-white hover:bg-[#e03333]"
+              className="bg-white text-black hover:bg-neutral-300"
               asChild
             >
               <Link to="/pricing">

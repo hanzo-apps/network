@@ -14,7 +14,7 @@
         --bg: #0a0a0a;
         --text: #e5e5e5;
         --muted: #737373;
-        --accent: #fd4444;
+        --accent: #ffffff;
         --border: #262626;
         --code-bg: #171717;
       }

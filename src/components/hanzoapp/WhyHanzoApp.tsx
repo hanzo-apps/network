@@ -15,7 +15,7 @@ import {
   RefreshCw,
 } from "lucide-react";
 
-const BRAND_COLOR = "#fd4444";
+const BRAND_COLOR = "#ffffff";
 
 const modes = [
   {
@@ -29,7 +29,7 @@ const modes = [
       { icon: Users, text: "Real-time collaboration" },
       { icon: RefreshCw, text: "Auto-save and versioning" },
     ],
-    color: "#3b82f6", // blue
+    color: "#a3a3a3", // blue
   },
   {
     id: "desktop",
@@ -42,7 +42,7 @@ const modes = [
       { icon: Wifi, text: "Works offline" },
       { icon: HardDrive, text: "Local file access" },
     ],
-    color: "#10b981", // green
+    color: "#a3a3a3", // green
   },
   {
     id: "local",
@@ -55,7 +55,7 @@ const modes = [
       { icon: Cpu, text: "GPU accelerated" },
       { icon: Zap, text: "Zero latency" },
     ],
-    color: "#8b5cf6", // purple
+    color: "#a3a3a3", // purple
   },
   {
     id: "node",

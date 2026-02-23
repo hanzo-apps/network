@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Check, X, Minus } from "lucide-react";
 
-const BRAND_COLOR = "#fd4444";
+const BRAND_COLOR = "#ffffff";
 
 const features = [
   { name: "Multi-agent parallelism + consensus", hanzo: "full", others: "none", desc: "Best patch wins" },
@@ -17,13 +17,13 @@ const renderStatus = (status: string) => {
     case "full":
       return (
         <div className="flex items-center justify-center">
-          <Check className="w-5 h-5 text-green-500" />
+          <Check className="w-5 h-5 text-neutral-400" />
         </div>
       );
     case "partial":
       return (
         <div className="flex items-center justify-center">
-          <Minus className="w-5 h-5 text-yellow-500" />
+          <Minus className="w-5 h-5 text-neutral-400" />
         </div>
       );
     case "none":
@@ -102,11 +102,11 @@ const UseCasesSection = () => {
         {/* Legend */}
         <div className="flex justify-center gap-6 mt-6">
           <div className="flex items-center gap-2">
-            <Check className="w-4 h-4 text-green-500" />
+            <Check className="w-4 h-4 text-neutral-400" />
             <span className="text-xs text-neutral-500">Full support</span>
           </div>
           <div className="flex items-center gap-2">
-            <Minus className="w-4 h-4 text-yellow-500" />
+            <Minus className="w-4 h-4 text-neutral-400" />
             <span className="text-xs text-neutral-500">Partial / varies</span>
           </div>
           <div className="flex items-center gap-2">

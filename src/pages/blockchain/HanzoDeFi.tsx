@@ -19,7 +19,7 @@ const HanzoDeFi = () => {
       tagline="DeFi building blocks for any application"
       description="Modular DeFi infrastructure for staking, lending, swapping, and yield aggregation. Gasless transactions, stablecoin APIs, and pre-built strategies—all on the Lux Network."
       icon={TrendingUp}
-      accentColor="#f97316"
+      accentColor="#a3a3a3"
       features={[
         {
           icon: Coins,
