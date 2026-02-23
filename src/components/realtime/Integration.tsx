@@ -48,8 +48,8 @@ const Integration = () => {
             
             <div className="space-y-4 mb-8">
               <div className="flex items-start">
-                <div className="h-6 w-6 rounded-full bg-purple-900/30 flex items-center justify-center mr-3 mt-0.5">
-                  <span className="text-purple-400 text-sm font-bold">1</span>
+                <div className="h-6 w-6 rounded-full bg-neutral-800/30 flex items-center justify-center mr-3 mt-0.5">
+                  <span className="text-neutral-400 text-sm font-bold">1</span>
                 </div>
                 <div>
                   <h4 className="text-[var(--white)] font-medium mb-1">Initialize the client</h4>
@@ -58,8 +58,8 @@ const Integration = () => {
               </div>
               
               <div className="flex items-start">
-                <div className="h-6 w-6 rounded-full bg-purple-900/30 flex items-center justify-center mr-3 mt-0.5">
-                  <span className="text-purple-400 text-sm font-bold">2</span>
+                <div className="h-6 w-6 rounded-full bg-neutral-800/30 flex items-center justify-center mr-3 mt-0.5">
+                  <span className="text-neutral-400 text-sm font-bold">2</span>
                 </div>
                 <div>
                   <h4 className="text-[var(--white)] font-medium mb-1">Subscribe to channels</h4>
@@ -68,8 +68,8 @@ const Integration = () => {
               </div>
               
               <div className="flex items-start">
-                <div className="h-6 w-6 rounded-full bg-purple-900/30 flex items-center justify-center mr-3 mt-0.5">
-                  <span className="text-purple-400 text-sm font-bold">3</span>
+                <div className="h-6 w-6 rounded-full bg-neutral-800/30 flex items-center justify-center mr-3 mt-0.5">
+                  <span className="text-neutral-400 text-sm font-bold">3</span>
                 </div>
                 <div>
                   <h4 className="text-[var(--white)] font-medium mb-1">Publish messages</h4>
@@ -78,7 +78,7 @@ const Integration = () => {
               </div>
             </div>
             
-            <Button className="bg-purple-600 hover:bg-purple-700">
+            <Button className="bg-neutral-600 hover:bg-neutral-700">
               View Documentation <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </motion.div>
@@ -91,16 +91,16 @@ const Integration = () => {
             className="bg-[var(--black)] rounded-xl border border-gray-800 p-6"
           >
             <div className="flex items-center mb-4">
-              <Code className="h-5 w-5 text-purple-400 mr-2" />
+              <Code className="h-5 w-5 text-neutral-400 mr-2" />
               <span className="text-neutral-300">JavaScript Example</span>
             </div>
             
             <div className="bg-gray-900 rounded-lg p-4 font-mono text-sm overflow-auto max-h-[400px]">
-              <div className="text-green-400">// Initialize the Hanzo Realtime client</div>
+              <div className="text-neutral-400">// Initialize the Hanzo Realtime client</div>
               <div className="text-neutral-300">import {`{ Realtime }`} from '@hanzo/cloud';</div>
               <div className="text-neutral-300 mb-4">const realtime = new Realtime('YOUR_API_KEY');</div>
               
-              <div className="text-green-400">// Subscribe to a channel</div>
+              <div className="text-neutral-400">// Subscribe to a channel</div>
               <div className="text-neutral-300">const channel = await realtime.subscribe('chat-room', {`{`}</div>
               <div className="text-neutral-300 pl-4">onMessage: (message) {`=>`} {`{`}</div>
               <div className="text-neutral-300 pl-8">console.log('New message received:', message);</div>
@@ -117,7 +117,7 @@ const Integration = () => {
               <div className="text-neutral-300">{`}`});</div>
               <div className="text-neutral-300 mb-4"></div>
               
-              <div className="text-green-400">// Publish a message to the channel</div>
+              <div className="text-neutral-400">// Publish a message to the channel</div>
               <div className="text-neutral-300">await realtime.publish('chat-room', {`{`}</div>
               <div className="text-neutral-300 pl-4">user: {`{`}</div>
               <div className="text-neutral-300 pl-8">id: 'user-123',</div>
@@ -128,7 +128,7 @@ const Integration = () => {
               <div className="text-neutral-300">{`}`});</div>
               <div className="text-neutral-300 mb-4"></div>
               
-              <div className="text-green-400">// Clean up when done</div>
+              <div className="text-neutral-400">// Clean up when done</div>
               <div className="text-neutral-300">await channel.unsubscribe();</div>
             </div>
           </motion.div>

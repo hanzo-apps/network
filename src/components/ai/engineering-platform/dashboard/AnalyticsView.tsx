@@ -9,7 +9,7 @@ const AnalyticsView = () => {
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-sm font-medium text-[var(--white)]">AI Analytics</h3>
         <div className="flex space-x-2">
-          <button className="px-2 py-1 bg-purple-600/40 rounded-md text-xs text-purple-200 flex items-center">
+          <button className="px-2 py-1 bg-neutral-600/40 rounded-md text-xs text-neutral-200 flex items-center">
             <BarChart className="w-3 h-3 mr-1" />
             Reports
           </button>
@@ -27,25 +27,25 @@ const AnalyticsView = () => {
             <div className="absolute inset-0">
               <div className="h-full w-full flex">
                 <motion.div 
-                  className="h-full bg-purple-600/70 rounded-l"
+                  className="h-full bg-neutral-600/70 rounded-l"
                   initial={{ width: 0 }}
                   animate={{ width: "42%" }}
                   transition={{ duration: 0.8, delay: 0.1 }}
                 />
                 <motion.div 
-                  className="h-full bg-blue-500/70"
+                  className="h-full bg-neutral-600/70"
                   initial={{ width: 0 }}
                   animate={{ width: "28%" }}
                   transition={{ duration: 0.8, delay: 0.3 }}
                 />
                 <motion.div 
-                  className="h-full bg-indigo-500/70"
+                  className="h-full bg-neutral-500/70"
                   initial={{ width: 0 }}
                   animate={{ width: "15%" }}
                   transition={{ duration: 0.8, delay: 0.5 }}
                 />
                 <motion.div 
-                  className="h-full bg-pink-500/70 rounded-r"
+                  className="h-full bg-neutral-500/70 rounded-r"
                   initial={{ width: 0 }}
                   animate={{ width: "15%" }}
                   transition={{ duration: 0.8, delay: 0.7 }}
@@ -55,19 +55,19 @@ const AnalyticsView = () => {
           </div>
           <div className="grid grid-cols-2 gap-2 mt-3">
             <div className="flex items-center">
-              <div className="w-2 h-2 rounded-full bg-purple-600 mr-2"></div>
+              <div className="w-2 h-2 rounded-full bg-neutral-600 mr-2"></div>
               <span className="text-xs text-neutral-300">GPT-4o (42%)</span>
             </div>
             <div className="flex items-center">
-              <div className="w-2 h-2 rounded-full bg-blue-500 mr-2"></div>
+              <div className="w-2 h-2 rounded-full bg-neutral-600 mr-2"></div>
               <span className="text-xs text-neutral-300">Claude 3 (28%)</span>
             </div>
             <div className="flex items-center">
-              <div className="w-2 h-2 rounded-full bg-indigo-500 mr-2"></div>
+              <div className="w-2 h-2 rounded-full bg-neutral-500 mr-2"></div>
               <span className="text-xs text-neutral-300">Llama 3 (15%)</span>
             </div>
             <div className="flex items-center">
-              <div className="w-2 h-2 rounded-full bg-pink-500 mr-2"></div>
+              <div className="w-2 h-2 rounded-full bg-neutral-500 mr-2"></div>
               <span className="text-xs text-neutral-300">Others (15%)</span>
             </div>
           </div>
@@ -79,7 +79,7 @@ const AnalyticsView = () => {
               {[35, 42, 38, 52, 45, 55, 47, 62, 48, 60, 53, 58].map((value, index) => (
                 <motion.div
                   key={index}
-                  className="bg-gradient-to-t from-purple-600/90 to-purple-400/50 rounded-t w-full"
+                  className="bg-gradient-to-t from-neutral-600/90 to-neutral-400/50 rounded-t w-full"
                   style={{ height: `${value}%` }}
                   initial={{ height: 0 }}
                   animate={{ height: `${value}%` }}
@@ -94,7 +94,7 @@ const AnalyticsView = () => {
             <span>Dec</span>
           </div>
           <div className="mt-1 text-xs text-neutral-300">
-            $1,245 spent this month - <span className="text-purple-400">14% under budget</span>
+            $1,245 spent this month - <span className="text-neutral-400">14% under budget</span>
           </div>
         </div>
       </div>
@@ -109,7 +109,7 @@ const AnalyticsView = () => {
             </div>
             <div className="w-full bg-gray-700/40 rounded-full h-1.5">
               <motion.div 
-                className="bg-green-500 h-1.5 rounded-full" 
+                className="bg-neutral-500 h-1.5 rounded-full" 
                 initial={{ width: 0 }}
                 animate={{ width: "89%" }}
                 transition={{ duration: 0.8 }}
@@ -123,7 +123,7 @@ const AnalyticsView = () => {
             </div>
             <div className="w-full bg-gray-700/40 rounded-full h-1.5">
               <motion.div 
-                className="bg-green-500 h-1.5 rounded-full" 
+                className="bg-neutral-500 h-1.5 rounded-full" 
                 initial={{ width: 0 }}
                 animate={{ width: "94%" }}
                 transition={{ duration: 0.8, delay: 0.2 }}
@@ -137,7 +137,7 @@ const AnalyticsView = () => {
             </div>
             <div className="w-full bg-gray-700/40 rounded-full h-1.5">
               <motion.div 
-                className="bg-green-500 h-1.5 rounded-full" 
+                className="bg-neutral-500 h-1.5 rounded-full" 
                 initial={{ width: 0 }}
                 animate={{ width: "99.8%" }}
                 transition={{ duration: 0.8, delay: 0.4 }}

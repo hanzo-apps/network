@@ -6,7 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { FileText, Scale, Shield, Clock, ArrowRight, CheckCircle } from "lucide-react";
 
-const BRAND_COLOR = "#fd4444";
+const BRAND_COLOR = "#ffffff";
 
 const TERMS_HIGHLIGHTS = [
   {
@@ -100,7 +100,7 @@ const Terms = () => {
                 <a
                   href="#terms-content"
                   className="inline-flex items-center px-6 py-3 rounded-full font-medium transition-all hover:opacity-90 text-sm"
-                  style={{ backgroundColor: BRAND_COLOR, color: "#ffffff" }}
+                  style={{ backgroundColor: BRAND_COLOR, color: "#000000" }}
                 >
                   Read Full Terms
                   <ArrowRight className="ml-2 h-4 w-4" />
@@ -215,8 +215,8 @@ const Terms = () => {
 
         {/* CTA Section */}
         <section className="py-24 px-4 md:px-8 bg-gradient-to-b from-neutral-900/30 to-black relative overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-[#fd4444]/10 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-[#fd4444]/5 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-white/5 rounded-full blur-3xl pointer-events-none" />
 
           <div className="max-w-4xl mx-auto text-center relative z-10">
             <motion.h2
@@ -248,7 +248,7 @@ const Terms = () => {
               <Link
                 to="/contact"
                 className="inline-flex items-center px-8 py-4 rounded-full font-medium transition-all hover:opacity-90 text-base"
-                style={{ backgroundColor: BRAND_COLOR, color: "#ffffff" }}
+                style={{ backgroundColor: BRAND_COLOR, color: "#000000" }}
               >
                 Contact Us
                 <ArrowRight className="ml-2 h-5 w-5" />

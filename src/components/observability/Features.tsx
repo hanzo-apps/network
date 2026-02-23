@@ -14,42 +14,42 @@ import {
 
 const features = [
   {
-    icon: <History className="h-7 w-7 text-violet-400" />,
+    icon: <History className="h-7 w-7 text-neutral-400" />,
     title: "Tracing and Logging",
     description: "End-to-end traces for rapid debugging, detailed logs for every inference request."
   },
   {
-    icon: <BarChart className="h-7 w-7 text-blue-400" />,
+    icon: <BarChart className="h-7 w-7 text-neutral-400" />,
     title: "Real-time Metrics",
     description: "Instant visibility into system health, latency, throughput, and cost efficiency."
   },
   {
-    icon: <MessageSquare className="h-7 w-7 text-indigo-400" />,
+    icon: <MessageSquare className="h-7 w-7 text-neutral-400" />,
     title: "Prompt Management",
     description: "Collaboratively version, test, and deploy prompts with low-latency retrieval."
   },
   {
-    icon: <Sparkles className="h-7 w-7 text-purple-400" />,
+    icon: <Sparkles className="h-7 w-7 text-neutral-400" />,
     title: "Playground",
     description: "Experiment rapidly with different prompts and models directly in the Hanzo interface."
   },
   {
-    icon: <FileBadge className="h-7 w-7 text-pink-400" />,
+    icon: <FileBadge className="h-7 w-7 text-neutral-400" />,
     title: "Evaluation & Feedback",
     description: "Collect, annotate, and systematically evaluate model outputs and user feedback."
   },
   {
-    icon: <Database className="h-7 w-7 text-cyan-400" />,
+    icon: <Database className="h-7 w-7 text-neutral-400" />,
     title: "Datasets",
     description: "Generate robust datasets from live production data to enhance model training and evaluation."
   },
   {
-    icon: <Users className="h-7 w-7 text-green-400" />,
+    icon: <Users className="h-7 w-7 text-neutral-400" />,
     title: "User Journey Analytics",
     description: "Visualize and optimize user paths, retention rates, and conversion funnels."
   },
   {
-    icon: <AlertTriangle className="h-7 w-7 text-amber-400" />,
+    icon: <AlertTriangle className="h-7 w-7 text-neutral-400" />,
     title: "Predictive Analytics",
     description: "AI-driven anomaly detection and predictive alerts prevent downtime and performance degradation."
   }

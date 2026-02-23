@@ -19,7 +19,7 @@ const HanzoBridge = () => {
       tagline="Cross-chain asset transfers, simplified"
       description="Bridge assets between Lux and major blockchain networks securely. Built-in compliance checks, optimized routes, and enterprise-grade reliability."
       icon={ArrowLeftRight}
-      accentColor="#06b6d4"
+      accentColor="#a3a3a3"
       features={[
         {
           icon: Globe,

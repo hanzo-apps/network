@@ -53,8 +53,8 @@ const NetworkLanding = () => {
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#1a1a2e_1px,transparent_1px),linear-gradient(to_bottom,#1a1a2e_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
 
         {/* Gradient orbs */}
-        <div className="absolute top-1/4 -left-1/4 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 -right-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 -left-1/4 w-96 h-96 bg-neutral-500/20 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 -right-1/4 w-96 h-96 bg-neutral-600/20 rounded-full blur-3xl" />
 
         <div className="relative z-10 container mx-auto px-6 text-center">
           <motion.div
@@ -62,12 +62,12 @@ const NetworkLanding = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-sm mb-8">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-neutral-500/10 border border-neutral-500/20 text-neutral-400 text-sm mb-8">
               <Network className="w-4 h-4" />
               Decentralized Compute Network
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-cyan-200 to-cyan-400 bg-clip-text text-transparent">
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-neutral-200 to-neutral-400 bg-clip-text text-transparent">
               The Future of
               <br />
               AI Compute
@@ -79,7 +79,7 @@ const NetworkLanding = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-              <Button size="lg" className="bg-cyan-500 hover:bg-cyan-600 text-black font-semibold px-8">
+              <Button size="lg" className="bg-neutral-500 hover:bg-neutral-600 text-black font-semibold px-8">
                 Start Computing
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
@@ -98,7 +98,7 @@ const NetworkLanding = () => {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="text-center"
                 >
-                  <div className="text-3xl md:text-4xl font-bold text-cyan-400 mb-1">{stat.value}</div>
+                  <div className="text-3xl md:text-4xl font-bold text-neutral-400 mb-1">{stat.value}</div>
                   <div className="text-sm text-neutral-500">{stat.label}</div>
                 </motion.div>
               ))}
@@ -125,9 +125,9 @@ const NetworkLanding = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="p-6 rounded-2xl bg-neutral-900/50 border border-neutral-800 hover:border-cyan-500/50 transition-colors"
+                className="p-6 rounded-2xl bg-neutral-900/50 border border-neutral-800 hover:border-neutral-500/50 transition-colors"
               >
-                <feature.icon className="w-10 h-10 text-cyan-400 mb-4" />
+                <feature.icon className="w-10 h-10 text-neutral-400 mb-4" />
                 <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
                 <p className="text-neutral-400">{feature.description}</p>
               </motion.div>
@@ -144,7 +144,7 @@ const NetworkLanding = () => {
             Whether you need compute or want to provide it, the Hanzo Network is your gateway to decentralized AI infrastructure.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-cyan-500 hover:bg-cyan-600 text-black font-semibold px-8">
+            <Button size="lg" className="bg-neutral-500 hover:bg-neutral-600 text-black font-semibold px-8">
               Get Started
             </Button>
             <Link to="/docs">

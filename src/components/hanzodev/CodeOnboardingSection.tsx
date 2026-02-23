@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { GitBranch, GitPullRequest, Zap } from "lucide-react";
 
-const BRAND_COLOR = "#fd4444";
+const BRAND_COLOR = "#ffffff";
 
 const CodebaseDemo = () => {
   return (
@@ -11,7 +11,7 @@ const CodebaseDemo = () => {
       <div className="p-6">
         {/* User message */}
         <div className="flex gap-3 mb-6">
-          <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white text-sm font-medium flex-shrink-0">
+          <div className="w-8 h-8 rounded-full bg-neutral-600 flex items-center justify-center text-white text-sm font-medium flex-shrink-0">
             &gt;
           </div>
           <div className="bg-neutral-800 rounded-lg px-4 py-3 max-w-lg">
@@ -133,7 +133,7 @@ const CodeOnboardingSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-neutral-900/50 border border-neutral-800 rounded-xl p-6 hover:border-[#fd4444]/30 transition-colors"
+                className="bg-neutral-900/50 border border-neutral-800 rounded-xl p-6 hover:border-white/30 transition-colors"
               >
                 <div
                   className="w-12 h-12 rounded-lg flex items-center justify-center mb-4"

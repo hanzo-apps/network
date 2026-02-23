@@ -7,7 +7,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import OSSCatalog from "@/components/oss/OSSCatalog";
 
-const BRAND_COLOR = "#fd4444";
+const BRAND_COLOR = "#ffffff";
 
 const stats = [
   { label: "Open Source Projects", value: "260+", icon: Code },
@@ -87,7 +87,7 @@ const OpenSource = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center px-6 py-3 rounded-full font-medium transition-all hover:opacity-90 text-sm"
-                  style={{ backgroundColor: BRAND_COLOR, color: "#ffffff" }}
+                  style={{ backgroundColor: BRAND_COLOR, color: "#000000" }}
                 >
                   <Github className="w-4 h-4 mr-2" />
                   View on GitHub
@@ -133,15 +133,15 @@ const OpenSource = () => {
 
         {/* CTA Section */}
         <section className="py-24 px-4 md:px-8 bg-gradient-to-b from-neutral-900/30 to-black relative overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-[#fd4444]/10 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-[#fd4444]/5 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-white/5 rounded-full blur-3xl pointer-events-none" />
 
           <div className="max-w-4xl mx-auto text-center relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium mb-6 bg-pink-500/20 text-pink-400"
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium mb-6 bg-neutral-500/20 text-neutral-400"
             >
               <Heart className="w-3.5 h-3.5" />
               Join the Community
@@ -179,7 +179,7 @@ const OpenSource = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center px-8 py-4 rounded-full font-medium transition-all hover:opacity-90 text-base"
-                style={{ backgroundColor: BRAND_COLOR, color: "#ffffff" }}
+                style={{ backgroundColor: BRAND_COLOR, color: "#000000" }}
               >
                 Start Contributing
                 <ArrowRight className="ml-2 h-5 w-5" />

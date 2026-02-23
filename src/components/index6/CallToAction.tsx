@@ -13,7 +13,7 @@ const CallToAction: React.FC = () => {
   };
   
   return (
-    <section className="py-20 px-4 md:px-8 bg-gradient-to-b from-black to-purple-950/20 relative overflow-hidden">
+    <section className="py-20 px-4 md:px-8 bg-gradient-to-b from-black to-neutral-950/20 relative overflow-hidden">
       {/* Background animation elements */}
       <motion.div 
         className="absolute inset-0 opacity-20"
@@ -61,7 +61,7 @@ const CallToAction: React.FC = () => {
           >
             <Button 
               size="lg" 
-              className="bg-purple-600 hover:bg-purple-700 text-[var(--white)] px-8 py-6 text-lg relative overflow-hidden group rounded-full"
+              className="bg-neutral-600 hover:bg-neutral-700 text-[var(--white)] px-8 py-6 text-lg relative overflow-hidden group rounded-full"
               onClick={handleGetStarted}
             >
               <span className="relative z-10 flex items-center py-1 leading-relaxed">
@@ -75,7 +75,7 @@ const CallToAction: React.FC = () => {
                 </motion.span>
               </span>
               <motion.span 
-                className="absolute inset-0 bg-gradient-to-r from-purple-500 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" 
+                className="absolute inset-0 bg-gradient-to-r from-neutral-500 to-neutral-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" 
               />
             </Button>
           </motion.div>

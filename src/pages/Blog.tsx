@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 import { CalendarIcon, User, Tag, ArrowRight, Rss, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const BRAND_COLOR = "#fd4444";
+const BRAND_COLOR = "#ffffff";
 
 // Sample blog post data
 const blogPosts = [
@@ -122,7 +122,7 @@ const Blog = () => {
                 <a
                   href="#posts"
                   className="inline-flex items-center px-6 py-3 rounded-full font-medium transition-all hover:opacity-90 text-sm"
-                  style={{ backgroundColor: BRAND_COLOR, color: "#ffffff" }}
+                  style={{ backgroundColor: BRAND_COLOR, color: "#000000" }}
                 >
                   Latest Posts
                   <ArrowRight className="ml-2 h-4 w-4" />
@@ -146,7 +146,7 @@ const Blog = () => {
               viewport={{ once: true }}
               className="mb-16"
             >
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-gradient-to-br from-[#fd4444]/10 to-neutral-900/50 rounded-xl overflow-hidden border border-neutral-800">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-gradient-to-br from-white/10 to-neutral-900/50 rounded-xl overflow-hidden border border-neutral-800">
                 <div className="p-8 flex flex-col justify-center">
                   <div className="flex items-center space-x-4 mb-4">
                     <span
@@ -177,7 +177,7 @@ const Blog = () => {
 
                   <button
                     className="inline-flex items-center w-fit px-6 py-3 rounded-full font-medium transition-all hover:opacity-90 text-sm"
-                    style={{ backgroundColor: BRAND_COLOR, color: "#ffffff" }}
+                    style={{ backgroundColor: BRAND_COLOR, color: "#000000" }}
                   >
                     Read Article
                     <ArrowRight className="ml-2 h-4 w-4" />
@@ -249,8 +249,8 @@ const Blog = () => {
 
         {/* Newsletter CTA Section */}
         <section className="py-24 px-4 md:px-8 bg-gradient-to-b from-neutral-900/30 to-black relative overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-[#fd4444]/10 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-[#fd4444]/5 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-white/5 rounded-full blur-3xl pointer-events-none" />
 
           <div className="max-w-4xl mx-auto text-center relative z-10">
             <motion.h2
@@ -286,7 +286,7 @@ const Blog = () => {
               />
               <button
                 className="inline-flex items-center justify-center px-8 py-3 rounded-full font-medium transition-all hover:opacity-90 text-base"
-                style={{ backgroundColor: BRAND_COLOR, color: "#ffffff" }}
+                style={{ backgroundColor: BRAND_COLOR, color: "#000000" }}
               >
                 Subscribe
               </button>

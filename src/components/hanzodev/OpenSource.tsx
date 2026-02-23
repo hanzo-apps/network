@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Github, ExternalLink, MessageCircle } from "lucide-react";
 
-const BRAND_COLOR = "#fd4444";
+const BRAND_COLOR = "#ffffff";
 
 const OpenSource = () => {
   return (
@@ -44,7 +44,7 @@ const OpenSource = () => {
               target="_blank"
               rel="noreferrer noopener"
               className="inline-flex items-center px-6 py-3 rounded-full font-medium transition-all hover:opacity-90 text-sm"
-              style={{ backgroundColor: BRAND_COLOR, color: "#ffffff" }}
+              style={{ backgroundColor: BRAND_COLOR, color: "#000000" }}
             >
               <Github className="mr-2 h-4 w-4" />
               Star on GitHub

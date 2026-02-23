@@ -11,12 +11,12 @@ const VideoMeetingsCard = () => {
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: 0.2 }}
-      className="bg-gray-900/30 border border-purple-900/20 rounded-xl overflow-hidden shadow-xl"
+      className="bg-gray-900/30 border border-neutral-800/20 rounded-xl overflow-hidden shadow-xl"
     >
       <div className="border-b border-gray-800 p-3 flex items-center">
-        <Video className="h-5 w-5 text-purple-400 mr-2" />
+        <Video className="h-5 w-5 text-neutral-400 mr-2" />
         <span className="font-medium">Video Meetings</span>
-        <Badge variant="outline" className="ml-auto bg-purple-900/30 border-purple-500/30 text-purple-300">
+        <Badge variant="outline" className="ml-auto bg-neutral-800/30 border-neutral-500/30 text-neutral-300">
           Zoom-style
         </Badge>
       </div>
@@ -24,7 +24,7 @@ const VideoMeetingsCard = () => {
         <div className="bg-[var(--black)]/60 rounded-lg p-4">
           <div className="mb-4 flex items-center justify-between">
             <h3 className="font-medium text-[var(--white)]">Weekly Sprint Planning</h3>
-            <Badge className="bg-green-600/30 text-green-400 border-green-500/30">Live</Badge>
+            <Badge className="bg-neutral-600/30 text-neutral-400 border-neutral-500/30">Live</Badge>
           </div>
           
           <div className="grid grid-cols-2 gap-2 mb-3">
@@ -34,17 +34,17 @@ const VideoMeetingsCard = () => {
             <div className="aspect-video bg-gray-800 rounded-md relative">
               <div className="absolute bottom-2 left-2 bg-[var(--black)]/60 px-2 py-1 rounded text-xs">John Doe</div>
             </div>
-            <div className="aspect-video bg-purple-900/30 rounded-md relative border border-purple-700/50">
+            <div className="aspect-video bg-neutral-800/30 rounded-md relative border border-neutral-700/50">
               <div className="absolute inset-0 flex items-center justify-center">
-                <Bot className="h-10 w-10 text-purple-400" />
+                <Bot className="h-10 w-10 text-neutral-400" />
               </div>
-              <div className="absolute bottom-2 left-2 bg-purple-900/60 px-2 py-1 rounded text-xs">DevBot</div>
+              <div className="absolute bottom-2 left-2 bg-neutral-800/60 px-2 py-1 rounded text-xs">DevBot</div>
             </div>
-            <div className="aspect-video bg-purple-900/30 rounded-md relative border border-purple-700/50">
+            <div className="aspect-video bg-neutral-800/30 rounded-md relative border border-neutral-700/50">
               <div className="absolute inset-0 flex items-center justify-center">
-                <Bot className="h-10 w-10 text-purple-400" />
+                <Bot className="h-10 w-10 text-neutral-400" />
               </div>
-              <div className="absolute bottom-2 left-2 bg-purple-900/60 px-2 py-1 rounded text-xs">AnalyticsBot</div>
+              <div className="absolute bottom-2 left-2 bg-neutral-800/60 px-2 py-1 rounded text-xs">AnalyticsBot</div>
             </div>
           </div>
 

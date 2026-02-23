@@ -63,24 +63,24 @@ const DeploymentOptions = () => {
   const getColorClasses = (color: string, isHovered: boolean = false) => {
     const colorMap: Record<string, { bg: string, text: string, border: string }> = {
       blue: { 
-        bg: isHovered ? "bg-blue-900/40" : "bg-blue-900/20", 
-        text: "text-blue-400", 
-        border: isHovered ? "border-blue-500/50" : "border-blue-800/50" 
+        bg: isHovered ? "bg-neutral-800/40" : "bg-neutral-800/20", 
+        text: "text-neutral-400", 
+        border: isHovered ? "border-neutral-500/50" : "border-neutral-800/50" 
       },
       indigo: { 
-        bg: isHovered ? "bg-indigo-900/40" : "bg-indigo-900/20", 
-        text: "text-indigo-400", 
-        border: isHovered ? "border-indigo-500/50" : "border-indigo-800/50" 
+        bg: isHovered ? "bg-neutral-800/40" : "bg-neutral-800/20", 
+        text: "text-neutral-400", 
+        border: isHovered ? "border-neutral-500/50" : "border-neutral-800/50" 
       },
       purple: { 
-        bg: isHovered ? "bg-purple-900/40" : "bg-purple-900/20", 
-        text: "text-purple-400", 
-        border: isHovered ? "border-purple-500/50" : "border-purple-800/50" 
+        bg: isHovered ? "bg-neutral-800/40" : "bg-neutral-800/20", 
+        text: "text-neutral-400", 
+        border: isHovered ? "border-neutral-500/50" : "border-neutral-800/50" 
       },
       teal: { 
-        bg: isHovered ? "bg-teal-900/40" : "bg-teal-900/20", 
-        text: "text-teal-400", 
-        border: isHovered ? "border-teal-500/50" : "border-teal-800/50" 
+        bg: isHovered ? "bg-neutral-800/40" : "bg-neutral-800/20", 
+        text: "text-neutral-400", 
+        border: isHovered ? "border-neutral-500/50" : "border-neutral-800/50" 
       }
     };
 
@@ -116,7 +116,7 @@ const DeploymentOptions = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`${bg} border ${border} rounded-xl p-6 flex flex-col h-full transition-all duration-300 hover:transform hover:translate-y-[-4px] hover:shadow-lg hover:shadow-indigo-900/20`}
+                className={`${bg} border ${border} rounded-xl p-6 flex flex-col h-full transition-all duration-300 hover:transform hover:translate-y-[-4px] hover:shadow-lg hover:shadow-neutral-900/20`}
               >
                 <div className={`h-12 w-12 rounded-lg ${bg} flex items-center justify-center mb-4`}>
                   <option.icon className={`h-6 w-6 ${text}`} />

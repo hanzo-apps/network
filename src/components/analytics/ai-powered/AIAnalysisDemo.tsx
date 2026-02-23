@@ -16,7 +16,7 @@ const AIAnalysisDemo = () => {
       
       <div className="relative z-10">
         <div className="flex items-center mb-6">
-          <LineChart className="h-6 w-6 text-purple-400 mr-3" />
+          <LineChart className="h-6 w-6 text-neutral-400 mr-3" />
           <h3 className="text-2xl font-bold">AI Analysis in Action</h3>
         </div>
         
@@ -30,7 +30,7 @@ const AIAnalysisDemo = () => {
                   <motion.path
                     d="M0,80 C25,70 50,65 75,60 C100,55 125,50 150,55 C175,60 200,80 225,50 C250,20 275,35 300,30"
                     fill="none"
-                    stroke="#8B5CF6"
+                    stroke="#a3a3a3"
                     strokeWidth="2"
                     initial={{ pathLength: 0 }}
                     whileInView={{ pathLength: 1 }}
@@ -42,7 +42,7 @@ const AIAnalysisDemo = () => {
                   <motion.path
                     d="M200,80 C206,65 212,40 218,20 C224,30 230,45 236,50"
                     fill="none"
-                    stroke="#FF5733"
+                    stroke="#a3a3a3"
                     strokeWidth="3"
                     strokeDasharray="2,2"
                     initial={{ opacity: 0 }}
@@ -56,7 +56,7 @@ const AIAnalysisDemo = () => {
                     cx="218"
                     cy="20"
                     r="5"
-                    fill="#FF5733"
+                    fill="#a3a3a3"
                     initial={{ opacity: 0, scale: 0 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
@@ -66,7 +66,7 @@ const AIAnalysisDemo = () => {
                 
                 {/* Anomaly detection popup */}
                 <motion.div
-                  className="absolute top-4 right-8 bg-red-900/80 text-[var(--white)] text-xs rounded px-3 py-2 border border-red-700"
+                  className="absolute top-4 right-8 bg-neutral-800/80 text-[var(--white)] text-xs rounded px-3 py-2 border border-neutral-700"
                   initial={{ opacity: 0, y: -10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -91,15 +91,15 @@ const AIAnalysisDemo = () => {
                 className="space-y-3"
               >
                 <div className="text-sm">
-                  <div className="font-medium text-red-400">Traffic Anomaly</div>
+                  <div className="font-medium text-neutral-400">Traffic Anomaly</div>
                   <div className="text-neutral-400">Unusual spike detected at 14:32 UTC</div>
                 </div>
                 <div className="text-sm">
-                  <div className="font-medium text-green-400">Conversion Opportunity</div>
+                  <div className="font-medium text-neutral-400">Conversion Opportunity</div>
                   <div className="text-neutral-400">Checkout abandonment 23% higher on mobile</div>
                 </div>
                 <div className="text-sm">
-                  <div className="font-medium text-blue-400">Performance Alert</div>
+                  <div className="font-medium text-neutral-400">Performance Alert</div>
                   <div className="text-neutral-400">API latency increased by 150ms</div>
                 </div>
               </motion.div>
@@ -110,13 +110,13 @@ const AIAnalysisDemo = () => {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 2.6 }}
-              className="bg-purple-900/20 rounded-lg p-5 border border-purple-900/30"
+              className="bg-neutral-800/20 rounded-lg p-5 border border-neutral-800/30"
             >
               <h4 className="text-lg font-medium mb-2">AI Recommendation</h4>
               <p className="text-sm text-neutral-300">
                 Based on the traffic pattern analysis, we recommend scaling your infrastructure in the US-West region for the next 3 hours.
               </p>
-              <button className="mt-3 text-sm bg-purple-700 hover:bg-purple-600 text-[var(--white)] px-3 py-1 rounded">
+              <button className="mt-3 text-sm bg-neutral-700 hover:bg-neutral-600 text-[var(--white)] px-3 py-1 rounded">
                 Apply Recommendation
               </button>
             </motion.div>

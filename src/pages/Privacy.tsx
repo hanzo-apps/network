@@ -6,7 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Shield, Lock, Eye, FileText, ArrowRight, ExternalLink, CheckCircle } from "lucide-react";
 
-const BRAND_COLOR = "#fd4444";
+const BRAND_COLOR = "#ffffff";
 
 const PRIVACY_HIGHLIGHTS = [
   {
@@ -102,7 +102,7 @@ const Privacy = () => {
                     key={badge}
                     className="flex items-center gap-2 px-4 py-2 rounded-lg bg-neutral-900 border border-neutral-800"
                   >
-                    <CheckCircle className="w-4 h-4 text-green-500" />
+                    <CheckCircle className="w-4 h-4 text-neutral-400" />
                     <span className="text-sm font-medium text-white">{badge}</span>
                   </div>
                 ))}
@@ -185,7 +185,7 @@ const Privacy = () => {
                 <h2 className="text-2xl font-semibold mt-8 mb-4 text-white">Contact Us</h2>
                 <p className="text-neutral-300 mb-6">
                   If you have any questions about this Privacy Policy, please contact us at{" "}
-                  <a href="mailto:privacy@hanzo.ai" className="text-[#fd4444] hover:underline">
+                  <a href="mailto:privacy@hanzo.ai" className="text-white hover:underline">
                     privacy@hanzo.ai
                   </a>
                 </p>
@@ -200,8 +200,8 @@ const Privacy = () => {
 
         {/* CTA Section */}
         <section className="py-24 px-4 md:px-8 bg-gradient-to-b from-neutral-900/30 to-black relative overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-[#fd4444]/10 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-[#fd4444]/5 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-white/5 rounded-full blur-3xl pointer-events-none" />
 
           <div className="max-w-4xl mx-auto text-center relative z-10">
             <motion.h2
@@ -233,7 +233,7 @@ const Privacy = () => {
               <Link
                 to="/contact"
                 className="inline-flex items-center px-8 py-4 rounded-full font-medium transition-all hover:opacity-90 text-base"
-                style={{ backgroundColor: BRAND_COLOR, color: "#ffffff" }}
+                style={{ backgroundColor: BRAND_COLOR, color: "#000000" }}
               >
                 Contact Us
                 <ArrowRight className="ml-2 h-5 w-5" />

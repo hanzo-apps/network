@@ -27,7 +27,7 @@ import {
   ExternalLink,
 } from "lucide-react";
 
-const BRAND_COLOR = "#fd4444";
+const BRAND_COLOR = "#ffffff";
 
 // Integration categories
 const categories = [
@@ -46,103 +46,103 @@ const categories = [
 // Featured integrations with icons and colors
 const integrations = [
   // AI & LLMs
-  { name: "OpenAI", category: "ai", icon: "🤖", color: "#10a37f", popular: true },
-  { name: "Anthropic Claude", category: "ai", icon: "🧠", color: "#cc785c", popular: true },
-  { name: "Google Gemini", category: "ai", icon: "✨", color: "#4285f4", popular: true },
-  { name: "Azure OpenAI", category: "ai", icon: "☁️", color: "#0078d4" },
-  { name: "Hugging Face", category: "ai", icon: "🤗", color: "#ff9d00" },
+  { name: "OpenAI", category: "ai", icon: "🤖", color: "#a3a3a3", popular: true },
+  { name: "Anthropic Claude", category: "ai", icon: "🧠", color: "#737373", popular: true },
+  { name: "Google Gemini", category: "ai", icon: "✨", color: "#a3a3a3", popular: true },
+  { name: "Azure OpenAI", category: "ai", icon: "☁️", color: "#d4d4d4" },
+  { name: "Hugging Face", category: "ai", icon: "🤗", color: "#525252" },
   { name: "Replicate", category: "ai", icon: "🔄", color: "#000000" },
-  { name: "Stability AI", category: "ai", icon: "🎨", color: "#9333ea" },
+  { name: "Stability AI", category: "ai", icon: "🎨", color: "#a3a3a3" },
   { name: "ElevenLabs", category: "ai", icon: "🔊", color: "#000000" },
-  { name: "Deepgram", category: "ai", icon: "🎙️", color: "#13ef93" },
+  { name: "Deepgram", category: "ai", icon: "🎙️", color: "#d4d4d4" },
 
   // Communication
-  { name: "Slack", category: "communication", icon: "💬", color: "#4A154B", popular: true },
-  { name: "Discord", category: "communication", icon: "🎮", color: "#5865F2", popular: true },
-  { name: "Telegram", category: "communication", icon: "✈️", color: "#0088cc" },
-  { name: "WhatsApp", category: "communication", icon: "📱", color: "#25D366", popular: true },
-  { name: "Microsoft Teams", category: "communication", icon: "👥", color: "#6264A7" },
-  { name: "Twilio", category: "communication", icon: "📞", color: "#F22F46" },
-  { name: "Zoom", category: "communication", icon: "📹", color: "#2D8CFF" },
-  { name: "Google Chat", category: "communication", icon: "💭", color: "#00AC47" },
+  { name: "Slack", category: "communication", icon: "💬", color: "#525252", popular: true },
+  { name: "Discord", category: "communication", icon: "🎮", color: "#737373", popular: true },
+  { name: "Telegram", category: "communication", icon: "✈️", color: "#a3a3a3" },
+  { name: "WhatsApp", category: "communication", icon: "📱", color: "#d4d4d4", popular: true },
+  { name: "Microsoft Teams", category: "communication", icon: "👥", color: "#737373" },
+  { name: "Twilio", category: "communication", icon: "📞", color: "#a3a3a3" },
+  { name: "Zoom", category: "communication", icon: "📹", color: "#a3a3a3" },
+  { name: "Google Chat", category: "communication", icon: "💭", color: "#d4d4d4" },
 
   // Productivity
   { name: "Notion", category: "productivity", icon: "📝", color: "#000000", popular: true },
-  { name: "Airtable", category: "productivity", icon: "📊", color: "#18BFFF", popular: true },
-  { name: "Google Sheets", category: "productivity", icon: "📗", color: "#34A853", popular: true },
-  { name: "Google Docs", category: "productivity", icon: "📄", color: "#4285F4" },
-  { name: "Google Drive", category: "productivity", icon: "📁", color: "#4285F4", popular: true },
-  { name: "Dropbox", category: "productivity", icon: "📦", color: "#0061FF" },
-  { name: "Calendly", category: "productivity", icon: "📅", color: "#006BFF" },
-  { name: "Google Calendar", category: "productivity", icon: "🗓️", color: "#4285F4" },
-  { name: "Trello", category: "productivity", icon: "📋", color: "#0079BF" },
-  { name: "Asana", category: "productivity", icon: "✅", color: "#F06A6A" },
-  { name: "ClickUp", category: "productivity", icon: "🎯", color: "#7B68EE" },
-  { name: "Linear", category: "productivity", icon: "📐", color: "#5E6AD2", popular: true },
-  { name: "Jira", category: "productivity", icon: "🔷", color: "#0052CC" },
+  { name: "Airtable", category: "productivity", icon: "📊", color: "#a3a3a3", popular: true },
+  { name: "Google Sheets", category: "productivity", icon: "📗", color: "#d4d4d4", popular: true },
+  { name: "Google Docs", category: "productivity", icon: "📄", color: "#a3a3a3" },
+  { name: "Google Drive", category: "productivity", icon: "📁", color: "#a3a3a3", popular: true },
+  { name: "Dropbox", category: "productivity", icon: "📦", color: "#737373" },
+  { name: "Calendly", category: "productivity", icon: "📅", color: "#737373" },
+  { name: "Google Calendar", category: "productivity", icon: "🗓️", color: "#a3a3a3" },
+  { name: "Trello", category: "productivity", icon: "📋", color: "#a3a3a3" },
+  { name: "Asana", category: "productivity", icon: "✅", color: "#a3a3a3" },
+  { name: "ClickUp", category: "productivity", icon: "🎯", color: "#737373" },
+  { name: "Linear", category: "productivity", icon: "📐", color: "#737373", popular: true },
+  { name: "Jira", category: "productivity", icon: "🔷", color: "#a3a3a3" },
 
   // Data & Storage
-  { name: "PostgreSQL", category: "data", icon: "🐘", color: "#336791" },
-  { name: "MySQL", category: "data", icon: "🐬", color: "#4479A1" },
-  { name: "MongoDB", category: "data", icon: "🍃", color: "#47A248" },
-  { name: "Redis", category: "data", icon: "🔴", color: "#DC382D" },
-  { name: "Supabase", category: "data", icon: "⚡", color: "#3ECF8E" },
-  { name: "Firebase", category: "data", icon: "🔥", color: "#FFCA28" },
-  { name: "AWS S3", category: "data", icon: "☁️", color: "#FF9900" },
-  { name: "Google Cloud Storage", category: "data", icon: "☁️", color: "#4285F4" },
-  { name: "Snowflake", category: "data", icon: "❄️", color: "#29B5E8" },
-  { name: "BigQuery", category: "data", icon: "📊", color: "#4285F4" },
+  { name: "PostgreSQL", category: "data", icon: "🐘", color: "#525252" },
+  { name: "MySQL", category: "data", icon: "🐬", color: "#525252" },
+  { name: "MongoDB", category: "data", icon: "🍃", color: "#d4d4d4" },
+  { name: "Redis", category: "data", icon: "🔴", color: "#a3a3a3" },
+  { name: "Supabase", category: "data", icon: "⚡", color: "#d4d4d4" },
+  { name: "Firebase", category: "data", icon: "🔥", color: "#d4d4d4" },
+  { name: "AWS S3", category: "data", icon: "☁️", color: "#a3a3a3" },
+  { name: "Google Cloud Storage", category: "data", icon: "☁️", color: "#a3a3a3" },
+  { name: "Snowflake", category: "data", icon: "❄️", color: "#a3a3a3" },
+  { name: "BigQuery", category: "data", icon: "📊", color: "#a3a3a3" },
 
   // CRM & Sales
-  { name: "Salesforce", category: "crm", icon: "☁️", color: "#00A1E0", popular: true },
-  { name: "HubSpot", category: "crm", icon: "🧡", color: "#FF7A59", popular: true },
-  { name: "Pipedrive", category: "crm", icon: "📈", color: "#1A1B1D" },
-  { name: "Close", category: "crm", icon: "📞", color: "#252A3D" },
-  { name: "Intercom", category: "crm", icon: "💬", color: "#1F8DED" },
-  { name: "Zendesk", category: "crm", icon: "🎧", color: "#03363D" },
-  { name: "Freshdesk", category: "crm", icon: "🎫", color: "#2C9F5B" },
-  { name: "Apollo", category: "crm", icon: "🚀", color: "#5C5CFF" },
+  { name: "Salesforce", category: "crm", icon: "☁️", color: "#a3a3a3", popular: true },
+  { name: "HubSpot", category: "crm", icon: "🧡", color: "#a3a3a3", popular: true },
+  { name: "Pipedrive", category: "crm", icon: "📈", color: "#737373" },
+  { name: "Close", category: "crm", icon: "📞", color: "#525252" },
+  { name: "Intercom", category: "crm", icon: "💬", color: "#a3a3a3" },
+  { name: "Zendesk", category: "crm", icon: "🎧", color: "#525252" },
+  { name: "Freshdesk", category: "crm", icon: "🎫", color: "#d4d4d4" },
+  { name: "Apollo", category: "crm", icon: "🚀", color: "#737373" },
 
   // Commerce
-  { name: "Stripe", category: "commerce", icon: "💳", color: "#635BFF", popular: true },
-  { name: "Shopify", category: "commerce", icon: "🛒", color: "#96BF48", popular: true },
-  { name: "WooCommerce", category: "commerce", icon: "🛍️", color: "#96588A" },
-  { name: "Square", category: "commerce", icon: "⬜", color: "#3E4348" },
-  { name: "PayPal", category: "commerce", icon: "💰", color: "#003087" },
-  { name: "Chargebee", category: "commerce", icon: "💵", color: "#FF6B35" },
-  { name: "Paddle", category: "commerce", icon: "🏓", color: "#3F3F46" },
-  { name: "LemonSqueezy", category: "commerce", icon: "🍋", color: "#FFC107" },
+  { name: "Stripe", category: "commerce", icon: "💳", color: "#737373", popular: true },
+  { name: "Shopify", category: "commerce", icon: "🛒", color: "#d4d4d4", popular: true },
+  { name: "WooCommerce", category: "commerce", icon: "🛍️", color: "#737373" },
+  { name: "Square", category: "commerce", icon: "⬜", color: "#525252" },
+  { name: "PayPal", category: "commerce", icon: "💰", color: "#525252" },
+  { name: "Chargebee", category: "commerce", icon: "💵", color: "#a3a3a3" },
+  { name: "Paddle", category: "commerce", icon: "🏓", color: "#525252" },
+  { name: "LemonSqueezy", category: "commerce", icon: "🍋", color: "#d4d4d4" },
 
   // Marketing
-  { name: "Mailchimp", category: "marketing", icon: "🐵", color: "#FFE01B", popular: true },
-  { name: "SendGrid", category: "marketing", icon: "📧", color: "#1A82E2" },
+  { name: "Mailchimp", category: "marketing", icon: "🐵", color: "#d4d4d4", popular: true },
+  { name: "SendGrid", category: "marketing", icon: "📧", color: "#a3a3a3" },
   { name: "Resend", category: "marketing", icon: "✉️", color: "#000000" },
-  { name: "ConvertKit", category: "marketing", icon: "📬", color: "#FB6970" },
-  { name: "ActiveCampaign", category: "marketing", icon: "📊", color: "#356AE6" },
-  { name: "Brevo", category: "marketing", icon: "📨", color: "#0092FF" },
-  { name: "Customer.io", category: "marketing", icon: "👤", color: "#4EC4FA" },
-  { name: "Postmark", category: "marketing", icon: "📮", color: "#FFDE00" },
+  { name: "ConvertKit", category: "marketing", icon: "📬", color: "#a3a3a3" },
+  { name: "ActiveCampaign", category: "marketing", icon: "📊", color: "#a3a3a3" },
+  { name: "Brevo", category: "marketing", icon: "📨", color: "#a3a3a3" },
+  { name: "Customer.io", category: "marketing", icon: "👤", color: "#a3a3a3" },
+  { name: "Postmark", category: "marketing", icon: "📮", color: "#d4d4d4" },
 
   // Developer Tools
-  { name: "GitHub", category: "developer", icon: "🐙", color: "#181717", popular: true },
-  { name: "GitLab", category: "developer", icon: "🦊", color: "#FC6D26" },
+  { name: "GitHub", category: "developer", icon: "🐙", color: "#525252", popular: true },
+  { name: "GitLab", category: "developer", icon: "🦊", color: "#a3a3a3" },
   { name: "Vercel", category: "developer", icon: "▲", color: "#000000" },
-  { name: "Netlify", category: "developer", icon: "🌐", color: "#00C7B7" },
-  { name: "Railway", category: "developer", icon: "🚂", color: "#0B0D0E" },
-  { name: "Render", category: "developer", icon: "🎨", color: "#46E3B7" },
-  { name: "Sentry", category: "developer", icon: "🐛", color: "#362D59" },
-  { name: "PagerDuty", category: "developer", icon: "🚨", color: "#06AC38" },
-  { name: "Datadog", category: "developer", icon: "🐕", color: "#632CA6" },
+  { name: "Netlify", category: "developer", icon: "🌐", color: "#d4d4d4" },
+  { name: "Railway", category: "developer", icon: "🚂", color: "#525252" },
+  { name: "Render", category: "developer", icon: "🎨", color: "#d4d4d4" },
+  { name: "Sentry", category: "developer", icon: "🐛", color: "#525252" },
+  { name: "PagerDuty", category: "developer", icon: "🚨", color: "#d4d4d4" },
+  { name: "Datadog", category: "developer", icon: "🐕", color: "#737373" },
 
   // Social Media
   { name: "Twitter / X", category: "social", icon: "𝕏", color: "#000000" },
-  { name: "LinkedIn", category: "social", icon: "🔗", color: "#0A66C2", popular: true },
-  { name: "Instagram", category: "social", icon: "📸", color: "#E4405F" },
-  { name: "Facebook", category: "social", icon: "📘", color: "#1877F2" },
+  { name: "LinkedIn", category: "social", icon: "🔗", color: "#a3a3a3", popular: true },
+  { name: "Instagram", category: "social", icon: "📸", color: "#a3a3a3" },
+  { name: "Facebook", category: "social", icon: "📘", color: "#a3a3a3" },
   { name: "TikTok", category: "social", icon: "🎵", color: "#000000" },
-  { name: "YouTube", category: "social", icon: "▶️", color: "#FF0000" },
-  { name: "Pinterest", category: "social", icon: "📌", color: "#E60023" },
-  { name: "Bluesky", category: "social", icon: "🦋", color: "#0085FF" },
+  { name: "YouTube", category: "social", icon: "▶️", color: "#a3a3a3" },
+  { name: "Pinterest", category: "social", icon: "📌", color: "#a3a3a3" },
+  { name: "Bluesky", category: "social", icon: "🦋", color: "#a3a3a3" },
 ];
 
 const Automations = () => {
@@ -206,7 +206,7 @@ const Automations = () => {
                   placeholder="Search integrations..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-12 pr-4 py-3 rounded-full bg-neutral-900 border border-neutral-800 text-white placeholder-neutral-500 focus:outline-none focus:border-[#fd4444]/50 transition-colors"
+                  className="w-full pl-12 pr-4 py-3 rounded-full bg-neutral-900 border border-neutral-800 text-white placeholder-neutral-500 focus:outline-none focus:border-white/50 transition-colors"
                 />
               </div>
             </motion.div>
@@ -251,7 +251,7 @@ const Automations = () => {
                     onClick={() => setActiveCategory(category.id)}
                     className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${
                       isActive
-                        ? "bg-[#fd4444] text-white"
+                        ? "bg-white text-black"
                         : "bg-neutral-900 text-neutral-400 hover:text-white hover:bg-neutral-800"
                     }`}
                   >
@@ -293,11 +293,11 @@ const Automations = () => {
                   >
                     {integration.icon}
                   </div>
-                  <h3 className="text-sm font-medium text-white group-hover:text-[#fd4444] transition-colors">
+                  <h3 className="text-sm font-medium text-white group-hover:text-white transition-colors">
                     {integration.name}
                   </h3>
                   {integration.popular && (
-                    <span className="text-[10px] text-[#fd4444] font-medium">Popular</span>
+                    <span className="text-[10px] text-white font-medium">Popular</span>
                   )}
                 </motion.div>
               ))}
@@ -324,7 +324,7 @@ const Automations = () => {
               <Link
                 to="/contact"
                 className="inline-flex items-center px-6 py-3 rounded-full font-medium transition-all hover:opacity-90 text-sm"
-                style={{ backgroundColor: BRAND_COLOR, color: "#ffffff" }}
+                style={{ backgroundColor: BRAND_COLOR, color: "#000000" }}
               >
                 Request Integration
                 <ArrowRight className="ml-2 h-4 w-4" />

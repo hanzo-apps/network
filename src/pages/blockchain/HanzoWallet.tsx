@@ -19,7 +19,7 @@ const HanzoWallet = () => {
       tagline="Unified wallet infrastructure for Web3"
       description="A complete wallet solution for Lux and EVM chains. Offer embedded wallets for seamless user onboarding or server wallets for programmatic access—all with enterprise-grade key management."
       icon={Wallet}
-      accentColor="#f59e0b"
+      accentColor="#a3a3a3"
       features={[
         {
           icon: Smartphone,

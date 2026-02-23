@@ -64,7 +64,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 
-const BRAND_COLOR = "#fd4444";
+const BRAND_COLOR = "#ffffff";
 
 interface Product {
   name: string;
@@ -89,7 +89,7 @@ const CATEGORIES: Category[] = [
     name: "AI & Agents",
     description: "Build intelligent applications with foundation models and agent frameworks",
     icon: Brain,
-    color: "#8b5cf6",
+    color: "#a3a3a3",
     products: [
       { name: "Hanzo Models", description: "Foundation models API", icon: Brain, href: "/ai" },
       { name: "Zen", description: "Multimodal AI engine", icon: Sparkles, href: "/ai" },
@@ -107,7 +107,7 @@ const CATEGORIES: Category[] = [
     name: "Developer Tools",
     description: "Everything you need to build, test, and deploy applications",
     icon: Terminal,
-    color: "#f97316",
+    color: "#a3a3a3",
     products: [
       { name: "Hanzo Dev", description: "AI coding assistant", icon: Terminal, href: "/dev" },
       { name: "CLI", description: "Command line tools", icon: Terminal, href: "/download" },
@@ -125,7 +125,7 @@ const CATEGORIES: Category[] = [
     name: "App Platform",
     description: "Build and scale applications with managed backend services",
     icon: Layers,
-    color: "#10b981",
+    color: "#a3a3a3",
     products: [
       { name: "Hanzo Base", description: "Backend-as-a-Service", icon: Database, href: "/base" },
       { name: "Auth", description: "Authentication & SSO", icon: Shield, href: "/identity" },
@@ -143,7 +143,7 @@ const CATEGORIES: Category[] = [
     name: "Cloud Infrastructure",
     description: "Global infrastructure for compute, networking, and storage",
     icon: CloudCog,
-    color: "#3b82f6",
+    color: "#a3a3a3",
     products: [
       { name: "Edge", description: "Edge computing", icon: Globe, href: "/edge" },
       { name: "Gateway", description: "API gateway", icon: Router },
@@ -161,7 +161,7 @@ const CATEGORIES: Category[] = [
     name: "Databases & Search",
     description: "Managed databases, vector stores, and search engines",
     icon: Database,
-    color: "#06b6d4",
+    color: "#a3a3a3",
     products: [
       { name: "SQL", description: "PostgreSQL managed", icon: Table },
       { name: "SQL Vector", description: "pgvector enabled", icon: Table, href: "/vector" },
@@ -179,7 +179,7 @@ const CATEGORIES: Category[] = [
     name: "Integrations & Automation",
     description: "Connect systems and automate workflows across your stack",
     icon: Workflow,
-    color: "#ec4899",
+    color: "#a3a3a3",
     products: [
       { name: "Automations", description: "Workflow automation", icon: Workflow, href: "/automations" },
       { name: "Connectors", description: "Pre-built integrations", icon: Puzzle },
@@ -197,7 +197,7 @@ const CATEGORIES: Category[] = [
     name: "Security & Governance",
     description: "Enterprise security, compliance, and access management",
     icon: Shield,
-    color: "#ef4444",
+    color: "#a3a3a3",
     products: [
       { name: "IAM", description: "Identity & access", icon: Users },
       { name: "Policy", description: "Policy engine", icon: FileCheck },
@@ -215,7 +215,7 @@ const CATEGORIES: Category[] = [
     name: "Observability & Operations",
     description: "Monitor, debug, and operate your applications at scale",
     icon: Activity,
-    color: "#f59e0b",
+    color: "#a3a3a3",
     products: [
       { name: "Telemetry", description: "OpenTelemetry", icon: Activity, href: "/analytics" },
       { name: "Metrics", description: "Time-series metrics", icon: LineChart },
@@ -233,7 +233,7 @@ const CATEGORIES: Category[] = [
     name: "Hosting & Delivery",
     description: "Deploy and deliver applications globally with zero config",
     icon: Rocket,
-    color: "#14b8a6",
+    color: "#a3a3a3",
     products: [
       { name: "Deploy", description: "Git deployments", icon: Rocket },
       { name: "Containers", description: "Container hosting", icon: Container },
@@ -383,7 +383,7 @@ const ProductCatalog = () => {
             <Link
               to="/pricing"
               className="inline-flex items-center px-6 py-3 rounded-full font-medium transition-all hover:opacity-90 text-sm"
-              style={{ backgroundColor: BRAND_COLOR, color: "#fff" }}
+              style={{ backgroundColor: BRAND_COLOR, color: "#000" }}
             >
               View Pricing
               <ChevronRight className="ml-2 h-4 w-4" />

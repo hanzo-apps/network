@@ -71,12 +71,12 @@ const UsageOverview = ({
             </div>
             
             <div className="mb-6">
-              <div className="text-sm text-green-500">Est Credits Required</div>
-              <div className="text-3xl font-bold text-green-500">{creditsRequired}</div>
+              <div className="text-sm text-neutral-400">Est Credits Required</div>
+              <div className="text-3xl font-bold text-neutral-400">{creditsRequired}</div>
             </div>
             
             <Button 
-              className="bg-purple-600 hover:bg-purple-700 text-[var(--white)] w-full"
+              className="bg-neutral-600 hover:bg-neutral-700 text-[var(--white)] w-full"
             >
               Purchase Credits
             </Button>

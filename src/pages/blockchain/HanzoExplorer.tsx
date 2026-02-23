@@ -19,7 +19,7 @@ const HanzoExplorer = () => {
       tagline="Unified blockchain explorer and analytics"
       description="A comprehensive explorer for Lux and integrated chains. Search transactions, decode contract interactions, and analyze on-chain data with powerful analytics tools."
       icon={Search}
-      accentColor="#6366f1"
+      accentColor="#a3a3a3"
       features={[
         {
           icon: Globe,

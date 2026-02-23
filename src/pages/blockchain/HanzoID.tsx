@@ -19,7 +19,7 @@ const HanzoID = () => {
       tagline="Decentralized identity for Web3"
       description="Extend your IAM to support Web3 identities. DIDs, Verifiable Credentials, and on-chain attestations—with single sign-on across all Hanzo services and your own applications."
       icon={Fingerprint}
-      accentColor="#ec4899"
+      accentColor="#a3a3a3"
       features={[
         {
           icon: Key,

@@ -15,13 +15,13 @@ import {
   Copy,
 } from "lucide-react";
 
-const BRAND_COLOR = "#fd4444";
+const BRAND_COLOR = "#ffffff";
 
 const VALUE_PROPS = [
   {
     title: "Stay in your flow",
     subtitle: "The all-in-one agentic engineering platform",
-    color: "#3b82f6",
+    color: "#a3a3a3",
     features: [
       {
         icon: Smartphone,
@@ -52,7 +52,7 @@ const VALUE_PROPS = [
   {
     title: "1000x every dev",
     subtitle: "Multiply your engineering output",
-    color: "#10b981",
+    color: "#a3a3a3",
     features: [
       {
         icon: Users,
@@ -83,7 +83,7 @@ const VALUE_PROPS = [
   {
     title: "Accelerate AI ROI",
     subtitle: "Enterprise-grade AI management",
-    color: "#8b5cf6",
+    color: "#a3a3a3",
     features: [
       {
         icon: Shield,

@@ -18,7 +18,7 @@ const MeetHanzoContent = ({ closeMenu }: { closeMenu: () => void }) => (
         <Link
           to="/team"
           onClick={closeMenu}
-          className="inline-flex items-center text-xs font-medium text-[#fd4444] hover:text-white transition-colors"
+          className="inline-flex items-center text-xs font-medium text-white hover:text-white transition-colors"
         >
           Meet the team →
         </Link>
@@ -37,9 +37,9 @@ const MeetHanzoContent = ({ closeMenu }: { closeMenu: () => void }) => (
       <ul className="space-y-2">
         <li>
           <Link to="/zen" onClick={closeMenu} className="group flex items-start gap-2">
-            <span className="text-purple-400 text-lg">🧠</span>
+            <span className="text-neutral-400 text-lg">🧠</span>
             <div>
-              <span className="text-sm text-white font-medium group-hover:text-purple-400 transition-colors">Zen LM</span>
+              <span className="text-sm text-white font-medium group-hover:text-neutral-400 transition-colors">Zen LM</span>
               <p className="text-xs text-neutral-500">30+ open foundation models</p>
             </div>
           </Link>
@@ -65,9 +65,9 @@ const MeetHanzoContent = ({ closeMenu }: { closeMenu: () => void }) => (
       <ul className="space-y-2">
         <li>
           <Link to="/dev" onClick={closeMenu} className="group flex items-start gap-2">
-            <span className="text-[#fd4444] text-lg">⚡</span>
+            <span className="text-white text-lg">⚡</span>
             <div>
-              <span className="text-sm text-white font-medium group-hover:text-[#fd4444] transition-colors">Hanzo Dev</span>
+              <span className="text-sm text-white font-medium group-hover:text-white transition-colors">Hanzo Dev</span>
               <p className="text-xs text-neutral-500">AI coding assistant</p>
             </div>
           </Link>

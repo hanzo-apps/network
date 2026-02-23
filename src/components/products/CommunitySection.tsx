@@ -43,8 +43,8 @@ const labelMap = {
 const colorMap = {
   discord: "hover:bg-[#5865F2]/20 hover:border-[#5865F2]/50",
   github: "hover:bg-neutral-700",
-  docs: "hover:bg-blue-500/20 hover:border-blue-500/50",
-  discussions: "hover:bg-purple-500/20 hover:border-purple-500/50",
+  docs: "hover:bg-neutral-600/20 hover:border-neutral-500/50",
+  discussions: "hover:bg-neutral-600/20 hover:border-neutral-500/50",
   twitter: "hover:bg-neutral-700",
   slack: "hover:bg-[#4A154B]/20 hover:border-[#4A154B]/50",
 };
@@ -60,8 +60,8 @@ export function CommunitySection({ productName, links, contributors, stars }: Co
     >
       <div className="max-w-4xl mx-auto">
         <div className="flex items-center gap-2 mb-2">
-          <Users className="w-5 h-5 text-[#fd4444]" />
-          <span className="text-sm font-medium text-[#fd4444] uppercase tracking-wider">
+          <Users className="w-5 h-5 text-white" />
+          <span className="text-sm font-medium text-white uppercase tracking-wider">
             Community
           </span>
         </div>
@@ -123,7 +123,7 @@ export function CommunitySection({ productName, links, contributors, stars }: Co
         </div>
 
         {/* Contribute CTA */}
-        <div className="mt-8 p-6 bg-gradient-to-r from-[#fd4444]/10 to-transparent border border-[#fd4444]/20 rounded-xl">
+        <div className="mt-8 p-6 bg-gradient-to-r from-white/10 to-transparent border border-white/20 rounded-xl">
           <h3 className="text-lg font-semibold text-white mb-2">
             Want to Contribute?
           </h3>
@@ -134,7 +134,7 @@ export function CommunitySection({ productName, links, contributors, stars }: Co
             href={links.find(l => l.type === "github")?.url + "/blob/main/CONTRIBUTING.md"}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-[#fd4444] hover:text-[#fd4444]/80 text-sm font-medium transition-colors"
+            className="inline-flex items-center gap-2 text-white hover:text-white/80 text-sm font-medium transition-colors"
           >
             Read our Contributing Guide
             <ExternalLink className="w-3 h-3" />
