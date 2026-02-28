@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
@@ -49,13 +49,6 @@ function GridCanvas() {
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
-const STATS = [
-  { value: "100K+",  label: "GPU Hours Available" },
-  { value: "50+",    label: "Global Regions" },
-  { value: "1.04T",  label: "Params Trained On-Chain" },
-  { value: "$0.10",  label: "Per GPU Hour" },
-];
-
 const FEATURES = [
   {
     icon: Lock,
@@ -75,7 +68,7 @@ const FEATURES = [
   {
     icon: Globe,
     title: "Edge Inference",
-    description: "Run Zen model inference at the edge, close to your users. Sub-100ms latency worldwide via 50+ regional nodes.",
+    description: "Run Zen model inference at the edge, close to your users. Sub-100ms latency worldwide via regional nodes.",
   },
   {
     icon: Users,
@@ -100,7 +93,7 @@ const ECOSYSTEM = [
   {
     name: "Zen Models",
     href: "https://hanzo.ai/zen",
-    description: "Frontier open-weight models (0.6B–1T+). Zen5 Ultra will be the first 2T+ model trained entirely on-chain via Hanzo Network.",
+    description: "Frontier open-weight models (0.6B–1T+). Zen5 Ultra (2T+ MoDE) is in development to be trained on-chain via Hanzo Network.",
     tag: "AI Models",
     color: "border-blue-500/30",
   },
@@ -114,7 +107,7 @@ const ECOSYSTEM = [
   {
     name: "Zoo Labs",
     href: "https://zoo.ngo",
-    description: "Decentralized AI research foundation. Zoo uses Hanzo Network for open training experiments under the DeAI (Decentralized AI) initiative.",
+    description: "Zoo Labs is building decentralized AI research infrastructure on Hanzo Network.",
     tag: "Research",
     color: "border-green-500/30",
   },
@@ -124,8 +117,8 @@ const USE_CASES = [
   {
     icon: Brain,
     title: "Train Frontier Models",
-    description: "Distributed training across hundreds of GPUs. TEE attestation for every gradient update. Used to train Zen5 Ultra (2T+ params).",
-    stat: "2T+ params on-chain",
+    description: "Distributed training across hundreds of GPUs. TEE attestation for every gradient update. Used to train Zen models on-chain.",
+    stat: "1.04T params on-chain",
   },
   {
     icon: Zap,
@@ -157,6 +150,25 @@ const HOW_IT_WORKS = [
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
 const NetworkLanding = () => {
+  const [modelCount, setModelCount] = useState<number>(41);
+
+  useEffect(() => {
+    fetch("https://api.hanzo.ai/v1/pricing")
+      .then(r => r.json())
+      .then(d => {
+        const count = (d.hanzoModels || []).filter(Boolean).length;
+        if (count > 0) setModelCount(count);
+      })
+      .catch(() => {});
+  }, []);
+
+  const STATS = [
+    { value: String(modelCount), label: "Models Available",  sub: "via api.hanzo.ai" },
+    { value: "1.04T",            label: "Largest Model",     sub: "parameters (zen4-ultra)" },
+    { value: "2M",               label: "Max Context",       sub: "tokens per request" },
+    { value: "$0.15",            label: "Starting Price",    sub: "per million tokens" },
+  ];
+
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
 
@@ -249,6 +261,7 @@ const NetworkLanding = () => {
               className="text-center">
               <div className="text-4xl md:text-5xl font-bold text-white mb-1 tabular-nums">{s.value}</div>
               <div className="text-xs text-white/40 uppercase tracking-wider">{s.label}</div>
+              <div className="text-[10px] text-white/25 mt-0.5">{s.sub}</div>
             </motion.div>
           ))}
         </div>
@@ -369,7 +382,7 @@ const NetworkLanding = () => {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-2 text-sm font-mono">
               {[
                 { label: "Zoo Research", sub: "DeAI / DeSci", color: "text-green-300 border-green-500/30" },
-                { label: "Zen Models", sub: "0.6B – 2T+", color: "text-blue-300 border-blue-500/30" },
+                { label: "Zen Models", sub: "0.6B – 1.04T", color: "text-blue-300 border-blue-500/30" },
                 { label: "Hanzo AI", sub: "AI Platform", color: "text-white border-white/20" },
                 { label: "Hanzo Network", sub: "Compute Layer", color: "text-orange-300 border-orange-500/30" },
                 { label: "Lux L1", sub: "Settlement", color: "text-purple-300 border-purple-500/30" },
