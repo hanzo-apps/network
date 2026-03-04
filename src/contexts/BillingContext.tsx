@@ -7,7 +7,7 @@ import {
   purchaseCredits,
   UserBillingInfo,
   PlanType
-} from '@/services/stripe';
+} from '@/services/billing';
 
 interface BillingContextType {
   billingInfo: UserBillingInfo;

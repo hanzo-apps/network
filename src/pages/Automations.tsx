@@ -104,7 +104,7 @@ const integrations = [
   { name: "Apollo", category: "crm", icon: "🚀", color: "#737373" },
 
   // Commerce
-  { name: "Stripe", category: "commerce", icon: "💳", color: "#737373", popular: true },
+  { name: "Square", category: "commerce", icon: "💳", color: "#737373", popular: true },
   { name: "Shopify", category: "commerce", icon: "🛒", color: "#d4d4d4", popular: true },
   { name: "WooCommerce", category: "commerce", icon: "🛍️", color: "#737373" },
   { name: "Square", category: "commerce", icon: "⬜", color: "#525252" },
