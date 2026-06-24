@@ -6,6 +6,19 @@ import {
   Code2, Brain, Lock, BarChart3, ExternalLink, Github, CheckCircle,
 } from "lucide-react";
 
+// ─── Hanzo blocky-H brand mark (@hanzo/brand) ────────────────────────────────
+function HanzoMark({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 67 67" xmlns="http://www.w3.org/2000/svg" className={className} aria-label="Hanzo">
+      <path d="M22.21 67V44.6369H0V67H22.21Z" fill="currentColor" />
+      <path d="M66.7038 22.3184H22.2534L0.0878906 44.6367H44.4634L66.7038 22.3184Z" fill="currentColor" />
+      <path d="M22.21 0H0V22.3184H22.21V0Z" fill="currentColor" />
+      <path d="M66.7198 0H44.5098V22.3184H66.7198V0Z" fill="currentColor" />
+      <path d="M66.7198 67V44.6369H44.5098V67H66.7198Z" fill="currentColor" />
+    </svg>
+  );
+}
+
 // ─── Grid background canvas ──────────────────────────────────────────────────
 function GridCanvas() {
   const ref = useRef<HTMLCanvasElement>(null);
@@ -176,7 +189,7 @@ const NetworkLanding = () => {
       <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-black/80 backdrop-blur">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           <a href="https://hanzo.ai" className="flex items-center gap-2 text-sm font-semibold hover:opacity-80 transition-opacity">
-            <Network className="w-4 h-4" />
+            <HanzoMark className="w-4 h-4" />
             <span>hanzo</span>
             <span className="text-white/40">/ network</span>
           </a>
