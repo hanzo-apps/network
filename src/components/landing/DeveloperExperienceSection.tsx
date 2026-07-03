@@ -134,7 +134,7 @@ const DeveloperExperienceSection = () => {
               Hanzo reads your repo structure first, edits across files coherently, and executes tasks step-by-step—locally or in isolated remote sandboxes.
             </p>
             <Link
-              to="/extensions"
+              to="/extension"
               className="inline-flex items-center px-5 py-2.5 rounded-full text-sm font-medium transition-colors bg-white text-black hover:opacity-90"
             >
               Install the IDE extension
