@@ -151,7 +151,7 @@ export const SolutionsMenu = () => {
                 })}
                 {industriesNav[0].items.length > ITEMS_PER_CATEGORY && (
                   <Link
-                    to="/industries"
+                    to="/solutions/industries"
                     onClick={closeMenu}
                     className={cn(
                       "flex items-center gap-1 py-0.5 text-[10px] transition-colors hover:text-white",
