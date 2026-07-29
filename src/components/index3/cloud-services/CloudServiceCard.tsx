@@ -19,58 +19,58 @@ interface CloudServiceCardProps {
 const getColorClasses = (color: string = "purple", isHovered: boolean) => {
   const colorMap: Record<string, { bg: string, hoverBg: string, text: string, hoverText: string }> = {
     purple: { 
-      bg: "bg-neutral-800/30", 
-      hoverBg: "bg-neutral-600/30", 
-      text: "text-neutral-400", 
-      hoverText: "text-neutral-300" 
+      bg: "hz-bg-surface", 
+      hoverBg: "hz-bg-surface", 
+      text: "hz-fg-muted", 
+      hoverText: "hz-fg-muted" 
     },
     blue: { 
-      bg: "bg-neutral-800/30", 
-      hoverBg: "bg-neutral-600/30", 
-      text: "text-neutral-400", 
-      hoverText: "text-neutral-300" 
+      bg: "hz-bg-surface", 
+      hoverBg: "hz-bg-surface", 
+      text: "hz-fg-muted", 
+      hoverText: "hz-fg-muted" 
     },
     green: { 
-      bg: "bg-neutral-800/30", 
-      hoverBg: "bg-neutral-600/30", 
-      text: "text-neutral-400", 
-      hoverText: "text-neutral-300" 
+      bg: "hz-bg-surface", 
+      hoverBg: "hz-bg-surface", 
+      text: "hz-fg-muted", 
+      hoverText: "hz-fg-muted" 
     },
     teal: { 
-      bg: "bg-neutral-800/30", 
-      hoverBg: "bg-neutral-600/30", 
-      text: "text-neutral-400", 
-      hoverText: "text-neutral-300" 
+      bg: "hz-bg-surface", 
+      hoverBg: "hz-bg-surface", 
+      text: "hz-fg-muted", 
+      hoverText: "hz-fg-muted" 
     },
     amber: { 
-      bg: "bg-neutral-800/30", 
-      hoverBg: "bg-neutral-600/30", 
-      text: "text-neutral-400", 
-      hoverText: "text-neutral-300" 
+      bg: "hz-bg-surface", 
+      hoverBg: "hz-bg-surface", 
+      text: "hz-fg-muted", 
+      hoverText: "hz-fg-muted" 
     },
     indigo: { 
-      bg: "bg-neutral-800/30", 
-      hoverBg: "bg-neutral-600/30", 
-      text: "text-neutral-400", 
-      hoverText: "text-neutral-300" 
+      bg: "hz-bg-surface", 
+      hoverBg: "hz-bg-surface", 
+      text: "hz-fg-muted", 
+      hoverText: "hz-fg-muted" 
     },
     rose: { 
-      bg: "bg-neutral-900/30", 
-      hoverBg: "bg-neutral-600/30", 
-      text: "text-neutral-400", 
-      hoverText: "text-neutral-300" 
+      bg: "hz-bg-surface", 
+      hoverBg: "hz-bg-surface", 
+      text: "hz-fg-muted", 
+      hoverText: "hz-fg-muted" 
     },
     cyan: { 
-      bg: "bg-neutral-800/30", 
-      hoverBg: "bg-neutral-600/30", 
-      text: "text-neutral-400", 
-      hoverText: "text-neutral-300" 
+      bg: "hz-bg-surface", 
+      hoverBg: "hz-bg-surface", 
+      text: "hz-fg-muted", 
+      hoverText: "hz-fg-muted" 
     },
     gray: { 
-      bg: "bg-gray-900/30", 
-      hoverBg: "bg-gray-700/30", 
-      text: "text-neutral-400", 
-      hoverText: "text-neutral-300" 
+      bg: "hz-bg-surface", 
+      hoverBg: "hz-bg-surface", 
+      text: "hz-fg-muted", 
+      hoverText: "hz-fg-muted" 
     }
   };
 
@@ -117,7 +117,7 @@ const CloudServiceCard: React.FC<CloudServiceCardProps> = ({
     </>
   );
 
-  const containerClasses = "bg-gray-900/20 border border-gray-800 rounded-xl p-6 group hover:bg-gray-900/30 transition-colors h-full flex flex-col";
+  const containerClasses = "hz-bg-surface hz-bordered hz-r-xl hz-p-3 hz-transition hz-h-full hz-row hz-col";
 
   return (
     <motion.div

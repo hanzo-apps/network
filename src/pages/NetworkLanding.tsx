@@ -88,28 +88,28 @@ const ECOSYSTEM = [
     href: "https://hanzo.ai",
     description: "AI platform & infrastructure. The primary consumer of Hanzo Network compute for model serving and inference routing.",
     tag: "AI Platform",
-    color: "border-white/20",
+    color: "hz-bordered",
   },
   {
     name: "Zen Models",
     href: "https://hanzo.ai/zen",
     description: "Frontier open-weight models (0.6B–1T+). Zen5 Ultra (2T+ MoDE) is in development to be trained on-chain via Hanzo Network.",
     tag: "AI Models",
-    color: "border-blue-500/30",
+    color: "hz-bordered",
   },
   {
     name: "Lux Network",
     href: "https://lux.network",
     description: "L1 blockchain settlement layer. All Hanzo Network compute transactions settle on Lux — sub-second finality, post-quantum security.",
     tag: "L1 Blockchain",
-    color: "border-purple-500/30",
+    color: "hz-bordered",
   },
   {
     name: "Zoo Labs",
     href: "https://zoo.ngo",
     description: "Zoo Labs is building decentralized AI research infrastructure on Hanzo Network.",
     tag: "Research",
-    color: "border-green-500/30",
+    color: "hz-bordered",
   },
 ];
 
@@ -381,11 +381,11 @@ const NetworkLanding = () => {
             <div className="hz-t-xs hz-w-semibold hz-upper hz-tracking-widest hz-fg-soft hz-mb-4 hz-align-center">Stack Architecture</div>
             <div className="hz-col-row hz-ai-center hz-jc-center hz-gap-2 hz-t-sm hz-mono">
               {[
-                { label: "Zoo Research", sub: "DeAI / DeSci", color: "text-green-300 border-green-500/30" },
-                { label: "Zen Models", sub: "0.6B – 1.04T", color: "text-blue-300 border-blue-500/30" },
-                { label: "Hanzo AI", sub: "AI Platform", color: "text-white border-white/20" },
-                { label: "Hanzo Network", sub: "Compute Layer", color: "text-orange-300 border-orange-500/30" },
-                { label: "Lux L1", sub: "Settlement", color: "text-purple-300 border-purple-500/30" },
+                { label: "Zoo Research", sub: "DeAI / DeSci", color: "hz-fg-muted hz-bordered" },
+                { label: "Zen Models", sub: "0.6B – 1.04T", color: "hz-fg-muted hz-bordered" },
+                { label: "Hanzo AI", sub: "AI Platform", color: "hz-fg hz-bordered" },
+                { label: "Hanzo Network", sub: "Compute Layer", color: "hz-fg-muted hz-bordered" },
+                { label: "Lux L1", sub: "Settlement", color: "hz-fg-muted hz-bordered" },
               ].map((layer, i, arr) => (
                 <React.Fragment key={layer.label}>
                   <div className={`hz-px-4 hz-py-2 hz-r-lg hz-bordered hz-bg-surface hz-align-center ${layer.color}`}>

@@ -130,7 +130,7 @@ const Logo = () => {
       >
         <motion.div
           initial="initial"
-          animate="animate"
+          animate=""
           variants={logoVariants}
           className="hz-sq-4 hz-rel hz-none"
           onAnimationComplete={() => setAnimationComplete(true)}

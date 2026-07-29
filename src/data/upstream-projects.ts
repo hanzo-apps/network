@@ -369,7 +369,7 @@ const transport = new StdioClientTransport({
   command: 'hanzo-mcp'
 });
 
-const client = new Client({ name: 'my-app' }, { capabilities: {} });
+const client = new Client({ name: '' }, { capabilities: {} });
 await client.connect(transport);
 
 const tools = await client.listTools();

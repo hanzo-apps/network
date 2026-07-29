@@ -9,43 +9,43 @@ const UseCases = () => {
       icon: MessageSquare,
       title: 'Conversational AI',
       description: 'Build intelligent chatbots, virtual assistants, and customer support agents with natural language understanding.',
-      color: 'bg-neutral-600/20',
-      textColor: 'text-neutral-400'
+      color: 'hz-bg-surface',
+      textColor: 'hz-fg-muted'
     },
     {
       icon: Brain,
       title: 'Generative Content',
       description: 'Create text, images, code, and other content with AI-powered generation and customization.',
-      color: 'bg-neutral-600/20',
-      textColor: 'text-neutral-400'
+      color: 'hz-bg-surface',
+      textColor: 'hz-fg-muted'
     },
     {
       icon: Search,
       title: 'Knowledge Retrieval',
       description: 'Implement semantic search, question answering, and information extraction from your data.',
-      color: 'bg-neutral-500/20',
-      textColor: 'text-neutral-400'
+      color: 'hz-bg-surface',
+      textColor: 'hz-fg-muted'
     },
     {
       icon: Bot,
       title: 'Autonomous Agents',
       description: 'Deploy AI agents that can perform complex tasks, make decisions, and execute workflows autonomously.',
-      color: 'bg-neutral-500/20',
-      textColor: 'text-neutral-400'
+      color: 'hz-bg-surface',
+      textColor: 'hz-fg-muted'
     },
     {
       icon: FileCode,
       title: 'Developer Tooling',
       description: 'Enhance your development workflow with AI-powered code generation, debugging, and documentation.',
-      color: 'bg-neutral-500/20',
-      textColor: 'text-neutral-400'
+      color: 'hz-bg-surface',
+      textColor: 'hz-fg-muted'
     },
     {
       icon: Headphones,
       title: 'Voice & Speech',
       description: 'Convert speech to text, text to speech, and analyze voice interactions with advanced AI models.',
-      color: 'bg-neutral-600/20',
-      textColor: 'text-neutral-400'
+      color: 'hz-bg-surface',
+      textColor: 'hz-fg-muted'
     }
   ];
 
@@ -143,7 +143,7 @@ console.log(response);`}
                   </div>
                   <pre className="hz-t-xs hz-fg-soft hz-scroll-x">
 {`// Create a vector store
-const vectorStore = hanzo.vectorStore('my-store');
+const vectorStore = hanzo.vectorStore('');
 
 // Add documents to the store
 await vectorStore.addDocuments([

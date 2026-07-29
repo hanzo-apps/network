@@ -61,10 +61,10 @@ const InvoicesList = () => {
   });
 
   const statusColors = {
-    Paid: "bg-neutral-800/30 text-neutral-400",
-    Due: "bg-neutral-800/30 text-neutral-400",
-    Overdue: "bg-neutral-800/30 text-neutral-400",
-    Processing: "bg-neutral-800/30 text-neutral-400"
+    Paid: "hz-bg-surface hz-fg-muted",
+    Due: "hz-bg-surface hz-fg-muted",
+    Overdue: "hz-bg-surface hz-fg-muted",
+    Processing: "hz-bg-surface hz-fg-muted"
   };
 
   return (

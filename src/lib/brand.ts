@@ -1,4 +1,3 @@
-import { BRAND } from '@/lib/brand';
 /**
  * The brand's colour values, for the few places that need a colour as a STRING
  * rather than a class — an SVG `fill`, a computed `radial-gradient`, a
@@ -18,4 +17,7 @@ export const BRAND = {
   washStrong: 'var(--white-20)',
   washFaint: 'var(--white-05)',
   hairline: 'var(--border)',
+  /** Corner accents on an architectural box, at two strengths. */
+  cornerStrong: 'var(--white-20)',
+  cornerSoft: 'var(--white-10)',
 } as const

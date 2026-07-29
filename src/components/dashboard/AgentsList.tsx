@@ -25,10 +25,10 @@ const AgentsList = ({ viewMode = "grid" }: AgentsListProps) => {
   );
 
   const statusColors = {
-    idle: "bg-gray-500",
-    running: "bg-neutral-500",
-    paused: "bg-neutral-500",
-    error: "bg-neutral-600"
+    idle: "hz-bg-surface",
+    running: "hz-bg-surface",
+    paused: "hz-bg-surface",
+    error: "hz-bg-surface"
   };
 
   const getStatusText = (status: string) => {
@@ -149,9 +149,9 @@ const AgentsList = ({ viewMode = "grid" }: AgentsListProps) => {
                         value={agent.memory} 
                         className="hz-bh-1 hz-bw-8 hz-mr-2 hz-bg-raised" 
                         style={{
-                          '--progress-background': agent.memory > 80 ? 'bg-neutral-600' : 
-                            agent.memory > 60 ? 'bg-neutral-500' : 
-                            'bg-neutral-600'
+                          '--progress-background': agent.memory > 80 ? 'hz-bg-surface' : 
+                            agent.memory > 60 ? 'hz-bg-surface' : 
+                            'hz-bg-surface'
                         } as React.CSSProperties}
                       />
                       <span>{agent.memory}%</span>
@@ -239,9 +239,9 @@ const AgentsList = ({ viewMode = "grid" }: AgentsListProps) => {
                     value={agent.memory} 
                     className="hz-bh-1 hz-bw-8 hz-mr-2 hz-bg-raised" 
                     style={{
-                      '--progress-background': agent.memory > 80 ? 'bg-neutral-600' : 
-                        agent.memory > 60 ? 'bg-neutral-500' : 
-                        'bg-neutral-600'
+                      '--progress-background': agent.memory > 80 ? 'hz-bg-surface' : 
+                        agent.memory > 60 ? 'hz-bg-surface' : 
+                        'hz-bg-surface'
                     } as React.CSSProperties}
                   />
                   <span>{agent.memory}%</span>

@@ -1,7 +1,6 @@
 
 import React, { useState } from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { cn } from "@/lib/utils";
 
 interface EndpointProps {
   path: string;
@@ -107,7 +106,6 @@ const APIEndpoints = () => {
     ]
   };
 
-  const tabClasses = "data-[state=active]:bg-neutral-500/10 data-[state=active]:text-neutral-400 border-b-0";
 
   return (
     <section className="hz-py-7">
@@ -122,19 +120,19 @@ const APIEndpoints = () => {
         <div className="hz-container-wide">
           <Tabs defaultValue="commerce" className="hz-w-full" onValueChange={setActiveCategory}>
             <TabsList className="hz-w-full hz-mb-5 hz-bg-surface hz-bordered hz-r-lg hz-p-1 hz-row hz-wrap">
-              <TabsTrigger value="commerce" className={cn(tabClasses, "hz-grow")}>
+              <TabsTrigger value="commerce" className="hz-grow">
                 Commerce
               </TabsTrigger>
-              <TabsTrigger value="identity" className={cn(tabClasses, "hz-grow")}>
+              <TabsTrigger value="identity" className="hz-grow">
                 Identity
               </TabsTrigger>
-              <TabsTrigger value="marketing" className={cn(tabClasses, "hz-grow")}>
+              <TabsTrigger value="marketing" className="hz-grow">
                 Marketing
               </TabsTrigger>
-              <TabsTrigger value="payments" className={cn(tabClasses, "hz-grow")}>
+              <TabsTrigger value="payments" className="hz-grow">
                 Payments
               </TabsTrigger>
-              <TabsTrigger value="platform" className={cn(tabClasses, "hz-grow")}>
+              <TabsTrigger value="platform" className="hz-grow">
                 Platform
               </TabsTrigger>
             </TabsList>

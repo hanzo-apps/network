@@ -31,17 +31,17 @@ const PricingPlan = ({
 }: PricingPlanProps) => {
   // Use monochrome design
   const borderColor = popular 
-    ? "border-gray-700" 
-    : "border-gray-800";
+    ? "hz-bordered" 
+    : "hz-bordered";
   
   const bgColor = popular 
-    ? "bg-gray-900/30" 
-    : "bg-[var(--black)]/50";
+    ? "hz-bg-surface" 
+    : "hz-bg-surface";
 
   // Button color - prominent option gets white bg, others get outline
   const buttonClass = popular 
-    ? "bg-[var(--white)] text-black border border-gray-300 hover:bg-transparent hover:text-[var(--white)] hover:border-[var(--white)] transition-all duration-300" 
-    : "bg-transparent border border-white/20 text-white hover:bg-[var(--white)] hover:text-black transition-all duration-300";
+    ? "hz-btn-primary hz-transition"
+    : "hz-bordered hz-fg hz-transition";
 
   const renderButton = () => {
     if (githubLink || name === "Dev") {

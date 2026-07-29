@@ -547,3 +547,44 @@ p a.hz-btn, p a.hz-inline, .hz-prose a.hz-btn { min-height: 44px; display: inlin
 @media (prefers-reduced-motion: reduce) {
   .hz-transition, .hz-hoverable, .hz-card-interactive, .hz-btn, .hz-link { transition: none; }
 }
+
+/* ── control chrome ───────────────────────────────────────────────────── */
+/* `unstyled` on a gui primitive removes GUI's chrome and leaves the USER
+   AGENT's behind — `buttonface` grey under near-white text. State the reset
+   once, at element specificity, so every role class above still wins. */
+button,
+summary,
+[role='button'] {
+  background: transparent;
+  color: inherit;
+  border: 0;
+  font: inherit;
+  text-align: inherit;
+}
+
+/* A filled surface owns its label's colour: no child may re-state the page
+   foreground on top of an inverted button. */
+.hz-btn-primary *,
+.hz-bg-inverse * {
+  color: inherit;
+}
+
+/* A badge: a small pill of metadata. */
+.hz-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  border-radius: var(--radius-full);
+  padding: 2px var(--space-3);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+/* Zero-valued spacing roles, so a call site can cancel an inherited rule. */
+.hz-mt-0 { margin-top: 0; }
+.hz-mb-0 { margin-bottom: 0; }
+.hz-px-0 { padding-inline: 0; }
+.hz-py-0 { padding-block: 0; }
+.hz-pl-6 { padding-left: var(--space-8); }

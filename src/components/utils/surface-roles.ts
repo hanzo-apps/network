@@ -7,13 +7,13 @@
  * greyscale. What actually varies is emphasis: a hovered card lifts, a resting
  * one recedes. That is the whole function now.
  */
-export type SurfaceRole = 'gradient' | 'border' | 'text'
+export type SurfaceRole = 'gradient' | 'hz-bordered' | 'text'
 
 export const getColorClasses = (_color: string, type: SurfaceRole, isHovered: boolean) => {
   switch (type) {
     case 'gradient':
       return isHovered ? 'hz-bg-raised' : 'hz-bg-surface'
-    case 'border':
+    case 'hz-bordered':
       return isHovered ? 'hz-border-strong' : ''
     case 'text':
       return isHovered ? 'hz-fg' : 'hz-fg-muted'

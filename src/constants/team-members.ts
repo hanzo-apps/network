@@ -6,24 +6,24 @@ export const teamMembers = {
     title: "Meet Dev, Your AI Developer",
     role: "AI Developer",
     description: "Your expert AI developer, specializing in full-stack development and system architecture.",
-    gradient: "from-neutral-500 to-neutral-300",
+    gradient: "",
     mainIcon: Code2,
     features: [
       {
         icon: Bot,
-        color: "text-neutral-400",
+        color: "hz-fg-muted",
         title: "System Architecture",
         description: "Designs robust and scalable system architectures for complex applications."
       },
       {
         icon: Code2,
-        color: "text-neutral-400",
+        color: "hz-fg-muted",
         title: "Full-Stack Development",
         description: "Implements end-to-end solutions with modern technologies and best practices."
       },
       {
         icon: Binary,
-        color: "text-neutral-400",
+        color: "hz-fg-muted",
         title: "Code Quality",
         description: "Ensures high-quality, maintainable, and well-documented code."
       }
@@ -34,24 +34,24 @@ export const teamMembers = {
     title: "Meet Des, Your AI Designer",
     role: "AI Designer",
     description: "Your creative AI designer, crafting beautiful and intuitive user experiences.",
-    gradient: "from-neutral-500 to-neutral-300",
+    gradient: "",
     mainIcon: Paintbrush,
     features: [
       {
         icon: Paintbrush,
-        color: "text-neutral-400",
+        color: "hz-fg-muted",
         title: "UI Design",
         description: "Creates stunning user interfaces with attention to detail and user experience."
       },
       {
         icon: Bot,
-        color: "text-neutral-400",
+        color: "hz-fg-muted",
         title: "Design Systems",
         description: "Develops comprehensive design systems for consistent brand experiences."
       },
       {
         icon: Settings,
-        color: "text-neutral-400",
+        color: "hz-fg-muted",
         title: "Prototyping",
         description: "Builds interactive prototypes to validate design concepts and user flows."
       }
@@ -62,24 +62,24 @@ export const teamMembers = {
     title: "Meet Opera, Your Operations Engineer",
     role: "Operations Engineer",
     description: "Your efficient AI operations engineer, maintaining system reliability and performance.",
-    gradient: "from-neutral-500 to-neutral-300",
+    gradient: "",
     mainIcon: Settings,
     features: [
       {
         icon: Settings,
-        color: "text-neutral-400",
+        color: "hz-fg-muted",
         title: "System Monitoring",
         description: "Maintains 24/7 monitoring of all systems and infrastructure."
       },
       {
         icon: Bot,
-        color: "text-neutral-400",
+        color: "hz-fg-muted",
         title: "Cloud Operations",
         description: "Manages cloud infrastructure and ensures optimal resource utilization."
       },
       {
         icon: Scale,
-        color: "text-neutral-400",
+        color: "hz-fg-muted",
         title: "System Security",
         description: "Implements and maintains robust security protocols and practices."
       }
@@ -90,24 +90,24 @@ export const teamMembers = {
     title: "Meet Mark, Your Marketing Expert",
     role: "AI Marketing Director",
     description: "Your AI marketing strategist, crafting compelling campaigns and driving engagement.",
-    gradient: "from-neutral-500 to-neutral-300",
+    gradient: "",
     mainIcon: MessagesSquare,
     features: [
       {
         icon: Bot,
-        color: "text-neutral-400",
+        color: "hz-fg-muted",
         title: "Campaign Strategy",
         description: "Develops data-driven marketing campaigns that resonate with your target audience."
       },
       {
         icon: ChartBar,
-        color: "text-neutral-400",
+        color: "hz-fg-muted",
         title: "Content Planning",
         description: "Creates engaging content strategies that drive growth and engagement."
       },
       {
         icon: MessagesSquare,
-        color: "text-neutral-400",
+        color: "hz-fg-muted",
         title: "Analytics",
         description: "Provides deep insights and metrics to optimize marketing performance."
       }
@@ -118,24 +118,24 @@ export const teamMembers = {
     title: "Meet Su, Your Support Engineer",
     role: "Help & Support Engineer",
     description: "Your dedicated AI support engineer, ensuring smooth operations and user satisfaction.",
-    gradient: "from-neutral-500 to-neutral-300",
+    gradient: "",
     mainIcon: HelpCircle,
     features: [
       {
         icon: HelpCircle,
-        color: "text-neutral-400",
+        color: "hz-fg-muted",
         title: "User Support",
         description: "Provides comprehensive technical support and problem resolution."
       },
       {
         icon: MessageCircle,
-        color: "text-neutral-400",
+        color: "hz-fg-muted",
         title: "Documentation",
         description: "Creates and maintains detailed documentation and user guides."
       },
       {
         icon: Bot,
-        color: "text-neutral-400",
+        color: "hz-fg-muted",
         title: "Training",
         description: "Develops and delivers training programs for users and teams."
       }
@@ -146,24 +146,24 @@ export const teamMembers = {
     title: "Meet Art, Your AI Artist",
     role: "AI Artist",
     description: "Your creative AI artist, bringing imagination to life through digital artistry.",
-    gradient: "from-neutral-500 to-neutral-300",
+    gradient: "",
     mainIcon: Palette,
     features: [
       {
         icon: Palette,
-        color: "text-neutral-400",
+        color: "hz-fg-muted",
         title: "Digital Art",
         description: "Creates stunning digital artwork across various styles and mediums."
       },
       {
         icon: Bot,
-        color: "text-neutral-400",
+        color: "hz-fg-muted",
         title: "Visual Design",
         description: "Develops unique visual identities and design concepts."
       },
       {
         icon: Lightbulb,
-        color: "text-neutral-400",
+        color: "hz-fg-muted",
         title: "Creative Direction",
         description: "Provides artistic vision and creative direction for projects."
       }
@@ -174,24 +174,24 @@ export const teamMembers = {
     title: "Meet Mu, Your AI Musician",
     role: "AI Musician",
     description: "Your creative AI musician, composing and producing original music.",
-    gradient: "from-neutral-500 to-neutral-300",
+    gradient: "",
     mainIcon: Music,
     features: [
       {
         icon: Music,
-        color: "text-neutral-400",
+        color: "hz-fg-muted",
         title: "Composition",
         description: "Creates original musical compositions in various genres."
       },
       {
         icon: Bot,
-        color: "text-neutral-400",
+        color: "hz-fg-muted",
         title: "Production",
         description: "Handles music production and sound engineering."
       },
       {
         icon: Lightbulb,
-        color: "text-neutral-400",
+        color: "hz-fg-muted",
         title: "Arrangement",
         description: "Provides musical arrangement and orchestration services."
       }
@@ -202,24 +202,24 @@ export const teamMembers = {
     title: "Meet Data, Your AI Data Scientist",
     role: "AI Data Scientist",
     description: "Your expert AI data scientist, unlocking insights from complex datasets.",
-    gradient: "from-neutral-500 to-neutral-300",
+    gradient: "",
     mainIcon: ChartBar,
     features: [
       {
         icon: ChartBar,
-        color: "text-neutral-400",
+        color: "hz-fg-muted",
         title: "Data Analysis",
         description: "Analyzes complex datasets to extract meaningful insights."
       },
       {
         icon: Bot,
-        color: "text-neutral-400",
+        color: "hz-fg-muted",
         title: "Machine Learning",
         description: "Develops and implements machine learning models."
       },
       {
         icon: Database,
-        color: "text-neutral-400",
+        color: "hz-fg-muted",
         title: "Data Visualization",
         description: "Creates clear and informative data visualizations."
       }
@@ -230,24 +230,24 @@ export const teamMembers = {
     title: "Meet Core, Your AI Core Engineer",
     role: "AI Core Engineer",
     description: "Your expert AI core engineer, building robust system foundations.",
-    gradient: "from-neutral-500 to-neutral-400",
+    gradient: "",
     mainIcon: Settings,
     features: [
       {
         icon: Settings,
-        color: "text-neutral-400",
+        color: "hz-fg-muted",
         title: "Core Systems",
         description: "Develops and maintains core system infrastructure."
       },
       {
         icon: Bot,
-        color: "text-slate-400",
+        color: "hz-fg-muted",
         title: "Performance",
         description: "Optimizes system performance and reliability."
       },
       {
         icon: Binary,
-        color: "text-neutral-400",
+        color: "hz-fg-muted",
         title: "Architecture",
         description: "Designs scalable system architectures."
       }
@@ -258,24 +258,24 @@ export const teamMembers = {
     title: "Meet Fin, Your AI Financial Expert",
     role: "AI Financial Expert",
     description: "Your expert AI financial analyst, providing financial insights and strategy.",
-    gradient: "from-neutral-500 to-neutral-300",
+    gradient: "",
     mainIcon: DollarSign,
     features: [
       {
         icon: DollarSign,
-        color: "text-neutral-400",
+        color: "hz-fg-muted",
         title: "Financial Analysis",
         description: "Provides comprehensive financial analysis and reporting."
       },
       {
         icon: Bot,
-        color: "text-neutral-400",
+        color: "hz-fg-muted",
         title: "Investment Strategy",
         description: "Develops data-driven investment strategies."
       },
       {
         icon: ChartBar,
-        color: "text-neutral-400",
+        color: "hz-fg-muted",
         title: "Risk Management",
         description: "Assesses and manages financial risks."
       }
@@ -286,24 +286,24 @@ export const teamMembers = {
     title: "Meet Sec, Your AI Security Expert",
     role: "AI Security Expert",
     description: "Your expert AI security specialist, protecting digital assets and infrastructure.",
-    gradient: "from-neutral-500 to-neutral-300",
+    gradient: "",
     mainIcon: Scale,
     features: [
       {
         icon: Scale,
-        color: "text-neutral-400",
+        color: "hz-fg-muted",
         title: "Security Analysis",
         description: "Conducts thorough security assessments and audits."
       },
       {
         icon: Bot,
-        color: "text-neutral-400",
+        color: "hz-fg-muted",
         title: "Threat Prevention",
         description: "Implements proactive security measures."
       },
       {
         icon: Settings,
-        color: "text-neutral-400",
+        color: "hz-fg-muted",
         title: "Security Operations",
         description: "Manages ongoing security operations and monitoring."
       }
@@ -314,24 +314,24 @@ export const teamMembers = {
     title: "Meet Algo, Your AI Algorithm Expert",
     role: "AI Algorithm Expert",
     description: "Your expert AI algorithm specialist, optimizing computational solutions.",
-    gradient: "from-neutral-500 to-neutral-300",
+    gradient: "",
     mainIcon: Binary,
     features: [
       {
         icon: Binary,
-        color: "text-neutral-400",
+        color: "hz-fg-muted",
         title: "Algorithm Design",
         description: "Designs efficient algorithms for complex problems."
       },
       {
         icon: Bot,
-        color: "text-neutral-400",
+        color: "hz-fg-muted",
         title: "Optimization",
         description: "Optimizes computational performance and efficiency."
       },
       {
         icon: ChartBar,
-        color: "text-neutral-400",
+        color: "hz-fg-muted",
         title: "Analysis",
         description: "Analyzes algorithm complexity and performance."
       }
@@ -342,24 +342,24 @@ export const teamMembers = {
     title: "Meet DB, Your AI Database Expert",
     role: "AI Database Expert",
     description: "Your expert AI database specialist, managing data infrastructure.",
-    gradient: "from-neutral-500 to-neutral-300",
+    gradient: "",
     mainIcon: Database,
     features: [
       {
         icon: Database,
-        color: "text-neutral-400",
+        color: "hz-fg-muted",
         title: "Database Design",
         description: "Designs and implements efficient database structures."
       },
       {
         icon: Bot,
-        color: "text-neutral-400",
+        color: "hz-fg-muted",
         title: "Data Management",
         description: "Manages and optimizes database operations."
       },
       {
         icon: Settings,
-        color: "text-neutral-400",
+        color: "hz-fg-muted",
         title: "Performance Tuning",
         description: "Optimizes database performance and reliability."
       }
@@ -370,24 +370,24 @@ export const teamMembers = {
     title: "Meet Cal, Your AI Calculator",
     role: "AI Calculator",
     description: "Your expert AI calculator, processing complex computations.",
-    gradient: "from-neutral-500 to-neutral-300",
+    gradient: "",
     mainIcon: Calculator,
     features: [
       {
         icon: Calculator,
-        color: "text-neutral-400",
+        color: "hz-fg-muted",
         title: "Computation",
         description: "Processes complex mathematical calculations."
       },
       {
         icon: Bot,
-        color: "text-neutral-400",
+        color: "hz-fg-muted",
         title: "Analysis",
         description: "Provides mathematical analysis and insights."
       },
       {
         icon: ChartBar,
-        color: "text-neutral-400",
+        color: "hz-fg-muted",
         title: "Modeling",
         description: "Creates mathematical models and simulations."
       }
@@ -398,24 +398,24 @@ export const teamMembers = {
     title: "Meet Chat, Your AI Conversation Expert",
     role: "AI Conversation Expert",
     description: "Your expert AI conversation specialist, facilitating natural communication.",
-    gradient: "from-neutral-500 to-neutral-300",
+    gradient: "",
     mainIcon: MessageCircle,
     features: [
       {
         icon: MessageCircle,
-        color: "text-neutral-400",
+        color: "hz-fg-muted",
         title: "Natural Language",
         description: "Processes and generates natural language responses."
       },
       {
         icon: Bot,
-        color: "text-neutral-400",
+        color: "hz-fg-muted",
         title: "Conversation",
         description: "Manages dynamic conversation flows."
       },
       {
         icon: Lightbulb,
-        color: "text-neutral-400",
+        color: "hz-fg-muted",
         title: "Understanding",
         description: "Comprehends context and user intent."
       }
