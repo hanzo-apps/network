@@ -18,7 +18,6 @@ import {
   ChevronRight,
 } from "lucide-react";
 
-const BRAND_COLOR = "#ffffff";
 
 interface Service {
   name: string;
@@ -99,42 +98,41 @@ const ADDITIONAL_SERVICES: Service[] = [
 
 const PaaSCapabilities = () => {
   return (
-    <section className="py-24 px-4 md:px-8 bg-gradient-to-b from-black to-neutral-900/30">
-      <div className="max-w-6xl mx-auto">
+    <section className="hz-py-7 hz-px-4">
+      <div className="hz-container-wide">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="hz-align-center hz-mb-7"
         >
           <div
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium mb-4"
-            style={{ backgroundColor: `${BRAND_COLOR}20`, color: BRAND_COLOR }}
-          >
-            <Terminal className="w-3.5 h-3.5" />
+            className="hz-inline hz-ai-center hz-gap-2 hz-px-3 hz-py-1 hz-r-full hz-t-xs hz-w-medium hz-mb-4 hz-bg-quiet hz-fg"
+            >
+            <Terminal className="hz-sq-2" />
             Platform-as-a-Service
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="hz-t-3xl hz-w-bold hz-fg hz-mb-4">
             Backend Services, Ready to Deploy
           </h2>
-          <p className="text-neutral-400 max-w-2xl mx-auto">
+          <p className="hz-container-narrow hz-mw-md hz-fg-muted">
             Everything you need to build production applications. Self-host on your infrastructure,
             or deploy to Hanzo Cloud with zero changes.
           </p>
         </motion.div>
 
         {/* Core services */}
-        <div className="mb-12">
+        <div className="hz-mb-7">
           <motion.h3
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-lg font-semibold text-white mb-6"
+            className="hz-t-lg hz-w-semibold hz-fg hz-mb-5"
           >
             Core Services
           </motion.h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="hz-grid hz-grid-3 hz-gap-4">
             {CORE_SERVICES.map((service, index) => {
               const Icon = service.icon;
               const content = (
@@ -143,20 +141,19 @@ const PaaSCapabilities = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.05 }}
-                  className={`p-6 rounded-xl bg-neutral-900/50 border border-neutral-800 transition-all ${
-                    service.href ? "hover:border-neutral-500/30 cursor-pointer" : ""
+                  className={`hz-card hz-transition ${
+                    service.href ? "hz-pointer hz-hoverable" : ""
                   }`}
                 >
-                  <div className="flex items-start gap-4">
+                  <div className="hz-row hz-ai-start hz-gap-4">
                     <div
-                      className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0"
-                      style={{ backgroundColor: `${BRAND_COLOR}20` }}
-                    >
-                      <Icon className="w-5 h-5" style={{ color: BRAND_COLOR }} />
+                      className="hz-sq-6 hz-r-lg hz-row hz-ai-center hz-jc-center hz-none hz-bg-quiet"
+                      >
+                      <Icon className="hz-sq-3 hz-fg" />
                     </div>
                     <div>
-                      <h4 className="text-white font-medium mb-1">{service.name}</h4>
-                      <p className="text-sm text-neutral-400">{service.description}</p>
+                      <h4 className="hz-fg hz-w-medium hz-mb-1">{service.name}</h4>
+                      <p className="hz-t-sm hz-fg-muted">{service.description}</p>
                     </div>
                   </div>
                 </motion.div>
@@ -174,16 +171,16 @@ const PaaSCapabilities = () => {
         </div>
 
         {/* Additional services */}
-        <div className="mb-12">
+        <div className="hz-mb-7">
           <motion.h3
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-lg font-semibold text-white mb-6"
+            className="hz-t-lg hz-w-semibold hz-fg hz-mb-5"
           >
             Additional Services
           </motion.h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="hz-grid hz-grid-3 hz-gap-4">
             {ADDITIONAL_SERVICES.map((service, index) => {
               const Icon = service.icon;
               return (
@@ -193,13 +190,13 @@ const PaaSCapabilities = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.05 }}
-                  className="p-4 rounded-lg bg-neutral-950/50 border border-neutral-800/50"
+                  className="hz-card"
                 >
-                  <div className="flex items-center gap-3">
-                    <Icon className="w-4 h-4 text-neutral-500" />
+                  <div className="hz-row hz-ai-center hz-gap-3">
+                    <Icon className="hz-sq-2 hz-fg-muted" />
                     <div>
-                      <span className="text-sm font-medium text-white">{service.name}</span>
-                      <span className="text-xs text-neutral-500 ml-2">{service.description}</span>
+                      <span className="hz-t-sm hz-w-medium hz-fg">{service.name}</span>
+                      <span className="hz-t-xs hz-fg-muted hz-ml-2">{service.description}</span>
                     </div>
                   </div>
                 </motion.div>
@@ -213,51 +210,51 @@ const PaaSCapabilities = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-neutral-900/80 border border-neutral-800 rounded-xl overflow-hidden"
+          className="hz-bg-surface hz-bordered hz-r-lg hz-clip"
         >
-          <div className="flex items-center gap-3 px-4 py-3 border-b border-neutral-800">
-            <div className="flex gap-1.5">
-              <div className="w-3 h-3 rounded-full bg-neutral-600/80" />
-              <div className="w-3 h-3 rounded-full bg-neutral-500/80" />
-              <div className="w-3 h-3 rounded-full bg-neutral-500/80" />
+          <div className="hz-row hz-ai-center hz-gap-3 hz-px-4 hz-py-3 hz-border-b">
+            <div className="hz-row hz-gap-2">
+              <div className="hz-sq-1 hz-r-full hz-bg-raised" />
+              <div className="hz-sq-1 hz-r-full hz-bg-raised" />
+              <div className="hz-sq-1 hz-r-full hz-bg-raised" />
             </div>
-            <span className="text-xs text-neutral-500 font-mono">hanzo platform</span>
+            <span className="hz-t-xs hz-fg-muted hz-mono">hanzo platform</span>
           </div>
-          <div className="p-6 font-mono text-sm">
-            <div className="space-y-3">
-              <div className="text-neutral-500">
-                <span className="text-neutral-400">$</span> hanzo init my-app
+          <div className="hz-p-5 hz-mono hz-t-sm">
+            <div className="hz-stack-3">
+              <div className="hz-fg-muted">
+                <span className="hz-fg-muted">$</span> hanzo init my-app
               </div>
-              <div className="text-neutral-400">
+              <div className="hz-fg-muted">
                 ✓ Created project configuration
               </div>
-              <div className="text-neutral-400">
+              <div className="hz-fg-muted">
                 ✓ Initialized Auth, Database, Storage
               </div>
-              <div className="text-neutral-400">
+              <div className="hz-fg-muted">
                 ✓ Generated TypeScript types
               </div>
-              <div className="mt-4 text-neutral-500">
-                <span className="text-neutral-400">$</span> hanzo dev
+              <div className="hz-mt-4 hz-fg-muted">
+                <span className="hz-fg-muted">$</span> hanzo dev
               </div>
-              <div className="text-neutral-400">
+              <div className="hz-fg-muted">
                 Starting local development server...
               </div>
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-neutral-500" />
-                <span className="text-neutral-400">
+              <div className="hz-row hz-ai-center hz-gap-2">
+                <div className="hz-sq-1 hz-r-full hz-bg-raised" />
+                <span className="hz-fg-muted">
                   Platform running at http://localhost:8000
                 </span>
               </div>
-              <div className="mt-4 text-neutral-500">
-                <span className="text-neutral-400">$</span> hanzo deploy
+              <div className="hz-mt-4 hz-fg-muted">
+                <span className="hz-fg-muted">$</span> hanzo deploy
               </div>
-              <div className="text-neutral-400">
+              <div className="hz-fg-muted">
                 Deploying to production...
               </div>
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-neutral-500" />
-                <span className="text-neutral-400">
+              <div className="hz-row hz-ai-center hz-gap-2">
+                <div className="hz-sq-1 hz-r-full hz-bg-raised" />
+                <span className="hz-fg-muted">
                   Live at https://my-app.hanzo.app
                 </span>
               </div>
@@ -270,25 +267,24 @@ const PaaSCapabilities = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-12 text-center"
+          className="hz-mt-7 hz-align-center"
         >
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="hz-row hz-wrap hz-jc-center hz-gap-4">
             <a
               href="https://docs.hanzo.ai/platform/quickstart"
               target="_blank"
               rel="noreferrer noopener"
-              className="inline-flex items-center px-6 py-3 rounded-full font-medium transition-all hover:opacity-90 text-sm"
-              style={{ backgroundColor: BRAND_COLOR, color: "#000" }}
-            >
+              className="hz-btn hz-btn-ghost hz-transition hz-bg-inverse"
+              >
               Get Started
-              <ChevronRight className="ml-2 h-4 w-4" />
+              <ChevronRight className="hz-sq-2 hz-ml-2" />
             </a>
             <Link
               to="/cloud"
-              className="inline-flex items-center px-6 py-3 rounded-full font-medium transition-colors border border-neutral-700 bg-transparent hover:bg-neutral-900 text-sm text-white"
+              className="hz-btn hz-btn-ghost hz-transition hz-fg"
             >
               Compare to Cloud
-              <ChevronRight className="ml-2 h-4 w-4" />
+              <ChevronRight className="hz-sq-2 hz-ml-2" />
             </Link>
           </div>
         </motion.div>

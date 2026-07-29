@@ -5,31 +5,31 @@ import { ArrowRight } from "lucide-react";
 
 const ServiceCards: React.FC = () => {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-16">
+    <div className="hz-grid hz-grid-2 hz-gap-5 hz-mt-7">
       {/* Hanzo Agency Card */}
       <motion.div
         initial={{ opacity: 0, x: -20 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="bg-neutral-800/30 border border-neutral-800/30 rounded-xl p-8 relative overflow-hidden"
+        className="hz-card hz-rel hz-clip"
       >
-        <div className="flex items-center gap-4 mb-4">
-          <div className="p-3 bg-neutral-800/30 rounded-full">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-neutral-300">
+        <div className="hz-row hz-ai-center hz-gap-4 hz-mb-4">
+          <div className="hz-p-3 hz-bg-raised hz-r-full">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="hz-fg-soft">
               <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               <circle cx="9" cy="7" r="4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </div>
-          <h3 className="text-2xl font-bold text-[var(--white)]">Hanzo Agency</h3>
+          <h3 className="hz-t-2xl hz-w-bold hz-fg">Hanzo Agency</h3>
         </div>
-        <p className="text-neutral-300 mb-6">
+        <p className="hz-fg-soft hz-mb-5">
           Elevate your brand with our AI-powered creative agency. We craft cutting-edge digital experiences that captivate audiences and deliver measurable business results.
         </p>
-        <a href="/agency" className="inline-flex items-center text-neutral-300 hover:text-neutral-200 transition-colors group">
-          <span className="mr-2">Learn more</span>
-          <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+        <a href="/agency" className="hz-inline hz-ai-center hz-fg-soft hz-transition hz-hoverable">
+          <span className="hz-mr-2">Learn more</span>
+          <ArrowRight className="hz-sq-2 hz-transition" />
         </a>
       </motion.div>
       
@@ -39,23 +39,23 @@ const ServiceCards: React.FC = () => {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="bg-neutral-800/30 border border-neutral-800/30 rounded-xl p-8 relative overflow-hidden"
+        className="hz-card hz-rel hz-clip"
       >
-        <div className="flex items-center gap-4 mb-4">
-          <div className="p-3 bg-neutral-800/30 rounded-full">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-neutral-300">
+        <div className="hz-row hz-ai-center hz-gap-4 hz-mb-4">
+          <div className="hz-p-3 hz-bg-raised hz-r-full">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="hz-fg-soft">
               <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               <circle cx="12" cy="7" r="4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </div>
-          <h3 className="text-2xl font-bold text-[var(--white)]">Sensei Group</h3>
+          <h3 className="hz-t-2xl hz-w-bold hz-fg">Sensei Group</h3>
         </div>
-        <p className="text-neutral-300 mb-6">
+        <p className="hz-fg-soft hz-mb-5">
           Accelerate enterprise transformation with our elite collective of CXOs and technology experts. We guide organizations through digital evolution with strategic implementation.
         </p>
-        <a href="/sensei" className="inline-flex items-center text-neutral-300 hover:text-neutral-200 transition-colors group">
-          <span className="mr-2">Learn more</span>
-          <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+        <a href="/sensei" className="hz-inline hz-ai-center hz-fg-soft hz-transition hz-hoverable">
+          <span className="hz-mr-2">Learn more</span>
+          <ArrowRight className="hz-sq-2 hz-transition" />
         </a>
       </motion.div>
     </div>

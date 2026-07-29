@@ -20,7 +20,7 @@ const TunnelStars: React.FC<TunnelStarsProps> = ({ starCount = 60 }) => {
     stars.push(
       <motion.div
         key={`star-${i}`}
-        className="absolute bg-[var(--white)] rounded-full"
+        className="hz-abs hz-bg-inverse hz-r-full"
         style={{
           width: `${size}px`,
           height: `${size}px`,

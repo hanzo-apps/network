@@ -72,28 +72,28 @@ const capabilities = [
 
 const UnifiedCapabilities = () => {
   return (
-    <section className="py-20 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/10 to-neutral-950/10"></div>
+    <section className="hz-py-7 hz-rel hz-clip">
+      <div className="hz-abs hz-inset"></div>
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+      <div className="hz-container hz-rel hz-z-raised">
+        <div className="hz-container-narrow hz-align-center hz-mb-7">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <ChromeText as="h2" className="text-3xl md:text-4xl font-bold mb-6">
+            <ChromeText as="h2" className="hz-t-3xl hz-w-bold hz-mb-5">
               Unified AI Platform
             </ChromeText>
-            <p className="text-xl text-neutral-300">
+            <p className="hz-t-xl hz-fg-soft">
               A complete suite of AI capabilities accessible through a single, 
               consistent API with everything you need to build powerful AI applications
             </p>
           </motion.div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="hz-grid hz-grid-3 hz-gap-5">
           {capabilities.map((capability, index) => (
             <motion.div
               key={index}
@@ -101,11 +101,11 @@ const UnifiedCapabilities = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.05 }}
-              className="bg-gradient-to-br from-neutral-800/20 to-neutral-800/20 border border-neutral-500/20 rounded-xl p-6"
+              className="hz-card"
             >
-              <capability.icon className="h-8 w-8 text-neutral-400 mb-4" />
-              <h3 className="text-xl font-bold text-[var(--white)] mb-2">{capability.title}</h3>
-              <p className="text-neutral-300">{capability.description}</p>
+              <capability.icon className="hz-sq-5 hz-fg-muted hz-mb-4" />
+              <h3 className="hz-t-xl hz-w-bold hz-fg hz-mb-2">{capability.title}</h3>
+              <p className="hz-fg-soft">{capability.description}</p>
             </motion.div>
           ))}
         </div>

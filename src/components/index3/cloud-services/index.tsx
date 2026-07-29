@@ -68,43 +68,43 @@ const CloudServices: React.FC<CloudServicesProps> = ({ onDeploymentEvent }) => {
     <section 
       ref={containerRef}
       id="cloud" 
-      className="py-32 px-4 sm:px-6 lg:px-8 bg-[var(--black)] relative overflow-hidden"
+      className="hz-py-7 hz-px-4 hz-bg hz-rel hz-clip"
     >
       <BackgroundEffects scanPoints={scanPoints} />
       
-      <div className="max-w-6xl mx-auto relative z-10">
+      <div className="hz-container-wide hz-rel hz-z-raised">
         <CloudHeader mousePosition={mousePosition} containerRef={containerRef} />
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-16">
+        <div className="hz-grid hz-grid-2 hz-gap-7 hz-mb-7">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="flex flex-col justify-center"
+            className="hz-col hz-jc-center"
           >
-            <h3 className="text-2xl md:text-3xl font-bold mb-6 text-[var(--white)]">
+            <h3 className="hz-t-2xl hz-w-bold hz-mb-5 hz-fg">
               Intelligent Architecture Canvas
             </h3>
-            <p className="text-neutral-300 mb-8 text-lg">
+            <p className="hz-fg-soft hz-mb-6 hz-t-lg">
               Visually compose and deploy entire cloud architectures with our drag-and-drop canvas. 
               Connect services, configure dependencies, and deploy with a single click.
             </p>
-            <ul className="space-y-4 text-neutral-400">
-              <li className="flex items-start">
-                <div className="mr-2 mt-1 text-neutral-400">•</div>
+            <ul className="hz-stack-4 hz-fg-muted">
+              <li className="hz-row hz-ai-start">
+                <div className="hz-mr-2 hz-mt-1 hz-fg-muted">•</div>
                 <span>Automatic resource provisioning and configuration</span>
               </li>
-              <li className="flex items-start">
-                <div className="mr-2 mt-1 text-neutral-400">•</div>
+              <li className="hz-row hz-ai-start">
+                <div className="hz-mr-2 hz-mt-1 hz-fg-muted">•</div>
                 <span>Real-time deployment status and monitoring</span>
               </li>
-              <li className="flex items-start">
-                <div className="mr-2 mt-1 text-neutral-400">•</div>
+              <li className="hz-row hz-ai-start">
+                <div className="hz-mr-2 hz-mt-1 hz-fg-muted">•</div>
                 <span>AI-powered recommendations for optimizing your architecture</span>
               </li>
-              <li className="flex items-start">
-                <div className="mr-2 mt-1 text-neutral-400">•</div>
+              <li className="hz-row hz-ai-start">
+                <div className="hz-mr-2 hz-mt-1 hz-fg-muted">•</div>
                 <span>Version control and rollback capabilities</span>
               </li>
             </ul>
@@ -115,9 +115,9 @@ const CloudServices: React.FC<CloudServicesProps> = ({ onDeploymentEvent }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex items-center justify-center"
+            className="hz-row hz-ai-center hz-jc-center"
           >
-            <div className="w-full max-w-lg mx-auto">
+            <div className="hz-container-narrow hz-mw-sm hz-w-full">
               <CloudDeploymentAnimation />
             </div>
           </motion.div>

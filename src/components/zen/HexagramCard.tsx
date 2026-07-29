@@ -17,27 +17,27 @@ const HexagramCard: React.FC<HexagramCardProps> = ({ hexagram, index }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.05 }}
-      className="bg-[var(--black)]/30 backdrop-blur-sm border border-neutral-500/10 rounded-lg p-8 flex flex-col h-full hover:border-neutral-500/30 transition-all"
+      className="hz-card hz-glass hz-col hz-h-full hz-transition hz-card-interactive"
     >
-      <div className="flex items-center mb-6">
-        <div className="w-12 h-12 bg-neutral-800/30 rounded-full flex items-center justify-center mr-4">
-          <Icon className="h-6 w-6 text-neutral-400" />
+      <div className="hz-row hz-ai-center hz-mb-5">
+        <div className="hz-sq-7 hz-bg-raised hz-r-full hz-row hz-ai-center hz-jc-center hz-mr-4">
+          <Icon className="hz-sq-4 hz-fg-muted" />
         </div>
         <div>
-          <div className="flex items-center gap-2">
-            <h3 className="text-2xl font-bold text-[var(--white)]">{hexagram.id}. {hexagram.title}</h3>
-            <span className="text-xl text-neutral-300">{hexagram.chineseTitle}</span>
+          <div className="hz-row hz-ai-center hz-gap-2">
+            <h3 className="hz-t-2xl hz-w-bold hz-fg">{hexagram.id}. {hexagram.title}</h3>
+            <span className="hz-t-xl hz-fg-soft">{hexagram.chineseTitle}</span>
           </div>
-          <p className="text-neutral-300 text-sm">{hexagram.pinyin} • {hexagram.category}</p>
+          <p className="hz-fg-soft hz-t-sm">{hexagram.pinyin} • {hexagram.category}</p>
         </div>
       </div>
       
-      <p className="text-neutral-300 mb-6">{hexagram.description}</p>
+      <p className="hz-fg-soft hz-mb-5">{hexagram.description}</p>
       
-      <div className="space-y-4 flex-1">
+      <div className="hz-stack-4 hz-grow">
         {hexagram.principles.map((principle, i) => (
-          <div key={i} className="text-neutral-300 flex items-start">
-            <span className="text-neutral-400 mr-2">•</span> 
+          <div key={i} className="hz-fg-soft hz-row hz-ai-start">
+            <span className="hz-fg-muted hz-mr-2">•</span> 
             <span>{principle}</span>
           </div>
         ))}

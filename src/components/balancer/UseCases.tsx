@@ -41,14 +41,14 @@ const UseCaseCard = ({ useCase }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      className="bg-gray-800/30 border border-gray-700 rounded-lg p-6"
+      className="hz-card"
     >
-      <div className="bg-neutral-800/30 w-12 h-12 rounded-full flex items-center justify-center mb-4">
-        <useCase.icon className="h-6 w-6 text-neutral-400" />
+      <div className="hz-sq-7 hz-bg-raised hz-r-full hz-row hz-ai-center hz-jc-center hz-mb-4">
+        <useCase.icon className="hz-sq-4 hz-fg-muted" />
       </div>
-      <h3 className="text-xl font-semibold mb-3">{useCase.title}</h3>
-      <p className="text-neutral-300 mb-4">{useCase.description}</p>
-      <a href={useCase.learnMoreLink} className="text-neutral-400 hover:text-neutral-300">
+      <h3 className="hz-t-xl hz-w-semibold hz-mb-3">{useCase.title}</h3>
+      <p className="hz-fg-soft hz-mb-4">{useCase.description}</p>
+      <a href={useCase.learnMoreLink} className="hz-fg-muted hz-link">
         Learn more
       </a>
     </motion.div>
@@ -57,19 +57,19 @@ const UseCaseCard = ({ useCase }) => {
 
 const UseCases = () => {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/30">
-      <div className="max-w-6xl mx-auto">
+    <section className="hz-py-7 hz-px-4 hz-bg-surface">
+      <div className="hz-container-wide">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="hz-align-center hz-mb-7"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Hanzo Balancer Use Cases</h2>
+          <h2 className="hz-t-3xl hz-w-bold hz-mb-5">Hanzo Balancer Use Cases</h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+        <div className="hz-grid hz-grid-2 hz-gap-6 hz-mb-7">
           {useCases.map((useCase, index) => (
             <UseCaseCard key={useCase.id} useCase={useCase} />
           ))}

@@ -6,21 +6,21 @@ import { Button } from "@/components/ui/button";
 
 const statsItems = [
   { 
-    icon: <Download className="h-6 w-6 text-neutral-400" />,
+    icon: <Download className="hz-sq-4 hz-fg-muted" />,
     value: 17,
     suffix: "M+",
     label: "Downloads",
     countUpDuration: 2
   },
   { 
-    icon: <Star className="h-6 w-6 text-neutral-400" />,
+    icon: <Star className="hz-sq-4 hz-fg-muted" />,
     value: 25,
     suffix: "K+",
     label: "GitHub Stars",
     countUpDuration: 2.2
   },
   { 
-    icon: <Users className="h-6 w-6 text-neutral-400" />,
+    icon: <Users className="hz-sq-4 hz-fg-muted" />,
     value: 280,
     suffix: "+",
     label: "Contributors",
@@ -32,25 +32,25 @@ const OpenSource = () => {
   const [isInView, setIsInView] = useState(false);
   
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-900/20 to-black relative">
-      <div className="max-w-6xl mx-auto relative z-10">
+    <section className="hz-py-7 hz-px-4 hz-rel">
+      <div className="hz-container-wide hz-rel hz-z-raised">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="hz-align-center hz-mb-7"
         >
-          <div className="inline-flex items-center justify-center mb-6 bg-neutral-800/30 p-3 rounded-full">
-            <Github className="h-7 w-7 text-neutral-400" />
+          <div className="hz-inline hz-ai-center hz-jc-center hz-mb-5 hz-bg-raised hz-p-3 hz-r-full">
+            <Github className="hz-sq-5 hz-fg-muted" />
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">Proudly Open Source</h2>
-          <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
+          <h2 className="hz-t-3xl hz-w-bold hz-mb-5">Proudly Open Source</h2>
+          <p className="hz-container-narrow hz-t-xl hz-fg-soft">
             Transparency is at the core of Hanzo Observability. Deploy it locally, self-host on your own infrastructure, or leverage our managed cloud solution.
           </p>
         </motion.div>
         
-        <div className="grid grid-cols-3 gap-6 mb-12">
+        <div className="hz-grid hz-grid-3 hz-gap-5 hz-mb-7">
           {statsItems.map((item, index) => (
             <motion.div
               key={index}
@@ -64,20 +64,20 @@ const OpenSource = () => {
                 }
               }}
               viewport={{ once: true }}
-              className="text-center p-6 bg-gray-900/30 rounded-xl border border-gray-800"
+              className="hz-card hz-align-center"
               onViewportEnter={() => {
                 if (!isInView) {
                   setIsInView(true);
                 }
               }}
             >
-              <div className="flex justify-center mb-3">{item.icon}</div>
-              <div className="flex justify-center items-baseline">
+              <div className="hz-row hz-jc-center hz-mb-3">{item.icon}</div>
+              <div className="hz-row hz-jc-center hz-ai-baseline">
                 <motion.span
                   initial={{ opacity: 0 }}
                   animate={isInView ? { opacity: 1 } : {}}
                   transition={{ duration: item.countUpDuration }}
-                  className="text-4xl font-bold"
+                  className="hz-t-4xl hz-w-bold"
                 >
                   {isInView ? (
                     <CountUp end={item.value} duration={item.countUpDuration} />
@@ -85,19 +85,19 @@ const OpenSource = () => {
                     0
                   )}
                 </motion.span>
-                <span className="text-4xl font-bold">{item.suffix}</span>
+                <span className="hz-t-4xl hz-w-bold">{item.suffix}</span>
               </div>
-              <div className="text-neutral-400 mt-2">{item.label}</div>
+              <div className="hz-fg-muted hz-mt-2">{item.label}</div>
             </motion.div>
           ))}
         </div>
         
-        <div className="flex justify-center gap-4">
-          <Button variant="outline" size="lg" className="text-[var(--white)] border-white/20 hover:bg-[var(--white)]/10">
-            <Github className="mr-2 h-5 w-5" /> Read Documentation
+        <div className="hz-row hz-jc-center hz-gap-4">
+          <Button variant="outline" size="lg" className="hz-fg hz-hoverable">
+            <Github className="hz-sq-3 hz-mr-2" /> Read Documentation
           </Button>
-          <Button variant="outline" size="lg" className="text-[var(--white)] border-white/20 hover:bg-[var(--white)]/10">
-            <Github className="mr-2 h-5 w-5" /> View GitHub Repository
+          <Button variant="outline" size="lg" className="hz-fg hz-hoverable">
+            <Github className="hz-sq-3 hz-mr-2" /> View GitHub Repository
           </Button>
         </div>
       </div>

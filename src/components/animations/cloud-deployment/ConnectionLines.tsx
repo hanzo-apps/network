@@ -16,7 +16,7 @@ const ConnectionLines: React.FC<ConnectionLinesProps> = ({ connections, nodes })
   // We're returning an empty SVG container without rendering any lines
   // This effectively removes all network lines from the canvas demo
   return (
-    <svg className="absolute inset-0 h-full w-full pointer-events-none">
+    <svg className="hz-abs hz-inset hz-h-full hz-w-full hz-no-pointer">
       {/* Connection lines have been removed */}
     </svg>
   );

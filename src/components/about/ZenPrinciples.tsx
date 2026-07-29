@@ -11,54 +11,54 @@ const principles = [
   {
     title: "Empower the Underdog",
     description: "Enable others to win. Democratize technology so small businesses and startups can compete with industry giants.",
-    icon: <Users className="h-10 w-10 text-neutral-400" />,
+    icon: <Users className="hz-sq-6 hz-fg-muted" />,
   },
   {
     title: "Data-Driven Everything",
     description: "Let data be your guide. Embrace analytics and AI as the foundation of decision-making.",
-    icon: <Database className="h-10 w-10 text-neutral-400" />,
+    icon: <Database className="hz-sq-6 hz-fg-muted" />,
   },
   {
     title: "Open Innovation",
     description: "Be open, share often. Openness accelerates growth—both for the company and its community.",
-    icon: <Share2 className="h-10 w-10 text-neutral-400" />,
+    icon: <Share2 className="hz-sq-6 hz-fg-muted" />,
   },
   {
     title: "Adaptability",
     description: "Pivot with purpose. There is no failure, only feedback. Move quickly and strike in new directions when opportunity calls.",
-    icon: <RefreshCcw className="h-10 w-10 text-neutral-400" />,
+    icon: <RefreshCcw className="hz-sq-6 hz-fg-muted" />,
   },
   {
     title: "Customer-Centric Growth",
     description: "Coach clients like a sensei. Treat each client as a long-term partner and guide them to success.",
-    icon: <Heart className="h-10 w-10 text-neutral-400" />,
+    icon: <Heart className="hz-sq-6 hz-fg-muted" />,
   },
   {
     title: "First Principles Thinking",
     description: "See the invisible, do the impossible. Boil problems down to their essence and solve them in fundamentally better ways.",
-    icon: <BookOpen className="h-10 w-10 text-neutral-400" />,
+    icon: <BookOpen className="hz-sq-6 hz-fg-muted" />,
   }
 ];
 
 const ZenPrinciples = () => {
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black to-neutral-950/20">
-      <div className="max-w-7xl mx-auto">
+    <section className="hz-py-7 hz-px-4">
+      <div className="hz-container">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="hz-align-center hz-mb-7"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">The Zen of Hanzo</h2>
-          <div className="h-1 w-20 bg-neutral-600 mx-auto mb-6"></div>
-          <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
+          <h2 className="hz-t-3xl hz-w-bold hz-mb-4">The Zen of Hanzo</h2>
+          <div className="hz-bh-1 hz-bw-8 hz-bg-raised hz-mx-auto hz-mb-5"></div>
+          <p className="hz-container-narrow hz-t-xl hz-fg-soft">
             Our guiding philosophy - a set of first principles and laws that act as our north star.
           </p>
         </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <div className="hz-grid hz-grid-3 hz-gap-6 hz-mb-7">
           {principles.map((principle, index) => (
             <motion.div
               key={index}
@@ -66,11 +66,11 @@ const ZenPrinciples = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-[var(--black)]/30 backdrop-blur-sm border border-neutral-500/20 rounded-lg p-8 h-full"
+              className="hz-card hz-glass hz-h-full"
             >
-              <div className="mb-6">{principle.icon}</div>
-              <h3 className="text-2xl font-bold mb-4">{principle.title}</h3>
-              <p className="text-neutral-300">{principle.description}</p>
+              <div className="hz-mb-5">{principle.icon}</div>
+              <h3 className="hz-t-2xl hz-w-bold hz-mb-4">{principle.title}</h3>
+              <p className="hz-fg-soft">{principle.description}</p>
             </motion.div>
           ))}
         </div>
@@ -80,13 +80,13 @@ const ZenPrinciples = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center"
+          className="hz-align-center"
         >
           <Button 
             size="lg"
-            className="bg-gradient-to-r from-neutral-600 to-neutral-500 hover:from-neutral-500 hover:to-neutral-400 text-[var(--white)] px-8 py-6 rounded-lg text-lg font-medium"
+            className="hz-fg hz-px-6 hz-py-5 hz-r-lg hz-t-lg hz-w-medium"
           >
-            <Link to="/philosophy" className="flex items-center">
+            <Link to="/philosophy" className="hz-row hz-ai-center">
               Explore The Full Zen Manifesto
             </Link>
           </Button>

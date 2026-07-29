@@ -10,12 +10,12 @@ interface TechCardProps {
 
 const TechCard = ({ icon, title, description }: TechCardProps) => {
   return (
-    <div className="bg-gray-900/30 border border-gray-800 rounded-lg p-6 hover:border-neutral-500/30 transition-all duration-300">
-      <div className="mb-4">
+    <div className="hz-card hz-transition hz-card-interactive">
+      <div className="hz-mb-4">
         {icon}
       </div>
-      <h3 className="text-xl font-semibold mb-2">{title}</h3>
-      <p className="text-neutral-400">{description}</p>
+      <h3 className="hz-t-xl hz-w-semibold hz-mb-2">{title}</h3>
+      <p className="hz-fg-muted">{description}</p>
     </div>
   );
 };
@@ -23,48 +23,48 @@ const TechCard = ({ icon, title, description }: TechCardProps) => {
 const TechStack = () => {
   const techItems = [
     {
-      icon: <Server className="h-8 w-8 text-neutral-400" />,
+      icon: <Server className="hz-sq-5 hz-fg-muted" />,
       title: "Cloud-Native Architecture",
       description: "Built on serverless infrastructure that scales automatically with your business demands."
     },
     {
-      icon: <Database className="h-8 w-8 text-neutral-400" />,
+      icon: <Database className="hz-sq-5 hz-fg-muted" />,
       title: "Real-time Data",
       description: "Access to real-time inventory, pricing, and customer data across all sales channels."
     },
     {
-      icon: <Shield className="h-8 w-8 text-neutral-400" />,
+      icon: <Shield className="hz-sq-5 hz-fg-muted" />,
       title: "Enterprise Security",
       description: "PCI-compliant infrastructure with encryption at rest and in transit for all sensitive data."
     },
     {
-      icon: <Zap className="h-8 w-8 text-neutral-400" />,
+      icon: <Zap className="hz-sq-5 hz-fg-muted" />,
       title: "High Performance",
       description: "Low latency APIs with global CDN distribution for lightning-fast experiences."
     },
     {
-      icon: <Layers className="h-8 w-8 text-neutral-400" />,
+      icon: <Layers className="hz-sq-5 hz-fg-muted" />,
       title: "Composable Architecture",
       description: "Mix and match components to create custom solutions tailored to your specific needs."
     },
     {
-      icon: <GitBranch className="h-8 w-8 text-neutral-400" />,
+      icon: <GitBranch className="hz-sq-5 hz-fg-muted" />,
       title: "Developer Workflow",
       description: "Full CI/CD support with staging environments and version control integration."
     }
   ];
 
   return (
-    <section className="py-16 bg-gradient-to-b from-gray-900/30 to-black">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold">Technology Stack</h2>
-          <p className="mt-4 text-neutral-400 max-w-2xl mx-auto">
+    <section className="hz-py-7">
+      <div className="hz-container hz-mx-auto hz-px-4">
+        <div className="hz-align-center hz-mb-7">
+          <h2 className="hz-t-3xl hz-w-bold">Technology Stack</h2>
+          <p className="hz-container-narrow hz-mw-md hz-mt-4 hz-fg-muted">
             Built on modern technologies for performance, security, and scalability.
           </p>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="hz-grid hz-grid-3 hz-gap-5">
           {techItems.map((item, index) => (
             <TechCard
               key={index}

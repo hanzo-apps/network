@@ -14,7 +14,7 @@ const BillingOverview = () => {
   };
 
   return (
-    <div className="space-y-8">
+    <div className="hz-stack-6">
       {/* Current Plan */}
       <CurrentPlan />
       

@@ -11,51 +11,51 @@ interface ResourceUsageSectionProps {
 const ResourceUsageSection = ({ resources }: ResourceUsageSectionProps) => {
   return (
     <div>
-      <h4 className="font-medium mb-4">Resource Usage</h4>
+      <h4 className="hz-w-medium hz-mb-4">Resource Usage</h4>
       
-      <div className="space-y-6">
+      <div className="hz-stack-5">
         <div>
-          <div className="flex justify-between mb-1">
-            <div className="flex items-center gap-2">
-              <Server className="h-4 w-4 text-neutral-400" />
-              <span className="text-sm text-neutral-400">CPU</span>
+          <div className="hz-row hz-jc-between hz-mb-1">
+            <div className="hz-row hz-ai-center hz-gap-2">
+              <Server className="hz-sq-2 hz-fg-muted" />
+              <span className="hz-t-sm hz-fg-muted">CPU</span>
             </div>
-            <span className="text-sm">{resources.cpu.value}</span>
+            <span className="hz-t-sm">{resources.cpu.value}</span>
           </div>
-          <Progress value={resources.cpu.usage} className="h-2" />
+          <Progress value={resources.cpu.usage} className="hz-bh-1" />
         </div>
         
         <div>
-          <div className="flex justify-between mb-1">
-            <div className="flex items-center gap-2">
-              <CircuitBoard className="h-4 w-4 text-neutral-400" />
-              <span className="text-sm text-neutral-400">RAM</span>
+          <div className="hz-row hz-jc-between hz-mb-1">
+            <div className="hz-row hz-ai-center hz-gap-2">
+              <CircuitBoard className="hz-sq-2 hz-fg-muted" />
+              <span className="hz-t-sm hz-fg-muted">RAM</span>
             </div>
-            <span className="text-sm">{resources.memory.value}</span>
+            <span className="hz-t-sm">{resources.memory.value}</span>
           </div>
-          <Progress value={resources.memory.usage} className="h-2" />
+          <Progress value={resources.memory.usage} className="hz-bh-1" />
         </div>
         
         <div>
-          <div className="flex justify-between mb-1">
-            <div className="flex items-center gap-2">
-              <Globe className="h-4 w-4 text-neutral-400" />
-              <span className="text-sm text-neutral-400">Network Egress</span>
+          <div className="hz-row hz-jc-between hz-mb-1">
+            <div className="hz-row hz-ai-center hz-gap-2">
+              <Globe className="hz-sq-2 hz-fg-muted" />
+              <span className="hz-t-sm hz-fg-muted">Network Egress</span>
             </div>
-            <span className="text-sm">{resources.network.value}</span>
+            <span className="hz-t-sm">{resources.network.value}</span>
           </div>
-          <Progress value={resources.network.usage} className="h-2" />
+          <Progress value={resources.network.usage} className="hz-bh-1" />
         </div>
         
         <div>
-          <div className="flex justify-between mb-1">
-            <div className="flex items-center gap-2">
-              <HardDrive className="h-4 w-4 text-neutral-400" />
-              <span className="text-sm text-neutral-400">Volume</span>
+          <div className="hz-row hz-jc-between hz-mb-1">
+            <div className="hz-row hz-ai-center hz-gap-2">
+              <HardDrive className="hz-sq-2 hz-fg-muted" />
+              <span className="hz-t-sm hz-fg-muted">Volume</span>
             </div>
-            <span className="text-sm">{resources.storage.value}</span>
+            <span className="hz-t-sm">{resources.storage.value}</span>
           </div>
-          <Progress value={resources.storage.usage} className="h-2" />
+          <Progress value={resources.storage.usage} className="hz-bh-1" />
         </div>
       </div>
     </div>

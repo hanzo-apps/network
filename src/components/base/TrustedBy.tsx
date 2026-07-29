@@ -10,17 +10,17 @@ const TrustedBy = () => {
   ];
 
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-900/30">
-      <div className="max-w-7xl mx-auto">
+    <section className="hz-py-7 hz-px-4 hz-bg-surface">
+      <div className="hz-container">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-10"
+          className="hz-align-center hz-mb-6"
         >
-          <h2 className="text-2xl font-semibold text-[var(--white)] mb-2">Trusted Worldwide</h2>
-          <div className="w-20 h-1 bg-neutral-600 mx-auto"></div>
+          <h2 className="hz-t-2xl hz-w-semibold hz-fg hz-mb-2">Trusted Worldwide</h2>
+          <div className="hz-bw-8 hz-bh-1 hz-bg-raised hz-mx-auto"></div>
         </motion.div>
         
         <motion.div 
@@ -28,12 +28,12 @@ const TrustedBy = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="flex flex-wrap justify-center gap-x-8 gap-y-4"
+          className="hz-row hz-wrap hz-jc-center hz-gap-6 hz-gap-4"
         >
           {companies.map((company, index) => (
             <div 
               key={index} 
-              className="text-neutral-400 font-medium text-lg transition-colors hover:text-neutral-400"
+              className="hz-fg-muted hz-w-medium hz-t-lg hz-transition hz-link"
             >
               {company}
             </div>

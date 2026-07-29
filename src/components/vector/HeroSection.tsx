@@ -15,37 +15,37 @@ const fadeInUpVariant = createAnimationVariant("fadeInBlur", {
 
 const HeroSection = () => {
   return (
-    <AnimatedSection className="min-h-screen flex flex-col justify-center px-4 sm:px-6 lg:px-8 py-32 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-r from-neutral-900/20 to-neutral-900/10 opacity-30"></div>
-      <div className="absolute -top-40 -right-40 w-80 h-80 bg-neutral-500/10 rounded-full blur-3xl"></div>
-      <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-neutral-500/10 rounded-full blur-3xl"></div>
+    <AnimatedSection className="hz-min-h-screen hz-col hz-jc-center hz-px-4 hz-py-7 hz-rel hz-clip">
+      <div className="hz-abs hz-inset hz-dim-more"></div>
+      <div className="hz-sq-8 hz-abs hz-bg-raised hz-r-full hz-blur-bg"></div>
+      <div className="hz-sq-8 hz-abs hz-bg-raised hz-r-full hz-blur-bg"></div>
       
-      <AnimatedStaggerContainer className="max-w-5xl mx-auto text-center relative z-10" delayFactor={0.07}>
+      <AnimatedStaggerContainer className="hz-container-wide hz-align-center hz-rel hz-z-raised" delayFactor={0.07}>
         <AnimatedHeading>
-          <div className="inline-block px-4 py-1 rounded-full bg-neutral-800/30 border border-neutral-500/30 text-neutral-300 text-sm font-medium mb-6">
+          <div className="hz-px-4 hz-py-1 hz-r-full hz-bg-raised hz-bordered hz-border-strong hz-fg-soft hz-t-sm hz-w-medium hz-mb-5">
             Vector Database for AI
           </div>
         </AnimatedHeading>
         
         <AnimatedHeading>
-          <ChromeText as="h1" className="text-4xl md:text-6xl font-bold mb-6">
+          <ChromeText as="h1" className="hz-t-4xl hz-w-bold hz-mb-5">
             Blazing Fast Vector Search
           </ChromeText>
         </AnimatedHeading>
         
-        <motion.p variants={fadeInUpVariant} className="text-xl text-neutral-300 max-w-3xl mx-auto mb-10">
+        <motion.p variants={fadeInUpVariant} className="hz-container-narrow hz-t-xl hz-fg-soft hz-mb-6">
           Hanzo Vector is a high-performance vector database designed for AI applications,
           with advanced similarity search and seamless integrations with popular ML frameworks.
         </motion.p>
         
         <motion.div 
           variants={buttonAnimation}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
+          className="hz-col-row hz-gap-4 hz-jc-center"
         >
-          <Button size="lg" className="text-lg px-8 bg-gradient-to-r from-neutral-700 to-neutral-500 hover:from-neutral-600 hover:to-neutral-400 border-none">
+          <Button size="lg" className="hz-t-lg hz-px-6 hz-border-none">
             Get Started
           </Button>
-          <Button size="lg" variant="outline" className="text-lg px-8">
+          <Button size="lg" variant="outline" className="hz-t-lg hz-px-6">
             Documentation
           </Button>
         </motion.div>

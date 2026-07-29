@@ -11,24 +11,24 @@ const ProductGrid = ({ items }: ProductGridProps) => {
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-h-[360px] overflow-y-auto pr-2">
+    <div className="hz-grid hz-grid-2 hz-gap-4 hz-scroll-y hz-px-2">
       {items.map((item) => (
         <div
           key={item.name}
-          className="flex items-start space-x-3 group"
+          className="hz-row hz-ai-start hz-inline-3"
           onMouseEnter={() => setHoveredItem(item.name)}
           onMouseLeave={() => setHoveredItem(null)}
         >
           <item.icon 
-            className={`h-6 w-6 mt-1 transition-colors duration-200 ${
-              hoveredItem === item.name ? 'text-neutral-400' : 'text-neutral-400 group-hover:text-[var(--white)]'
+            className={`hz-sq-4 hz-mt-1 hz-transition ${
+              hoveredItem === item.name ? 'hz-fg-muted' : 'hz-fg-muted hz-link'
             }`} 
           />
-          <div className="flex-1">
-            <Link to={item.link} className="text-neutral-300 group-hover:text-[var(--white)] font-medium">
+          <div className="hz-grow">
+            <Link to={item.link} className="hz-fg-soft hz-w-medium hz-hoverable">
               {item.name}
             </Link>
-            <div className="text-sm text-neutral-500">{item.description}</div>
+            <div className="hz-t-sm hz-fg-muted">{item.description}</div>
           </div>
         </div>
       ))}

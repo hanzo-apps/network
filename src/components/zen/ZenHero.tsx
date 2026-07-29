@@ -25,28 +25,28 @@ const ZenHero = () => {
   }, []);
 
   return (
-    <section className="min-h-screen flex flex-col justify-center items-center px-4 py-24 relative">
+    <section className="hz-min-h-screen hz-col hz-jc-center hz-ai-center hz-px-4 hz-py-7 hz-rel">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.5 }}
-        className="absolute inset-0 pointer-events-none"
+        className="hz-abs hz-inset hz-no-pointer"
         style={{
           background: "radial-gradient(circle at 50% 50%, rgba(20,20,20,1) 0%, rgba(0,0,0,1) 70%)"
         }}
       />
       
-      <div className="max-w-4xl mx-auto text-center z-10 relative">
+      <div className="hz-container-narrow hz-align-center hz-z-raised hz-rel">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="mb-8"
+          className="hz-mb-6"
         >
-          <TaijiSymbol size={80} className="mx-auto mb-8" animate={true} />
+          <TaijiSymbol size={80} className="hz-mx-auto hz-mb-6" animate={true} />
           
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
-            <span className="bg-clip-text text-transparent bg-gradient-to-b from-white via-white/90 to-white/50">
+          <h1 className="hz-t-4xl hz-w-bold hz-mb-5 hz-tracking-tight">
+            <span className="hz-chrome">
               The 36 Principles &amp; 64 Hexagrams
             </span>
           </h1>
@@ -57,27 +57,27 @@ const ZenHero = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.5 }}
-            className="h-12 flex items-center justify-center"
+            className="hz-bh-7 hz-row hz-ai-center hz-jc-center"
           >
-            <p className="text-xl text-neutral-400 italic">"{principles[currentPrinciple]}"</p>
+            <p className="hz-t-xl hz-fg-muted hz-italic">"{principles[currentPrinciple]}"</p>
           </motion.div>
           
-          <p className="text-neutral-500 max-w-2xl mx-auto mt-8">
+          <p className="hz-container-narrow hz-mw-md hz-fg-muted hz-mt-6">
             Build software with enlightened engineering. Hanzo's platform embodies 
             36 principles and 64 hexagrams from the I Ching that guide the creation of resilient, scalable systems.
           </p>
         </motion.div>
         
-        <div className="mt-12 space-y-6">
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+        <div className="hz-mt-7 hz-stack-5">
+          <div className="hz-col-row hz-gap-5 hz-jc-center">
             <Button 
               variant="outline" 
-              className="bg-[var(--black)]/50 border border-white/10 text-[var(--white)] hover:bg-[var(--white)]/10"
+              className="hz-bg-overlay hz-bordered hz-fg hz-hoverable"
             >
               Explore Platform
             </Button>
             <Button 
-              className="bg-[var(--white)]/10 hover:bg-[var(--white)]/20 text-[var(--white)] border border-white/20"
+              className="hz-bg-surface hz-fg hz-bordered hz-hoverable"
             >
               Learn Principles
             </Button>
@@ -87,11 +87,11 @@ const ZenHero = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.5, duration: 0.5 }}
-            className="text-neutral-600 mt-16"
+            className="hz-fg-faint hz-mt-7"
           >
-            <a href="#principles" className="flex flex-col items-center">
-              <span className="mb-2 text-sm">Discover more</span>
-              <ArrowDown className="animate-bounce w-5 h-5" />
+            <a href="#principles" className="hz-col hz-ai-center">
+              <span className="hz-mb-2 hz-t-sm">Discover more</span>
+              <ArrowDown className="hz-sq-3" />
             </a>
           </motion.div>
         </div>

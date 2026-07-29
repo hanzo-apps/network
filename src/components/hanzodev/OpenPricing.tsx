@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { Check, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const BRAND_COLOR = "#ffffff";
 
 const GATEWAY_FEATURES = [
   "Choose from more than 60 providers",
@@ -26,61 +25,59 @@ const ALTERNATIVE_FEATURES = [
 
 const OpenPricing = () => {
   return (
-    <section className="py-24 px-4 md:px-8 bg-gradient-to-b from-neutral-900/50 to-black">
-      <div className="max-w-6xl mx-auto">
+    <section className="hz-py-7 hz-px-4">
+      <div className="hz-container-wide">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="hz-align-center hz-mb-7"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="hz-t-3xl hz-w-bold hz-fg hz-mb-4">
             Open Pricing
           </h2>
-          <p className="text-neutral-400 max-w-2xl mx-auto">
+          <p className="hz-container-narrow hz-mw-md hz-fg-muted">
             Run AI where you want and pay as you go
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-8">
+        <div className="hz-grid hz-grid-2 hz-gap-6">
           {/* Hanzo Gateway */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-neutral-900/80 border border-neutral-800 rounded-xl p-8"
+            className="hz-card"
           >
-            <div className="flex items-center gap-3 mb-6">
+            <div className="hz-row hz-ai-center hz-gap-3 hz-mb-5">
               <div
-                className="px-3 py-1 rounded-full text-xs font-medium"
-                style={{ backgroundColor: `${BRAND_COLOR}20`, color: BRAND_COLOR }}
-              >
+                className="hz-px-3 hz-py-1 hz-r-full hz-t-xs hz-w-medium hz-bg-quiet hz-fg"
+                >
                 Recommended
               </div>
             </div>
 
-            <h3 className="text-2xl font-bold text-white mb-2">
+            <h3 className="hz-t-2xl hz-w-bold hz-fg hz-mb-2">
               Hanzo Gateway
             </h3>
-            <p className="text-neutral-400 mb-6">Open & transparent</p>
+            <p className="hz-fg-muted hz-mb-5">Open & transparent</p>
 
-            <ul className="space-y-3 mb-8">
+            <ul className="hz-stack-3 hz-mb-6">
               {GATEWAY_FEATURES.map((feature, index) => (
-                <li key={index} className="flex items-start gap-3">
-                  <Check className="w-5 h-5 text-white shrink-0 mt-0.5" />
-                  <span className="text-sm text-neutral-300">{feature}</span>
+                <li key={index} className="hz-row hz-ai-start hz-gap-3">
+                  <Check className="hz-sq-3 hz-fg hz-none hz-mt-1" />
+                  <span className="hz-t-sm hz-fg-soft">{feature}</span>
                 </li>
               ))}
             </ul>
 
             <Link
               to="/pricing"
-              className="inline-flex items-center px-6 py-3 rounded-full font-medium transition-all hover:opacity-90 text-sm w-full justify-center"
-              style={{ backgroundColor: BRAND_COLOR, color: "#000000" }}
-            >
+              className="hz-btn hz-btn-ghost hz-btn-block hz-transition hz-bg-inverse"
+              >
               View Pricing
-              <ArrowRight className="ml-2 h-4 w-4" />
+              <ArrowRight className="hz-sq-2 hz-ml-2" />
             </Link>
           </motion.div>
 
@@ -90,18 +87,18 @@ const OpenPricing = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="bg-neutral-900/50 border border-neutral-800 rounded-xl p-8"
+            className="hz-card"
           >
-            <h3 className="text-2xl font-bold text-white mb-2">
+            <h3 className="hz-t-2xl hz-w-bold hz-fg hz-mb-2">
               Or use any alternative
             </h3>
-            <p className="text-neutral-400 mb-6">For AI inference</p>
+            <p className="hz-fg-muted hz-mb-5">For AI inference</p>
 
-            <ul className="space-y-3 mb-8">
+            <ul className="hz-stack-3 hz-mb-6">
               {ALTERNATIVE_FEATURES.map((feature, index) => (
-                <li key={index} className="flex items-start gap-3">
-                  <Check className="w-5 h-5 text-neutral-500 shrink-0 mt-0.5" />
-                  <span className="text-sm text-neutral-400">{feature}</span>
+                <li key={index} className="hz-row hz-ai-start hz-gap-3">
+                  <Check className="hz-sq-3 hz-fg-muted hz-none hz-mt-1" />
+                  <span className="hz-t-sm hz-fg-muted">{feature}</span>
                 </li>
               ))}
             </ul>
@@ -110,10 +107,10 @@ const OpenPricing = () => {
               href="https://docs.hanzo.ai/byok"
               target="_blank"
               rel="noreferrer noopener"
-              className="inline-flex items-center px-6 py-3 rounded-full font-medium transition-colors border border-neutral-700 bg-transparent hover:bg-neutral-800 text-sm text-white w-full justify-center"
+              className="hz-btn hz-btn-ghost hz-btn-block hz-transition hz-fg"
             >
               Learn about BYOK
-              <ArrowRight className="ml-2 h-4 w-4" />
+              <ArrowRight className="hz-sq-2 hz-ml-2" />
             </a>
           </motion.div>
         </div>

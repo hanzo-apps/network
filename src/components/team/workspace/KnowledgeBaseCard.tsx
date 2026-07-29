@@ -11,54 +11,54 @@ const KnowledgeBaseCard = () => {
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: 0.3 }}
-      className="bg-gray-900/30 border border-neutral-800/20 rounded-xl overflow-hidden shadow-xl"
+      className="hz-bg-surface hz-bordered hz-r-lg hz-clip hz-shadow-lg"
     >
-      <div className="border-b border-gray-800 p-3 flex items-center">
-        <FileText className="h-5 w-5 text-neutral-400 mr-2" />
-        <span className="font-medium">Knowledge Base</span>
-        <Badge variant="outline" className="ml-auto bg-neutral-800/30 border-neutral-500/30 text-neutral-300">
+      <div className="hz-border-b hz-p-3 hz-row hz-ai-center">
+        <FileText className="hz-sq-3 hz-fg-muted hz-mr-2" />
+        <span className="hz-w-medium">Knowledge Base</span>
+        <Badge variant="outline" className="hz-ml-auto hz-bg-raised hz-border-strong hz-fg-soft">
           Notion-style
         </Badge>
       </div>
-      <div className="p-4">
-        <div className="bg-[var(--black)]/60 rounded-lg p-4">
-          <div className="mb-4 flex items-center justify-between">
-            <h3 className="font-medium text-[var(--white)]">Company Wiki</h3>
-            <div className="flex items-center space-x-2">
-              <div className="text-xs text-neutral-400 flex items-center">
-                <div className="w-5 h-5 rounded-full bg-neutral-600 flex items-center justify-center text-xs mr-1">AI</div>
+      <div className="hz-p-4">
+        <div className="hz-bg-overlay hz-r-lg hz-p-4">
+          <div className="hz-mb-4 hz-row hz-ai-center hz-jc-between">
+            <h3 className="hz-w-medium hz-fg">Company Wiki</h3>
+            <div className="hz-row hz-ai-center hz-inline-2">
+              <div className="hz-t-xs hz-fg-muted hz-row hz-ai-center">
+                <div className="hz-sq-3 hz-r-full hz-bg-raised hz-row hz-ai-center hz-jc-center hz-t-xs hz-mr-1">AI</div>
                 <span>Updating</span>
               </div>
             </div>
           </div>
           
-          <div className="space-y-3">
-            <div className="p-2 bg-gray-800/40 rounded-md border border-gray-700/50">
-              <div className="flex items-center mb-1">
-                <Calendar className="h-4 w-4 text-neutral-400 mr-2" />
-                <span className="font-medium">Onboarding Process</span>
+          <div className="hz-stack-3">
+            <div className="hz-p-2 hz-bg-raised hz-r-md hz-bordered">
+              <div className="hz-row hz-ai-center hz-mb-1">
+                <Calendar className="hz-sq-2 hz-fg-muted hz-mr-2" />
+                <span className="hz-w-medium">Onboarding Process</span>
               </div>
-              <p className="text-xs text-neutral-400">
+              <p className="hz-t-xs hz-fg-muted">
                 Step-by-step guide for new employees, updated automatically by HR Bot.
               </p>
             </div>
             
-            <div className="p-2 bg-gray-800/40 rounded-md border border-gray-700/50">
-              <div className="flex items-center mb-1">
-                <FileText className="h-4 w-4 text-neutral-400 mr-2" />
-                <span className="font-medium">Technical Documentation</span>
+            <div className="hz-p-2 hz-bg-raised hz-r-md hz-bordered">
+              <div className="hz-row hz-ai-center hz-mb-1">
+                <FileText className="hz-sq-2 hz-fg-muted hz-mr-2" />
+                <span className="hz-w-medium">Technical Documentation</span>
               </div>
-              <p className="text-xs text-neutral-400">
+              <p className="hz-t-xs hz-fg-muted">
                 API references and architectural diagrams maintained by DevBot.
               </p>
             </div>
             
-            <div className="p-2 bg-neutral-800/20 rounded-md border border-neutral-700/50">
-              <div className="flex items-center mb-1">
-                <Bot className="h-4 w-4 text-neutral-400 mr-2" />
-                <span className="font-medium">AI Activity: Adding Marketing Guidelines</span>
+            <div className="hz-p-2 hz-bg-raised hz-r-md hz-bordered">
+              <div className="hz-row hz-ai-center hz-mb-1">
+                <Bot className="hz-sq-2 hz-fg-muted hz-mr-2" />
+                <span className="hz-w-medium">AI Activity: Adding Marketing Guidelines</span>
               </div>
-              <div className="flex items-center text-xs text-neutral-300">
+              <div className="hz-row hz-ai-center hz-t-xs hz-fg-soft">
                 <span>ContentBot is updating brand guidelines based on latest team meeting</span>
               </div>
             </div>

@@ -138,20 +138,20 @@ const CopyButton = ({ text }: { text: string }) => {
   return (
     <button
       onClick={copy}
-      className="p-2 hover:bg-white/10 rounded transition-colors"
+      className="hz-p-2 hz-r-md hz-transition hz-hoverable"
       title="Copy to clipboard"
     >
-      {copied ? <Check className="h-4 w-4 text-neutral-400" /> : <Copy className="h-4 w-4 text-neutral-400" />}
+      {copied ? <Check className="hz-sq-2 hz-fg-muted" /> : <Copy className="hz-sq-2 hz-fg-muted" />}
     </button>
   );
 };
 
 const StatusBadge = ({ status }: { status: Product['status'] }) => {
   const variants = {
-    ga: { label: 'GA', className: 'bg-neutral-500/20 text-neutral-400 border-neutral-500/30' },
-    beta: { label: 'Beta', className: 'bg-neutral-500/20 text-neutral-400 border-neutral-500/30' },
-    alpha: { label: 'Alpha', className: 'bg-neutral-500/20 text-neutral-400 border-neutral-500/30' },
-    coming: { label: 'Coming Soon', className: 'bg-neutral-500/20 text-neutral-400 border-neutral-500/30' }
+    ga: { label: 'GA', className: 'hz-bg-raised hz-fg-muted hz-border-strong' },
+    beta: { label: 'Beta', className: 'hz-bg-raised hz-fg-muted hz-border-strong' },
+    alpha: { label: 'Alpha', className: 'hz-bg-raised hz-fg-muted hz-border-strong' },
+    coming: { label: 'Coming Soon', className: 'hz-bg-raised hz-fg-muted hz-border-strong' }
   };
 
   const variant = variants[status];
@@ -167,9 +167,9 @@ const PricingBadge = ({ pricing }: { pricing?: Product['pricing'] }) => {
   if (!pricing) return null;
 
   const variants = {
-    free: { label: 'Free', className: 'bg-neutral-500/20 text-neutral-400 border-neutral-500/30' },
-    freemium: { label: 'Free Tier', className: 'bg-neutral-600/20 text-neutral-400 border-neutral-500/30' },
-    paid: { label: 'Paid', className: 'bg-neutral-600/20 text-neutral-400 border-neutral-500/30' }
+    free: { label: 'Free', className: 'hz-bg-raised hz-fg-muted hz-border-strong' },
+    freemium: { label: 'Free Tier', className: 'hz-bg-raised hz-fg-muted hz-border-strong' },
+    paid: { label: 'Paid', className: 'hz-bg-raised hz-fg-muted hz-border-strong' }
   };
 
   const variant = variants[pricing];
@@ -192,19 +192,19 @@ const RelatedProductCard: React.FC<{ product: Product; index: number }> = ({ pro
       transition={{ duration: 0.3, delay: index * 0.1 }}
     >
       <Link to={product.href}>
-        <Card className="bg-neutral-900/50 border-neutral-800 hover:border-white/50 transition-all duration-300 h-full group cursor-pointer hover:bg-neutral-900/80">
-          <CardHeader className="pb-3">
-            <div className="flex items-start justify-between">
-              <div className="p-2 rounded-lg bg-white/5 border border-white/10 group-hover:border-white/30 transition-colors">
-                <IconComponent className="h-5 w-5 text-white" />
+        <Card className="hz-bg-surface hz-transition hz-h-full hz-pointer hz-hoverable">
+          <CardHeader className="hz-pb-4">
+            <div className="hz-row hz-ai-start hz-jc-between">
+              <div className="hz-p-2 hz-r-lg hz-bg-quiet hz-bordered hz-transition hz-hoverable">
+                <IconComponent className="hz-sq-3 hz-fg" />
               </div>
               <StatusBadge status={product.status} />
             </div>
-            <CardTitle className="text-lg mt-3 group-hover:text-white transition-colors flex items-center gap-2">
+            <CardTitle className="hz-t-lg hz-mt-3 hz-transition hz-row hz-ai-center hz-gap-2 hz-hoverable">
               {product.shortName}
-              <ArrowRight className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity text-white" />
+              <ArrowRight className="hz-sq-2 hz-invisible hz-transition hz-fg" />
             </CardTitle>
-            <CardDescription className="text-neutral-400">
+            <CardDescription className="hz-fg-muted">
               {product.tagline}
             </CardDescription>
           </CardHeader>
@@ -245,11 +245,11 @@ export const ProductPageTemplate: React.FC<ProductPageTemplateProps> = ({ produc
   ];
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="hz-min-h-screen hz-bg hz-fg">
       {/* Hero Section with Architectural Elements */}
-      <section className="relative py-16 md:py-24 px-4 overflow-hidden">
+      <section className="hz-rel hz-py-7 hz-px-4 hz-clip">
         {/* Background effects */}
-        <div className="absolute inset-0 bg-[var(--black)]" />
+        <div className="hz-abs hz-inset hz-bg" />
         <GridLines spacing={50} opacity={0.03} />
         <BlueprintLine orientation="horizontal" position="15%" color="rgba(200, 200, 200, 0.03)" />
         <BlueprintLine orientation="horizontal" position="85%" color="rgba(200, 200, 200, 0.03)" />
@@ -257,20 +257,20 @@ export const ProductPageTemplate: React.FC<ProductPageTemplateProps> = ({ produc
         <BlueprintLine orientation="vertical" position="85%" color="rgba(200, 200, 200, 0.03)" />
 
         {/* Gradient accents */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/4 -left-64 w-96 h-96 bg-white/20 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-neutral-800/20 rounded-full blur-3xl transform translate-x-1/2 translate-y-1/2"></div>
+        <div className="hz-abs hz-inset hz-no-pointer">
+          <div className="hz-sq-8 hz-abs hz-bg-quiet hz-r-full hz-blur-bg"></div>
+          <div className="hz-sq-8 hz-abs hz-bottom-0 hz-right-0 hz-bg-raised hz-r-full hz-blur-bg"></div>
         </div>
 
-        <div className="max-w-7xl mx-auto relative z-10">
+        <div className="hz-container hz-rel hz-z-raised">
           <ArchitecturalBox
-            className="bg-transparent p-6 md:p-10"
+            className="hz-bg-none hz-p-5"
             showCorners={true}
             showGrid={false}
             cornerSize={50}
             cornerColor="rgba(255, 255, 255, 0.15)"
           >
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="hz-grid hz-grid-2 hz-gap-7 hz-ai-center">
               {/* Left: Product Info */}
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
@@ -278,13 +278,13 @@ export const ProductPageTemplate: React.FC<ProductPageTemplateProps> = ({ produc
                 transition={{ duration: 0.5 }}
               >
                 {/* Badges */}
-                <div className="flex flex-wrap items-center gap-3 mb-6">
-                  <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-                    <IconComponent className="h-8 w-8 text-white" />
+                <div className="hz-row hz-wrap hz-ai-center hz-gap-3 hz-mb-5">
+                  <div className="hz-card hz-card-tight">
+                    <IconComponent className="hz-sq-5 hz-fg" />
                   </div>
                   <StatusBadge status={product.status} />
                   {product.openSource && (
-                    <Badge variant="outline" className="bg-neutral-600/20 text-neutral-400 border-neutral-500/30">
+                    <Badge variant="outline" className="hz-bg-raised hz-fg-muted hz-border-strong">
                       Open Source
                     </Badge>
                   )}
@@ -292,30 +292,30 @@ export const ProductPageTemplate: React.FC<ProductPageTemplateProps> = ({ produc
                 </div>
 
                 {/* Title */}
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent">
+                <h1 className="hz-t-4xl hz-w-bold hz-mb-4 hz-chrome">
                   {product.name}
                 </h1>
 
                 {/* Tagline */}
-                <p className="text-xl md:text-2xl text-white mb-4 font-medium">
+                <p className="hz-t-xl hz-fg hz-mb-4 hz-w-medium">
                   {product.tagline}
                 </p>
 
                 {/* Description */}
-                <p className="text-lg text-neutral-400 mb-8 leading-relaxed">
+                <p className="hz-t-lg hz-fg-muted hz-mb-6 hz-leading-relaxed">
                   {product.description}
                 </p>
 
                 {/* Action Buttons */}
-                <div className="flex flex-col sm:flex-row gap-4">
+                <div className="hz-col-row hz-gap-4">
                   {product.docs && (
                     <Button
                       size="lg"
-                      className="bg-white text-black hover:bg-white/80 border-0"
+                      className="hz-bg-inverse hz-fg-inverse hz-border-none hz-hoverable"
                       asChild
                     >
                       <a href={product.docs} target="_blank" rel="noopener noreferrer">
-                        <BookOpen className="mr-2 h-5 w-5" />
+                        <BookOpen className="hz-sq-3 hz-mr-2" />
                         Documentation
                       </a>
                     </Button>
@@ -323,11 +323,11 @@ export const ProductPageTemplate: React.FC<ProductPageTemplateProps> = ({ produc
                   <Button
                     size="lg"
                     variant="outline"
-                    className="border-white/20 hover:bg-white/5 hover:border-white/40"
+                    className="hz-hoverable"
                     asChild
                   >
                     <a href={product.github} target="_blank" rel="noopener noreferrer">
-                      <Github className="mr-2 h-5 w-5" />
+                      <Github className="hz-sq-3 hz-mr-2" />
                       View on GitHub
                     </a>
                   </Button>
@@ -335,11 +335,11 @@ export const ProductPageTemplate: React.FC<ProductPageTemplateProps> = ({ produc
               </motion.div>
 
               {/* Right: Product Mockup */}
-              <div className="hidden lg:block">
+              <div className="hz-desktop-only">
                 <ProductMockup
                   category={product.category}
                   product={product}
-                  className="shadow-2xl shadow-black/50"
+                  className="hz-shadow-lg hz-shadow"
                 />
               </div>
             </div>
@@ -348,109 +348,109 @@ export const ProductPageTemplate: React.FC<ProductPageTemplateProps> = ({ produc
       </section>
 
       {/* Mobile Mockup (shown below hero on mobile) */}
-      <section className="lg:hidden px-4 pb-8">
-        <div className="max-w-lg mx-auto">
+      <section className="hz-mobile-only hz-px-4 hz-pb-6">
+        <div className="hz-container-narrow hz-mw-sm">
           <ProductMockup
             category={product.category}
             product={product}
-            className="shadow-2xl shadow-black/50"
+            className="hz-shadow-lg hz-shadow"
           />
         </div>
       </section>
 
       {/* Quick Install Section */}
       {product.install && installMethods.length > 0 && (
-        <section className="py-16 px-4 border-t border-white/10">
-          <div className="max-w-4xl mx-auto">
+        <section className="hz-py-7 hz-px-4 hz-border-t">
+          <div className="hz-container-narrow">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <h2 className="text-2xl md:text-3xl font-bold mb-2 text-center">Get Started</h2>
-              <p className="text-neutral-500 text-center mb-8">Install {product.shortName} in seconds</p>
+              <h2 className="hz-t-2xl hz-w-bold hz-mb-2 hz-align-center">Get Started</h2>
+              <p className="hz-fg-muted hz-align-center hz-mb-6">Install {product.shortName} in seconds</p>
 
-              <Tabs defaultValue={installMethods[0]} className="w-full">
-                <TabsList className={`grid w-full grid-cols-${Math.min(installMethods.length, 4)} bg-neutral-900/50 border border-neutral-800 p-1 rounded-xl`}>
+              <Tabs defaultValue={installMethods[0]} className="hz-w-full">
+                <TabsList className={`hz-grid hz-w-full${Math.min(installMethods.length, 4)} hz-bg-surface hz-bordered hz-p-1 hz-r-lg`}>
                   {product.install.cli && (
-                    <TabsTrigger value="cli" className="data-[state=active]:bg-white data-[state=active]:text-black rounded-lg">
-                      <Terminal className="h-4 w-4 mr-2" />
+                    <TabsTrigger value="cli" className="hz-r-lg">
+                      <Terminal className="hz-sq-2 hz-mr-2" />
                       CLI
                     </TabsTrigger>
                   )}
                   {product.install.docker && (
-                    <TabsTrigger value="docker" className="data-[state=active]:bg-white data-[state=active]:text-black rounded-lg">
+                    <TabsTrigger value="docker" className="hz-r-lg">
                       Docker
                     </TabsTrigger>
                   )}
                   {product.install.npm && (
-                    <TabsTrigger value="npm" className="data-[state=active]:bg-white data-[state=active]:text-black rounded-lg">
+                    <TabsTrigger value="npm" className="hz-r-lg">
                       npm
                     </TabsTrigger>
                   )}
                   {product.install.pip && (
-                    <TabsTrigger value="pip" className="data-[state=active]:bg-white data-[state=active]:text-black rounded-lg">
+                    <TabsTrigger value="pip" className="hz-r-lg">
                       pip
                     </TabsTrigger>
                   )}
                 </TabsList>
 
                 {product.install.cli && (
-                  <TabsContent value="cli" className="mt-4">
-                    <div className="bg-neutral-950 rounded-xl border border-neutral-800 overflow-hidden">
-                      <div className="flex items-center justify-between px-4 py-2 border-b border-neutral-800 bg-neutral-900/50">
-                        <span className="text-xs text-neutral-500 font-mono">terminal</span>
+                  <TabsContent value="cli" className="hz-mt-4">
+                    <div className="hz-bg-surface hz-r-lg hz-bordered hz-clip">
+                      <div className="hz-row hz-ai-center hz-jc-between hz-px-4 hz-py-2 hz-border-b hz-bg-surface">
+                        <span className="hz-t-xs hz-fg-muted hz-mono">terminal</span>
                         <CopyButton text={product.install.cli} />
                       </div>
-                      <div className="p-4 font-mono text-sm overflow-x-auto">
-                        <span className="text-neutral-500">$</span>{" "}
-                        <span className="text-neutral-400">{product.install.cli}</span>
+                      <div className="hz-p-4 hz-mono hz-t-sm hz-scroll-x">
+                        <span className="hz-fg-muted">$</span>{" "}
+                        <span className="hz-fg-muted">{product.install.cli}</span>
                       </div>
                     </div>
                   </TabsContent>
                 )}
 
                 {product.install.docker && (
-                  <TabsContent value="docker" className="mt-4">
-                    <div className="bg-neutral-950 rounded-xl border border-neutral-800 overflow-hidden">
-                      <div className="flex items-center justify-between px-4 py-2 border-b border-neutral-800 bg-neutral-900/50">
-                        <span className="text-xs text-neutral-500 font-mono">docker</span>
+                  <TabsContent value="docker" className="hz-mt-4">
+                    <div className="hz-bg-surface hz-r-lg hz-bordered hz-clip">
+                      <div className="hz-row hz-ai-center hz-jc-between hz-px-4 hz-py-2 hz-border-b hz-bg-surface">
+                        <span className="hz-t-xs hz-fg-muted hz-mono">docker</span>
                         <CopyButton text={product.install.docker} />
                       </div>
-                      <div className="p-4 font-mono text-sm overflow-x-auto">
-                        <span className="text-neutral-500">$</span>{" "}
-                        <span className="text-neutral-400">{product.install.docker}</span>
+                      <div className="hz-p-4 hz-mono hz-t-sm hz-scroll-x">
+                        <span className="hz-fg-muted">$</span>{" "}
+                        <span className="hz-fg-muted">{product.install.docker}</span>
                       </div>
                     </div>
                   </TabsContent>
                 )}
 
                 {product.install.npm && (
-                  <TabsContent value="npm" className="mt-4">
-                    <div className="bg-neutral-950 rounded-xl border border-neutral-800 overflow-hidden">
-                      <div className="flex items-center justify-between px-4 py-2 border-b border-neutral-800 bg-neutral-900/50">
-                        <span className="text-xs text-neutral-500 font-mono">npm</span>
+                  <TabsContent value="npm" className="hz-mt-4">
+                    <div className="hz-bg-surface hz-r-lg hz-bordered hz-clip">
+                      <div className="hz-row hz-ai-center hz-jc-between hz-px-4 hz-py-2 hz-border-b hz-bg-surface">
+                        <span className="hz-t-xs hz-fg-muted hz-mono">npm</span>
                         <CopyButton text={product.install.npm} />
                       </div>
-                      <div className="p-4 font-mono text-sm overflow-x-auto">
-                        <span className="text-neutral-500">$</span>{" "}
-                        <span className="text-white">{product.install.npm}</span>
+                      <div className="hz-p-4 hz-mono hz-t-sm hz-scroll-x">
+                        <span className="hz-fg-muted">$</span>{" "}
+                        <span className="hz-fg">{product.install.npm}</span>
                       </div>
                     </div>
                   </TabsContent>
                 )}
 
                 {product.install.pip && (
-                  <TabsContent value="pip" className="mt-4">
-                    <div className="bg-neutral-950 rounded-xl border border-neutral-800 overflow-hidden">
-                      <div className="flex items-center justify-between px-4 py-2 border-b border-neutral-800 bg-neutral-900/50">
-                        <span className="text-xs text-neutral-500 font-mono">pip</span>
+                  <TabsContent value="pip" className="hz-mt-4">
+                    <div className="hz-bg-surface hz-r-lg hz-bordered hz-clip">
+                      <div className="hz-row hz-ai-center hz-jc-between hz-px-4 hz-py-2 hz-border-b hz-bg-surface">
+                        <span className="hz-t-xs hz-fg-muted hz-mono">pip</span>
                         <CopyButton text={product.install.pip} />
                       </div>
-                      <div className="p-4 font-mono text-sm overflow-x-auto">
-                        <span className="text-neutral-500">$</span>{" "}
-                        <span className="text-neutral-400">{product.install.pip}</span>
+                      <div className="hz-p-4 hz-mono hz-t-sm hz-scroll-x">
+                        <span className="hz-fg-muted">$</span>{" "}
+                        <span className="hz-fg-muted">{product.install.pip}</span>
                       </div>
                     </div>
                   </TabsContent>
@@ -458,9 +458,9 @@ export const ProductPageTemplate: React.FC<ProductPageTemplateProps> = ({ produc
               </Tabs>
 
               {/* Universal CLI hint */}
-              <p className="text-center text-neutral-500 mt-6 text-sm">
+              <p className="hz-align-center hz-fg-muted hz-mt-5 hz-t-sm">
                 New to Hanzo? Install the CLI first:{" "}
-                <code className="bg-neutral-800 px-2 py-1 rounded text-white font-mono text-xs">
+                <code className="hz-bg-raised hz-px-2 hz-py-1 hz-r-md hz-fg hz-mono hz-t-xs">
                   curl -fsSL hanzo.sh/install.sh | sh
                 </code>
               </p>
@@ -479,18 +479,18 @@ export const ProductPageTemplate: React.FC<ProductPageTemplateProps> = ({ produc
       )}
 
       {/* Features Section */}
-      <section className="py-16 px-4 border-t border-white/10 bg-gradient-to-b from-neutral-900/30 to-transparent">
-        <div className="max-w-6xl mx-auto">
+      <section className="hz-py-7 hz-px-4 hz-border-t">
+        <div className="hz-container-wide">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-2xl md:text-3xl font-bold mb-2 text-center">Features</h2>
-            <p className="text-neutral-500 text-center mb-10">Everything you need to get started</p>
+            <h2 className="hz-t-2xl hz-w-bold hz-mb-2 hz-align-center">Features</h2>
+            <p className="hz-fg-muted hz-align-center hz-mb-6">Everything you need to get started</p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="hz-grid hz-grid-3 hz-gap-4">
               {product.features.map((feature, index) => (
                 <motion.div
                   key={feature}
@@ -499,12 +499,12 @@ export const ProductPageTemplate: React.FC<ProductPageTemplateProps> = ({ produc
                   viewport={{ once: true }}
                   transition={{ duration: 0.3, delay: index * 0.05 }}
                 >
-                  <div className="bg-neutral-900/30 border border-neutral-800 rounded-xl p-4 hover:border-white/30 transition-colors group">
-                    <div className="flex items-start gap-3">
-                      <div className="mt-0.5">
-                        <CheckCircle className="h-5 w-5 text-white group-hover:text-white transition-colors" />
+                  <div className="hz-card hz-transition hz-card-interactive">
+                    <div className="hz-row hz-ai-start hz-gap-3">
+                      <div className="hz-mt-1">
+                        <CheckCircle className="hz-sq-3 hz-fg hz-transition hz-hoverable" />
                       </div>
-                      <span className="text-neutral-300 group-hover:text-white transition-colors">{feature}</span>
+                      <span className="hz-fg-soft hz-transition hz-hoverable">{feature}</span>
                     </div>
                   </div>
                 </motion.div>
@@ -527,30 +527,30 @@ export const ProductPageTemplate: React.FC<ProductPageTemplateProps> = ({ produc
       />
 
       {/* Resources Section */}
-      <section className="py-16 px-4 border-t border-white/10">
-        <div className="max-w-4xl mx-auto">
+      <section className="hz-py-7 hz-px-4 hz-border-t">
+        <div className="hz-container-narrow">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-2xl md:text-3xl font-bold mb-2 text-center">Resources</h2>
-            <p className="text-neutral-500 text-center mb-10">Learn more about {product.shortName}</p>
+            <h2 className="hz-t-2xl hz-w-bold hz-mb-2 hz-align-center">Resources</h2>
+            <p className="hz-fg-muted hz-align-center hz-mb-6">Learn more about {product.shortName}</p>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="hz-grid hz-grid-3 hz-gap-5">
               <a
                 href={product.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group"
+                className=""
               >
-                <Card className="bg-neutral-900/50 border-neutral-800 hover:border-white/50 transition-all duration-300 h-full">
+                <Card className="hz-bg-surface hz-transition hz-h-full hz-hoverable">
                   <CardHeader>
-                    <CardTitle className="flex items-center gap-2 text-lg">
-                      <Github className="h-5 w-5" />
+                    <CardTitle className="hz-row hz-ai-center hz-gap-2 hz-t-lg">
+                      <Github className="hz-sq-3" />
                       GitHub
-                      <ExternalLink className="h-4 w-4 ml-auto opacity-0 group-hover:opacity-100 transition-opacity text-white" />
+                      <ExternalLink className="hz-sq-2 hz-ml-auto hz-invisible hz-transition hz-fg" />
                     </CardTitle>
                     <CardDescription>
                       Source code, issues, and contributions
@@ -564,14 +564,14 @@ export const ProductPageTemplate: React.FC<ProductPageTemplateProps> = ({ produc
                   href={product.docs}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group"
+                  className=""
                 >
-                  <Card className="bg-neutral-900/50 border-neutral-800 hover:border-white/50 transition-all duration-300 h-full">
+                  <Card className="hz-bg-surface hz-transition hz-h-full hz-hoverable">
                     <CardHeader>
-                      <CardTitle className="flex items-center gap-2 text-lg">
-                        <BookOpen className="h-5 w-5" />
+                      <CardTitle className="hz-row hz-ai-center hz-gap-2 hz-t-lg">
+                        <BookOpen className="hz-sq-3" />
                         Documentation
-                        <ExternalLink className="h-4 w-4 ml-auto opacity-0 group-hover:opacity-100 transition-opacity text-white" />
+                        <ExternalLink className="hz-sq-2 hz-ml-auto hz-invisible hz-transition hz-fg" />
                       </CardTitle>
                       <CardDescription>
                         Guides, API reference, and examples
@@ -581,13 +581,13 @@ export const ProductPageTemplate: React.FC<ProductPageTemplateProps> = ({ produc
                 </a>
               )}
 
-              <Link to="/pricing" className="group">
-                <Card className="bg-neutral-900/50 border-neutral-800 hover:border-white/50 transition-all duration-300 h-full">
+              <Link to="/pricing" className="">
+                <Card className="hz-bg-surface hz-transition hz-h-full hz-hoverable">
                   <CardHeader>
-                    <CardTitle className="flex items-center gap-2 text-lg">
-                      <Sparkles className="h-5 w-5" />
+                    <CardTitle className="hz-row hz-ai-center hz-gap-2 hz-t-lg">
+                      <Sparkles className="hz-sq-3" />
                       Pricing
-                      <ArrowRight className="h-4 w-4 ml-auto opacity-0 group-hover:opacity-100 transition-opacity text-white" />
+                      <ArrowRight className="hz-sq-2 hz-ml-auto hz-invisible hz-transition hz-fg" />
                     </CardTitle>
                     <CardDescription>
                       {product.pricing === 'free' ? 'Completely free to use' : 'Free tier available, scale as you grow'}
@@ -602,29 +602,29 @@ export const ProductPageTemplate: React.FC<ProductPageTemplateProps> = ({ produc
 
       {/* Related Products Section */}
       {relatedProducts.length > 0 && (
-        <section className="py-16 px-4 border-t border-white/10 bg-gradient-to-t from-neutral-900/30 to-transparent">
-          <div className="max-w-6xl mx-auto">
+        <section className="hz-py-7 hz-px-4 hz-border-t">
+          <div className="hz-container-wide">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <div className="flex items-center justify-between mb-10">
+              <div className="hz-row hz-ai-center hz-jc-between hz-mb-6">
                 <div>
-                  <h2 className="text-2xl md:text-3xl font-bold mb-2">Related Products</h2>
-                  <p className="text-neutral-500">More from Hanzo {product.category.charAt(0).toUpperCase() + product.category.slice(1)}</p>
+                  <h2 className="hz-t-2xl hz-w-bold hz-mb-2">Related Products</h2>
+                  <p className="hz-fg-muted">More from Hanzo {product.category.charAt(0).toUpperCase() + product.category.slice(1)}</p>
                 </div>
                 <Link
                   to={`/products/${product.category}`}
-                  className="text-white hover:text-white/80 text-sm font-medium flex items-center gap-1 group"
+                  className="hz-fg hz-t-sm hz-w-medium hz-row hz-ai-center hz-gap-1 hz-hoverable"
                 >
                   View all
-                  <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="hz-sq-2 hz-transition" />
                 </Link>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="hz-grid hz-grid-3 hz-gap-5">
                 {relatedProducts.map((relatedProduct, index) => (
                   <RelatedProductCard key={relatedProduct.id} product={relatedProduct} index={index} />
                 ))}
@@ -643,40 +643,40 @@ export const ProductPageTemplate: React.FC<ProductPageTemplateProps> = ({ produc
       )}
 
       {/* CTA Section */}
-      <section className="py-24 px-4 border-t border-white/10 relative overflow-hidden">
+      <section className="hz-py-7 hz-px-4 hz-border-t hz-rel hz-clip">
         {/* Background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-white/5 to-transparent" />
+        <div className="hz-abs hz-inset" />
 
-        <div className="max-w-4xl mx-auto text-center relative z-10">
+        <div className="hz-container-narrow hz-align-center hz-rel hz-z-raised">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            <h2 className="hz-t-3xl hz-w-bold hz-mb-5">
               Ready to get started with{" "}
-              <span className="text-white">{product.shortName}</span>?
+              <span className="hz-fg">{product.shortName}</span>?
             </h2>
-            <p className="text-lg text-neutral-400 mb-10 max-w-2xl mx-auto">
+            <p className="hz-container-narrow hz-mw-md hz-t-lg hz-fg-muted hz-mb-6">
               Deploy in minutes with Hanzo Cloud or self-host with our open-source release.
               {product.pricing === 'free' && " It's completely free."}
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="hz-col-row hz-gap-4 hz-jc-center">
               <Button
                 size="lg"
-                className="bg-white text-black hover:bg-white/80 border-0 text-lg px-8"
+                className="hz-bg-inverse hz-fg-inverse hz-border-none hz-t-lg hz-px-6 hz-hoverable"
                 asChild
               >
                 <Link to="/pricing">
                   Start Free
-                  <ArrowRight className="ml-2 h-5 w-5" />
+                  <ArrowRight className="hz-sq-3 hz-ml-2" />
                 </Link>
               </Button>
               <Button
                 size="lg"
                 variant="outline"
-                className="border-white/20 hover:bg-white/5 hover:border-white/40 text-lg px-8"
+                className="hz-t-lg hz-px-6 hz-hoverable"
                 asChild
               >
                 <Link to="/contact">

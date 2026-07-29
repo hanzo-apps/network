@@ -5,42 +5,42 @@ import { ShoppingCart, ExternalLink } from "lucide-react";
 
 const HeroSection = () => {
   return (
-    <section className="relative pt-28 pb-16 md:pt-36 md:pb-24 overflow-hidden">
-      <div className="absolute inset-0 z-0 bg-gradient-to-b from-black via-gray-900/50 to-black" />
+    <section className="hz-rel hz-pt-6 hz-pb-6 hz-clip">
+      <div className="hz-abs hz-inset hz-z-base" />
       
       {/* Background effect */}
-      <div className="absolute top-0 left-0 right-0 h-96 bg-gradient-to-br from-neutral-400/10 via-neutral-600/5 to-transparent z-0" />
+      <div className="hz-abs hz-top-0 hz-left-0 hz-right-0 hz-bh-8 hz-z-base" />
       
-      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-4xl mx-auto">
-          <div className="inline-flex items-center px-3 py-1 mb-4 border border-neutral-500/30 rounded-full bg-neutral-500/10 text-neutral-400 text-sm">
-            <ShoppingCart className="mr-2 h-4 w-4" />
+      <div className="hz-container hz-rel hz-z-raised hz-mx-auto hz-px-4">
+        <div className="hz-container-narrow hz-align-center">
+          <div className="hz-inline hz-ai-center hz-px-3 hz-py-1 hz-mb-4 hz-bordered hz-border-strong hz-r-full hz-bg-raised hz-fg-muted hz-t-sm">
+            <ShoppingCart className="hz-sq-2 hz-mr-2" />
             Headless E-commerce Platform
           </div>
           
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
-            <span className="text-[var(--white)]">Hanzo</span>
-            <span className="bg-gradient-to-r from-neutral-400 to-neutral-600 bg-clip-text text-transparent"> Commerce</span>
+          <h1 className="hz-t-4xl hz-w-bold hz-tracking-tight hz-mb-5">
+            <span className="hz-fg">Hanzo</span>
+            <span className="hz-chrome"> Commerce</span>
           </h1>
           
-          <p className="text-neutral-300 text-lg md:text-xl mb-8 max-w-3xl mx-auto">
+          <p className="hz-container-narrow hz-fg-soft hz-t-lg hz-mb-6">
             A powerful headless e-commerce platform with API-first architecture. 
             Build custom shopping experiences with modular components that scale.
           </p>
           
-          <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12">
+          <div className="hz-col-row hz-jc-center hz-gap-4 hz-mb-7">
             <Button 
               size="lg" 
-              className="bg-neutral-500 hover:bg-neutral-600 text-black"
+              className="hz-bg-raised hz-fg-inverse hz-hoverable"
               onClick={() => window.open('https://docs.hanzo.ai/commerce', '_blank')}
             >
               Get Started
-              <ExternalLink className="ml-2 h-4 w-4" />
+              <ExternalLink className="hz-sq-2 hz-ml-2" />
             </Button>
             <Button 
               variant="outline" 
               size="lg"
-              className="border-gray-600 text-[var(--white)] hover:bg-[var(--white)]/10"
+              className="hz-border-strong hz-fg hz-hoverable"
               onClick={() => window.open('https://console.hanzo.ai', '_blank')}
             >
               Console

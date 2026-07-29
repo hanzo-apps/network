@@ -9,13 +9,13 @@ interface GlobeThreeJsProps {
 
 const GlobeThreeJs: React.FC<GlobeThreeJsProps> = ({ width, height }) => {
   return (
-    <div className="relative w-full h-full bg-gradient-to-br from-black to-neutral-900">
+    <div className="hz-rel hz-w-full hz-h-full">
       <GlobeRenderer width={width} height={height} />
       
       {/* Status indicator */}
-      <div className="absolute bottom-3 left-3 flex items-center space-x-2">
-        <div className="h-2 w-2 bg-neutral-500 rounded-full animate-pulse"></div>
-        <span className="text-xs text-neutral-400">Live network traffic</span>
+      <div className="hz-abs hz-row hz-ai-center hz-inline-2">
+        <div className="hz-sq-1 hz-bg-raised hz-r-full"></div>
+        <span className="hz-t-xs hz-fg-muted">Live network traffic</span>
       </div>
     </div>
   );

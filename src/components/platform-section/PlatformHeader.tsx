@@ -6,16 +6,16 @@ import { Button } from "@/components/ui/button";
 
 const PlatformHeader: React.FC = () => {
   return (
-    <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16">
+    <div className="hz-col-row hz-jc-between hz-ai-start hz-mb-7">
       <div>
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-4"
+          className="hz-mb-4"
         >
-          <span className="inline-block px-4 py-1 rounded-full bg-neutral-800/30 border border-neutral-500/30 text-neutral-300 text-sm font-medium">
+          <span className="hz-px-4 hz-py-1 hz-r-full hz-bg-raised hz-bordered hz-border-strong hz-fg-soft hz-t-sm hz-w-medium">
             AI Engineering Platform
           </span>
         </motion.div>
@@ -27,11 +27,11 @@ const PlatformHeader: React.FC = () => {
         >
           <ChromeText 
             as="h2" 
-            className="text-3xl md:text-5xl font-bold mb-4"
+            className="hz-t-3xl hz-w-bold hz-mb-4"
           >
             Your AI future belongs to you
           </ChromeText>
-          <p className="text-xl text-neutral-300 max-w-2xl">
+          <p className="hz-t-xl hz-fg-soft hz-mw-md">
             Pioneer the next wave of intelligence with an integrated ecosystem that gives you full control over your AI journey.
           </p>
         </motion.div>
@@ -42,9 +42,9 @@ const PlatformHeader: React.FC = () => {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="mt-8 md:mt-0"
+        className="hz-mt-6"
       >
-        <Button size="lg" variant="outline" className="text-[var(--white)]">
+        <Button size="lg" variant="outline" className="hz-fg">
           <a href="/solutions">Explore Solutions</a>
         </Button>
       </motion.div>

@@ -74,7 +74,7 @@ export const NavMenu = ({ label, children }: NavMenuProps) => {
 
   return (
     <div 
-      className="relative" 
+      className="hz-rel" 
       ref={menuRef}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -83,17 +83,17 @@ export const NavMenu = ({ label, children }: NavMenuProps) => {
       <button
         onClick={toggleMenu}
         className={cn(
-          "inline-flex items-center outline-none focus:outline-none transition-colors text-sm font-medium",
+          "hz-inline hz-ai-center hz-transition hz-t-sm hz-w-medium",
           isOpen
-            ? (isDarkMode ? "text-white" : "text-black")
-            : (isDarkMode ? "text-neutral-400 hover:text-white" : "text-neutral-600 hover:text-black")
+            ? (isDarkMode ? "hz-fg" : "hz-fg-inverse")
+            : (isDarkMode ? "hz-fg-muted hz-link" : "hz-fg-faint hz-link")
         )}
       >
         {label}
         <ChevronDown
           className={cn(
-            "ml-1 h-4 w-4 transition-transform duration-300",
-            isOpen && "rotate-180"
+            "hz-sq-2 hz-ml-1 hz-transition",
+            isOpen && ""
           )}
         />
       </button>
@@ -104,16 +104,16 @@ export const NavMenu = ({ label, children }: NavMenuProps) => {
           {/* Desktop: Full viewport width dropdown with backdrop */}
           {isDesktop ? (
             <div className={cn(
-                   "fixed left-0 w-full backdrop-blur-md z-50 border-b shadow-2xl",
+                   "hz-fixed hz-left-0 hz-w-full hz-glass hz-z-overlay hz-border-b hz-shadow-lg",
                    isDarkMode
-                     ? "bg-black/95 border-gray-800/50"
-                     : "bg-white/95 border-gray-200"
+                     ? "hz-bg-surface"
+                     : "hz-bg-quiet hz-border-strong"
                  )}
                  style={{
                    top: 'var(--header-height)',
                  }}>
-              <div className="py-6">
-                <div className="w-full max-w-[1400px] mx-auto px-4 md:px-8 lg:px-12">
+              <div className="hz-py-5">
+                <div className="hz-container hz-w-full">
                   {childrenWithProps}
                 </div>
               </div>
@@ -122,8 +122,8 @@ export const NavMenu = ({ label, children }: NavMenuProps) => {
             /* Mobile: Full-viewport menu overlay */
             <div
               className={cn(
-                "fixed inset-0 left-0 right-0 backdrop-blur-md z-50 w-screen transition-opacity duration-300 ease-in-out",
-                isDarkMode ? "bg-black/95" : "bg-white/95"
+                "hz-fixed hz-inset hz-left-0 hz-right-0 hz-glass hz-z-overlay hz-w-full hz-transition",
+                isDarkMode ? "hz-bg-surface" : "hz-bg-quiet"
               )}
               style={{
                 top: 'var(--header-height)',
@@ -133,11 +133,11 @@ export const NavMenu = ({ label, children }: NavMenuProps) => {
               onClick={closeMenu}
             >
               <div 
-                className="relative w-full h-full overflow-y-auto"
+                className="hz-rel hz-w-full hz-h-full hz-scroll-y"
                 onClick={(e) => e.stopPropagation()}
               >
-                <div className="px-4 sm:px-6 lg:px-8 py-6 h-full flex flex-col">
-                  <div className="flex-grow overflow-x-hidden">
+                <div className="hz-px-4 hz-py-5 hz-h-full hz-col">
+                  <div className="hz-grow">
                     {childrenWithProps}
                   </div>
                 </div>

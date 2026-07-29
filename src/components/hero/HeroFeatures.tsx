@@ -15,7 +15,7 @@ const HeroFeatures: React.FC<HeroFeaturesProps> = ({ titleAnimationComplete }) =
         y: titleAnimationComplete ? 0 : 20 
       }}
       transition={{ duration: 0.5, delay: 0.5 }}
-      className="max-w-4xl mx-auto"
+      className="hz-container-narrow"
     >
       {/* Empty container that maintains the layout spacing */}
     </motion.div>

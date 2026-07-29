@@ -10,26 +10,26 @@ const FeatureCard = ({ title, description, icon, list, code = null }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      className="bg-gray-900/30 border border-gray-800 rounded-xl p-8 h-full"
+      className="hz-card hz-h-full"
     >
-      <div className="flex flex-col h-full">
-        <div className="mb-6">
+      <div className="hz-col hz-h-full">
+        <div className="hz-mb-5">
           {icon}
-          <h3 className="text-2xl font-semibold mt-4 mb-2">{title}</h3>
-          <p className="text-neutral-300 mb-4">{description}</p>
+          <h3 className="hz-t-2xl hz-w-semibold hz-mt-4 hz-mb-2">{title}</h3>
+          <p className="hz-fg-soft hz-mb-4">{description}</p>
         </div>
         
         {list && (
-          <div className="mb-4">
+          <div className="hz-mb-4">
             {list.map((item, index) => (
-              <div key={index} className="text-neutral-400 mb-2">{item}</div>
+              <div key={index} className="hz-fg-muted hz-mb-2">{item}</div>
             ))}
           </div>
         )}
         
         {code && (
-          <div className="mt-auto">
-            <div className="bg-gray-950 rounded-lg p-4 font-mono text-xs text-neutral-300 text-left overflow-auto">
+          <div className="hz-mt-auto">
+            <div className="hz-bg-surface hz-r-lg hz-p-4 hz-mono hz-t-xs hz-fg-soft hz-align-left hz-scroll-y">
               <pre>{code}</pre>
             </div>
           </div>
@@ -41,30 +41,30 @@ const FeatureCard = ({ title, description, icon, list, code = null }) => {
 
 const HanzoAppFeatures = () => {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[var(--black)]">
-      <div className="max-w-7xl mx-auto">
+    <section className="hz-py-7 hz-px-4 hz-bg">
+      <div className="hz-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="hz-align-center hz-mb-7"
         >
-          <h2 className="text-3xl font-bold mb-4">Features 01</h2>
+          <h2 className="hz-t-3xl hz-w-bold hz-mb-4">Features 01</h2>
         </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+        <div className="hz-grid hz-grid-3 hz-gap-6 hz-mb-7">
           <FeatureCard 
             title="Chatflow LLM Orchestration"
             description="Connect LLMs with memory, data loaders, cache, moderation and many more"
-            icon={<MessageCircle className="h-10 w-10 text-neutral-400" />}
+            icon={<MessageCircle className="hz-sq-6 hz-fg-muted" />}
             list={["Langchain", "LlamaIndex", "100+ integrations"]}
           />
           
           <FeatureCard 
             title="Agents & Assistants"
             description="Create autonomous agent that can uses tools to execute different tasks"
-            icon={<Bot className="h-10 w-10 text-neutral-400" />}
+            icon={<Bot className="hz-sq-6 hz-fg-muted" />}
             list={["Custom Tools", "OpenAI Assistant", "Function Agent"]}
             code={`import requests
  
@@ -85,7 +85,7 @@ output = query({
           <FeatureCard 
             title="Developer Friendly API, SDK, Embed"
             description="Extend and integrate to your applications using APIs, SDK and Embedded Chat"
-            icon={<Code className="h-10 w-10 text-neutral-400" />}
+            icon={<Code className="hz-sq-6 hz-fg-muted" />}
             list={["APIs", "Embedded Widget", "React SDK"]}
           />
         </div>
@@ -95,16 +95,16 @@ output = query({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="hz-align-center hz-mb-7"
         >
-          <h2 className="text-3xl font-bold mb-4">Features 02</h2>
+          <h2 className="hz-t-3xl hz-w-bold hz-mb-4">Features 02</h2>
         </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-8">
+        <div className="hz-grid hz-gap-6">
           <FeatureCard 
             title="Platform Agnostic Open source LLMs"
             description="Run in air-gapped environment with local LLMs, embeddings and vector databases"
-            icon={<ServerIcon className="h-10 w-10 text-neutral-400" />}
+            icon={<ServerIcon className="hz-sq-6 hz-fg-muted" />}
             list={[
               "HuggingFace, Ollama, LocalAI, Replicate", 
               "Llama2, Mistral, Vicuna, Orca, Llava", 

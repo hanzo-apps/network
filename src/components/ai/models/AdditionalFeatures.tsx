@@ -6,48 +6,48 @@ import { Button } from "@/components/ui/button";
 
 const AdditionalFeatures = () => {
   return (
-    <div className="bg-gradient-to-r from-neutral-800/20 to-neutral-800/20 rounded-2xl p-8 border border-neutral-500/30 mt-12">
-      <h3 className="text-2xl font-bold text-[var(--white)] mb-4">Single API for Everything</h3>
-      <p className="text-lg text-neutral-300 mb-8">
+    <div className="hz-card hz-mt-7">
+      <h3 className="hz-t-2xl hz-w-bold hz-fg hz-mb-4">Single API for Everything</h3>
+      <p className="hz-t-lg hz-fg-soft hz-mb-6">
         Our unified API provides seamless access to all AI capabilities through a consistent, developer-friendly interface
       </p>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div className="bg-[var(--black)]/30 p-4 rounded-lg">
-          <Brain className="h-8 w-8 text-neutral-400 mb-3" />
-          <h4 className="text-lg font-semibold text-[var(--white)] mb-2">Model Routing</h4>
-          <p className="text-sm text-neutral-300">
+      <div className="hz-grid hz-grid-4 hz-gap-5">
+        <div className="hz-bg-overlay hz-p-4 hz-r-lg">
+          <Brain className="hz-sq-5 hz-fg-muted hz-mb-3" />
+          <h4 className="hz-t-lg hz-w-semibold hz-fg hz-mb-2">Model Routing</h4>
+          <p className="hz-t-sm hz-fg-soft">
             Smart routing to optimal models based on task, cost, and performance requirements
           </p>
         </div>
         
-        <div className="bg-[var(--black)]/30 p-4 rounded-lg">
-          <MessageSquare className="h-8 w-8 text-neutral-400 mb-3" />
-          <h4 className="text-lg font-semibold text-[var(--white)] mb-2">Document Processing</h4>
-          <p className="text-sm text-neutral-300">
+        <div className="hz-bg-overlay hz-p-4 hz-r-lg">
+          <MessageSquare className="hz-sq-5 hz-fg-muted hz-mb-3" />
+          <h4 className="hz-t-lg hz-w-semibold hz-fg hz-mb-2">Document Processing</h4>
+          <p className="hz-t-sm hz-fg-soft">
             Built-in document parsing, chunking, and semantic analysis capabilities
           </p>
         </div>
         
-        <div className="bg-[var(--black)]/30 p-4 rounded-lg">
-          <Box className="h-8 w-8 text-neutral-400 mb-3" />
-          <h4 className="text-lg font-semibold text-[var(--white)] mb-2">Vector Search</h4>
-          <p className="text-sm text-neutral-300">
+        <div className="hz-bg-overlay hz-p-4 hz-r-lg">
+          <Box className="hz-sq-5 hz-fg-muted hz-mb-3" />
+          <h4 className="hz-t-lg hz-w-semibold hz-fg hz-mb-2">Vector Search</h4>
+          <p className="hz-t-sm hz-fg-soft">
             Integrated vector database for semantic search and retrieval augmented generation
           </p>
         </div>
         
-        <div className="bg-[var(--black)]/30 p-4 rounded-lg">
-          <Database className="h-8 w-8 text-neutral-400 mb-3" />
-          <h4 className="text-lg font-semibold text-[var(--white)] mb-2">Knowledge Base</h4>
-          <p className="text-sm text-neutral-300">
+        <div className="hz-bg-overlay hz-p-4 hz-r-lg">
+          <Database className="hz-sq-5 hz-fg-muted hz-mb-3" />
+          <h4 className="hz-t-lg hz-w-semibold hz-fg hz-mb-2">Knowledge Base</h4>
+          <p className="hz-t-sm hz-fg-soft">
             Create, manage and query custom knowledge bases for your AI applications
           </p>
         </div>
       </div>
 
-      <div className="mt-8 text-center">
-        <Button className="bg-neutral-600 hover:bg-neutral-700 text-[var(--white)] px-6 py-2 text-lg">
+      <div className="hz-mt-6 hz-align-center">
+        <Button className="hz-bg-raised hz-fg hz-px-5 hz-py-2 hz-t-lg hz-hoverable">
           Explore the API
         </Button>
       </div>

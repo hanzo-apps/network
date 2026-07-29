@@ -14,12 +14,12 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({ title, description }) => 
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8 }}
-      className="text-center mb-12"
+      className="hz-align-center hz-mb-7"
     >
-      <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[var(--white)]">{title}</h2>
-      <div className="h-1 w-20 bg-neutral-600 mx-auto mb-6"></div>
+      <h2 className="hz-t-3xl hz-w-bold hz-mb-4 hz-fg">{title}</h2>
+      <div className="hz-bh-1 hz-bw-8 hz-bg-raised hz-mx-auto hz-mb-5"></div>
       {description && (
-        <p className="text-neutral-300 md:text-lg max-w-3xl mx-auto">
+        <p className="hz-container-narrow hz-fg-soft">
           {description}
         </p>
       )}

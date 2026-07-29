@@ -4,7 +4,7 @@ import GlobeContainer from "./globe/GlobeContainer";
 
 const GlobalNetwork: React.FC = () => {
   return (
-    <div className="my-16">
+    <div className="hz-mt-7 hz-mb-7">
       <GlobeContainer />
     </div>
   );

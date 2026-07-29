@@ -15,9 +15,9 @@ export const GridLines: React.FC<GridLinesProps> = ({
   opacity = 0.15 // Lower default opacity
 }) => {
   return (
-    <div className={`absolute inset-0 pointer-events-none overflow-hidden ${className}`}>
+    <div className={`hz-abs hz-inset hz-no-pointer hz-clip ${className}`}>
       <div 
-        className="absolute inset-0"
+        className="hz-abs hz-inset"
         style={{
           backgroundImage: `
             linear-gradient(to right, ${color} 1px, transparent 1px),
@@ -54,7 +54,7 @@ export const BlueprintLine: React.FC<BlueprintLineProps> = ({
   
   return (
     <div 
-      className={`absolute pointer-events-none ${className}`}
+      className={`hz-abs hz-no-pointer ${className}`}
       style={{
         ...(isHorizontal 
           ? { 
@@ -107,7 +107,7 @@ export const ArchitecturalCorner: React.FC<ArchitecturalCornerProps> = ({
   };
   
   return (
-    <div className={`absolute ${getPositionClasses()} pointer-events-none ${className}`}>
+    <div className={`hz-abs ${getPositionClasses()} hz-no-pointer ${className}`}>
       <div 
         style={{
           width: size,
@@ -154,7 +154,7 @@ export const ArchitecturalBox: React.FC<{
 }) => {
   return (
     <div 
-      className={`relative ${className}`}
+      className={`hz-rel ${className}`}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       onClick={onClick}

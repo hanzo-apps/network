@@ -15,19 +15,19 @@ const PrioritySelector: React.FC<PrioritySelectorProps> = ({ priority, onChange 
 
   return (
     <div>
-      <label className="block text-sm font-medium text-neutral-400 mb-1">Priority</label>
-      <div className="space-y-1">
+      <label className="hz-t-sm hz-w-medium hz-fg-muted hz-mb-1">Priority</label>
+      <div className="hz-stack-1">
         {priorityOptions.map(option => (
           <div 
             key={option.value}
-            className={`px-3 py-2 rounded cursor-pointer flex items-center ${
+            className={`hz-btn hz-btn-ghost hz-pointer ${
               priority === option.value 
-                ? 'bg-gray-800' 
-                : 'hover:bg-gray-800/50'
+                ? 'hz-bg-raised' 
+                : 'hz-hoverable'
             }`}
             onClick={() => onChange(option.value as "low" | "medium" | "high")}
           >
-            <div className={`w-2 h-2 rounded-full ${option.color} mr-2`}></div>
+            <div className={`hz-sq-1 hz-r-full ${option.color} hz-mr-2`}></div>
             {option.label}
           </div>
         ))}

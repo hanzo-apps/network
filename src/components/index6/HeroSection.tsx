@@ -49,10 +49,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   };
 
   return (
-    <section ref={containerRef} className="pt-32 pb-20 px-4 md:px-8 min-h-[90vh] flex flex-col justify-center relative">
+    <section ref={containerRef} className="hz-pt-6 hz-pb-6 hz-px-4 hz-col hz-jc-center hz-rel">
       <motion.div
         style={{ scale, opacity }}
-        className="max-w-6xl mx-auto text-center"
+        className="hz-container-wide hz-align-center"
       >
         <HeroTitle 
           mousePosition={mousePosition}
@@ -66,7 +66,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: titleAnimationComplete ? 1 : 0, y: titleAnimationComplete ? 0 : 20 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-6 mb-8 text-lg md:text-xl text-neutral-300 max-w-3xl mx-auto"
+          className="hz-container-narrow hz-mt-5 hz-mb-6 hz-t-lg hz-fg-soft"
         >
           Your AI future belongs in your hands. With Hanzo, pioneer a new era of intelligence with customizable, private, transparent, and trusted AI solutions.
         </motion.p>
@@ -75,20 +75,20 @@ const HeroSection: React.FC<HeroSectionProps> = ({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: titleAnimationComplete ? 1 : 0, y: titleAnimationComplete ? 0 : 20 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="mt-8 flex flex-wrap justify-center gap-4"
+          className="hz-mt-6 hz-row hz-wrap hz-jc-center hz-gap-4"
         >
           <Button 
             size="lg" 
-            className="bg-neutral-600 hover:bg-neutral-700 text-[var(--white)] px-8 py-6 text-lg"
+            className="hz-bg-raised hz-fg hz-px-6 hz-py-5 hz-t-lg hz-hoverable"
             onClick={handleGetStarted}
           >
-            Get Started for Free <ArrowRight className="ml-2 h-5 w-5" />
+            Get Started for Free <ArrowRight className="hz-sq-3 hz-ml-2" />
           </Button>
           
           <Button 
             size="lg" 
             variant="outline"
-            className="border-neutral-500/30 hover:border-neutral-500/70 text-[var(--white)] hover:text-[var(--white)] px-8 py-6 text-lg"
+            className="hz-border-strong hz-fg hz-px-6 hz-py-5 hz-t-lg hz-hoverable"
             onClick={() => navigate('/platform')}
           >
             Explore Platform

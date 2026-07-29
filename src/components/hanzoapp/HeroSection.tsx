@@ -1,3 +1,4 @@
+import { BRAND } from '@/lib/brand';
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -15,7 +16,6 @@ import {
   Chrome,
 } from "lucide-react";
 
-const BRAND_COLOR = "#ffffff";
 
 const PLATFORMS = [
   { id: "web", label: "Web App", icon: Globe, description: "Build in browser" },
@@ -29,95 +29,95 @@ const AppDemo = ({ activeTab }: { activeTab: string }) => {
     web: {
       title: "hanzo.app",
       content: (
-        <div className="space-y-3">
-          <div className="flex items-center gap-2 text-sm">
-            <Check className="w-4 h-4 text-neutral-400" />
-            <span className="text-neutral-400">Workspace synced</span>
+        <div className="hz-stack-3">
+          <div className="hz-row hz-ai-center hz-gap-2 hz-t-sm">
+            <Check className="hz-sq-2 hz-fg-muted" />
+            <span className="hz-fg-muted">Workspace synced</span>
           </div>
-          <div className="bg-neutral-900/50 rounded-lg p-3">
-            <div className="text-xs text-neutral-500 mb-2">Active Projects</div>
-            <div className="space-y-2">
-              <div className="flex items-center justify-between text-sm">
-                <span className="text-white">signal-server</span>
-                <span className="text-neutral-400">12 files changed</span>
+          <div className="hz-bg-surface hz-r-lg hz-p-3">
+            <div className="hz-t-xs hz-fg-muted hz-mb-2">Active Projects</div>
+            <div className="hz-stack-2">
+              <div className="hz-row hz-ai-center hz-jc-between hz-t-sm">
+                <span className="hz-fg">signal-server</span>
+                <span className="hz-fg-muted">12 files changed</span>
               </div>
-              <div className="flex items-center justify-between text-sm">
-                <span className="text-white">payments-api</span>
-                <span className="text-neutral-400">3 PRs pending</span>
+              <div className="hz-row hz-ai-center hz-jc-between hz-t-sm">
+                <span className="hz-fg">payments-api</span>
+                <span className="hz-fg-muted">3 PRs pending</span>
               </div>
             </div>
           </div>
-          <div className="text-xs text-neutral-500">Collaborative editing • Real-time sync • Cloud storage</div>
+          <div className="hz-t-xs hz-fg-muted">Collaborative editing • Real-time sync • Cloud storage</div>
         </div>
       ),
     },
     desktop: {
       title: "Hanzo Desktop",
       content: (
-        <div className="space-y-3">
-          <div className="flex items-center gap-2 text-sm">
-            <Monitor className="w-4 h-4 text-neutral-400" />
-            <span className="text-neutral-400">Native performance</span>
+        <div className="hz-stack-3">
+          <div className="hz-row hz-ai-center hz-gap-2 hz-t-sm">
+            <Monitor className="hz-sq-2 hz-fg-muted" />
+            <span className="hz-fg-muted">Native performance</span>
           </div>
-          <div className="grid grid-cols-3 gap-2">
-            <div className="bg-neutral-900/50 rounded-lg p-2 text-center">
-              <Apple className="w-5 h-5 mx-auto mb-1 text-neutral-400" />
-              <span className="text-xs text-neutral-500">macOS</span>
+          <div className="hz-grid hz-grid-3 hz-gap-2">
+            <div className="hz-bg-surface hz-r-lg hz-p-2 hz-align-center">
+              <Apple className="hz-sq-3 hz-mx-auto hz-mb-1 hz-fg-muted" />
+              <span className="hz-t-xs hz-fg-muted">macOS</span>
             </div>
-            <div className="bg-neutral-900/50 rounded-lg p-2 text-center">
-              <Monitor className="w-5 h-5 mx-auto mb-1 text-neutral-400" />
-              <span className="text-xs text-neutral-500">Windows</span>
+            <div className="hz-bg-surface hz-r-lg hz-p-2 hz-align-center">
+              <Monitor className="hz-sq-3 hz-mx-auto hz-mb-1 hz-fg-muted" />
+              <span className="hz-t-xs hz-fg-muted">Windows</span>
             </div>
-            <div className="bg-neutral-900/50 rounded-lg p-2 text-center">
-              <Chrome className="w-5 h-5 mx-auto mb-1 text-neutral-400" />
-              <span className="text-xs text-neutral-500">Linux</span>
+            <div className="hz-bg-surface hz-r-lg hz-p-2 hz-align-center">
+              <Chrome className="hz-sq-3 hz-mx-auto hz-mb-1 hz-fg-muted" />
+              <span className="hz-t-xs hz-fg-muted">Linux</span>
             </div>
           </div>
-          <div className="text-xs text-neutral-500">Offline capable • System integrations • Native UI</div>
+          <div className="hz-t-xs hz-fg-muted">Offline capable • System integrations • Native UI</div>
         </div>
       ),
     },
     local: {
       title: "Local AI Mode",
       content: (
-        <div className="space-y-3">
-          <div className="flex items-center gap-2 text-sm">
-            <Cpu className="w-4 h-4 text-neutral-400" />
-            <span className="text-neutral-400">Running locally</span>
+        <div className="hz-stack-3">
+          <div className="hz-row hz-ai-center hz-gap-2 hz-t-sm">
+            <Cpu className="hz-sq-2 hz-fg-muted" />
+            <span className="hz-fg-muted">Running locally</span>
           </div>
-          <div className="bg-neutral-900/50 rounded-lg p-3 font-mono text-xs">
-            <div className="text-neutral-500">$ hanzo local start</div>
-            <div className="text-neutral-400 mt-1">✓ Qwen3-32B loaded (16GB VRAM)</div>
-            <div className="text-neutral-400">✓ MCP tools connected</div>
-            <div className="text-neutral-400">✓ Ready on localhost:8080</div>
+          <div className="hz-bg-surface hz-r-lg hz-p-3 hz-mono hz-t-xs">
+            <div className="hz-fg-muted">$ hanzo local start</div>
+            <div className="hz-fg-muted hz-mt-1">✓ Qwen3-32B loaded (16GB VRAM)</div>
+            <div className="hz-fg-muted">✓ MCP tools connected</div>
+            <div className="hz-fg-muted">✓ Ready on localhost:8080</div>
           </div>
-          <div className="text-xs text-neutral-500">Zero data leaves your machine • Full privacy • GPU accelerated</div>
+          <div className="hz-t-xs hz-fg-muted">Zero data leaves your machine • Full privacy • GPU accelerated</div>
         </div>
       ),
     },
     node: {
       title: "Hanzo Node",
       content: (
-        <div className="space-y-3">
-          <div className="flex items-center gap-2 text-sm">
-            <Shield className="w-4 h-4" style={{ color: BRAND_COLOR }} />
-            <span style={{ color: BRAND_COLOR }}>Node active</span>
+        <div className="hz-stack-3">
+          <div className="hz-row hz-ai-center hz-gap-2 hz-t-sm">
+            <Shield className="hz-sq-2 hz-fg" />
+            <span className="hz-fg" >Node active</span>
           </div>
-          <div className="bg-neutral-900/50 rounded-lg p-3 font-mono text-xs">
-            <div className="flex justify-between">
-              <span className="text-neutral-500">Staked:</span>
-              <span className="text-white">50,000 LUX</span>
+          <div className="hz-bg-surface hz-r-lg hz-p-3 hz-mono hz-t-xs">
+            <div className="hz-row hz-jc-between">
+              <span className="hz-fg-muted">Staked:</span>
+              <span className="hz-fg">50,000 LUX</span>
             </div>
-            <div className="flex justify-between">
-              <span className="text-neutral-500">Earnings:</span>
-              <span className="text-neutral-400">+127.4 LUX/day</span>
+            <div className="hz-row hz-jc-between">
+              <span className="hz-fg-muted">Earnings:</span>
+              <span className="hz-fg-muted">+127.4 LUX/day</span>
             </div>
-            <div className="flex justify-between">
-              <span className="text-neutral-500">Uptime:</span>
-              <span className="text-white">99.97%</span>
+            <div className="hz-row hz-jc-between">
+              <span className="hz-fg-muted">Uptime:</span>
+              <span className="hz-fg">99.97%</span>
             </div>
           </div>
-          <div className="text-xs text-neutral-500">Earn rewards • Decentralized compute • Proof of AI</div>
+          <div className="hz-t-xs hz-fg-muted">Earn rewards • Decentralized compute • Proof of AI</div>
         </div>
       ),
     },
@@ -126,12 +126,12 @@ const AppDemo = ({ activeTab }: { activeTab: string }) => {
   const demo = demos[activeTab];
 
   return (
-    <div className="rounded-xl border border-neutral-700 bg-neutral-900/95 backdrop-blur-sm overflow-hidden shadow-2xl h-[320px] flex flex-col">
-      <div className="flex items-center gap-2 px-4 py-3 border-b border-neutral-800 bg-neutral-950 shrink-0">
-        <div className="flex gap-1.5">
-          <div className="w-3 h-3 rounded-full bg-neutral-600/80" />
-          <div className="w-3 h-3 rounded-full bg-neutral-500/80" />
-          <div className="w-3 h-3 rounded-full bg-neutral-500/80" />
+    <div className="hz-r-lg hz-bordered hz-bg-surface hz-glass hz-clip hz-shadow-lg hz-col">
+      <div className="hz-row hz-ai-center hz-gap-2 hz-px-4 hz-py-3 hz-border-b hz-bg-surface hz-none">
+        <div className="hz-row hz-gap-2">
+          <div className="hz-sq-1 hz-r-full hz-bg-raised" />
+          <div className="hz-sq-1 hz-r-full hz-bg-raised" />
+          <div className="hz-sq-1 hz-r-full hz-bg-raised" />
         </div>
         <AnimatePresence mode="wait">
           <motion.span
@@ -139,13 +139,13 @@ const AppDemo = ({ activeTab }: { activeTab: string }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="text-xs text-neutral-500 font-mono ml-2"
+            className="hz-t-xs hz-fg-muted hz-mono hz-ml-2"
           >
             {demo.title}
           </motion.span>
         </AnimatePresence>
       </div>
-      <div className="flex-1 p-4 bg-neutral-950 overflow-y-auto">
+      <div className="hz-grow hz-p-4 hz-bg-surface hz-scroll-y">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
@@ -173,38 +173,38 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative pt-24 pb-16 px-4 md:px-8 lg:px-12 overflow-hidden">
+    <section className="hz-rel hz-pt-6 hz-pb-6 hz-px-4 hz-clip">
       {/* Background gradient */}
-      <div className="absolute inset-0 overflow-hidden z-0 pointer-events-none">
+      <div className="hz-abs hz-inset hz-clip hz-z-base hz-no-pointer">
         <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full opacity-15"
+          className="hz-center-xy hz-abs hz-r-full hz-dim-more"
           style={{
-            background: `radial-gradient(circle, ${BRAND_COLOR} 0%, transparent 70%)`,
+            background: `radial-gradient(circle, ${BRAND.fg} 0%, transparent 70%)`,
             filter: "blur(100px)",
           }}
         />
       </div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div className="hz-container hz-rel hz-z-raised">
+        <div className="hz-grid hz-grid-2 hz-gap-7 hz-ai-center">
           {/* Left Column */}
           <div>
             <motion.h1
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
-              className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-medium tracking-tight leading-[1.1] mb-6"
+              className="hz-t-3xl hz-w-medium hz-tracking-tight hz-mb-5"
             >
-              <span className="text-white">Build anywhere.</span>
+              <span className="hz-fg">Build anywhere.</span>
               <br />
-              <span className="text-neutral-400">Ship everywhere.</span>
+              <span className="hz-fg-muted">Ship everywhere.</span>
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.05 }}
-              className="text-base lg:text-lg text-neutral-400 leading-relaxed mb-8 max-w-xl"
+              className="hz-t-base hz-fg-muted hz-leading-relaxed hz-mb-6 hz-mw-md"
             >
               Hanzo App works in your browser, as a native desktop app, with private local AI, or connected to the decentralized network. Your choice.
             </motion.p>
@@ -214,23 +214,22 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.1 }}
-              className="flex flex-wrap items-center gap-4 mb-6"
+              className="hz-row hz-wrap hz-ai-center hz-gap-4 hz-mb-5"
             >
               <a
                 href="https://hanzo.app"
                 target="_blank"
                 rel="noreferrer noopener"
-                className="inline-flex items-center px-6 py-3 rounded-full font-medium transition-all hover:opacity-90 text-sm"
-                style={{ backgroundColor: BRAND_COLOR, color: "#000000" }}
-              >
+                className="hz-btn hz-btn-ghost hz-transition hz-bg-inverse"
+                >
                 Open in browser
-                <ArrowRight className="ml-2 h-4 w-4" />
+                <ArrowRight className="hz-sq-2 hz-ml-2" />
               </a>
               <Link
                 to="/download"
-                className="inline-flex items-center px-6 py-3 rounded-full font-medium transition-colors border border-neutral-700 bg-transparent hover:bg-neutral-900 text-sm text-white"
+                className="hz-btn hz-btn-ghost hz-transition hz-fg"
               >
-                <Download className="mr-2 h-4 w-4" />
+                <Download className="hz-sq-2 hz-mr-2" />
                 Download app
               </Link>
             </motion.div>
@@ -240,25 +239,25 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.15 }}
-              className="mb-8"
+              className="hz-mb-6"
             >
-              <div className="inline-flex items-center gap-3 px-4 py-2 rounded-lg bg-neutral-900 border border-neutral-800">
-                <code className="text-sm font-mono text-neutral-300">
+              <div className="hz-btn hz-gap-3">
+                <code className="hz-t-sm hz-mono hz-fg-soft">
                   curl -fsSL hanzo.sh | sh
                 </code>
                 <button
                   onClick={handleCopy}
-                  className="text-neutral-500 hover:text-white transition-colors"
+                  className="hz-fg-muted hz-transition hz-link"
                 >
-                  {copied ? <Check className="h-3.5 w-3.5 text-neutral-400" /> : <Copy className="h-3.5 w-3.5" />}
+                  {copied ? <Check className="hz-sq-2 hz-fg-muted" /> : <Copy className="hz-sq-2" />}
                 </button>
                 <a
                   href="https://docs.hanzo.ai"
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="text-neutral-500 hover:text-white transition-colors"
+                  className="hz-fg-muted hz-transition hz-link"
                 >
-                  <ExternalLink className="h-3.5 w-3.5" />
+                  <ExternalLink className="hz-sq-2" />
                 </a>
               </div>
             </motion.div>
@@ -268,7 +267,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.2 }}
-              className="flex flex-wrap gap-2"
+              className="hz-row hz-wrap hz-gap-2"
             >
               {PLATFORMS.map((platform) => {
                 const Icon = platform.icon;
@@ -277,13 +276,13 @@ const HeroSection = () => {
                   <button
                     key={platform.id}
                     onClick={() => setActiveTab(platform.id)}
-                    className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                    className={`hz-btn hz-btn-ghost hz-gap-2 hz-transition ${
                       isActive
-                        ? "bg-white text-black"
-                        : "bg-neutral-900 border border-neutral-800 text-neutral-400 hover:text-white hover:border-neutral-700"
+                        ? "hz-bg-inverse hz-fg-inverse"
+                        : "hz-bg-surface hz-bordered hz-fg-muted hz-link"
                     }`}
                   >
-                    <Icon className="w-4 h-4" />
+                    <Icon className="hz-sq-2" />
                     {platform.label}
                   </button>
                 );

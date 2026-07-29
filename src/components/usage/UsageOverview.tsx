@@ -35,48 +35,48 @@ const UsageOverview = ({
   return (
     <motion.div 
       variants={cardAnimation}
-      className="rounded-xl border border-gray-800 bg-gray-900/20 overflow-hidden"
+      className="hz-r-lg hz-bordered hz-bg-surface hz-clip"
     >
-      <div className="p-6 border-b border-gray-800">
-        <h2 className="text-xl font-semibold mb-1">
+      <div className="hz-p-5 hz-border-b">
+        <h2 className="hz-t-xl hz-w-semibold hz-mb-1">
           {dateRange.start} to {dateRange.end} Credit Usage
         </h2>
       </div>
       
-      <div className="p-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="space-y-4">
-            <div className="flex justify-between items-center">
-              <span className="text-neutral-400">Current Usage</span>
+      <div className="hz-p-5">
+        <div className="hz-grid hz-grid-2 hz-gap-6">
+          <div className="hz-stack-4">
+            <div className="hz-row hz-jc-between hz-ai-center">
+              <span className="hz-fg-muted">Current Usage</span>
               <span>{currentUsage}</span>
             </div>
-            <div className="flex justify-between items-center">
-              <span className="text-neutral-400">Discounts</span>
+            <div className="hz-row hz-jc-between hz-ai-center">
+              <span className="hz-fg-muted">Discounts</span>
               <span>{discounts}</span>
             </div>
-            <div className="flex justify-between items-center">
-              <span className="text-neutral-400">Credits Used</span>
+            <div className="hz-row hz-jc-between hz-ai-center">
+              <span className="hz-fg-muted">Credits Used</span>
               <span>{creditsUsed}</span>
             </div>
-            <div className="flex justify-between items-center">
-              <span className="text-neutral-400">Estimated Month's Cost</span>
+            <div className="hz-row hz-jc-between hz-ai-center">
+              <span className="hz-fg-muted">Estimated Month's Cost</span>
               <span>{estimatedCost}</span>
             </div>
           </div>
           
-          <div className="bg-gray-900/30 rounded-xl p-6 flex flex-col items-center justify-center text-center">
-            <div className="mb-2">
-              <div className="text-sm text-neutral-400">Credits Available</div>
-              <div className="text-3xl font-bold">{creditsAvailable}</div>
+          <div className="hz-bg-surface hz-r-lg hz-p-5 hz-col hz-ai-center hz-jc-center hz-align-center">
+            <div className="hz-mb-2">
+              <div className="hz-t-sm hz-fg-muted">Credits Available</div>
+              <div className="hz-t-3xl hz-w-bold">{creditsAvailable}</div>
             </div>
             
-            <div className="mb-6">
-              <div className="text-sm text-neutral-400">Est Credits Required</div>
-              <div className="text-3xl font-bold text-neutral-400">{creditsRequired}</div>
+            <div className="hz-mb-5">
+              <div className="hz-t-sm hz-fg-muted">Est Credits Required</div>
+              <div className="hz-t-3xl hz-w-bold hz-fg-muted">{creditsRequired}</div>
             </div>
             
             <Button 
-              className="bg-neutral-600 hover:bg-neutral-700 text-[var(--white)] w-full"
+              className="hz-bg-raised hz-fg hz-w-full hz-hoverable"
             >
               Purchase Credits
             </Button>

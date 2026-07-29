@@ -34,22 +34,22 @@ const ModelCategoryCard = ({ model, modelIndex, categoryIndex }: ModelCategoryCa
       transition={{ duration: 0.5, delay: modelIndex * 0.1 }}
       className={cardClasses}
     >
-      <div className="flex items-center mb-3">
-        <Cpu className={`h-5 w-5 ${iconColor} mr-2`} />
-        <h4 className="text-xl font-semibold text-[var(--white)]">{model.name}</h4>
+      <div className="hz-row hz-ai-center hz-mb-3">
+        <Cpu className={`hz-sq-3 ${iconColor} hz-mr-2`} />
+        <h4 className="hz-t-xl hz-w-semibold hz-fg">{model.name}</h4>
       </div>
       
       {model.description && (
-        <p className="text-sm text-neutral-400 mb-4 italic">{model.description}</p>
+        <p className="hz-t-sm hz-fg-muted hz-mb-4 hz-italic">{model.description}</p>
       )}
       
-      <p className="text-sm text-neutral-500 mb-4">via {model.provider}</p>
+      <p className="hz-t-sm hz-fg-muted hz-mb-4">via {model.provider}</p>
       
-      <ul className="space-y-2 mb-6">
+      <ul className="hz-stack-2 hz-mb-5">
         {model.features.map((feature, i) => (
-          <li key={i} className="flex items-start">
-            <Check className={`h-5 w-5 ${checkColor} mr-2 flex-shrink-0 mt-0.5`} />
-            <span className="text-neutral-300 text-sm">{feature}</span>
+          <li key={i} className="hz-row hz-ai-start">
+            <Check className={`hz-sq-3 ${checkColor} hz-mr-2 hz-none hz-mt-1`} />
+            <span className="hz-fg-soft hz-t-sm">{feature}</span>
           </li>
         ))}
       </ul>

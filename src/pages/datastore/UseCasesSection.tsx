@@ -20,20 +20,20 @@ const UseCasesSection = () => {
   ];
 
   return (
-    <section className="py-32 px-4 sm:px-6 lg:px-8 bg-[var(--black)] relative">
-      <div className="absolute inset-0 bg-gradient-to-r from-neutral-800/10 to-neutral-800/10 opacity-30 pointer-events-none"></div>
+    <section className="hz-py-7 hz-px-4 hz-bg hz-rel">
+      <div className="hz-abs hz-inset hz-dim-more hz-no-pointer"></div>
 
-      <div className="max-w-6xl mx-auto relative z-10">
-        <div className="text-center mb-16">
-          <ChromeText as="h2" className="text-3xl md:text-5xl font-bold mb-6">
+      <div className="hz-container-wide hz-rel hz-z-raised">
+        <div className="hz-align-center hz-mb-7">
+          <ChromeText as="h2" className="hz-t-3xl hz-w-bold hz-mb-5">
             Datastore at Scale
           </ChromeText>
-          <p className="text-xl text-neutral-300 max-w-3xl mx-auto mb-8">
+          <p className="hz-container-narrow hz-t-xl hz-fg-soft hz-mb-6">
             Powering a wide range of applications across industries with unmatched performance
           </p>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+        <div className="hz-grid hz-grid-4 hz-gap-5">
           {useCases.map((useCase, index) => {
             const Icon = useCase.icon;
             return (
@@ -43,10 +43,10 @@ const UseCasesSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
-                className="bg-gray-900/20 border border-gray-800 rounded-lg p-6 text-center flex flex-col items-center hover:bg-gray-900/40 hover:border-gray-700 transition-all"
+                className="hz-card hz-align-center hz-col hz-ai-center hz-transition hz-card-interactive"
               >
-                <Icon className="h-8 w-8 text-neutral-400 mb-3" />
-                <p className="text-neutral-300">{useCase.name}</p>
+                <Icon className="hz-sq-5 hz-fg-muted hz-mb-3" />
+                <p className="hz-fg-soft">{useCase.name}</p>
               </motion.div>
             );
           })}

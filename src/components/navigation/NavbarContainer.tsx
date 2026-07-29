@@ -13,13 +13,13 @@ const NavbarContainer = ({ children, isScrolled }: NavbarContainerProps) => {
   return (
     <nav
       className={cn(
-        "fixed w-full z-50 transition-all duration-300",
-        isScrolled ? "backdrop-blur-md shadow-sm" : "backdrop-blur-sm",
+        "hz-fixed hz-w-full hz-z-overlay hz-transition",
+        isScrolled ? "hz-glass hz-shadow" : "hz-glass",
         getGlassClass()
       )}
     >
-      <div className="w-full max-w-[1440px] mx-auto px-4 md:px-6 lg:px-8">
-        <div className="flex items-center h-[var(--header-height)]">
+      <div className="hz-container hz-w-full">
+        <div className="hz-row hz-ai-center hz-h-header">
           {children}
         </div>
       </div>

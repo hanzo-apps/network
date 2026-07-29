@@ -4,15 +4,15 @@ import ChromeText from "@/components/ui/chrome-text";
 
 const UseCaseCard = ({ title, description, features }) => {
   return (
-    <div className="bg-neutral-800/10 border border-neutral-500/20 rounded-xl p-8">
-      <h3 className="text-2xl font-bold mb-4">{title}</h3>
-      <p className="text-neutral-300 mb-4">
+    <div className="hz-card">
+      <h3 className="hz-t-2xl hz-w-bold hz-mb-4">{title}</h3>
+      <p className="hz-fg-soft hz-mb-4">
         {description}
       </p>
-      <ul className="space-y-2 text-neutral-300">
+      <ul className="hz-stack-2 hz-fg-soft">
         {features.map((feature, index) => (
-          <li key={index} className="flex items-start">
-            <span className="text-neutral-400 mr-2">•</span>
+          <li key={index} className="hz-row hz-ai-start">
+            <span className="hz-fg-muted hz-mr-2">•</span>
             <span>{feature}</span>
           </li>
         ))}
@@ -62,18 +62,18 @@ const MachinesUseCases = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-black to-neutral-950/20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <ChromeText as="h2" className="text-3xl font-bold mb-4">
+    <section className="hz-py-7">
+      <div className="hz-container">
+        <div className="hz-align-center hz-mb-7">
+          <ChromeText as="h2" className="hz-t-3xl hz-w-bold hz-mb-4">
             Designed for AI Workloads
           </ChromeText>
-          <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
+          <p className="hz-container-narrow hz-t-xl hz-fg-soft">
             Optimized infrastructure for every stage of machine learning and AI development
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="hz-grid hz-grid-2 hz-gap-6">
           {useCases.map((useCase, index) => (
             <UseCaseCard
               key={index}

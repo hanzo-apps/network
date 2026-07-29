@@ -9,36 +9,36 @@ const PlatformTechnologies: React.FC = () => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: 0.3 }}
-      className="mt-16 text-center"
+      className="hz-mt-7 hz-align-center"
     >
-      <p className="text-neutral-400 mb-8 max-w-3xl mx-auto">
+      <p className="hz-container-narrow hz-fg-muted hz-mb-6">
         Join the global pioneers who are 100x-ing their capabilities with the world's most comprehensive AI platform.
       </p>
       
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-12 gap-y-6">
-        <div className="flex items-center justify-center h-8">
-          <span className="text-gradient-steel text-sm font-medium">OPEN SOURCE</span>
+      <div className="hz-grid hz-grid-4 hz-gap-7 hz-gap-5">
+        <div className="hz-row hz-ai-center hz-jc-center hz-bh-5">
+          <span className="hz-fg-soft hz-t-sm hz-w-medium">OPEN SOURCE</span>
         </div>
-        <div className="flex items-center justify-center h-8">
-          <span className="text-gradient-steel text-sm font-medium">INFERENCE</span>
+        <div className="hz-row hz-ai-center hz-jc-center hz-bh-5">
+          <span className="hz-fg-soft hz-t-sm hz-w-medium">INFERENCE</span>
         </div>
-        <div className="flex items-center justify-center h-8">
-          <span className="text-gradient-steel text-sm font-medium">FINE-TUNING</span>
+        <div className="hz-row hz-ai-center hz-jc-center hz-bh-5">
+          <span className="hz-fg-soft hz-t-sm hz-w-medium">FINE-TUNING</span>
         </div>
-        <div className="flex items-center justify-center h-8">
-          <span className="text-gradient-steel text-sm font-medium">PRIVATE CLOUD</span>
+        <div className="hz-row hz-ai-center hz-jc-center hz-bh-5">
+          <span className="hz-fg-soft hz-t-sm hz-w-medium">PRIVATE CLOUD</span>
         </div>
-        <div className="flex items-center justify-center h-8">
-          <span className="text-gradient-steel text-sm font-medium">RAG</span>
+        <div className="hz-row hz-ai-center hz-jc-center hz-bh-5">
+          <span className="hz-fg-soft hz-t-sm hz-w-medium">RAG</span>
         </div>
-        <div className="flex items-center justify-center h-8">
-          <span className="text-gradient-steel text-sm font-medium">MODEL DISTILLATION</span>
+        <div className="hz-row hz-ai-center hz-jc-center hz-bh-5">
+          <span className="hz-fg-soft hz-t-sm hz-w-medium">MODEL DISTILLATION</span>
         </div>
-        <div className="flex items-center justify-center h-8">
-          <span className="text-gradient-steel text-sm font-medium">EDGE DEPLOYMENT</span>
+        <div className="hz-row hz-ai-center hz-jc-center hz-bh-5">
+          <span className="hz-fg-soft hz-t-sm hz-w-medium">EDGE DEPLOYMENT</span>
         </div>
-        <div className="flex items-center justify-center h-8">
-          <span className="text-gradient-steel text-sm font-medium">AGENTIC WORKFLOWS</span>
+        <div className="hz-row hz-ai-center hz-jc-center hz-bh-5">
+          <span className="hz-fg-soft hz-t-sm hz-w-medium">AGENTIC WORKFLOWS</span>
         </div>
       </div>
     </motion.div>

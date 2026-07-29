@@ -1,21 +1,21 @@
 
 import { motion } from "framer-motion";
 import { Users, MessageSquare, BarChart, Calendar } from "lucide-react";
-import { Button } from "@/components/ui/radix-button";
+import { Button } from "@/components/ui/button";
 
 const CRM = () => {
   return (
-    <section className="py-24 bg-[var(--black)] relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-gray-900/50 to-black/50" />
+    <section className="hz-py-7 hz-bg hz-rel hz-clip">
+      <div className="hz-abs hz-inset" />
       
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+      <div className="hz-container hz-rel hz-z-raised">
+        <div className="hz-align-center hz-mb-7">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-3xl sm:text-4xl font-bold text-[var(--white)] mb-4"
+            className="hz-t-3xl hz-w-bold hz-fg hz-mb-4"
           >
             Hanzo CRM
           </motion.h2>
@@ -24,23 +24,23 @@ const CRM = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-lg text-neutral-400 max-w-2xl mx-auto"
+            className="hz-container-narrow hz-mw-md hz-t-lg hz-fg-muted"
           >
             Streamline your customer relationships with AI-powered insights and automation
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="hz-grid hz-grid-4 hz-gap-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="bg-gray-900/50 backdrop-blur-sm p-6 rounded-xl ring-1 ring-white/10 hover:ring-white/20 transition-all duration-300"
+            className="hz-bg-surface hz-glass hz-p-5 hz-r-lg hz-ring hz-transition"
           >
-            <Users className="w-12 h-12 text-neutral-400 mb-4" />
-            <h3 className="text-xl font-semibold text-[var(--white)] mb-2">Contact Management</h3>
-            <p className="text-neutral-400">Organize and track customer interactions with AI-enhanced contact profiles</p>
+            <Users className="hz-sq-7 hz-fg-muted hz-mb-4" />
+            <h3 className="hz-t-xl hz-w-semibold hz-fg hz-mb-2">Contact Management</h3>
+            <p className="hz-fg-muted">Organize and track customer interactions with AI-enhanced contact profiles</p>
           </motion.div>
 
           <motion.div
@@ -48,11 +48,11 @@ const CRM = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="bg-gray-900/50 backdrop-blur-sm p-6 rounded-xl ring-1 ring-white/10 hover:ring-white/20 transition-all duration-300"
+            className="hz-bg-surface hz-glass hz-p-5 hz-r-lg hz-ring hz-transition"
           >
-            <MessageSquare className="w-12 h-12 text-neutral-400 mb-4" />
-            <h3 className="text-xl font-semibold text-[var(--white)] mb-2">Smart Communication</h3>
-            <p className="text-neutral-400">Automated messaging and follow-ups powered by contextual AI understanding</p>
+            <MessageSquare className="hz-sq-7 hz-fg-muted hz-mb-4" />
+            <h3 className="hz-t-xl hz-w-semibold hz-fg hz-mb-2">Smart Communication</h3>
+            <p className="hz-fg-muted">Automated messaging and follow-ups powered by contextual AI understanding</p>
           </motion.div>
 
           <motion.div
@@ -60,11 +60,11 @@ const CRM = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="bg-gray-900/50 backdrop-blur-sm p-6 rounded-xl ring-1 ring-white/10 hover:ring-white/20 transition-all duration-300"
+            className="hz-bg-surface hz-glass hz-p-5 hz-r-lg hz-ring hz-transition"
           >
-            <BarChart className="w-12 h-12 text-neutral-400 mb-4" />
-            <h3 className="text-xl font-semibold text-[var(--white)] mb-2">Analytics Dashboard</h3>
-            <p className="text-neutral-400">Real-time insights and predictive analytics to optimize customer relationships</p>
+            <BarChart className="hz-sq-7 hz-fg-muted hz-mb-4" />
+            <h3 className="hz-t-xl hz-w-semibold hz-fg hz-mb-2">Analytics Dashboard</h3>
+            <p className="hz-fg-muted">Real-time insights and predictive analytics to optimize customer relationships</p>
           </motion.div>
 
           <motion.div
@@ -72,11 +72,11 @@ const CRM = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.5 }}
-            className="bg-gray-900/50 backdrop-blur-sm p-6 rounded-xl ring-1 ring-white/10 hover:ring-white/20 transition-all duration-300"
+            className="hz-bg-surface hz-glass hz-p-5 hz-r-lg hz-ring hz-transition"
           >
-            <Calendar className="w-12 h-12 text-neutral-400 mb-4" />
-            <h3 className="text-xl font-semibold text-[var(--white)] mb-2">Smart Scheduling</h3>
-            <p className="text-neutral-400">AI-powered meeting scheduling and follow-up management</p>
+            <Calendar className="hz-sq-7 hz-fg-muted hz-mb-4" />
+            <h3 className="hz-t-xl hz-w-semibold hz-fg hz-mb-2">Smart Scheduling</h3>
+            <p className="hz-fg-muted">AI-powered meeting scheduling and follow-up management</p>
           </motion.div>
         </div>
 
@@ -85,11 +85,11 @@ const CRM = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.6 }}
-          className="mt-16 text-center"
+          className="hz-mt-7 hz-align-center"
         >
           <Button
             size="lg"
-            className="bg-[var(--white)] text-black hover:bg-gray-100"
+            className="hz-bg-inverse hz-fg-inverse hz-hoverable"
           >
             <a href="https://console.hanzo.ai/crm">Try Hanzo CRM</a>
           </Button>

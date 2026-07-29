@@ -7,15 +7,15 @@ import { ArrowRight, LineChart } from "lucide-react";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-32 overflow-hidden">
-      <div className="absolute inset-0 bg-[var(--black)] z-0" />
+    <section className="hz-rel hz-min-h-screen hz-row hz-ai-center hz-jc-center hz-px-4 hz-py-7 hz-clip">
+      <div className="hz-abs hz-inset hz-bg hz-z-base" />
       
       {/* Animated dots/points background */}
-      <div className="absolute inset-0 overflow-hidden opacity-30">
+      <div className="hz-abs hz-inset hz-clip hz-dim-more">
         {Array(20).fill(0).map((_, i) => (
           <motion.div
             key={i}
-            className="absolute h-1 w-1 rounded-full bg-neutral-600"
+            className="hz-sq-1 hz-abs hz-r-full hz-bg-raised"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
@@ -33,20 +33,20 @@ const HeroSection = () => {
         ))}
       </div>
       
-      <div className="relative z-10 max-w-7xl mx-auto">
+      <div className="hz-container hz-rel hz-z-raised">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-8 text-center"
+          className="hz-mb-6 hz-align-center"
         >
-          <div className="inline-block px-4 py-1 rounded-full bg-neutral-800/30 border border-neutral-500/30 text-neutral-300 text-sm font-medium mb-6">
+          <div className="hz-px-4 hz-py-1 hz-r-full hz-bg-raised hz-bordered hz-border-strong hz-fg-soft hz-t-sm hz-w-medium hz-mb-5">
             AI-Powered Analytics for Next-Generation Growth
           </div>
-          <ChromeText as="h1" className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
+          <ChromeText as="h1" className="hz-t-4xl hz-w-bold hz-tracking-tight hz-mb-5">
             Hanzo Analytics
           </ChromeText>
-          <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
+          <p className="hz-container-narrow hz-t-xl hz-fg-soft">
             Precise, real-time insights into user behavior, product performance, and business outcomes, 
             enabling you to optimize faster, smarter, and at scale.
           </p>
@@ -56,14 +56,14 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center mt-10"
+          className="hz-col-row hz-gap-4 hz-jc-center hz-mt-6"
         >
-          <Button size="lg" className="text-lg px-8 bg-gradient-to-r from-neutral-700 to-neutral-500 hover:from-neutral-600 hover:to-neutral-400 border-none">
+          <Button size="lg" className="hz-t-lg hz-px-6 hz-border-none">
             <a href="#start-free-trial">Start Free Trial</a>
           </Button>
-          <Button size="lg" variant="outline" className="text-lg px-8">
-            <a href="#request-demo" className="flex items-center">
-              Request Demo <ArrowRight className="ml-2 h-5 w-5" />
+          <Button size="lg" variant="outline" className="hz-t-lg hz-px-6">
+            <a href="#request-demo" className="hz-row hz-ai-center">
+              Request Demo <ArrowRight className="hz-sq-3 hz-ml-2" />
             </a>
           </Button>
         </motion.div>
@@ -72,29 +72,29 @@ const HeroSection = () => {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="mt-16 max-w-5xl mx-auto relative"
+          className="hz-container-wide hz-mt-7 hz-rel"
         >
-          <div className="bg-gradient-to-br from-gray-900 to-black p-4 rounded-xl border border-gray-800 shadow-2xl overflow-hidden">
-            <div className="flex items-center justify-between mb-4 border-b border-gray-800 pb-2">
-              <div className="flex items-center">
-                <LineChart className="h-5 w-5 text-neutral-400 mr-2" />
-                <span className="text-[var(--white)] font-medium">Hanzo Analytics Dashboard</span>
+          <div className="hz-card hz-shadow-lg hz-clip">
+            <div className="hz-row hz-ai-center hz-jc-between hz-mb-4 hz-border-b hz-pb-4">
+              <div className="hz-row hz-ai-center">
+                <LineChart className="hz-sq-3 hz-fg-muted hz-mr-2" />
+                <span className="hz-fg hz-w-medium">Hanzo Analytics Dashboard</span>
               </div>
-              <div className="flex space-x-1">
-                <div className="w-3 h-3 rounded-full bg-neutral-600"></div>
-                <div className="w-3 h-3 rounded-full bg-neutral-500"></div>
-                <div className="w-3 h-3 rounded-full bg-neutral-500"></div>
+              <div className="hz-row hz-inline-1">
+                <div className="hz-sq-1 hz-r-full hz-bg-raised"></div>
+                <div className="hz-sq-1 hz-r-full hz-bg-raised"></div>
+                <div className="hz-sq-1 hz-r-full hz-bg-raised"></div>
               </div>
             </div>
-            <div className="grid grid-cols-3 gap-4">
-              <div className="col-span-2 bg-gray-800/50 rounded-lg p-4 h-64">
+            <div className="hz-grid hz-grid-3 hz-gap-4">
+              <div className="hz-span-2 hz-bg-raised hz-r-lg hz-p-4 hz-bh-8">
                 {/* Animated chart lines */}
-                <div className="h-full w-full relative">
-                  <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gray-700"></div>
-                  <div className="absolute left-0 top-0 h-full w-[1px] bg-gray-700"></div>
+                <div className="hz-h-full hz-w-full hz-rel">
+                  <div className="hz-abs hz-bottom-0 hz-left-0 hz-w-full hz-bg-raised"></div>
+                  <div className="hz-abs hz-left-0 hz-top-0 hz-h-full hz-bg-raised"></div>
                   
                   {/* Chart line */}
-                  <svg className="h-full w-full" viewBox="0 0 100 50">
+                  <svg className="hz-h-full hz-w-full" viewBox="0 0 100 50">
                     <motion.path
                       d="M0,50 L10,40 L20,45 L30,35 L40,38 L50,25 L60,30 L70,20 L80,15 L90,10 L100,5"
                       fill="none"
@@ -116,42 +116,42 @@ const HeroSection = () => {
                   </svg>
                 </div>
               </div>
-              <div className="space-y-4">
-                <div className="bg-gray-800/50 rounded-lg p-4 h-[30%]">
-                  <div className="text-sm text-neutral-400">Users</div>
+              <div className="hz-stack-4">
+                <div className="hz-bg-raised hz-r-lg hz-p-4">
+                  <div className="hz-t-sm hz-fg-muted">Users</div>
                   <motion.div 
-                    className="text-2xl font-bold text-[var(--white)] mt-1"
+                    className="hz-t-2xl hz-w-bold hz-fg hz-mt-1"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1 }}
                   >
                     127,543
                   </motion.div>
-                  <div className="text-neutral-400 text-xs mt-1">+12.4% vs last week</div>
+                  <div className="hz-fg-muted hz-t-xs hz-mt-1">+12.4% vs last week</div>
                 </div>
-                <div className="bg-gray-800/50 rounded-lg p-4 h-[30%]">
-                  <div className="text-sm text-neutral-400">Conversion Rate</div>
+                <div className="hz-bg-raised hz-r-lg hz-p-4">
+                  <div className="hz-t-sm hz-fg-muted">Conversion Rate</div>
                   <motion.div 
-                    className="text-2xl font-bold text-[var(--white)] mt-1"
+                    className="hz-t-2xl hz-w-bold hz-fg hz-mt-1"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1.2 }}
                   >
                     4.87%
                   </motion.div>
-                  <div className="text-neutral-400 text-xs mt-1">+0.8% vs last week</div>
+                  <div className="hz-fg-muted hz-t-xs hz-mt-1">+0.8% vs last week</div>
                 </div>
-                <div className="bg-gray-800/50 rounded-lg p-4 h-[30%]">
-                  <div className="text-sm text-neutral-400">Revenue</div>
+                <div className="hz-bg-raised hz-r-lg hz-p-4">
+                  <div className="hz-t-sm hz-fg-muted">Revenue</div>
                   <motion.div 
-                    className="text-2xl font-bold text-[var(--white)] mt-1"
+                    className="hz-t-2xl hz-w-bold hz-fg hz-mt-1"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1.4 }}
                   >
                     $45,892
                   </motion.div>
-                  <div className="text-neutral-400 text-xs mt-1">+15.2% vs last week</div>
+                  <div className="hz-fg-muted hz-t-xs hz-mt-1">+15.2% vs last week</div>
                 </div>
               </div>
             </div>

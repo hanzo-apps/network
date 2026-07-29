@@ -67,7 +67,7 @@ const KonamiCode = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[9999] bg-black"
+          className="hz-fixed hz-inset hz-z-overlay hz-bg"
         >
           {/* Close button */}
           <motion.button
@@ -76,10 +76,10 @@ const KonamiCode = () => {
             exit={{ opacity: 0, scale: 0.8 }}
             transition={{ delay: 0.2 }}
             onClick={() => setIsActive(false)}
-            className="absolute top-4 right-4 z-10 p-3 rounded-full bg-black/80 border border-neutral-700 text-white hover:bg-neutral-800 transition-colors shadow-lg"
+            className="hz-card hz-card-tight hz-abs hz-z-raised hz-fg hz-transition hz-shadow-lg hz-card-interactive"
             aria-label="Close secret menu"
           >
-            <X className="w-6 h-6" />
+            <X className="hz-sq-4" />
           </motion.button>
 
           {/* Secret hint badge */}
@@ -87,7 +87,7 @@ const KonamiCode = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="absolute top-4 left-4 z-10 px-3 py-1.5 rounded-full bg-black/80 border border-neutral-700 text-xs text-neutral-400 font-mono"
+            className="hz-abs hz-z-raised hz-px-3 hz-py-2 hz-r-full hz-bg-surface hz-bordered hz-t-xs hz-fg-muted hz-mono"
           >
             🥷 ↑↑↓↓↓ S E ⏎ ␣
           </motion.div>
@@ -98,7 +98,7 @@ const KonamiCode = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.1 }}
             src={SECRET_MENU_URL}
-            className="w-full h-full border-0"
+            className="hz-w-full hz-h-full hz-border-none"
             title="SF Secret Menu"
             allow="geolocation; payment"
           />

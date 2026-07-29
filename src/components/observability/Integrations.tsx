@@ -22,57 +22,57 @@ const integrationGroups = [
 
 const Integrations = () => {
   return (
-    <section className="py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black to-gray-900/20 relative">
-      <div className="max-w-6xl mx-auto">
+    <section className="hz-py-7 hz-px-4 hz-rel">
+      <div className="hz-container-wide">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="max-w-3xl mx-auto text-center mb-20"
+          className="hz-container-narrow hz-align-center hz-mb-7"
         >
-          <div className="inline-flex items-center justify-center mb-6 bg-neutral-800/30 p-3 rounded-full">
-            <Braces className="h-7 w-7 text-neutral-400" />
+          <div className="hz-inline hz-ai-center hz-jc-center hz-mb-5 hz-bg-raised hz-p-3 hz-r-full">
+            <Braces className="hz-sq-5 hz-fg-muted" />
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">Integrated Across Your Development Workflow</h2>
-          <p className="text-xl text-neutral-300">
+          <h2 className="hz-t-3xl hz-w-bold hz-mb-5">Integrated Across Your Development Workflow</h2>
+          <p className="hz-t-xl hz-fg-soft">
             Hanzo Observability seamlessly integrates with your existing stack, supporting your AI operations from prototype to production.
           </p>
         </motion.div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <div className="hz-grid hz-grid-2 hz-gap-7">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="bg-gradient-to-br from-gray-900 to-black rounded-xl overflow-hidden border border-gray-800 p-8"
+            className="hz-card hz-clip"
           >
-            <div className="flex items-center mb-6">
-              <Code className="h-6 w-6 text-neutral-400 mr-3" />
-              <h3 className="text-2xl font-bold">Import & Initialize</h3>
+            <div className="hz-row hz-ai-center hz-mb-5">
+              <Code className="hz-sq-4 hz-fg-muted hz-mr-3" />
+              <h3 className="hz-t-2xl hz-w-bold">Import & Initialize</h3>
             </div>
             
-            <div className="bg-[var(--black)]/50 rounded-lg p-6 font-mono text-sm">
-              <div className="mb-4">
-                <span className="text-neutral-400">import</span> <span className="text-neutral-400">{'{'}</span> <span className="text-neutral-300">HanzoObservability</span> <span className="text-neutral-400">{'}'}</span> <span className="text-neutral-400">from</span> <span className="text-neutral-400">'hanzo-observability'</span>
+            <div className="hz-bg-overlay hz-r-lg hz-p-5 hz-mono hz-t-sm">
+              <div className="hz-mb-4">
+                <span className="hz-fg-muted">import</span> <span className="hz-fg-muted">{'{'}</span> <span className="hz-fg-soft">HanzoObservability</span> <span className="hz-fg-muted">{'}'}</span> <span className="hz-fg-muted">from</span> <span className="hz-fg-muted">'hanzo-observability'</span>
               </div>
-              <div className="mb-4">
-                <span className="text-neutral-400">// Initialize with your project token</span>
+              <div className="hz-mb-4">
+                <span className="hz-fg-muted">// Initialize with your project token</span>
               </div>
-              <div className="mb-4">
-                <span className="text-neutral-400">const</span> observability <span className="text-[var(--white)]">=</span> <span className="text-neutral-400">new</span> <span className="text-neutral-300">HanzoObservability</span><span className="text-[var(--white)]">(</span><span className="text-neutral-400">'YOUR_PROJECT_TOKEN'</span><span className="text-[var(--white)]">);</span>
+              <div className="hz-mb-4">
+                <span className="hz-fg-muted">const</span> observability <span className="hz-fg">=</span> <span className="hz-fg-muted">new</span> <span className="hz-fg-soft">HanzoObservability</span><span className="hz-fg">(</span><span className="hz-fg-muted">'YOUR_PROJECT_TOKEN'</span><span className="hz-fg">);</span>
               </div>
-              <div className="mb-4">
-                <span className="text-neutral-400">// Trace AI model calls</span>
+              <div className="hz-mb-4">
+                <span className="hz-fg-muted">// Trace AI model calls</span>
               </div>
               <div>
-                <span className="text-neutral-400">await</span> observability.<span className="text-neutral-300">trace</span><span className="text-[var(--white)]">(</span><span className="text-neutral-400">'chatCompletion'</span><span className="text-[var(--white)]">, {'async () => {'}</span>
-                <div className="pl-5 text-[var(--white)]">
-                  <span className="text-neutral-400">const</span> response <span className="text-[var(--white)]">=</span> <span className="text-neutral-400">await</span> openai.<span className="text-neutral-300">createChatCompletion</span><span className="text-[var(--white)]">({'{...}'})</span>
-                  <div><span className="text-neutral-400">return</span> response</div>
+                <span className="hz-fg-muted">await</span> observability.<span className="hz-fg-soft">trace</span><span className="hz-fg">(</span><span className="hz-fg-muted">'chatCompletion'</span><span className="hz-fg">, {'async () => {'}</span>
+                <div className="hz-px-4 hz-fg">
+                  <span className="hz-fg-muted">const</span> response <span className="hz-fg">=</span> <span className="hz-fg-muted">await</span> openai.<span className="hz-fg-soft">createChatCompletion</span><span className="hz-fg">({'{...}'})</span>
+                  <div><span className="hz-fg-muted">return</span> response</div>
                 </div>
-                <span className="text-[var(--white)]">{'}'})</span>
+                <span className="hz-fg">{'}'})</span>
               </div>
             </div>
           </motion.div>
@@ -84,9 +84,9 @@ const Integrations = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             {integrationGroups.map((group, groupIndex) => (
-              <div key={groupIndex} className="mb-10">
-                <h3 className="text-xl font-bold mb-6 text-neutral-300">{group.title}</h3>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              <div key={groupIndex} className="hz-mb-6">
+                <h3 className="hz-t-xl hz-w-bold hz-mb-5 hz-fg-soft">{group.title}</h3>
+                <div className="hz-grid hz-grid-3 hz-gap-3">
                   {group.items.map((item, index) => (
                     <motion.div
                       key={index}
@@ -94,10 +94,10 @@ const Integrations = () => {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.3, delay: 0.1 + (index * 0.05) }}
-                      className="flex items-center p-3 bg-gray-800/30 rounded-lg border border-gray-700/40"
+                      className="hz-card hz-card-tight hz-row hz-ai-center"
                     >
-                      <CheckCircle className="h-4 w-4 text-neutral-400 mr-2 flex-shrink-0" />
-                      <span className="text-neutral-300 text-sm">{item}</span>
+                      <CheckCircle className="hz-sq-2 hz-fg-muted hz-mr-2 hz-none" />
+                      <span className="hz-fg-soft hz-t-sm">{item}</span>
                     </motion.div>
                   ))}
                 </div>
@@ -109,10 +109,10 @@ const Integrations = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="text-center mt-8"
+              className="hz-align-center hz-mt-6"
             >
-              <a href="#integrations" className="inline-flex items-center text-neutral-400 hover:text-neutral-300 transition-colors text-sm">
-                View all integrations <Code className="ml-1 h-4 w-4" />
+              <a href="#integrations" className="hz-inline hz-ai-center hz-fg-muted hz-transition hz-t-sm hz-link">
+                View all integrations <Code className="hz-sq-2 hz-ml-1" />
               </a>
             </motion.div>
           </motion.div>

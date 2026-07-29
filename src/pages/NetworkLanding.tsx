@@ -44,7 +44,7 @@ function GridCanvas() {
     draw();
     return () => cancelAnimationFrame(raf);
   }, []);
-  return <canvas ref={ref} className="absolute inset-0 w-full h-full" />;
+  return <canvas ref={ref} className="hz-abs hz-inset hz-w-full hz-h-full" />;
 }
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
@@ -170,29 +170,29 @@ const NetworkLanding = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-x-hidden">
+    <div className="hz-min-h-screen hz-bg hz-fg">
 
       {/* Nav */}
-      <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-black/80 backdrop-blur">
-        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          <a href="https://hanzo.ai" className="flex items-center gap-2 text-sm font-semibold hover:opacity-80 transition-opacity">
-            <Network className="w-4 h-4" />
+      <header className="hz-fixed hz-top-0 hz-left-0 hz-right-0 hz-z-overlay hz-border-b hz-bg-surface hz-glass">
+        <div className="hz-container-wide hz-py-4 hz-row hz-ai-center hz-jc-between">
+          <a href="https://hanzo.ai" className="hz-row hz-ai-center hz-gap-2 hz-t-sm hz-w-semibold hz-transition">
+            <Network className="hz-sq-2" />
             <span>hanzo</span>
-            <span className="text-white/40">/ network</span>
+            <span className="hz-fg-soft">/ network</span>
           </a>
-          <nav className="hidden md:flex items-center gap-6 text-sm text-white/60">
-            <a href="#how-it-works" className="hover:text-white transition-colors">How it works</a>
-            <a href="#ecosystem" className="hover:text-white transition-colors">Ecosystem</a>
-            <Link to="/pricing" className="hover:text-white transition-colors">Pricing</Link>
-            <a href="https://docs.hanzo.ai" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Docs</a>
+          <nav className="hz-desktop-only hz-row hz-ai-center hz-gap-5 hz-t-sm hz-fg-soft">
+            <a href="#how-it-works" className="hz-transition hz-hoverable">How it works</a>
+            <a href="#ecosystem" className="hz-transition hz-hoverable">Ecosystem</a>
+            <Link to="/pricing" className="hz-transition hz-hoverable">Pricing</Link>
+            <a href="https://docs.hanzo.ai" target="_blank" rel="noopener noreferrer" className="hz-transition hz-hoverable">Docs</a>
           </nav>
-          <div className="flex items-center gap-3">
+          <div className="hz-row hz-ai-center hz-gap-3">
             <a href="https://github.com/hanzoai/network" target="_blank" rel="noopener noreferrer"
-              className="hidden sm:flex items-center gap-1.5 text-sm text-white/60 hover:text-white transition-colors">
-              <Github className="w-4 h-4" />
+              className="hz-desktop-only hz-row hz-ai-center hz-gap-2 hz-t-sm hz-fg-soft hz-transition hz-hoverable">
+              <Github className="hz-sq-2" />
             </a>
             <a href="https://cloud.hanzo.ai/signup" target="_blank" rel="noopener noreferrer"
-              className="px-4 py-1.5 rounded-full text-sm font-medium bg-white text-black hover:bg-white/90 transition-all">
+              className="hz-px-4 hz-py-2 hz-r-full hz-t-sm hz-w-medium hz-bg-inverse hz-fg-inverse hz-transition hz-hoverable">
               Get Started
             </a>
           </div>
@@ -200,92 +200,92 @@ const NetworkLanding = () => {
       </header>
 
       {/* Hero */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+      <section className="hz-rel hz-min-h-screen hz-row hz-ai-center hz-jc-center hz-clip hz-pt-6">
         <GridCanvas />
         {/* Gradient orbs */}
-        <div className="absolute top-1/3 -left-32 w-80 h-80 bg-blue-600/15 rounded-full blur-[100px] pointer-events-none" />
-        <div className="absolute bottom-1/3 -right-32 w-80 h-80 bg-purple-600/15 rounded-full blur-[100px] pointer-events-none" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-white/[0.02] rounded-full blur-[80px] pointer-events-none" />
+        <div className="hz-sq-8 hz-abs hz-bg-raised hz-r-full hz-blur-bg hz-no-pointer" />
+        <div className="hz-sq-8 hz-abs hz-bg-raised hz-r-full hz-blur-bg hz-no-pointer" />
+        <div className="hz-center-xy hz-abs hz-bg-quiet hz-r-full hz-blur-bg hz-no-pointer" />
 
-        <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
+        <div className="hz-container-wide hz-rel hz-z-raised hz-align-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/60 text-xs font-medium mb-8">
-              <div className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+            <div className="hz-btn hz-btn-primary hz-gap-2 hz-fg-soft hz-t-xs hz-mb-6">
+              <div className="hz-sq-1 hz-r-full hz-bg-raised" />
               Mainnet Beta · Powered by Lux L1
             </div>
           </motion.div>
 
           <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.05 }}
-            className="text-6xl sm:text-7xl md:text-8xl font-bold tracking-tight leading-[0.95] mb-6">
-            <span className="text-white">The AI</span>
+            className="hz-t-6xl hz-w-bold hz-tracking-tight hz-mb-5">
+            <span className="hz-fg">The AI</span>
             <br />
-            <span className="bg-gradient-to-r from-white via-white/80 to-white/40 bg-clip-text text-transparent">Chain.</span>
+            <span className="hz-chrome">Chain.</span>
           </motion.h1>
 
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-lg md:text-xl text-white/50 max-w-2xl mx-auto mb-4 leading-relaxed">
+            className="hz-container-narrow hz-mw-md hz-t-lg hz-fg-soft hz-mb-4 hz-leading-relaxed">
             Verifiable compute for AI training and inference.
             Like Solana — but purpose-built for AI workloads.
           </motion.p>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.12 }}
-            className="text-sm text-white/30 max-w-xl mx-auto mb-10">
+            className="hz-container-narrow hz-mw-md hz-t-sm hz-fg-soft hz-mb-6">
             NVIDIA TEE attestation · On-chain model registry · Open GPU marketplace · Lux L1 settlement
           </motion.p>
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.15 }}
-            className="flex flex-wrap items-center justify-center gap-4">
+            className="hz-row hz-wrap hz-ai-center hz-jc-center hz-gap-4">
             <a href="https://cloud.hanzo.ai/signup" target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold bg-white text-black hover:bg-white/90 transition-all text-sm">
-              Start Building <ArrowRight className="w-4 h-4" />
+              className="hz-btn hz-btn-primary hz-gap-2 hz-fg-inverse hz-transition">
+              Start Building <ArrowRight className="hz-sq-2" />
             </a>
             <a href="https://docs.hanzo.ai" target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-medium border border-white/15 text-white/80 hover:bg-white/5 hover:text-white transition-all text-sm">
+              className="hz-btn hz-btn-ghost hz-gap-2 hz-fg-soft hz-transition">
               Read the Docs
             </a>
-            <a href="#provide" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-medium border border-white/15 text-white/80 hover:bg-white/5 hover:text-white transition-all text-sm">
-              <Cpu className="w-4 h-4" /> Provide Compute
+            <a href="#provide" className="hz-btn hz-btn-ghost hz-gap-2 hz-fg-soft hz-transition">
+              <Cpu className="hz-sq-2" /> Provide Compute
             </a>
           </motion.div>
         </div>
 
         {/* Bottom fade */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent pointer-events-none" />
+        <div className="hz-abs hz-bottom-0 hz-left-0 hz-right-0 hz-bh-8 hz-no-pointer" />
       </section>
 
       {/* Stats */}
-      <section className="py-16 px-6 border-t border-white/5">
-        <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
+      <section className="hz-py-7 hz-px-5 hz-border-t">
+        <div className="hz-grid hz-grid-4 hz-container-wide hz-gap-5">
           {STATS.map((s, i) => (
             <motion.div key={s.label}
               initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
-              className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-white mb-1 tabular-nums">{s.value}</div>
-              <div className="text-xs text-white/40 uppercase tracking-wider">{s.label}</div>
-              <div className="text-[10px] text-white/25 mt-0.5">{s.sub}</div>
+              className="hz-align-center">
+              <div className="hz-t-4xl hz-w-bold hz-fg hz-mb-1">{s.value}</div>
+              <div className="hz-t-xs hz-fg-soft hz-upper hz-tracking-wide">{s.label}</div>
+              <div className="hz-t-xs hz-fg-soft hz-mt-1">{s.sub}</div>
             </motion.div>
           ))}
         </div>
       </section>
 
       {/* Features */}
-      <section className="py-20 px-6 border-t border-white/5">
-        <div className="max-w-5xl mx-auto">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
-            <div className="text-xs font-semibold uppercase tracking-[0.15em] text-white/40 mb-4">Infrastructure</div>
-            <h2 className="text-4xl md:text-5xl font-bold text-white">Built differently.</h2>
+      <section className="hz-py-7 hz-px-5 hz-border-t">
+        <div className="hz-container-wide">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="hz-align-center hz-mb-7">
+            <div className="hz-t-xs hz-w-semibold hz-upper hz-tracking-widest hz-fg-soft hz-mb-4">Infrastructure</div>
+            <h2 className="hz-t-4xl hz-w-bold hz-fg">Built differently.</h2>
           </motion.div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="hz-grid hz-grid-3 hz-gap-4">
             {FEATURES.map((f, i) => {
               const Icon = f.icon;
               return (
                 <motion.div key={f.title}
                   initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: (i % 3) * 0.08 }}
-                  className="p-6 rounded-2xl border border-white/8 bg-white/[0.025] hover:bg-white/[0.04] hover:border-white/12 transition-all">
-                  <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center mb-4">
-                    <Icon className="w-5 h-5 text-white/80" />
+                  className="hz-card hz-transition hz-card-interactive">
+                  <div className="hz-sq-6 hz-r-lg hz-bg-quiet hz-row hz-ai-center hz-jc-center hz-mb-4">
+                    <Icon className="hz-sq-3 hz-fg-soft" />
                   </div>
-                  <h3 className="text-base font-semibold text-white mb-2">{f.title}</h3>
-                  <p className="text-sm text-white/50 leading-relaxed">{f.description}</p>
+                  <h3 className="hz-t-base hz-w-semibold hz-fg hz-mb-2">{f.title}</h3>
+                  <p className="hz-t-sm hz-fg-soft hz-leading-relaxed">{f.description}</p>
                 </motion.div>
               );
             })}
@@ -294,22 +294,22 @@ const NetworkLanding = () => {
       </section>
 
       {/* How it works */}
-      <section id="how-it-works" className="py-20 px-6 border-t border-white/5">
-        <div className="max-w-5xl mx-auto">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
-            <div className="text-xs font-semibold uppercase tracking-[0.15em] text-white/40 mb-4">Protocol</div>
-            <h2 className="text-4xl md:text-5xl font-bold text-white">How it works.</h2>
+      <section id="how-it-works" className="hz-py-7 hz-px-5 hz-border-t">
+        <div className="hz-container-wide">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="hz-align-center hz-mb-7">
+            <div className="hz-t-xs hz-w-semibold hz-upper hz-tracking-widest hz-fg-soft hz-mb-4">Protocol</div>
+            <h2 className="hz-t-4xl hz-w-bold hz-fg">How it works.</h2>
           </motion.div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="hz-grid hz-grid-4 hz-gap-4">
             {HOW_IT_WORKS.map((step, i) => (
               <motion.div key={step.step}
                 initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                className="relative p-6 rounded-2xl border border-white/8 bg-white/[0.02]">
-                <div className="text-5xl font-black text-white/6 mb-4 leading-none">{step.step}</div>
-                <h3 className="text-sm font-semibold text-white mb-2">{step.title}</h3>
-                <p className="text-xs text-white/40 leading-relaxed">{step.desc}</p>
+                className="hz-card hz-rel">
+                <div className="hz-t-5xl hz-w-bold hz-fg-soft hz-mb-4 hz-leading-none">{step.step}</div>
+                <h3 className="hz-t-sm hz-w-semibold hz-fg hz-mb-2">{step.title}</h3>
+                <p className="hz-t-xs hz-fg-soft hz-leading-relaxed">{step.desc}</p>
                 {i < HOW_IT_WORKS.length - 1 && (
-                  <ArrowRight className="absolute -right-2 top-1/2 -translate-y-1/2 w-4 h-4 text-white/20 hidden lg:block" />
+                  <ArrowRight className="hz-desktop-only hz-center-y hz-sq-2 hz-abs hz-fg-soft" />
                 )}
               </motion.div>
             ))}
@@ -318,28 +318,28 @@ const NetworkLanding = () => {
       </section>
 
       {/* Use Cases */}
-      <section className="py-20 px-6 border-t border-white/5 bg-white/[0.01]">
-        <div className="max-w-5xl mx-auto">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
-            <div className="text-xs font-semibold uppercase tracking-[0.15em] text-white/40 mb-4">Use Cases</div>
-            <h2 className="text-4xl md:text-5xl font-bold text-white">What runs on it.</h2>
+      <section className="hz-py-7 hz-px-5 hz-border-t hz-bg-quiet">
+        <div className="hz-container-wide">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="hz-align-center hz-mb-7">
+            <div className="hz-t-xs hz-w-semibold hz-upper hz-tracking-widest hz-fg-soft hz-mb-4">Use Cases</div>
+            <h2 className="hz-t-4xl hz-w-bold hz-fg">What runs on it.</h2>
           </motion.div>
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="hz-grid hz-grid-2 hz-gap-4">
             {USE_CASES.map((u, i) => {
               const Icon = u.icon;
               return (
                 <motion.div key={u.title}
                   initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                  className="flex gap-5 p-6 rounded-2xl border border-white/8 bg-white/[0.025] hover:bg-white/[0.04] transition-all">
-                  <div className="w-11 h-11 rounded-xl bg-white/5 flex items-center justify-center flex-shrink-0">
-                    <Icon className="w-5 h-5 text-white/70" />
+                  className="hz-card hz-row hz-gap-4 hz-transition hz-card-interactive">
+                  <div className="hz-sq-6 hz-r-lg hz-bg-quiet hz-row hz-ai-center hz-jc-center hz-none">
+                    <Icon className="hz-sq-3 hz-fg-soft" />
                   </div>
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-2">
-                      <h3 className="text-sm font-semibold text-white">{u.title}</h3>
-                      <span className="text-[10px] px-2 py-0.5 rounded-full bg-white/5 text-white/40 border border-white/8">{u.stat}</span>
+                  <div className="hz-grow">
+                    <div className="hz-row hz-ai-center hz-gap-3 hz-mb-2">
+                      <h3 className="hz-t-sm hz-w-semibold hz-fg">{u.title}</h3>
+                      <span className="hz-t-xs hz-px-2 hz-py-1 hz-r-full hz-bg-quiet hz-fg-soft hz-bordered">{u.stat}</span>
                     </div>
-                    <p className="text-sm text-white/50 leading-relaxed">{u.description}</p>
+                    <p className="hz-t-sm hz-fg-soft hz-leading-relaxed">{u.description}</p>
                   </div>
                 </motion.div>
               );
@@ -349,37 +349,37 @@ const NetworkLanding = () => {
       </section>
 
       {/* Ecosystem */}
-      <section id="ecosystem" className="py-20 px-6 border-t border-white/5">
-        <div className="max-w-5xl mx-auto">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
-            <div className="text-xs font-semibold uppercase tracking-[0.15em] text-white/40 mb-4">Ecosystem</div>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">The whole stack.</h2>
-            <p className="text-white/40 text-lg max-w-xl mx-auto">
+      <section id="ecosystem" className="hz-py-7 hz-px-5 hz-border-t">
+        <div className="hz-container-wide">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="hz-align-center hz-mb-7">
+            <div className="hz-t-xs hz-w-semibold hz-upper hz-tracking-widest hz-fg-soft hz-mb-4">Ecosystem</div>
+            <h2 className="hz-t-4xl hz-w-bold hz-fg hz-mb-4">The whole stack.</h2>
+            <p className="hz-container-narrow hz-mw-md hz-fg-soft hz-t-lg">
               Hanzo Network is the compute layer. Lux settles it. Zen models run on it. Zoo researches with it.
             </p>
           </motion.div>
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="hz-grid hz-grid-2 hz-gap-4">
             {ECOSYSTEM.map((e, i) => (
               <motion.a key={e.name} href={e.href} target={e.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer"
                 initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
-                className={`group block p-6 rounded-2xl border bg-white/[0.02] hover:bg-white/[0.04] transition-all ${e.color}`}>
-                <div className="flex items-start justify-between mb-3">
+                className={`hz-card hz-transition hz-card-interactive ${e.color}`}>
+                <div className="hz-row hz-ai-start hz-jc-between hz-mb-3">
                   <div>
-                    <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-white/30 mb-1 block">{e.tag}</span>
-                    <h3 className="text-lg font-bold text-white">{e.name}</h3>
+                    <span className="hz-t-xs hz-w-semibold hz-upper hz-tracking-widest hz-fg-soft hz-mb-1">{e.tag}</span>
+                    <h3 className="hz-t-lg hz-w-bold hz-fg">{e.name}</h3>
                   </div>
-                  <ExternalLink className="w-4 h-4 text-white/20 group-hover:text-white/50 transition-colors flex-shrink-0 mt-1" />
+                  <ExternalLink className="hz-sq-2 hz-fg-soft hz-transition hz-none hz-mt-1 hz-hoverable" />
                 </div>
-                <p className="text-sm text-white/50 leading-relaxed">{e.description}</p>
+                <p className="hz-t-sm hz-fg-soft hz-leading-relaxed">{e.description}</p>
               </motion.a>
             ))}
           </div>
 
           {/* Stack diagram */}
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }}
-            className="mt-8 p-6 rounded-2xl border border-white/8 bg-white/[0.015]">
-            <div className="text-xs font-semibold uppercase tracking-[0.12em] text-white/30 mb-4 text-center">Stack Architecture</div>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-2 text-sm font-mono">
+            className="hz-card hz-mt-6">
+            <div className="hz-t-xs hz-w-semibold hz-upper hz-tracking-widest hz-fg-soft hz-mb-4 hz-align-center">Stack Architecture</div>
+            <div className="hz-col-row hz-ai-center hz-jc-center hz-gap-2 hz-t-sm hz-mono">
               {[
                 { label: "Zoo Research", sub: "DeAI / DeSci", color: "text-green-300 border-green-500/30" },
                 { label: "Zen Models", sub: "0.6B – 1.04T", color: "text-blue-300 border-blue-500/30" },
@@ -388,12 +388,12 @@ const NetworkLanding = () => {
                 { label: "Lux L1", sub: "Settlement", color: "text-purple-300 border-purple-500/30" },
               ].map((layer, i, arr) => (
                 <React.Fragment key={layer.label}>
-                  <div className={`px-4 py-2.5 rounded-xl border bg-black/40 text-center ${layer.color}`}>
-                    <div className="font-semibold">{layer.label}</div>
-                    <div className="text-[10px] opacity-60">{layer.sub}</div>
+                  <div className={`hz-px-4 hz-py-2 hz-r-lg hz-bordered hz-bg-surface hz-align-center ${layer.color}`}>
+                    <div className="hz-w-semibold">{layer.label}</div>
+                    <div className="hz-t-xs hz-dim">{layer.sub}</div>
                   </div>
                   {i < arr.length - 1 && (
-                    <ArrowRight className="w-4 h-4 text-white/20 flex-shrink-0 rotate-90 sm:rotate-0" />
+                    <ArrowRight className="hz-sq-2 hz-fg-soft hz-none" />
                   )}
                 </React.Fragment>
               ))}
@@ -403,52 +403,52 @@ const NetworkLanding = () => {
       </section>
 
       {/* Provide Compute CTA */}
-      <section id="provide" className="py-20 px-6 border-t border-white/5">
-        <div className="max-w-5xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-6">
+      <section id="provide" className="hz-py-7 hz-px-5 hz-border-t">
+        <div className="hz-container-wide">
+          <div className="hz-grid hz-grid-2 hz-gap-5">
             {/* Build */}
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-              className="p-8 rounded-2xl border border-white/10 bg-white/[0.025]">
-              <div className="text-xs font-semibold uppercase tracking-[0.12em] text-white/40 mb-4">For Developers</div>
-              <h3 className="text-3xl font-bold text-white mb-3">Build on it.</h3>
-              <p className="text-white/50 text-sm leading-relaxed mb-6">
+              className="hz-card">
+              <div className="hz-t-xs hz-w-semibold hz-upper hz-tracking-widest hz-fg-soft hz-mb-4">For Developers</div>
+              <h3 className="hz-t-3xl hz-w-bold hz-fg hz-mb-3">Build on it.</h3>
+              <p className="hz-fg-soft hz-t-sm hz-leading-relaxed hz-mb-5">
                 Access verifiable GPU compute via a simple REST API. OpenAI-compatible inference endpoint.
                 Train, fine-tune, and deploy models with on-chain provenance.
               </p>
-              <ul className="space-y-2 mb-8">
+              <ul className="hz-stack-2 hz-mb-6">
                 {["OpenAI-compatible API", "Verifiable training runs", "On-chain model registry", "260+ MCP tools included"].map(f => (
-                  <li key={f} className="flex items-center gap-2 text-sm text-white/60">
-                    <CheckCircle className="w-4 h-4 text-green-400/70 flex-shrink-0" />
+                  <li key={f} className="hz-row hz-ai-center hz-gap-2 hz-t-sm hz-fg-soft">
+                    <CheckCircle className="hz-sq-2 hz-fg-muted hz-none" />
                     {f}
                   </li>
                 ))}
               </ul>
               <a href="https://cloud.hanzo.ai/signup" target="_blank" rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold bg-white text-black hover:bg-white/90 text-sm transition-all">
-                Get API Key <ArrowRight className="w-4 h-4" />
+                className="hz-btn hz-btn-primary hz-gap-2 hz-fg-inverse hz-transition">
+                Get API Key <ArrowRight className="hz-sq-2" />
               </a>
             </motion.div>
 
             {/* Provide */}
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
-              className="p-8 rounded-2xl border border-white/10 bg-white/[0.025]">
-              <div className="text-xs font-semibold uppercase tracking-[0.12em] text-white/40 mb-4">For GPU Providers</div>
-              <h3 className="text-3xl font-bold text-white mb-3">Earn from it.</h3>
-              <p className="text-white/50 text-sm leading-relaxed mb-6">
+              className="hz-card">
+              <div className="hz-t-xs hz-w-semibold hz-upper hz-tracking-widest hz-fg-soft hz-mb-4">For GPU Providers</div>
+              <h3 className="hz-t-3xl hz-w-bold hz-fg hz-mb-3">Earn from it.</h3>
+              <p className="hz-fg-soft hz-t-sm hz-leading-relaxed hz-mb-5">
                 Contribute idle GPU capacity to the network. Set your own pricing, availability, and hardware tiers.
                 Get paid instantly on Lux L1 for every compute second.
               </p>
-              <ul className="space-y-2 mb-8">
+              <ul className="hz-stack-2 hz-mb-6">
                 {["Set your own prices", "Instant Lux L1 settlement", "No lock-in contracts", "Hardware verification included"].map(f => (
-                  <li key={f} className="flex items-center gap-2 text-sm text-white/60">
-                    <CheckCircle className="w-4 h-4 text-green-400/70 flex-shrink-0" />
+                  <li key={f} className="hz-row hz-ai-center hz-gap-2 hz-t-sm hz-fg-soft">
+                    <CheckCircle className="hz-sq-2 hz-fg-muted hz-none" />
                     {f}
                   </li>
                 ))}
               </ul>
               <a href="https://hanzo.ai/contact" target="_blank" rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold border border-white/20 text-white hover:bg-white/5 text-sm transition-all">
-                <Cpu className="w-4 h-4" /> Become a Provider
+                className="hz-btn hz-btn-ghost hz-gap-2 hz-fg hz-transition">
+                <Cpu className="hz-sq-2" /> Become a Provider
               </a>
             </motion.div>
           </div>
@@ -456,24 +456,24 @@ const NetworkLanding = () => {
       </section>
 
       {/* Final CTA */}
-      <section className="py-24 px-6 border-t border-white/5 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/[0.02] to-transparent pointer-events-none" />
-        <div className="max-w-3xl mx-auto text-center relative z-10">
+      <section className="hz-py-7 hz-px-5 hz-border-t hz-rel hz-clip">
+        <div className="hz-abs hz-inset hz-no-pointer" />
+        <div className="hz-container-narrow hz-align-center hz-rel hz-z-raised">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <h2 className="text-5xl md:text-6xl font-bold text-white mb-4">
+            <h2 className="hz-t-5xl hz-w-bold hz-fg hz-mb-4">
               AI infrastructure<br />reimagined.
             </h2>
-            <p className="text-white/40 text-lg mb-10 max-w-xl mx-auto">
+            <p className="hz-container-narrow hz-mw-md hz-fg-soft hz-t-lg hz-mb-6">
               Verifiable. Decentralized. Open. The compute layer the AI era deserves.
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="hz-row hz-wrap hz-jc-center hz-gap-4">
               <a href="https://cloud.hanzo.ai/signup" target="_blank" rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold bg-white text-black hover:bg-white/90 text-sm transition-all">
-                Start Building Free <ArrowRight className="w-4 h-4" />
+                className="hz-btn hz-btn-primary hz-btn-lg hz-gap-2 hz-fg-inverse hz-transition">
+                Start Building Free <ArrowRight className="hz-sq-2" />
               </a>
               <a href="https://github.com/hanzoai/network" target="_blank" rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold border border-white/15 text-white/80 hover:bg-white/5 hover:text-white text-sm transition-all">
-                <Github className="w-4 h-4" /> Open Source
+                className="hz-btn hz-btn-ghost hz-btn-lg hz-gap-2 hz-fg-soft hz-transition">
+                <Github className="hz-sq-2" /> Open Source
               </a>
             </div>
           </motion.div>
@@ -481,18 +481,18 @@ const NetworkLanding = () => {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-white/5 px-6 py-8">
-        <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/30">
-          <div className="flex items-center gap-2">
-            <Network className="w-3.5 h-3.5" />
+      <footer className="hz-border-t hz-px-5 hz-py-6">
+        <div className="hz-col-row hz-container-wide hz-ai-center hz-jc-between hz-gap-4 hz-t-xs hz-fg-soft">
+          <div className="hz-row hz-ai-center hz-gap-2">
+            <Network className="hz-sq-2" />
             <span>© 2025 Hanzo AI, Inc. Techstars &apos;17.</span>
           </div>
-          <div className="flex items-center gap-5">
-            <a href="https://hanzo.ai" className="hover:text-white/60 transition-colors">hanzo.ai</a>
-            <a href="https://hanzo.ai/privacy" className="hover:text-white/60 transition-colors">Privacy</a>
-            <a href="https://hanzo.ai/terms" className="hover:text-white/60 transition-colors">Terms</a>
-            <a href="https://discord.gg/hanzo" target="_blank" rel="noopener noreferrer" className="hover:text-white/60 transition-colors">Discord</a>
-            <a href="https://github.com/hanzoai/network" target="_blank" rel="noopener noreferrer" className="hover:text-white/60 transition-colors">GitHub</a>
+          <div className="hz-row hz-ai-center hz-gap-4">
+            <a href="https://hanzo.ai" className="hz-transition hz-hoverable">hanzo.ai</a>
+            <a href="https://hanzo.ai/privacy" className="hz-transition hz-hoverable">Privacy</a>
+            <a href="https://hanzo.ai/terms" className="hz-transition hz-hoverable">Terms</a>
+            <a href="https://discord.gg/hanzo" target="_blank" rel="noopener noreferrer" className="hz-transition hz-hoverable">Discord</a>
+            <a href="https://github.com/hanzoai/network" target="_blank" rel="noopener noreferrer" className="hz-transition hz-hoverable">GitHub</a>
           </div>
         </div>
       </footer>

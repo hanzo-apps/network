@@ -17,38 +17,38 @@ const TeamVi = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[var(--black)] text-[var(--white)]">
+    <div className="hz-min-h-screen hz-bg hz-fg">
       <Navbar />
       
-      <main className="pt-32 pb-16 px-4">
+      <main className="hz-pt-6 hz-pb-6 hz-px-4">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="max-w-7xl mx-auto"
+          className="hz-container"
         >
           {/* Hero Section */}
-          <div className="text-center mb-16">
-            <div className="inline-flex p-3 rounded-xl bg-gradient-to-br from-neutral-500 to-neutral-500 mb-4">
-              <Lightbulb className="h-8 w-8 text-[var(--white)]" />
+          <div className="hz-align-center hz-mb-7">
+            <div className="hz-inline hz-p-3 hz-r-lg hz-mb-4">
+              <Lightbulb className="hz-sq-5 hz-fg" />
             </div>
-            <h1 className="text-4xl sm:text-5xl font-bold mb-6">
+            <h1 className="hz-t-4xl hz-w-bold hz-mb-5">
               Meet Vi, Your Visionary Leader
             </h1>
-            <p className="text-neutral-400 text-lg max-w-2xl mx-auto">
+            <p className="hz-container-narrow hz-mw-md hz-fg-muted hz-t-lg">
               Your innovative AI visionary leader, guiding the team towards excellence with strategic 
               insights and forward-thinking leadership.
             </p>
           </div>
 
           {/* Integration Platforms */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          <div className="hz-grid hz-grid-3 hz-gap-6 hz-mb-7">
             <motion.div 
               whileHover={{ y: -5 }}
-              className="p-6 rounded-2xl border border-gray-800 bg-[var(--black)]/50"
+              className="hz-card"
             >
-              <MessagesSquare className="h-8 w-8 text-neutral-400 mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Strategic Vision</h3>
-              <p className="text-neutral-400">
+              <MessagesSquare className="hz-sq-5 hz-fg-muted hz-mb-4" />
+              <h3 className="hz-t-xl hz-w-semibold hz-mb-2">Strategic Vision</h3>
+              <p className="hz-fg-muted">
                 Develops comprehensive strategies and roadmaps for sustainable growth
                 and innovation.
               </p>
@@ -56,11 +56,11 @@ const TeamVi = () => {
 
             <motion.div 
               whileHover={{ y: -5 }}
-              className="p-6 rounded-2xl border border-gray-800 bg-[var(--black)]/50"
+              className="hz-card"
             >
-              <Bot className="h-8 w-8 text-neutral-400 mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Team Leadership</h3>
-              <p className="text-neutral-400">
+              <Bot className="hz-sq-5 hz-fg-muted hz-mb-4" />
+              <h3 className="hz-t-xl hz-w-semibold hz-mb-2">Team Leadership</h3>
+              <p className="hz-fg-muted">
                 Coordinates and guides the AI team to achieve optimal performance
                 and collaboration.
               </p>
@@ -68,11 +68,11 @@ const TeamVi = () => {
 
             <motion.div 
               whileHover={{ y: -5 }}
-              className="p-6 rounded-2xl border border-gray-800 bg-[var(--black)]/50"
+              className="hz-card"
             >
-              <Lock className="h-8 w-8 text-neutral-400 mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Innovation Drive</h3>
-              <p className="text-neutral-400">
+              <Lock className="hz-sq-5 hz-fg-muted hz-mb-4" />
+              <h3 className="hz-t-xl hz-w-semibold hz-mb-2">Innovation Drive</h3>
+              <p className="hz-fg-muted">
                 Promotes cutting-edge solutions and encourages creative problem-solving
                 across all projects.
               </p>
@@ -83,15 +83,15 @@ const TeamVi = () => {
           <TeamSlack />
 
           {/* Contact Section */}
-          <div className="text-center max-w-2xl mx-auto mt-16">
-            <h2 className="text-2xl font-semibold mb-4">Need Human Assistance?</h2>
-            <p className="text-neutral-400 mb-6">
+          <div className="hz-container-narrow hz-mw-md hz-align-center hz-mt-7">
+            <h2 className="hz-t-2xl hz-w-semibold hz-mb-4">Need Human Assistance?</h2>
+            <p className="hz-fg-muted hz-mb-5">
               While Vi is highly capable, sometimes you might need human expertise.
               Contact Sensei Group for dedicated support and consultation.
             </p>
             <Button 
               onClick={handleContactSensei}
-              className="bg-gradient-to-r from-neutral-500 to-neutral-500 hover:from-neutral-600 hover:to-neutral-600"
+              className=""
             >
               Contact Sensei Group
             </Button>

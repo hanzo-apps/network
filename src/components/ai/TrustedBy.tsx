@@ -5,35 +5,35 @@ import { motion } from 'framer-motion';
 const TrustedBy = () => {
   // Example logos - in a real implementation, these would be actual logo images
   const logoItems = [
-    { name: 'Microsoft', class: 'h-7' },
-    { name: 'Airbnb', class: 'h-6' },
-    { name: 'Netflix', class: 'h-6' },
-    { name: 'Square', class: 'h-8' },
-    { name: 'Shopify', class: 'h-6' },
-    { name: 'Spotify', class: 'h-7' },
-    { name: 'Slack', class: 'h-7' },
-    { name: 'Amazon', class: 'h-6' }
+    { name: 'Microsoft', class: 'hz-bh-5' },
+    { name: 'Airbnb', class: 'hz-bh-4' },
+    { name: 'Netflix', class: 'hz-bh-4' },
+    { name: 'Square', class: 'hz-bh-5' },
+    { name: 'Shopify', class: 'hz-bh-4' },
+    { name: 'Spotify', class: 'hz-bh-5' },
+    { name: 'Slack', class: 'hz-bh-5' },
+    { name: 'Amazon', class: 'hz-bh-4' }
   ];
 
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gray-950">
-      <div className="max-w-7xl mx-auto">
+    <section className="hz-py-7 hz-px-4 hz-bg-surface">
+      <div className="hz-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="hz-align-center hz-mb-7"
         >
-          <h2 className="text-3xl font-bold text-[var(--white)] mb-6">
+          <h2 className="hz-t-3xl hz-w-bold hz-fg hz-mb-5">
             Trusted by Industry Leaders
           </h2>
-          <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
+          <p className="hz-container-narrow hz-t-xl hz-fg-soft">
             Powering AI innovation at organizations of all sizes, from startups to Fortune 500 companies
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+        <div className="hz-grid hz-grid-4 hz-gap-6">
           {logoItems.map((logo, index) => (
             <motion.div
               key={index}
@@ -41,10 +41,10 @@ const TrustedBy = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
-              className="flex items-center justify-center p-6 bg-gray-900/50 rounded-xl border border-gray-800 hover:bg-gray-900/80 transition-colors"
+              className="hz-card hz-row hz-ai-center hz-jc-center hz-transition hz-card-interactive"
             >
               {/* In a real implementation, this would be an image */}
-              <div className={`text-neutral-400 font-semibold text-xl ${logo.class}`}>
+              <div className={`hz-fg-muted hz-w-semibold hz-t-xl ${logo.class}`}>
                 {logo.name}
               </div>
             </motion.div>
@@ -56,15 +56,15 @@ const TrustedBy = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8"
+          className="hz-grid hz-grid-3 hz-mt-7 hz-gap-6"
         >
-          <div className="bg-gray-900/30 border border-gray-800 rounded-xl p-6">
-            <div className="flex items-center mb-2">
-              <div className="flex">
+          <div className="hz-card">
+            <div className="hz-row hz-ai-center hz-mb-2">
+              <div className="hz-row">
                 {[...Array(5)].map((_, i) => (
                   <svg 
                     key={i} 
-                    className="h-5 w-5 text-neutral-400" 
+                    className="hz-sq-3 hz-fg-muted" 
                     fill="currentColor" 
                     viewBox="0 0 20 20"
                   >
@@ -72,27 +72,27 @@ const TrustedBy = () => {
                   </svg>
                 ))}
               </div>
-              <span className="ml-2 text-[var(--white)] font-medium">5.0</span>
+              <span className="hz-ml-2 hz-fg hz-w-medium">5.0</span>
             </div>
-            <p className="text-neutral-300 mb-4">
+            <p className="hz-fg-soft hz-mb-4">
               "Hanzo's AI platform has transformed our ability to ship AI features quickly. What used to take months now takes days."
             </p>
-            <div className="flex items-center">
-              <div className="h-10 w-10 rounded-full bg-neutral-800/50 flex items-center justify-center text-neutral-300 font-bold">JD</div>
-              <div className="ml-3">
-                <div className="text-[var(--white)] font-medium">Jane Doe</div>
-                <div className="text-neutral-400 text-sm">CTO, TechInnovate</div>
+            <div className="hz-row hz-ai-center">
+              <div className="hz-sq-6 hz-r-full hz-bg-raised hz-row hz-ai-center hz-jc-center hz-fg-soft hz-w-bold">JD</div>
+              <div className="hz-ml-3">
+                <div className="hz-fg hz-w-medium">Jane Doe</div>
+                <div className="hz-fg-muted hz-t-sm">CTO, TechInnovate</div>
               </div>
             </div>
           </div>
 
-          <div className="bg-gray-900/30 border border-gray-800 rounded-xl p-6">
-            <div className="flex items-center mb-2">
-              <div className="flex">
+          <div className="hz-card">
+            <div className="hz-row hz-ai-center hz-mb-2">
+              <div className="hz-row">
                 {[...Array(5)].map((_, i) => (
                   <svg 
                     key={i} 
-                    className="h-5 w-5 text-neutral-400" 
+                    className="hz-sq-3 hz-fg-muted" 
                     fill="currentColor" 
                     viewBox="0 0 20 20"
                   >
@@ -100,27 +100,27 @@ const TrustedBy = () => {
                   </svg>
                 ))}
               </div>
-              <span className="ml-2 text-[var(--white)] font-medium">5.0</span>
+              <span className="hz-ml-2 hz-fg hz-w-medium">5.0</span>
             </div>
-            <p className="text-neutral-300 mb-4">
+            <p className="hz-fg-soft hz-mb-4">
               "The observability features are game-changing. We finally have full visibility into our AI systems in production."
             </p>
-            <div className="flex items-center">
-              <div className="h-10 w-10 rounded-full bg-neutral-800/50 flex items-center justify-center text-neutral-300 font-bold">MS</div>
-              <div className="ml-3">
-                <div className="text-[var(--white)] font-medium">Michael Smith</div>
-                <div className="text-neutral-400 text-sm">AI Lead, EnterpriseAI</div>
+            <div className="hz-row hz-ai-center">
+              <div className="hz-sq-6 hz-r-full hz-bg-raised hz-row hz-ai-center hz-jc-center hz-fg-soft hz-w-bold">MS</div>
+              <div className="hz-ml-3">
+                <div className="hz-fg hz-w-medium">Michael Smith</div>
+                <div className="hz-fg-muted hz-t-sm">AI Lead, EnterpriseAI</div>
               </div>
             </div>
           </div>
 
-          <div className="bg-gray-900/30 border border-gray-800 rounded-xl p-6">
-            <div className="flex items-center mb-2">
-              <div className="flex">
+          <div className="hz-card">
+            <div className="hz-row hz-ai-center hz-mb-2">
+              <div className="hz-row">
                 {[...Array(5)].map((_, i) => (
                   <svg 
                     key={i} 
-                    className="h-5 w-5 text-neutral-400" 
+                    className="hz-sq-3 hz-fg-muted" 
                     fill="currentColor" 
                     viewBox="0 0 20 20"
                   >
@@ -128,16 +128,16 @@ const TrustedBy = () => {
                   </svg>
                 ))}
               </div>
-              <span className="ml-2 text-[var(--white)] font-medium">5.0</span>
+              <span className="hz-ml-2 hz-fg hz-w-medium">5.0</span>
             </div>
-            <p className="text-neutral-300 mb-4">
+            <p className="hz-fg-soft hz-mb-4">
               "Our team went from prototype to production in just days. The SDK is intuitive and the documentation is excellent."
             </p>
-            <div className="flex items-center">
-              <div className="h-10 w-10 rounded-full bg-neutral-800/50 flex items-center justify-center text-neutral-300 font-bold">EJ</div>
-              <div className="ml-3">
-                <div className="text-[var(--white)] font-medium">Emma Johnson</div>
-                <div className="text-neutral-400 text-sm">VP Engineering, StartupX</div>
+            <div className="hz-row hz-ai-center">
+              <div className="hz-sq-6 hz-r-full hz-bg-raised hz-row hz-ai-center hz-jc-center hz-fg-soft hz-w-bold">EJ</div>
+              <div className="hz-ml-3">
+                <div className="hz-fg hz-w-medium">Emma Johnson</div>
+                <div className="hz-fg-muted hz-t-sm">VP Engineering, StartupX</div>
               </div>
             </div>
           </div>

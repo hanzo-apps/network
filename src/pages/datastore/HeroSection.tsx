@@ -6,25 +6,25 @@ import ChromeText from "@/components/ui/chrome-text";
 
 const HeroSection = () => {
   return (
-    <section className="min-h-screen flex flex-col justify-center px-4 sm:px-6 lg:px-8 py-32 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-black to-gray-900/30 pointer-events-none"></div>
-      <div className="absolute -top-40 -right-40 w-80 h-80 bg-neutral-600/10 rounded-full blur-3xl"></div>
-      <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-neutral-600/10 rounded-full blur-3xl"></div>
+    <section className="hz-min-h-screen hz-col hz-jc-center hz-px-4 hz-py-7 hz-rel hz-clip">
+      <div className="hz-abs hz-inset hz-no-pointer"></div>
+      <div className="hz-sq-8 hz-abs hz-bg-raised hz-r-full hz-blur-bg"></div>
+      <div className="hz-sq-8 hz-abs hz-bg-raised hz-r-full hz-blur-bg"></div>
       
-      <div className="max-w-6xl mx-auto text-center relative z-10 mb-16">
+      <div className="hz-container-wide hz-align-center hz-rel hz-z-raised hz-mb-7">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-8"
+          className="hz-mb-6"
         >
-          <div className="inline-block px-4 py-1 rounded-full bg-neutral-800/30 border border-neutral-500/30 text-neutral-300 text-sm font-medium mb-6">
+          <div className="hz-px-4 hz-py-1 hz-r-full hz-bg-raised hz-bordered hz-border-strong hz-fg-soft hz-t-sm hz-w-medium hz-mb-5">
             Hanzo Datastore
           </div>
-          <ChromeText as="h1" className="text-4xl md:text-6xl font-bold mb-6">
+          <ChromeText as="h1" className="hz-t-4xl hz-w-bold hz-mb-5">
             The Fastest Open-Source Planet Scale Datastore
           </ChromeText>
-          <p className="text-xl text-neutral-300 max-w-3xl mx-auto mt-6">
+          <p className="hz-container-narrow hz-t-xl hz-fg-soft hz-mt-5">
             Hanzo Datastore is a column-oriented data store that enables its users to generate powerful analytics, 
             using SQL queries, in real-time.
           </p>
@@ -34,12 +34,12 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center mt-10"
+          className="hz-col-row hz-gap-4 hz-jc-center hz-mt-6"
         >
-          <Button size="lg" className="text-lg px-8 bg-gradient-to-r from-neutral-700 to-neutral-500 hover:from-neutral-600 hover:to-neutral-400 border-none">
+          <Button size="lg" className="hz-t-lg hz-px-6 hz-border-none">
             Get Started
           </Button>
-          <Button size="lg" variant="outline" className="text-lg px-8 text-[var(--white)] border-white/20 bg-[var(--white)]/5 hover:bg-[var(--white)]/10">
+          <Button size="lg" variant="outline" className="hz-t-lg hz-px-6 hz-fg hz-bg-surface hz-hoverable">
             Documentation
           </Button>
         </motion.div>
@@ -48,11 +48,11 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-16"
+          className="hz-mt-7"
         >
-          <a href="#features" className="text-neutral-400 hover:text-[var(--white)] transition-colors flex items-center justify-center">
+          <a href="#features" className="hz-fg-muted hz-transition hz-row hz-ai-center hz-jc-center hz-link">
             Scroll to explore
-            <svg className="w-5 h-5 ml-2 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <svg className="hz-sq-3 hz-ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
             </svg>
           </a>

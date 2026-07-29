@@ -7,40 +7,40 @@ import { Link } from "react-router-dom";
 
 const Compliance = () => {
   return (
-    <section className="py-12 px-4 sm:px-6 lg:px-8 bg-gray-900/30">
-      <div className="max-w-7xl mx-auto">
+    <section className="hz-py-7 hz-px-4 hz-bg-surface">
+      <div className="hz-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="flex flex-col space-y-12"
+          className="hz-col hz-stack-6"
         >
-          <div className="flex flex-col md:flex-row items-center justify-between">
-            <div className="mb-8 md:mb-0">
-              <div className="flex items-center">
-                <Shield className="h-6 w-6 text-neutral-400 mr-3" />
-                <h2 className="text-2xl font-semibold text-[var(--white)]">Secure & Compliant</h2>
+          <div className="hz-col-row hz-ai-center hz-jc-between">
+            <div className="hz-mb-6">
+              <div className="hz-row hz-ai-center">
+                <Shield className="hz-sq-4 hz-fg-muted hz-mr-3" />
+                <h2 className="hz-t-2xl hz-w-semibold hz-fg">Secure & Compliant</h2>
               </div>
-              <div className="mt-4 flex flex-wrap gap-4">
-                <div className="flex items-center bg-neutral-800/20 border border-neutral-800/50 rounded-md px-3 py-1">
-                  <Lock className="h-4 w-4 text-neutral-400 mr-2" />
-                  <span className="text-neutral-300 text-sm">SOC2 Type 2 Certified</span>
+              <div className="hz-mt-4 hz-row hz-wrap hz-gap-4">
+                <div className="hz-row hz-ai-center hz-bg-raised hz-bordered hz-r-md hz-px-3 hz-py-1">
+                  <Lock className="hz-sq-2 hz-fg-muted hz-mr-2" />
+                  <span className="hz-fg-soft hz-t-sm">SOC2 Type 2 Certified</span>
                 </div>
-                <div className="flex items-center bg-neutral-800/20 border border-neutral-800/50 rounded-md px-3 py-1">
-                  <Lock className="h-4 w-4 text-neutral-400 mr-2" />
-                  <span className="text-neutral-300 text-sm">HIPAA Compliant</span>
+                <div className="hz-row hz-ai-center hz-bg-raised hz-bordered hz-r-md hz-px-3 hz-py-1">
+                  <Lock className="hz-sq-2 hz-fg-muted hz-mr-2" />
+                  <span className="hz-fg-soft hz-t-sm">HIPAA Compliant</span>
                 </div>
               </div>
             </div>
             
-            <div className="flex items-center">
-              <div className="h-12 w-12 mr-4">
-                <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/hanzo-ai-icon.png" alt="Hanzo Base Logo" className="w-full h-full object-contain" />
+            <div className="hz-row hz-ai-center">
+              <div className="hz-sq-7 hz-mr-4">
+                <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/hanzo-ai-icon.png" alt="Hanzo Base Logo" className="hz-w-full hz-h-full hz-object-contain" />
               </div>
               <div>
-                <h3 className="text-xl font-bold text-[var(--white)]">Hanzo Base</h3>
-                <p className="text-neutral-400">Secure. Scalable. Open Source.</p>
+                <h3 className="hz-t-xl hz-w-bold hz-fg">Hanzo Base</h3>
+                <p className="hz-fg-muted">Secure. Scalable. Open Source.</p>
               </div>
             </div>
           </div>
@@ -50,35 +50,35 @@ const Compliance = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="bg-gradient-to-r from-neutral-800/20 to-neutral-800/20 rounded-xl p-6 border border-neutral-800/30"
+            className="hz-card"
           >
-            <div className="flex items-center mb-4">
-              <Server className="h-6 w-6 text-neutral-400 mr-3" />
-              <h3 className="text-xl font-semibold text-[var(--white)]">Global Data Regions</h3>
+            <div className="hz-row hz-ai-center hz-mb-4">
+              <Server className="hz-sq-4 hz-fg-muted hz-mr-3" />
+              <h3 className="hz-t-xl hz-w-semibold hz-fg">Global Data Regions</h3>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-              <div className="bg-neutral-800/20 border border-neutral-800/50 rounded-lg p-4">
-                <h4 className="font-medium text-neutral-300 mb-2">United States (US)</h4>
-                <p className="text-neutral-300 text-sm mb-1">MCI - Kansas City</p>
-                <p className="text-neutral-400 text-xs">Hanzo Cloud region: us-central-1</p>
+            <div className="hz-grid hz-grid-3 hz-gap-5 hz-mt-5">
+              <div className="hz-card">
+                <h4 className="hz-w-medium hz-fg-soft hz-mb-2">United States (US)</h4>
+                <p className="hz-fg-soft hz-t-sm hz-mb-1">MCI - Kansas City</p>
+                <p className="hz-fg-muted hz-t-xs">Hanzo Cloud region: us-central-1</p>
               </div>
               
-              <div className="bg-neutral-800/20 border border-neutral-800/50 rounded-lg p-4">
-                <h4 className="font-medium text-neutral-300 mb-2">Canada (CA)</h4>
-                <p className="text-neutral-300 text-sm mb-1">YVR - Vancouver</p>
-                <p className="text-neutral-400 text-xs">Hanzo Cloud region: ca-west-1</p>
+              <div className="hz-card">
+                <h4 className="hz-w-medium hz-fg-soft hz-mb-2">Canada (CA)</h4>
+                <p className="hz-fg-soft hz-t-sm hz-mb-1">YVR - Vancouver</p>
+                <p className="hz-fg-muted hz-t-xs">Hanzo Cloud region: ca-west-1</p>
               </div>
               
-              <div className="bg-neutral-800/20 border border-neutral-800/50 rounded-lg p-4">
-                <h4 className="font-medium text-neutral-300 mb-2">European Union (EU)</h4>
-                <p className="text-neutral-300 text-sm mb-1">BCN - Barcelona</p>
-                <p className="text-neutral-400 text-xs">Hanzo Cloud region: eu-west-1</p>
+              <div className="hz-card">
+                <h4 className="hz-w-medium hz-fg-soft hz-mb-2">European Union (EU)</h4>
+                <p className="hz-fg-soft hz-t-sm hz-mb-1">BCN - Barcelona</p>
+                <p className="hz-fg-muted hz-t-xs">Hanzo Cloud region: eu-west-1</p>
               </div>
             </div>
             
-            <div className="mt-6 text-center">
-              <Button variant="outline" className="bg-neutral-800/30 border-neutral-700/50 hover:bg-neutral-800/50 text-[var(--white)]">
+            <div className="hz-mt-5 hz-align-center">
+              <Button variant="outline" className="hz-bg-raised hz-fg hz-hoverable">
                 <Link to="/security">Learn More About Our Security</Link>
               </Button>
             </div>

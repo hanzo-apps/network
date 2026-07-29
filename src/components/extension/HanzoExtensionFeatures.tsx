@@ -10,13 +10,13 @@ const FeatureCard = ({ icon: Icon, title, description }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      className="bg-gray-900/30 border border-gray-800 rounded-xl p-6 h-full"
+      className="hz-card hz-h-full"
     >
-      <div className="h-12 w-12 rounded-lg flex items-center justify-center mb-4 bg-neutral-800/30">
-        <Icon className="h-6 w-6 text-neutral-400" />
+      <div className="hz-sq-7 hz-r-lg hz-row hz-ai-center hz-jc-center hz-mb-4 hz-bg-raised">
+        <Icon className="hz-sq-4 hz-fg-muted" />
       </div>
-      <h3 className="text-xl font-bold mb-2">{title}</h3>
-      <p className="text-neutral-300">{description}</p>
+      <h3 className="hz-t-xl hz-w-bold hz-mb-2">{title}</h3>
+      <p className="hz-fg-soft">{description}</p>
     </motion.div>
   );
 };
@@ -66,22 +66,22 @@ const HanzoExtensionFeatures = () => {
   ];
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[var(--black)]/50">
-      <div className="max-w-7xl mx-auto">
+    <section className="hz-py-7 hz-px-4 hz-bg-overlay">
+      <div className="hz-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="hz-align-center hz-mb-7"
         >
-          <h2 className="text-3xl font-bold mb-4">Powerful Features</h2>
-          <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
+          <h2 className="hz-t-3xl hz-w-bold hz-mb-4">Powerful Features</h2>
+          <p className="hz-container-narrow hz-t-xl hz-fg-soft">
             Enhance your browsing experience with AI-powered capabilities
           </p>
         </motion.div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="hz-grid hz-grid-4 hz-gap-5">
           {features.map((feature, index) => (
             <FeatureCard 
               key={index}

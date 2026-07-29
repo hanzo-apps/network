@@ -5,47 +5,47 @@ import { BarChart, Terminal } from "lucide-react";
 
 const AnalyticsView = () => {
   return (
-    <div className="space-y-4">
-      <div className="flex items-center justify-between mb-4">
-        <h3 className="text-sm font-medium text-[var(--white)]">AI Analytics</h3>
-        <div className="flex space-x-2">
-          <button className="px-2 py-1 bg-neutral-600/40 rounded-md text-xs text-neutral-200 flex items-center">
-            <BarChart className="w-3 h-3 mr-1" />
+    <div className="hz-stack-4">
+      <div className="hz-row hz-ai-center hz-jc-between hz-mb-4">
+        <h3 className="hz-t-sm hz-w-medium hz-fg">AI Analytics</h3>
+        <div className="hz-row hz-inline-2">
+          <button className="hz-px-2 hz-py-1 hz-bg-raised hz-r-md hz-t-xs hz-fg hz-row hz-ai-center">
+            <BarChart className="hz-sq-1 hz-mr-1" />
             Reports
           </button>
-          <button className="px-2 py-1 bg-gray-800 rounded-md text-xs text-neutral-400 flex items-center">
-            <Terminal className="w-3 h-3 mr-1" />
+          <button className="hz-px-2 hz-py-1 hz-bg-raised hz-r-md hz-t-xs hz-fg-muted hz-row hz-ai-center">
+            <Terminal className="hz-sq-1 hz-mr-1" />
             Export
           </button>
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-3 mb-4">
-        <div className="bg-gray-800/40 border border-gray-700/40 rounded-lg p-3">
-          <div className="text-xs text-neutral-400 mb-1">Model Usage</div>
-          <div className="relative h-32 mt-2">
-            <div className="absolute inset-0">
-              <div className="h-full w-full flex">
+      <div className="hz-grid hz-grid-2 hz-gap-3 hz-mb-4">
+        <div className="hz-card hz-card-tight">
+          <div className="hz-t-xs hz-fg-muted hz-mb-1">Model Usage</div>
+          <div className="hz-rel hz-bh-8 hz-mt-2">
+            <div className="hz-abs hz-inset">
+              <div className="hz-h-full hz-w-full hz-row">
                 <motion.div 
-                  className="h-full bg-neutral-600/70 rounded-l"
+                  className="hz-h-full hz-bg-raised hz-r-md"
                   initial={{ width: 0 }}
                   animate={{ width: "42%" }}
                   transition={{ duration: 0.8, delay: 0.1 }}
                 />
                 <motion.div 
-                  className="h-full bg-neutral-600/70"
+                  className="hz-h-full hz-bg-raised"
                   initial={{ width: 0 }}
                   animate={{ width: "28%" }}
                   transition={{ duration: 0.8, delay: 0.3 }}
                 />
                 <motion.div 
-                  className="h-full bg-neutral-500/70"
+                  className="hz-h-full hz-bg-raised"
                   initial={{ width: 0 }}
                   animate={{ width: "15%" }}
                   transition={{ duration: 0.8, delay: 0.5 }}
                 />
                 <motion.div 
-                  className="h-full bg-neutral-500/70 rounded-r"
+                  className="hz-h-full hz-bg-raised hz-r-md"
                   initial={{ width: 0 }}
                   animate={{ width: "15%" }}
                   transition={{ duration: 0.8, delay: 0.7 }}
@@ -53,33 +53,33 @@ const AnalyticsView = () => {
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-2 mt-3">
-            <div className="flex items-center">
-              <div className="w-2 h-2 rounded-full bg-neutral-600 mr-2"></div>
-              <span className="text-xs text-neutral-300">GPT-4o (42%)</span>
+          <div className="hz-grid hz-grid-2 hz-gap-2 hz-mt-3">
+            <div className="hz-row hz-ai-center">
+              <div className="hz-sq-1 hz-r-full hz-bg-raised hz-mr-2"></div>
+              <span className="hz-t-xs hz-fg-soft">GPT-4o (42%)</span>
             </div>
-            <div className="flex items-center">
-              <div className="w-2 h-2 rounded-full bg-neutral-600 mr-2"></div>
-              <span className="text-xs text-neutral-300">Claude 3 (28%)</span>
+            <div className="hz-row hz-ai-center">
+              <div className="hz-sq-1 hz-r-full hz-bg-raised hz-mr-2"></div>
+              <span className="hz-t-xs hz-fg-soft">Claude 3 (28%)</span>
             </div>
-            <div className="flex items-center">
-              <div className="w-2 h-2 rounded-full bg-neutral-500 mr-2"></div>
-              <span className="text-xs text-neutral-300">Llama 3 (15%)</span>
+            <div className="hz-row hz-ai-center">
+              <div className="hz-sq-1 hz-r-full hz-bg-raised hz-mr-2"></div>
+              <span className="hz-t-xs hz-fg-soft">Llama 3 (15%)</span>
             </div>
-            <div className="flex items-center">
-              <div className="w-2 h-2 rounded-full bg-neutral-500 mr-2"></div>
-              <span className="text-xs text-neutral-300">Others (15%)</span>
+            <div className="hz-row hz-ai-center">
+              <div className="hz-sq-1 hz-r-full hz-bg-raised hz-mr-2"></div>
+              <span className="hz-t-xs hz-fg-soft">Others (15%)</span>
             </div>
           </div>
         </div>
-        <div className="bg-gray-800/40 border border-gray-700/40 rounded-lg p-3">
-          <div className="text-xs text-neutral-400 mb-1">Cost Analysis</div>
-          <div className="h-32 relative">
-            <div className="absolute bottom-0 w-full flex items-end space-x-1">
+        <div className="hz-card hz-card-tight">
+          <div className="hz-t-xs hz-fg-muted hz-mb-1">Cost Analysis</div>
+          <div className="hz-bh-8 hz-rel">
+            <div className="hz-abs hz-bottom-0 hz-w-full hz-row hz-ai-end hz-inline-1">
               {[35, 42, 38, 52, 45, 55, 47, 62, 48, 60, 53, 58].map((value, index) => (
                 <motion.div
                   key={index}
-                  className="bg-gradient-to-t from-neutral-600/90 to-neutral-400/50 rounded-t w-full"
+                  className="hz-r-md hz-w-full"
                   style={{ height: `${value}%` }}
                   initial={{ height: 0 }}
                   animate={{ height: `${value}%` }}
@@ -88,28 +88,28 @@ const AnalyticsView = () => {
               ))}
             </div>
           </div>
-          <div className="flex justify-between mt-2 text-xs text-neutral-500">
+          <div className="hz-row hz-jc-between hz-mt-2 hz-t-xs hz-fg-muted">
             <span>Jan</span>
             <span>Jun</span>
             <span>Dec</span>
           </div>
-          <div className="mt-1 text-xs text-neutral-300">
-            $1,245 spent this month - <span className="text-neutral-400">14% under budget</span>
+          <div className="hz-mt-1 hz-t-xs hz-fg-soft">
+            $1,245 spent this month - <span className="hz-fg-muted">14% under budget</span>
           </div>
         </div>
       </div>
 
-      <div className="bg-gray-800/40 border border-gray-700/40 rounded-lg p-3">
-        <div className="text-xs text-neutral-400 mb-2">Performance Metrics</div>
-        <div className="space-y-3">
+      <div className="hz-card hz-card-tight">
+        <div className="hz-t-xs hz-fg-muted hz-mb-2">Performance Metrics</div>
+        <div className="hz-stack-3">
           <div>
-            <div className="flex justify-between text-xs mb-1">
-              <span className="text-neutral-300">Response Quality</span>
-              <span className="text-neutral-300">89%</span>
+            <div className="hz-row hz-jc-between hz-t-xs hz-mb-1">
+              <span className="hz-fg-soft">Response Quality</span>
+              <span className="hz-fg-soft">89%</span>
             </div>
-            <div className="w-full bg-gray-700/40 rounded-full h-1.5">
+            <div className="hz-w-full hz-bg-raised hz-r-full hz-bh-1">
               <motion.div 
-                className="bg-neutral-500 h-1.5 rounded-full" 
+                className="hz-bg-raised hz-bh-1 hz-r-full" 
                 initial={{ width: 0 }}
                 animate={{ width: "89%" }}
                 transition={{ duration: 0.8 }}
@@ -117,13 +117,13 @@ const AnalyticsView = () => {
             </div>
           </div>
           <div>
-            <div className="flex justify-between text-xs mb-1">
-              <span className="text-neutral-300">User Satisfaction</span>
-              <span className="text-neutral-300">94%</span>
+            <div className="hz-row hz-jc-between hz-t-xs hz-mb-1">
+              <span className="hz-fg-soft">User Satisfaction</span>
+              <span className="hz-fg-soft">94%</span>
             </div>
-            <div className="w-full bg-gray-700/40 rounded-full h-1.5">
+            <div className="hz-w-full hz-bg-raised hz-r-full hz-bh-1">
               <motion.div 
-                className="bg-neutral-500 h-1.5 rounded-full" 
+                className="hz-bg-raised hz-bh-1 hz-r-full" 
                 initial={{ width: 0 }}
                 animate={{ width: "94%" }}
                 transition={{ duration: 0.8, delay: 0.2 }}
@@ -131,13 +131,13 @@ const AnalyticsView = () => {
             </div>
           </div>
           <div>
-            <div className="flex justify-between text-xs mb-1">
-              <span className="text-neutral-300">System Reliability</span>
-              <span className="text-neutral-300">99.8%</span>
+            <div className="hz-row hz-jc-between hz-t-xs hz-mb-1">
+              <span className="hz-fg-soft">System Reliability</span>
+              <span className="hz-fg-soft">99.8%</span>
             </div>
-            <div className="w-full bg-gray-700/40 rounded-full h-1.5">
+            <div className="hz-w-full hz-bg-raised hz-r-full hz-bh-1">
               <motion.div 
-                className="bg-neutral-500 h-1.5 rounded-full" 
+                className="hz-bg-raised hz-bh-1 hz-r-full" 
                 initial={{ width: 0 }}
                 animate={{ width: "99.8%" }}
                 transition={{ duration: 0.8, delay: 0.4 }}

@@ -17,58 +17,58 @@ const Toolbar = ({
   setActiveTab 
 }: ToolbarProps) => {
   return (
-    <div className="bg-gray-900/70 p-2 border-b border-gray-800 flex items-center">
+    <div className="hz-bg-surface hz-p-2 hz-border-b hz-row hz-ai-center">
       <Button 
         variant="ghost" 
         size="icon"
         onClick={() => setShowSidebar(!showSidebar)}
-        className="text-neutral-400 hover:text-[var(--white)] mr-2"
+        className="hz-fg-muted hz-mr-2 hz-link"
       >
-        <PanelLeft className="h-5 w-5" />
+        <PanelLeft className="hz-sq-3" />
       </Button>
       
-      <div className="flex space-x-1 mx-2">
+      <div className="hz-row hz-inline-1">
         <Button 
           variant={activeTab === "chat" ? "secondary" : "ghost"} 
           size="sm"
           onClick={() => setActiveTab("chat")}
-          className="text-sm"
+          className="hz-t-sm"
         >
-          <MessageSquare className="h-4 w-4 mr-1" /> Chat
+          <MessageSquare className="hz-sq-2 hz-mr-1" /> Chat
         </Button>
         <Button 
           variant={activeTab === "playground" ? "secondary" : "ghost"}
           size="sm" 
           onClick={() => setActiveTab("playground")}
-          className="text-sm"
+          className="hz-t-sm"
         >
-          <Layers className="h-4 w-4 mr-1" /> Playground
+          <Layers className="hz-sq-2 hz-mr-1" /> Playground
         </Button>
         <Button 
           variant={activeTab === "terminal" ? "secondary" : "ghost"} 
           size="sm"
           onClick={() => setActiveTab("terminal")}
-          className="text-sm"
+          className="hz-t-sm"
         >
-          <Terminal className="h-4 w-4 mr-1" /> Terminal
+          <Terminal className="hz-sq-2 hz-mr-1" /> Terminal
         </Button>
       </div>
       
-      <div className="ml-auto flex items-center space-x-1">
-        <Button variant="ghost" size="icon" className="text-neutral-400 hover:text-[var(--white)]">
-          <Save className="h-4 w-4" />
+      <div className="hz-ml-auto hz-row hz-ai-center hz-inline-1">
+        <Button variant="ghost" size="icon" className="hz-fg-muted hz-link">
+          <Save className="hz-sq-2" />
         </Button>
-        <Button variant="ghost" size="icon" className="text-neutral-400 hover:text-[var(--white)]">
-          <Play className="h-4 w-4" />
+        <Button variant="ghost" size="icon" className="hz-fg-muted hz-link">
+          <Play className="hz-sq-2" />
         </Button>
-        <Button variant="ghost" size="icon" className="text-neutral-400 hover:text-[var(--white)]">
-          <Share2 className="h-4 w-4" />
+        <Button variant="ghost" size="icon" className="hz-fg-muted hz-link">
+          <Share2 className="hz-sq-2" />
         </Button>
-        <Button variant="ghost" size="icon" className="text-neutral-400 hover:text-[var(--white)]">
-          <Download className="h-4 w-4" />
+        <Button variant="ghost" size="icon" className="hz-fg-muted hz-link">
+          <Download className="hz-sq-2" />
         </Button>
-        <Button variant="ghost" size="icon" className="text-neutral-400 hover:text-[var(--white)]">
-          <Settings className="h-4 w-4" />
+        <Button variant="ghost" size="icon" className="hz-fg-muted hz-link">
+          <Settings className="hz-sq-2" />
         </Button>
       </div>
     </div>

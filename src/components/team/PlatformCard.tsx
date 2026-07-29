@@ -11,14 +11,14 @@ interface PlatformCardProps {
 
 const PlatformCard = ({ name, role, description, icon: Icon, gradient }: PlatformCardProps) => {
   return (
-    <div className="relative group rounded-2xl border border-gray-800 bg-[var(--black)]/50 p-8 backdrop-blur-sm overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-10 transition-opacity duration-500 ease-in-out" />
-      <div className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${gradient} mb-4`}>
-        <Icon className="h-6 w-6 text-[var(--white)]" />
+    <div className="hz-card hz-rel hz-glass hz-clip">
+      <div className="hz-abs hz-inset hz-invisible hz-transition" />
+      <div className={`hz-inline hz-p-3 hz-r-lg ${gradient} hz-mb-4`}>
+        <Icon className="hz-sq-4 hz-fg" />
       </div>
-      <h3 className="text-xl font-semibold mb-2">{name}</h3>
-      <p className="text-neutral-400 font-medium mb-3">{role}</p>
-      <p className="text-neutral-400">{description}</p>
+      <h3 className="hz-t-xl hz-w-semibold hz-mb-2">{name}</h3>
+      <p className="hz-fg-muted hz-w-medium hz-mb-3">{role}</p>
+      <p className="hz-fg-muted">{description}</p>
     </div>
   );
 };

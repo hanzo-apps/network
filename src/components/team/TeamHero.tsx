@@ -6,28 +6,28 @@ import { Badge } from "@/components/ui/badge";
 
 const TeamHero = () => {
   return (
-    <section className="relative min-h-[85vh] flex items-center pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <section className="hz-rel hz-row hz-ai-center hz-pt-6 hz-pb-6 hz-px-4 hz-clip">
       {/* Background elements */}
-      <div className="absolute inset-0 bg-[var(--black)] z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-neutral-800/20 to-neutral-900/10 opacity-50"></div>
-        <div className="absolute -top-40 -right-40 w-96 h-96 bg-neutral-600/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-neutral-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }}></div>
+      <div className="hz-abs hz-inset hz-bg hz-z-base">
+        <div className="hz-abs hz-inset hz-dim-more"></div>
+        <div className="hz-sq-8 hz-abs hz-bg-raised hz-r-full hz-blur-bg"></div>
+        <div className="hz-sq-8 hz-abs hz-bg-raised hz-r-full hz-blur-bg" style={{ animationDelay: "1s" }}></div>
         
         {/* Animated grid */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="h-full w-full" style={{ 
+        <div className="hz-abs hz-inset hz-dim-more">
+          <div className="hz-h-full hz-w-full" style={{ 
             backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.15) 1px, transparent 0)',
             backgroundSize: '40px 40px' 
           }} />
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto relative z-10 w-full">
+      <div className="hz-container hz-rel hz-z-raised hz-w-full">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="flex flex-col text-center"
+          className="hz-col hz-align-center"
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -36,7 +36,7 @@ const TeamHero = () => {
           >
             <Badge 
               variant="outline" 
-              className="bg-neutral-800/30 border-neutral-500/30 text-neutral-300 self-center mb-6 px-4 py-1.5 text-sm"
+              className="hz-bg-raised hz-border-strong hz-fg-soft hz-self-center hz-mb-5 hz-px-4 hz-py-2 hz-t-sm"
             >
               AI + Human Integration
             </Badge>
@@ -46,16 +46,16 @@ const TeamHero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.3 }}
-            className="text-4xl md:text-6xl font-bold mb-6 tracking-tight"
+            className="hz-t-4xl hz-w-bold hz-mb-5 hz-tracking-tight"
           >
-            Meet your <span className="bg-clip-text text-transparent bg-gradient-to-r from-neutral-400 to-neutral-400">AI Team</span>
+            Meet your <span className="hz-chrome">AI Team</span>
           </motion.h1>
           
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.4 }}
-            className="text-xl text-neutral-300 max-w-3xl mx-auto mb-10"
+            className="hz-container-narrow hz-t-xl hz-fg-soft hz-mb-6"
           >
             Autonomous AI agents working seamlessly alongside humans. 
             Train them with a simple Zoom call, monitor their work in real-time, 
@@ -66,19 +66,19 @@ const TeamHero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="flex flex-wrap justify-center gap-4 mb-12"
+            className="hz-row hz-wrap hz-jc-center hz-gap-4 hz-mb-7"
           >
             <Button 
               size="lg" 
-              className="bg-gradient-to-r from-neutral-600 to-neutral-600 hover:from-neutral-700 hover:to-neutral-700 rounded-xl"
+              className="hz-r-lg"
             >
               Get Started
-              <ArrowRight className="ml-2 h-4 w-4" />
+              <ArrowRight className="hz-sq-2 hz-ml-2" />
             </Button>
             <Button 
               size="lg" 
               variant="outline"
-              className="bg-[var(--black)]/50 border-gray-700 text-[var(--white)] hover:bg-[var(--white)]/10 rounded-xl"
+              className="hz-bg-overlay hz-fg hz-r-lg hz-hoverable"
             >
               Watch Demo
             </Button>
@@ -88,46 +88,46 @@ const TeamHero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="flex flex-wrap justify-center space-x-4 sm:space-x-12 mt-8"
+            className="hz-row hz-wrap hz-jc-center hz-inline-4 hz-mt-6"
           >
             <motion.div 
-              className="flex flex-col items-center"
+              className="hz-col hz-ai-center"
               whileHover={{ y: -5 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <div className="bg-neutral-800/30 p-3 rounded-full mb-3 border border-neutral-500/20">
-                <BrainCircuit className="h-6 w-6 text-neutral-400" />
+              <div className="hz-card hz-card-tight hz-mb-3">
+                <BrainCircuit className="hz-sq-4 hz-fg-muted" />
               </div>
-              <span className="text-sm text-neutral-300">AI-Powered</span>
+              <span className="hz-t-sm hz-fg-soft">AI-Powered</span>
             </motion.div>
             
             <motion.div 
-              className="flex flex-col items-center"
+              className="hz-col hz-ai-center"
               whileHover={{ y: -5 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <div className="bg-neutral-800/30 p-3 rounded-full mb-3 border border-neutral-500/20">
-                <Users className="h-6 w-6 text-neutral-400" />
+              <div className="hz-card hz-card-tight hz-mb-3">
+                <Users className="hz-sq-4 hz-fg-muted" />
               </div>
-              <span className="text-sm text-neutral-300">Human Integration</span>
+              <span className="hz-t-sm hz-fg-soft">Human Integration</span>
             </motion.div>
             
             <motion.div 
-              className="flex flex-col items-center"
+              className="hz-col hz-ai-center"
               whileHover={{ y: -5 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <div className="bg-neutral-800/30 p-3 rounded-full mb-3 border border-neutral-500/20">
-                <Zap className="h-6 w-6 text-neutral-400" />
+              <div className="hz-card hz-card-tight hz-mb-3">
+                <Zap className="hz-sq-4 hz-fg-muted" />
               </div>
-              <span className="text-sm text-neutral-300">Enterprise Ready</span>
+              <span className="hz-t-sm hz-fg-soft">Enterprise Ready</span>
             </motion.div>
           </motion.div>
         </motion.div>
       </div>
 
       {/* Decorative elements */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex space-x-2">
+      <div className="hz-center-x hz-abs hz-row hz-inline-2">
         <motion.div
           animate={{
             y: [0, -10, 0],
@@ -137,7 +137,7 @@ const TeamHero = () => {
             repeat: Infinity,
             repeatType: "loop",
           }}
-          className="w-1 h-8 bg-gradient-to-b from-neutral-500 to-neutral-600 rounded-full opacity-70"
+          className="hz-bw-1 hz-bh-5 hz-r-full hz-dim"
         />
         <motion.div
           animate={{
@@ -149,7 +149,7 @@ const TeamHero = () => {
             repeat: Infinity,
             repeatType: "loop",
           }}
-          className="w-1 h-6 bg-gradient-to-b from-neutral-500 to-neutral-600 rounded-full opacity-40"
+          className="hz-bw-1 hz-bh-4 hz-r-full hz-dim-more"
         />
         <motion.div
           animate={{
@@ -161,7 +161,7 @@ const TeamHero = () => {
             repeat: Infinity,
             repeatType: "loop",
           }}
-          className="w-1 h-4 bg-gradient-to-b from-neutral-500 to-neutral-600 rounded-full opacity-20"
+          className="hz-bw-1 hz-bh-2 hz-r-full hz-dim-more"
         />
       </div>
     </section>

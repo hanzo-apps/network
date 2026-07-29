@@ -6,7 +6,7 @@ import { Shield, Code } from "lucide-react";
 const EnterpriseFreePlans = () => {
   const enterprisePlan = {
     name: "Enterprise",
-    icon: <Shield className="h-6 w-6 text-neutral-400" />,
+    icon: <Shield className="hz-sq-4 hz-fg-muted" />,
     price: "Custom",
     description: "For large businesses requiring enterprise-grade security",
     features: [
@@ -24,7 +24,7 @@ const EnterpriseFreePlans = () => {
 
   const freePlan = {
     name: "Open Source",
-    icon: <Code className="h-6 w-6 text-neutral-400" />,
+    icon: <Code className="hz-sq-4 hz-fg-muted" />,
     price: "Free",
     billingPeriod: "Forever",
     description: "For individuals wanting full control",
@@ -39,7 +39,7 @@ const EnterpriseFreePlans = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+    <div className="hz-grid hz-grid-2 hz-container hz-gap-6 hz-mb-7">
       <PricingPlan
         name={enterprisePlan.name}
         icon={enterprisePlan.icon}

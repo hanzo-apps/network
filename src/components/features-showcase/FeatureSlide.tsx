@@ -35,7 +35,7 @@ const FeatureSlide: React.FC<FeatureSlideProps> = ({
     };
     
     return (
-      <div className={`absolute top-3 right-3 px-2 py-0.5 rounded-full text-xs font-medium border ${badgeStyles[category]}`}>
+      <div className={`hz-abs hz-px-2 hz-py-1 hz-r-full hz-t-xs hz-w-medium hz-bordered ${badgeStyles[category]}`}>
         {badgeText[category]}
       </div>
     );
@@ -43,7 +43,7 @@ const FeatureSlide: React.FC<FeatureSlideProps> = ({
 
   return (
     <motion.div 
-      className="feature-card backdrop-blur-sm bg-[var(--black)]/30 border border-gray-800 p-6 rounded-xl relative group"
+      className="hz-card feature-card hz-glass hz-rel"
       whileHover={{ 
         y: -5,
         borderColor: "rgba(163, 163, 163, 0.5)",
@@ -53,23 +53,23 @@ const FeatureSlide: React.FC<FeatureSlideProps> = ({
     >
       {getCategoryBadge()}
       
-      <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 ${color} transform transition-transform group-hover:scale-110 duration-300`}>
-        <Icon className="h-7 w-7 text-[var(--white)]" />
+      <div className={`hz-sq-7 hz-r-lg hz-row hz-ai-center hz-jc-center hz-mb-5 ${color} hz-transition`}>
+        <Icon className="hz-sq-5 hz-fg" />
       </div>
       
-      <h3 className="text-xl font-bold mb-3 text-[var(--white)]">{title}</h3>
+      <h3 className="hz-t-xl hz-w-bold hz-mb-3 hz-fg">{title}</h3>
       
-      <p className="text-neutral-300 mb-6">
+      <p className="hz-fg-soft hz-mb-5">
         {description}
       </p>
       
       <a 
         href={link} 
-        className="inline-flex items-center text-sm text-neutral-300 hover:text-neutral-100 transition-colors"
+        className="hz-inline hz-ai-center hz-t-sm hz-fg-soft hz-transition hz-hoverable"
       >
         Learn More
         <svg 
-          className="ml-1 w-4 h-4 transform transition-transform group-hover:translate-x-1 duration-300" 
+          className="hz-sq-2 hz-ml-1 hz-transition" 
           fill="none" 
           stroke="currentColor" 
           viewBox="0 0 24 24"

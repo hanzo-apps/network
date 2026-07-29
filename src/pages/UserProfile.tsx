@@ -30,36 +30,36 @@ const UserProfile = () => {
 
   return (
     <AccountLayout>
-      <div className="space-y-8">
+      <div className="hz-stack-6">
         {/* Profile Header */}
-        <div className="flex flex-col md:flex-row gap-8 items-start">
-          <Avatar className="h-32 w-32 border-4 border-neutral-500/20">
+        <div className="hz-col-row hz-gap-6 hz-ai-start">
+          <Avatar className="hz-sq-8 hz-bordered hz-border-strong">
             <AvatarImage src={user.avatar} />
-            <AvatarFallback className="text-4xl bg-neutral-800">{user.name.charAt(0)}</AvatarFallback>
+            <AvatarFallback className="hz-t-4xl hz-bg-raised">{user.name.charAt(0)}</AvatarFallback>
           </Avatar>
           
-          <div className="flex-1">
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div className="hz-grow">
+            <div className="hz-col-row hz-gap-4">
               <div>
-                <h1 className="text-3xl font-bold">{user.name}</h1>
-                <p className="text-neutral-400 mt-1">{userProfile.bio}</p>
+                <h1 className="hz-t-3xl hz-w-bold">{user.name}</h1>
+                <p className="hz-fg-muted hz-mt-1">{userProfile.bio}</p>
                 
-                <div className="flex flex-wrap gap-4 mt-4">
-                  <div className="flex items-center text-neutral-400">
-                    <MapPin className="h-4 w-4 mr-2" />
+                <div className="hz-row hz-wrap hz-gap-4 hz-mt-4">
+                  <div className="hz-row hz-ai-center hz-fg-muted">
+                    <MapPin className="hz-sq-2 hz-mr-2" />
                     {userProfile.location}
                   </div>
-                  <div className="flex items-center text-neutral-400">
-                    <Calendar className="h-4 w-4 mr-2" />
+                  <div className="hz-row hz-ai-center hz-fg-muted">
+                    <Calendar className="hz-sq-2 hz-mr-2" />
                     Joined {userProfile.joinedDate}
                   </div>
-                  <div className="flex items-center text-neutral-400">
-                    <Mail className="h-4 w-4 mr-2" />
+                  <div className="hz-row hz-ai-center hz-fg-muted">
+                    <Mail className="hz-sq-2 hz-mr-2" />
                     {user.email}
                   </div>
-                  <div className="flex items-center text-neutral-400">
-                    <LinkIcon className="h-4 w-4 mr-2" />
-                    <a href={userProfile.website} target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:underline">
+                  <div className="hz-row hz-ai-center hz-fg-muted">
+                    <LinkIcon className="hz-sq-2 hz-mr-2" />
+                    <a href={userProfile.website} target="_blank" rel="noopener noreferrer" className="hz-fg-muted">
                       {userProfile.website.replace('https://', '')}
                     </a>
                   </div>
@@ -69,9 +69,9 @@ const UserProfile = () => {
               <Button 
                 onClick={() => navigate('/account')} 
                 variant="outline" 
-                className="flex items-center"
+                className="hz-row hz-ai-center"
               >
-                <Edit className="h-4 w-4 mr-2" />
+                <Edit className="hz-sq-2 hz-mr-2" />
                 Edit Profile
               </Button>
             </div>
@@ -79,27 +79,27 @@ const UserProfile = () => {
         </div>
         
         {/* Organization Info */}
-        <div className="bg-gray-900/30 border border-gray-800 rounded-lg p-6">
-          <h2 className="text-xl font-medium mb-4">Current Organization</h2>
-          <div className="flex items-center space-x-4">
-            <div className="h-12 w-12 bg-gray-800 rounded-lg flex items-center justify-center text-lg font-bold">
+        <div className="hz-card">
+          <h2 className="hz-t-xl hz-w-medium hz-mb-4">Current Organization</h2>
+          <div className="hz-row hz-ai-center hz-inline-4">
+            <div className="hz-sq-7 hz-bg-raised hz-r-lg hz-row hz-ai-center hz-jc-center hz-t-lg hz-w-bold">
               {currentOrganization?.name.charAt(0)}
             </div>
             <div>
-              <div className="font-medium text-lg">{currentOrganization?.name}</div>
-              <div className="text-sm text-neutral-400">Role: {currentOrganization?.role}</div>
+              <div className="hz-w-medium hz-t-lg">{currentOrganization?.name}</div>
+              <div className="hz-t-sm hz-fg-muted">Role: {currentOrganization?.role}</div>
             </div>
           </div>
         </div>
         
         {/* Projects */}
-        <div className="bg-gray-900/30 border border-gray-800 rounded-lg p-6">
-          <h2 className="text-xl font-medium mb-4">Recent Projects</h2>
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="hz-card">
+          <h2 className="hz-t-xl hz-w-medium hz-mb-4">Recent Projects</h2>
+          <div className="hz-grid hz-grid-3 hz-gap-4">
             {userProfile.projects.map(project => (
-              <div key={project.id} className="bg-gray-800/50 rounded-lg p-4 hover:bg-gray-800 transition-colors">
-                <h3 className="font-medium">{project.name}</h3>
-                <p className="text-sm text-neutral-400 mt-1">{project.description}</p>
+              <div key={project.id} className="hz-bg-raised hz-r-lg hz-p-4 hz-transition hz-hoverable">
+                <h3 className="hz-w-medium">{project.name}</h3>
+                <p className="hz-t-sm hz-fg-muted hz-mt-1">{project.description}</p>
               </div>
             ))}
           </div>

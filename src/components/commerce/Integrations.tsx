@@ -4,13 +4,13 @@ import { CheckCircle } from "lucide-react";
 
 const IntegrationCategory = ({ title, items }: { title: string, items: string[] }) => {
   return (
-    <div className="mb-8">
-      <h3 className="text-xl font-semibold mb-4">{title}</h3>
-      <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-2">
+    <div className="hz-mb-6">
+      <h3 className="hz-t-xl hz-w-semibold hz-mb-4">{title}</h3>
+      <ul className="hz-grid hz-grid-3 hz-gap-5 hz-gap-2">
         {items.map((item, index) => (
-          <li key={index} className="flex items-center">
-            <CheckCircle className="h-5 w-5 text-neutral-400 mr-2 flex-shrink-0" />
-            <span className="text-neutral-300">{item}</span>
+          <li key={index} className="hz-row hz-ai-center">
+            <CheckCircle className="hz-sq-3 hz-fg-muted hz-mr-2 hz-none" />
+            <span className="hz-fg-soft">{item}</span>
           </li>
         ))}
       </ul>
@@ -39,16 +39,16 @@ const Integrations = () => {
   ];
 
   return (
-    <section className="py-16 bg-[var(--black)]">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold">Integrations</h2>
-          <p className="mt-4 text-neutral-400 max-w-2xl mx-auto">
+    <section className="hz-py-7 hz-bg">
+      <div className="hz-container hz-mx-auto hz-px-4">
+        <div className="hz-align-center hz-mb-7">
+          <h2 className="hz-t-3xl hz-w-bold">Integrations</h2>
+          <p className="hz-container-narrow hz-mw-md hz-mt-4 hz-fg-muted">
             Connect seamlessly with your existing technology stack and third-party services.
           </p>
         </div>
         
-        <div className="bg-gray-900/30 border border-gray-800 rounded-xl p-8">
+        <div className="hz-card">
           {integrationCategories.map((category, index) => (
             <IntegrationCategory 
               key={index}

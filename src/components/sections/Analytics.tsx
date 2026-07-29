@@ -189,8 +189,8 @@ const Analytics = () => {
     }
   };
 
-  return <section className="py-20 bg-[var(--black)]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  return <section className="hz-py-7 hz-bg">
+      <div className="hz-container">
         <motion.div initial={{
         opacity: 0,
         y: 20
@@ -202,7 +202,7 @@ const Analytics = () => {
         margin: "-100px"
       }} transition={{
         duration: 0.5
-      }} className="text-center mb-16">
+      }} className="hz-align-center hz-mb-7">
           <motion.div initial={{
           opacity: 0,
           scale: 0.9
@@ -214,9 +214,9 @@ const Analytics = () => {
         }} transition={{
           delay: 0.1,
           duration: 0.4
-        }} className="inline-flex items-center space-x-2 bg-[var(--white)]/10 px-4 py-1 rounded-full mb-6">
-            <Activity className="h-4 w-4 text-neutral-400" />
-            <span className="text-sm text-neutral-400">Real-time Analytics</span>
+        }} className="hz-inline hz-ai-center hz-inline-2 hz-bg-surface hz-px-4 hz-py-1 hz-r-full hz-mb-5">
+            <Activity className="hz-sq-2 hz-fg-muted" />
+            <span className="hz-t-sm hz-fg-muted">Real-time Analytics</span>
           </motion.div>
           <motion.h2 initial={{
           opacity: 0,
@@ -229,7 +229,7 @@ const Analytics = () => {
         }} transition={{
           delay: 0.2,
           duration: 0.4
-        }} className="text-3xl md:text-4xl font-display text-[var(--white)] mb-4">
+        }} className="hz-t-3xl hz-display hz-fg hz-mb-4">
             Scale from Zero to One Billion Users
           </motion.h2>
           <motion.p initial={{
@@ -243,66 +243,66 @@ const Analytics = () => {
         }} transition={{
           delay: 0.3,
           duration: 0.4
-        }} className="text-lg md:text-xl text-neutral-300 max-w-3xl mx-auto py-0">
+        }} className="hz-container-narrow hz-t-lg hz-fg-soft hz-py-0">
             Enterprise-grade analytics built for the AI era. Track, analyze, and optimize your application with our powerful analytics suite.
           </motion.p>
         </motion.div>
 
         {/* Milestone Progress Indicator - With numbered circles instead of icons */}
-        <div className="relative mb-4 flex justify-center">
-          <div className="relative w-full max-w-4xl">
+        <div className="hz-rel hz-mb-4 hz-row hz-jc-center">
+          <div className="hz-rel hz-w-full hz-mw-lg">
             {/* Background line */}
-            <div className="absolute top-6 left-0 w-full h-1.5 bg-gray-800 rounded-full"></div>
+            <div className="hz-abs hz-left-0 hz-w-full hz-bh-1 hz-bg-raised hz-r-full"></div>
             
             {/* Animated progress lines in segments - with fixed percentages for equal spacing */}
-            <motion.div className="absolute top-6 left-0 h-1.5 bg-[var(--white)] rounded-full origin-left" variants={milestoneLineVariants} initial="hidden" whileInView="visible" viewport={{
+            <motion.div className="hz-abs hz-left-0 hz-bh-1 hz-bg-inverse hz-r-full" variants={milestoneLineVariants} initial="hidden" whileInView="visible" viewport={{
             once: true,
             margin: "-100px"
           }} custom={33.33}></motion.div>
             
-            <motion.div className="absolute top-6 left-[33.33%] h-1.5 bg-[var(--white)] rounded-full origin-left" variants={milestoneLineVariants} initial="hidden" whileInView="visible" viewport={{
+            <motion.div className="hz-abs hz-bh-1 hz-bg-inverse hz-r-full" variants={milestoneLineVariants} initial="hidden" whileInView="visible" viewport={{
             once: true,
             margin: "-100px"
           }} custom={33.33}></motion.div>
             
-            <motion.div className="absolute top-6 left-[66.66%] h-1.5 bg-[var(--white)] rounded-full origin-left" variants={milestoneLineVariants} initial="hidden" whileInView="visible" viewport={{
+            <motion.div className="hz-abs hz-bh-1 hz-bg-inverse hz-r-full" variants={milestoneLineVariants} initial="hidden" whileInView="visible" viewport={{
             once: true,
             margin: "-100px"
           }} custom={33.34}></motion.div>
             
             {/* Milestone Points - with numbers clearly visible */}
-            <div className="flex justify-between items-center relative w-full">
+            <div className="hz-row hz-jc-between hz-ai-center hz-rel hz-w-full">
               {/* First Milestone */}
-              <div className="text-center relative w-1/3 pr-4">
-                <motion.div className="w-12 h-12 rounded-full bg-gray-900 border-2 border-neutral-400 flex items-center justify-center mx-auto relative" variants={milestoneCircleVariants} initial="hidden" whileInView="visible" viewport={{
+              <div className="hz-align-center hz-rel hz-px-4">
+                <motion.div className="hz-sq-7 hz-r-full hz-bg-surface hz-bordered hz-border-strong hz-row hz-ai-center hz-jc-center hz-mx-auto hz-rel" variants={milestoneCircleVariants} initial="hidden" whileInView="visible" viewport={{
                 once: true,
                 margin: "-100px"
               }} custom={1}>
-                  <motion.span className="text-xl font-bold text-[var(--white)]" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1 }}>1</motion.span>
+                  <motion.span className="hz-t-xl hz-w-bold hz-fg" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1 }}>1</motion.span>
                 </motion.div>
-                <p className="mt-2 font-medium text-[var(--white)] text-xs sm:text-sm md:text-base whitespace-nowrap">Real-time Events</p>
+                <p className="hz-mt-2 hz-w-medium hz-fg hz-t-xs hz-whitespace-nowrap">Real-time Events</p>
               </div>
               
               {/* Second Milestone - Center */}
-              <div className="text-center relative w-1/3 px-2">
-                <motion.div className="w-12 h-12 rounded-full bg-gray-900 border-2 border-neutral-400 flex items-center justify-center mx-auto" variants={milestoneCircleVariants} initial="hidden" whileInView="visible" viewport={{
+              <div className="hz-align-center hz-rel hz-px-2">
+                <motion.div className="hz-sq-7 hz-r-full hz-bg-surface hz-bordered hz-border-strong hz-row hz-ai-center hz-jc-center hz-mx-auto" variants={milestoneCircleVariants} initial="hidden" whileInView="visible" viewport={{
                 once: true,
                 margin: "-100px"
               }} custom={2}>
-                  <motion.span className="text-xl font-bold text-[var(--white)]" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 3 }}>2</motion.span>
+                  <motion.span className="hz-t-xl hz-w-bold hz-fg" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 3 }}>2</motion.span>
                 </motion.div>
-                <p className="mt-2 font-medium text-[var(--white)] text-xs sm:text-sm md:text-base whitespace-nowrap">User Insights</p>
+                <p className="hz-mt-2 hz-w-medium hz-fg hz-t-xs hz-whitespace-nowrap">User Insights</p>
               </div>
               
               {/* Third Milestone */}
-              <div className="text-center relative w-1/3 pl-4">
-                <motion.div className="w-12 h-12 rounded-full bg-gray-900 border-2 border-neutral-400 flex items-center justify-center mx-auto" variants={milestoneCircleVariants} initial="hidden" whileInView="visible" viewport={{
+              <div className="hz-align-center hz-rel hz-px-4">
+                <motion.div className="hz-sq-7 hz-r-full hz-bg-surface hz-bordered hz-border-strong hz-row hz-ai-center hz-jc-center hz-mx-auto" variants={milestoneCircleVariants} initial="hidden" whileInView="visible" viewport={{
                 once: true,
                 margin: "-100px"
               }} custom={3}>
-                  <motion.span className="text-xl font-bold text-[var(--white)]" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 5 }}>3</motion.span>
+                  <motion.span className="hz-t-xl hz-w-bold hz-fg" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 5 }}>3</motion.span>
                 </motion.div>
-                <p className="mt-2 font-medium text-[var(--white)] text-xs sm:text-sm md:text-base whitespace-nowrap">AI Analytics</p>
+                <p className="hz-mt-2 hz-w-medium hz-fg hz-t-xs hz-whitespace-nowrap">AI Analytics</p>
               </div>
             </div>
           </div>
@@ -311,17 +311,17 @@ const Analytics = () => {
         <motion.div variants={containerVariants} initial="hidden" whileInView="visible" viewport={{
         once: true,
         margin: "-50px"
-      }} className="grid grid-cols-3 gap-4 md:gap-8 mb-16 mt-10">
-          <motion.div variants={itemVariants} whileHover="hover" whileTap="tap" className="p-4 md:p-6 bg-gradient-to-br from-gray-900/20 to-transparent rounded-xl transition-all duration-300 flex flex-col items-center text-center">
-            <p className="text-xs xs:text-sm md:text-base text-neutral-300">Track user behavior, system events, and business metrics in real-time with millisecond latency.</p>
+      }} className="hz-grid hz-grid-3 hz-gap-4 hz-mb-7 hz-mt-6">
+          <motion.div variants={itemVariants} whileHover="hover" whileTap="tap" className="hz-p-4 hz-r-lg hz-transition hz-col hz-ai-center hz-align-center">
+            <p className="hz-t-xs hz-fg-soft">Track user behavior, system events, and business metrics in real-time with millisecond latency.</p>
           </motion.div>
 
-          <motion.div variants={itemVariants} whileHover="hover" whileTap="tap" className="p-4 md:p-6 bg-gradient-to-br from-gray-900/20 to-transparent rounded-xl transition-all duration-300 flex flex-col items-center text-center">
-            <p className="text-xs xs:text-sm md:text-base text-neutral-300">Understand user journeys, cohorts, and behavior patterns with AI-powered analytics.</p>
+          <motion.div variants={itemVariants} whileHover="hover" whileTap="tap" className="hz-p-4 hz-r-lg hz-transition hz-col hz-ai-center hz-align-center">
+            <p className="hz-t-xs hz-fg-soft">Understand user journeys, cohorts, and behavior patterns with AI-powered analytics.</p>
           </motion.div>
 
-          <motion.div variants={itemVariants} whileHover="hover" whileTap="tap" className="p-4 md:p-6 bg-gradient-to-br from-gray-900/20 to-transparent rounded-xl transition-all duration-300 flex flex-col items-center text-center">
-            <p className="text-xs xs:text-sm md:text-base text-neutral-300">Leverage machine learning to predict trends, detect anomalies, and optimize performance.</p>
+          <motion.div variants={itemVariants} whileHover="hover" whileTap="tap" className="hz-p-4 hz-r-lg hz-transition hz-col hz-ai-center hz-align-center">
+            <p className="hz-t-xs hz-fg-soft">Leverage machine learning to predict trends, detect anomalies, and optimize performance.</p>
           </motion.div>
         </motion.div>
 
@@ -338,8 +338,8 @@ const Analytics = () => {
         duration: 0.6,
         type: "spring",
         stiffness: 100
-      }} className="bg-gradient-to-r from-gray-900/20 via-black to-gray-900/20 rounded-xl p-8 mb-16">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
+      }} className="hz-r-lg hz-p-6 hz-mb-7">
+          <div className="hz-grid hz-grid-2 hz-gap-6 hz-ai-center">
             <motion.div initial={{
             opacity: 0,
             x: -20
@@ -352,29 +352,29 @@ const Analytics = () => {
             delay: 0.3,
             duration: 0.5
           }}>
-              <h3 className="text-xl sm:text-2xl font-semibold text-[var(--white)] mb-4">Planetary-Scale Infrastructure</h3>
+              <h3 className="hz-t-xl hz-w-semibold hz-fg hz-mb-4">Planetary-Scale Infrastructure</h3>
               <motion.ul variants={containerVariants} initial="hidden" whileInView="visible" viewport={{
               once: true
-            }} className="space-y-4">
-                <motion.li variants={itemVariants} className="flex items-start space-x-3">
-                  <Zap className="h-5 w-5 sm:h-6 sm:w-6 text-neutral-400 mt-1" />
+            }} className="hz-stack-4">
+                <motion.li variants={itemVariants} className="hz-row hz-ai-start hz-inline-3">
+                  <Zap className="hz-sq-3 hz-fg-muted hz-mt-1" />
                   <div>
-                    <h4 className="text-sm sm:text-base text-[var(--white)] font-semibold">Global Edge Network</h4>
-                    <p className="text-xs sm:text-sm text-neutral-300">200+ data centers worldwide ensuring sub-50ms latency for 99% of users</p>
+                    <h4 className="hz-t-sm hz-fg hz-w-semibold">Global Edge Network</h4>
+                    <p className="hz-t-xs hz-fg-soft">200+ data centers worldwide ensuring sub-50ms latency for 99% of users</p>
                   </div>
                 </motion.li>
-                <motion.li variants={itemVariants} className="flex items-start space-x-3">
-                  <Globe className="h-5 w-5 sm:h-6 sm:w-6 text-neutral-400 mt-1" />
+                <motion.li variants={itemVariants} className="hz-row hz-ai-start hz-inline-3">
+                  <Globe className="hz-sq-3 hz-fg-muted hz-mt-1" />
                   <div>
-                    <h4 className="text-sm sm:text-base text-[var(--white)] font-semibold">Infinite Scale</h4>
-                    <p className="text-xs sm:text-sm text-neutral-300">Handle billions of events per day with automatic scaling and zero maintenance</p>
+                    <h4 className="hz-t-sm hz-fg hz-w-semibold">Infinite Scale</h4>
+                    <p className="hz-t-xs hz-fg-soft">Handle billions of events per day with automatic scaling and zero maintenance</p>
                   </div>
                 </motion.li>
-                <motion.li variants={itemVariants} className="flex items-start space-x-3">
-                  <Brain className="h-5 w-5 sm:h-6 sm:w-6 text-neutral-400 mt-1" />
+                <motion.li variants={itemVariants} className="hz-row hz-ai-start hz-inline-3">
+                  <Brain className="hz-sq-3 hz-fg-muted hz-mt-1" />
                   <div>
-                    <h4 className="text-sm sm:text-base text-[var(--white)] font-semibold">AI-Powered Insights</h4>
-                    <p className="text-xs sm:text-sm text-neutral-300">Automatic anomaly detection, trend analysis, and predictive analytics</p>
+                    <h4 className="hz-t-sm hz-fg hz-w-semibold">AI-Powered Insights</h4>
+                    <p className="hz-t-xs hz-fg-soft">Automatic anomaly detection, trend analysis, and predictive analytics</p>
                   </div>
                 </motion.li>
               </motion.ul>
@@ -397,7 +397,7 @@ const Analytics = () => {
         duration: 0.6,
         type: "spring",
         stiffness: 90
-      }} className="mb-16 mx-auto">
+      }} className="hz-mb-7 hz-mx-auto">
           <motion.h2 initial={{
           opacity: 0,
           y: 15
@@ -409,24 +409,24 @@ const Analytics = () => {
         }} transition={{
           delay: 0.2,
           duration: 0.5
-        }} className="text-2xl sm:text-3xl font-semibold text-[var(--white)] text-center mb-12">
+        }} className="hz-t-2xl hz-w-semibold hz-fg hz-align-center hz-mb-7">
             Powerful User Insights for Growth
           </motion.h2>
 
           <motion.div variants={userInsightsVariants} initial="hidden" whileInView="visible" viewport={{
           once: true
-        }} className="grid grid-cols-3 gap-4 md:gap-8">
+        }} className="hz-grid hz-grid-3 hz-gap-4">
             <motion.div variants={userInsightItemVariants} whileHover={{
             y: -5,
             transition: {
               duration: 0.2
             }
-          }} className="bg-gradient-to-br from-gray-900/30 to-transparent rounded-xl p-4 md:p-6 ring-1 ring-white/10 flex flex-col items-center text-center">
-              <div className="bg-gradient-to-br from-neutral-500/20 to-neutral-500/20 rounded-full p-2 md:p-3 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 flex items-center justify-center mb-3 md:mb-4">
-                <Users className="h-5 w-5 sm:h-6 sm:w-6 text-neutral-300" />
+          }} className="hz-r-lg hz-p-4 hz-ring hz-col hz-ai-center hz-align-center">
+              <div className="hz-sq-6 hz-r-full hz-p-2 hz-row hz-ai-center hz-jc-center hz-mb-3">
+                <Users className="hz-sq-3 hz-fg-soft" />
               </div>
-              <h3 className="text-base sm:text-lg md:text-xl font-medium text-[var(--white)] mb-2 md:mb-3">Cohort Analysis</h3>
-              <p className="text-xs sm:text-sm text-neutral-300">Group users by common characteristics and behaviors to discover usage patterns.</p>
+              <h3 className="hz-t-base hz-w-medium hz-fg hz-mb-2">Cohort Analysis</h3>
+              <p className="hz-t-xs hz-fg-soft">Group users by common characteristics and behaviors to discover usage patterns.</p>
             </motion.div>
 
             <motion.div variants={userInsightItemVariants} whileHover={{
@@ -434,12 +434,12 @@ const Analytics = () => {
             transition: {
               duration: 0.2
             }
-          }} className="bg-gradient-to-br from-gray-900/30 to-transparent rounded-xl p-4 md:p-6 ring-1 ring-white/10 flex flex-col items-center text-center">
-              <div className="bg-gradient-to-br from-neutral-500/20 to-neutral-500/20 rounded-full p-2 md:p-3 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 flex items-center justify-center mb-3 md:mb-4">
-                <LineChart className="h-5 w-5 sm:h-6 sm:w-6 text-neutral-300" />
+          }} className="hz-r-lg hz-p-4 hz-ring hz-col hz-ai-center hz-align-center">
+              <div className="hz-sq-6 hz-r-full hz-p-2 hz-row hz-ai-center hz-jc-center hz-mb-3">
+                <LineChart className="hz-sq-3 hz-fg-soft" />
               </div>
-              <h3 className="text-base sm:text-lg md:text-xl font-medium text-[var(--white)] mb-2 md:mb-3">User Journeys</h3>
-              <p className="text-xs sm:text-sm text-neutral-300">Visualize and optimize the complete user journey from acquisition to conversion.</p>
+              <h3 className="hz-t-base hz-w-medium hz-fg hz-mb-2">User Journeys</h3>
+              <p className="hz-t-xs hz-fg-soft">Visualize and optimize the complete user journey from acquisition to conversion.</p>
             </motion.div>
 
             <motion.div variants={userInsightItemVariants} whileHover={{
@@ -447,12 +447,12 @@ const Analytics = () => {
             transition: {
               duration: 0.2
             }
-          }} className="bg-gradient-to-br from-gray-900/30 to-transparent rounded-xl p-4 md:p-6 ring-1 ring-white/10 flex flex-col items-center text-center">
-              <div className="bg-gradient-to-br from-neutral-500/20 to-neutral-500/20 rounded-full p-2 md:p-3 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 flex items-center justify-center mb-3 md:mb-4">
-                <PieChart className="h-5 w-5 sm:h-6 sm:w-6 text-neutral-300" />
+          }} className="hz-r-lg hz-p-4 hz-ring hz-col hz-ai-center hz-align-center">
+              <div className="hz-sq-6 hz-r-full hz-p-2 hz-row hz-ai-center hz-jc-center hz-mb-3">
+                <PieChart className="hz-sq-3 hz-fg-soft" />
               </div>
-              <h3 className="text-base sm:text-lg md:text-xl font-medium text-[var(--white)] mb-2 md:mb-3">Engagement Metrics</h3>
-              <p className="text-xs sm:text-sm text-neutral-300">Capture and analyze key engagement metrics to improve user retention.</p>
+              <h3 className="hz-t-base hz-w-medium hz-fg hz-mb-2">Engagement Metrics</h3>
+              <p className="hz-t-xs hz-fg-soft">Capture and analyze key engagement metrics to improve user retention.</p>
             </motion.div>
           </motion.div>
         </motion.div>
@@ -470,7 +470,7 @@ const Analytics = () => {
         duration: 0.6,
         type: "spring",
         stiffness: 85
-      }} className="bg-gradient-to-r from-gray-900/20 via-black to-gray-900/20 rounded-xl p-8 mb-16">
+      }} className="hz-r-lg hz-p-6 hz-mb-7">
           <motion.h2 initial={{
           opacity: 0,
           y: 15
@@ -482,25 +482,25 @@ const Analytics = () => {
         }} transition={{
           delay: 0.2,
           duration: 0.5
-        }} className="text-2xl sm:text-3xl font-semibold text-[var(--white)] text-center mb-10">
+        }} className="hz-t-2xl hz-w-semibold hz-fg hz-align-center hz-mb-6">
             Easily Integrate Hanzo AI-Powered Analytics
           </motion.h2>
 
           <motion.div variants={aiAnalyticsVariants} initial="hidden" whileInView="visible" viewport={{
           once: true
-        }} className="space-y-6">
+        }} className="hz-stack-5">
             <motion.div variants={aiAnalyticsItemVariants} whileHover={{
             x: 5,
             transition: {
               duration: 0.2
             }
-          }} className="bg-gradient-to-br from-gray-900/40 to-black/20 rounded-lg p-5 ring-1 ring-white/5 flex items-start space-x-4">
-              <div className="bg-gradient-to-br from-neutral-600/20 to-neutral-600/20 rounded-lg p-3">
-                <Brain className="h-5 w-5 sm:h-6 sm:w-6 text-neutral-300" />
+          }} className="hz-r-lg hz-p-4 hz-ring hz-row hz-ai-start hz-inline-4">
+              <div className="hz-r-lg hz-p-3">
+                <Brain className="hz-sq-3 hz-fg-soft" />
               </div>
-              <div className="flex-1 text-center">
-                <h3 className="text-base sm:text-lg font-medium text-[var(--white)] mb-2">Predictive Analysis</h3>
-                <p className="text-xs sm:text-sm text-neutral-300">Forecast future trends and user behaviors with advanced machine learning algorithms.</p>
+              <div className="hz-grow hz-align-center">
+                <h3 className="hz-t-base hz-w-medium hz-fg hz-mb-2">Predictive Analysis</h3>
+                <p className="hz-t-xs hz-fg-soft">Forecast future trends and user behaviors with advanced machine learning algorithms.</p>
               </div>
             </motion.div>
 
@@ -509,13 +509,13 @@ const Analytics = () => {
             transition: {
               duration: 0.2
             }
-          }} className="bg-gradient-to-br from-gray-900/40 to-black/20 rounded-lg p-5 ring-1 ring-white/5 flex items-start space-x-4">
-              <div className="bg-gradient-to-br from-neutral-600/20 to-neutral-600/20 rounded-lg p-3">
-                <Activity className="h-5 w-5 sm:h-6 sm:w-6 text-neutral-300" />
+          }} className="hz-r-lg hz-p-4 hz-ring hz-row hz-ai-start hz-inline-4">
+              <div className="hz-r-lg hz-p-3">
+                <Activity className="hz-sq-3 hz-fg-soft" />
               </div>
-              <div className="flex-1 text-center">
-                <h3 className="text-base sm:text-lg font-medium text-[var(--white)] mb-2">Anomaly Detection</h3>
-                <p className="text-xs sm:text-sm text-neutral-300">Automatically identify unusual patterns and potential issues in your application.</p>
+              <div className="hz-grow hz-align-center">
+                <h3 className="hz-t-base hz-w-medium hz-fg hz-mb-2">Anomaly Detection</h3>
+                <p className="hz-t-xs hz-fg-soft">Automatically identify unusual patterns and potential issues in your application.</p>
               </div>
             </motion.div>
 
@@ -524,13 +524,13 @@ const Analytics = () => {
             transition: {
               duration: 0.2
             }
-          }} className="bg-gradient-to-br from-gray-900/40 to-black/20 rounded-lg p-5 ring-1 ring-white/5 flex items-start space-x-4">
-              <div className="bg-gradient-to-br from-neutral-600/20 to-neutral-600/20 rounded-lg p-3">
-                <BarChart className="h-5 w-5 sm:h-6 sm:w-6 text-neutral-300" />
+          }} className="hz-r-lg hz-p-4 hz-ring hz-row hz-ai-start hz-inline-4">
+              <div className="hz-r-lg hz-p-3">
+                <BarChart className="hz-sq-3 hz-fg-soft" />
               </div>
-              <div className="flex-1 text-center">
-                <h3 className="text-base sm:text-lg font-medium text-[var(--white)] mb-2">Intelligent Recommendations</h3>
-                <p className="text-xs sm:text-sm text-neutral-300">Get actionable insights and recommendations to optimize your business metrics.</p>
+              <div className="hz-grow hz-align-center">
+                <h3 className="hz-t-base hz-w-medium hz-fg hz-mb-2">Intelligent Recommendations</h3>
+                <p className="hz-t-xs hz-fg-soft">Get actionable insights and recommendations to optimize your business metrics.</p>
               </div>
             </motion.div>
           </motion.div>
@@ -547,7 +547,7 @@ const Analytics = () => {
       }} transition={{
         delay: 0.8,
         duration: 0.5
-      }} className="text-center">
+      }} className="hz-align-center">
           <motion.div whileHover={{
           scale: 1.05
         }} whileTap={{
@@ -557,7 +557,7 @@ const Analytics = () => {
           stiffness: 400,
           damping: 10
         }}>
-            <Button className="bg-gray-600 hover:bg-gray-700 text-[var(--white)] px-6 sm:px-8 py-5 sm:py-6 text-base sm:text-lg rounded-xl">
+            <Button className="hz-bg-raised hz-fg hz-px-5 hz-py-4 hz-t-base hz-r-lg hz-hoverable">
               Get Started with Analytics
             </Button>
           </motion.div>

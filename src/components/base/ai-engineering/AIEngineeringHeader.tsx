@@ -9,10 +9,10 @@ const AIEngineeringHeader = () => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      className="text-center mb-16"
+      className="hz-align-center hz-mb-7"
     >
-      <h2 className="text-3xl font-bold text-[var(--white)] mb-4">Built for AI Engineers</h2>
-      <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
+      <h2 className="hz-t-3xl hz-w-bold hz-fg hz-mb-4">Built for AI Engineers</h2>
+      <p className="hz-container-narrow hz-t-xl hz-fg-soft">
         Powerful features specifically designed for AI-powered applications
       </p>
     </motion.div>

@@ -28,11 +28,11 @@ const BillingCalculator = () => {
                     analyticsEventsCost + observabilityLogsCost + complianceCost + supportCost;
 
   return (
-    <div className="space-y-8">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div className="space-y-8">
+    <div className="hz-stack-6">
+      <div className="hz-grid hz-grid-2 hz-gap-6">
+        <div className="hz-stack-6">
           <ResourceSection
-            icon={<Server className="h-5 w-5" />}
+            icon={<Server className="hz-sq-3" />}
             title="Compute Resources"
             description="Performance machines (4 vCPU, 8GB RAM)"
             value={compute}
@@ -44,7 +44,7 @@ const BillingCalculator = () => {
           />
 
           <ResourceSection
-            icon={<Database className="h-5 w-5" />}
+            icon={<Database className="hz-sq-3" />}
             title="Hanzo Base Replicas"
             description="Database & cache instances (2 vCPU, 4GB RAM)"
             value={replicas}
@@ -56,7 +56,7 @@ const BillingCalculator = () => {
           />
 
           <ResourceSection
-            icon={<HardDrive className="h-5 w-5" />}
+            icon={<HardDrive className="hz-sq-3" />}
             title="Persistent Storage"
             description="Total storage needed for your applications"
             value={storage}
@@ -68,7 +68,7 @@ const BillingCalculator = () => {
           />
 
           <ResourceSection
-            icon={<Globe className="h-5 w-5" />}
+            icon={<Globe className="hz-sq-3" />}
             title="Monthly Bandwidth"
             description="Estimated outgoing traffic (North America)"
             value={bandwidth}
@@ -80,7 +80,7 @@ const BillingCalculator = () => {
           />
           
           <ResourceSection
-            icon={<Activity className="h-5 w-5" />}
+            icon={<Activity className="hz-sq-3" />}
             title="Analytics Events"
             description="Monthly tracked events (first 1M free)"
             value={analyticsEvents}
@@ -92,7 +92,7 @@ const BillingCalculator = () => {
           />
           
           <ResourceSection
-            icon={<FileText className="h-5 w-5" />}
+            icon={<FileText className="hz-sq-3" />}
             title="Observability Logs"
             description="Monthly log storage for monitoring"
             value={observabilityLogs}
@@ -123,8 +123,8 @@ const BillingCalculator = () => {
         />
       </div>
 
-      <div className="flex justify-center pt-8">
-        <Button className="bg-[var(--white)] hover:bg-gray-200 text-black px-8">
+      <div className="hz-row hz-jc-center hz-pt-6">
+        <Button className="hz-bg-inverse hz-fg-inverse hz-px-6 hz-hoverable">
           Contact Sales
         </Button>
       </div>

@@ -26,20 +26,20 @@ const DownloadHero = () => {
   }, []);
 
   return (
-    <section ref={containerRef} className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-[var(--black)] relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-r from-neutral-800/20 to-neutral-800/20 opacity-30"></div>
-      <div className="absolute -top-40 -right-40 w-80 h-80 bg-neutral-600/10 rounded-full blur-3xl"></div>
-      <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-neutral-600/10 rounded-full blur-3xl"></div>
+    <section ref={containerRef} className="hz-pt-6 hz-pb-6 hz-px-4 hz-bg hz-rel hz-clip">
+      <div className="hz-abs hz-inset hz-dim-more"></div>
+      <div className="hz-sq-8 hz-abs hz-bg-raised hz-r-full hz-blur-bg"></div>
+      <div className="hz-sq-8 hz-abs hz-bg-raised hz-r-full hz-blur-bg"></div>
       
-      <div className="max-w-5xl mx-auto relative z-10">
+      <div className="hz-container-wide hz-rel hz-z-raised">
         <motion.div 
-          className="text-center"
+          className="hz-align-center"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
           <h1 
-            className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 text-gradient-steel"
+            className="hz-t-4xl hz-w-bold hz-mb-5 hz-fg-soft"
             style={{
               backgroundPosition: `${(mousePosition.x / (containerRef.current?.offsetWidth || 1)) * 100}% ${(mousePosition.y / (containerRef.current?.offsetHeight || 1)) * 100}%`,
             }}
@@ -48,32 +48,32 @@ const DownloadHero = () => {
             across every app on your computer
           </h1>
           
-          <p className="text-xl text-neutral-300 mb-10 max-w-2xl mx-auto">
+          <p className="hz-container-narrow hz-mw-md hz-t-xl hz-fg-soft hz-mb-6">
             Your AI workspace for building AI products and AI-powered companies. Available on PC and Mac. Mobile coming soon.
           </p>
           
-          <div className="flex flex-col sm:flex-row justify-center gap-4 mb-16">
+          <div className="hz-col-row hz-jc-center hz-gap-4 hz-mb-7">
             <Button 
               size="sm"
-              className="bg-gradient-to-r from-neutral-600 to-neutral-500 hover:from-neutral-500 hover:to-neutral-400 text-[var(--white)] shadow-lg hover:shadow-xl transition-all"
+              className="hz-fg hz-shadow-lg hz-transition"
             >
-              <Apple className="mr-2 h-4 w-4" />
+              <Apple className="hz-sq-2 hz-mr-2" />
               Download (Apple Silicon)
             </Button>
             <Button 
               size="sm"
-              className="bg-gradient-to-r from-neutral-600 to-neutral-500 hover:from-neutral-500 hover:to-neutral-400 text-[var(--white)] shadow-lg hover:shadow-xl transition-all"
+              className="hz-fg hz-shadow-lg hz-transition"
             >
-              <Apple className="mr-2 h-4 w-4" />
+              <Apple className="hz-sq-2 hz-mr-2" />
               Download (Intel Mac)
             </Button>
           </div>
           
-          <div className="max-w-4xl mx-auto rounded-xl overflow-hidden shadow-2xl border border-gray-800">
-            <div className="relative pb-[56.25%] h-0 bg-gray-900">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <Monitor className="h-16 w-16 text-neutral-500" />
-                <span className="ml-2 text-neutral-400">Video preview</span>
+          <div className="hz-container-narrow hz-r-lg hz-clip hz-shadow-lg hz-bordered">
+            <div className="hz-rel hz-bh-1 hz-bg-surface">
+              <div className="hz-abs hz-inset hz-row hz-ai-center hz-jc-center">
+                <Monitor className="hz-sq-8 hz-fg-muted" />
+                <span className="hz-ml-2 hz-fg-muted">Video preview</span>
               </div>
             </div>
           </div>

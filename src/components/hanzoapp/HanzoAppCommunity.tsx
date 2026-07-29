@@ -11,22 +11,22 @@ const TweetCard = ({ username, handle, content, date, replies }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      className="bg-gray-900/30 border border-gray-800 rounded-xl p-6 hover:border-gray-700 transition-colors"
+      className="hz-card hz-transition hz-card-interactive"
     >
-      <div className="flex items-center mb-4">
-        <div className="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-[var(--white)] text-xl font-bold">
+      <div className="hz-row hz-ai-center hz-mb-4">
+        <div className="hz-sq-7 hz-r-full hz-bg-raised hz-row hz-ai-center hz-jc-center hz-fg hz-t-xl hz-w-bold">
           {username[0]}
         </div>
-        <div className="ml-3">
-          <div className="font-bold">{username}</div>
-          <div className="text-neutral-500">@{handle}</div>
+        <div className="hz-ml-3">
+          <div className="hz-w-bold">{username}</div>
+          <div className="hz-fg-muted">@{handle}</div>
         </div>
       </div>
-      <div className="text-neutral-300 mb-4">{content}</div>
-      <div className="flex items-center justify-between text-sm text-neutral-500">
+      <div className="hz-fg-soft hz-mb-4">{content}</div>
+      <div className="hz-row hz-ai-center hz-jc-between hz-t-sm hz-fg-muted">
         <div>{date}</div>
-        <div className="flex items-center">
-          <MessageSquare className="h-4 w-4 mr-1" /> {replies}
+        <div className="hz-row hz-ai-center">
+          <MessageSquare className="hz-sq-2 hz-mr-1" /> {replies}
         </div>
       </div>
     </motion.div>
@@ -80,28 +80,28 @@ const HanzoAppCommunity = () => {
   ];
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-950">
-      <div className="max-w-7xl mx-auto">
+    <section className="hz-py-7 hz-px-4 hz-bg-surface">
+      <div className="hz-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="hz-align-center hz-mb-7"
         >
-          <h2 className="text-3xl font-bold mb-4">Community 🫶</h2>
-          <p className="text-xl text-neutral-300 mb-8">
+          <h2 className="hz-t-3xl hz-w-bold hz-mb-4">Community 🫶</h2>
+          <p className="hz-t-xl hz-fg-soft hz-mb-6">
             Open source community is the heart of Hanzo AI. See why developers love and build using Hanzo AI
           </p>
           <Button 
             size="lg"
-            className="bg-neutral-600 hover:bg-neutral-700 text-[var(--white)]"
+            className="hz-bg-raised hz-fg hz-hoverable"
           >
             Join Discord
           </Button>
         </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="hz-grid hz-grid-3 hz-gap-5">
           {tweets.map((tweet, index) => (
             <TweetCard 
               key={index}

@@ -1,0 +1,549 @@
+/* hanzo.network — the site's design-system class layer.
+ *
+ * Every value here resolves to a @hanzo/design token (imported once by
+ * styles/index.css). Nothing declares a raw colour, a raw type size or a raw
+ * radius; if a value is missing from the token set the fix belongs upstream in
+ * @hanzo/design, not here. That is what makes this site match hanzo.ai,
+ * console, chat and app instead of drifting on its own palette.
+ *
+ * The vocabulary is intentionally small and semantic — a role ("card", "lede",
+ * "container", "section") rather than a property-per-class utility set. It is
+ * mobile-first: the base rule is the phone, and `@media (min-width: 768px)`
+ * scales up. Nothing has to be re-declared per breakpoint at the call site.
+ */
+
+/* ── page shell ───────────────────────────────────────────────────────── */
+
+.hz-page {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--background);
+  color: var(--foreground);
+  display: flex;
+  flex-direction: column;
+}
+
+.hz-container,
+.hz-container-narrow,
+.hz-container-wide {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+.hz-container { max-width: var(--container-max); }
+.hz-container-wide { max-width: var(--container-wide); }
+.hz-container-narrow { max-width: var(--container-prose); }
+
+.hz-section { padding-block: var(--space-12); }
+.hz-section-lg { padding-block: var(--space-16); }
+.hz-section-tight { padding-block: var(--space-8); }
+
+@media (min-width: 768px) {
+  .hz-container,
+  .hz-container-narrow,
+  .hz-container-wide { padding-inline: var(--gutter-lg); }
+  .hz-section { padding-block: var(--section-y); }
+  .hz-section-lg { padding-block: var(--section-y-lg); }
+  .hz-section-tight { padding-block: var(--space-12); }
+}
+
+/* ── flow ─────────────────────────────────────────────────────────────── */
+
+/* A row does not wrap: flexbox wraps an item BEFORE it shrinks it, so a
+   wrapping row breaks after the icon in every icon + label pair. Rows stay on
+   one line and their children shrink instead (`min-width: 0` below), which is
+   what keeps a long label beside its check mark on a 390px phone.
+   The exception is a row of controls — those genuinely should stack rather
+   than squeeze, and `:has()` says exactly that without a second class. */
+.hz-row { display: flex; flex-direction: row; flex-wrap: nowrap; min-width: 0; }
+.hz-row:has(> .hz-btn), .hz-row:has(> .hz-pill),
+.hz-row:has(> button), .hz-row:has(> a) { flex-wrap: wrap; }
+/* Declared after .hz-row on purpose: `flex flex-col` means COLUMN, and an
+   element carrying both roles must come out a column, not a row. */
+.hz-col { display: flex; flex-direction: column; min-width: 0; }
+.hz-row-tight { display: flex; flex-direction: row; flex-wrap: nowrap; min-width: 0; }
+.hz-row > *, .hz-col-row > *, .hz-grid > * { min-width: 0; }
+.hz-inline { display: inline-flex; align-items: center; max-width: 100%; }
+/* stacks on a phone, sits side-by-side from the tablet up */
+.hz-col-row { display: flex; flex-direction: column; min-width: 0; }
+@media (min-width: 768px) { .hz-col-row { flex-direction: row; } }
+
+.hz-ai-start { align-items: flex-start; }
+.hz-ai-center { align-items: center; }
+.hz-ai-end { align-items: flex-end; }
+.hz-ai-stretch { align-items: stretch; }
+.hz-ai-baseline { align-items: baseline; }
+.hz-jc-start { justify-content: flex-start; }
+.hz-jc-center { justify-content: center; }
+.hz-jc-end { justify-content: flex-end; }
+.hz-jc-between { justify-content: space-between; }
+.hz-jc-around { justify-content: space-around; }
+.hz-self-start { align-self: flex-start; }
+.hz-self-center { align-self: center; }
+.hz-self-end { align-self: flex-end; }
+
+.hz-row-reverse { flex-direction: row-reverse; }
+.hz-col-reverse { flex-direction: column-reverse; }
+.hz-object-cover { object-fit: cover; }
+.hz-object-contain { object-fit: contain; }
+.hz-nowrap { flex-wrap: nowrap; }
+.hz-wrap { flex-wrap: wrap; }
+.hz-grow { flex: 1 1 auto; min-width: 0; }
+.hz-none { flex: none; }
+.hz-order-first { order: -1; }
+
+/* Grid: one column on a phone, N from the tablet up. A page never has to spell
+   out `grid-cols-1 md:grid-cols-3` again — the intent is "three across". */
+.hz-grid { display: grid; grid-template-columns: 1fr; min-width: 0; }
+@media (min-width: 640px) {
+  .hz-grid-2, .hz-grid-4, .hz-grid-6 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 768px) {
+  .hz-grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .hz-grid-5 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1024px) {
+  .hz-grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .hz-grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .hz-grid-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .hz-grid-6 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+}
+.hz-span-2 { grid-column: span 2; }
+.hz-span-full { grid-column: 1 / -1; }
+
+/* ── spacing ramp ─────────────────────────────────────────────────────── */
+/* Eight steps off --space-*; the codemod buckets Tailwind's 30-odd numbers
+   into these so the site reads at one rhythm instead of thirty. */
+
+.hz-gap-0 { gap: 0; }
+.hz-gap-1 { gap: var(--space-1); }
+.hz-gap-2 { gap: var(--space-2); }
+.hz-gap-3 { gap: var(--space-3); }
+.hz-gap-4 { gap: var(--space-4); }
+.hz-gap-5 { gap: var(--space-6); }
+.hz-gap-6 { gap: var(--space-8); }
+.hz-gap-7 { gap: var(--space-12); }
+
+.hz-m-0 { margin: 0; }
+.hz-mt-1 { margin-top: var(--space-1); }
+.hz-mt-2 { margin-top: var(--space-2); }
+.hz-mt-3 { margin-top: var(--space-3); }
+.hz-mt-4 { margin-top: var(--space-4); }
+.hz-mt-5 { margin-top: var(--space-6); }
+.hz-mt-6 { margin-top: var(--space-8); }
+.hz-mt-7 { margin-top: var(--space-12); }
+.hz-mb-1 { margin-bottom: var(--space-1); }
+.hz-mb-2 { margin-bottom: var(--space-2); }
+.hz-mb-3 { margin-bottom: var(--space-3); }
+.hz-mb-4 { margin-bottom: var(--space-4); }
+.hz-mb-5 { margin-bottom: var(--space-6); }
+.hz-mb-6 { margin-bottom: var(--space-8); }
+.hz-mb-7 { margin-bottom: var(--space-12); }
+.hz-ml-1 { margin-left: var(--space-1); }
+.hz-ml-2 { margin-left: var(--space-2); }
+.hz-ml-3 { margin-left: var(--space-3); }
+.hz-ml-4 { margin-left: var(--space-4); }
+.hz-mr-1 { margin-right: var(--space-1); }
+.hz-mr-2 { margin-right: var(--space-2); }
+.hz-mr-3 { margin-right: var(--space-3); }
+.hz-mr-4 { margin-right: var(--space-4); }
+.hz-mx-auto { margin-inline: auto; }
+.hz-my-auto { margin-block: auto; }
+.hz-ml-auto { margin-left: auto; }
+.hz-mr-auto { margin-right: auto; }
+.hz-mt-auto { margin-top: auto; }
+.hz-mb-auto { margin-bottom: auto; }
+
+.hz-p-0 { padding: 0; }
+.hz-p-1 { padding: var(--space-1); }
+.hz-p-2 { padding: var(--space-2); }
+.hz-p-3 { padding: var(--space-3); }
+.hz-p-4 { padding: var(--space-4); }
+.hz-p-5 { padding: var(--space-6); }
+.hz-p-6 { padding: var(--space-8); }
+.hz-px-1 { padding-inline: var(--space-1); }
+.hz-px-2 { padding-inline: var(--space-2); }
+.hz-px-3 { padding-inline: var(--space-3); }
+.hz-px-4 { padding-inline: var(--space-4); }
+.hz-px-5 { padding-inline: var(--space-6); }
+.hz-px-6 { padding-inline: var(--space-8); }
+.hz-py-1 { padding-block: var(--space-1); }
+.hz-py-2 { padding-block: var(--space-2); }
+.hz-py-3 { padding-block: var(--space-3); }
+.hz-py-4 { padding-block: var(--space-4); }
+.hz-py-5 { padding-block: var(--space-6); }
+.hz-py-6 { padding-block: var(--space-8); }
+.hz-py-7 { padding-block: var(--space-12); }
+.hz-pt-4 { padding-top: var(--space-4); }
+.hz-pt-6 { padding-top: var(--space-8); }
+.hz-pb-4 { padding-bottom: var(--space-4); }
+.hz-pb-6 { padding-bottom: var(--space-8); }
+
+/* `space-y-*` — the gap between siblings, without turning the parent into flex */
+.hz-stack-1 > * + * { margin-top: var(--space-1); }
+.hz-stack-2 > * + * { margin-top: var(--space-2); }
+.hz-stack-3 > * + * { margin-top: var(--space-3); }
+.hz-stack-4 > * + * { margin-top: var(--space-4); }
+.hz-stack-5 > * + * { margin-top: var(--space-6); }
+.hz-stack-6 > * + * { margin-top: var(--space-8); }
+.hz-inline-1 > * + * { margin-left: var(--space-1); }
+.hz-inline-2 > * + * { margin-left: var(--space-2); }
+.hz-inline-3 > * + * { margin-left: var(--space-3); }
+.hz-inline-4 > * + * { margin-left: var(--space-4); }
+
+/* ── size ─────────────────────────────────────────────────────────────── */
+
+.hz-w-full { width: 100%; }
+.hz-w-auto { width: auto; }
+.hz-w-fit { width: fit-content; }
+.hz-h-full { height: 100%; }
+.hz-h-screen { height: 100vh; height: 100dvh; }
+.hz-min-h-screen { min-height: 100vh; min-height: 100dvh; }
+.hz-mw-xs { max-width: 20rem; }
+.hz-mw-sm { max-width: 28rem; }
+.hz-mw-md { max-width: 36rem; }
+.hz-mw-lg { max-width: var(--container-prose); }
+.hz-mw-xl { max-width: 64rem; }
+.hz-mw-2xl { max-width: var(--container-wide); }
+.hz-mw-3xl { max-width: var(--container-max); }
+.hz-mw-full { max-width: 100%; }
+
+/* A single axis. `h-16` on a nav row is a height, not a square — these are
+   separate on purpose; conflating them made every header a 4rem-wide box. */
+.hz-bw-1 { width: 0.75rem; } .hz-bh-1 { height: 0.75rem; }
+.hz-bw-2 { width: 1rem; }    .hz-bh-2 { height: 1rem; }
+.hz-bw-3 { width: 1.25rem; } .hz-bh-3 { height: 1.25rem; }
+.hz-bw-4 { width: 1.5rem; }  .hz-bh-4 { height: 1.5rem; }
+.hz-bw-5 { width: 2rem; }    .hz-bh-5 { height: 2rem; }
+.hz-bw-6 { width: 2.5rem; }  .hz-bh-6 { height: 2.5rem; }
+.hz-bw-7 { width: 3rem; }    .hz-bh-7 { height: 3rem; }
+.hz-bw-8 { width: 4rem; }    .hz-bh-8 { min-height: 4rem; }
+.hz-h-header { min-height: var(--header-height); }
+
+/* Square boxes — icons, avatars, marks. Icons never carry a bare pixel size. */
+.hz-sq-1 { width: 0.75rem; height: 0.75rem; flex: none; }
+.hz-sq-2 { width: 1rem; height: 1rem; flex: none; }
+.hz-sq-3 { width: 1.25rem; height: 1.25rem; flex: none; }
+.hz-sq-4 { width: 1.5rem; height: 1.5rem; flex: none; }
+.hz-sq-5 { width: 2rem; height: 2rem; flex: none; }
+.hz-sq-6 { width: 2.5rem; height: 2.5rem; flex: none; }
+.hz-sq-7 { width: 3rem; height: 3rem; flex: none; }
+.hz-sq-8 { width: 4rem; height: 4rem; flex: none; }
+
+/* ── position ─────────────────────────────────────────────────────────── */
+
+.hz-rel { position: relative; }
+.hz-abs { position: absolute; }
+.hz-fixed { position: fixed; }
+.hz-sticky { position: sticky; top: 0; }
+.hz-static { position: static; }
+.hz-inset { inset: 0; }
+.hz-top-0 { top: 0; }
+.hz-bottom-0 { bottom: 0; }
+.hz-left-0 { left: 0; }
+.hz-right-0 { right: 0; }
+.hz-center-x { left: 50%; transform: translateX(-50%); }
+.hz-center-y { top: 50%; transform: translateY(-50%); }
+.hz-center-xy { left: 50%; top: 50%; transform: translate(-50%, -50%); }
+.hz-z-behind { z-index: -1; }
+.hz-z-base { z-index: var(--z-base, 0); }
+.hz-z-raised { z-index: var(--z-raised, 10); }
+.hz-z-header { z-index: var(--z-sticky, 40); }
+.hz-z-overlay { z-index: var(--z-overlay, 50); }
+
+/* ── type ─────────────────────────────────────────────────────────────── */
+/* Display sizes clamp, so a hero headline fits a 390px phone without a single
+   breakpoint at the call site. */
+
+.hz-t-xs { font-size: var(--text-xs); line-height: var(--leading-xs); }
+.hz-t-sm { font-size: var(--text-sm); line-height: var(--leading-sm); }
+.hz-t-base { font-size: var(--text-base); line-height: var(--leading-base); }
+.hz-t-lg { font-size: var(--text-lg); line-height: var(--leading-lg); }
+.hz-t-xl { font-size: var(--text-xl); line-height: var(--leading-xl); }
+.hz-t-2xl { font-size: clamp(1.125rem, 1rem + 1vw, var(--text-2xl)); line-height: 1.3; }
+.hz-t-3xl { font-size: clamp(1.25rem, 1rem + 2vw, var(--text-3xl)); line-height: 1.25; }
+.hz-t-4xl { font-size: clamp(1.5rem, 1.1rem + 2.4vw, var(--text-4xl)); line-height: 1.2; }
+.hz-t-5xl { font-size: clamp(1.75rem, 1.1rem + 3.2vw, var(--text-5xl)); line-height: 1.12; }
+.hz-t-6xl { font-size: clamp(2rem, 1.1rem + 4.4vw, var(--text-6xl)); line-height: 1.06; }
+.hz-t-7xl { font-size: clamp(2.25rem, 1.1rem + 5.6vw, var(--text-7xl)); line-height: 1.02; }
+
+.hz-w-normal { font-weight: var(--weight-normal); }
+.hz-w-medium { font-weight: var(--weight-medium); }
+.hz-w-semibold { font-weight: var(--weight-semibold); }
+.hz-w-bold { font-weight: var(--weight-bold); }
+.hz-italic { font-style: italic; }
+.hz-mono { font-family: var(--font-mono, ui-monospace, SFMono-Regular, monospace); }
+.hz-display { font-family: var(--font-display, var(--font-sans)); }
+
+.hz-fg { color: var(--foreground); }
+.hz-fg-soft { color: var(--text-secondary); }
+.hz-fg-muted { color: var(--muted-foreground); }
+.hz-fg-faint { color: var(--text-tertiary); }
+.hz-fg-inverse { color: var(--background); }
+.hz-fg-inherit { color: inherit; }
+
+.hz-align-left { text-align: left; }
+.hz-align-center { text-align: center; }
+.hz-align-right { text-align: right; }
+.hz-tracking-tight { letter-spacing: var(--tracking-tight); }
+.hz-tracking-wide { letter-spacing: var(--tracking-wide); }
+.hz-tracking-widest { letter-spacing: var(--tracking-widest); }
+.hz-leading-none { line-height: var(--leading-none); }
+.hz-leading-tight { line-height: var(--leading-tight); }
+.hz-leading-relaxed { line-height: var(--leading-relaxed); }
+.hz-upper { text-transform: uppercase; }
+.hz-nocase { text-transform: none; }
+.hz-underline { text-decoration: underline; text-underline-offset: 4px; }
+.hz-no-underline { text-decoration: none; }
+.hz-whitespace-nowrap { white-space: nowrap; }
+.hz-break { overflow-wrap: anywhere; word-break: break-word; }
+.hz-truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+.hz-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.hz-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+/* The one editorial pairing every page opens with. */
+.hz-eyebrow {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+.hz-lede {
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  color: var(--muted-foreground);
+  max-width: var(--container-prose);
+}
+
+/* ── surface ──────────────────────────────────────────────────────────── */
+
+.hz-bg { background: var(--background); }
+.hz-bg-surface { background: var(--surface-card); }
+.hz-bg-raised { background: var(--surface-card-emphasis); }
+.hz-bg-quiet { background: var(--surface-card-quiet); }
+.hz-bg-overlay { background: var(--surface-overlay); }
+.hz-bg-scrim { background: var(--surface-scrim); }
+.hz-bg-inverse { background: var(--foreground); color: var(--background); }
+.hz-bg-none { background: none; }
+
+.hz-bordered { border: 1px solid var(--border); }
+.hz-border-t { border-top: 1px solid var(--border); }
+.hz-border-b { border-bottom: 1px solid var(--border); }
+.hz-border-l { border-left: 1px solid var(--border); }
+.hz-border-r { border-right: 1px solid var(--border); }
+.hz-border-strong { border-color: var(--border-strong); }
+.hz-border-none { border: 0; }
+
+.hz-r-sm { border-radius: var(--radius-sm); }
+.hz-r-md { border-radius: var(--radius-md); }
+.hz-r-lg { border-radius: var(--radius-lg); }
+.hz-r-xl { border-radius: var(--radius-xl); }
+.hz-r-2xl { border-radius: var(--radius-2xl); }
+.hz-r-full { border-radius: var(--radius-full); }
+.hz-r-none { border-radius: 0; }
+
+.hz-shadow { box-shadow: var(--elevation-1, 0 1px 2px rgb(0 0 0 / .4)); }
+.hz-shadow-lg { box-shadow: var(--elevation-3, 0 12px 32px rgb(0 0 0 / .5)); }
+.hz-ring { box-shadow: inset 0 0 0 1px var(--border); }
+
+/* The card — the shape this site repeats more than any other. */
+.hz-card {
+  max-width: 100%;
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  min-width: 0;
+}
+.hz-card-tight { padding: var(--space-4); }
+.hz-card-flush { padding: 0; }
+.hz-card-interactive {
+  transition: border-color var(--duration-fast, 150ms) var(--ease-out, ease),
+              background-color var(--duration-fast, 150ms) var(--ease-out, ease);
+}
+.hz-card-interactive:hover {
+  border-color: var(--border-strong);
+  background: var(--surface-card-emphasis);
+}
+
+.hz-divider { height: 1px; background: var(--border); border: 0; width: 100%; }
+.hz-glass {
+  background: var(--surface-header);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* ── controls ─────────────────────────────────────────────────────────── */
+/* 44px minimum on every tap target, enforced here once rather than at 600
+   call sites. `min-height` (not padding) so a label of any length still lands
+   on a 44px box. */
+
+.hz-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 44px;
+  padding-inline: var(--space-5);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: transparent;
+  color: var(--foreground);
+  font: inherit;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  line-height: 1;
+  cursor: pointer;
+  text-decoration: none;
+  max-width: 100%;
+  /* A long label wraps inside the button rather than pushing the page
+     sideways; the 44px floor above means it is still a legal tap target. */
+  white-space: normal;
+  text-align: center;
+  transition: background-color var(--duration-fast, 150ms) var(--ease-out, ease),
+              border-color var(--duration-fast, 150ms) var(--ease-out, ease),
+              opacity var(--duration-fast, 150ms) var(--ease-out, ease);
+}
+.hz-btn:hover { background: var(--white-10); border-color: var(--border-strong); }
+.hz-btn:disabled, .hz-btn[aria-disabled='true'] { opacity: .5; cursor: not-allowed; }
+.hz-btn-primary {
+  background: var(--primary);
+  color: var(--primary-foreground);
+  border-color: var(--primary);
+}
+.hz-btn-primary:hover { opacity: .88; background: var(--primary); }
+.hz-btn-ghost { border-color: transparent; }
+.hz-btn-ghost:hover { background: var(--white-05); border-color: transparent; }
+.hz-btn-lg { min-height: 52px; padding-inline: var(--space-8); font-size: var(--text-base); }
+.hz-btn-block { width: 100%; }
+/* An icon-only control is still a 44px target. */
+.hz-btn-icon { min-width: 44px; padding-inline: var(--space-2); }
+
+.hz-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  color: var(--muted-foreground);
+  white-space: nowrap;
+}
+
+.hz-link {
+  color: var(--muted-foreground);
+  text-decoration: none;
+  transition: color var(--duration-fast, 150ms) var(--ease-out, ease);
+}
+.hz-link:hover { color: var(--foreground); }
+/* Any link or button that is a real tap target gets the 44px box on touch. */
+@media (pointer: coarse) {
+  .hz-tap { display: inline-flex; align-items: center; min-height: 44px; }
+}
+.hz-tap { display: inline-flex; align-items: center; min-height: 44px; }
+
+.hz-input {
+  width: 100%;
+  min-height: 44px;
+  padding: var(--space-2) var(--space-3);
+  background: var(--surface-card-quiet);
+  border: 1px solid var(--input);
+  border-radius: var(--radius-md);
+  color: var(--foreground);
+  font: inherit;
+  font-size: var(--text-base);
+}
+.hz-input::placeholder { color: var(--text-tertiary); }
+.hz-input:focus-visible { outline: 2px solid var(--ring); outline-offset: 1px; }
+
+/* ── behaviour ────────────────────────────────────────────────────────── */
+
+.hz-clip { overflow: hidden; }
+.hz-scroll-x { overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; }
+.hz-scroll-y { overflow-y: auto; }
+.hz-pointer { cursor: pointer; }
+.hz-no-pointer { pointer-events: none; }
+.hz-transition { transition: all var(--duration-fast, 150ms) var(--ease-out, ease); }
+.hz-hoverable { transition: opacity var(--duration-fast, 150ms) var(--ease-out, ease); }
+.hz-hoverable:hover { opacity: .8; }
+.hz-dim { opacity: .6; }
+.hz-dim-more { opacity: .4; }
+.hz-invisible { opacity: 0; }
+.hz-blur-bg { filter: blur(64px); }
+
+.hz-sr {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip-path: inset(50%); white-space: nowrap; border: 0;
+}
+/* These only ever HIDE. The element keeps whatever display role it already
+   carries (hz-row, hz-grid, …), so `hidden md:flex` survives the move without
+   a breakpoint-specific display rule fighting the layout class. */
+.hz-hide { display: none; }
+@media (max-width: 767px) { .hz-desktop-only { display: none; } }
+@media (min-width: 768px) { .hz-mobile-only { display: none; } }
+
+/* ── the 44px floor ──────────────────────────────────────────────────── */
+/* Declared once, for the whole site, rather than as a height at 600 call
+   sites. It applies to every real tap target — navigation and footer links,
+   icon-only controls, form fields — and deliberately NOT to links inside
+   running prose, where a 44px line box would wreck the paragraph. The box
+   grows around the label (min-height, not padding), so a one-word link and a
+   long one are both legal. */
+nav a,
+header a,
+footer a,
+li > a,
+a:has(> svg),
+button:has(> svg),
+button,
+summary,
+[role='button'] {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+/* Icon-only controls need the other axis too. */
+a:has(> svg:only-child),
+button:has(> svg:only-child) {
+  min-width: 44px;
+  justify-content: center;
+}
+input:not([type='checkbox']):not([type='radio']),
+select,
+textarea { min-height: 44px; }
+/* A link that is genuinely inline text stays inline — a 44px line box inside
+   a paragraph would wreck the measure. A link that is its own line is a tap
+   target and keeps the floor. */
+p a, .hz-prose a, td a { min-height: 0; display: inline; }
+p a.hz-btn, p a.hz-inline, .hz-prose a.hz-btn { min-height: 44px; display: inline-flex; }
+
+/* A wordmark/headline treated as brand chrome. Monochrome by design —
+   @hanzo/design ships no accent hue, and this site does not invent one. */
+.hz-chrome {
+  background: linear-gradient(180deg, var(--neutral-50) 0%, var(--neutral-400) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Long-form copy inside a page body (blog, legal, docs). */
+.hz-prose { max-width: var(--container-prose); color: var(--muted-foreground); }
+.hz-prose > * + * { margin-top: var(--space-4); }
+.hz-prose h2, .hz-prose h3 { color: var(--foreground); margin-top: var(--space-8); }
+.hz-prose a { color: var(--foreground); text-decoration: underline; }
+.hz-prose ul, .hz-prose ol { padding-left: var(--space-6); }
+.hz-prose li + li { margin-top: var(--space-2); }
+
+/* Tables scroll inside their own box; the page body never scrolls sideways. */
+.hz-table-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.hz-table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); }
+.hz-table th, .hz-table td { padding: var(--space-3); text-align: left; border-bottom: 1px solid var(--border); }
+.hz-table th { color: var(--muted-foreground); font-weight: var(--weight-medium); }
+
+@media (prefers-reduced-motion: reduce) {
+  .hz-transition, .hz-hoverable, .hz-card-interactive, .hz-btn, .hz-link { transition: none; }
+}

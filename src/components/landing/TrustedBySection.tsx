@@ -29,20 +29,20 @@ const clients = [
 
 const TrustedBySection = () => {
   return (
-    <section className="py-20 px-4 md:px-8 bg-black">
-      <div className="max-w-7xl mx-auto">
+    <section className="hz-py-7 hz-px-4 hz-bg">
+      <div className="hz-container">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="hz-align-center hz-mb-7"
         >
-          <h2 className="text-3xl md:text-4xl font-medium text-white mb-4">
+          <h2 className="hz-t-3xl hz-w-medium hz-fg hz-mb-4">
             Trusted by the best
           </h2>
-          <p className="text-neutral-400 max-w-2xl mx-auto">
+          <p className="hz-container-narrow hz-mw-md hz-fg-muted">
             Backed by world-class partners and trusted by industry leaders
           </p>
         </motion.div>
@@ -53,12 +53,12 @@ const TrustedBySection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="mb-12"
+          className="hz-mb-7"
         >
-          <p className="text-xs uppercase tracking-widest text-neutral-500 mb-6 text-center">
+          <p className="hz-t-xs hz-upper hz-tracking-widest hz-fg-muted hz-mb-5 hz-align-center">
             Partners & Investors
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-6 md:gap-10">
+          <div className="hz-row hz-wrap hz-jc-center hz-ai-center hz-gap-5">
             {partners.map((partner, index) => (
               <motion.div
                 key={partner.name}
@@ -66,12 +66,12 @@ const TrustedBySection = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
-                className="px-4 py-2 rounded-full border border-neutral-800 bg-neutral-900/50 text-neutral-300 hover:text-white hover:border-neutral-600 transition-all"
+                className="hz-px-4 hz-py-2 hz-r-full hz-bordered hz-bg-surface hz-fg-soft hz-transition hz-hoverable"
               >
-                <span className="text-sm font-medium tracking-tight">
+                <span className="hz-t-sm hz-w-medium hz-tracking-tight">
                   {partner.name}
                   {partner.year && (
-                    <span className="text-[var(--brand)] ml-1">{partner.year}</span>
+                    <span className="hz-fg-soft hz-ml-1">{partner.year}</span>
                   )}
                 </span>
               </motion.div>
@@ -86,10 +86,10 @@ const TrustedBySection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <p className="text-xs uppercase tracking-widest text-neutral-500 mb-6 text-center">
+          <p className="hz-t-xs hz-upper hz-tracking-widest hz-fg-muted hz-mb-5 hz-align-center">
             Trusted By
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-4">
+          <div className="hz-row hz-wrap hz-jc-center hz-ai-center hz-gap-6 hz-gap-4">
             {clients.map((client, index) => (
               <motion.span
                 key={client}
@@ -97,7 +97,7 @@ const TrustedBySection = () => {
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.3, delay: index * 0.03 }}
-                className="text-neutral-500 hover:text-neutral-300 transition-colors text-sm font-medium"
+                className="hz-fg-muted hz-transition hz-t-sm hz-w-medium hz-link"
               >
                 {client}
               </motion.span>

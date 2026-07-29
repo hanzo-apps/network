@@ -5,22 +5,22 @@ import BillingTabsLink from '../BillingTabsLink';
 
 const PaymentMethodSummary = () => {
   return (
-    <div className="bg-gray-900/30 border border-gray-800 rounded-lg p-6">
-      <div className="flex justify-between items-center mb-4">
-        <h3 className="text-xl font-medium">Payment Method</h3>
+    <div className="hz-card">
+      <div className="hz-row hz-jc-between hz-ai-center hz-mb-4">
+        <h3 className="hz-t-xl hz-w-medium">Payment Method</h3>
         <BillingTabsLink tabId="payment-methods">
-          <span className="flex items-center">
-            Manage <ArrowRight className="ml-2 h-4 w-4" />
+          <span className="hz-row hz-ai-center">
+            Manage <ArrowRight className="hz-sq-2 hz-ml-2" />
           </span>
         </BillingTabsLink>
       </div>
-      <div className="flex items-center">
-        <div className="h-10 w-14 bg-gray-800 rounded flex items-center justify-center mr-4">
-          <CreditCard className="h-6 w-6 text-neutral-400" />
+      <div className="hz-row hz-ai-center">
+        <div className="hz-bh-6 hz-bw-7 hz-bg-raised hz-r-md hz-row hz-ai-center hz-jc-center hz-mr-4">
+          <CreditCard className="hz-sq-4 hz-fg-muted" />
         </div>
         <div>
-          <div className="font-medium">Visa ending in 4242</div>
-          <div className="text-sm text-neutral-400">Expires 12/25</div>
+          <div className="hz-w-medium">Visa ending in 4242</div>
+          <div className="hz-t-sm hz-fg-muted">Expires 12/25</div>
         </div>
       </div>
     </div>

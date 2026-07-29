@@ -5,17 +5,17 @@ import ChromeText from "@/components/ui/chrome-text";
 
 const ModelHeader = () => {
   return (
-    <div className="text-center max-w-3xl mx-auto mb-16">
+    <div className="hz-container-narrow hz-align-center hz-mb-7">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        <ChromeText as="h2" className="text-3xl md:text-4xl font-bold mb-6">
+        <ChromeText as="h2" className="hz-t-3xl hz-w-bold hz-mb-5">
           Unified Model Access
         </ChromeText>
-        <p className="text-xl text-neutral-300">
+        <p className="hz-t-xl hz-fg-soft">
           Access thousands of AI models through a single, unified API with consistent interfaces
           and predictable pricing
         </p>

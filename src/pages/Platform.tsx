@@ -13,63 +13,61 @@ import { motion } from "framer-motion";
 import { Github, Cloud, Server, Lock, Code2, Network, Terminal, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const BRAND_COLOR = "#ffffff";
 
 const DeploymentOptions = () => {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
+    <section className="hz-py-7 hz-px-4">
+      <div className="hz-container-wide">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="hz-align-center hz-mb-7"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
+          <h2 className="hz-t-3xl hz-w-bold hz-mb-4 hz-fg">
             Deploy Your Way
           </h2>
-          <p className="text-neutral-400 max-w-2xl mx-auto">
+          <p className="hz-container-narrow hz-mw-md hz-fg-muted">
             Same codebase, same APIs, your choice of infrastructure.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="hz-grid hz-grid-3 hz-gap-5">
           {/* Self-Hosted */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="bg-neutral-900/50 border border-neutral-800 rounded-xl p-6 hover:border-white/30 transition-colors"
+            className="hz-card hz-transition hz-card-interactive"
           >
             <div
-              className="w-12 h-12 rounded-lg flex items-center justify-center mb-4"
-              style={{ backgroundColor: `${BRAND_COLOR}20` }}
-            >
-              <Server className="w-6 h-6" style={{ color: BRAND_COLOR }} />
+              className="hz-sq-7 hz-r-lg hz-row hz-ai-center hz-jc-center hz-mb-4 hz-bg-quiet"
+              >
+              <Server className="hz-sq-4 hz-fg" />
             </div>
-            <h3 className="text-xl font-bold text-white mb-2">Self-Hosted</h3>
-            <p className="text-neutral-400 text-sm mb-4">
+            <h3 className="hz-t-xl hz-w-bold hz-fg hz-mb-2">Self-Hosted</h3>
+            <p className="hz-fg-muted hz-t-sm hz-mb-4">
               Run on your own servers, VMs, or containers. Full control, complete data sovereignty.
             </p>
-            <ul className="space-y-2 text-sm text-neutral-500">
-              <li className="flex items-center gap-2">
-                <span className="text-white">✓</span> Docker & Kubernetes ready
+            <ul className="hz-stack-2 hz-t-sm hz-fg-muted">
+              <li className="hz-row hz-ai-center hz-gap-2">
+                <span className="hz-fg">✓</span> Docker & Kubernetes ready
               </li>
-              <li className="flex items-center gap-2">
-                <span className="text-white">✓</span> Air-gapped deployments
+              <li className="hz-row hz-ai-center hz-gap-2">
+                <span className="hz-fg">✓</span> Air-gapped deployments
               </li>
-              <li className="flex items-center gap-2">
-                <span className="text-white">✓</span> No external dependencies
+              <li className="hz-row hz-ai-center hz-gap-2">
+                <span className="hz-fg">✓</span> No external dependencies
               </li>
             </ul>
             <a
               href="https://github.com/hanzoai/platform"
               target="_blank"
               rel="noreferrer noopener"
-              className="inline-flex items-center mt-6 text-sm text-white hover:text-[#e5e5e5]"
+              className="hz-inline hz-ai-center hz-mt-5 hz-t-sm hz-fg hz-hoverable"
             >
-              <Github className="w-4 h-4 mr-2" />
+              <Github className="hz-sq-2 hz-mr-2" />
               View on GitHub
             </a>
           </motion.div>
@@ -80,35 +78,35 @@ const DeploymentOptions = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="bg-neutral-900/50 border border-neutral-800 rounded-xl p-6 hover:border-neutral-500/30 transition-colors"
+            className="hz-card hz-transition hz-card-interactive"
           >
             <div
-              className="w-12 h-12 rounded-lg flex items-center justify-center mb-4"
+              className="hz-sq-7 hz-r-lg hz-row hz-ai-center hz-jc-center hz-mb-4"
               style={{ backgroundColor: "#a3a3a320" }}
             >
-              <Cloud className="w-6 h-6 text-neutral-400" />
+              <Cloud className="hz-sq-4 hz-fg-muted" />
             </div>
-            <h3 className="text-xl font-bold text-white mb-2">Hanzo Cloud</h3>
-            <p className="text-neutral-400 text-sm mb-4">
+            <h3 className="hz-t-xl hz-w-bold hz-fg hz-mb-2">Hanzo Cloud</h3>
+            <p className="hz-fg-muted hz-t-sm hz-mb-4">
               Fully managed platform with global edge deployment and automatic scaling.
             </p>
-            <ul className="space-y-2 text-sm text-neutral-500">
-              <li className="flex items-center gap-2">
-                <span className="text-neutral-400">✓</span> 35+ global regions
+            <ul className="hz-stack-2 hz-t-sm hz-fg-muted">
+              <li className="hz-row hz-ai-center hz-gap-2">
+                <span className="hz-fg-muted">✓</span> 35+ global regions
               </li>
-              <li className="flex items-center gap-2">
-                <span className="text-neutral-400">✓</span> Zero-config deployments
+              <li className="hz-row hz-ai-center hz-gap-2">
+                <span className="hz-fg-muted">✓</span> Zero-config deployments
               </li>
-              <li className="flex items-center gap-2">
-                <span className="text-neutral-400">✓</span> 99.99% SLA
+              <li className="hz-row hz-ai-center hz-gap-2">
+                <span className="hz-fg-muted">✓</span> 99.99% SLA
               </li>
             </ul>
             <Link
               to="/cloud"
-              className="inline-flex items-center mt-6 text-sm text-neutral-400 hover:text-neutral-300"
+              className="hz-inline hz-ai-center hz-mt-5 hz-t-sm hz-fg-muted hz-link"
             >
               Explore Cloud
-              <ArrowRight className="w-4 h-4 ml-2" />
+              <ArrowRight className="hz-sq-2 hz-ml-2" />
             </Link>
           </motion.div>
 
@@ -118,35 +116,35 @@ const DeploymentOptions = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
-            className="bg-neutral-900/50 border border-neutral-800 rounded-xl p-6 hover:border-neutral-500/30 transition-colors"
+            className="hz-card hz-transition hz-card-interactive"
           >
             <div
-              className="w-12 h-12 rounded-lg flex items-center justify-center mb-4"
+              className="hz-sq-7 hz-r-lg hz-row hz-ai-center hz-jc-center hz-mb-4"
               style={{ backgroundColor: "#a3a3a320" }}
             >
-              <Network className="w-6 h-6 text-neutral-400" />
+              <Network className="hz-sq-4 hz-fg-muted" />
             </div>
-            <h3 className="text-xl font-bold text-white mb-2">Hybrid</h3>
-            <p className="text-neutral-400 text-sm mb-4">
+            <h3 className="hz-t-xl hz-w-bold hz-fg hz-mb-2">Hybrid</h3>
+            <p className="hz-fg-muted hz-t-sm hz-mb-4">
               Keep sensitive data on-premise while leveraging cloud for global reach.
             </p>
-            <ul className="space-y-2 text-sm text-neutral-500">
-              <li className="flex items-center gap-2">
-                <span className="text-neutral-400">✓</span> Data residency compliance
+            <ul className="hz-stack-2 hz-t-sm hz-fg-muted">
+              <li className="hz-row hz-ai-center hz-gap-2">
+                <span className="hz-fg-muted">✓</span> Data residency compliance
               </li>
-              <li className="flex items-center gap-2">
-                <span className="text-neutral-400">✓</span> Edge + origin architecture
+              <li className="hz-row hz-ai-center hz-gap-2">
+                <span className="hz-fg-muted">✓</span> Edge + origin architecture
               </li>
-              <li className="flex items-center gap-2">
-                <span className="text-neutral-400">✓</span> Unified management
+              <li className="hz-row hz-ai-center hz-gap-2">
+                <span className="hz-fg-muted">✓</span> Unified management
               </li>
             </ul>
             <Link
               to="/enterprise"
-              className="inline-flex items-center mt-6 text-sm text-neutral-400 hover:text-neutral-300"
+              className="hz-inline hz-ai-center hz-mt-5 hz-t-sm hz-fg-muted hz-link"
             >
               Contact Sales
-              <ArrowRight className="w-4 h-4 ml-2" />
+              <ArrowRight className="hz-sq-2 hz-ml-2" />
             </Link>
           </motion.div>
         </div>
@@ -157,56 +155,56 @@ const DeploymentOptions = () => {
 
 const OpenSourceBenefits = () => {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
+    <section className="hz-py-7 hz-px-4">
+      <div className="hz-container-wide">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-gradient-to-br from-neutral-900 to-neutral-800/50 rounded-xl p-8 border border-neutral-700"
+          className="hz-card"
         >
-          <div className="flex items-center gap-4 mb-8">
-            <Github className="w-8 h-8 text-white" />
+          <div className="hz-row hz-ai-center hz-gap-4 hz-mb-6">
+            <Github className="hz-sq-5 hz-fg" />
             <div>
-              <h3 className="text-2xl font-bold text-white">100% Open Source</h3>
-              <p className="text-neutral-400">MIT Licensed. Fork, modify, contribute.</p>
+              <h3 className="hz-t-2xl hz-w-bold hz-fg">100% Open Source</h3>
+              <p className="hz-fg-muted">MIT Licensed. Fork, modify, contribute.</p>
             </div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="space-y-4">
-              <Code2 className="h-10 w-10 text-white" />
-              <h4 className="text-lg font-bold text-white">MIT Licensed</h4>
-              <p className="text-neutral-400 text-sm">
+          <div className="hz-grid hz-grid-3 hz-gap-6">
+            <div className="hz-stack-4">
+              <Code2 className="hz-sq-6 hz-fg" />
+              <h4 className="hz-t-lg hz-w-bold hz-fg">MIT Licensed</h4>
+              <p className="hz-fg-muted hz-t-sm">
                 Use it commercially, modify it freely. No vendor lock-in, no surprise licensing changes.
               </p>
             </div>
 
-            <div className="space-y-4">
-              <Lock className="h-10 w-10 text-white" />
-              <h4 className="text-lg font-bold text-white">Data Sovereignty</h4>
-              <p className="text-neutral-400 text-sm">
+            <div className="hz-stack-4">
+              <Lock className="hz-sq-6 hz-fg" />
+              <h4 className="hz-t-lg hz-w-bold hz-fg">Data Sovereignty</h4>
+              <p className="hz-fg-muted hz-t-sm">
                 Your code, your data, your infrastructure. Complete control over your stack.
               </p>
             </div>
 
-            <div className="space-y-4">
-              <Terminal className="h-10 w-10 text-white" />
-              <h4 className="text-lg font-bold text-white">Developer First</h4>
-              <p className="text-neutral-400 text-sm">
+            <div className="hz-stack-4">
+              <Terminal className="hz-sq-6 hz-fg" />
+              <h4 className="hz-t-lg hz-w-bold hz-fg">Developer First</h4>
+              <p className="hz-fg-muted hz-t-sm">
                 Built by developers, for developers. Extensive docs, active community, responsive maintainers.
               </p>
             </div>
           </div>
 
-          <div className="mt-8 pt-8 border-t border-neutral-700 text-center">
+          <div className="hz-mt-6 hz-pt-6 hz-border-t hz-align-center">
             <a
               href="https://github.com/hanzoai/platform"
               target="_blank"
               rel="noreferrer noopener"
-              className="inline-flex items-center px-6 py-3 rounded-full font-medium transition-colors border border-neutral-600 bg-transparent hover:bg-neutral-800 text-sm text-white"
+              className="hz-btn hz-btn-ghost hz-transition hz-fg"
             >
-              <Github className="w-4 h-4 mr-2" />
+              <Github className="hz-sq-2 hz-mr-2" />
               Star on GitHub
             </a>
           </div>
@@ -218,7 +216,7 @@ const OpenSourceBenefits = () => {
 
 const Platform = () => {
   return (
-    <div className="min-h-screen bg-[var(--black)] text-[var(--white)] overflow-x-hidden">
+    <div className="hz-min-h-screen hz-bg hz-fg">
       <Helmet>
         <title>Hanzo Platform - Open Source Backend-as-a-Service</title>
         <meta

@@ -13,8 +13,8 @@ export const SolutionsContent = ({ onCloseMenu }: SolutionsContentProps) => {
   const isMobile = useIsMobile();
   
   return (
-    <div className={`flex ${isMobile ? 'flex-col' : 'flex-row'} gap-6`}>
-      <div className={`${isMobile ? 'w-full' : 'flex-1'} grid ${isMobile ? 'grid-cols-1' : 'grid-cols-2'} gap-8`}>
+    <div className={`hz-row ${isMobile ? 'hz-col' : 'hz-row'} hz-gap-5`}>
+      <div className={`${isMobile ? 'hz-w-full' : 'hz-grow'} hz-grid ${isMobile ? '' : ''} hz-gap-6`}>
         {solutions.map((category, idx) => (
           <SolutionCategory
             key={idx}
@@ -25,7 +25,7 @@ export const SolutionsContent = ({ onCloseMenu }: SolutionsContentProps) => {
         ))}
       </div>
 
-      <div className={`${isMobile ? 'w-full' : 'w-80'} space-y-4 shrink-0`}>
+      <div className={`${isMobile ? 'hz-w-full' : 'hz-bw-8'} hz-stack-4 hz-none`}>
         <AgencyCard onCardClick={onCloseMenu} />
         <SenseiCard onCardClick={onCloseMenu} />
       </div>

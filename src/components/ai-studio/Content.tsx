@@ -21,7 +21,7 @@ const Content = ({
   handleSubmit 
 }: ContentProps) => {
   return (
-    <div className="flex-1 flex flex-col bg-gray-900/30 border border-gray-800 rounded-lg overflow-hidden">
+    <div className="hz-grow hz-col hz-bg-surface hz-bordered hz-r-lg hz-clip">
       {activeTab === "chat" && (
         <Chat 
           conversation={conversation}

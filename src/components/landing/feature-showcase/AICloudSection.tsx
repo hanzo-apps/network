@@ -13,7 +13,7 @@ interface AICloudSectionProps {
 
 const AICloudSection: React.FC<AICloudSectionProps> = ({ products }) => {
   return (
-    <div className="mb-20">
+    <div className="hz-mb-7">
       <SectionHeader
         badge="AI Cloud"
         badgeColor="bg-neutral-800/30 border border-neutral-500/30 text-neutral-300"
@@ -22,20 +22,20 @@ const AICloudSection: React.FC<AICloudSectionProps> = ({ products }) => {
       />
 
       {/* Desktop layout - Carousel for larger screens */}
-      <div className="hidden md:block relative mb-8">
+      <div className="hz-desktop-only hz-rel hz-mb-6">
         <Carousel
           opts={{
             align: "start",
             loop: false,
           }}
-          className="w-full"
+          className="hz-w-full"
         >
-          <CarouselContent className="-ml-4">
+          <CarouselContent className="hz-ml-4">
             {products.map((product, index) => (
-              <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
-                <div className="h-full">
+              <CarouselItem key={index} className="hz-px-4">
+                <div className="hz-h-full">
                   <ProductCard
-                    icon={<product.icon className="text-neutral-400" />}
+                    icon={<product.icon className="hz-fg-muted" />}
                     title={product.name}
                     description={product.description}
                     color="bg-neutral-800/30"
@@ -46,21 +46,21 @@ const AICloudSection: React.FC<AICloudSectionProps> = ({ products }) => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <div className="hidden md:flex items-center justify-end gap-2 mt-6">
-            <CarouselPrevious className="relative -top-0 -left-0 bg-gray-800/50 hover:bg-gray-700/70 border-gray-700" />
-            <CarouselNext className="relative -top-0 -right-0 bg-gray-800/50 hover:bg-gray-700/70 border-gray-700" />
+          <div className="hz-desktop-only hz-row hz-ai-center hz-jc-end hz-gap-2 hz-mt-5">
+            <CarouselPrevious className="hz-rel hz-bg-raised hz-hoverable" />
+            <CarouselNext className="hz-rel hz-bg-raised hz-hoverable" />
           </div>
         </Carousel>
       </div>
 
       {/* Mobile layout - Scrollable horizontal list for smaller screens */}
-      <div className="md:hidden mb-8">
-        <ScrollArea className="w-full whitespace-nowrap">
-          <div className="flex space-x-4 pb-4 px-1">
+      <div className="hz-mobile-only hz-mb-6">
+        <ScrollArea className="hz-w-full hz-whitespace-nowrap">
+          <div className="hz-row hz-inline-4 hz-pb-4 hz-px-1">
             {products.map((product, index) => (
-              <div key={index} className="w-[300px] flex-shrink-0">
+              <div key={index} className="hz-none">
                 <ProductCard
-                  icon={<product.icon className="text-neutral-400" />}
+                  icon={<product.icon className="hz-fg-muted" />}
                   title={product.name}
                   description={product.description}
                   color="bg-neutral-800/30"

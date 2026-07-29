@@ -5,85 +5,85 @@ import { Button } from "@/components/ui/button";
 
 const MachinesHero = () => {
   return (
-    <section className="py-20 lg:py-32 relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/20 to-transparent"></div>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="bg-neutral-500/10 border border-neutral-500/20 rounded-full px-4 py-1 inline-block mb-4">
-            <span className="text-neutral-400 text-sm font-medium">High-Performance Computing</span>
+    <section className="hz-py-7 hz-rel">
+      <div className="hz-abs hz-inset"></div>
+      <div className="hz-container hz-rel hz-z-raised">
+        <div className="hz-container-narrow hz-align-center hz-mb-7">
+          <div className="hz-bg-raised hz-bordered hz-border-strong hz-r-full hz-px-4 hz-py-1 hz-mb-4">
+            <span className="hz-fg-muted hz-t-sm hz-w-medium">High-Performance Computing</span>
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-neutral-400 to-neutral-400">
+          <h1 className="hz-t-4xl hz-w-bold hz-mb-5 hz-chrome">
             Hanzo Machines
           </h1>
-          <p className="text-xl text-neutral-300 mb-8">
+          <p className="hz-t-xl hz-fg-soft hz-mb-6">
             Dedicated AI compute infrastructure optimized for machine learning and high-performance workloads.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button className="bg-neutral-600 hover:bg-neutral-700 text-[var(--white)] px-8 py-6 text-lg">
+          <div className="hz-col-row hz-gap-4 hz-jc-center">
+            <Button className="hz-bg-raised hz-fg hz-px-6 hz-py-5 hz-t-lg hz-hoverable">
               Get Started
             </Button>
-            <Button variant="outline" className="border-neutral-500/30 text-[var(--white)] hover:bg-neutral-800/20 px-8 py-6 text-lg">
+            <Button variant="outline" className="hz-border-strong hz-fg hz-px-6 hz-py-5 hz-t-lg hz-hoverable">
               View Documentation
             </Button>
           </div>
         </div>
         
         {/* Hero Hardware Visualization */}
-        <div className="relative bg-neutral-800/20 border border-neutral-500/20 rounded-xl p-8 overflow-hidden">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-[var(--black)]/50 border border-neutral-500/20 rounded-lg p-4">
-              <h3 className="font-medium text-neutral-400 mb-2">NVIDIA H100</h3>
-              <p className="text-sm text-neutral-300 mb-3">Dedicated GPU instances for AI/ML training</p>
-              <div className="space-y-3">
-                <div className="bg-gray-800 rounded-md p-2 flex justify-between items-center">
-                  <span className="text-sm">VRAM</span>
-                  <span className="font-medium text-neutral-400">80GB HBM3</span>
+        <div className="hz-card hz-rel hz-clip">
+          <div className="hz-grid hz-grid-3 hz-gap-5">
+            <div className="hz-card">
+              <h3 className="hz-w-medium hz-fg-muted hz-mb-2">NVIDIA H100</h3>
+              <p className="hz-t-sm hz-fg-soft hz-mb-3">Dedicated GPU instances for AI/ML training</p>
+              <div className="hz-stack-3">
+                <div className="hz-bg-raised hz-r-md hz-p-2 hz-row hz-jc-between hz-ai-center">
+                  <span className="hz-t-sm">VRAM</span>
+                  <span className="hz-w-medium hz-fg-muted">80GB HBM3</span>
                 </div>
-                <div className="bg-gray-800 rounded-md p-2 flex justify-between items-center">
-                  <span className="text-sm">Cores</span>
-                  <span className="font-medium text-neutral-400">16,896 CUDA</span>
+                <div className="hz-bg-raised hz-r-md hz-p-2 hz-row hz-jc-between hz-ai-center">
+                  <span className="hz-t-sm">Cores</span>
+                  <span className="hz-w-medium hz-fg-muted">16,896 CUDA</span>
                 </div>
-                <div className="bg-gray-800 rounded-md p-2 flex justify-between items-center">
-                  <span className="text-sm">Tensor Cores</span>
-                  <span className="font-medium text-neutral-400">528 TCs</span>
-                </div>
-              </div>
-            </div>
-            
-            <div className="bg-[var(--black)]/50 border border-neutral-500/20 rounded-lg p-4">
-              <h3 className="font-medium text-neutral-400 mb-2">AMD EPYC 7763</h3>
-              <p className="text-sm text-neutral-300 mb-3">High-core count CPU instances</p>
-              <div className="space-y-3">
-                <div className="bg-gray-800 rounded-md p-2 flex justify-between items-center">
-                  <span className="text-sm">Cores</span>
-                  <span className="font-medium text-neutral-400">64 Cores</span>
-                </div>
-                <div className="bg-gray-800 rounded-md p-2 flex justify-between items-center">
-                  <span className="text-sm">Threads</span>
-                  <span className="font-medium text-neutral-400">128 Threads</span>
-                </div>
-                <div className="bg-gray-800 rounded-md p-2 flex justify-between items-center">
-                  <span className="text-sm">Memory</span>
-                  <span className="font-medium text-neutral-400">Up to 2TB</span>
+                <div className="hz-bg-raised hz-r-md hz-p-2 hz-row hz-jc-between hz-ai-center">
+                  <span className="hz-t-sm">Tensor Cores</span>
+                  <span className="hz-w-medium hz-fg-muted">528 TCs</span>
                 </div>
               </div>
             </div>
             
-            <div className="bg-[var(--black)]/50 border border-neutral-500/20 rounded-lg p-4">
-              <h3 className="font-medium text-neutral-400 mb-2">Storage Options</h3>
-              <p className="text-sm text-neutral-300 mb-3">Ultra-fast NVMe and persistent storage</p>
-              <div className="space-y-3">
-                <div className="bg-gray-800 rounded-md p-2 flex justify-between items-center">
-                  <span className="text-sm">Local NVMe</span>
-                  <span className="font-medium text-neutral-400">Up to 8TB</span>
+            <div className="hz-card">
+              <h3 className="hz-w-medium hz-fg-muted hz-mb-2">AMD EPYC 7763</h3>
+              <p className="hz-t-sm hz-fg-soft hz-mb-3">High-core count CPU instances</p>
+              <div className="hz-stack-3">
+                <div className="hz-bg-raised hz-r-md hz-p-2 hz-row hz-jc-between hz-ai-center">
+                  <span className="hz-t-sm">Cores</span>
+                  <span className="hz-w-medium hz-fg-muted">64 Cores</span>
                 </div>
-                <div className="bg-gray-800 rounded-md p-2 flex justify-between items-center">
-                  <span className="text-sm">Network Storage</span>
-                  <span className="font-medium text-neutral-400">Unlimited</span>
+                <div className="hz-bg-raised hz-r-md hz-p-2 hz-row hz-jc-between hz-ai-center">
+                  <span className="hz-t-sm">Threads</span>
+                  <span className="hz-w-medium hz-fg-muted">128 Threads</span>
                 </div>
-                <div className="bg-gray-800 rounded-md p-2 flex justify-between items-center">
-                  <span className="text-sm">I/O Performance</span>
-                  <span className="font-medium text-neutral-400">7GB/s</span>
+                <div className="hz-bg-raised hz-r-md hz-p-2 hz-row hz-jc-between hz-ai-center">
+                  <span className="hz-t-sm">Memory</span>
+                  <span className="hz-w-medium hz-fg-muted">Up to 2TB</span>
+                </div>
+              </div>
+            </div>
+            
+            <div className="hz-card">
+              <h3 className="hz-w-medium hz-fg-muted hz-mb-2">Storage Options</h3>
+              <p className="hz-t-sm hz-fg-soft hz-mb-3">Ultra-fast NVMe and persistent storage</p>
+              <div className="hz-stack-3">
+                <div className="hz-bg-raised hz-r-md hz-p-2 hz-row hz-jc-between hz-ai-center">
+                  <span className="hz-t-sm">Local NVMe</span>
+                  <span className="hz-w-medium hz-fg-muted">Up to 8TB</span>
+                </div>
+                <div className="hz-bg-raised hz-r-md hz-p-2 hz-row hz-jc-between hz-ai-center">
+                  <span className="hz-t-sm">Network Storage</span>
+                  <span className="hz-w-medium hz-fg-muted">Unlimited</span>
+                </div>
+                <div className="hz-bg-raised hz-r-md hz-p-2 hz-row hz-jc-between hz-ai-center">
+                  <span className="hz-t-sm">I/O Performance</span>
+                  <span className="hz-w-medium hz-fg-muted">7GB/s</span>
                 </div>
               </div>
             </div>

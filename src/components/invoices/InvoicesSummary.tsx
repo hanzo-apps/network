@@ -13,23 +13,23 @@ const cardAnimation = createAnimationVariant("fadeInBlur", {
 
 const InvoicesSummary = () => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="hz-grid hz-grid-3 hz-gap-5">
       <motion.div 
         variants={cardAnimation}
-        className="p-6 rounded-xl border border-gray-800 bg-gray-900/20"
+        className="hz-card"
       >
-        <div className="flex items-center gap-3 mb-4">
-          <CreditCard className="h-5 w-5 text-neutral-400" />
-          <h3 className="text-xl font-medium">Active Subscription</h3>
+        <div className="hz-row hz-ai-center hz-gap-3 hz-mb-4">
+          <CreditCard className="hz-sq-3 hz-fg-muted" />
+          <h3 className="hz-t-xl hz-w-medium">Active Subscription</h3>
         </div>
         
-        <div className="mb-6">
-          <div className="text-3xl font-bold mb-1">Trial Plan</div>
-          <p className="text-neutral-400">Free credit grant of $5.00</p>
+        <div className="hz-mb-5">
+          <div className="hz-t-3xl hz-w-bold hz-mb-1">Trial Plan</div>
+          <p className="hz-fg-muted">Free credit grant of $5.00</p>
         </div>
         
         <Button 
-          className="bg-neutral-600 hover:bg-neutral-700 text-[var(--white)] w-full"
+          className="hz-bg-raised hz-fg hz-w-full hz-hoverable"
         >
           View Plan Details
         </Button>
@@ -37,50 +37,50 @@ const InvoicesSummary = () => {
       
       <motion.div 
         variants={cardAnimation}
-        className="p-6 rounded-xl border border-gray-800 bg-gray-900/20"
+        className="hz-card"
       >
-        <div className="flex items-center gap-3 mb-4">
-          <Receipt className="h-5 w-5 text-neutral-400" />
-          <h3 className="text-xl font-medium">Payment Summary</h3>
+        <div className="hz-row hz-ai-center hz-gap-3 hz-mb-4">
+          <Receipt className="hz-sq-3 hz-fg-muted" />
+          <h3 className="hz-t-xl hz-w-medium">Payment Summary</h3>
         </div>
         
-        <div className="space-y-2 mb-4">
-          <div className="flex justify-between">
-            <span className="text-neutral-400">Current Usage</span>
+        <div className="hz-stack-2 hz-mb-4">
+          <div className="hz-row hz-jc-between">
+            <span className="hz-fg-muted">Current Usage</span>
             <span>$0.04</span>
           </div>
-          <div className="flex justify-between">
-            <span className="text-neutral-400">Next Invoice</span>
+          <div className="hz-row hz-jc-between">
+            <span className="hz-fg-muted">Next Invoice</span>
             <span>$0.00</span>
           </div>
-          <div className="flex justify-between font-medium">
+          <div className="hz-row hz-jc-between hz-w-medium">
             <span>Credits Available</span>
             <span>$5.00</span>
           </div>
         </div>
         
-        <Button className="bg-[var(--white)] hover:bg-gray-200 text-black w-full">
+        <Button className="hz-bg-inverse hz-fg-inverse hz-w-full hz-hoverable">
           Purchase Credits
         </Button>
       </motion.div>
       
       <motion.div 
         variants={cardAnimation}
-        className="p-6 rounded-xl border border-gray-800 bg-gray-900/20"
+        className="hz-card"
       >
-        <div className="flex items-center gap-3 mb-4">
-          <Clock className="h-5 w-5 text-neutral-400" />
-          <h3 className="text-xl font-medium">Upcoming Charges</h3>
+        <div className="hz-row hz-ai-center hz-gap-3 hz-mb-4">
+          <Clock className="hz-sq-3 hz-fg-muted" />
+          <h3 className="hz-t-xl hz-w-medium">Upcoming Charges</h3>
         </div>
         
-        <div className="bg-[var(--black)]/30 p-4 rounded-lg flex items-center gap-3 mb-6">
-          <AlertCircle className="h-5 w-5 text-neutral-400" />
-          <p className="text-neutral-300">No upcoming charges. You're on a trial plan.</p>
+        <div className="hz-bg-overlay hz-p-4 hz-r-lg hz-row hz-ai-center hz-gap-3 hz-mb-5">
+          <AlertCircle className="hz-sq-3 hz-fg-muted" />
+          <p className="hz-fg-soft">No upcoming charges. You're on a trial plan.</p>
         </div>
         
         <Button 
           variant="outline" 
-          className="border-gray-700 w-full"
+          className="hz-w-full"
         >
           View Pricing
         </Button>

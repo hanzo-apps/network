@@ -4,31 +4,31 @@ import { MessageSquare, Bot, Settings } from "lucide-react";
 
 const ChatFeatures: React.FC = () => {
   return (
-    <div className="mt-10 mb-16">
-      <h2 className="text-2xl font-bold text-center mb-8">Enhanced Chat Capabilities</h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-gradient-to-br from-neutral-800/20 to-neutral-800/5 p-6 rounded-xl border border-neutral-500/20 hover:border-neutral-500/40 transition-all duration-300">
-          <div className="bg-neutral-600/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-            <MessageSquare className="h-6 w-6 text-neutral-400" />
+    <div className="hz-mt-6 hz-mb-7">
+      <h2 className="hz-t-2xl hz-w-bold hz-align-center hz-mb-6">Enhanced Chat Capabilities</h2>
+      <div className="hz-grid hz-grid-3 hz-gap-5">
+        <div className="hz-card hz-transition hz-card-interactive">
+          <div className="hz-sq-7 hz-bg-raised hz-r-lg hz-row hz-ai-center hz-jc-center hz-mb-4">
+            <MessageSquare className="hz-sq-4 hz-fg-muted" />
           </div>
-          <h3 className="text-xl font-bold mb-2 text-[var(--white)]">Multimodal Conversations</h3>
-          <p className="text-neutral-300">Chat with text, images, audio, and video in natural conversations with our AI assistants.</p>
+          <h3 className="hz-t-xl hz-w-bold hz-mb-2 hz-fg">Multimodal Conversations</h3>
+          <p className="hz-fg-soft">Chat with text, images, audio, and video in natural conversations with our AI assistants.</p>
         </div>
         
-        <div className="bg-gradient-to-br from-neutral-800/20 to-neutral-800/5 p-6 rounded-xl border border-neutral-500/20 hover:border-neutral-500/40 transition-all duration-300">
-          <div className="bg-neutral-600/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-            <Bot className="h-6 w-6 text-neutral-400" />
+        <div className="hz-card hz-transition hz-card-interactive">
+          <div className="hz-sq-7 hz-bg-raised hz-r-lg hz-row hz-ai-center hz-jc-center hz-mb-4">
+            <Bot className="hz-sq-4 hz-fg-muted" />
           </div>
-          <h3 className="text-xl font-bold mb-2 text-[var(--white)]">Specialized Assistants</h3>
-          <p className="text-neutral-300">Access domain-specific experts for coding, design, marketing, legal, and more fields.</p>
+          <h3 className="hz-t-xl hz-w-bold hz-mb-2 hz-fg">Specialized Assistants</h3>
+          <p className="hz-fg-soft">Access domain-specific experts for coding, design, marketing, legal, and more fields.</p>
         </div>
         
-        <div className="bg-gradient-to-br from-neutral-800/20 to-neutral-800/5 p-6 rounded-xl border border-neutral-500/20 hover:border-neutral-500/40 transition-all duration-300">
-          <div className="bg-neutral-500/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-            <Settings className="h-6 w-6 text-neutral-400" />
+        <div className="hz-card hz-transition hz-card-interactive">
+          <div className="hz-sq-7 hz-bg-raised hz-r-lg hz-row hz-ai-center hz-jc-center hz-mb-4">
+            <Settings className="hz-sq-4 hz-fg-muted" />
           </div>
-          <h3 className="text-xl font-bold mb-2 text-[var(--white)]">Customizable Workflows</h3>
-          <p className="text-neutral-300">Connect your data sources, APIs, and tools to create powerful AI-powered workflows.</p>
+          <h3 className="hz-t-xl hz-w-bold hz-mb-2 hz-fg">Customizable Workflows</h3>
+          <p className="hz-fg-soft">Connect your data sources, APIs, and tools to create powerful AI-powered workflows.</p>
         </div>
       </div>
     </div>

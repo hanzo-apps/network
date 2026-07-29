@@ -7,35 +7,35 @@ import ChromeText from "@/components/ui/chrome-text";
 
 const HanzoCodeHero = () => {
   return (
-    <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <section className="hz-pt-6 hz-pb-6 hz-px-4 hz-rel hz-clip">
       {/* Background elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-neutral-800/10 to-neutral-800/10 opacity-30"></div>
-      <div className="absolute -top-40 -right-40 w-80 h-80 bg-neutral-600/10 rounded-full blur-3xl"></div>
-      <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-neutral-600/10 rounded-full blur-3xl"></div>
+      <div className="hz-abs hz-inset hz-dim-more"></div>
+      <div className="hz-sq-8 hz-abs hz-bg-raised hz-r-full hz-blur-bg"></div>
+      <div className="hz-sq-8 hz-abs hz-bg-raised hz-r-full hz-blur-bg"></div>
       
-      <div className="max-w-5xl mx-auto relative z-10">
+      <div className="hz-container-wide hz-rel hz-z-raised">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center"
+          className="hz-align-center"
         >
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            The <span className="text-neutral-400">Ultimate AI-Powered</span> Code Editor
+          <h1 className="hz-t-4xl hz-w-bold hz-mb-5">
+            The <span className="hz-fg-muted">Ultimate AI-Powered</span> Code Editor
           </h1>
-          <p className="text-xl md:text-2xl text-neutral-300 max-w-3xl mx-auto mb-12">
+          <p className="hz-container-narrow hz-t-xl hz-fg-soft hz-mb-7">
             Beyond Cursor and Windsurf, Hanzo Code supercharges your favorite VS Code-compatible editor 
             with autonomous agents that transform how you build software.
           </p>
           
-          <div className="mb-12">
+          <div className="hz-mb-7">
             <Button 
               size="lg"
-              className="bg-gradient-to-r from-neutral-600 to-neutral-500 hover:from-neutral-500 hover:to-neutral-400 text-[var(--white)] px-8 py-6 rounded-lg text-lg font-medium"
+              className="hz-fg hz-px-6 hz-py-5 hz-r-lg hz-t-lg hz-w-medium"
             >
-              <a href="#" className="flex items-center">
+              <a href="#" className="hz-row hz-ai-center">
                 Get Hanzo Code
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <ArrowRight className="hz-sq-3 hz-ml-2" />
               </a>
             </Button>
           </div>

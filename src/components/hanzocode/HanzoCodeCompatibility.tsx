@@ -5,65 +5,65 @@ import { Check, Code2, PanelLeft, Plug, Settings, Shield } from "lucide-react";
 
 const HanzoCodeCompatibility = () => {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-950">
-      <div className="max-w-7xl mx-auto">
+    <section className="hz-py-7 hz-px-4 hz-bg-surface">
+      <div className="hz-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="hz-align-center hz-mb-7"
         >
-          <h2 className="text-3xl font-bold mb-4">Universal Compatibility</h2>
-          <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
+          <h2 className="hz-t-3xl hz-w-bold hz-mb-4">Universal Compatibility</h2>
+          <p className="hz-container-narrow hz-t-xl hz-fg-soft">
             Enhance any VS Code-compatible editor with Hanzo's intelligence
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+        <div className="hz-grid hz-grid-2 hz-gap-7">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl p-8 border border-gray-700"
+            className="hz-card"
           >
-            <h3 className="text-2xl font-bold mb-6 text-neutral-400">Works With Your Favorite Editors</h3>
+            <h3 className="hz-t-2xl hz-w-bold hz-mb-5 hz-fg-muted">Works With Your Favorite Editors</h3>
             
-            <ul className="space-y-4">
-              <li className="flex items-start">
-                <Check className="h-6 w-6 text-neutral-400 mr-3 mt-1 flex-shrink-0" />
+            <ul className="hz-stack-4">
+              <li className="hz-row hz-ai-start">
+                <Check className="hz-sq-4 hz-fg-muted hz-mr-3 hz-mt-1 hz-none" />
                 <div>
-                  <span className="font-semibold text-[var(--white)]">VS Code:</span>
-                  <span className="text-neutral-300 ml-2">Native integration with full feature support</span>
+                  <span className="hz-w-semibold hz-fg">VS Code:</span>
+                  <span className="hz-fg-soft hz-ml-2">Native integration with full feature support</span>
                 </div>
               </li>
-              <li className="flex items-start">
-                <Check className="h-6 w-6 text-neutral-400 mr-3 mt-1 flex-shrink-0" />
+              <li className="hz-row hz-ai-start">
+                <Check className="hz-sq-4 hz-fg-muted hz-mr-3 hz-mt-1 hz-none" />
                 <div>
-                  <span className="font-semibold text-[var(--white)]">Cursor:</span>
-                  <span className="text-neutral-300 ml-2">Augment Cursor's AI capabilities with Hanzo's advanced agentic features</span>
+                  <span className="hz-w-semibold hz-fg">Cursor:</span>
+                  <span className="hz-fg-soft hz-ml-2">Augment Cursor's AI capabilities with Hanzo's advanced agentic features</span>
                 </div>
               </li>
-              <li className="flex items-start">
-                <Check className="h-6 w-6 text-neutral-400 mr-3 mt-1 flex-shrink-0" />
+              <li className="hz-row hz-ai-start">
+                <Check className="hz-sq-4 hz-fg-muted hz-mr-3 hz-mt-1 hz-none" />
                 <div>
-                  <span className="font-semibold text-[var(--white)]">Windsurf:</span>
-                  <span className="text-neutral-300 ml-2">Add Hanzo's intelligence layer on top of Windsurf's editor experience</span>
+                  <span className="hz-w-semibold hz-fg">Windsurf:</span>
+                  <span className="hz-fg-soft hz-ml-2">Add Hanzo's intelligence layer on top of Windsurf's editor experience</span>
                 </div>
               </li>
-              <li className="flex items-start">
-                <Check className="h-6 w-6 text-neutral-400 mr-3 mt-1 flex-shrink-0" />
+              <li className="hz-row hz-ai-start">
+                <Check className="hz-sq-4 hz-fg-muted hz-mr-3 hz-mt-1 hz-none" />
                 <div>
-                  <span className="font-semibold text-[var(--white)]">Void:</span>
-                  <span className="text-neutral-300 ml-2">Perfect complement to Void's streamlined experience</span>
+                  <span className="hz-w-semibold hz-fg">Void:</span>
+                  <span className="hz-fg-soft hz-ml-2">Perfect complement to Void's streamlined experience</span>
                 </div>
               </li>
-              <li className="flex items-start">
-                <Check className="h-6 w-6 text-neutral-400 mr-3 mt-1 flex-shrink-0" />
+              <li className="hz-row hz-ai-start">
+                <Check className="hz-sq-4 hz-fg-muted hz-mr-3 hz-mt-1 hz-none" />
                 <div>
-                  <span className="font-semibold text-[var(--white)]">Any VS Code-compatible editor:</span>
-                  <span className="text-neutral-300 ml-2">If it supports VS Code extensions, it supports Hanzo Code</span>
+                  <span className="hz-w-semibold hz-fg">Any VS Code-compatible editor:</span>
+                  <span className="hz-fg-soft hz-ml-2">If it supports VS Code extensions, it supports Hanzo Code</span>
                 </div>
               </li>
             </ul>
@@ -75,29 +75,29 @@ const HanzoCodeCompatibility = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <div className="grid grid-cols-2 gap-6">
-              <div className="bg-gray-900/80 rounded-lg p-6 border border-gray-800">
-                <PanelLeft className="h-10 w-10 text-neutral-400 mb-4" />
-                <h4 className="text-lg font-semibold mb-2">Extension API</h4>
-                <p className="text-neutral-300 text-sm">Seamless integration with standard VS Code extension API</p>
+            <div className="hz-grid hz-grid-2 hz-gap-5">
+              <div className="hz-card">
+                <PanelLeft className="hz-sq-6 hz-fg-muted hz-mb-4" />
+                <h4 className="hz-t-lg hz-w-semibold hz-mb-2">Extension API</h4>
+                <p className="hz-fg-soft hz-t-sm">Seamless integration with standard VS Code extension API</p>
               </div>
               
-              <div className="bg-gray-900/80 rounded-lg p-6 border border-gray-800">
-                <Code2 className="h-10 w-10 text-neutral-400 mb-4" />
-                <h4 className="text-lg font-semibold mb-2">Native Experience</h4>
-                <p className="text-neutral-300 text-sm">Feels like a native part of your existing editor</p>
+              <div className="hz-card">
+                <Code2 className="hz-sq-6 hz-fg-muted hz-mb-4" />
+                <h4 className="hz-t-lg hz-w-semibold hz-mb-2">Native Experience</h4>
+                <p className="hz-fg-soft hz-t-sm">Feels like a native part of your existing editor</p>
               </div>
               
-              <div className="bg-gray-900/80 rounded-lg p-6 border border-gray-800">
-                <Plug className="h-10 w-10 text-neutral-400 mb-4" />
-                <h4 className="text-lg font-semibold mb-2">Plugin System</h4>
-                <p className="text-neutral-300 text-sm">Extend with custom plugins for your workflow</p>
+              <div className="hz-card">
+                <Plug className="hz-sq-6 hz-fg-muted hz-mb-4" />
+                <h4 className="hz-t-lg hz-w-semibold hz-mb-2">Plugin System</h4>
+                <p className="hz-fg-soft hz-t-sm">Extend with custom plugins for your workflow</p>
               </div>
               
-              <div className="bg-gray-900/80 rounded-lg p-6 border border-gray-800">
-                <Shield className="h-10 w-10 text-neutral-400 mb-4" />
-                <h4 className="text-lg font-semibold mb-2">Enterprise Ready</h4>
-                <p className="text-neutral-300 text-sm">Security and compliance features for teams</p>
+              <div className="hz-card">
+                <Shield className="hz-sq-6 hz-fg-muted hz-mb-4" />
+                <h4 className="hz-t-lg hz-w-semibold hz-mb-2">Enterprise Ready</h4>
+                <p className="hz-fg-soft hz-t-sm">Security and compliance features for teams</p>
               </div>
             </div>
           </motion.div>

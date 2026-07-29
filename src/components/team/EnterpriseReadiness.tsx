@@ -16,60 +16,60 @@ import { Card, CardHeader, CardContent } from "@/components/ui/card";
 const EnterpriseReadiness = () => {
   const enterpriseFeatures = [
     {
-      icon: <Building className="h-8 w-8 text-neutral-400" />,
+      icon: <Building className="hz-sq-5 hz-fg-muted" />,
       title: "Custom Deployment",
       description: "On-premises, private cloud, or hybrid deployment options to meet your specific security and compliance requirements."
     },
     {
-      icon: <Users className="h-8 w-8 text-neutral-400" />,
+      icon: <Users className="hz-sq-5 hz-fg-muted" />,
       title: "Team Management",
       description: "Comprehensive tools for managing teams, permissions, and access controls across your organization."
     },
     {
-      icon: <ShieldCheck className="h-8 w-8 text-neutral-400" />,
+      icon: <ShieldCheck className="hz-sq-5 hz-fg-muted" />,
       title: "Data Sovereignty",
       description: "Control where your data is stored and processed to meet regional compliance requirements."
     },
     {
-      icon: <BadgeCheck className="h-8 w-8 text-neutral-400" />,
+      icon: <BadgeCheck className="hz-sq-5 hz-fg-muted" />,
       title: "Custom AI Training",
       description: "Train AI agents on your proprietary data and workflows for specialized domain expertise."
     },
     {
-      icon: <Clock className="h-8 w-8 text-neutral-400" />,
+      icon: <Clock className="hz-sq-5 hz-fg-muted" />,
       title: "24/7 Support",
       description: "Round-the-clock dedicated support team and guaranteed response times for critical issues."
     },
     {
-      icon: <Briefcase className="h-8 w-8 text-neutral-400" />,
+      icon: <Briefcase className="hz-sq-5 hz-fg-muted" />,
       title: "Implementation Services",
       description: "Professional services for seamless integration, migration, and onboarding with your existing systems."
     }
   ];
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-950">
-      <div className="max-w-7xl mx-auto">
+    <section className="hz-py-7 hz-px-4 hz-bg-surface">
+      <div className="hz-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="hz-align-center hz-mb-7"
         >
-          <div className="inline-flex p-2 rounded-full bg-neutral-800/20 border border-neutral-500/20 text-neutral-400 mb-4">
-            <Briefcase className="h-6 w-6" />
+          <div className="hz-inline hz-p-2 hz-r-full hz-bg-raised hz-bordered hz-border-strong hz-fg-muted hz-mb-4">
+            <Briefcase className="hz-sq-4" />
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+          <h2 className="hz-t-3xl hz-w-bold hz-mb-5">
             Enterprise Ready
           </h2>
-          <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
+          <p className="hz-container-narrow hz-t-xl hz-fg-soft">
             Hanzo Team is built from the ground up for enterprise deployments,
             with the security, scalability, and support your organization requires.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div className="hz-grid hz-grid-3 hz-gap-6 hz-mb-7">
           {enterpriseFeatures.map((feature, index) => (
             <motion.div
               key={index}
@@ -78,15 +78,15 @@ const EnterpriseReadiness = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <Card className="h-full bg-[var(--black)]/40 border border-neutral-500/20 backdrop-blur-sm">
-                <CardHeader className="pb-2">
-                  <div className="bg-neutral-800/20 p-3 rounded-lg inline-flex mb-4">
+              <Card className="hz-h-full hz-bg-overlay hz-bordered hz-border-strong hz-glass">
+                <CardHeader className="hz-pb-4">
+                  <div className="hz-bg-raised hz-p-3 hz-r-lg hz-inline hz-mb-4">
                     {feature.icon}
                   </div>
-                  <h3 className="text-xl font-semibold">{feature.title}</h3>
+                  <h3 className="hz-t-xl hz-w-semibold">{feature.title}</h3>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-neutral-400">{feature.description}</p>
+                  <p className="hz-fg-muted">{feature.description}</p>
                 </CardContent>
               </Card>
             </motion.div>
@@ -98,18 +98,18 @@ const EnterpriseReadiness = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="bg-neutral-800/10 border border-neutral-500/20 rounded-xl p-8 text-center"
+          className="hz-card hz-align-center"
         >
-          <h3 className="text-2xl font-bold mb-4">Ready to equip your enterprise?</h3>
-          <p className="text-neutral-300 max-w-2xl mx-auto mb-8">
+          <h3 className="hz-t-2xl hz-w-bold hz-mb-4">Ready to equip your enterprise?</h3>
+          <p className="hz-container-narrow hz-mw-md hz-fg-soft hz-mb-6">
             Contact our enterprise sales team for a personalized demo and custom pricing that meets your organization's unique needs.
           </p>
           <Button 
             size="lg"
-            className="bg-gradient-to-r from-neutral-600 to-neutral-600 hover:from-neutral-700 hover:to-neutral-700"
+            className=""
           >
             Contact Enterprise Sales
-            <ArrowRight className="ml-2 h-4 w-4" />
+            <ArrowRight className="hz-sq-2 hz-ml-2" />
           </Button>
         </motion.div>
       </div>

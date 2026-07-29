@@ -16,10 +16,10 @@ const IndustryCard: React.FC<IndustryCardProps> = ({ name, description, index })
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay: index * 0.1 }}
-      className="bg-gray-900/20 border border-gray-800 rounded-xl p-6 hover:border-gray-700 transition-all"
+      className="hz-card hz-transition hz-card-interactive"
     >
-      <h3 className="text-xl font-bold mb-3 text-[var(--white)]">{name}</h3>
-      <p className="text-neutral-400">{description}</p>
+      <h3 className="hz-t-xl hz-w-bold hz-mb-3 hz-fg">{name}</h3>
+      <p className="hz-fg-muted">{description}</p>
     </motion.div>
   );
 };

@@ -7,46 +7,46 @@ import ChromeText from "@/components/ui/chrome-text";
 const WhyHanzo = () => {
   const features = [
     {
-      icon: <Brain className="h-6 w-6 text-neutral-400" />,
+      icon: <Brain className="hz-sq-4 hz-fg-muted" />,
       title: "AI-Native",
       description: "Purpose-built for AI-driven software development and deployment."
     },
     {
-      icon: <Code className="h-6 w-6 text-neutral-400" />,
+      icon: <Code className="hz-sq-4 hz-fg-muted" />,
       title: "Autonomous",
       description: "Delegate complex tasks to intelligent AI agents."
     },
     {
-      icon: <Scale className="h-6 w-6 text-neutral-400" />,
+      icon: <Scale className="hz-sq-4 hz-fg-muted" />,
       title: "Scalable",
       description: "Grow seamlessly from startup to enterprise-level demands."
     },
     {
-      icon: <Leaf className="h-6 w-6 text-neutral-400" />,
+      icon: <Leaf className="hz-sq-4 hz-fg-muted" />,
       title: "Sustainable",
       description: "Operate with 100% renewable energy at planet-scale efficiency."
     },
     {
-      icon: <Shield className="h-6 w-6 text-neutral-400" />,
+      icon: <Shield className="hz-sq-4 hz-fg-muted" />,
       title: "Open and Secure",
       description: "Fully open-source options ensuring transparency and control."
     }
   ];
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
+    <section className="hz-py-7 hz-px-4">
+      <div className="hz-container-wide">
+        <div className="hz-align-center hz-mb-7">
           <ChromeText 
             as="h2" 
-            className="text-3xl md:text-5xl font-bold mb-6"
+            className="hz-t-3xl hz-w-bold hz-mb-5"
             preHeading="Innovative Technology"
           >
             Why Visionary Teams Choose Hanzo
           </ChromeText>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="hz-grid hz-grid-3 hz-gap-6">
           {features.map((feature, index) => (
             <motion.div
               key={feature.title}
@@ -54,15 +54,15 @@ const WhyHanzo = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
-              className="bg-gray-900/30 rounded-xl p-6 border border-gray-800"
+              className="hz-card"
             >
-              <div className="h-12 w-12 bg-neutral-800/30 rounded-lg flex items-center justify-center mb-4">
+              <div className="hz-sq-7 hz-bg-raised hz-r-lg hz-row hz-ai-center hz-jc-center hz-mb-4">
                 {feature.icon}
               </div>
-              <ChromeText as="h3" className="text-xl font-bold mb-2">
+              <ChromeText as="h3" className="hz-t-xl hz-w-bold hz-mb-2">
                 {feature.title}
               </ChromeText>
-              <p className="text-neutral-400">{feature.description}</p>
+              <p className="hz-fg-muted">{feature.description}</p>
             </motion.div>
           ))}
         </div>

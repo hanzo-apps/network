@@ -6,74 +6,74 @@ import { Button } from "@/components/ui/button";
 
 const CoreProjects = () => {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[var(--black)]/50">
-      <div className="max-w-7xl mx-auto">
+    <section className="hz-py-7 hz-px-4 hz-bg-overlay">
+      <div className="hz-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="hz-align-center hz-mb-7"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-[var(--white)] mb-4">
+          <h2 className="hz-t-3xl hz-w-bold hz-fg hz-mb-4">
             Core Projects
           </h2>
-          <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
+          <p className="hz-container-narrow hz-t-xl hz-fg-soft">
             Our flagship open source technologies that power the Hanzo Platform
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+        <div className="hz-grid hz-grid-2 hz-gap-6">
           {/* Platform Project */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="bg-gray-900/60 rounded-xl border border-gray-800 p-8 hover:border-neutral-500/40 transition-colors"
+            className="hz-card hz-transition hz-card-interactive"
           >
-            <div className="flex items-center mb-4">
-              <Server className="h-12 w-12 text-neutral-400 mr-4" />
+            <div className="hz-row hz-ai-center hz-mb-4">
+              <Server className="hz-sq-7 hz-fg-muted hz-mr-4" />
               <div>
-                <h3 className="text-2xl font-semibold text-[var(--white)]">Hanzo Platform</h3>
-                <div className="flex items-center mt-1">
-                  <a href="https://github.com/hanzoai/platform" target="_blank" rel="noopener noreferrer" className="text-sm text-neutral-400 hover:text-neutral-300">github.com/hanzoai/platform</a>
+                <h3 className="hz-t-2xl hz-w-semibold hz-fg">Hanzo Platform</h3>
+                <div className="hz-row hz-ai-center hz-mt-1">
+                  <a href="https://github.com/hanzoai/platform" target="_blank" rel="noopener noreferrer" className="hz-t-sm hz-fg-muted hz-link">github.com/hanzoai/platform</a>
                 </div>
               </div>
             </div>
-            <p className="text-neutral-300 mb-6 text-lg">
+            <p className="hz-fg-soft hz-mb-5 hz-t-lg">
               The free, forever, open-source version of our cloud infrastructure. Run the entire Hanzo stack locally with a single command.
             </p>
-            <div className="flex items-center justify-between mb-6">
-              <div className="flex items-center">
-                <Star className="h-5 w-5 text-neutral-400 mr-2" />
-                <span className="text-neutral-300">5.2k stars</span>
+            <div className="hz-row hz-ai-center hz-jc-between hz-mb-5">
+              <div className="hz-row hz-ai-center">
+                <Star className="hz-sq-3 hz-fg-muted hz-mr-2" />
+                <span className="hz-fg-soft">5.2k stars</span>
               </div>
-              <div className="flex items-center">
-                <GitBranch className="h-5 w-5 text-neutral-400 mr-2" />
-                <span className="text-neutral-300">742 forks</span>
+              <div className="hz-row hz-ai-center">
+                <GitBranch className="hz-sq-3 hz-fg-muted hz-mr-2" />
+                <span className="hz-fg-soft">742 forks</span>
               </div>
-              <div className="flex items-center">
-                <div className="h-3 w-3 rounded-full bg-neutral-500 mr-2"></div>
-                <span className="text-neutral-300">Active</span>
+              <div className="hz-row hz-ai-center">
+                <div className="hz-sq-1 hz-r-full hz-bg-raised hz-mr-2"></div>
+                <span className="hz-fg-soft">Active</span>
               </div>
             </div>
-            <div className="flex space-x-3">
+            <div className="hz-row hz-inline-3">
               <Button 
-                className="flex-1 bg-neutral-600 hover:bg-neutral-700"
+                className="hz-grow hz-bg-raised hz-hoverable"
                 size="sm"
               >
-                <a href="https://github.com/hanzoai/platform" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-full">
-                  <Github className="mr-2 h-4 w-4" /> Repository
+                <a href="https://github.com/hanzoai/platform" target="_blank" rel="noopener noreferrer" className="hz-row hz-ai-center hz-jc-center hz-w-full">
+                  <Github className="hz-sq-2 hz-mr-2" /> Repository
                 </a>
               </Button>
               <Button 
-                className="flex-1"
+                className="hz-grow"
                 variant="outline"
                 size="sm"
               >
-                <a href="/platform" className="flex items-center justify-center w-full">
-                  <Terminal className="mr-2 h-4 w-4" /> Learn More
+                <a href="/platform" className="hz-row hz-ai-center hz-jc-center hz-w-full">
+                  <Terminal className="hz-sq-2 hz-mr-2" /> Learn More
                 </a>
               </Button>
             </div>
@@ -85,50 +85,50 @@ const CoreProjects = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="bg-gray-900/60 rounded-xl border border-gray-800 p-8 hover:border-neutral-500/40 transition-colors"
+            className="hz-card hz-transition hz-card-interactive"
           >
-            <div className="flex items-center mb-4">
-              <Bot className="h-12 w-12 text-neutral-400 mr-4" />
+            <div className="hz-row hz-ai-center hz-mb-4">
+              <Bot className="hz-sq-7 hz-fg-muted hz-mr-4" />
               <div>
-                <h3 className="text-2xl font-semibold text-[var(--white)]">Hanzo Bot</h3>
-                <div className="flex items-center mt-1">
-                  <a href="https://github.com/hanzoai/bot" target="_blank" rel="noopener noreferrer" className="text-sm text-neutral-400 hover:text-neutral-300">github.com/hanzoai/bot</a>
+                <h3 className="hz-t-2xl hz-w-semibold hz-fg">Hanzo Bot</h3>
+                <div className="hz-row hz-ai-center hz-mt-1">
+                  <a href="https://github.com/hanzoai/bot" target="_blank" rel="noopener noreferrer" className="hz-t-sm hz-fg-muted hz-link">github.com/hanzoai/bot</a>
                 </div>
               </div>
             </div>
-            <p className="text-neutral-300 mb-6 text-lg">
+            <p className="hz-fg-soft hz-mb-5 hz-t-lg">
               Agentic framework for building advanced AI assistants with custom tool integration. Create powerful workflows with LLMs.
             </p>
-            <div className="flex items-center justify-between mb-6">
-              <div className="flex items-center">
-                <Star className="h-5 w-5 text-neutral-400 mr-2" />
-                <span className="text-neutral-300">4.8k stars</span>
+            <div className="hz-row hz-ai-center hz-jc-between hz-mb-5">
+              <div className="hz-row hz-ai-center">
+                <Star className="hz-sq-3 hz-fg-muted hz-mr-2" />
+                <span className="hz-fg-soft">4.8k stars</span>
               </div>
-              <div className="flex items-center">
-                <GitBranch className="h-5 w-5 text-neutral-400 mr-2" />
-                <span className="text-neutral-300">623 forks</span>
+              <div className="hz-row hz-ai-center">
+                <GitBranch className="hz-sq-3 hz-fg-muted hz-mr-2" />
+                <span className="hz-fg-soft">623 forks</span>
               </div>
-              <div className="flex items-center">
-                <div className="h-3 w-3 rounded-full bg-neutral-500 mr-2"></div>
-                <span className="text-neutral-300">Active</span>
+              <div className="hz-row hz-ai-center">
+                <div className="hz-sq-1 hz-r-full hz-bg-raised hz-mr-2"></div>
+                <span className="hz-fg-soft">Active</span>
               </div>
             </div>
-            <div className="flex space-x-3">
+            <div className="hz-row hz-inline-3">
               <Button 
-                className="flex-1 bg-neutral-600 hover:bg-neutral-700"
+                className="hz-grow hz-bg-raised hz-hoverable"
                 size="sm"
               >
-                <a href="https://github.com/hanzoai/bot" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-full">
-                  <Github className="mr-2 h-4 w-4" /> Repository
+                <a href="https://github.com/hanzoai/bot" target="_blank" rel="noopener noreferrer" className="hz-row hz-ai-center hz-jc-center hz-w-full">
+                  <Github className="hz-sq-2 hz-mr-2" /> Repository
                 </a>
               </Button>
               <Button 
-                className="flex-1"
+                className="hz-grow"
                 variant="outline"
                 size="sm"
               >
-                <a href="/bot" className="flex items-center justify-center w-full">
-                  <Terminal className="mr-2 h-4 w-4" /> Learn More
+                <a href="/bot" className="hz-row hz-ai-center hz-jc-center hz-w-full">
+                  <Terminal className="hz-sq-2 hz-mr-2" /> Learn More
                 </a>
               </Button>
             </div>

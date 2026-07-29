@@ -6,47 +6,47 @@ import ChromeText from "@/components/ui/chrome-text";
 
 const GetStartedSection = () => {
   return (
-    <section className="py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-900/50 to-black">
-      <div className="max-w-5xl mx-auto text-center">
+    <section className="hz-py-7 hz-px-4">
+      <div className="hz-container-wide hz-align-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <ChromeText as="h2" className="text-3xl md:text-5xl font-bold mb-6">
+          <ChromeText as="h2" className="hz-t-3xl hz-w-bold hz-mb-5">
             Start Using Datastore in Minutes
           </ChromeText>
-          <p className="text-lg text-neutral-300 mb-12 max-w-3xl mx-auto">
+          <p className="hz-container-narrow hz-t-lg hz-fg-soft hz-mb-7">
             Get up and running quickly with multiple installation options for MacOS, Linux, Windows, FreeBSD, and Docker.
           </p>
 
-          <div className="flex flex-col items-center justify-center space-y-8 mb-12">
-            <div className="bg-gray-900/50 p-6 rounded-xl border border-gray-800 w-full max-w-2xl">
-              <div className="flex items-center mb-3">
-                <Terminal className="h-5 w-5 text-neutral-400 mr-2" />
-                <span className="text-sm text-neutral-400">Installation Command</span>
+          <div className="hz-col hz-ai-center hz-jc-center hz-stack-6 hz-mb-7">
+            <div className="hz-card hz-w-full hz-mw-md">
+              <div className="hz-row hz-ai-center hz-mb-3">
+                <Terminal className="hz-sq-3 hz-fg-muted hz-mr-2" />
+                <span className="hz-t-sm hz-fg-muted">Installation Command</span>
               </div>
-              <div className="font-mono text-lg bg-black/40 p-4 rounded-lg text-neutral-200 overflow-x-auto">
+              <div className="hz-mono hz-t-lg hz-bg-surface hz-p-4 hz-r-lg hz-fg hz-scroll-x">
                 curl https://datastore.hanzo.ai/ | sh
               </div>
             </div>
 
-            <div className="flex flex-wrap justify-center gap-6">
+            <div className="hz-row hz-wrap hz-jc-center hz-gap-5">
               <Button
                 size="lg"
-                className="bg-gradient-to-r from-neutral-600 to-neutral-500 hover:from-neutral-500 hover:to-neutral-400 text-[var(--white)] px-8 py-6 rounded-lg text-lg font-medium shadow-lg hover:shadow-xl transition-all flex items-center"
+                className="hz-btn hz-btn-lg hz-fg hz-shadow-lg hz-transition"
               >
-                <Download className="mr-2 h-5 w-5" />
+                <Download className="hz-sq-3 hz-mr-2" />
                 Download
               </Button>
 
               <Button
                 size="lg"
                 variant="outline"
-                className="border-white/20 bg-white/5 hover:bg-white/10 text-[var(--white)] px-8 py-6 rounded-lg text-lg font-medium transition-all flex items-center"
+                className="hz-btn hz-btn-primary hz-btn-lg hz-fg hz-transition"
               >
-                <Code className="mr-2 h-5 w-5" />
+                <Code className="hz-sq-3 hz-mr-2" />
                 View Docs
               </Button>
             </div>
@@ -60,9 +60,9 @@ const GetStartedSection = () => {
           >
             <Button
               size="lg"
-              className="bg-gradient-to-r from-neutral-600 to-neutral-500 hover:from-neutral-500 hover:to-neutral-400 text-[var(--white)] px-8 py-6 rounded-lg text-lg font-medium shadow-lg hover:shadow-xl transition-all"
+              className="hz-fg hz-px-6 hz-py-5 hz-r-lg hz-t-lg hz-w-medium hz-shadow-lg hz-transition"
             >
-              Deploy Now <ArrowRight className="ml-2 h-5 w-5" />
+              Deploy Now <ArrowRight className="hz-sq-3 hz-ml-2" />
             </Button>
           </motion.div>
         </motion.div>

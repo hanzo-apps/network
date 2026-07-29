@@ -5,37 +5,37 @@ import { Mic, Headphones } from "lucide-react";
 
 const DownloadFeatures = () => {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[var(--black)]">
-      <div className="max-w-6xl mx-auto">
+    <section className="hz-py-7 hz-px-4 hz-bg">
+      <div className="hz-container-wide">
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center"
+          className="hz-grid hz-grid-2 hz-gap-7 hz-ai-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
         >
           <div>
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-[var(--white)]">
+            <h2 className="hz-t-3xl hz-w-bold hz-mb-5 hz-fg">
               Local audio and mic transcription
             </h2>
-            <p className="text-xl text-neutral-300 mb-6">
+            <p className="hz-t-xl hz-fg-soft hz-mb-5">
               Automatically capture and share meeting notes, saving hours of manual work
             </p>
             
-            <div className="flex items-center space-x-4 text-neutral-400">
-              <Mic className="h-6 w-6 text-neutral-400" />
+            <div className="hz-row hz-ai-center hz-inline-4 hz-fg-muted">
+              <Mic className="hz-sq-4 hz-fg-muted" />
               <span>Private, secure, and processed on-device</span>
             </div>
-            <div className="flex items-center space-x-4 text-neutral-400 mt-3">
-              <Headphones className="h-6 w-6 text-neutral-400" />
+            <div className="hz-row hz-ai-center hz-inline-4 hz-fg-muted hz-mt-3">
+              <Headphones className="hz-sq-4 hz-fg-muted" />
               <span>Works with all major conferencing apps</span>
             </div>
           </div>
           
-          <div className="rounded-xl overflow-hidden shadow-2xl border border-gray-800">
-            <div className="relative pb-[120%] h-0 bg-gray-900">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-neutral-400">Transcription preview</span>
+          <div className="hz-r-lg hz-clip hz-shadow-lg hz-bordered">
+            <div className="hz-rel hz-bh-1 hz-bg-surface">
+              <div className="hz-abs hz-inset hz-row hz-ai-center hz-jc-center">
+                <span className="hz-fg-muted">Transcription preview</span>
               </div>
             </div>
           </div>

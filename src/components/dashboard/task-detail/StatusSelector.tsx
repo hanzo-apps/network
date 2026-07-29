@@ -16,15 +16,15 @@ const StatusSelector: React.FC<StatusSelectorProps> = ({ status, onChange }) => 
 
   return (
     <div>
-      <label className="block text-sm font-medium text-neutral-400 mb-1">Status</label>
-      <div className="space-y-1">
+      <label className="hz-t-sm hz-w-medium hz-fg-muted hz-mb-1">Status</label>
+      <div className="hz-stack-1">
         {statusOptions.map(option => (
           <div 
             key={option.value}
-            className={`px-3 py-2 rounded cursor-pointer ${
+            className={`hz-px-3 hz-py-2 hz-r-md hz-pointer ${
               status === option.value 
-                ? 'bg-neutral-800/30 border border-neutral-800' 
-                : 'hover:bg-gray-800'
+                ? 'hz-bg-raised hz-bordered' 
+                : 'hz-hoverable'
             }`}
             onClick={() => onChange(option.value)}
           >

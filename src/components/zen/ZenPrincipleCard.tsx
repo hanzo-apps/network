@@ -22,22 +22,22 @@ const ZenPrincipleCard: React.FC<ZenPrincipleCardProps> = ({ principle, index })
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5, delay: index * 0.05 }}
-      className="bg-gradient-to-br from-gray-900/80 to-gray-900/40 backdrop-blur-sm border border-neutral-500/20 rounded-lg p-6 relative overflow-hidden group"
+      className="hz-card hz-glass hz-rel hz-clip"
     >
       {principle.discipline && (
-        <div className="absolute top-2 right-2 text-xs text-neutral-400/30 opacity-50 group-hover:opacity-100 transition-opacity">
+        <div className="hz-abs hz-t-xs hz-fg-muted hz-dim-more hz-transition">
           {principle.discipline}
         </div>
       )}
-      <div className="flex items-center mb-3">
-        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-neutral-600/20 text-neutral-400 mr-3">
+      <div className="hz-row hz-ai-center hz-mb-3">
+        <div className="hz-sq-5 hz-row hz-ai-center hz-jc-center hz-r-full hz-bg-raised hz-fg-muted hz-mr-3">
           {principle.emoji || principle.number}
         </div>
-        <h3 className="text-xl text-[var(--white)] font-bold">{principle.title}</h3>
+        <h3 className="hz-t-xl hz-fg hz-w-bold">{principle.title}</h3>
       </div>
-      <div className="text-sm text-neutral-400 font-mono mb-2">{principle.japaneseSymbol}</div>
-      <p className="text-neutral-300">{principle.description}</p>
-      <div className="absolute bottom-2 right-2 text-xs text-neutral-400/30">
+      <div className="hz-t-sm hz-fg-muted hz-mono hz-mb-2">{principle.japaneseSymbol}</div>
+      <p className="hz-fg-soft">{principle.description}</p>
+      <div className="hz-abs hz-t-xs hz-fg-muted">
         #{principle.number}/64
       </div>
     </motion.div>

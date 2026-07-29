@@ -38,39 +38,39 @@ const TeamMemberPage = ({ memberId }: TeamMemberPageProps) => {
   const specialty = member.description.split(',')[0].trim();
 
   return (
-    <div className="min-h-screen bg-[var(--black)] text-[var(--white)]">
+    <div className="hz-min-h-screen hz-bg hz-fg">
       <Navbar />
       
-      <main className="pt-32 pb-16 px-4">
+      <main className="hz-pt-6 hz-pb-6 hz-px-4">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="max-w-7xl mx-auto"
+          className="hz-container"
         >
-          <div className="text-center mb-16">
-            <div className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${member.gradient} mb-4`}>
-              <MainIcon className="h-8 w-8 text-[var(--white)]" />
+          <div className="hz-align-center hz-mb-7">
+            <div className={`hz-inline hz-p-3 hz-r-lg ${member.gradient} hz-mb-4`}>
+              <MainIcon className="hz-sq-5 hz-fg" />
             </div>
-            <h1 className="text-4xl sm:text-5xl font-bold mb-6">
+            <h1 className="hz-t-4xl hz-w-bold hz-mb-5">
               {member.title}
             </h1>
-            <p className="text-neutral-400 text-lg max-w-2xl mx-auto">
+            <p className="hz-container-narrow hz-mw-md hz-fg-muted hz-t-lg">
               {member.description}
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          <div className="hz-grid hz-grid-3 hz-gap-6 hz-mb-7">
             {member.features.map((feature, index) => {
               const FeatureIcon = feature.icon;
               return (
                 <motion.div 
                   key={index}
                   whileHover={{ y: -5 }}
-                  className={`p-6 rounded-2xl border border-gray-800 ${getGlassClass()}`}
+                  className={`hz-p-5 hz-r-xl hz-bordered ${getGlassClass()}`}
                 >
-                  <FeatureIcon className={`h-8 w-8 ${feature.color} mb-4`} />
-                  <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                  <p className="text-neutral-400">{feature.description}</p>
+                  <FeatureIcon className={`hz-sq-5 ${feature.color} hz-mb-4`} />
+                  <h3 className="hz-t-xl hz-w-semibold hz-mb-2">{feature.title}</h3>
+                  <p className="hz-fg-muted">{feature.description}</p>
                 </motion.div>
               );
             })}
@@ -79,29 +79,29 @@ const TeamMemberPage = ({ memberId }: TeamMemberPageProps) => {
           <TeamSlack />
 
           {/* Expertise Section */}
-          <div className="mt-16 mb-16">
-            <h2 className="text-2xl font-semibold mb-8 text-center">How {member.name} Works With Our Expert Partners</h2>
+          <div className="hz-mt-7 hz-mb-7">
+            <h2 className="hz-t-2xl hz-w-semibold hz-mb-6 hz-align-center">How {member.name} Works With Our Expert Partners</h2>
             
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+            <div className="hz-grid hz-grid-2 hz-gap-6">
               {/* Hanzo Agency Card */}
-              <div className="p-6 bg-gradient-to-br from-neutral-800/50 to-neutral-800/30 rounded-xl border border-neutral-500/20 hover:border-neutral-500/40 transition-colors">
-                <div className="p-3 rounded-lg bg-neutral-600/20 self-start inline-block mb-4">
-                  <Users className="h-6 w-6 text-neutral-400" strokeWidth={1.5} />
+              <div className="hz-card hz-transition hz-card-interactive">
+                <div className="hz-p-3 hz-r-lg hz-bg-raised hz-self-start hz-mb-4">
+                  <Users className="hz-sq-4 hz-fg-muted" strokeWidth={1.5} />
                 </div>
-                <h3 className="text-2xl font-bold text-[var(--white)] mb-3">Hanzo Agency</h3>
-                <p className="text-neutral-300 mb-5">
+                <h3 className="hz-t-2xl hz-w-bold hz-fg hz-mb-3">Hanzo Agency</h3>
+                <p className="hz-fg-soft hz-mb-4">
                   {member.name} collaborates with our creative agency to help brands transform their digital 
                   presence using cutting-edge AI-powered design and marketing strategies.
                 </p>
-                <div className="flex flex-wrap gap-4">
+                <div className="hz-row hz-wrap hz-gap-4">
                   <Button 
                     onClick={handleContactAgency}
-                    className="bg-neutral-600 hover:bg-neutral-600 text-[var(--white)]"
+                    className="hz-bg-raised hz-fg hz-hoverable"
                   >
                     Work with Hanzo Agency
-                    <ExternalLink className="ml-2 h-4 w-4" />
+                    <ExternalLink className="hz-sq-2 hz-ml-2" />
                   </Button>
-                  <a href="/contact" className="flex items-center gap-2 px-5 py-2.5 border border-neutral-500/40 hover:border-neutral-500 rounded-md text-neutral-400 hover:text-neutral-300 transition-colors">
+                  <a href="/contact" className="hz-btn hz-btn-ghost hz-gap-2 hz-fg-muted hz-transition">
                     <span>Learn more</span>
                     <Mail size={14} />
                   </a>
@@ -109,24 +109,24 @@ const TeamMemberPage = ({ memberId }: TeamMemberPageProps) => {
               </div>
               
               {/* Sensei Group Card */}
-              <div className="p-6 bg-gradient-to-br from-neutral-800/50 to-neutral-900/30 rounded-xl border border-neutral-500/20 hover:border-neutral-500/40 transition-colors">
-                <div className="p-3 rounded-lg bg-neutral-500/20 self-start inline-block mb-4">
-                  <Shield className="h-6 w-6 text-neutral-400" strokeWidth={1.5} />
+              <div className="hz-card hz-transition hz-card-interactive">
+                <div className="hz-p-3 hz-r-lg hz-bg-raised hz-self-start hz-mb-4">
+                  <Shield className="hz-sq-4 hz-fg-muted" strokeWidth={1.5} />
                 </div>
-                <h3 className="text-2xl font-bold text-[var(--white)] mb-3">Sensei Group</h3>
-                <p className="text-neutral-300 mb-5">
+                <h3 className="hz-t-2xl hz-w-bold hz-fg hz-mb-3">Sensei Group</h3>
+                <p className="hz-fg-soft hz-mb-4">
                   When your project requires human expertise, {member.name} works alongside our collective of 
                   CXOs and industry specialists to implement enterprise-grade solutions.
                 </p>
-                <div className="flex flex-wrap gap-4">
+                <div className="hz-row hz-wrap hz-gap-4">
                   <Button 
                     onClick={handleContactSensei}
-                    className="bg-neutral-600 hover:bg-neutral-500 text-[var(--white)]"
+                    className="hz-bg-raised hz-fg hz-hoverable"
                   >
                     Contact Sensei Group
-                    <ExternalLink className="ml-2 h-4 w-4" />
+                    <ExternalLink className="hz-sq-2 hz-ml-2" />
                   </Button>
-                  <a href="tel:+1234567890" className="flex items-center gap-2 px-5 py-2.5 border border-neutral-500/40 hover:border-neutral-500 rounded-md text-neutral-400 hover:text-neutral-300 transition-colors">
+                  <a href="tel:+1234567890" className="hz-btn hz-btn-ghost hz-gap-2 hz-fg-muted hz-transition">
                     <span>Schedule a call</span>
                     <Phone size={14} />
                   </a>
@@ -136,26 +136,26 @@ const TeamMemberPage = ({ memberId }: TeamMemberPageProps) => {
           </div>
 
           {/* Use Cases Section */}
-          <div className="text-center max-w-3xl mx-auto mt-16">
-            <h2 className="text-2xl font-semibold mb-6">What {member.name} Can Do For You</h2>
-            <p className="text-neutral-400 mb-8">
+          <div className="hz-container-narrow hz-align-center hz-mt-7">
+            <h2 className="hz-t-2xl hz-w-semibold hz-mb-5">What {member.name} Can Do For You</h2>
+            <p className="hz-fg-muted hz-mb-6">
               {member.name} specializes in {specialty} to help you achieve your goals.
               For the best results, consider working with our expert human teams at Hanzo Agency or Sensei Group.
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="hz-grid hz-grid-2 hz-gap-4">
               <Button 
                 onClick={handleContactAgency}
-                className={`bg-gradient-to-r from-neutral-600 to-neutral-600 hover:opacity-90 ${getRoundingClass()}`}
+                className={` ${getRoundingClass()}`}
               >
                 Creative Services
-                <ExternalLink className="ml-2 h-4 w-4" />
+                <ExternalLink className="hz-sq-2 hz-ml-2" />
               </Button>
               <Button 
                 onClick={handleContactSensei}
-                className={`bg-gradient-to-r from-neutral-600 to-neutral-600 hover:opacity-90 ${getRoundingClass()}`}
+                className={` ${getRoundingClass()}`}
               >
                 Enterprise Solutions
-                <ExternalLink className="ml-2 h-4 w-4" />
+                <ExternalLink className="hz-sq-2 hz-ml-2" />
               </Button>
             </div>
           </div>

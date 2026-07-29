@@ -64,7 +64,7 @@ const ChatInterface: React.FC = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto bg-gray-900/90 border border-gray-800 rounded-xl shadow-lg backdrop-blur-lg overflow-hidden flex flex-col h-[600px] my-10">
+    <div className="hz-container-narrow hz-bg-surface hz-bordered hz-r-lg hz-shadow-lg hz-glass hz-clip hz-col hz-mt-6 hz-mb-6">
       <ChatHeader />
       
       <ChatMessages 

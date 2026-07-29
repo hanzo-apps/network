@@ -13,10 +13,10 @@ const CallToAction: React.FC = () => {
   };
   
   return (
-    <section className="py-20 px-4 md:px-8 bg-gradient-to-b from-black to-neutral-950/20 relative overflow-hidden">
+    <section className="hz-py-7 hz-px-4 hz-rel hz-clip">
       {/* Background animation elements */}
       <motion.div 
-        className="absolute inset-0 opacity-20"
+        className="hz-abs hz-inset hz-dim-more"
         initial={{ backgroundPosition: "0% 0%" }}
         animate={{ backgroundPosition: "100% 100%" }}
         transition={{ duration: 20, repeat: Infinity, repeatType: "reverse" }}
@@ -26,13 +26,13 @@ const CallToAction: React.FC = () => {
         }}
       />
       
-      <div className="max-w-4xl mx-auto text-center relative z-10">
+      <div className="hz-container-narrow hz-align-center hz-rel hz-z-raised">
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="text-3xl md:text-4xl font-bold mb-6 text-[var(--white)] leading-tight"
+          className="hz-t-3xl hz-w-bold hz-mb-5 hz-fg hz-leading-tight"
         >
           Ready to Transform Your AI Development?
         </motion.h2>
@@ -42,7 +42,7 @@ const CallToAction: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          className="text-lg text-neutral-300 mb-10 leading-relaxed"
+          className="hz-t-lg hz-fg-soft hz-mb-6 hz-leading-relaxed"
         >
           Join thousands of developers and companies building the future with Hanzo AI.
         </motion.p>
@@ -52,7 +52,7 @@ const CallToAction: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="flex flex-wrap justify-center gap-4"
+          className="hz-row hz-wrap hz-jc-center hz-gap-4"
         >
           <motion.div
             whileHover={{ scale: 1.05 }}
@@ -61,21 +61,21 @@ const CallToAction: React.FC = () => {
           >
             <Button 
               size="lg" 
-              className="bg-neutral-600 hover:bg-neutral-700 text-[var(--white)] px-8 py-6 text-lg relative overflow-hidden group rounded-full"
+              className="hz-bg-raised hz-fg hz-px-6 hz-py-5 hz-t-lg hz-rel hz-clip hz-r-full hz-hoverable"
               onClick={handleGetStarted}
             >
-              <span className="relative z-10 flex items-center py-1 leading-relaxed">
+              <span className="hz-rel hz-z-raised hz-row hz-ai-center hz-py-1 hz-leading-relaxed">
                 Get Started for Free 
                 <motion.span
                   initial={{ x: 0 }}
                   animate={{ x: [0, 5, 0] }}
                   transition={{ duration: 1.5, repeat: Infinity, repeatType: "loop", ease: "easeInOut", repeatDelay: 1 }}
                 >
-                  <ArrowRight className="ml-2 h-5 w-5" />
+                  <ArrowRight className="hz-sq-3 hz-ml-2" />
                 </motion.span>
               </span>
               <motion.span 
-                className="absolute inset-0 bg-gradient-to-r from-neutral-500 to-neutral-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" 
+                className="hz-abs hz-inset hz-invisible hz-transition" 
               />
             </Button>
           </motion.div>

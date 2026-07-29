@@ -7,14 +7,14 @@ import { operatorModels } from "./models/operatorModelData";
 
 const OperativeModels = () => {
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section className="hz-py-7 hz-rel hz-clip">
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-gray-950 to-black"></div>
+      <div className="hz-abs hz-inset"></div>
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="hz-container hz-rel hz-z-raised">
         <ModelHeader />
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="hz-grid hz-grid-3 hz-gap-5">
           {operatorModels.map((model, index) => (
             <ModelCard 
               key={index}

@@ -1,57 +1,70 @@
+import * as React from 'react'
+import { cn } from '@/lib/utils'
 
-import * as React from "react"
-import { Slot } from "@radix-ui/react-slot"
-import { cva, type VariantProps } from "class-variance-authority"
+/**
+ * The one button. Its appearance is the design system's `hz-btn` role — which
+ * is also where the 44px minimum tap target is declared, so every button on
+ * the site clears it without a per-call-site height. `asChild` renders the
+ * child element carrying the button's classes: the job Radix's Slot did, in
+ * four lines and no dependency.
+ */
+const VARIANT = {
+  default: 'hz-btn-primary',
+  primary: 'hz-btn-primary',
+  destructive: 'hz-btn-primary',
+  outline: '',
+  secondary: 'hz-bg-surface',
+  ghost: 'hz-btn-ghost',
+  link: 'hz-btn-ghost hz-underline',
+} as const
 
-import { cn } from "@/lib/utils"
+const SIZE = {
+  default: '',
+  sm: 'hz-t-xs hz-px-3',
+  lg: 'hz-btn-lg',
+  icon: 'hz-btn-icon',
+} as const
 
-const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
-  {
-    variants: {
-      variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
-        destructive:
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        outline:
-          "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
-        secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
-      },
-      size: {
-        default: "h-10 px-4 py-2",
-        sm: "h-9 rounded-md px-3",
-        lg: "h-11 rounded-md px-8",
-        icon: "h-10 w-10",
-      },
-    },
-    defaultVariants: {
-      variant: "default",
-      size: "default",
-    },
-  }
-)
+export type ButtonVariant = keyof typeof VARIANT
+export type ButtonSize = keyof typeof SIZE
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
+export const buttonVariants = ({
+  variant = 'default',
+  size = 'default',
+}: { variant?: ButtonVariant | null; size?: ButtonSize | null } = {}) =>
+  cn('hz-btn', VARIANT[variant || 'default'], SIZE[size || 'default'])
+
+const RADIUS = {
+  none: 'hz-r-none',
+  sm: 'hz-r-sm',
+  md: 'hz-r-md',
+  lg: 'hz-r-lg',
+  xl: 'hz-r-xl',
+  full: '',
+} as const
+
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: ButtonVariant | null
+  size?: ButtonSize | null
+  /** Corner treatment. The pill is the default; this opts out of it. */
+  radius?: keyof typeof RADIUS
   asChild?: boolean
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button"
+  ({ className, variant, size, radius, asChild = false, children, ...props }, ref) => {
+    const classes = cn(buttonVariants({ variant, size }), radius && RADIUS[radius], className)
+    if (asChild && React.isValidElement(children)) {
+      const child = children as React.ReactElement<{ className?: string }>
+      return React.cloneElement(child, { className: cn(classes, child.props.className) })
+    }
     return (
-      <Comp
-        className={cn(buttonVariants({ variant, size }), className)}
-        ref={ref}
-        {...props}
-      />
+      <button ref={ref} className={classes} {...props}>
+        {children}
+      </button>
     )
-  }
+  },
 )
-Button.displayName = "Button"
+Button.displayName = 'Button'
 
-export { Button, buttonVariants }
+export { Button }

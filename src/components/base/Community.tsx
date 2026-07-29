@@ -5,45 +5,45 @@ import { Github, Twitter, MessagesSquare, Facebook, Linkedin, Instagram } from "
 
 const Community = () => {
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-[var(--black)]">
-      <div className="max-w-5xl mx-auto text-center">
+    <section className="hz-py-7 hz-px-4 hz-bg">
+      <div className="hz-container-wide hz-align-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-2xl font-semibold text-[var(--white)] mb-6">
+          <h2 className="hz-t-2xl hz-w-semibold hz-fg hz-mb-5">
             Join our Developer Community
           </h2>
           
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="hz-row hz-wrap hz-jc-center hz-gap-4">
             <a 
               href="https://github.com/hanzoai" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="flex items-center bg-gray-800 hover:bg-gray-700 transition-colors px-4 py-2 rounded-lg"
+              className="hz-btn hz-transition"
             >
-              <Github className="mr-2 h-5 w-5 text-[var(--white)]" />
-              <span className="text-[var(--white)]">GitHub</span>
+              <Github className="hz-sq-3 hz-mr-2 hz-fg" />
+              <span className="hz-fg">GitHub</span>
             </a>
             <a 
               href="https://discord.gg/XthHQQj" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="flex items-center bg-gray-800 hover:bg-gray-700 transition-colors px-4 py-2 rounded-lg"
+              className="hz-btn hz-transition"
             >
-              <MessagesSquare className="mr-2 h-5 w-5 text-[var(--white)]" />
-              <span className="text-[var(--white)]">Discord</span>
+              <MessagesSquare className="hz-sq-3 hz-mr-2 hz-fg" />
+              <span className="hz-fg">Discord</span>
             </a>
             <a 
               href="https://twitter.com/hanzoai" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="flex items-center bg-gray-800 hover:bg-gray-700 transition-colors px-4 py-2 rounded-lg"
+              className="hz-btn hz-transition"
             >
-              <Twitter className="mr-2 h-5 w-5 text-[var(--white)]" />
-              <span className="text-[var(--white)]">Twitter</span>
+              <Twitter className="hz-sq-3 hz-mr-2 hz-fg" />
+              <span className="hz-fg">Twitter</span>
             </a>
           </div>
         </motion.div>

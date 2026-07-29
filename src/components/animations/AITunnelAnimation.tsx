@@ -21,7 +21,7 @@ const AITunnelAnimation: React.FC<AITunnelAnimationProps> = ({
   return (
     <div 
       ref={containerRef}
-      className="relative w-full h-[100vh] overflow-hidden bg-[var(--black)]"
+      className="hz-rel hz-w-full hz-clip hz-bg"
       style={{ border: "none" }} // Explicitly remove any border
     >
       {/* 3D Container */}

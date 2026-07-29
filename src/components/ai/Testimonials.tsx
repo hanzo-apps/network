@@ -26,29 +26,29 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-[var(--black)] relative overflow-hidden">
+    <section className="hz-py-7 hz-px-4 hz-bg hz-rel hz-clip">
       {/* Background elements */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute -bottom-64 -right-32 w-96 h-96 bg-neutral-800/10 rounded-full blur-3xl"></div>
+      <div className="hz-abs hz-top-0 hz-left-0 hz-w-full hz-h-full hz-clip hz-no-pointer">
+        <div className="hz-sq-8 hz-abs hz-bg-raised hz-r-full hz-blur-bg"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="hz-container hz-rel hz-z-raised">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="hz-align-center hz-mb-7"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-[var(--white)] mb-6">
+          <h2 className="hz-t-3xl hz-w-bold hz-fg hz-mb-5">
             Experiences from Our Community
           </h2>
-          <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
+          <p className="hz-container-narrow hz-t-xl hz-fg-soft">
             Hear from engineering teams who are building the next generation of AI-powered applications
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="hz-grid hz-grid-3 hz-gap-6">
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={index}
@@ -56,21 +56,21 @@ const Testimonials = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-gray-900/20 border border-gray-800 rounded-xl p-8 hover:bg-gray-900/30 transition-colors relative"
+              className="hz-card hz-transition hz-rel hz-card-interactive"
             >
-              <Quote className="absolute top-6 right-6 h-6 w-6 text-neutral-400/40" />
-              <p className="text-neutral-300 mb-8 mt-4">"{testimonial.quote}"</p>
-              <div className="flex items-center">
-                <div className="h-12 w-12 rounded-full bg-neutral-800/30 overflow-hidden">
+              <Quote className="hz-sq-4 hz-abs hz-fg-muted" />
+              <p className="hz-fg-soft hz-mb-6 hz-mt-4">"{testimonial.quote}"</p>
+              <div className="hz-row hz-ai-center">
+                <div className="hz-sq-7 hz-r-full hz-bg-raised hz-clip">
                   <img 
                     src={testimonial.image} 
                     alt={testimonial.author}
-                    className="h-full w-full object-cover opacity-70" 
+                    className="hz-h-full hz-w-full hz-object-cover hz-dim" 
                   />
                 </div>
-                <div className="ml-4">
-                  <div className="text-[var(--white)] font-medium">{testimonial.author}</div>
-                  <div className="text-neutral-400 text-sm">{testimonial.title}</div>
+                <div className="hz-ml-4">
+                  <div className="hz-fg hz-w-medium">{testimonial.author}</div>
+                  <div className="hz-fg-muted hz-t-sm">{testimonial.title}</div>
                 </div>
               </div>
             </motion.div>
@@ -82,43 +82,43 @@ const Testimonials = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-20 bg-gray-900/30 border border-gray-800 rounded-xl p-8 md:p-12"
+          className="hz-card hz-mt-7"
         >
-          <div className="flex flex-col md:flex-row items-center justify-between">
-            <div className="mb-8 md:mb-0 md:mr-8 md:w-2/3">
-              <h3 className="text-2xl font-bold text-[var(--white)] mb-4">
+          <div className="hz-col-row hz-ai-center hz-jc-between">
+            <div className="hz-mb-6">
+              <h3 className="hz-t-2xl hz-w-bold hz-fg hz-mb-4">
                 The AI Engineering Community
               </h3>
-              <p className="text-neutral-300 mb-6">
+              <p className="hz-fg-soft hz-mb-5">
                 Join thousands of AI engineers and developers building the future of intelligent applications. 
                 Share experiences, get support, and collaborate on best practices.
               </p>
-              <div className="flex flex-wrap gap-4">
-                <div className="flex items-center bg-gray-800/50 rounded-full px-4 py-2">
-                  <div className="w-2 h-2 rounded-full bg-neutral-500 mr-2"></div>
-                  <span className="text-neutral-300 text-sm">4,500+ community members</span>
+              <div className="hz-row hz-wrap hz-gap-4">
+                <div className="hz-btn">
+                  <div className="hz-sq-1 hz-r-full hz-bg-raised hz-mr-2"></div>
+                  <span className="hz-fg-soft hz-t-sm">4,500+ community members</span>
                 </div>
-                <div className="flex items-center bg-gray-800/50 rounded-full px-4 py-2">
-                  <div className="w-2 h-2 rounded-full bg-neutral-600 mr-2"></div>
-                  <span className="text-neutral-300 text-sm">Weekly office hours</span>
+                <div className="hz-btn">
+                  <div className="hz-sq-1 hz-r-full hz-bg-raised hz-mr-2"></div>
+                  <span className="hz-fg-soft hz-t-sm">Weekly office hours</span>
                 </div>
-                <div className="flex items-center bg-gray-800/50 rounded-full px-4 py-2">
-                  <div className="w-2 h-2 rounded-full bg-neutral-600 mr-2"></div>
-                  <span className="text-neutral-300 text-sm">Dedicated support team</span>
+                <div className="hz-btn">
+                  <div className="hz-sq-1 hz-r-full hz-bg-raised hz-mr-2"></div>
+                  <span className="hz-fg-soft hz-t-sm">Dedicated support team</span>
                 </div>
               </div>
             </div>
-            <div className="md:w-1/3 flex justify-center md:justify-end">
-              <div className="flex -space-x-4">
+            <div className="hz-row hz-jc-center">
+              <div className="hz-row">
                 {[...Array(5)].map((_, i) => (
                   <div 
                     key={i} 
-                    className="h-12 w-12 rounded-full bg-neutral-800/50 border-2 border-gray-900 flex items-center justify-center text-neutral-300 text-sm font-medium"
+                    className="hz-sq-7 hz-r-full hz-bg-raised hz-bordered hz-border-strong hz-row hz-ai-center hz-jc-center hz-fg-soft hz-t-sm hz-w-medium"
                   >
                     {["JS", "MK", "AL", "TN", "RW"][i]}
                   </div>
                 ))}
-                <div className="h-12 w-12 rounded-full bg-neutral-600/30 border-2 border-gray-900 flex items-center justify-center text-[var(--white)] text-sm font-medium">
+                <div className="hz-sq-7 hz-r-full hz-bg-raised hz-bordered hz-border-strong hz-row hz-ai-center hz-jc-center hz-fg hz-t-sm hz-w-medium">
                   +2.5k
                 </div>
               </div>

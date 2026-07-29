@@ -16,22 +16,22 @@ const Hero: React.FC<HeroProps> = ({ mousePosition, opacity, scale }) => {
   const navigate = useNavigate();
   
   return (
-    <section className="relative min-h-screen flex flex-col justify-center items-center px-4 py-20 overflow-hidden">
+    <section className="hz-rel hz-min-h-screen hz-col hz-jc-center hz-ai-center hz-px-4 hz-py-7 hz-clip">
       <motion.div 
-        className="max-w-6xl mx-auto text-center z-10 relative"
+        className="hz-container-wide hz-align-center hz-z-raised hz-rel"
         style={{ opacity, scale }}
       >
         {/* Floating orbs in background */}
-        <div className="absolute top-1/4 -right-20 w-40 h-40 bg-neutral-600/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 -left-20 w-40 h-40 bg-neutral-600/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }}></div>
+        <div className="hz-sq-8 hz-abs hz-bg-raised hz-r-full hz-blur-bg"></div>
+        <div className="hz-sq-8 hz-abs hz-bg-raised hz-r-full hz-blur-bg" style={{ animationDelay: "1s" }}></div>
         
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          className="mb-6"
+          className="hz-mb-5"
         >
-          <span className="inline-block px-5 py-2 rounded-full bg-gradient-to-r from-neutral-800/30 to-neutral-800/30 text-[var(--white)] text-sm font-medium border border-neutral-500/20">
+          <span className="hz-px-4 hz-py-2 hz-r-full hz-fg hz-t-sm hz-w-medium hz-bordered hz-border-strong">
             The Future of AI Development
           </span>
         </motion.div>
@@ -43,7 +43,7 @@ const Hero: React.FC<HeroProps> = ({ mousePosition, opacity, scale }) => {
         >
           <ChromeText 
             as="h1" 
-            className="text-5xl md:text-7xl font-bold mb-6"
+            className="hz-t-5xl hz-w-bold hz-mb-5"
             style={{
               backgroundPosition: `${mousePosition.x * 100}% ${mousePosition.y * 100}%`,
               backgroundSize: "200% 200%"
@@ -52,7 +52,7 @@ const Hero: React.FC<HeroProps> = ({ mousePosition, opacity, scale }) => {
             AI Cloud + DX Platform
           </ChromeText>
           
-          <p className="text-xl md:text-2xl text-neutral-300 max-w-3xl mx-auto mt-6 leading-relaxed">
+          <p className="hz-container-narrow hz-t-xl hz-fg-soft hz-mt-5 hz-leading-relaxed">
             Build, deploy, and scale AI applications with unmatched speed and efficiency.
             From development to production, Hanzo provides everything you need.
           </p>
@@ -62,19 +62,19 @@ const Hero: React.FC<HeroProps> = ({ mousePosition, opacity, scale }) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.4 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center mt-12"
+          className="hz-col-row hz-gap-4 hz-jc-center hz-mt-7"
         >
           <Button 
             size="lg" 
-            className="text-lg px-8 py-6 bg-gradient-to-r from-neutral-600 to-neutral-600 hover:from-neutral-700 hover:to-neutral-700 border-none"
+            className="hz-t-lg hz-px-6 hz-py-5 hz-border-none"
             onClick={() => navigate('/signup')}
           >
-            Start Building <ArrowRight className="ml-2 h-5 w-5" />
+            Start Building <ArrowRight className="hz-sq-3 hz-ml-2" />
           </Button>
           <Button 
             size="lg" 
             variant="outline" 
-            className="text-lg px-8 py-6 border-white/20 bg-[var(--black)]/50 backdrop-blur-sm hover:bg-[var(--white)]/10"
+            className="hz-t-lg hz-px-6 hz-py-5 hz-bg-overlay hz-glass hz-hoverable"
             onClick={() => navigate('/pricing')}
           >
             View Pricing
@@ -85,10 +85,10 @@ const Hero: React.FC<HeroProps> = ({ mousePosition, opacity, scale }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.8 }}
-          className="mt-24 sm:mt-32"
+          className="hz-mt-7"
         >
-          <div className="flex justify-center">
-            <ArrowRight className="h-10 w-10 text-[var(--white)]/50 animate-bounce" />
+          <div className="hz-row hz-jc-center">
+            <ArrowRight className="hz-sq-6 hz-fg" />
           </div>
         </motion.div>
       </motion.div>

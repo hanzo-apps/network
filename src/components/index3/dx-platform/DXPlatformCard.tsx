@@ -97,19 +97,19 @@ const DXPlatformCard: React.FC<DXPlatformCardProps> = ({
 
   const CardContent = (
     <>
-      <div className={`h-12 w-12 rounded-lg flex items-center justify-center mb-4 transition-colors duration-300 ${bgClass}`}>
-        <Icon className={`h-6 w-6 transition-colors duration-300 ${textClass}`} />
+      <div className={`hz-sq-7 hz-r-lg hz-row hz-ai-center hz-jc-center hz-mb-4 hz-transition ${bgClass}`}>
+        <Icon className={`hz-sq-4 hz-transition ${textClass}`} />
       </div>
-      <ChromeText as="h3" className="text-xl font-bold mb-2">
+      <ChromeText as="h3" className="hz-t-xl hz-w-bold hz-mb-2">
         {title}
       </ChromeText>
-      <p className="text-neutral-300 mb-4 text-sm">
+      <p className="hz-fg-soft hz-mb-4 hz-t-sm">
         {description}
       </p>
-      <ul className="text-neutral-400 space-y-2 text-xs mt-auto hidden lg:block">
+      <ul className="hz-desktop-only hz-fg-muted hz-stack-2 hz-t-xs hz-mt-auto">
         {features.slice(0, 2).map((feature, index) => (
-          <li key={`${id}-feature-${index}`} className="flex items-start">
-            <span className="mr-2">•</span>
+          <li key={`${id}-feature-${index}`} className="hz-row hz-ai-start">
+            <span className="hz-mr-2">•</span>
             <span>{feature}</span>
           </li>
         ))}

@@ -38,7 +38,7 @@ const ZenOfHanzo = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[var(--black)] text-[var(--white)] overflow-x-hidden">
+    <div className="hz-min-h-screen hz-bg hz-fg">
       <Helmet>
         <title>The Zen of Hanzo - Principles of AI Engineering</title>
         <meta name="description" content="Our guiding principles that shape everything we build. Simplicity, clarity, elegance—our AI engineering manifesto." />

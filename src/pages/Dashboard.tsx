@@ -23,67 +23,67 @@ const Dashboard = () => {
     {
       id: "tab-1",
       title: "Board",
-      icon: <LayoutGrid className="h-4 w-4" />,
+      icon: <LayoutGrid className="hz-sq-2" />,
       content: <KanbanBoard />
     },
     {
       id: "tab-2",
       title: "Agents",
-      icon: <Bot className="h-4 w-4" />,
+      icon: <Bot className="hz-sq-2" />,
       content: <AgentsList />
     },
     {
       id: "tab-3",
       title: "Analytics",
-      icon: <ChartBar className="h-4 w-4" />,
+      icon: <ChartBar className="hz-sq-2" />,
       content: (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div className="bg-[var(--black)] border border-gray-800 rounded-lg p-6">
-            <h3 className="text-lg font-medium mb-4">Usage Overview</h3>
-            <p className="text-2xl font-semibold">24.5K</p>
-            <p className="text-neutral-400 text-sm">Total tokens used today</p>
-            <div className="h-40 mt-4 flex items-end">
+        <div className="hz-grid hz-grid-3 hz-gap-5">
+          <div className="hz-card">
+            <h3 className="hz-t-lg hz-w-medium hz-mb-4">Usage Overview</h3>
+            <p className="hz-t-2xl hz-w-semibold">24.5K</p>
+            <p className="hz-fg-muted hz-t-sm">Total tokens used today</p>
+            <div className="hz-bh-8 hz-mt-4 hz-row hz-ai-end">
               {[45, 35, 65, 50, 75, 55, 70].map((height, index) => (
                 <div 
                   key={index} 
-                  className="w-full bg-gray-800 rounded-t-sm mx-0.5"
+                  className="hz-w-full hz-bg-raised"
                   style={{ height: `${height}%` }}
                 ></div>
               ))}
             </div>
           </div>
           
-          <div className="bg-[var(--black)] border border-gray-800 rounded-lg p-6">
-            <h3 className="text-lg font-medium mb-4">Agent Activity</h3>
-            <p className="text-2xl font-semibold">8</p>
-            <p className="text-neutral-400 text-sm">Active agents</p>
-            <div className="h-40 mt-4 flex items-center justify-center">
-              <div className="w-40 h-40 relative rounded-full border-4 border-gray-800 flex items-center justify-center">
-                <div className="w-28 h-28 rounded-full bg-gray-800"></div>
-                <div className="absolute top-0 right-0 w-4 h-4 rounded-full bg-neutral-500"></div>
-                <div className="absolute bottom-4 left-4 w-4 h-4 rounded-full bg-neutral-600"></div>
-                <div className="absolute top-10 left-0 w-3 h-3 rounded-full bg-neutral-500"></div>
+          <div className="hz-card">
+            <h3 className="hz-t-lg hz-w-medium hz-mb-4">Agent Activity</h3>
+            <p className="hz-t-2xl hz-w-semibold">8</p>
+            <p className="hz-fg-muted hz-t-sm">Active agents</p>
+            <div className="hz-bh-8 hz-mt-4 hz-row hz-ai-center hz-jc-center">
+              <div className="hz-sq-8 hz-rel hz-r-full hz-bordered hz-border-strong hz-row hz-ai-center hz-jc-center">
+                <div className="hz-sq-8 hz-r-full hz-bg-raised"></div>
+                <div className="hz-sq-2 hz-abs hz-top-0 hz-right-0 hz-r-full hz-bg-raised"></div>
+                <div className="hz-sq-2 hz-abs hz-r-full hz-bg-raised"></div>
+                <div className="hz-sq-1 hz-abs hz-left-0 hz-r-full hz-bg-raised"></div>
               </div>
             </div>
           </div>
           
-          <div className="bg-[var(--black)] border border-gray-800 rounded-lg p-6">
-            <h3 className="text-lg font-medium mb-4">Cost Tracking</h3>
-            <p className="text-2xl font-semibold">$12.85</p>
-            <p className="text-neutral-400 text-sm">Spent this month</p>
-            <div className="h-40 mt-4">
-              <div className="h-full flex flex-col justify-between">
-                <div className="w-full bg-gray-900 h-4 rounded-full overflow-hidden">
-                  <div className="bg-neutral-600 h-full rounded-full" style={{ width: '65%' }}></div>
+          <div className="hz-card">
+            <h3 className="hz-t-lg hz-w-medium hz-mb-4">Cost Tracking</h3>
+            <p className="hz-t-2xl hz-w-semibold">$12.85</p>
+            <p className="hz-fg-muted hz-t-sm">Spent this month</p>
+            <div className="hz-bh-8 hz-mt-4">
+              <div className="hz-h-full hz-col hz-jc-between">
+                <div className="hz-w-full hz-bg-surface hz-bh-2 hz-r-full hz-clip">
+                  <div className="hz-bg-raised hz-h-full hz-r-full" style={{ width: '65%' }}></div>
                 </div>
-                <div className="w-full bg-gray-900 h-4 rounded-full overflow-hidden">
-                  <div className="bg-neutral-600 h-full rounded-full" style={{ width: '42%' }}></div>
+                <div className="hz-w-full hz-bg-surface hz-bh-2 hz-r-full hz-clip">
+                  <div className="hz-bg-raised hz-h-full hz-r-full" style={{ width: '42%' }}></div>
                 </div>
-                <div className="w-full bg-gray-900 h-4 rounded-full overflow-hidden">
-                  <div className="bg-neutral-600 h-full rounded-full" style={{ width: '28%' }}></div>
+                <div className="hz-w-full hz-bg-surface hz-bh-2 hz-r-full hz-clip">
+                  <div className="hz-bg-raised hz-h-full hz-r-full" style={{ width: '28%' }}></div>
                 </div>
-                <div className="w-full bg-gray-900 h-4 rounded-full overflow-hidden">
-                  <div className="bg-neutral-600 h-full rounded-full" style={{ width: '13%' }}></div>
+                <div className="hz-w-full hz-bg-surface hz-bh-2 hz-r-full hz-clip">
+                  <div className="hz-bg-raised hz-h-full hz-r-full" style={{ width: '13%' }}></div>
                 </div>
               </div>
             </div>
@@ -97,28 +97,28 @@ const Dashboard = () => {
     const tabOptions = [
       { 
         title: "New Board", 
-        icon: <LayoutGrid className="h-4 w-4" />, 
+        icon: <LayoutGrid className="hz-sq-2" />, 
         content: <KanbanBoard /> 
       },
       { 
         title: "Agents", 
-        icon: <Bot className="h-4 w-4" />, 
+        icon: <Bot className="hz-sq-2" />, 
         content: <AgentsList /> 
       },
       { 
         title: "Analytics", 
-        icon: <ChartBar className="h-4 w-4" />, 
+        icon: <ChartBar className="hz-sq-2" />, 
         content: tabs[2].content 
       },
       { 
         title: "Data Sources", 
-        icon: <Database className="h-4 w-4" />, 
-        content: <div className="p-4">Data Sources content</div> 
+        icon: <Database className="hz-sq-2" />, 
+        content: <div className="hz-p-4">Data Sources content</div> 
       },
       { 
         title: "Infrastructure", 
-        icon: <Server className="h-4 w-4" />, 
-        content: <div className="p-4">Infrastructure content</div> 
+        icon: <Server className="hz-sq-2" />, 
+        content: <div className="hz-p-4">Infrastructure content</div> 
       }
     ];
 
@@ -136,15 +136,15 @@ const Dashboard = () => {
 
   return (
     <DashboardLayout>
-      <div className="flex flex-col h-full">
-        <div className="flex justify-between items-center mb-4">
+      <div className="hz-col hz-h-full">
+        <div className="hz-row hz-jc-between hz-ai-center hz-mb-4">
           <div>
-            <h1 className="text-2xl font-semibold">Workspace</h1>
-            <p className="text-neutral-400 text-sm mt-1">Manage your AI tasks and agents</p>
+            <h1 className="hz-t-2xl hz-w-semibold">Workspace</h1>
+            <p className="hz-fg-muted hz-t-sm hz-mt-1">Manage your AI tasks and agents</p>
           </div>
         </div>
 
-        <div className="flex-1 overflow-hidden border border-gray-800 rounded-lg bg-[var(--black)]">
+        <div className="hz-grow hz-clip hz-bordered hz-r-lg hz-bg">
           <TabsManager initialTabs={tabs} onAddTab={addNewTab} />
         </div>
       </div>

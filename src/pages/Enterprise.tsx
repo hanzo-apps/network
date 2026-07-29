@@ -8,29 +8,29 @@ import { Button } from "@/components/ui/button";
 const Enterprise = () => {
   const features = [
     {
-      icon: <Shield className="h-8 w-8 text-neutral-400" />,
+      icon: <Shield className="hz-sq-5 hz-fg-muted" />,
       title: "Enterprise Security",
       description: "SOC 2, GDPR, CCPA compliance with advanced encryption and audit logging"
     },
     {
-      icon: <Users className="h-8 w-8 text-neutral-400" />,
+      icon: <Users className="hz-sq-5 hz-fg-muted" />,
       title: "User Management",
       description: "SCIM provisioning, SSO integration, and role-based access control"
     },
     {
-      icon: <Globe className="h-8 w-8 text-neutral-400" />,
+      icon: <Globe className="hz-sq-5 hz-fg-muted" />,
       title: "Global Infrastructure",
       description: "Multi-region deployment with 99.99% uptime SLA and dedicated support"
     },
     {
-      icon: <Zap className="h-8 w-8 text-neutral-400" />,
+      icon: <Zap className="hz-sq-5 hz-fg-muted" />,
       title: "Custom AI Resources",
       description: "Tailored AI credits, custom models, and dedicated compute infrastructure"
     }
   ];
 
   return (
-    <div className="min-h-screen bg-[var(--black)] text-[var(--white)]">
+    <div className="hz-min-h-screen hz-bg hz-fg">
       <Helmet>
         <title>Enterprise Solutions - Hanzo AI Platform</title>
         <meta name="description" content="Scale your business with enterprise-grade AI solutions. Dedicated support, custom integrations, and advanced security features for large organizations." />
@@ -38,31 +38,31 @@ const Enterprise = () => {
       
       <Navbar />
       
-      <main className="pt-32 pb-16">
+      <main className="hz-pt-6 hz-pb-6">
         {/* Hero Section */}
-        <section className="px-4 sm:px-6 lg:px-8 mb-20">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="flex justify-center mb-8">
-              <Building2 className="h-16 w-16 text-neutral-400" />
+        <section className="hz-px-4 hz-mb-7">
+          <div className="hz-container-narrow hz-align-center">
+            <div className="hz-row hz-jc-center hz-mb-6">
+              <Building2 className="hz-sq-8 hz-fg-muted" />
             </div>
             
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-b from-white via-white/90 to-white/50">
+            <h1 className="hz-t-4xl hz-w-bold hz-mb-5 hz-chrome">
               Enterprise AI Solutions
             </h1>
             
-            <p className="text-xl text-neutral-400 max-w-3xl mx-auto mb-8 leading-relaxed">
+            <p className="hz-container-narrow hz-t-xl hz-fg-muted hz-mb-6 hz-leading-relaxed">
               Scale your business with enterprise-grade AI solutions. Get dedicated support, 
               custom integrations, and advanced security features designed for large organizations.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-white text-black hover:bg-gray-100 px-8 py-3">
-                <a href="/contact" className="flex items-center">
-                  <Phone className="mr-2 h-5 w-5" />
+            <div className="hz-col-row hz-gap-4 hz-jc-center">
+              <Button size="lg" className="hz-bg-inverse hz-fg-inverse hz-px-6 hz-py-3 hz-hoverable">
+                <a href="/contact" className="hz-row hz-ai-center">
+                  <Phone className="hz-sq-3 hz-mr-2" />
                   Contact Sales
                 </a>
               </Button>
-              <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10 px-8 py-3">
+              <Button size="lg" variant="outline" className="hz-fg hz-px-6 hz-py-3 hz-hoverable">
                 <a href="/pricing">View Pricing</a>
               </Button>
             </div>
@@ -70,16 +70,16 @@ const Enterprise = () => {
         </section>
 
         {/* Features Section */}
-        <section className="px-4 sm:px-6 lg:px-8 mb-20">
-          <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-12">Enterprise Features</h2>
+        <section className="hz-px-4 hz-mb-7">
+          <div className="hz-container">
+            <h2 className="hz-t-3xl hz-w-bold hz-align-center hz-mb-7">Enterprise Features</h2>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="hz-grid hz-grid-4 hz-gap-6">
               {features.map((feature, index) => (
-                <div key={index} className="bg-white/5 rounded-xl p-6 border border-white/10">
-                  <div className="mb-4">{feature.icon}</div>
-                  <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
-                  <p className="text-neutral-400">{feature.description}</p>
+                <div key={index} className="hz-card">
+                  <div className="hz-mb-4">{feature.icon}</div>
+                  <h3 className="hz-t-xl hz-w-semibold hz-mb-3">{feature.title}</h3>
+                  <p className="hz-fg-muted">{feature.description}</p>
                 </div>
               ))}
             </div>
@@ -87,30 +87,30 @@ const Enterprise = () => {
         </section>
 
         {/* Why Enterprise Section */}
-        <section className="px-4 sm:px-6 lg:px-8 mb-20">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-12">Why Choose Hanzo Enterprise?</h2>
+        <section className="hz-px-4 hz-mb-7">
+          <div className="hz-container-narrow">
+            <h2 className="hz-t-3xl hz-w-bold hz-align-center hz-mb-7">Why Choose Hanzo Enterprise?</h2>
             
-            <div className="space-y-8">
-              <div className="bg-gradient-to-r from-neutral-800/20 to-neutral-900/20 rounded-xl p-8 border border-neutral-500/20">
-                <h3 className="text-2xl font-semibold mb-4">Dedicated Support</h3>
-                <p className="text-neutral-300 text-lg">
+            <div className="hz-stack-6">
+              <div className="hz-card">
+                <h3 className="hz-t-2xl hz-w-semibold hz-mb-4">Dedicated Support</h3>
+                <p className="hz-fg-soft hz-t-lg">
                   Get priority support with dedicated account managers, guaranteed response times, 
                   and direct access to our engineering team for critical issues.
                 </p>
               </div>
               
-              <div className="bg-gradient-to-r from-neutral-800/20 to-neutral-900/20 rounded-xl p-8 border border-neutral-500/20">
-                <h3 className="text-2xl font-semibold mb-4">Custom Integrations</h3>
-                <p className="text-neutral-300 text-lg">
+              <div className="hz-card">
+                <h3 className="hz-t-2xl hz-w-semibold hz-mb-4">Custom Integrations</h3>
+                <p className="hz-fg-soft hz-t-lg">
                   Seamlessly integrate with your existing infrastructure, identity providers, 
                   and business systems with our custom integration services.
                 </p>
               </div>
               
-              <div className="bg-gradient-to-r from-neutral-800/20 to-neutral-900/20 rounded-xl p-8 border border-neutral-500/20">
-                <h3 className="text-2xl font-semibold mb-4">Flexible Deployment</h3>
-                <p className="text-neutral-300 text-lg">
+              <div className="hz-card">
+                <h3 className="hz-t-2xl hz-w-semibold hz-mb-4">Flexible Deployment</h3>
+                <p className="hz-fg-soft hz-t-lg">
                   Deploy on our cloud, your cloud, or on-premises. We support hybrid deployments 
                   to meet your security and compliance requirements.
                 </p>
@@ -120,21 +120,21 @@ const Enterprise = () => {
         </section>
 
         {/* CTA Section */}
-        <section className="px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="bg-white/5 rounded-xl p-8 border border-white/10">
-              <h2 className="text-3xl font-bold mb-4">Ready to Get Started?</h2>
-              <p className="text-neutral-400 mb-6 text-lg">
+        <section className="hz-px-4">
+          <div className="hz-container-narrow hz-align-center">
+            <div className="hz-card">
+              <h2 className="hz-t-3xl hz-w-bold hz-mb-4">Ready to Get Started?</h2>
+              <p className="hz-fg-muted hz-mb-5 hz-t-lg">
                 Contact our enterprise sales team for a personalized demo and custom pricing 
                 that meets your organization's unique needs.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="bg-white text-black hover:bg-gray-100 px-8 py-3">
-                  <a href="mailto:enterprise@hanzo.ai" className="flex items-center">
+              <div className="hz-col-row hz-gap-4 hz-jc-center">
+                <Button size="lg" className="hz-bg-inverse hz-fg-inverse hz-px-6 hz-py-3 hz-hoverable">
+                  <a href="mailto:enterprise@hanzo.ai" className="hz-row hz-ai-center">
                     Schedule Demo
                   </a>
                 </Button>
-                <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10 px-8 py-3">
+                <Button size="lg" variant="outline" className="hz-fg hz-px-6 hz-py-3 hz-hoverable">
                   <a href="/contact">Contact Us</a>
                 </Button>
               </div>

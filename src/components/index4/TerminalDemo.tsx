@@ -5,7 +5,7 @@ import { ArchitecturalBox } from "@/components/ui/architectural-elements";
 
 const TerminalDemo = () => {
   return (
-    <section className="max-w-4xl mx-auto mb-32">
+    <section className="hz-container-narrow hz-mb-7">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -13,42 +13,42 @@ const TerminalDemo = () => {
         transition={{ duration: 0.8 }}
       >
         <ArchitecturalBox
-          className="backdrop-blur-lg bg-zinc-900/50 border border-zinc-800/50 rounded-xl overflow-hidden"
+          className="hz-glass hz-bg-surface hz-bordered hz-r-lg hz-clip"
           showGrid={true}
           gridColor="rgba(255,255,255,0.03)"
           gridSpacing={30}
           gridOpacity={0.1}
         >
-          <div className="flex items-center border-b border-zinc-800/70 px-4 py-3">
-            <div className="flex space-x-2 mr-4">
-              <div className="w-3 h-3 rounded-full bg-zinc-700"></div>
-              <div className="w-3 h-3 rounded-full bg-zinc-700"></div>
-              <div className="w-3 h-3 rounded-full bg-zinc-700"></div>
+          <div className="hz-row hz-ai-center hz-border-b hz-px-4 hz-py-3">
+            <div className="hz-row hz-inline-2 hz-mr-4">
+              <div className="hz-sq-1 hz-r-full hz-bg-raised"></div>
+              <div className="hz-sq-1 hz-r-full hz-bg-raised"></div>
+              <div className="hz-sq-1 hz-r-full hz-bg-raised"></div>
             </div>
-            <div className="flex-1 text-center">
-              <span className="text-xs font-mono text-zinc-400">terminal</span>
+            <div className="hz-grow hz-align-center">
+              <span className="hz-t-xs hz-mono hz-fg-muted">terminal</span>
             </div>
           </div>
           
-          <div className="p-6 font-mono text-sm">
-            <div className="flex items-start mb-4">
-              <span className="text-neutral-400 mr-2">$</span>
-              <span className="text-zinc-300">hanzo deploy</span>
+          <div className="hz-p-5 hz-mono hz-t-sm">
+            <div className="hz-row hz-ai-start hz-mb-4">
+              <span className="hz-fg-muted hz-mr-2">$</span>
+              <span className="hz-fg-soft">hanzo deploy</span>
             </div>
             
-            <div className="pl-4 text-zinc-500 space-y-1">
+            <div className="hz-px-4 hz-fg-muted hz-stack-1">
               <p>Initializing deployment...</p>
-              <p>Building application <span className="text-zinc-400">v2.3.5</span></p>
-              <p className="text-zinc-400">Installing dependencies...</p>
-              <p className="text-zinc-400">Running build command...</p>
-              <p className="text-neutral-400">✓ Build successful</p>
-              <p className="text-zinc-400">Uploading artifacts...</p>
-              <p className="text-neutral-400">✓ Deployment complete</p>
+              <p>Building application <span className="hz-fg-muted">v2.3.5</span></p>
+              <p className="hz-fg-muted">Installing dependencies...</p>
+              <p className="hz-fg-muted">Running build command...</p>
+              <p className="hz-fg-muted">✓ Build successful</p>
+              <p className="hz-fg-muted">Uploading artifacts...</p>
+              <p className="hz-fg-muted">✓ Deployment complete</p>
             </div>
             
-            <div className="mt-6 flex items-start">
-              <span className="text-neutral-400 mr-2">$</span>
-              <span className="text-zinc-300">_</span>
+            <div className="hz-mt-5 hz-row hz-ai-start">
+              <span className="hz-fg-muted hz-mr-2">$</span>
+              <span className="hz-fg-soft">_</span>
             </div>
           </div>
         </ArchitecturalBox>

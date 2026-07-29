@@ -52,112 +52,112 @@ const Account = () => {
 
   return (
     <AnimatedSection>
-      <div className="space-y-10">
+      <div className="hz-stack-6">
         <AnimatedHeading>
-          <h2 className="text-2xl font-medium mb-8">Profile Settings</h2>
+          <h2 className="hz-t-2xl hz-w-medium hz-mb-6">Profile Settings</h2>
         </AnimatedHeading>
 
-        <div className="flex flex-col md:flex-row md:items-center gap-8">
-          <Avatar className="h-24 w-24">
+        <div className="hz-col-row hz-gap-6">
+          <Avatar className="hz-sq-8">
             <AvatarImage src={user.avatar} />
-            <AvatarFallback className="text-2xl bg-neutral-900">{user.name.charAt(0)}</AvatarFallback>
+            <AvatarFallback className="hz-t-2xl hz-bg-surface">{user.name.charAt(0)}</AvatarFallback>
           </Avatar>
           
           <div>
-            <h2 className="text-2xl font-medium mb-2">{user.name}</h2>
-            <div className="flex items-center text-neutral-400">
-              <Mail className="h-4 w-4 mr-2" />
+            <h2 className="hz-t-2xl hz-w-medium hz-mb-2">{user.name}</h2>
+            <div className="hz-row hz-ai-center hz-fg-muted">
+              <Mail className="hz-sq-2 hz-mr-2" />
               {user.email}
             </div>
             
-            <div className="mt-5 space-x-4">
-              <Button variant="outline" size="sm" className="bg-[var(--black)] border-white/10 hover:bg-[var(--white)]/5">
+            <div className="hz-mt-4 hz-inline-4">
+              <Button variant="outline" size="sm" className="hz-bg hz-hoverable">
                 Upload New Picture
               </Button>
-              <Button variant="outline" size="sm" className="bg-[var(--black)] border-white/10 hover:bg-[var(--white)]/5 text-neutral-400 hover:text-neutral-300 hover:bg-neutral-800/10">
+              <Button variant="outline" size="sm" className="hz-bg hz-fg-muted hz-link">
                 Remove
               </Button>
             </div>
           </div>
         </div>
         
-        <div className="border-t border-neutral-800/20 pt-8">
-          <h3 className="text-xl font-medium mb-6">Personal Information</h3>
+        <div className="hz-border-t hz-pt-6">
+          <h3 className="hz-t-xl hz-w-medium hz-mb-5">Personal Information</h3>
           
-          <form onSubmit={handleProfileSubmit} className="space-y-8 max-w-xl">
-            <div className="space-y-2">
-              <Label htmlFor="fullName" className="text-[var(--white)]">Full Name</Label>
+          <form onSubmit={handleProfileSubmit} className="hz-stack-6 hz-mw-md">
+            <div className="hz-stack-2">
+              <Label htmlFor="fullName" className="hz-fg">Full Name</Label>
               <Input
                 id="fullName"
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
-                className="bg-[var(--black)]/40 border-white/10 focus:border-white/20"
+                className="hz-bg-overlay"
               />
             </div>
             
-            <div className="space-y-2">
-              <Label htmlFor="email" className="text-[var(--white)]">Email Address</Label>
+            <div className="hz-stack-2">
+              <Label htmlFor="email" className="hz-fg">Email Address</Label>
               <Input
                 id="email"
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="bg-[var(--black)]/40 border-white/10 focus:border-white/20"
+                className="hz-bg-overlay"
               />
             </div>
             
-            <div className="space-y-2">
-              <Label htmlFor="bio" className="text-[var(--white)]">Bio</Label>
+            <div className="hz-stack-2">
+              <Label htmlFor="bio" className="hz-fg">Bio</Label>
               <Textarea
                 id="bio"
                 value={bio}
                 onChange={(e) => setBio(e.target.value)}
-                className="bg-[var(--black)]/40 border-white/10 focus:border-white/20 min-h-24"
+                className="hz-bg-overlay"
                 placeholder="Tell us about yourself"
               />
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="space-y-2">
-                <Label htmlFor="location" className="text-[var(--white)]">Location</Label>
+            <div className="hz-grid hz-grid-2 hz-gap-6">
+              <div className="hz-stack-2">
+                <Label htmlFor="location" className="hz-fg">Location</Label>
                 <Input
                   id="location"
                   value={location}
                   onChange={(e) => setLocation(e.target.value)}
-                  className="bg-[var(--black)]/40 border-white/10 focus:border-white/20"
+                  className="hz-bg-overlay"
                   placeholder="City, Country"
                 />
               </div>
               
-              <div className="space-y-2">
-                <Label htmlFor="phone" className="text-[var(--white)]">Phone Number</Label>
+              <div className="hz-stack-2">
+                <Label htmlFor="phone" className="hz-fg">Phone Number</Label>
                 <Input
                   id="phone"
                   type="tel"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="bg-[var(--black)]/40 border-white/10 focus:border-white/20"
+                  className="hz-bg-overlay"
                   placeholder="+1 (555) 123-4567"
                 />
               </div>
             </div>
             
-            <div className="space-y-2">
-              <Label htmlFor="website" className="text-[var(--white)]">Website</Label>
+            <div className="hz-stack-2">
+              <Label htmlFor="website" className="hz-fg">Website</Label>
               <Input
                 id="website"
                 type="url"
                 value={website}
                 onChange={(e) => setWebsite(e.target.value)}
-                className="bg-[var(--black)]/40 border-white/10 focus:border-white/20"
+                className="hz-bg-overlay"
                 placeholder="https://example.com"
               />
             </div>
             
-            <div className="flex gap-4 pt-2">
+            <div className="hz-row hz-gap-4 hz-pt-4">
               <Button 
                 type="submit" 
-                className="bg-[var(--black)] hover:bg-neutral-900 border border-white/10"
+                className="hz-bg hz-bordered hz-hoverable"
               >
                 Update Profile
               </Button>
@@ -165,7 +165,7 @@ const Account = () => {
                 <Button 
                   type="button" 
                   variant="outline" 
-                  className="bg-[var(--black)] border-white/10 hover:bg-[var(--white)]/5"
+                  className="hz-bg hz-hoverable"
                 >
                   View Public Profile
                 </Button>

@@ -54,21 +54,21 @@ const Login = () => {
   };
   
   return (
-    <div className="min-h-screen bg-[var(--black)] text-[var(--white)] flex items-center justify-center p-4">
-      <div className="w-full max-w-md space-y-6">
-        <div className="text-center">
-          <h1 className="text-3xl font-bold">Welcome Back</h1>
-          <p className="text-neutral-400 mt-2">
+    <div className="hz-min-h-screen hz-bg hz-fg hz-row hz-ai-center hz-jc-center hz-p-4">
+      <div className="hz-w-full hz-mw-sm hz-stack-5">
+        <div className="hz-align-center">
+          <h1 className="hz-t-3xl hz-w-bold">Welcome Back</h1>
+          <p className="hz-fg-muted hz-mt-2">
             Sign in to your account
           </p>
         </div>
         
-        <div className="bg-gray-900/50 border border-gray-800 rounded-lg p-6">
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="space-y-2">
+        <div className="hz-card">
+          <form onSubmit={handleSubmit} className="hz-stack-4">
+            <div className="hz-stack-2">
               <Label htmlFor="email">Email</Label>
-              <div className="relative">
-                <Mail className="absolute left-3 top-3 h-4 w-4 text-neutral-400" />
+              <div className="hz-rel">
+                <Mail className="hz-sq-2 hz-abs hz-fg-muted" />
                 <Input
                   id="email"
                   name="email"
@@ -76,20 +76,20 @@ const Login = () => {
                   placeholder="you@example.com"
                   value={formData.email}
                   onChange={handleChange}
-                  className="pl-10"
+                  className="hz-px-6"
                 />
               </div>
             </div>
             
-            <div className="space-y-2">
-              <div className="flex justify-between items-center">
+            <div className="hz-stack-2">
+              <div className="hz-row hz-jc-between hz-ai-center">
                 <Label htmlFor="password">Password</Label>
-                <a href="/forgot-password" className="text-sm text-neutral-400 hover:underline">
+                <a href="/forgot-password" className="hz-t-sm hz-fg-muted">
                   Forgot password?
                 </a>
               </div>
-              <div className="relative">
-                <Lock className="absolute left-3 top-3 h-4 w-4 text-neutral-400" />
+              <div className="hz-rel">
+                <Lock className="hz-sq-2 hz-abs hz-fg-muted" />
                 <Input
                   id="password"
                   name="password"
@@ -97,24 +97,24 @@ const Login = () => {
                   placeholder="••••••••"
                   value={formData.password}
                   onChange={handleChange}
-                  className="pl-10"
+                  className="hz-px-6"
                 />
               </div>
             </div>
             
             <Button 
               type="submit" 
-              className="w-full mt-6 bg-neutral-600 hover:bg-neutral-700 text-[var(--white)]"
+              className="hz-w-full hz-mt-5 hz-bg-raised hz-fg hz-hoverable"
             >
               Sign In
-              <ArrowRight className="ml-2 h-4 w-4" />
+              <ArrowRight className="hz-sq-2 hz-ml-2" />
             </Button>
           </form>
         </div>
         
-        <div className="text-center text-sm text-neutral-400">
+        <div className="hz-align-center hz-t-sm hz-fg-muted">
           Don't have an account?{" "}
-          <a href="/signup" className="text-neutral-400 hover:underline">
+          <a href="/signup" className="hz-fg-muted">
             Sign up
           </a>
         </div>

@@ -28,33 +28,33 @@ const DeveloperExperience = () => {
   ];
 
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-[var(--black)]">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <section className="hz-py-7 hz-px-4 hz-bg">
+      <div className="hz-container">
+        <div className="hz-grid hz-grid-2 hz-gap-7 hz-ai-center">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="space-y-8"
+            className="hz-stack-6"
           >
-            <h2 className="text-3xl font-bold text-[var(--white)]">Developer Experience</h2>
-            <p className="text-xl text-neutral-300">
+            <h2 className="hz-t-3xl hz-w-bold hz-fg">Developer Experience</h2>
+            <p className="hz-t-xl hz-fg-soft">
               Designed for developers who value simplicity, flexibility, and power.
               Our tools make database and backend development a breeze.
             </p>
             
-            <div className="space-y-6">
+            <div className="hz-stack-5">
               {features.map((feature, index) => (
-                <div key={index} className="flex">
-                  <div className="flex-shrink-0 mt-1">
-                    <div className="flex items-center justify-center h-10 w-10 rounded-md bg-neutral-800/30 text-neutral-400">
-                      <feature.icon className="h-6 w-6" />
+                <div key={index} className="hz-row">
+                  <div className="hz-none hz-mt-1">
+                    <div className="hz-sq-6 hz-row hz-ai-center hz-jc-center hz-r-md hz-bg-raised hz-fg-muted">
+                      <feature.icon className="hz-sq-4" />
                     </div>
                   </div>
-                  <div className="ml-4">
-                    <h3 className="text-lg font-medium text-[var(--white)]">{feature.title}</h3>
-                    <p className="mt-1 text-neutral-300">{feature.description}</p>
+                  <div className="hz-ml-4">
+                    <h3 className="hz-t-lg hz-w-medium hz-fg">{feature.title}</h3>
+                    <p className="hz-mt-1 hz-fg-soft">{feature.description}</p>
                   </div>
                 </div>
               ))}
@@ -66,26 +66,26 @@ const DeveloperExperience = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="lg:pl-8"
+            className=""
           >
-            <div className="bg-gray-900/30 rounded-xl border border-gray-800 p-1 shadow-xl overflow-hidden">
-              <div className="flex items-center bg-gray-900 rounded-t-lg px-4 py-2">
-                <div className="flex space-x-2">
-                  <div className="w-3 h-3 rounded-full bg-neutral-600"></div>
-                  <div className="w-3 h-3 rounded-full bg-neutral-500"></div>
-                  <div className="w-3 h-3 rounded-full bg-neutral-500"></div>
+            <div className="hz-bg-surface hz-r-lg hz-bordered hz-p-1 hz-shadow-lg hz-clip">
+              <div className="hz-btn">
+                <div className="hz-row hz-inline-2">
+                  <div className="hz-sq-1 hz-r-full hz-bg-raised"></div>
+                  <div className="hz-sq-1 hz-r-full hz-bg-raised"></div>
+                  <div className="hz-sq-1 hz-r-full hz-bg-raised"></div>
                 </div>
-                <div className="mx-auto text-neutral-400 text-sm">Terminal</div>
+                <div className="hz-mx-auto hz-fg-muted hz-t-sm">Terminal</div>
               </div>
-              <div className="bg-gray-950 p-4 rounded-b-lg overflow-hidden">
-                <div className="font-mono text-sm">
-                  <p className="text-neutral-400 mb-2">$ npx create-hanzo-app my-project</p>
-                  <p className="text-neutral-400 mb-2">Initializing Hanzo Base project...</p>
-                  <p className="text-neutral-400 mb-2">$ cd my-project && npm run dev</p>
-                  <p className="text-neutral-400 mb-2">✓ Hanzo Base server started on http://localhost:3000</p>
-                  <p className="text-neutral-400 mb-2">✓ Admin UI available at http://localhost:3000/admin</p>
-                  <p className="text-neutral-400 mb-2">$ hanzo deploy</p>
-                  <p className="text-neutral-400">✓ Project deployed to https://my-project.hanzo.app</p>
+              <div className="hz-bg-surface hz-p-4 hz-clip">
+                <div className="hz-mono hz-t-sm">
+                  <p className="hz-fg-muted hz-mb-2">$ npx create-hanzo-app my-project</p>
+                  <p className="hz-fg-muted hz-mb-2">Initializing Hanzo Base project...</p>
+                  <p className="hz-fg-muted hz-mb-2">$ cd my-project && npm run dev</p>
+                  <p className="hz-fg-muted hz-mb-2">✓ Hanzo Base server started on http://localhost:3000</p>
+                  <p className="hz-fg-muted hz-mb-2">✓ Admin UI available at http://localhost:3000/admin</p>
+                  <p className="hz-fg-muted hz-mb-2">$ hanzo deploy</p>
+                  <p className="hz-fg-muted">✓ Project deployed to https://my-project.hanzo.app</p>
                 </div>
               </div>
             </div>

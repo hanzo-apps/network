@@ -6,22 +6,22 @@ import { Button } from "@/components/ui/button";
 
 const HeroSection = () => {
   return (
-    <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-[var(--black)] relative overflow-hidden">
+    <section className="hz-pt-6 hz-pb-6 hz-px-4 hz-bg hz-rel hz-clip">
       {/* Gradient effects */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-neutral-900/20 via-transparent to-transparent opacity-70"></div>
-      <div className="absolute top-40 left-20 w-96 h-96 bg-neutral-600/20 rounded-full blur-[100px]"></div>
-      <div className="absolute bottom-0 right-0 w-72 h-72 bg-neutral-600/20 rounded-full blur-[100px]"></div>
+      <div className="hz-abs hz-inset hz-dim"></div>
+      <div className="hz-sq-8 hz-abs hz-bg-raised hz-r-full hz-blur-bg"></div>
+      <div className="hz-sq-8 hz-abs hz-bottom-0 hz-right-0 hz-bg-raised hz-r-full hz-blur-bg"></div>
       
-      <div className="max-w-6xl mx-auto relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
+      <div className="hz-container-wide hz-rel hz-z-raised">
+        <div className="hz-container-narrow hz-align-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="flex justify-center mb-6"
+            className="hz-row hz-jc-center hz-mb-5"
           >
-            <div className="bg-gradient-to-r from-neutral-600 to-neutral-600 p-3 rounded-lg">
-              <Activity className="h-8 w-8 text-[var(--white)]" />
+            <div className="hz-p-3 hz-r-lg">
+              <Activity className="hz-sq-5 hz-fg" />
             </div>
           </motion.div>
           
@@ -29,7 +29,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400"
+            className="hz-t-4xl hz-w-bold hz-mb-5 hz-chrome"
           >
             Unified Intelligence for AI Applications
           </motion.h1>
@@ -38,7 +38,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-xl md:text-2xl text-neutral-300 mb-10 max-w-3xl mx-auto"
+            className="hz-container-narrow hz-t-xl hz-fg-soft hz-mb-6"
           >
             Hanzo Observability provides end-to-end visibility and proactive insights designed specifically for debugging, optimizing, and improving your AI applications.
           </motion.p>
@@ -47,12 +47,12 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            className="hz-col-row hz-gap-4 hz-jc-center"
           >
-            <Button size="lg" className="bg-gradient-to-r from-neutral-600 to-neutral-600 hover:from-neutral-700 hover:to-neutral-700 text-[var(--white)] border-none px-8 py-6 rounded-md text-lg">
+            <Button size="lg" className="hz-fg hz-border-none hz-px-6 hz-py-5 hz-r-md hz-t-lg">
               Get Started
             </Button>
-            <Button size="lg" variant="outline" className="border-gray-600 hover:bg-gray-800/50 px-8 py-6 rounded-md text-lg">
+            <Button size="lg" variant="outline" className="hz-border-strong hz-px-6 hz-py-5 hz-r-md hz-t-lg hz-hoverable">
               View Documentation
             </Button>
           </motion.div>
@@ -62,24 +62,24 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="mt-16 relative"
+          className="hz-mt-7 hz-rel"
         >
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10 h-20 bottom-0"></div>
-          <div className="bg-gradient-to-br from-gray-900 to-black p-2 rounded-xl border border-gray-800/50 shadow-2xl overflow-hidden">
-            <div className="grid grid-cols-5 gap-3 p-4 bg-[var(--black)]/60 rounded-lg">
-              <div className="col-span-1 space-y-4">
-                <div className="h-8 bg-gray-800 rounded-md"></div>
-                <div className="h-8 bg-gray-800/60 rounded-md"></div>
-                <div className="h-8 bg-gray-800/60 rounded-md"></div>
-                <div className="h-8 bg-gray-800/60 rounded-md"></div>
-                <div className="h-8 bg-gray-800/60 rounded-md"></div>
-                <div className="h-32 bg-gray-800/40 rounded-md mt-8"></div>
+          <div className="hz-abs hz-inset hz-z-raised hz-bh-8 hz-bottom-0"></div>
+          <div className="hz-p-2 hz-r-lg hz-bordered hz-shadow-lg hz-clip">
+            <div className="hz-grid hz-grid-5 hz-gap-3 hz-p-4 hz-bg-overlay hz-r-lg">
+              <div className="hz-stack-4">
+                <div className="hz-bh-5 hz-bg-raised hz-r-md"></div>
+                <div className="hz-bh-5 hz-bg-raised hz-r-md"></div>
+                <div className="hz-bh-5 hz-bg-raised hz-r-md"></div>
+                <div className="hz-bh-5 hz-bg-raised hz-r-md"></div>
+                <div className="hz-bh-5 hz-bg-raised hz-r-md"></div>
+                <div className="hz-bh-8 hz-bg-raised hz-r-md hz-mt-6"></div>
               </div>
-              <div className="col-span-4 space-y-4">
-                <div className="h-12 bg-gray-800/60 rounded-md"></div>
-                <div className="h-64 bg-gradient-to-br from-gray-800/60 to-gray-900/60 rounded-lg relative overflow-hidden">
-                  <div className="absolute inset-x-0 bottom-0 h-40">
-                    <svg viewBox="0 0 500 150" preserveAspectRatio="none" className="w-full h-full">
+              <div className="hz-span-full hz-stack-4">
+                <div className="hz-bh-7 hz-bg-raised hz-r-md"></div>
+                <div className="hz-bh-8 hz-r-lg hz-rel hz-clip">
+                  <div className="hz-abs hz-bottom-0 hz-bh-8">
+                    <svg viewBox="0 0 500 150" preserveAspectRatio="none" className="hz-w-full hz-h-full">
                       <path
                         d="M0,150 L0,40 Q125,10 250,40 T500,40 L500,150 Z"
                         fill="rgba(124, 58, 237, 0.5)"
@@ -90,14 +90,14 @@ const HeroSection = () => {
                       ></path>
                     </svg>
                   </div>
-                  <div className="absolute top-4 left-4 flex space-x-2">
-                    <div className="h-3 w-3 rounded-full bg-neutral-500"></div>
-                    <div className="h-3 w-3 rounded-full bg-neutral-600"></div>
+                  <div className="hz-abs hz-row hz-inline-2">
+                    <div className="hz-sq-1 hz-r-full hz-bg-raised"></div>
+                    <div className="hz-sq-1 hz-r-full hz-bg-raised"></div>
                   </div>
                 </div>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="h-32 bg-gray-800/40 rounded-lg"></div>
-                  <div className="h-32 bg-gray-800/40 rounded-lg"></div>
+                <div className="hz-grid hz-grid-2 hz-gap-4">
+                  <div className="hz-bh-8 hz-bg-raised hz-r-lg"></div>
+                  <div className="hz-bh-8 hz-bg-raised hz-r-lg"></div>
                 </div>
               </div>
             </div>

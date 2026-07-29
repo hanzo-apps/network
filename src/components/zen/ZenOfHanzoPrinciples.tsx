@@ -15,29 +15,29 @@ const ZenOfHanzoPrinciples: React.FC = () => {
     : principles;
 
   return (
-    <div className="mt-16 mb-24 px-4" id="principles">
+    <div className="hz-mt-7 hz-mb-7 hz-px-4" id="principles">
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="text-center mb-12"
+        className="hz-align-center hz-mb-7"
       >
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[var(--white)]">Our Principles</h2>
-        <p className="text-lg text-neutral-400 max-w-3xl mx-auto">
+        <h2 className="hz-t-3xl hz-w-bold hz-mb-4 hz-fg">Our Principles</h2>
+        <p className="hz-container-narrow hz-t-lg hz-fg-muted">
           Time-tested principles guiding the development of next-generation AI systems and applications
         </p>
-        <div className="h-px w-20 bg-gray-700 mx-auto mt-6"></div>
+        <div className="hz-bw-8 hz-bg-raised hz-mx-auto hz-mt-5"></div>
       </motion.div>
 
       {/* Sticky Discipline Filter */}
-      <div className="sticky top-0 z-40 bg-[var(--black)]/95 backdrop-blur-sm border-b border-gray-800/50 py-6 mb-8">
-        <div className="flex flex-wrap justify-center gap-2">
+      <div className="hz-sticky hz-top-0 hz-z-header hz-bg-overlay hz-glass hz-border-b hz-py-5 hz-mb-6">
+        <div className="hz-row hz-wrap hz-jc-center hz-gap-2">
           <button
-            className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+            className={`hz-px-4 hz-py-2 hz-r-full hz-t-sm hz-w-medium hz-transition ${
               selectedDiscipline === null 
-                ? "bg-white text-black shadow-lg" 
-                : "bg-gray-800/50 text-gray-400 hover:bg-gray-700/50 hover:text-gray-300"
+                ? "hz-bg-inverse hz-fg-inverse hz-shadow-lg" 
+                : "hz-bg-raised hz-fg-muted hz-link"
             }`}
             onClick={() => setSelectedDiscipline(null)}
           >
@@ -46,10 +46,10 @@ const ZenOfHanzoPrinciples: React.FC = () => {
           {disciplines.map(discipline => (
             <button
               key={discipline}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+              className={`hz-px-4 hz-py-2 hz-r-full hz-t-sm hz-w-medium hz-transition ${
                 selectedDiscipline === discipline 
-                  ? "bg-white text-black shadow-lg" 
-                  : "bg-gray-800/50 text-gray-400 hover:bg-gray-700/50 hover:text-gray-300"
+                  ? "hz-bg-inverse hz-fg-inverse hz-shadow-lg" 
+                  : "hz-bg-raised hz-fg-muted hz-link"
               }`}
               onClick={() => setSelectedDiscipline(discipline)}
             >
@@ -59,7 +59,7 @@ const ZenOfHanzoPrinciples: React.FC = () => {
         </div>
         
         {/* Display count of displayed principles */}
-        <div className="text-center mt-4 text-neutral-500 text-sm">
+        <div className="hz-align-center hz-mt-4 hz-fg-muted hz-t-sm">
           {selectedDiscipline ? (
             <p>Showing principles from the {selectedDiscipline} discipline</p>
           ) : (
@@ -68,7 +68,7 @@ const ZenOfHanzoPrinciples: React.FC = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="hz-grid hz-grid-4 hz-container hz-gap-5">
         {filteredPrinciples.map((principle, index) => (
           <ZenPrincipleCard 
             key={principle.number} 
@@ -78,24 +78,24 @@ const ZenOfHanzoPrinciples: React.FC = () => {
         ))}
       </div>
       
-      <div className="text-center mt-16">
-        <div className="bg-white/5 rounded-xl p-8 border border-white/10 max-w-4xl mx-auto">
-          <h3 className="text-2xl font-semibold mb-4">Apply These Principles</h3>
-          <p className="text-neutral-400 mb-6">
+      <div className="hz-align-center hz-mt-7">
+        <div className="hz-container-narrow hz-card">
+          <h3 className="hz-t-2xl hz-w-semibold hz-mb-4">Apply These Principles</h3>
+          <p className="hz-fg-muted hz-mb-5">
             Ready to build with these principles? Explore our documentation, try our models, or dive into our open-source platform.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="hz-col-row hz-gap-4 hz-jc-center">
             <a
               href="https://docs.hanzo.ai"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3 bg-white text-black rounded-lg hover:bg-gray-100 transition-all duration-300"
+              className="hz-px-5 hz-py-3 hz-bg-inverse hz-fg-inverse hz-r-lg hz-transition hz-hoverable"
             >
               Read Documentation
             </a>
             <a
               href="/platform"
-              className="px-6 py-3 bg-transparent border border-white/20 text-white hover:bg-white hover:text-black rounded-lg transition-all duration-300"
+              className="hz-px-5 hz-py-3 hz-bg-none hz-bordered hz-fg hz-r-lg hz-transition hz-hoverable"
             >
               Explore Platform
             </a>
@@ -103,7 +103,7 @@ const ZenOfHanzoPrinciples: React.FC = () => {
               href="https://github.com/hanzoai"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3 bg-transparent border border-white/20 text-white hover:bg-white hover:text-black rounded-lg transition-all duration-300"
+              className="hz-px-5 hz-py-3 hz-bg-none hz-bordered hz-fg hz-r-lg hz-transition hz-hoverable"
             >
               Open Source
             </a>

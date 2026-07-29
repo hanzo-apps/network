@@ -20,35 +20,35 @@ const IChingPrinciplesGrid: React.FC<IChingPrinciplesGridProps> = ({
   const columns = 8;
   
   return (
-    <div className="mt-16 mb-24">
+    <div className="hz-mt-7 hz-mb-7">
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="text-center mb-12"
+        className="hz-align-center hz-mb-7"
       >
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[var(--white)]">{title}</h2>
-        <p className="text-lg text-neutral-400 max-w-3xl mx-auto">
+        <h2 className="hz-t-3xl hz-w-bold hz-mb-4 hz-fg">{title}</h2>
+        <p className="hz-container-narrow hz-t-lg hz-fg-muted">
           {description}
         </p>
-        <div className="h-px w-20 bg-gray-700 mx-auto mt-6"></div>
+        <div className="hz-bw-8 hz-bg-raised hz-mx-auto hz-mt-5"></div>
       </motion.div>
       
-      <div className="relative">
-        <div className="absolute left-4 top-4">
-          <TaijiSymbol size={60} className="text-[var(--white)]" />
+      <div className="hz-rel">
+        <div className="hz-abs">
+          <TaijiSymbol size={60} className="hz-fg" />
         </div>
         
-        <div className="overflow-x-auto">
-          <div className="grid grid-cols-8 gap-4 min-w-[800px] p-8 bg-gray-900/30 border border-gray-800 rounded-lg">
+        <div className="hz-scroll-x">
+          <div className="hz-grid hz-grid-6 hz-card hz-gap-4">
             {Array.from({ length: rows }).map((_, rowIndex) => (
               <React.Fragment key={`row-${rowIndex}`}>
                 {Array.from({ length: columns }).map((_, colIndex) => {
                   const index = rowIndex * columns + colIndex;
                   const hexagram = ichingPrinciples[index] || null;
                   
-                  if (!hexagram) return <div key={`empty-${index}`} className="aspect-square"></div>;
+                  if (!hexagram) return <div key={`empty-${index}`} className=""></div>;
                   
                   return (
                     <motion.div
@@ -57,12 +57,12 @@ const IChingPrinciplesGrid: React.FC<IChingPrinciplesGridProps> = ({
                       whileInView={{ opacity: 1 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.3, delay: (index % 16) * 0.05 }}
-                      className="flex flex-col items-center justify-center p-2 border border-gray-800 bg-gray-900/50 hover:bg-gray-800/50 rounded-md transition-all aspect-square cursor-pointer group"
+                      className="hz-col hz-ai-center hz-jc-center hz-p-2 hz-bordered hz-bg-surface hz-r-md hz-transition hz-pointer hz-hoverable"
                       title={`${hexagram.id}. ${hexagram.name} (${hexagram.chineseName} - ${hexagram.pinyin}): ${hexagram.principle}`}
                     >
-                      <div className="mb-2 text-xs text-neutral-500">{hexagram.id}</div>
-                      <IChingHexagram lines={hexagram.lines} size={32} className="text-[var(--white)] mb-2" />
-                      <div className="text-center text-xs text-neutral-400 group-hover:text-neutral-300 transition-colors">
+                      <div className="hz-mb-2 hz-t-xs hz-fg-muted">{hexagram.id}</div>
+                      <IChingHexagram lines={hexagram.lines} size={32} className="hz-fg hz-mb-2" />
+                      <div className="hz-align-center hz-t-xs hz-fg-muted hz-transition hz-link">
                         {hexagram.chineseName}
                       </div>
                     </motion.div>
@@ -73,7 +73,7 @@ const IChingPrinciplesGrid: React.FC<IChingPrinciplesGridProps> = ({
           </div>
         </div>
         
-        <div className="mt-8 text-center text-sm text-neutral-500">
+        <div className="hz-mt-6 hz-align-center hz-t-sm hz-fg-muted">
           Hover over each hexagram to see its principle
         </div>
       </div>

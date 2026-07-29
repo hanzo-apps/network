@@ -16,23 +16,23 @@ const Chat = ({
   handleSubmit 
 }: ChatProps) => {
   return (
-    <div className="flex-1 flex flex-col overflow-hidden">
+    <div className="hz-grow hz-col hz-clip">
       {/* Messages */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-4">
+      <div className="hz-grow hz-scroll-y hz-p-4 hz-stack-4">
         {conversation.map((message, i) => (
           <div 
             key={i} 
-            className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}
+            className={`hz-row ${message.role === "user" ? "hz-jc-end" : "hz-jc-start"}`}
           >
             <div 
-              className={`max-w-3xl p-3 rounded-lg ${
+              className={`hz-mw-lg hz-p-3 hz-r-lg ${
                 message.role === "user" 
-                  ? "bg-neutral-600/30 border border-neutral-500/30" 
-                  : "bg-gray-800/60 border border-gray-700/50"
+                  ? "hz-bg-raised hz-bordered hz-border-strong" 
+                  : "hz-bg-raised hz-bordered"
               }`}
             >
               <div 
-                className="prose prose-invert text-sm" 
+                className="hz-prose hz-t-sm" 
                 dangerouslySetInnerHTML={{ 
                   __html: message.content.replace(/```(.+?)```/gs, '<pre><code>$1</code></pre>') 
                 }} 
@@ -43,19 +43,19 @@ const Chat = ({
       </div>
       
       {/* Input */}
-      <div className="p-4 border-t border-gray-800">
+      <div className="hz-p-4 hz-border-t">
         <form onSubmit={handleSubmit}>
-          <div className="flex items-center">
+          <div className="hz-row hz-ai-center">
             <input
               type="text"
               value={promptText}
               onChange={(e) => setPromptText(e.target.value)}
               placeholder="Send a message..."
-              className="flex-1 bg-gray-800/50 border border-gray-700 rounded-l-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-neutral-500"
+              className="hz-grow hz-bg-raised hz-bordered hz-px-4 hz-py-2"
             />
             <button 
               type="submit" 
-              className="rounded-l-none bg-neutral-600 hover:bg-neutral-700 px-4 py-2 text-[var(--white)] font-medium"
+              className="hz-bg-raised hz-px-4 hz-py-2 hz-fg hz-w-medium hz-hoverable"
             >
               Send
             </button>

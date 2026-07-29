@@ -10,19 +10,19 @@ const WebinarCard = ({ title, partner, image, logos = [] }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      className="bg-gray-900/30 border border-gray-800 rounded-xl overflow-hidden group hover:border-gray-700 transition-colors"
+      className="hz-bg-surface hz-bordered hz-r-lg hz-clip hz-transition hz-hoverable"
     >
-      <div className="h-48 bg-gray-800 relative">
-        <div className="absolute inset-0 flex items-center justify-center text-neutral-500">
+      <div className="hz-bh-8 hz-bg-raised hz-rel">
+        <div className="hz-abs hz-inset hz-row hz-ai-center hz-jc-center hz-fg-muted">
           {title}
         </div>
       </div>
-      <div className="p-6">
-        <div className="flex items-center justify-between mb-4">
-          <div className="text-lg font-semibold">{title}</div>
-          <div className="text-neutral-500">{partner}</div>
+      <div className="hz-p-5">
+        <div className="hz-row hz-ai-center hz-jc-between hz-mb-4">
+          <div className="hz-t-lg hz-w-semibold">{title}</div>
+          <div className="hz-fg-muted">{partner}</div>
         </div>
-        <Button className="w-full bg-gray-800 hover:bg-gray-700">
+        <Button className="hz-w-full hz-bg-raised hz-hoverable">
           Learn More
         </Button>
       </div>
@@ -65,22 +65,22 @@ const HanzoAppWebinars = () => {
   ];
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[var(--black)]">
-      <div className="max-w-7xl mx-auto">
+    <section className="hz-py-7 hz-px-4 hz-bg">
+      <div className="hz-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="hz-align-center hz-mb-7"
         >
-          <h2 className="text-3xl font-bold mb-4">Webinars</h2>
-          <p className="text-xl text-neutral-300">
+          <h2 className="hz-t-3xl hz-w-bold hz-mb-4">Webinars</h2>
+          <p className="hz-t-xl hz-fg-soft">
             Learn how to use Hanzo AI from different webinar series with our partners
           </p>
         </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="hz-grid hz-grid-3 hz-gap-6">
           {webinars.map((webinar, index) => (
             <WebinarCard 
               key={index}

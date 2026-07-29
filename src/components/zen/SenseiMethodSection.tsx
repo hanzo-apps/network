@@ -5,17 +5,17 @@ import { ArrowRight, BookOpen, HexagonIcon } from "lucide-react";
 
 const SenseiMethodSection = () => {
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-[var(--black)]/50">
-      <div className="max-w-5xl mx-auto">
+    <section className="hz-py-7 hz-px-4 hz-bg-overlay">
+      <div className="hz-container-wide">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="hz-align-center hz-mb-7"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">The Sensei Method</h2>
-          <div className="h-px w-20 bg-neutral-600 mx-auto"></div>
+          <h2 className="hz-t-3xl hz-w-bold hz-mb-4">The Sensei Method</h2>
+          <div className="hz-bw-8 hz-bg-raised hz-mx-auto"></div>
         </motion.div>
         
         <motion.div
@@ -23,49 +23,49 @@ const SenseiMethodSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="bg-[var(--black)]/20 backdrop-blur-sm border border-neutral-500/10 rounded-lg p-10 mb-10"
+          className="hz-card hz-glass hz-mb-6"
         >
-          <div className="flex justify-center mb-8">
-            <HexagonIcon className="h-16 w-16 text-neutral-400 opacity-70" />
+          <div className="hz-row hz-jc-center hz-mb-6">
+            <HexagonIcon className="hz-sq-8 hz-fg-muted hz-dim" />
           </div>
           
-          <p className="text-neutral-300 md:text-lg leading-relaxed mb-10 max-w-3xl mx-auto text-center">
+          <p className="hz-container-narrow hz-fg-soft hz-leading-relaxed hz-mb-6 hz-align-center">
             Our principles come alive through the Sensei Method, a framework that brings these 64 hexagrams
             into practice. It combines wisdom from ancient philosophies with modern engineering practices
             to create technology that is both powerful and humane.
           </p>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-12">
+          <div className="hz-grid hz-grid-2 hz-gap-6 hz-mt-7">
             <a 
               href="https://hanzo.agency" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="flex items-center justify-between px-8 py-6 bg-gradient-to-r from-neutral-800/30 to-neutral-700/20 hover:from-neutral-800/40 hover:to-neutral-600/30 rounded-lg text-[var(--white)] transition-all group"
+              className="hz-btn hz-btn-lg hz-jc-between hz-fg hz-transition"
             >
-              <div className="flex items-center">
-                <BookOpen className="h-5 w-5 text-neutral-400 mr-3" />
+              <div className="hz-row hz-ai-center">
+                <BookOpen className="hz-sq-3 hz-fg-muted hz-mr-3" />
                 <div>
-                  <h3 className="text-xl font-medium mb-2">Hanzo Agency</h3>
-                  <p className="text-sm text-neutral-300">AI-powered creative & marketing</p>
+                  <h3 className="hz-t-xl hz-w-medium hz-mb-2">Hanzo Agency</h3>
+                  <p className="hz-t-sm hz-fg-soft">AI-powered creative & marketing</p>
                 </div>
               </div>
-              <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="hz-sq-3 hz-transition" />
             </a>
             
             <a 
               href="https://sensei.group" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="flex items-center justify-between px-8 py-6 bg-gradient-to-r from-neutral-800/30 to-neutral-700/20 hover:from-neutral-800/40 hover:to-neutral-600/30 rounded-lg text-[var(--white)] transition-all group"
+              className="hz-btn hz-btn-lg hz-jc-between hz-fg hz-transition"
             >
-              <div className="flex items-center">
-                <HexagonIcon className="h-5 w-5 text-neutral-400 mr-3" />
+              <div className="hz-row hz-ai-center">
+                <HexagonIcon className="hz-sq-3 hz-fg-muted hz-mr-3" />
                 <div>
-                  <h3 className="text-xl font-medium mb-2">Sensei Group</h3>
-                  <p className="text-sm text-neutral-300">Enterprise transformation experts</p>
+                  <h3 className="hz-t-xl hz-w-medium hz-mb-2">Sensei Group</h3>
+                  <p className="hz-t-sm hz-fg-soft">Enterprise transformation experts</p>
                 </div>
               </div>
-              <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="hz-sq-3 hz-transition" />
             </a>
           </div>
         </motion.div>

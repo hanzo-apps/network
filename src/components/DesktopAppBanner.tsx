@@ -47,37 +47,37 @@ const DesktopAppBanner = ({ variant = "floating" }: DesktopAppBannerProps) => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="bg-gradient-to-r from-neutral-900 to-neutral-800 border-b border-neutral-800"
+            className="hz-border-b"
           >
-            <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-lg bg-[var(--brand)]/20 flex items-center justify-center">
-                  <Monitor className="w-4 h-4 text-[var(--brand)]" />
+            <div className="hz-container hz-py-3 hz-row hz-ai-center hz-jc-between hz-gap-4">
+              <div className="hz-row hz-ai-center hz-gap-3">
+                <div className="hz-sq-5 hz-r-lg hz-bg-surface hz-row hz-ai-center hz-jc-center">
+                  <Monitor className="hz-sq-2 hz-fg-soft" />
                 </div>
                 <div>
-                  <p className="text-sm text-white font-medium">
+                  <p className="hz-t-sm hz-fg hz-w-medium">
                     Hanzo Dev Desktop App
                   </p>
-                  <p className="text-xs text-neutral-400">
+                  <p className="hz-t-xs hz-fg-muted">
                     Native performance. All your tools in one place.
                   </p>
                 </div>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="hz-row hz-ai-center hz-gap-2">
                 <a
                   href={downloadUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--brand)] text-white text-sm font-medium hover:bg-[var(--brand-muted)] transition-colors"
+                  className="hz-btn hz-gap-2 hz-fg hz-transition"
                 >
-                  <Download className="w-4 h-4" />
+                  <Download className="hz-sq-2" />
                   {isMac ? "Download for Mac" : "Download"}
                 </a>
                 <button
                   onClick={handleDismiss}
-                  className="p-2 rounded-full text-neutral-500 hover:text-white hover:bg-neutral-800 transition-colors"
+                  className="hz-p-2 hz-r-full hz-fg-muted hz-transition hz-link"
                 >
-                  <X className="w-4 h-4" />
+                  <X className="hz-sq-2" />
                 </button>
               </div>
             </div>
@@ -95,59 +95,59 @@ const DesktopAppBanner = ({ variant = "floating" }: DesktopAppBannerProps) => {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 50, scale: 0.9 }}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
-          className="fixed bottom-24 left-6 z-40 max-w-sm"
+          className="hz-fixed hz-z-header hz-mw-xs"
         >
-          <div className="bg-neutral-900 border border-neutral-800 rounded-2xl shadow-2xl overflow-hidden">
+          <div className="hz-bg-surface hz-bordered hz-r-xl hz-shadow-lg hz-clip">
             {/* Header with close button */}
-            <div className="flex items-center justify-between px-4 py-3 border-b border-neutral-800">
-              <div className="flex items-center gap-2">
-                <div className="w-6 h-6 rounded-md bg-[var(--brand)]/20 flex items-center justify-center">
-                  <Monitor className="w-3.5 h-3.5 text-[var(--brand)]" />
+            <div className="hz-row hz-ai-center hz-jc-between hz-px-4 hz-py-3 hz-border-b">
+              <div className="hz-row hz-ai-center hz-gap-2">
+                <div className="hz-sq-4 hz-r-md hz-bg-surface hz-row hz-ai-center hz-jc-center">
+                  <Monitor className="hz-sq-2 hz-fg-soft" />
                 </div>
-                <span className="text-xs font-medium text-white">NEW</span>
+                <span className="hz-t-xs hz-w-medium hz-fg">NEW</span>
               </div>
               <button
                 onClick={handleDismiss}
-                className="p-1 rounded-md text-neutral-500 hover:text-white hover:bg-neutral-800 transition-colors"
+                className="hz-p-1 hz-r-md hz-fg-muted hz-transition hz-link"
               >
-                <X className="w-4 h-4" />
+                <X className="hz-sq-2" />
               </button>
             </div>
 
             {/* Content */}
-            <div className="p-4">
-              <h3 className="text-base font-semibold text-white mb-1">
+            <div className="hz-p-4">
+              <h3 className="hz-t-base hz-w-semibold hz-fg hz-mb-1">
                 Get Hanzo Dev for Desktop
               </h3>
-              <p className="text-sm text-neutral-400 mb-4">
+              <p className="hz-t-sm hz-fg-muted hz-mb-4">
                 Native app with faster performance, offline access, and system integrations.
               </p>
 
-              <div className="flex items-center gap-2">
+              <div className="hz-row hz-ai-center hz-gap-2">
                 <a
                   href={downloadUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-[var(--brand)] text-white text-sm font-medium hover:bg-[var(--brand-muted)] transition-colors"
+                  className="hz-btn hz-grow hz-gap-2 hz-fg hz-transition"
                 >
-                  <Download className="w-4 h-4" />
+                  <Download className="hz-sq-2" />
                   {isMac ? "Download for Mac" : "Download"}
                 </a>
                 <a
                   href="/dev"
-                  className="px-4 py-2.5 rounded-lg border border-neutral-700 text-neutral-300 text-sm font-medium hover:bg-neutral-800 hover:text-white transition-colors"
+                  className="hz-px-4 hz-py-2 hz-r-lg hz-bordered hz-fg-soft hz-t-sm hz-w-medium hz-transition hz-hoverable"
                 >
                   Learn more
                 </a>
               </div>
 
               {/* Platform note */}
-              <p className="mt-3 text-xs text-neutral-500 flex items-center gap-1">
+              <p className="hz-mt-3 hz-t-xs hz-fg-muted hz-row hz-ai-center hz-gap-1">
                 {isMac ? (
                   <>Apple Silicon & Intel supported</>
                 ) : (
                   <>
-                    <ExternalLink className="w-3 h-3" />
+                    <ExternalLink className="hz-sq-1" />
                     Also available for Windows & Linux
                   </>
                 )}

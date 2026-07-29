@@ -16,55 +16,55 @@ const highlightCode = (code: string, language: string): React.ReactNode[] => {
 
     if (language === 'typescript' || language === 'javascript') {
       patterns.push(
-        { regex: /^(import|export|from|const|let|var|function|async|await|return|new|if|else|for|while|class|extends|implements|interface|type)\b/, className: 'text-neutral-400' },
-        { regex: /^(true|false|null|undefined)\b/, className: 'text-neutral-400' },
-        { regex: /^"[^"]*"|^'[^']*'|^`[^`]*`/, className: 'text-neutral-400' },
-        { regex: /^\d+\.?\d*/, className: 'text-neutral-400' },
-        { regex: /^\/\/.*$/, className: 'text-neutral-500 italic' },
-        { regex: /^(process|console|window|document)\b/, className: 'text-neutral-400' },
-        { regex: /^\.[a-zA-Z_]\w*/, className: 'text-neutral-400' },
-        { regex: /^[A-Z][a-zA-Z0-9]*/, className: 'text-neutral-400' },
-        { regex: /^(env|HANZO_API_KEY)\b/, className: 'text-neutral-400' },
+        { regex: /^(import|export|from|const|let|var|function|async|await|return|new|if|else|for|while|class|extends|implements|interface|type)\b/, className: 'hz-fg-muted' },
+        { regex: /^(true|false|null|undefined)\b/, className: 'hz-fg-muted' },
+        { regex: /^"[^"]*"|^'[^']*'|^`[^`]*`/, className: 'hz-fg-muted' },
+        { regex: /^\d+\.?\d*/, className: 'hz-fg-muted' },
+        { regex: /^\/\/.*$/, className: 'hz-fg-muted hz-italic' },
+        { regex: /^(process|console|window|document)\b/, className: 'hz-fg-muted' },
+        { regex: /^\.[a-zA-Z_]\w*/, className: 'hz-fg-muted' },
+        { regex: /^[A-Z][a-zA-Z0-9]*/, className: 'hz-fg-muted' },
+        { regex: /^(env|HANZO_API_KEY)\b/, className: 'hz-fg-muted' },
       );
     } else if (language === 'python') {
       patterns.push(
-        { regex: /^(import|from|as|def|class|return|if|elif|else|for|while|with|async|await|try|except|finally|raise|pass|break|continue|and|or|not|in|is)\b/, className: 'text-neutral-400' },
-        { regex: /^(True|False|None)\b/, className: 'text-neutral-400' },
-        { regex: /^"[^"]*"|^'[^']*'|^"""[\s\S]*?"""|^'''[\s\S]*?'''/, className: 'text-neutral-400' },
-        { regex: /^f"[^"]*"|^f'[^']*'/, className: 'text-neutral-400' },
-        { regex: /^\d+\.?\d*/, className: 'text-neutral-400' },
-        { regex: /^#.*$/, className: 'text-neutral-500 italic' },
-        { regex: /^(os|sys|print|open|len|range|str|int|float|list|dict|set)\b/, className: 'text-neutral-400' },
-        { regex: /^[A-Z][a-zA-Z0-9]*/, className: 'text-neutral-400' },
+        { regex: /^(import|from|as|def|class|return|if|elif|else|for|while|with|async|await|try|except|finally|raise|pass|break|continue|and|or|not|in|is)\b/, className: 'hz-fg-muted' },
+        { regex: /^(True|False|None)\b/, className: 'hz-fg-muted' },
+        { regex: /^"[^"]*"|^'[^']*'|^"""[\s\S]*?"""|^'''[\s\S]*?'''/, className: 'hz-fg-muted' },
+        { regex: /^f"[^"]*"|^f'[^']*'/, className: 'hz-fg-muted' },
+        { regex: /^\d+\.?\d*/, className: 'hz-fg-muted' },
+        { regex: /^#.*$/, className: 'hz-fg-muted hz-italic' },
+        { regex: /^(os|sys|print|open|len|range|str|int|float|list|dict|set)\b/, className: 'hz-fg-muted' },
+        { regex: /^[A-Z][a-zA-Z0-9]*/, className: 'hz-fg-muted' },
       );
     } else if (language === 'go') {
       patterns.push(
-        { regex: /^(package|import|func|return|if|else|for|range|switch|case|default|type|struct|interface|var|const|map|chan|go|defer|select)\b/, className: 'text-neutral-400' },
-        { regex: /^(true|false|nil)\b/, className: 'text-neutral-400' },
-        { regex: /^"[^"]*"|^`[^`]*`/, className: 'text-neutral-400' },
-        { regex: /^\d+\.?\d*/, className: 'text-neutral-400' },
-        { regex: /^\/\/.*$/, className: 'text-neutral-500 italic' },
-        { regex: /^(fmt|os|context|http|json|string|int|error|bool)\b/, className: 'text-neutral-400' },
-        { regex: /^[A-Z][a-zA-Z0-9]*/, className: 'text-neutral-400' },
+        { regex: /^(package|import|func|return|if|else|for|range|switch|case|default|type|struct|interface|var|const|map|chan|go|defer|select)\b/, className: 'hz-fg-muted' },
+        { regex: /^(true|false|nil)\b/, className: 'hz-fg-muted' },
+        { regex: /^"[^"]*"|^`[^`]*`/, className: 'hz-fg-muted' },
+        { regex: /^\d+\.?\d*/, className: 'hz-fg-muted' },
+        { regex: /^\/\/.*$/, className: 'hz-fg-muted hz-italic' },
+        { regex: /^(fmt|os|context|http|json|string|int|error|bool)\b/, className: 'hz-fg-muted' },
+        { regex: /^[A-Z][a-zA-Z0-9]*/, className: 'hz-fg-muted' },
       );
     } else if (language === 'bash' || language === 'shell') {
       patterns.push(
-        { regex: /^\$\s*/, className: 'text-neutral-500' },
-        { regex: /^(curl|sh|npm|npx|pip|go|cargo|hanzo|dev)\b/, className: 'text-neutral-400' },
-        { regex: /^"[^"]*"|^'[^']*'/, className: 'text-neutral-400' },
-        { regex: /^#.*$/, className: 'text-neutral-500 italic' },
-        { regex: /^-[a-zA-Z]+/, className: 'text-neutral-400' },
-        { regex: /^https?:\/\/[^\s]+/, className: 'text-neutral-400' },
+        { regex: /^\$\s*/, className: 'hz-fg-muted' },
+        { regex: /^(curl|sh|npm|npx|pip|go|cargo|hanzo|dev)\b/, className: 'hz-fg-muted' },
+        { regex: /^"[^"]*"|^'[^']*'/, className: 'hz-fg-muted' },
+        { regex: /^#.*$/, className: 'hz-fg-muted hz-italic' },
+        { regex: /^-[a-zA-Z]+/, className: 'hz-fg-muted' },
+        { regex: /^https?:\/\/[^\s]+/, className: 'hz-fg-muted' },
       );
     } else if (language === 'rust') {
       patterns.push(
-        { regex: /^(use|mod|fn|let|mut|const|pub|impl|struct|enum|trait|where|async|await|return|if|else|for|while|loop|match|self|Self|crate|super)\b/, className: 'text-neutral-400' },
-        { regex: /^(true|false|None|Some|Ok|Err)\b/, className: 'text-neutral-400' },
-        { regex: /^"[^"]*"/, className: 'text-neutral-400' },
-        { regex: /^\d+\.?\d*/, className: 'text-neutral-400' },
-        { regex: /^\/\/.*$/, className: 'text-neutral-500 italic' },
-        { regex: /^(String|Vec|Option|Result|Box|Rc|Arc|i32|i64|u32|u64|f32|f64|bool|str)\b/, className: 'text-neutral-400' },
-        { regex: /^[A-Z][a-zA-Z0-9]*/, className: 'text-neutral-400' },
+        { regex: /^(use|mod|fn|let|mut|const|pub|impl|struct|enum|trait|where|async|await|return|if|else|for|while|loop|match|self|Self|crate|super)\b/, className: 'hz-fg-muted' },
+        { regex: /^(true|false|None|Some|Ok|Err)\b/, className: 'hz-fg-muted' },
+        { regex: /^"[^"]*"/, className: 'hz-fg-muted' },
+        { regex: /^\d+\.?\d*/, className: 'hz-fg-muted' },
+        { regex: /^\/\/.*$/, className: 'hz-fg-muted hz-italic' },
+        { regex: /^(String|Vec|Option|Result|Box|Rc|Arc|i32|i64|u32|u64|f32|f64|bool|str)\b/, className: 'hz-fg-muted' },
+        { regex: /^[A-Z][a-zA-Z0-9]*/, className: 'hz-fg-muted' },
       );
     }
 
@@ -102,7 +102,7 @@ const highlightCode = (code: string, language: string): React.ReactNode[] => {
           plainEnd++;
         }
         tokens.push(
-          <span key={key++} className="text-neutral-300">
+          <span key={key++} className="hz-fg-soft">
             {remaining.slice(0, plainEnd)}
           </span>
         );
@@ -111,7 +111,7 @@ const highlightCode = (code: string, language: string): React.ReactNode[] => {
     }
 
     return (
-      <div key={lineIdx} className="leading-relaxed">
+      <div key={lineIdx} className="hz-leading-relaxed">
         {tokens.length > 0 ? tokens : <span>&nbsp;</span>}
       </div>
     );
@@ -137,29 +137,29 @@ export const CodeBlock = ({ code, language, showLineNumbers = false, className }
   const highlightedCode = highlightCode(code.trim(), language);
 
   return (
-    <div className={cn("relative rounded-lg border border-neutral-800 bg-neutral-950 overflow-hidden", className)}>
+    <div className={cn("hz-rel hz-r-lg hz-bordered hz-bg-surface hz-clip", className)}>
       {/* Header */}
-      <div className="flex items-center justify-between px-4 py-2 border-b border-neutral-800 bg-neutral-900/50">
-        <span className="text-xs text-neutral-500 font-mono">{language}</span>
+      <div className="hz-row hz-ai-center hz-jc-between hz-px-4 hz-py-2 hz-border-b hz-bg-surface">
+        <span className="hz-t-xs hz-fg-muted hz-mono">{language}</span>
         <button
           onClick={handleCopy}
-          className="p-1.5 rounded hover:bg-neutral-800 transition-colors"
+          className="hz-p-2 hz-r-md hz-transition hz-hoverable"
           title="Copy code"
         >
           {copied ? (
-            <Check className="h-3.5 w-3.5 text-neutral-400" />
+            <Check className="hz-sq-2 hz-fg-muted" />
           ) : (
-            <Copy className="h-3.5 w-3.5 text-neutral-500" />
+            <Copy className="hz-sq-2 hz-fg-muted" />
           )}
         </button>
       </div>
 
       {/* Code content */}
-      <div className="p-4 overflow-x-auto">
-        <pre className="font-mono text-sm">
+      <div className="hz-p-4 hz-scroll-x">
+        <pre className="hz-mono hz-t-sm">
           {showLineNumbers ? (
-            <div className="flex">
-              <div className="pr-4 select-none text-neutral-600 text-right">
+            <div className="hz-row">
+              <div className="hz-px-4 hz-fg-faint hz-align-right">
                 {highlightedCode.map((_, i) => (
                   <div key={i}>{i + 1}</div>
                 ))}
@@ -191,18 +191,18 @@ export const CodeTabs = ({ tabs, className }: CodeTabsProps) => {
   const [activeTab, setActiveTab] = useState(0);
 
   return (
-    <div className={cn("rounded-xl border border-neutral-800 bg-neutral-950 overflow-hidden", className)}>
+    <div className={cn("hz-r-lg hz-bordered hz-bg-surface hz-clip", className)}>
       {/* Tab headers */}
-      <div className="flex items-center border-b border-neutral-800 bg-neutral-900/50 overflow-x-auto">
+      <div className="hz-row hz-ai-center hz-border-b hz-bg-surface hz-scroll-x">
         {tabs.map((tab, idx) => (
           <button
             key={tab.language}
             onClick={() => setActiveTab(idx)}
             className={cn(
-              "px-4 py-2.5 text-xs font-medium transition-colors whitespace-nowrap",
+              "hz-px-4 hz-py-2 hz-t-xs hz-w-medium hz-transition hz-whitespace-nowrap",
               activeTab === idx
-                ? "text-white bg-neutral-800 border-b-2 border-white"
-                : "text-neutral-500 hover:text-neutral-300"
+                ? "hz-fg hz-bg-raised"
+                : "hz-fg-muted hz-link"
             )}
           >
             {tab.label}
@@ -211,8 +211,8 @@ export const CodeTabs = ({ tabs, className }: CodeTabsProps) => {
       </div>
 
       {/* Code content */}
-      <div className="p-4 overflow-x-auto">
-        <pre className="font-mono text-sm">
+      <div className="hz-p-4 hz-scroll-x">
+        <pre className="hz-mono hz-t-sm">
           {highlightCode(tabs[activeTab].code.trim(), tabs[activeTab].language)}
         </pre>
       </div>

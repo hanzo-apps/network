@@ -15,37 +15,37 @@ interface ChatMessageProps {
 const ChatMessage: React.FC<ChatMessageProps> = ({ message, formatTimestamp }) => {
   return (
     <div
-      className={`flex ${message.sender === "user" ? "justify-end" : "justify-start"} mb-4`}
+      className={`hz-row ${message.sender === "user" ? "hz-jc-end" : "hz-jc-start"} hz-mb-4`}
     >
       {message.sender === "ai" && (
-        <div className="bg-neutral-600/40 h-8 w-8 rounded-full flex items-center justify-center mr-2 mt-1">
-          <Bot className="h-4 w-4 text-[var(--white)]" />
+        <div className="hz-sq-5 hz-bg-raised hz-r-full hz-row hz-ai-center hz-jc-center hz-mr-2 hz-mt-1">
+          <Bot className="hz-sq-2 hz-fg" />
         </div>
       )}
       
       <div
-        className={`max-w-3xl p-3 rounded-lg ${
+        className={`hz-mw-lg hz-p-3 hz-r-lg ${
           message.sender === "user"
-            ? "bg-neutral-600/30 border border-neutral-500/30"
-            : "bg-gray-800/60 border border-gray-700/50"
+            ? "hz-bg-raised hz-bordered hz-border-strong"
+            : "hz-bg-raised hz-bordered"
         }`}
       >
         <div 
-          className="prose prose-invert text-sm" 
+          className="hz-prose hz-t-sm" 
           dangerouslySetInnerHTML={{ 
             __html: message.message.replace(/```(.+?)```/gs, '<pre><code>$1</code></pre>').replace(/\n/g, '<br>') 
           }} 
         />
-        <div className="text-right mt-1">
-          <span className="text-xs text-neutral-400">
+        <div className="hz-align-right hz-mt-1">
+          <span className="hz-t-xs hz-fg-muted">
             {formatTimestamp(message.timestamp)}
           </span>
         </div>
       </div>
       
       {message.sender === "user" && (
-        <div className="bg-neutral-600/40 h-8 w-8 rounded-full flex items-center justify-center ml-2 mt-1">
-          <User className="h-4 w-4 text-[var(--white)]" />
+        <div className="hz-sq-5 hz-bg-raised hz-r-full hz-row hz-ai-center hz-jc-center hz-ml-2 hz-mt-1">
+          <User className="hz-sq-2 hz-fg" />
         </div>
       )}
     </div>

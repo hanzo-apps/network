@@ -31,38 +31,38 @@ const Referrals = () => {
   };
   
   return (
-    <div className="min-h-screen bg-[var(--black)] text-[var(--white)] relative overflow-hidden">
+    <div className="hz-min-h-screen hz-bg hz-fg hz-rel hz-clip">
       <Helmet>
         <title>Referral Program - Hanzo AI</title>
         <meta name="description" content="Invite friends to Hanzo and earn $5 in credits for every successful referral. Our referral program rewards you for sharing the power of Hanzo AI with others." />
       </Helmet>
       
       {/* Background elements */}
-      <div className="fixed inset-0 -z-10">
+      <div className="hz-fixed hz-inset hz-z-behind">
         <GridLines spacing={100} opacity={0.07} />
-        <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-neutral-800/10 rounded-full blur-3xl transform translate-x-1/4 -translate-y-1/4"></div>
-        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-neutral-800/10 rounded-full blur-3xl transform -translate-x-1/4 translate-y-1/4"></div>
+        <div className="hz-abs hz-top-0 hz-right-0 hz-bg-raised hz-r-full hz-blur-bg"></div>
+        <div className="hz-abs hz-bottom-0 hz-left-0 hz-bg-raised hz-r-full hz-blur-bg"></div>
       </div>
       
       <Navbar />
       
-      <main className="pt-20 pb-24">
+      <main className="hz-pt-6 hz-pb-6">
         {/* Hero Section */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-6xl mx-auto">
+        <section className="hz-py-7 hz-px-4">
+          <div className="hz-container-wide">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-center mb-16"
+              className="hz-align-center hz-mb-7"
             >
-              <div className="inline-block p-3 rounded-full bg-neutral-800/30 border border-neutral-500/30 text-neutral-300 mb-6">
-                <Gift className="h-8 w-8" />
+              <div className="hz-card hz-card-tight hz-fg-soft hz-mb-5">
+                <Gift className="hz-sq-5" />
               </div>
-              <ChromeText as="h1" className="text-4xl md:text-6xl font-bold mb-6">
+              <ChromeText as="h1" className="hz-t-4xl hz-w-bold hz-mb-5">
                 Hanzo Referral Program
               </ChromeText>
-              <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
+              <p className="hz-container-narrow hz-t-xl hz-fg-soft">
                 Share Hanzo with friends and colleagues to earn rewards. For every person who signs up and starts using our platform, you'll receive $5 in credits.
               </p>
             </motion.div>
@@ -72,48 +72,48 @@ const Referrals = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="max-w-3xl mx-auto bg-gray-900/30 border border-gray-800 rounded-xl p-8 mb-16"
+              className="hz-container-narrow hz-card hz-mb-7"
             >
-              <h2 className="text-2xl font-bold mb-4">Your Referral Link</h2>
-              <div className="flex items-center gap-2 mb-6">
-                <div className="flex-1 bg-gray-800 p-4 rounded-lg text-neutral-300 font-mono text-sm overflow-hidden">
+              <h2 className="hz-t-2xl hz-w-bold hz-mb-4">Your Referral Link</h2>
+              <div className="hz-row hz-ai-center hz-gap-2 hz-mb-5">
+                <div className="hz-grow hz-bg-raised hz-p-4 hz-r-lg hz-fg-soft hz-mono hz-t-sm hz-clip">
                   {referralLink}
                 </div>
                 <Button
                   onClick={copyToClipboard}
-                  className="flex-shrink-0 bg-neutral-600 hover:bg-neutral-700"
+                  className="hz-none hz-bg-raised hz-hoverable"
                 >
-                  {copied ? <Check className="h-5 w-5" /> : <Copy className="h-5 w-5" />}
+                  {copied ? <Check className="hz-sq-3" /> : <Copy className="hz-sq-3" />}
                 </Button>
               </div>
               
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div className="hz-grid hz-grid-3 hz-gap-4">
                 <Button
                   variant="outline"
-                  className="flex gap-2 border-gray-700 hover:bg-gray-800"
+                  className="hz-row hz-gap-2 hz-hoverable"
                   onClick={() => window.open(`https://twitter.com/intent/tweet?text=Check out Hanzo AI!&url=${encodeURIComponent(referralLink)}`, '_blank')}
                 >
-                  <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <svg className="hz-sq-3" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
                   </svg>
                   Share on Twitter
                 </Button>
                 <Button
                   variant="outline"
-                  className="flex gap-2 border-gray-700 hover:bg-gray-800"
+                  className="hz-row hz-gap-2 hz-hoverable"
                   onClick={() => window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(referralLink)}`, '_blank')}
                 >
-                  <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <svg className="hz-sq-3" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                   </svg>
                   Share on LinkedIn
                 </Button>
                 <Button
                   variant="outline"
-                  className="flex gap-2 border-gray-700 hover:bg-gray-800"
+                  className="hz-row hz-gap-2 hz-hoverable"
                   onClick={() => window.open(`mailto:?subject=Check out Hanzo AI&body=I've been using Hanzo AI and thought you might be interested. Use my referral link to sign up: ${referralLink}`, '_blank')}
                 >
-                  <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <svg className="hz-sq-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                   Share via Email
@@ -127,33 +127,33 @@ const Referrals = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="max-w-4xl mx-auto mb-16"
+              className="hz-container-narrow hz-mb-7"
             >
-              <h2 className="text-3xl font-bold mb-8 text-center">How It Works</h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <h2 className="hz-t-3xl hz-w-bold hz-mb-6 hz-align-center">How It Works</h2>
+              <div className="hz-grid hz-grid-3 hz-gap-6">
                 {[
                   {
-                    icon: <Share2 className="h-8 w-8 text-neutral-400" />,
+                    icon: <Share2 className="hz-sq-5 hz-fg-muted" />,
                     title: "Share Your Link",
                     description: "Send your unique referral link to friends and colleagues."
                   },
                   {
-                    icon: <Users className="h-8 w-8 text-neutral-400" />,
+                    icon: <Users className="hz-sq-5 hz-fg-muted" />,
                     title: "Friends Sign Up",
                     description: "They create an account using your referral link and start using Hanzo."
                   },
                   {
-                    icon: <DollarSign className="h-8 w-8 text-neutral-400" />,
+                    icon: <DollarSign className="hz-sq-5 hz-fg-muted" />,
                     title: "Earn Rewards",
                     description: "You receive $5 in credits for each successful referral, automatically added to your account."
                   }
                 ].map((step, index) => (
-                  <div key={index} className="bg-gray-900/20 border border-gray-800 rounded-xl p-6">
-                    <div className="h-16 w-16 rounded-full bg-neutral-800/20 border border-neutral-500/20 flex items-center justify-center mb-4">
+                  <div key={index} className="hz-card">
+                    <div className="hz-sq-8 hz-r-full hz-bg-raised hz-bordered hz-border-strong hz-row hz-ai-center hz-jc-center hz-mb-4">
                       {step.icon}
                     </div>
-                    <h3 className="text-xl font-bold mb-2">{step.title}</h3>
-                    <p className="text-neutral-300">{step.description}</p>
+                    <h3 className="hz-t-xl hz-w-bold hz-mb-2">{step.title}</h3>
+                    <p className="hz-fg-soft">{step.description}</p>
                   </div>
                 ))}
               </div>
@@ -165,10 +165,10 @@ const Referrals = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="max-w-4xl mx-auto"
+              className="hz-container-narrow"
             >
-              <h2 className="text-3xl font-bold mb-8 text-center">Frequently Asked Questions</h2>
-              <div className="space-y-6">
+              <h2 className="hz-t-3xl hz-w-bold hz-mb-6 hz-align-center">Frequently Asked Questions</h2>
+              <div className="hz-stack-5">
                 {[
                   {
                     question: "Is there a limit to how many people I can refer?",
@@ -191,9 +191,9 @@ const Referrals = () => {
                     answer: "You can track all your referrals and rewards from your account dashboard under the 'Referrals' tab."
                   }
                 ].map((faq, index) => (
-                  <div key={index} className="bg-gray-900/20 border border-gray-800 rounded-xl p-6">
-                    <h3 className="text-xl font-bold mb-2">{faq.question}</h3>
-                    <p className="text-neutral-300">{faq.answer}</p>
+                  <div key={index} className="hz-card">
+                    <h3 className="hz-t-xl hz-w-bold hz-mb-2">{faq.question}</h3>
+                    <p className="hz-fg-soft">{faq.answer}</p>
                   </div>
                 ))}
               </div>
@@ -202,19 +202,19 @@ const Referrals = () => {
         </section>
         
         {/* CTA Section */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-5xl mx-auto bg-gradient-to-r from-neutral-800/20 to-neutral-900/20 rounded-xl border border-neutral-500/20 p-10 text-center">
-            <ChromeText as="h2" className="text-3xl font-bold mb-4">
+        <section className="hz-py-7 hz-px-4">
+          <div className="hz-container-wide hz-card hz-align-center">
+            <ChromeText as="h2" className="hz-t-3xl hz-w-bold hz-mb-4">
               Ready to Start Earning?
             </ChromeText>
-            <p className="text-xl text-neutral-300 mb-8 max-w-3xl mx-auto">
+            <p className="hz-container-narrow hz-t-xl hz-fg-soft hz-mb-6">
               Sign up for a Hanzo account today, get your referral link, and start sharing with friends to earn rewards.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-neutral-600 hover:bg-neutral-700 px-8">
+            <div className="hz-col-row hz-gap-4 hz-jc-center">
+              <Button size="lg" className="hz-bg-raised hz-px-6 hz-hoverable">
                 <Link to="/signup">Create Account</Link>
               </Button>
-              <Button size="lg" variant="outline" className="border-gray-700 hover:bg-gray-800 px-8">
+              <Button size="lg" variant="outline" className="hz-px-6 hz-hoverable">
                 <Link to="/pricing">View Pricing</Link>
               </Button>
             </div>

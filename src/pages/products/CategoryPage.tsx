@@ -23,9 +23,9 @@ export default function CategoryPage() {
   const subcategories = categoryId === 'ml' ? getMLSubcategories() : undefined;
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="hz-min-h-screen hz-bg hz-fg">
       <Navbar />
-      <div className="pt-16">
+      <div className="hz-pt-6">
         <CategoryPageTemplate
           category={category}
           products={products}

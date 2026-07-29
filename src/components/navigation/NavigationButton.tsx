@@ -17,8 +17,8 @@ export const NavigationButton = forwardRef<HTMLButtonElement, NavigationButtonPr
       <button 
         ref={ref}
         className={cn(
-          "inline-flex items-center outline-none focus:outline-none transition-colors",
-          isActive ? "text-white" : "text-neutral-300 hover:text-white"
+          "hz-inline hz-ai-center hz-transition",
+          isActive ? "hz-fg" : "hz-fg-soft hz-hoverable"
         )}
         onMouseEnter={onHoverStart}
         onClick={onClick}
@@ -28,8 +28,8 @@ export const NavigationButton = forwardRef<HTMLButtonElement, NavigationButtonPr
         {!noChevron && (
           <ChevronDown 
             className={cn(
-              "ml-1 h-4 w-4 transition-transform duration-300",
-              isActive && "rotate-180"
+              "hz-sq-2 hz-ml-1 hz-transition",
+              isActive && ""
             )} 
           />
         )}

@@ -10,15 +10,15 @@ const WorkspaceHeader = () => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      className="text-center mb-16"
+      className="hz-align-center hz-mb-7"
     >
-      <div className="inline-flex p-2 rounded-full bg-neutral-800/20 border border-neutral-500/20 text-neutral-400 mb-4">
-        <FolderKanban className="h-6 w-6" />
+      <div className="hz-inline hz-p-2 hz-r-full hz-bg-raised hz-bordered hz-border-strong hz-fg-muted hz-mb-4">
+        <FolderKanban className="hz-sq-4" />
       </div>
-      <h2 className="text-3xl md:text-4xl font-bold mb-6">
+      <h2 className="hz-t-3xl hz-w-bold hz-mb-5">
         One Workspace for Humans & AI
       </h2>
-      <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
+      <p className="hz-container-narrow hz-t-xl hz-fg-soft">
         Seamlessly integrate your AI team members into your existing workflows with our 
         unified workspace platform, featuring project management, chat, video calls, and 
         knowledge base tools.
