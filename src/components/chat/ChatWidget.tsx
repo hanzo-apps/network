@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageSquare, X, Send, ExternalLink, Bot } from "lucide-react";
 
-const BRAND_COLOR = "#ffffff";
 
 // Quick action buttons
 const quickActions = [
@@ -140,8 +139,8 @@ const ChatWidget = () => {
       {/* Chat toggle button */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-colors"
-        style={{ backgroundColor: BRAND_COLOR }}
+        className="hz-sq-7 hz-fixed hz-z-overlay hz-r-full hz-row hz-ai-center hz-jc-center hz-shadow-lg hz-transition hz-bg-inverse"
+        
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
@@ -153,7 +152,7 @@ const ChatWidget = () => {
               animate={{ opacity: 1, rotate: 0 }}
               exit={{ opacity: 0, rotate: 90 }}
             >
-              <X className="w-6 h-6 text-white" />
+              <X className="hz-sq-4 hz-fg" />
             </motion.div>
           ) : (
             <motion.div
@@ -162,7 +161,7 @@ const ChatWidget = () => {
               animate={{ opacity: 1, rotate: 0 }}
               exit={{ opacity: 0, rotate: -90 }}
             >
-              <MessageSquare className="w-6 h-6 text-white" />
+              <MessageSquare className="hz-sq-4 hz-fg" />
             </motion.div>
           )}
         </AnimatePresence>
@@ -176,42 +175,42 @@ const ChatWidget = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="fixed bottom-24 right-6 z-50 w-[380px] max-w-[calc(100vw-3rem)] h-[500px] max-h-[calc(100vh-8rem)] rounded-2xl border border-neutral-800 bg-neutral-950 shadow-2xl flex flex-col overflow-hidden"
+            className="hz-fixed hz-z-overlay hz-mw-full hz-r-xl hz-bordered hz-bg-surface hz-shadow-lg hz-col hz-clip"
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-4 py-3 border-b border-neutral-800 bg-neutral-900">
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: BRAND_COLOR }}>
-                  <Bot className="w-4 h-4 text-white" />
+            <div className="hz-row hz-ai-center hz-jc-between hz-px-4 hz-py-3 hz-border-b hz-bg-surface">
+              <div className="hz-row hz-ai-center hz-gap-2">
+                <div className="hz-sq-5 hz-r-lg hz-row hz-ai-center hz-jc-center hz-bg-inverse" >
+                  <Bot className="hz-sq-2 hz-fg" />
                 </div>
                 <div>
-                  <div className="text-sm font-medium text-white">Hanzo AI</div>
-                  <div className="text-[10px] text-neutral-500">Ask me anything</div>
+                  <div className="hz-t-sm hz-w-medium hz-fg">Hanzo AI</div>
+                  <div className="hz-t-xs hz-fg-muted">Ask me anything</div>
                 </div>
               </div>
               <a
                 href="https://hanzo.chat"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs text-neutral-500 hover:text-white transition-colors flex items-center gap-1"
+                className="hz-t-xs hz-fg-muted hz-transition hz-row hz-ai-center hz-gap-1 hz-link"
               >
                 Full chat
-                <ExternalLink className="w-3 h-3" />
+                <ExternalLink className="hz-sq-1" />
               </a>
             </div>
 
             {/* Messages */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-4">
+            <div className="hz-grow hz-scroll-y hz-p-4 hz-stack-4">
               {messages.map((message, idx) => (
                 <div
                   key={idx}
-                  className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}
+                  className={`hz-row ${message.role === "user" ? "hz-jc-end" : "hz-jc-start"}`}
                 >
                   <div
-                    className={`max-w-[85%] rounded-xl px-3 py-2 text-sm ${
+                    className={`hz-mw-full hz-r-lg hz-px-3 hz-py-2 hz-t-sm ${
                       message.role === "user"
-                        ? "bg-white text-black"
-                        : "bg-neutral-900 text-neutral-300 border border-neutral-800"
+                        ? "hz-bg-inverse hz-fg-inverse"
+                        : "hz-bg-surface hz-fg-soft hz-bordered"
                     }`}
                   >
                     {message.content}
@@ -219,12 +218,12 @@ const ChatWidget = () => {
                 </div>
               ))}
               {isLoading && (
-                <div className="flex justify-start">
-                  <div className="bg-neutral-900 border border-neutral-800 rounded-xl px-4 py-2">
-                    <div className="flex gap-1">
-                      <div className="w-2 h-2 bg-neutral-600 rounded-full animate-bounce" style={{ animationDelay: "0ms" }} />
-                      <div className="w-2 h-2 bg-neutral-600 rounded-full animate-bounce" style={{ animationDelay: "150ms" }} />
-                      <div className="w-2 h-2 bg-neutral-600 rounded-full animate-bounce" style={{ animationDelay: "300ms" }} />
+                <div className="hz-row hz-jc-start">
+                  <div className="hz-bg-surface hz-bordered hz-r-lg hz-px-4 hz-py-2">
+                    <div className="hz-row hz-gap-1">
+                      <div className="hz-sq-1 hz-bg-raised hz-r-full" style={{ animationDelay: "0ms" }} />
+                      <div className="hz-sq-1 hz-bg-raised hz-r-full" style={{ animationDelay: "150ms" }} />
+                      <div className="hz-sq-1 hz-bg-raised hz-r-full" style={{ animationDelay: "300ms" }} />
                     </div>
                   </div>
                 </div>
@@ -233,13 +232,13 @@ const ChatWidget = () => {
 
             {/* Quick actions */}
             {messages.length <= 1 && (
-              <div className="px-4 pb-2">
-                <div className="flex flex-wrap gap-2">
+              <div className="hz-px-4 hz-pb-4">
+                <div className="hz-row hz-wrap hz-gap-2">
                   {quickActions.map((action) => (
                     <button
                       key={action.label}
                       onClick={() => handleQuickAction(action.value)}
-                      className="text-xs px-3 py-1.5 rounded-full border border-neutral-800 text-neutral-400 hover:bg-neutral-900 hover:text-white transition-colors"
+                      className="hz-t-xs hz-px-3 hz-py-2 hz-r-full hz-bordered hz-fg-muted hz-transition hz-link"
                     >
                       {action.label}
                     </button>
@@ -249,29 +248,29 @@ const ChatWidget = () => {
             )}
 
             {/* Input */}
-            <div className="p-4 border-t border-neutral-800">
+            <div className="hz-p-4 hz-border-t">
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
                   handleSend();
                 }}
-                className="flex gap-2"
+                className="hz-row hz-gap-2"
               >
                 <input
                   type="text"
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="Ask anything..."
-                  className="flex-1 bg-neutral-900 border border-neutral-800 rounded-lg px-3 py-2 text-sm text-white placeholder:text-neutral-500 focus:outline-none focus:border-neutral-700"
+                  className="hz-grow hz-bg-surface hz-bordered hz-r-lg hz-px-3 hz-py-2 hz-t-sm hz-fg"
                   disabled={isLoading}
                 />
                 <button
                   type="submit"
                   disabled={isLoading || !input.trim()}
-                  className="p-2 rounded-lg transition-colors disabled:opacity-50"
-                  style={{ backgroundColor: BRAND_COLOR }}
+                  className="hz-p-2 hz-r-lg hz-transition hz-bg-inverse"
+                  
                 >
-                  <Send className="w-4 h-4 text-white" />
+                  <Send className="hz-sq-2 hz-fg" />
                 </button>
               </form>
             </div>

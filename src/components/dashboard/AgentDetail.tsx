@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/radix-dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { 
   Bot, Activity, Database, 
   FileText, Globe, Trash2, 
@@ -96,147 +96,147 @@ const AgentDetail: React.FC<AgentDetailProps> = ({ agent, onClose, onUpdate }) =
 
   return (
     <Dialog open={!!agent} onOpenChange={() => onClose()}>
-      <DialogContent className="max-w-4xl max-h-[90vh] overflow-hidden flex flex-col">
+      <DialogContent className="hz-mw-lg hz-clip hz-col">
         <DialogHeader>
-          <DialogTitle className="flex items-center">
-            <div className="w-8 h-8 rounded-md bg-neutral-800/30 border border-neutral-800/50 flex items-center justify-center mr-3">
-              <Bot className="h-4 w-4 text-neutral-400" />
+          <DialogTitle className="hz-row hz-ai-center">
+            <div className="hz-sq-5 hz-r-md hz-bg-raised hz-bordered hz-row hz-ai-center hz-jc-center hz-mr-3">
+              <Bot className="hz-sq-2 hz-fg-muted" />
             </div>
             <Input 
               name="name"
               value={editedAgent.name}
               onChange={handleInputChange}
-              className="text-xl font-semibold bg-transparent border-none focus:ring-0 px-0 h-auto"
+              className="hz-t-xl hz-w-semibold hz-bg-none hz-border-none hz-px-0"
             />
           </DialogTitle>
         </DialogHeader>
 
-        <div className="flex border-b border-gray-800 mt-2">
+        <div className="hz-row hz-border-b hz-mt-2">
           <button 
-            className={`px-4 py-2 text-sm font-medium ${activeTab === 'overview' ? 'text-[var(--white)] border-b-2 border-neutral-500' : 'text-neutral-400 hover:text-[var(--white)]'}`}
+            className={`hz-px-4 hz-py-2 hz-t-sm hz-w-medium ${activeTab === 'overview' ? 'hz-fg hz-border-strong' : 'hz-fg-muted hz-link'}`}
             onClick={() => setActiveTab('overview')}
           >
             Overview
           </button>
           <button 
-            className={`px-4 py-2 text-sm font-medium ${activeTab === 'rag' ? 'text-[var(--white)] border-b-2 border-neutral-500' : 'text-neutral-400 hover:text-[var(--white)]'}`}
+            className={`hz-px-4 hz-py-2 hz-t-sm hz-w-medium ${activeTab === 'rag' ? 'hz-fg hz-border-strong' : 'hz-fg-muted hz-link'}`}
             onClick={() => setActiveTab('rag')}
           >
             RAG Sources
           </button>
           <button 
-            className={`px-4 py-2 text-sm font-medium ${activeTab === 'settings' ? 'text-[var(--white)] border-b-2 border-neutral-500' : 'text-neutral-400 hover:text-[var(--white)]'}`}
+            className={`hz-px-4 hz-py-2 hz-t-sm hz-w-medium ${activeTab === 'settings' ? 'hz-fg hz-border-strong' : 'hz-fg-muted hz-link'}`}
             onClick={() => setActiveTab('settings')}
           >
             Settings
           </button>
         </div>
 
-        <div className="flex-1 overflow-auto py-4">
+        <div className="hz-grow hz-scroll-y hz-py-4">
           {activeTab === 'overview' && (
-            <div className="space-y-6">
+            <div className="hz-stack-5">
               <div>
-                <label className="block text-sm font-medium text-neutral-400 mb-1">Description</label>
+                <label className="hz-t-sm hz-w-medium hz-fg-muted hz-mb-1">Description</label>
                 <Textarea 
                   name="description"
                   value={editedAgent.description || ""}
                   onChange={handleInputChange}
                   placeholder="Agent description..."
-                  className="min-h-24 bg-gray-900 border-gray-800"
+                  className="hz-bg-surface"
                 />
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="hz-grid hz-grid-2 hz-gap-5">
                 <div>
-                  <label className="block text-sm font-medium text-neutral-400 mb-1">Status</label>
-                  <div className="flex items-center justify-between p-3 bg-gray-900 border border-gray-800 rounded-md">
-                    <div className="flex items-center">
-                      <div className={`h-2 w-2 rounded-full mr-2 ${
-                        editedAgent.status === 'running' ? 'bg-neutral-500' : 
-                        editedAgent.status === 'paused' ? 'bg-neutral-500' : 
-                        editedAgent.status === 'error' ? 'bg-neutral-600' : 'bg-gray-500'
+                  <label className="hz-t-sm hz-w-medium hz-fg-muted hz-mb-1">Status</label>
+                  <div className="hz-card hz-card-tight hz-row hz-ai-center hz-jc-between">
+                    <div className="hz-row hz-ai-center">
+                      <div className={`hz-sq-1 hz-r-full hz-mr-2 ${
+                        editedAgent.status === 'running' ? 'hz-bg-raised' : 
+                        editedAgent.status === 'paused' ? 'hz-bg-raised' : 
+                        editedAgent.status === 'error' ? 'hz-bg-raised' : 'hz-bg-raised'
                       }`}></div>
                       <span>{
                         editedAgent.status.charAt(0).toUpperCase() + editedAgent.status.slice(1)
                       }</span>
                     </div>
                     {editedAgent.status === 'running' ? (
-                      <Button size="sm" variant="ghost" className="h-8 w-8 text-neutral-400 hover:text-[var(--white)]">
-                        <StopCircle className="h-4 w-4" />
+                      <Button size="sm" variant="ghost" className="hz-sq-5 hz-fg-muted hz-link">
+                        <StopCircle className="hz-sq-2" />
                       </Button>
                     ) : (
-                      <Button size="sm" variant="ghost" className="h-8 w-8 text-neutral-400 hover:text-[var(--white)]">
-                        <PlayCircle className="h-4 w-4" />
+                      <Button size="sm" variant="ghost" className="hz-sq-5 hz-fg-muted hz-link">
+                        <PlayCircle className="hz-sq-2" />
                       </Button>
                     )}
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-neutral-400 mb-1">Model</label>
-                  <div className="flex items-center p-3 bg-gray-900 border border-gray-800 rounded-md">
+                  <label className="hz-t-sm hz-w-medium hz-fg-muted hz-mb-1">Model</label>
+                  <div className="hz-card hz-card-tight hz-row hz-ai-center">
                     <Input 
                       name="model"
                       value={editedAgent.model}
                       onChange={handleInputChange}
-                      className="bg-transparent border-none p-0 focus:ring-0"
+                      className="hz-bg-none hz-border-none hz-p-0"
                     />
                   </div>
                 </div>
               </div>
 
               <div>
-                <h3 className="text-sm font-medium text-neutral-400 mb-2">Resource Usage</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <h3 className="hz-t-sm hz-w-medium hz-fg-muted hz-mb-2">Resource Usage</h3>
+                <div className="hz-grid hz-grid-2 hz-gap-4">
                   <div>
-                    <div className="flex justify-between mb-1">
-                      <span className="text-sm text-neutral-400">CPU</span>
-                      <span className="text-sm">{editedAgent.cpu || 0}%</span>
+                    <div className="hz-row hz-jc-between hz-mb-1">
+                      <span className="hz-t-sm hz-fg-muted">CPU</span>
+                      <span className="hz-t-sm">{editedAgent.cpu || 0}%</span>
                     </div>
-                    <Progress value={editedAgent.cpu || 0} className="h-2" />
+                    <Progress value={editedAgent.cpu || 0} className="hz-bh-1" />
                   </div>
                   <div>
-                    <div className="flex justify-between mb-1">
-                      <span className="text-sm text-neutral-400">GPU</span>
-                      <span className="text-sm">{editedAgent.gpu || 0}%</span>
+                    <div className="hz-row hz-jc-between hz-mb-1">
+                      <span className="hz-t-sm hz-fg-muted">GPU</span>
+                      <span className="hz-t-sm">{editedAgent.gpu || 0}%</span>
                     </div>
-                    <Progress value={editedAgent.gpu || 0} className="h-2" />
+                    <Progress value={editedAgent.gpu || 0} className="hz-bh-1" />
                   </div>
                   <div>
-                    <div className="flex justify-between mb-1">
-                      <span className="text-sm text-neutral-400">Memory</span>
-                      <span className="text-sm">{editedAgent.memory}%</span>
+                    <div className="hz-row hz-jc-between hz-mb-1">
+                      <span className="hz-t-sm hz-fg-muted">Memory</span>
+                      <span className="hz-t-sm">{editedAgent.memory}%</span>
                     </div>
-                    <Progress value={editedAgent.memory} className="h-2" />
+                    <Progress value={editedAgent.memory} className="hz-bh-1" />
                   </div>
                   <div>
-                    <div className="flex justify-between mb-1">
-                      <span className="text-sm text-neutral-400">Storage</span>
-                      <span className="text-sm">{editedAgent.storage || 0}%</span>
+                    <div className="hz-row hz-jc-between hz-mb-1">
+                      <span className="hz-t-sm hz-fg-muted">Storage</span>
+                      <span className="hz-t-sm">{editedAgent.storage || 0}%</span>
                     </div>
-                    <Progress value={editedAgent.storage || 0} className="h-2" />
+                    <Progress value={editedAgent.storage || 0} className="hz-bh-1" />
                   </div>
                 </div>
               </div>
 
               <div>
-                <h3 className="text-sm font-medium text-neutral-400 mb-2">Usage Statistics</h3>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                  <div className="bg-gray-900 border border-gray-800 rounded-md p-3">
-                    <h4 className="text-xs text-neutral-500 mb-1">Tokens Used</h4>
-                    <p className="text-lg font-medium">{editedAgent.tokens.toLocaleString()}</p>
+                <h3 className="hz-t-sm hz-w-medium hz-fg-muted hz-mb-2">Usage Statistics</h3>
+                <div className="hz-grid hz-grid-4 hz-gap-4">
+                  <div className="hz-card hz-card-tight">
+                    <h4 className="hz-t-xs hz-fg-muted hz-mb-1">Tokens Used</h4>
+                    <p className="hz-t-lg hz-w-medium">{editedAgent.tokens.toLocaleString()}</p>
                   </div>
-                  <div className="bg-gray-900 border border-gray-800 rounded-md p-3">
-                    <h4 className="text-xs text-neutral-500 mb-1">Cost</h4>
-                    <p className="text-lg font-medium">${editedAgent.cost.toFixed(2)}</p>
+                  <div className="hz-card hz-card-tight">
+                    <h4 className="hz-t-xs hz-fg-muted hz-mb-1">Cost</h4>
+                    <p className="hz-t-lg hz-w-medium">${editedAgent.cost.toFixed(2)}</p>
                   </div>
-                  <div className="bg-gray-900 border border-gray-800 rounded-md p-3">
-                    <h4 className="text-xs text-neutral-500 mb-1">Tasks Assigned</h4>
-                    <p className="text-lg font-medium">{editedAgent.tasks}</p>
+                  <div className="hz-card hz-card-tight">
+                    <h4 className="hz-t-xs hz-fg-muted hz-mb-1">Tasks Assigned</h4>
+                    <p className="hz-t-lg hz-w-medium">{editedAgent.tasks}</p>
                   </div>
-                  <div className="bg-gray-900 border border-gray-800 rounded-md p-3">
-                    <h4 className="text-xs text-neutral-500 mb-1">Last Active</h4>
-                    <p className="text-lg font-medium">{editedAgent.lastActive}</p>
+                  <div className="hz-card hz-card-tight">
+                    <h4 className="hz-t-xs hz-fg-muted hz-mb-1">Last Active</h4>
+                    <p className="hz-t-lg hz-w-medium">{editedAgent.lastActive}</p>
                   </div>
                 </div>
               </div>
@@ -244,59 +244,59 @@ const AgentDetail: React.FC<AgentDetailProps> = ({ agent, onClose, onUpdate }) =
           )}
 
           {activeTab === 'rag' && (
-            <div className="grid grid-cols-3 gap-6 h-[400px]">
-              <div className="col-span-1 border-r border-gray-800 pr-4">
-                <div className="flex justify-between items-center mb-4">
-                  <h3 className="text-sm font-medium">Knowledge Sources</h3>
+            <div className="hz-grid hz-grid-3 hz-gap-5">
+              <div className="hz-border-r hz-px-4">
+                <div className="hz-row hz-jc-between hz-ai-center hz-mb-4">
+                  <h3 className="hz-t-sm hz-w-medium">Knowledge Sources</h3>
                   <Button size="sm" variant="ghost" onClick={handleAddRagSource}>
-                    <PlusCircle className="h-4 w-4" />
+                    <PlusCircle className="hz-sq-2" />
                   </Button>
                 </div>
-                <div className="space-y-1">
+                <div className="hz-stack-1">
                   {editedAgent.ragSources?.map(source => (
                     <div 
                       key={source.id}
-                      className={`p-2 rounded flex items-center justify-between cursor-pointer ${
-                        selectedRagSource?.id === source.id ? 'bg-gray-800' : 'hover:bg-gray-900'
+                      className={`hz-p-2 hz-r-md hz-row hz-ai-center hz-jc-between hz-pointer ${
+                        selectedRagSource?.id === source.id ? 'hz-bg-raised' : 'hz-hoverable'
                       }`}
                       onClick={() => setSelectedRagSource(source)}
                     >
-                      <div className="flex items-center">
-                        {source.type === 'database' && <Database className="h-4 w-4 text-neutral-400 mr-2" />}
-                        {source.type === 'vector' && <Activity className="h-4 w-4 text-neutral-400 mr-2" />}
-                        {source.type === 'file' && <FileText className="h-4 w-4 text-neutral-400 mr-2" />}
-                        {source.type === 'api' && <Globe className="h-4 w-4 text-neutral-400 mr-2" />}
-                        <span className="text-sm truncate">{source.name}</span>
+                      <div className="hz-row hz-ai-center">
+                        {source.type === 'database' && <Database className="hz-sq-2 hz-fg-muted hz-mr-2" />}
+                        {source.type === 'vector' && <Activity className="hz-sq-2 hz-fg-muted hz-mr-2" />}
+                        {source.type === 'file' && <FileText className="hz-sq-2 hz-fg-muted hz-mr-2" />}
+                        {source.type === 'api' && <Globe className="hz-sq-2 hz-fg-muted hz-mr-2" />}
+                        <span className="hz-t-sm hz-truncate">{source.name}</span>
                       </div>
-                      <ChevronRight className="h-4 w-4 text-neutral-500" />
+                      <ChevronRight className="hz-sq-2 hz-fg-muted" />
                     </div>
                   ))}
                   {!editedAgent.ragSources?.length && (
-                    <div className="text-sm text-neutral-500 p-2">
+                    <div className="hz-t-sm hz-fg-muted hz-p-2">
                       No knowledge sources added
                     </div>
                   )}
                 </div>
               </div>
 
-              <div className="col-span-2">
+              <div className="hz-span-2">
                 {selectedRagSource ? (
-                  <div className="space-y-4">
-                    <div className="flex justify-between">
-                      <h3 className="text-sm font-medium">Source Details</h3>
+                  <div className="hz-stack-4">
+                    <div className="hz-row hz-jc-between">
+                      <h3 className="hz-t-sm hz-w-medium">Source Details</h3>
                       <Button 
                         size="sm" 
                         variant="ghost" 
-                        className="text-neutral-400 hover:text-neutral-300"
+                        className="hz-fg-muted hz-link"
                         onClick={() => handleRemoveRagSource(selectedRagSource.id)}
                       >
-                        <Trash2 className="h-4 w-4 mr-1" />
+                        <Trash2 className="hz-sq-2 hz-mr-1" />
                         Remove
                       </Button>
                     </div>
 
                     <div>
-                      <label className="block text-xs text-neutral-400 mb-1">Name</label>
+                      <label className="hz-t-xs hz-fg-muted hz-mb-1">Name</label>
                       <Input 
                         value={selectedRagSource.name}
                         onChange={(e) => {
@@ -304,20 +304,20 @@ const AgentDetail: React.FC<AgentDetailProps> = ({ agent, onClose, onUpdate }) =
                           handleRagSourceChange(updated);
                           setSelectedRagSource(updated);
                         }}
-                        className="bg-gray-900 border-gray-800"
+                        className="hz-bg-surface"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-xs text-neutral-400 mb-1">Type</label>
-                      <div className="grid grid-cols-4 gap-2">
+                      <label className="hz-t-xs hz-fg-muted hz-mb-1">Type</label>
+                      <div className="hz-grid hz-grid-4 hz-gap-2">
                         {(['database', 'vector', 'file', 'api'] as const).map(type => (
                           <div 
                             key={type}
-                            className={`p-2 border rounded flex flex-col items-center justify-center cursor-pointer ${
+                            className={`hz-p-2 hz-bordered hz-r-md hz-col hz-ai-center hz-jc-center hz-pointer ${
                               selectedRagSource.type === type 
-                                ? 'border-neutral-500 bg-neutral-800/20' 
-                                : 'border-gray-800 hover:border-gray-700'
+                                ? 'hz-border-strong hz-bg-raised' 
+                                : 'hz-hoverable'
                             }`}
                             onClick={() => {
                               const updated = { ...selectedRagSource, type };
@@ -325,18 +325,18 @@ const AgentDetail: React.FC<AgentDetailProps> = ({ agent, onClose, onUpdate }) =
                               setSelectedRagSource(updated);
                             }}
                           >
-                            {type === 'database' && <Database className="h-5 w-5 text-neutral-400 mb-1" />}
-                            {type === 'vector' && <Activity className="h-5 w-5 text-neutral-400 mb-1" />}
-                            {type === 'file' && <FileText className="h-5 w-5 text-neutral-400 mb-1" />}
-                            {type === 'api' && <Globe className="h-5 w-5 text-neutral-400 mb-1" />}
-                            <span className="text-xs capitalize">{type}</span>
+                            {type === 'database' && <Database className="hz-sq-3 hz-fg-muted hz-mb-1" />}
+                            {type === 'vector' && <Activity className="hz-sq-3 hz-fg-muted hz-mb-1" />}
+                            {type === 'file' && <FileText className="hz-sq-3 hz-fg-muted hz-mb-1" />}
+                            {type === 'api' && <Globe className="hz-sq-3 hz-fg-muted hz-mb-1" />}
+                            <span className="hz-t-xs">{type}</span>
                           </div>
                         ))}
                       </div>
                     </div>
 
                     <div>
-                      <label className="block text-xs text-neutral-400 mb-1">Connection String</label>
+                      <label className="hz-t-xs hz-fg-muted hz-mb-1">Connection String</label>
                       <Input 
                         value={selectedRagSource.connection}
                         onChange={(e) => {
@@ -344,7 +344,7 @@ const AgentDetail: React.FC<AgentDetailProps> = ({ agent, onClose, onUpdate }) =
                           handleRagSourceChange(updated);
                           setSelectedRagSource(updated);
                         }}
-                        className="bg-gray-900 border-gray-800 font-mono text-xs"
+                        className="hz-bg-surface hz-mono hz-t-xs"
                         placeholder={
                           selectedRagSource.type === 'database' ? 'postgres://user:pass@host/db' :
                           selectedRagSource.type === 'vector' ? 'pinecone://index' :
@@ -355,7 +355,7 @@ const AgentDetail: React.FC<AgentDetailProps> = ({ agent, onClose, onUpdate }) =
                     </div>
                   </div>
                 ) : (
-                  <div className="h-full flex items-center justify-center text-neutral-500 text-sm">
+                  <div className="hz-h-full hz-row hz-ai-center hz-jc-center hz-fg-muted hz-t-sm">
                     Select a knowledge source or add a new one
                   </div>
                 )}
@@ -364,22 +364,22 @@ const AgentDetail: React.FC<AgentDetailProps> = ({ agent, onClose, onUpdate }) =
           )}
 
           {activeTab === 'settings' && (
-            <div className="space-y-6">
+            <div className="hz-stack-5">
               <div>
-                <label className="block text-sm font-medium text-neutral-400 mb-1">Agent Type</label>
+                <label className="hz-t-sm hz-w-medium hz-fg-muted hz-mb-1">Agent Type</label>
                 <Input 
                   name="type"
                   value={editedAgent.type}
                   onChange={handleInputChange}
-                  className="bg-gray-900 border-gray-800"
+                  className="hz-bg-surface"
                 />
               </div>
 
               <div>
-                <h3 className="text-sm font-medium text-neutral-400 mb-2">Advanced Settings</h3>
-                <div className="space-y-4 bg-gray-900 border border-gray-800 rounded-md p-4">
+                <h3 className="hz-t-sm hz-w-medium hz-fg-muted hz-mb-2">Advanced Settings</h3>
+                <div className="hz-card hz-stack-4">
                   <div>
-                    <label className="block text-xs text-neutral-400 mb-1">Memory Limit (%)</label>
+                    <label className="hz-t-xs hz-fg-muted hz-mb-1">Memory Limit (%)</label>
                     <Input 
                       type="number"
                       name="memory"
@@ -387,13 +387,13 @@ const AgentDetail: React.FC<AgentDetailProps> = ({ agent, onClose, onUpdate }) =
                       onChange={handleInputChange}
                       min="0"
                       max="100"
-                      className="bg-gray-900 border-gray-800"
+                      className="hz-bg-surface"
                     />
                   </div>
                   
                   <div>
-                    <label className="block text-xs text-neutral-400 mb-1">Execution Priority</label>
-                    <select className="w-full bg-gray-900 border-gray-800 rounded-md p-2 text-sm">
+                    <label className="hz-t-xs hz-fg-muted hz-mb-1">Execution Priority</label>
+                    <select className="hz-w-full hz-bg-surface hz-r-md hz-p-2 hz-t-sm">
                       <option>Normal</option>
                       <option>High</option>
                       <option>Low</option>
@@ -401,8 +401,8 @@ const AgentDetail: React.FC<AgentDetailProps> = ({ agent, onClose, onUpdate }) =
                   </div>
 
                   <div>
-                    <label className="block text-xs text-neutral-400 mb-1">Execution Mode</label>
-                    <select className="w-full bg-gray-900 border-gray-800 rounded-md p-2 text-sm">
+                    <label className="hz-t-xs hz-fg-muted hz-mb-1">Execution Mode</label>
+                    <select className="hz-w-full hz-bg-surface hz-r-md hz-p-2 hz-t-sm">
                       <option>Automatic</option>
                       <option>Manual</option>
                       <option>Scheduled</option>
@@ -414,12 +414,12 @@ const AgentDetail: React.FC<AgentDetailProps> = ({ agent, onClose, onUpdate }) =
           )}
         </div>
 
-        <div className="flex justify-end gap-2 pt-4 border-t border-gray-800 mt-4">
+        <div className="hz-row hz-jc-end hz-gap-2 hz-pt-4 hz-border-t hz-mt-4">
           <Button variant="ghost" onClick={onClose}>
             Cancel
           </Button>
           <Button onClick={handleSave}>
-            <Save className="h-4 w-4 mr-2" />
+            <Save className="hz-sq-2 hz-mr-2" />
             Save Agent
           </Button>
         </div>

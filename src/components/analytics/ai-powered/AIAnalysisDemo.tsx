@@ -10,23 +10,23 @@ const AIAnalysisDemo = () => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.7 }}
-      className="bg-gradient-to-r from-gray-900 to-gray-900/50 rounded-xl p-6 border border-gray-800 shadow-xl overflow-hidden relative"
+      className="hz-card hz-shadow-lg hz-clip hz-rel"
     >
-      <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:24px_24px]"></div>
+      <div className="hz-abs hz-inset hz-bg-surface"></div>
       
-      <div className="relative z-10">
-        <div className="flex items-center mb-6">
-          <LineChart className="h-6 w-6 text-neutral-400 mr-3" />
-          <h3 className="text-2xl font-bold">AI Analysis in Action</h3>
+      <div className="hz-rel hz-z-raised">
+        <div className="hz-row hz-ai-center hz-mb-5">
+          <LineChart className="hz-sq-4 hz-fg-muted hz-mr-3" />
+          <h3 className="hz-t-2xl hz-w-bold">AI Analysis in Action</h3>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="col-span-2">
-            <div className="bg-[var(--black)]/50 rounded-lg p-5 border border-gray-800">
-              <h4 className="text-lg font-medium mb-4">Traffic Anomaly Detection</h4>
-              <div className="h-60 relative">
+        <div className="hz-grid hz-grid-3 hz-gap-5">
+          <div className="hz-span-2">
+            <div className="hz-card">
+              <h4 className="hz-t-lg hz-w-medium hz-mb-4">Traffic Anomaly Detection</h4>
+              <div className="hz-bh-8 hz-rel">
                 {/* Base line chart */}
-                <svg className="w-full h-full" viewBox="0 0 300 100" preserveAspectRatio="none">
+                <svg className="hz-w-full hz-h-full" viewBox="0 0 300 100" preserveAspectRatio="none">
                   <motion.path
                     d="M0,80 C25,70 50,65 75,60 C100,55 125,50 150,55 C175,60 200,80 225,50 C250,20 275,35 300,30"
                     fill="none"
@@ -66,13 +66,13 @@ const AIAnalysisDemo = () => {
                 
                 {/* Anomaly detection popup */}
                 <motion.div
-                  className="absolute top-4 right-8 bg-neutral-800/80 text-[var(--white)] text-xs rounded px-3 py-2 border border-neutral-700"
+                  className="hz-abs hz-bg-raised hz-fg hz-t-xs hz-r-md hz-px-3 hz-py-2 hz-bordered"
                   initial={{ opacity: 0, y: -10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.3, delay: 2.2 }}
                 >
-                  <div className="font-bold mb-1">Anomaly Detected</div>
+                  <div className="hz-w-bold hz-mb-1">Anomaly Detected</div>
                   <div>Unusual traffic spike</div>
                   <div>Confidence: 98.7%</div>
                 </motion.div>
@@ -80,27 +80,27 @@ const AIAnalysisDemo = () => {
             </div>
           </div>
           
-          <div className="space-y-4">
-            <div className="bg-[var(--black)]/50 rounded-lg p-5 border border-gray-800">
-              <h4 className="text-lg font-medium mb-3">AI Insights</h4>
+          <div className="hz-stack-4">
+            <div className="hz-card">
+              <h4 className="hz-t-lg hz-w-medium hz-mb-3">AI Insights</h4>
               <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 2.4 }}
-                className="space-y-3"
+                className="hz-stack-3"
               >
-                <div className="text-sm">
-                  <div className="font-medium text-neutral-400">Traffic Anomaly</div>
-                  <div className="text-neutral-400">Unusual spike detected at 14:32 UTC</div>
+                <div className="hz-t-sm">
+                  <div className="hz-w-medium hz-fg-muted">Traffic Anomaly</div>
+                  <div className="hz-fg-muted">Unusual spike detected at 14:32 UTC</div>
                 </div>
-                <div className="text-sm">
-                  <div className="font-medium text-neutral-400">Conversion Opportunity</div>
-                  <div className="text-neutral-400">Checkout abandonment 23% higher on mobile</div>
+                <div className="hz-t-sm">
+                  <div className="hz-w-medium hz-fg-muted">Conversion Opportunity</div>
+                  <div className="hz-fg-muted">Checkout abandonment 23% higher on mobile</div>
                 </div>
-                <div className="text-sm">
-                  <div className="font-medium text-neutral-400">Performance Alert</div>
-                  <div className="text-neutral-400">API latency increased by 150ms</div>
+                <div className="hz-t-sm">
+                  <div className="hz-w-medium hz-fg-muted">Performance Alert</div>
+                  <div className="hz-fg-muted">API latency increased by 150ms</div>
                 </div>
               </motion.div>
             </div>
@@ -110,13 +110,13 @@ const AIAnalysisDemo = () => {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 2.6 }}
-              className="bg-neutral-800/20 rounded-lg p-5 border border-neutral-800/30"
+              className="hz-card"
             >
-              <h4 className="text-lg font-medium mb-2">AI Recommendation</h4>
-              <p className="text-sm text-neutral-300">
+              <h4 className="hz-t-lg hz-w-medium hz-mb-2">AI Recommendation</h4>
+              <p className="hz-t-sm hz-fg-soft">
                 Based on the traffic pattern analysis, we recommend scaling your infrastructure in the US-West region for the next 3 hours.
               </p>
-              <button className="mt-3 text-sm bg-neutral-700 hover:bg-neutral-600 text-[var(--white)] px-3 py-1 rounded">
+              <button className="hz-mt-3 hz-t-sm hz-bg-raised hz-fg hz-px-3 hz-py-1 hz-r-md hz-hoverable">
                 Apply Recommendation
               </button>
             </motion.div>

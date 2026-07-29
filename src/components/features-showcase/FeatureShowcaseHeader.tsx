@@ -5,9 +5,9 @@ import ChromeText from "@/components/ui/chrome-text";
 
 const FeatureShowcaseHeader: React.FC = () => {
   return (
-    <div className="text-center mb-16">
+    <div className="hz-align-center hz-mb-7">
       <motion.div 
-        className="inline-block px-4 py-1 rounded-full bg-neutral-800/30 border border-neutral-500/30 text-neutral-300 text-sm font-medium mb-6"
+        className="hz-px-4 hz-py-1 hz-r-full hz-bg-raised hz-bordered hz-border-strong hz-fg-soft hz-t-sm hz-w-medium hz-mb-5"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -21,15 +21,15 @@ const FeatureShowcaseHeader: React.FC = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.1 }}
-        className="max-w-4xl mx-auto"
+        className="hz-container-narrow"
       >
-        <ChromeText as="span" className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+        <ChromeText as="span" className="hz-t-4xl hz-w-bold hz-leading-tight">
           Build the Future with AI
         </ChromeText>
       </motion.h2>
       
       <motion.p 
-        className="text-lg md:text-xl text-neutral-300 max-w-2xl mx-auto mt-6"
+        className="hz-container-narrow hz-mw-md hz-t-lg hz-fg-soft hz-mt-5"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}

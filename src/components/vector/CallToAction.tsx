@@ -7,45 +7,45 @@ import { ArrowRight } from "lucide-react";
 
 const CallToAction = () => {
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-[var(--black)] relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-r from-neutral-900/20 to-neutral-800/20 opacity-30"></div>
-      <div className="absolute -top-40 -right-40 w-80 h-80 bg-neutral-500/10 rounded-full blur-3xl"></div>
-      <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-neutral-600/10 rounded-full blur-3xl"></div>
+    <section className="hz-py-7 hz-px-4 hz-bg hz-rel hz-clip">
+      <div className="hz-abs hz-inset hz-dim-more"></div>
+      <div className="hz-sq-8 hz-abs hz-bg-raised hz-r-full hz-blur-bg"></div>
+      <div className="hz-sq-8 hz-abs hz-bg-raised hz-r-full hz-blur-bg"></div>
       
-      <div className="max-w-5xl mx-auto relative z-10">
+      <div className="hz-container-wide hz-rel hz-z-raised">
         <motion.div 
-          className="text-center"
+          className="hz-align-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <ChromeText as="h2" className="text-3xl md:text-5xl font-bold mb-6">
+          <ChromeText as="h2" className="hz-t-3xl hz-w-bold hz-mb-5">
             Ready to transform your AI applications?
           </ChromeText>
-          <p className="text-xl text-neutral-300 max-w-3xl mx-auto mb-10">
+          <p className="hz-container-narrow hz-t-xl hz-fg-soft hz-mb-6">
             Join thousands of developers building faster, more accurate AI-powered experiences with Hanzo Vector
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="hz-col-row hz-gap-4 hz-jc-center">
             <Button 
               size="lg"
-              className="bg-gradient-to-r from-neutral-600 to-neutral-500 hover:from-neutral-500 hover:to-neutral-400 text-[var(--white)] px-8 py-6 rounded-lg text-lg font-medium shadow-lg hover:shadow-xl transition-all"
+              className="hz-fg hz-px-6 hz-py-5 hz-r-lg hz-t-lg hz-w-medium hz-shadow-lg hz-transition"
             >
               Get Started Free
-              <ArrowRight className="ml-2 h-5 w-5" />
+              <ArrowRight className="hz-sq-3 hz-ml-2" />
             </Button>
             <Button 
               size="lg" 
               variant="outline" 
-              className="text-lg px-8"
+              className="hz-t-lg hz-px-6"
             >
               Join the Community
             </Button>
           </div>
           
-          <p className="text-neutral-400 mt-8">
-            Have questions? Contact us at <a href="mailto:vector@hanzo.ai" className="text-neutral-400 hover:text-neutral-300">vector@hanzo.ai</a>
+          <p className="hz-fg-muted hz-mt-6">
+            Have questions? Contact us at <a href="mailto:vector@hanzo.ai" className="hz-fg-muted hz-link">vector@hanzo.ai</a>
           </p>
         </motion.div>
       </div>

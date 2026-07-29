@@ -73,30 +73,30 @@ const Organization = () => {
 
   return (
     <AnimatedSection>
-      <div className="space-y-8">
+      <div className="hz-stack-6">
         <AnimatedHeading>
-          <h2 className="text-2xl font-bold mb-6">Organization Settings</h2>
+          <h2 className="hz-t-2xl hz-w-bold hz-mb-5">Organization Settings</h2>
         </AnimatedHeading>
 
-        <div className="flex flex-col md:flex-row md:items-center gap-6">
-          <div className="h-24 w-24 bg-gray-900/30 rounded-xl flex items-center justify-center">
-            <Building className="h-12 w-12 text-neutral-400" />
+        <div className="hz-col-row hz-gap-5">
+          <div className="hz-sq-8 hz-bg-surface hz-r-lg hz-row hz-ai-center hz-jc-center">
+            <Building className="hz-sq-7 hz-fg-muted" />
           </div>
           
           <div>
-            <h2 className="text-2xl font-bold mb-2">{currentOrganization.name}</h2>
-            <div className="text-neutral-400">
+            <h2 className="hz-t-2xl hz-w-bold hz-mb-2">{currentOrganization.name}</h2>
+            <div className="hz-fg-muted">
               {currentOrganization.role === 'owner' ? 'You are the owner of this organization' : 
                 `You are a ${currentOrganization.role} in this organization`}
             </div>
             
-            <div className="mt-4 space-x-4">
-              <Button variant="outline" size="sm" className="bg-[var(--black)] border-gray-800/30 hover:bg-gray-900/30 space-x-2">
-                <Upload className="h-4 w-4" />
+            <div className="hz-mt-4 hz-inline-4">
+              <Button variant="outline" size="sm" className="hz-bg hz-inline-2 hz-hoverable">
+                <Upload className="hz-sq-2" />
                 <span>Upload Logo</span>
               </Button>
               <Link to="/organization-profile">
-                <Button variant="outline" size="sm" className="bg-[var(--black)] border-gray-800/30 hover:bg-gray-900/30">
+                <Button variant="outline" size="sm" className="hz-bg hz-hoverable">
                   View Public Profile
                 </Button>
               </Link>
@@ -104,119 +104,119 @@ const Organization = () => {
           </div>
         </div>
         
-        <div className="border-t border-gray-800/10 pt-6">
-          <h3 className="text-xl font-medium mb-4">Organization Details</h3>
+        <div className="hz-border-t hz-pt-6">
+          <h3 className="hz-t-xl hz-w-medium hz-mb-4">Organization Details</h3>
           
-          <form onSubmit={handleSubmit} className="space-y-6 max-w-xl">
-            <div className="space-y-2">
+          <form onSubmit={handleSubmit} className="hz-stack-5 hz-mw-md">
+            <div className="hz-stack-2">
               <Label htmlFor="orgName">Organization Name</Label>
               <Input
                 id="orgName"
                 value={orgName}
                 onChange={(e) => setOrgName(e.target.value)}
-                className="bg-gray-900/20 border-gray-800/30"
+                className="hz-bg-surface"
               />
             </div>
             
-            <div className="space-y-2">
+            <div className="hz-stack-2">
               <Label htmlFor="orgDescription">Description</Label>
               <Textarea
                 id="orgDescription"
                 value={orgDescription}
                 onChange={(e) => setOrgDescription(e.target.value)}
-                className="bg-gray-900/20 border-gray-800/30 min-h-24"
+                className="hz-bg-surface"
                 placeholder="Tell us about your organization"
               />
             </div>
             
-            <div className="space-y-2">
+            <div className="hz-stack-2">
               <Label htmlFor="orgWebsite">Website</Label>
               <Input
                 id="orgWebsite"
                 value={orgWebsite}
                 onChange={(e) => setOrgWebsite(e.target.value)}
-                className="bg-gray-900/20 border-gray-800/30"
+                className="hz-bg-surface"
                 placeholder="https://example.com"
               />
             </div>
             
-            <div className="space-y-2">
+            <div className="hz-stack-2">
               <Label htmlFor="orgLocation">Location</Label>
               <Input
                 id="orgLocation"
                 value={orgLocation}
                 onChange={(e) => setOrgLocation(e.target.value)}
-                className="bg-gray-900/20 border-gray-800/30"
+                className="hz-bg-surface"
                 placeholder="City, Country"
               />
             </div>
             
-            <Button type="submit" className="bg-gray-900 hover:bg-gray-800 border-none">
+            <Button type="submit" className="hz-bg-surface hz-border-none hz-hoverable">
               Update Organization
             </Button>
           </form>
         </div>
 
-        <div className="pt-6">
-          <div className="flex justify-between items-center mb-4">
-            <h3 className="text-xl font-medium">Team Members</h3>
+        <div className="hz-pt-6">
+          <div className="hz-row hz-jc-between hz-ai-center hz-mb-4">
+            <h3 className="hz-t-xl hz-w-medium">Team Members</h3>
             
-            <Button onClick={handleInviteMember} className="space-x-2 bg-gray-900 hover:bg-gray-800 border-none">
-              <UserPlus className="h-4 w-4" />
+            <Button onClick={handleInviteMember} className="hz-inline-2 hz-bg-surface hz-border-none hz-hoverable">
+              <UserPlus className="hz-sq-2" />
               <span>Invite Member</span>
             </Button>
           </div>
           
-          <div className="rounded-lg overflow-hidden">
+          <div className="hz-r-lg hz-clip">
             <Table>
-              <TableHeader className="bg-gray-900/30">
-                <TableRow className="border-0">
+              <TableHeader className="hz-bg-surface">
+                <TableRow className="hz-border-none">
                   <TableHead>User</TableHead>
                   <TableHead>Role</TableHead>
-                  <TableHead className="text-right">Actions</TableHead>
+                  <TableHead className="hz-align-right">Actions</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {teamMembers.map((member) => (
-                  <TableRow key={member.id} className="border-gray-800/10">
+                  <TableRow key={member.id} className="">
                     <TableCell>
-                      <div className="flex items-center space-x-3">
-                        <Avatar className="h-8 w-8">
+                      <div className="hz-row hz-ai-center hz-inline-3">
+                        <Avatar className="hz-sq-5">
                           <AvatarImage src={member.avatar} />
-                          <AvatarFallback className="bg-gray-900/50">{member.name[0]}</AvatarFallback>
+                          <AvatarFallback className="hz-bg-surface">{member.name[0]}</AvatarFallback>
                         </Avatar>
                         <div>
-                          <div className="font-medium">{member.name}</div>
-                          <div className="text-sm text-neutral-400">{member.email}</div>
+                          <div className="hz-w-medium">{member.name}</div>
+                          <div className="hz-t-sm hz-fg-muted">{member.email}</div>
                         </div>
                       </div>
                     </TableCell>
                     <TableCell>
-                      <span className={`px-2 py-1 rounded-full text-xs ${
+                      <span className={`hz-px-2 hz-py-1 hz-r-full hz-t-xs ${
                         member.role === 'Owner' 
-                          ? 'bg-neutral-800/10 text-neutral-300' 
+                          ? 'hz-bg-raised hz-fg-soft' 
                           : member.role === 'Admin' 
-                            ? 'bg-neutral-800/10 text-neutral-300' 
-                            : 'bg-gray-900/20 text-neutral-300'
+                            ? 'hz-bg-raised hz-fg-soft' 
+                            : 'hz-bg-surface hz-fg-soft'
                       }`}>
                         {member.role}
                       </span>
                     </TableCell>
-                    <TableCell className="text-right">
+                    <TableCell className="hz-align-right">
                       <DropdownMenu>
                         <DropdownMenuTrigger asChild>
-                          <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
-                            <MoreVertical className="h-4 w-4" />
+                          <Button variant="ghost" size="sm" className="hz-sq-5 hz-p-0">
+                            <MoreVertical className="hz-sq-2" />
                           </Button>
                         </DropdownMenuTrigger>
-                        <DropdownMenuContent align="end" className="bg-[var(--black)] border-gray-800/30">
-                          <DropdownMenuItem className="text-[var(--white)] hover:bg-gray-900/30">
+                        <DropdownMenuContent align="end" className="hz-bg">
+                          <DropdownMenuItem className="hz-fg hz-hoverable">
                             View Profile
                           </DropdownMenuItem>
-                          <DropdownMenuItem className="text-[var(--white)] hover:bg-gray-900/30">
+                          <DropdownMenuItem className="hz-fg hz-hoverable">
                             Change Role
                           </DropdownMenuItem>
-                          <DropdownMenuItem className="text-neutral-400 hover:bg-neutral-800/10 hover:text-neutral-300">
+                          <DropdownMenuItem className="hz-fg-muted hz-link">
                             Remove
                           </DropdownMenuItem>
                         </DropdownMenuContent>

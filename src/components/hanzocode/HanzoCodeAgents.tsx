@@ -16,33 +16,33 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ icon: Icon, title, descriptio
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      className="bg-gray-900/30 border border-gray-800 rounded-xl p-6"
+      className="hz-card"
     >
-      <Icon className="h-10 w-10 text-neutral-400 mb-4" />
-      <h3 className="text-xl font-bold mb-2">{title}</h3>
-      <p className="text-neutral-300">{description}</p>
+      <Icon className="hz-sq-6 hz-fg-muted hz-mb-4" />
+      <h3 className="hz-t-xl hz-w-bold hz-mb-2">{title}</h3>
+      <p className="hz-fg-soft">{description}</p>
     </motion.div>
   );
 };
 
 const HanzoCodeAgents: React.FC = () => {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[var(--black)]">
-      <div className="max-w-7xl mx-auto">
+    <section className="hz-py-7 hz-px-4 hz-bg">
+      <div className="hz-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="hz-align-center hz-mb-7"
         >
-          <h2 className="text-3xl font-bold mb-4">Autonomous Agentic Control</h2>
-          <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
+          <h2 className="hz-t-3xl hz-w-bold hz-mb-4">Autonomous Agentic Control</h2>
+          <p className="hz-container-narrow hz-t-xl hz-fg-soft">
             Harness the full power of intelligent agents that can operate your editor alongside you
           </p>
         </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+        <div className="hz-grid hz-grid-4 hz-gap-6 hz-mb-7">
           <FeatureCard 
             icon={Bot}
             title="Superagents"
@@ -68,50 +68,50 @@ const HanzoCodeAgents: React.FC = () => {
           />
         </div>
         
-        <div className="bg-gradient-to-br from-neutral-800/20 to-neutral-800/20 rounded-2xl p-8 border border-neutral-500/20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="hz-card">
+          <div className="hz-grid hz-grid-2 hz-gap-7 hz-ai-center">
             <div>
-              <h3 className="text-2xl font-bold mb-6">Massively Parallel Development</h3>
-              <p className="text-lg text-neutral-300 mb-8">
+              <h3 className="hz-t-2xl hz-w-bold hz-mb-5">Massively Parallel Development</h3>
+              <p className="hz-t-lg hz-fg-soft hz-mb-6">
                 Hanzo Code can create up to 1,000,000 parallel instances of your development environment, each with its own agent, to tackle the largest and most complex coding challenges.
               </p>
               
-              <div className="space-y-4">
-                <div className="flex items-start">
-                  <Users className="h-5 w-5 text-neutral-400 mr-3 mt-1" />
-                  <p className="text-neutral-300">True pair programming with agents that have full system access</p>
+              <div className="hz-stack-4">
+                <div className="hz-row hz-ai-start">
+                  <Users className="hz-sq-3 hz-fg-muted hz-mr-3 hz-mt-1" />
+                  <p className="hz-fg-soft">True pair programming with agents that have full system access</p>
                 </div>
                 
-                <div className="flex items-start">
-                  <Brain className="h-5 w-5 text-neutral-400 mr-3 mt-1" />
-                  <p className="text-neutral-300">Agents learn your coding style and project patterns over time</p>
+                <div className="hz-row hz-ai-start">
+                  <Brain className="hz-sq-3 hz-fg-muted hz-mr-3 hz-mt-1" />
+                  <p className="hz-fg-soft">Agents learn your coding style and project patterns over time</p>
                 </div>
                 
-                <div className="flex items-start">
-                  <Server className="h-5 w-5 text-neutral-400 mr-3 mt-1" />
-                  <p className="text-neutral-300">Scale from a single helper to a massive distributed workforce</p>
+                <div className="hz-row hz-ai-start">
+                  <Server className="hz-sq-3 hz-fg-muted hz-mr-3 hz-mt-1" />
+                  <p className="hz-fg-soft">Scale from a single helper to a massive distributed workforce</p>
                 </div>
                 
-                <div className="flex items-start">
-                  <Maximize className="h-5 w-5 text-neutral-400 mr-3 mt-1" />
-                  <p className="text-neutral-300">Tackle enterprise-scale projects that would normally require entire teams</p>
+                <div className="hz-row hz-ai-start">
+                  <Maximize className="hz-sq-3 hz-fg-muted hz-mr-3 hz-mt-1" />
+                  <p className="hz-fg-soft">Tackle enterprise-scale projects that would normally require entire teams</p>
                 </div>
               </div>
             </div>
             
-            <div className="bg-[var(--black)]/40 rounded-xl p-6 border border-gray-800">
-              <div className="text-sm font-mono text-neutral-300 space-y-2">
-                <div className="text-neutral-400">// Creating a team of agents to refactor an entire codebase</div>
-                <div className="text-[var(--white)]">const project = await HanzoCode.createProject('./my-app');</div>
-                <div className="text-[var(--white)]">const agents = await project.createAgentTeam({"{"}</div>
-                <div className="text-[var(--white)] ml-4">size: 12,</div>
-                <div className="text-[var(--white)] ml-4">task: 'Refactor to React 18 with TypeScript',</div>
-                <div className="text-[var(--white)] ml-4">coordination: 'hierarchical',</div>
-                <div className="text-[var(--white)] ml-4">parallelization: true</div>
-                <div className="text-[var(--white)]">{"}"});</div>
-                <div className="text-[var(--white)]">await agents.execute();</div>
-                <div className="text-[var(--white)]">// Agents will work together, with some focusing on</div>
-                <div className="text-[var(--white)]">// component logic, others on types, others on tests</div>
+            <div className="hz-card">
+              <div className="hz-t-sm hz-mono hz-fg-soft hz-stack-2">
+                <div className="hz-fg-muted">// Creating a team of agents to refactor an entire codebase</div>
+                <div className="hz-fg">const project = await HanzoCode.createProject('./my-app');</div>
+                <div className="hz-fg">const agents = await project.createAgentTeam({"{"}</div>
+                <div className="hz-fg hz-ml-4">size: 12,</div>
+                <div className="hz-fg hz-ml-4">task: 'Refactor to React 18 with TypeScript',</div>
+                <div className="hz-fg hz-ml-4">coordination: 'hierarchical',</div>
+                <div className="hz-fg hz-ml-4">parallelization: true</div>
+                <div className="hz-fg">{"}"});</div>
+                <div className="hz-fg">await agents.execute();</div>
+                <div className="hz-fg">// Agents will work together, with some focusing on</div>
+                <div className="hz-fg">// component logic, others on types, others on tests</div>
               </div>
             </div>
           </div>

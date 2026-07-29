@@ -5,58 +5,58 @@ import { GitPullRequest, MessageSquare, Shield, Clock } from "lucide-react";
 
 const PRAgent = () => {
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black to-gray-900">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-16 items-center">
+    <section className="hz-py-7 hz-px-4">
+      <div className="hz-container">
+        <div className="hz-grid hz-grid-2 hz-gap-7 hz-ai-center">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
           >
-            <div className="bg-neutral-800/20 border border-neutral-500/30 rounded-full px-4 py-1 inline-flex items-center mb-6">
-              <GitPullRequest className="h-4 w-4 mr-2 text-neutral-400" />
-              <span className="text-sm font-medium text-neutral-300">PR Agent</span>
+            <div className="hz-bg-raised hz-bordered hz-border-strong hz-r-full hz-px-4 hz-py-1 hz-inline hz-ai-center hz-mb-5">
+              <GitPullRequest className="hz-sq-2 hz-mr-2 hz-fg-muted" />
+              <span className="hz-t-sm hz-w-medium hz-fg-soft">PR Agent</span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            <h2 className="hz-t-3xl hz-w-bold hz-mb-5">
               Resolve Pull Requests 10x Faster.
             </h2>
-            <p className="text-xl text-neutral-300 mb-8">
+            <p className="hz-t-xl hz-fg-soft hz-mb-6">
               Bring-in @hanzo-dev into any conversation on GitHub to automatically resolve feedback in the speed.
             </p>
 
-            <div className="space-y-6">
-              <div className="flex gap-4">
-                <div className="bg-neutral-800/20 p-3 rounded-lg">
-                  <MessageSquare className="h-6 w-6 text-neutral-400" />
+            <div className="hz-stack-5">
+              <div className="hz-row hz-gap-4">
+                <div className="hz-bg-raised hz-p-3 hz-r-lg">
+                  <MessageSquare className="hz-sq-4 hz-fg-muted" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold mb-1">Fast revisions.</h3>
-                  <p className="text-neutral-300">
+                  <h3 className="hz-t-lg hz-w-semibold hz-mb-1">Fast revisions.</h3>
+                  <p className="hz-fg-soft">
                     Skip the back-and-forth. Mention @hanzo-dev in a review comment to automatically resolve feedback in the speed.
                   </p>
                 </div>
               </div>
 
-              <div className="flex gap-4">
-                <div className="bg-neutral-800/20 p-3 rounded-lg">
-                  <Clock className="h-6 w-6 text-neutral-400" />
+              <div className="hz-row hz-gap-4">
+                <div className="hz-bg-raised hz-p-3 hz-r-lg">
+                  <Clock className="hz-sq-4 hz-fg-muted" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold mb-1">Acclerate not just your product development, but your code quality.</h3>
-                  <p className="text-neutral-300">
+                  <h3 className="hz-t-lg hz-w-semibold hz-mb-1">Acclerate not just your product development, but your code quality.</h3>
+                  <p className="hz-fg-soft">
                     Automatically solve conflicts, add tests, docs, and more. Everything you need to ship better code, faster.
                   </p>
                 </div>
               </div>
 
-              <div className="flex gap-4">
-                <div className="bg-neutral-800/20 p-3 rounded-lg">
-                  <Shield className="h-6 w-6 text-neutral-400" />
+              <div className="hz-row hz-gap-4">
+                <div className="hz-bg-raised hz-p-3 hz-r-lg">
+                  <Shield className="hz-sq-4 hz-fg-muted" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold mb-1">AI Agents You Can Trust.</h3>
-                  <p className="text-neutral-300">
+                  <h3 className="hz-t-lg hz-w-semibold hz-mb-1">AI Agents You Can Trust.</h3>
+                  <p className="hz-fg-soft">
                     With complete oversight of every thought and step you are always in full control. Provide feedback and and roll-back in one click if you need to.
                   </p>
                 </div>
@@ -65,61 +65,61 @@ const PRAgent = () => {
           </motion.div>
 
           <motion.div
-            className="relative"
+            className="hz-rel"
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
           >
-            <div className="bg-gray-800/50 border border-gray-700/50 rounded-lg overflow-hidden">
-              <div className="p-4 bg-gray-900/70 border-b border-gray-700/50">
-                <div className="flex space-x-2">
-                  <div className="w-3 h-3 rounded-full bg-neutral-600"></div>
-                  <div className="w-3 h-3 rounded-full bg-neutral-500"></div>
-                  <div className="w-3 h-3 rounded-full bg-neutral-500"></div>
+            <div className="hz-bg-raised hz-bordered hz-r-lg hz-clip">
+              <div className="hz-p-4 hz-bg-surface hz-border-b">
+                <div className="hz-row hz-inline-2">
+                  <div className="hz-sq-1 hz-r-full hz-bg-raised"></div>
+                  <div className="hz-sq-1 hz-r-full hz-bg-raised"></div>
+                  <div className="hz-sq-1 hz-r-full hz-bg-raised"></div>
                 </div>
               </div>
-              <div className="p-6">
-                <div className="bg-gray-900/70 rounded-lg p-4 mb-4">
-                  <div className="flex items-start gap-3 mb-4">
-                    <div className="w-8 h-8 rounded-full bg-gray-700"></div>
+              <div className="hz-p-5">
+                <div className="hz-bg-surface hz-r-lg hz-p-4 hz-mb-4">
+                  <div className="hz-row hz-ai-start hz-gap-3 hz-mb-4">
+                    <div className="hz-sq-5 hz-r-full hz-bg-raised"></div>
                     <div>
-                      <div className="font-medium">Senior Developer</div>
-                      <div className="text-neutral-400 text-sm">2 hours ago</div>
-                      <div className="mt-2 p-3 bg-gray-800 rounded-lg">
+                      <div className="hz-w-medium">Senior Developer</div>
+                      <div className="hz-fg-muted hz-t-sm">2 hours ago</div>
+                      <div className="hz-mt-2 hz-p-3 hz-bg-raised hz-r-lg">
                         <p>Could you add error handling to this component and improve the accessibility?</p>
                       </div>
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 rounded-full bg-neutral-700 flex items-center justify-center text-xs font-bold">H</div>
+                  <div className="hz-row hz-ai-start hz-gap-3">
+                    <div className="hz-sq-5 hz-r-full hz-bg-raised hz-row hz-ai-center hz-jc-center hz-t-xs hz-w-bold">H</div>
                     <div>
-                      <div className="font-medium">Hanzo Dev</div>
-                      <div className="text-neutral-400 text-sm">1 hour ago</div>
-                      <div className="mt-2 p-3 bg-gray-800 rounded-lg">
+                      <div className="hz-w-medium">Hanzo Dev</div>
+                      <div className="hz-fg-muted hz-t-sm">1 hour ago</div>
+                      <div className="hz-mt-2 hz-p-3 hz-bg-raised hz-r-lg">
                         <p>I've added comprehensive error handling with try/catch blocks and implemented proper ARIA attributes to improve accessibility. The changes have been committed to the PR.</p>
                       </div>
-                      <div className="bg-gray-800/70 rounded mt-3 p-2 text-sm border border-gray-700">
-                        <div className="text-neutral-400">+ 15 lines added</div>
-                        <div className="text-neutral-400">- 3 lines removed</div>
+                      <div className="hz-bg-raised hz-r-md hz-mt-3 hz-p-2 hz-t-sm hz-bordered">
+                        <div className="hz-fg-muted">+ 15 lines added</div>
+                        <div className="hz-fg-muted">- 3 lines removed</div>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="flex justify-between items-center text-sm">
-                  <div className="flex items-center gap-2">
-                    <div className="w-6 h-6 rounded-full bg-neutral-500 flex items-center justify-center text-black">✓</div>
-                    <span className="text-neutral-400">Changes approved</span>
+                <div className="hz-row hz-jc-between hz-ai-center hz-t-sm">
+                  <div className="hz-row hz-ai-center hz-gap-2">
+                    <div className="hz-sq-4 hz-r-full hz-bg-raised hz-row hz-ai-center hz-jc-center hz-fg-inverse">✓</div>
+                    <span className="hz-fg-muted">Changes approved</span>
                   </div>
-                  <div className="text-neutral-400">Ready to merge</div>
+                  <div className="hz-fg-muted">Ready to merge</div>
                 </div>
               </div>
             </div>
 
-            <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-neutral-600/20 rounded-full blur-3xl"></div>
-            <div className="absolute -top-6 -left-6 w-24 h-24 bg-neutral-600/20 rounded-full blur-3xl"></div>
+            <div className="hz-sq-8 hz-abs hz-bg-raised hz-r-full hz-blur-bg"></div>
+            <div className="hz-sq-8 hz-abs hz-bg-raised hz-r-full hz-blur-bg"></div>
           </motion.div>
         </div>
       </div>

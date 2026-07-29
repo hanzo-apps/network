@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Slider } from "@/components/ui/radix-slider";
+import { Slider } from "@/components/ui/slider";
 
 interface ResourceSectionProps {
   icon: React.ReactNode;
@@ -26,21 +26,21 @@ const ResourceSection = ({
   unit
 }: ResourceSectionProps) => {
   return (
-    <div className="p-6 rounded-xl border border-[#333] bg-gray-900/50 hover:border-gray-700">
-      <div className="flex items-center gap-3 mb-4">
-        <div className="text-neutral-400">
+    <div className="hz-card hz-card-interactive">
+      <div className="hz-row hz-ai-center hz-gap-3 hz-mb-4">
+        <div className="hz-fg-muted">
           {icon}
         </div>
         <div>
-          <h3 className="font-medium">{title}</h3>
-          <p className="text-sm text-neutral-400">{description}</p>
+          <h3 className="hz-w-medium">{title}</h3>
+          <p className="hz-t-sm hz-fg-muted">{description}</p>
         </div>
       </div>
 
-      <div className="space-y-4">
-        <div className="flex justify-between items-center">
-          <span className="text-sm text-neutral-400">{value} {unit}</span>
-          <span className="font-semibold">${cost.toFixed(2)}/mo</span>
+      <div className="hz-stack-4">
+        <div className="hz-row hz-jc-between hz-ai-center">
+          <span className="hz-t-sm hz-fg-muted">{value} {unit}</span>
+          <span className="hz-w-semibold">${cost.toFixed(2)}/mo</span>
         </div>
 
         <Slider
@@ -49,10 +49,10 @@ const ResourceSection = ({
           min={min}
           max={max}
           step={1}
-          className="my-4"
+          className="hz-mt-4 hz-mb-4"
         />
 
-        <div className="flex justify-between text-xs text-neutral-500">
+        <div className="hz-row hz-jc-between hz-t-xs hz-fg-muted">
           <span>{min}</span>
           <span>{max}</span>
         </div>

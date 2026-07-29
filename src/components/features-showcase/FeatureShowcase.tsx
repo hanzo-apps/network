@@ -62,36 +62,36 @@ const FeatureShowcase: React.FC = () => {
   ); 
 
   return (
-    <section className="py-24 bg-[var(--black)] relative overflow-hidden" id="features-showcase" ref={scrollRef}>
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-b from-neutral-800/10 to-black/80"></div>
+    <section className="hz-py-7 hz-bg hz-rel hz-clip" id="features-showcase" ref={scrollRef}>
+      <div className="hz-abs hz-inset hz-z-behind">
+        <div className="hz-abs hz-inset"></div>
       </div>
       
       <motion.div 
-        className="container px-4 mx-auto"
+        className="hz-container hz-px-4 hz-mx-auto"
         style={{ opacity, y }}
       >
         <FeatureShowcaseHeader />
         
-        <div className="flex justify-center mb-10">
-          <div className="inline-flex rounded-full bg-gray-900/50 p-1.5 backdrop-blur-sm">
+        <div className="hz-row hz-jc-center hz-mb-6">
+          <div className="hz-inline hz-r-full hz-bg-surface hz-p-2 hz-glass">
             <Button
               variant={activeTab === 'all' ? 'default' : 'ghost'}
-              className={`rounded-full px-6 ${activeTab === 'all' ? 'bg-neutral-600 hover:bg-neutral-700' : 'text-neutral-300 hover:text-[var(--white)] hover:bg-gray-800/50'}`}
+              className={`hz-r-full hz-px-5 ${activeTab === 'all' ? 'hz-bg-raised hz-hoverable' : 'hz-fg-soft hz-hoverable'}`}
               onClick={() => setActiveTab('all')}
             >
               All
             </Button>
             <Button
               variant={activeTab === 'ai-cloud' ? 'default' : 'ghost'}
-              className={`rounded-full px-6 ${activeTab === 'ai-cloud' ? 'bg-neutral-600 hover:bg-neutral-700' : 'text-neutral-300 hover:text-[var(--white)] hover:bg-gray-800/50'}`}
+              className={`hz-r-full hz-px-5 ${activeTab === 'ai-cloud' ? 'hz-bg-raised hz-hoverable' : 'hz-fg-soft hz-hoverable'}`}
               onClick={() => setActiveTab('ai-cloud')}
             >
               AI Cloud
             </Button>
             <Button
               variant={activeTab === 'dx-platform' ? 'default' : 'ghost'}
-              className={`rounded-full px-6 ${activeTab === 'dx-platform' ? 'bg-neutral-600 hover:bg-neutral-700' : 'text-neutral-300 hover:text-[var(--white)] hover:bg-gray-800/50'}`}
+              className={`hz-r-full hz-px-5 ${activeTab === 'dx-platform' ? 'hz-bg-raised hz-hoverable' : 'hz-fg-soft hz-hoverable'}`}
               onClick={() => setActiveTab('dx-platform')}
             >
               DX Platform
@@ -107,7 +107,7 @@ const FeatureShowcase: React.FC = () => {
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.3 }}
             style={{ x }}
-            className="overflow-visible" // Ensure content doesn't get clipped
+            className="" // Ensure content doesn't get clipped
           >
             <FeatureShowcaseSlider features={activeFeatures} />
           </motion.div>

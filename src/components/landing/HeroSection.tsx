@@ -1,3 +1,4 @@
+import { BRAND } from '@/lib/brand';
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -21,7 +22,6 @@ import {
 } from "lucide-react";
 
 // Brand color
-const BRAND_COLOR = "#ffffff";
 
 // Proof chips data - communicates the vertical stack
 const PROOF_CHIPS = [
@@ -96,42 +96,42 @@ const HeroSection = () => {
 
   // Dashboard Mock Component
   const DashboardMock = ({ className = "" }: { className?: string }) => (
-    <div className={`rounded-xl border border-neutral-700 bg-neutral-900/95 backdrop-blur-sm overflow-hidden shadow-2xl ${className}`}>
+    <div className={`hz-r-lg hz-bordered hz-bg-surface hz-glass hz-clip hz-shadow-lg ${className}`}>
       {/* Browser chrome */}
-      <div className="flex items-center gap-2 px-4 py-2.5 border-b border-neutral-800 bg-neutral-900">
-        <div className="flex gap-1.5">
-          <div className="w-3 h-3 rounded-full bg-neutral-600/80" />
-          <div className="w-3 h-3 rounded-full bg-neutral-500/80" />
-          <div className="w-3 h-3 rounded-full bg-neutral-500/80" />
+      <div className="hz-row hz-ai-center hz-gap-2 hz-px-4 hz-py-2 hz-border-b hz-bg-surface">
+        <div className="hz-row hz-gap-2">
+          <div className="hz-sq-1 hz-r-full hz-bg-raised" />
+          <div className="hz-sq-1 hz-r-full hz-bg-raised" />
+          <div className="hz-sq-1 hz-r-full hz-bg-raised" />
         </div>
-        <div className="flex-1 mx-4">
-          <div className="bg-neutral-800 rounded-md px-3 py-1 text-xs text-neutral-400 text-center max-w-[200px] mx-auto">
+        <div className="hz-grow">
+          <div className="hz-container hz-bg-raised hz-r-md hz-py-1 hz-t-xs hz-fg-muted hz-align-center">
             cloud.hanzo.ai
           </div>
         </div>
       </div>
 
       {/* Dashboard content */}
-      <div className="flex min-h-[320px]">
+      <div className="hz-row">
         {/* Left nav */}
-        <div className="w-[140px] lg:w-[160px] border-r border-neutral-800 bg-neutral-950 p-2 hidden sm:block">
-          <div className="flex items-center gap-2 px-2 py-2 mb-3">
-            <div className="w-6 h-6 rounded-md bg-gradient-to-br from-white to-white/60 flex items-center justify-center">
-              <span className="text-white text-[10px] font-bold">H</span>
+        <div className="hz-desktop-only hz-border-r hz-bg-surface hz-p-2">
+          <div className="hz-row hz-ai-center hz-gap-2 hz-px-2 hz-py-2 hz-mb-3">
+            <div className="hz-sq-4 hz-r-md hz-row hz-ai-center hz-jc-center">
+              <span className="hz-fg hz-t-xs hz-w-bold">H</span>
             </div>
-            <span className="text-white text-xs font-medium">Hanzo</span>
+            <span className="hz-fg hz-t-xs hz-w-medium">Hanzo</span>
           </div>
-          <nav className="space-y-0.5">
+          <nav className="hz-stack-1">
             {DASHBOARD_NAV.map((item) => (
               <div
                 key={item.label}
-                className={`flex items-center gap-2 px-2 py-1.5 rounded-md text-[11px] cursor-pointer transition-colors ${
+                className={`hz-btn hz-btn-ghost hz-gap-2 hz-t-xs hz-pointer hz-transition ${
                   item.active
-                    ? "bg-white/20 text-white"
-                    : "text-neutral-400 hover:bg-neutral-800 hover:text-neutral-300"
+                    ? "hz-bg-quiet hz-fg"
+                    : "hz-fg-muted hz-link"
                 }`}
               >
-                <item.icon className="w-3 h-3" />
+                <item.icon className="hz-sq-1" />
                 {item.label}
               </div>
             ))}
@@ -139,68 +139,68 @@ const HeroSection = () => {
         </div>
 
         {/* Main content */}
-        <div className="flex-1 p-4 bg-neutral-950">
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-white text-sm font-medium">Project Overview</h3>
-            <div className="flex items-center gap-2">
-              <div className="px-2 py-1 rounded-md bg-neutral-500/20 text-neutral-400 text-[10px] flex items-center gap-1">
-                <div className="w-1.5 h-1.5 rounded-full bg-neutral-500" />
+        <div className="hz-grow hz-p-4 hz-bg-surface">
+          <div className="hz-row hz-ai-center hz-jc-between hz-mb-4">
+            <h3 className="hz-fg hz-t-sm hz-w-medium">Project Overview</h3>
+            <div className="hz-row hz-ai-center hz-gap-2">
+              <div className="hz-px-2 hz-py-1 hz-r-md hz-bg-raised hz-fg-muted hz-t-xs hz-row hz-ai-center hz-gap-1">
+                <div className="hz-sq-1 hz-r-full hz-bg-raised" />
                 All systems operational
               </div>
             </div>
           </div>
 
           {/* Stats cards */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-4">
-            <div className="bg-neutral-900 rounded-lg p-3 border border-neutral-800">
-              <div className="flex items-center gap-2 mb-1">
-                <Rocket className="w-3 h-3 text-neutral-500" />
-                <span className="text-[10px] text-neutral-500">Deployments</span>
+          <div className="hz-grid hz-grid-4 hz-gap-3 hz-mb-4">
+            <div className="hz-card hz-card-tight">
+              <div className="hz-row hz-ai-center hz-gap-2 hz-mb-1">
+                <Rocket className="hz-sq-1 hz-fg-muted" />
+                <span className="hz-t-xs hz-fg-muted">Deployments</span>
               </div>
-              <div className="text-lg font-semibold text-white">24</div>
-              <div className="text-[10px] text-neutral-400">+3 this week</div>
+              <div className="hz-t-lg hz-w-semibold hz-fg">24</div>
+              <div className="hz-t-xs hz-fg-muted">+3 this week</div>
             </div>
-            <div className="bg-neutral-900 rounded-lg p-3 border border-neutral-800">
-              <div className="flex items-center gap-2 mb-1">
-                <Bot className="w-3 h-3 text-neutral-500" />
-                <span className="text-[10px] text-neutral-500">Agent Runs</span>
+            <div className="hz-card hz-card-tight">
+              <div className="hz-row hz-ai-center hz-gap-2 hz-mb-1">
+                <Bot className="hz-sq-1 hz-fg-muted" />
+                <span className="hz-t-xs hz-fg-muted">Agent Runs</span>
               </div>
-              <div className="text-lg font-semibold text-white">1.2K</div>
-              <div className="text-[10px] text-neutral-400">Today</div>
+              <div className="hz-t-lg hz-w-semibold hz-fg">1.2K</div>
+              <div className="hz-t-xs hz-fg-muted">Today</div>
             </div>
-            <div className="bg-neutral-900 rounded-lg p-3 border border-neutral-800">
-              <div className="flex items-center gap-2 mb-1">
-                <Database className="w-3 h-3 text-neutral-500" />
-                <span className="text-[10px] text-neutral-500">Vector Indexes</span>
+            <div className="hz-card hz-card-tight">
+              <div className="hz-row hz-ai-center hz-gap-2 hz-mb-1">
+                <Database className="hz-sq-1 hz-fg-muted" />
+                <span className="hz-t-xs hz-fg-muted">Vector Indexes</span>
               </div>
-              <div className="text-lg font-semibold text-white">8</div>
-              <div className="text-[10px] text-neutral-400">2.4M vectors</div>
+              <div className="hz-t-lg hz-w-semibold hz-fg">8</div>
+              <div className="hz-t-xs hz-fg-muted">2.4M vectors</div>
             </div>
-            <div className="bg-neutral-900 rounded-lg p-3 border border-neutral-800">
-              <div className="flex items-center gap-2 mb-1">
-                <Key className="w-3 h-3 text-neutral-500" />
-                <span className="text-[10px] text-neutral-500">Keys/Secrets</span>
+            <div className="hz-card hz-card-tight">
+              <div className="hz-row hz-ai-center hz-gap-2 hz-mb-1">
+                <Key className="hz-sq-1 hz-fg-muted" />
+                <span className="hz-t-xs hz-fg-muted">Keys/Secrets</span>
               </div>
-              <div className="text-lg font-semibold text-white">47</div>
-              <div className="text-[10px] text-neutral-400">Encrypted</div>
+              <div className="hz-t-lg hz-w-semibold hz-fg">47</div>
+              <div className="hz-t-xs hz-fg-muted">Encrypted</div>
             </div>
           </div>
 
           {/* Recent deployments */}
-          <div className="space-y-2">
-            <div className="text-[11px] text-neutral-500 mb-2">Recent Deployments</div>
+          <div className="hz-stack-2">
+            <div className="hz-t-xs hz-fg-muted hz-mb-2">Recent Deployments</div>
             {[
               { name: "docs-api", status: "live", region: "us-east-1", time: "2m ago" },
               { name: "chat-service", status: "live", region: "eu-west-1", time: "1h ago" },
               { name: "ml-pipeline", status: "building", region: "us-west-2", time: "now" },
             ].map((deploy) => (
-              <div key={deploy.name} className="flex items-center justify-between p-2.5 rounded-lg bg-neutral-900 border border-neutral-800">
-                <div className="flex items-center gap-2">
-                  <div className={`w-2 h-2 rounded-full ${deploy.status === "live" ? "bg-neutral-500" : "bg-neutral-500 animate-pulse"}`} />
-                  <span className="text-sm text-white">{deploy.name}</span>
-                  <span className="text-[10px] text-neutral-500 px-1.5 py-0.5 bg-neutral-800 rounded">{deploy.region}</span>
+              <div key={deploy.name} className="hz-row hz-ai-center hz-jc-between hz-p-2 hz-r-lg hz-bg-surface hz-bordered">
+                <div className="hz-row hz-ai-center hz-gap-2">
+                  <div className={`hz-sq-1 hz-r-full ${deploy.status === "live" ? "hz-bg-raised" : "hz-bg-raised"}`} />
+                  <span className="hz-t-sm hz-fg">{deploy.name}</span>
+                  <span className="hz-t-xs hz-fg-muted hz-px-2 hz-py-1 hz-bg-raised hz-r-md">{deploy.region}</span>
                 </div>
-                <span className="text-xs text-neutral-500">{deploy.time}</span>
+                <span className="hz-t-xs hz-fg-muted">{deploy.time}</span>
               </div>
             ))}
           </div>
@@ -211,63 +211,63 @@ const HeroSection = () => {
 
   // Terminal Mock Component - fixed height with scrolling content
   const TerminalMock = ({ className = "" }: { className?: string }) => (
-    <div className={`rounded-xl border border-neutral-700 bg-neutral-900/95 backdrop-blur-sm overflow-hidden shadow-2xl ${className}`}>
+    <div className={`hz-r-lg hz-bordered hz-bg-surface hz-glass hz-clip hz-shadow-lg ${className}`}>
       {/* Terminal header */}
-      <div className="flex items-center gap-2 px-3 py-2 border-b border-neutral-800 bg-neutral-900 shrink-0">
-        <div className="flex gap-1.5">
-          <div className="w-2.5 h-2.5 rounded-full bg-neutral-600/80" />
-          <div className="w-2.5 h-2.5 rounded-full bg-neutral-500/80" />
-          <div className="w-2.5 h-2.5 rounded-full bg-neutral-500/80" />
+      <div className="hz-row hz-ai-center hz-gap-2 hz-px-3 hz-py-2 hz-border-b hz-bg-surface hz-none">
+        <div className="hz-row hz-gap-2">
+          <div className="hz-sq-1 hz-r-full hz-bg-raised" />
+          <div className="hz-sq-1 hz-r-full hz-bg-raised" />
+          <div className="hz-sq-1 hz-r-full hz-bg-raised" />
         </div>
-        <span className="ml-2 text-[10px] text-neutral-500 font-mono">terminal</span>
-        <div className="ml-auto flex items-center gap-2">
+        <span className="hz-ml-2 hz-t-xs hz-fg-muted hz-mono">terminal</span>
+        <div className="hz-ml-auto hz-row hz-ai-center hz-gap-2">
           <button
             onClick={handleCopy}
-            className="p-1 rounded hover:bg-neutral-800 transition-colors"
+            className="hz-p-1 hz-r-md hz-transition hz-hoverable"
           >
             {copied ? (
-              <Check className="h-3 w-3 text-neutral-400" />
+              <Check className="hz-sq-1 hz-fg-muted" />
             ) : (
-              <Copy className="h-3 w-3 text-neutral-500" />
+              <Copy className="hz-sq-1 hz-fg-muted" />
             )}
           </button>
         </div>
       </div>
       {/* Terminal content - fixed height with scroll */}
-      <div className="p-4 font-mono text-xs bg-neutral-950 h-[220px] overflow-y-auto">
+      <div className="hz-p-4 hz-mono hz-t-xs hz-bg-surface hz-scroll-y">
         {TERMINAL_LINES.slice(0, terminalStep).map((line, idx) => (
           <motion.div
             key={idx}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.15 }}
-            className={`mb-1 ${
-              line.type === "command" ? "text-neutral-300" :
-              line.type === "success" ? "text-neutral-400" :
-              line.type === "prompt" ? "text-neutral-400" : "text-neutral-400"
+            className={`hz-mb-1 ${
+              line.type === "command" ? "hz-fg-soft" :
+              line.type === "success" ? "hz-fg-muted" :
+              line.type === "prompt" ? "hz-fg-muted" : "hz-fg-muted"
             }`}
           >
             {line.type === "success" && (
-              <span className="text-neutral-400">✓ </span>
+              <span className="hz-fg-muted">✓ </span>
             )}
             {line.type === "prompt" && (
-              <span className="text-neutral-400">? </span>
+              <span className="hz-fg-muted">? </span>
             )}
-            <span className={line.highlight ? "text-white" : ""}>
+            <span className={line.highlight ? "hz-fg" : ""}>
               {line.text.replace(/^[✓?]\s*/, "")}
             </span>
           </motion.div>
         ))}
         {terminalStep < TERMINAL_LINES.length && (
-          <div className="flex items-center gap-1">
-            <span className="text-neutral-500">$</span>
-            <span className="w-2 h-4 bg-white/80 animate-pulse" />
+          <div className="hz-row hz-ai-center hz-gap-1">
+            <span className="hz-fg-muted">$</span>
+            <span className="hz-bw-1 hz-bh-2 hz-bg-quiet" />
           </div>
         )}
         {terminalStep >= TERMINAL_LINES.length && (
-          <div className="flex items-center gap-1 mt-2">
-            <span className="text-neutral-500">$</span>
-            <span className="w-2 h-4 bg-white/80 animate-pulse" />
+          <div className="hz-row hz-ai-center hz-gap-1 hz-mt-2">
+            <span className="hz-fg-muted">$</span>
+            <span className="hz-bw-1 hz-bh-2 hz-bg-quiet" />
           </div>
         )}
       </div>
@@ -277,21 +277,21 @@ const HeroSection = () => {
   // Mobile Device Mock Component - iPhone 15 Pro dimensions (71.6mm x 146.6mm = ~2.05:1 ratio)
   // Using w-[150px] = h-[308px] for proper iPhone proportions
   const MobileDeviceMock = ({ className = "" }: { className?: string }) => (
-    <div className={`w-[150px] h-[308px] rounded-[32px] border-[3px] border-neutral-600 bg-neutral-900 overflow-hidden shadow-2xl flex flex-col ${className}`}>
+    <div className={`hz-r-md hz-border-strong hz-bg-surface hz-clip hz-shadow-lg hz-col ${className}`}>
       {/* Dynamic Island */}
-      <div className="bg-neutral-950 pt-2 pb-1 flex justify-center shrink-0">
-        <div className="w-[60px] h-[18px] bg-black rounded-full" />
+      <div className="hz-bg-surface hz-pt-4 hz-pb-4 hz-row hz-jc-center hz-none">
+        <div className="hz-bg hz-r-full" />
       </div>
       {/* App content */}
-      <div className="bg-neutral-950 p-2.5 flex-1 overflow-hidden flex flex-col">
-        <div className="flex items-center justify-between mb-2 shrink-0">
-          <div className="flex items-center gap-1.5">
-            <div className="w-5 h-5 rounded-md bg-white flex items-center justify-center">
-              <span className="text-white text-[7px] font-bold">H</span>
+      <div className="hz-bg-surface hz-p-2 hz-grow hz-clip hz-col">
+        <div className="hz-row hz-ai-center hz-jc-between hz-mb-2 hz-none">
+          <div className="hz-row hz-ai-center hz-gap-2">
+            <div className="hz-sq-3 hz-r-md hz-bg-inverse hz-row hz-ai-center hz-jc-center">
+              <span className="hz-fg hz-t-xs hz-w-bold">H</span>
             </div>
-            <span className="text-white text-[10px] font-medium">Hanzo</span>
+            <span className="hz-fg hz-t-xs hz-w-medium">Hanzo</span>
           </div>
-          <Bell className="w-3.5 h-3.5 text-neutral-500" />
+          <Bell className="hz-sq-2 hz-fg-muted" />
         </div>
 
         {/* Push notification style */}
@@ -299,48 +299,48 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: -10, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ delay: 1.5, duration: 0.3 }}
-          className="bg-neutral-900 rounded-lg p-2 border border-neutral-800 mb-2 shrink-0"
+          className="hz-bg-surface hz-r-lg hz-p-2 hz-bordered hz-mb-2 hz-none"
         >
-          <div className="flex items-center gap-1.5 mb-0.5">
-            <div className="w-1.5 h-1.5 rounded-full bg-neutral-500" />
-            <span className="text-[9px] text-neutral-400 font-medium">Deploy Complete</span>
+          <div className="hz-row hz-ai-center hz-gap-2 hz-mb-1">
+            <div className="hz-sq-1 hz-r-full hz-bg-raised" />
+            <span className="hz-t-xs hz-fg-muted hz-w-medium">Deploy Complete</span>
           </div>
-          <div className="text-[10px] text-white">docs-api is now live</div>
-          <div className="text-[8px] text-neutral-500 mt-0.5 truncate">https://docs-api.acme.dev</div>
+          <div className="hz-t-xs hz-fg">docs-api is now live</div>
+          <div className="hz-t-xs hz-fg-muted hz-mt-1 hz-truncate">https://docs-api.acme.dev</div>
         </motion.div>
 
-        <div className="space-y-1.5 flex-1 overflow-hidden">
-          <div className="bg-neutral-900 rounded-lg p-1.5 border border-neutral-800">
-            <div className="text-[8px] text-neutral-500">Status</div>
-            <div className="flex items-center gap-1">
-              <div className="w-1.5 h-1.5 rounded-full bg-neutral-500" />
-              <span className="text-[9px] text-neutral-400">All systems operational</span>
+        <div className="hz-stack-2 hz-grow hz-clip">
+          <div className="hz-bg-surface hz-r-lg hz-p-2 hz-bordered">
+            <div className="hz-t-xs hz-fg-muted">Status</div>
+            <div className="hz-row hz-ai-center hz-gap-1">
+              <div className="hz-sq-1 hz-r-full hz-bg-raised" />
+              <span className="hz-t-xs hz-fg-muted">All systems operational</span>
             </div>
           </div>
-          <div className="bg-neutral-900 rounded-lg p-1.5 border border-neutral-800">
-            <div className="text-[8px] text-neutral-500">Active Deployments</div>
-            <div className="text-[10px] text-white">24 services</div>
+          <div className="hz-bg-surface hz-r-lg hz-p-2 hz-bordered">
+            <div className="hz-t-xs hz-fg-muted">Active Deployments</div>
+            <div className="hz-t-xs hz-fg">24 services</div>
           </div>
         </div>
       </div>
       {/* Home indicator */}
-      <div className="bg-neutral-950 py-1.5 flex justify-center shrink-0">
-        <div className="w-[40px] h-[4px] bg-neutral-600 rounded-full" />
+      <div className="hz-bg-surface hz-py-2 hz-row hz-jc-center hz-none">
+        <div className="hz-bg-raised hz-r-full" />
       </div>
     </div>
   );
 
   // Mobile Tab Selector
   const MobileTabSelector = () => (
-    <div className="flex bg-neutral-900 rounded-lg p-1 border border-neutral-800">
+    <div className="hz-row hz-bg-surface hz-r-lg hz-p-1 hz-bordered">
       {(["dashboard", "terminal", "mobile"] as MobileTab[]).map((tab) => (
         <button
           key={tab}
           onClick={() => setMobileTab(tab)}
-          className={`flex-1 px-3 py-2 text-xs font-medium rounded-md transition-colors capitalize ${
+          className={`hz-grow hz-px-3 hz-py-2 hz-t-xs hz-w-medium hz-r-md hz-transition ${
             mobileTab === tab
-              ? "bg-white text-black"
-              : "text-neutral-400 hover:text-white"
+              ? "hz-bg-inverse hz-fg-inverse"
+              : "hz-fg-muted hz-link"
           }`}
         >
           {tab}
@@ -350,20 +350,20 @@ const HeroSection = () => {
   );
 
   return (
-    <section className="pt-20 pb-8 px-4 md:px-8 lg:px-12">
+    <section className="hz-pt-6 hz-pb-6 hz-px-4">
       {/* Main Hero Container */}
-      <div className="relative mx-auto w-full max-w-[1400px] min-h-[700px] rounded-2xl border border-neutral-800 overflow-hidden bg-gradient-to-br from-neutral-950 via-neutral-900 to-neutral-950">
+      <div className="hz-container hz-rel hz-w-full hz-r-xl hz-bordered hz-clip">
 
         {/* Background gradients - z-0 */}
-        <div className="absolute inset-0 overflow-hidden z-0">
+        <div className="hz-abs hz-inset hz-clip hz-z-base">
           {/* Red accent glow - center */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: mounted ? 0.15 : 0 }}
             transition={{ duration: 1.5 }}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full"
+            className="hz-center-xy hz-abs hz-r-full"
             style={{
-              background: `radial-gradient(circle, ${BRAND_COLOR} 0%, transparent 70%)`,
+              background: `radial-gradient(circle, ${BRAND.fg} 0%, transparent 70%)`,
               filter: "blur(100px)",
             }}
           />
@@ -372,9 +372,9 @@ const HeroSection = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: mounted ? 0.1 : 0 }}
             transition={{ duration: 1.5, delay: 0.2 }}
-            className="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full"
+            className="hz-abs hz-r-full"
             style={{
-              background: `radial-gradient(circle, ${BRAND_COLOR} 0%, transparent 70%)`,
+              background: `radial-gradient(circle, ${BRAND.fg} 0%, transparent 70%)`,
               filter: "blur(80px)",
             }}
           />
@@ -383,7 +383,7 @@ const HeroSection = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: mounted ? 0.04 : 0 }}
             transition={{ duration: 1.5, delay: 0.3 }}
-            className="absolute -bottom-48 -left-48 w-[600px] h-[600px] rounded-full"
+            className="hz-abs hz-r-full"
             style={{
               background: "radial-gradient(circle, #ffffff 0%, transparent 70%)",
               filter: "blur(100px)",
@@ -393,7 +393,7 @@ const HeroSection = () => {
 
         {/* Grid pattern */}
         <div
-          className="absolute inset-0 opacity-[0.02] z-0"
+          className="hz-abs hz-inset hz-dim-more hz-z-base"
           style={{
             backgroundImage: `linear-gradient(rgba(255,255,255,.5) 1px, transparent 1px),
                              linear-gradient(90deg, rgba(255,255,255,.5) 1px, transparent 1px)`,
@@ -402,13 +402,13 @@ const HeroSection = () => {
         />
 
         {/* Content - z-10 */}
-        <div className="relative z-10 h-full px-6 md:px-10 lg:px-12 py-10 lg:py-12">
+        <div className="hz-rel hz-z-raised hz-h-full hz-px-5 hz-py-6">
 
           {/* Desktop Layout: Two-column grid */}
-          <div className="hidden lg:grid lg:grid-cols-2 lg:gap-8 xl:gap-12 h-full">
+          <div className="hz-desktop-only hz-grid hz-grid-2 hz-h-full">
 
             {/* Left Column: Copy */}
-            <div className="flex flex-col justify-center">
+            <div className="hz-col hz-jc-center">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -416,8 +416,8 @@ const HeroSection = () => {
               >
                 {/* Badge */}
                 <p
-                  className="inline-flex text-xs font-medium rounded-full px-4 py-2 border w-fit mb-6"
-                  style={{ color: BRAND_COLOR, borderColor: `${BRAND_COLOR}40` }}
+                  className="hz-inline hz-t-xs hz-w-medium hz-r-full hz-px-4 hz-py-2 hz-bordered hz-w-fit hz-mb-5"
+                  style={{ color: BRAND.fg, borderColor: `${BRAND.washStrong}` }}
                 >
                   Open-source AI Cloud for builders.
                 </p>
@@ -429,10 +429,10 @@ const HeroSection = () => {
                 transition={{ duration: 0.6, delay: 0.1 }}
               >
                 {/* Main Headline */}
-                <h1 className="text-4xl xl:text-5xl 2xl:text-6xl font-medium tracking-tight leading-[1.1] mb-6">
-                  <span className="text-white">A vertically integrated</span>
+                <h1 className="hz-t-4xl hz-w-medium hz-tracking-tight hz-mb-5">
+                  <span className="hz-fg">A vertically integrated</span>
                   <br />
-                  <span style={{ color: BRAND_COLOR }}>AI platform.</span>
+                  <span className="hz-fg" >AI platform.</span>
                 </h1>
               </motion.div>
 
@@ -442,7 +442,7 @@ const HeroSection = () => {
                 transition={{ duration: 0.6, delay: 0.15 }}
               >
                 {/* Subhead */}
-                <p className="text-base xl:text-lg text-neutral-400 leading-relaxed mb-8 max-w-[500px]">
+                <p className="hz-t-base hz-fg-muted hz-leading-relaxed hz-mb-6 hz-mw-full">
                   Agents, models, data, and deployment—with Team, IAM, KMS, and Audit built in. One platform from identity to production.
                 </p>
               </motion.div>
@@ -451,24 +451,24 @@ const HeroSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="flex flex-row items-center gap-4 flex-wrap mb-8"
+                className="hz-row hz-ai-center hz-gap-4 hz-wrap hz-mb-6"
               >
                 <Link
                   to="/products"
-                  className="inline-flex justify-center items-center px-6 py-3 rounded-full font-medium tracking-tight transition-all hover:opacity-90 text-sm"
-                  style={{ backgroundColor: BRAND_COLOR, color: '#ffffff' }}
+                  className="hz-btn hz-btn-ghost hz-tracking-tight hz-transition hz-bg-inverse"
+                  
                 >
                   Get Started
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  <ArrowRight className="hz-sq-2 hz-ml-2" />
                 </Link>
                 <a
                   href="https://docs.hanzo.ai"
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="inline-flex justify-center items-center px-6 py-3 rounded-full font-medium tracking-tight transition-colors border border-neutral-700 bg-transparent hover:bg-neutral-900 hover:border-neutral-600 text-sm"
+                  className="hz-btn hz-btn-ghost hz-tracking-tight hz-transition"
                 >
                   Documentation
-                  <ExternalLink className="ml-2 h-4 w-4" />
+                  <ExternalLink className="hz-sq-2 hz-ml-2" />
                 </a>
               </motion.div>
 
@@ -477,14 +477,14 @@ const HeroSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.25 }}
-                className="flex flex-wrap gap-2"
+                className="hz-row hz-wrap hz-gap-2"
               >
                 {PROOF_CHIPS.map((chip) => (
                   <div
                     key={chip.label}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-neutral-900/80 border border-neutral-800 text-xs text-neutral-400"
+                    className="hz-btn hz-gap-2 hz-t-xs hz-fg-muted"
                   >
-                    <chip.icon className="w-3 h-3" />
+                    <chip.icon className="hz-sq-1" />
                     {chip.label}
                   </div>
                 ))}
@@ -492,13 +492,13 @@ const HeroSection = () => {
             </div>
 
             {/* Right Column: Demo Stack */}
-            <div className="relative flex flex-col justify-center">
+            <div className="hz-rel hz-col hz-jc-center">
               {/* Dashboard - Primary/Large */}
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: mounted ? 1 : 0, x: mounted ? 0 : 20 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
-                className="relative z-20"
+                className="hz-rel hz-z-raised"
               >
                 <DashboardMock />
               </motion.div>
@@ -508,7 +508,7 @@ const HeroSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: mounted ? 1 : 0, y: mounted ? 0 : 20 }}
                 transition={{ duration: 0.6, delay: 0.5 }}
-                className="relative z-20 mt-4 w-full max-w-[400px]"
+                className="hz-rel hz-z-raised hz-mt-4 hz-w-full hz-mw-full"
               >
                 <TerminalMock />
               </motion.div>
@@ -518,7 +518,7 @@ const HeroSection = () => {
                 initial={{ opacity: 0, x: 20, y: 20 }}
                 animate={{ opacity: mounted ? 1 : 0, x: mounted ? 0 : 20, y: mounted ? 0 : 20 }}
                 transition={{ duration: 0.6, delay: 0.6 }}
-                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-30"
+                className="hz-center-y hz-abs hz-right-0 hz-z-header"
               >
                 <MobileDeviceMock />
               </motion.div>
@@ -526,17 +526,17 @@ const HeroSection = () => {
           </div>
 
           {/* Tablet Layout (md): Stack vertically */}
-          <div className="hidden md:flex lg:hidden flex-col gap-8">
+          <div className="hz-desktop-only hz-row hz-col hz-gap-6">
             {/* Copy section */}
-            <div className="text-center">
+            <div className="hz-align-center">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
               >
                 <p
-                  className="inline-flex text-xs font-medium rounded-full px-4 py-2 border w-fit mb-6"
-                  style={{ color: BRAND_COLOR, borderColor: `${BRAND_COLOR}40` }}
+                  className="hz-inline hz-t-xs hz-w-medium hz-r-full hz-px-4 hz-py-2 hz-bordered hz-w-fit hz-mb-5"
+                  style={{ color: BRAND.fg, borderColor: `${BRAND.washStrong}` }}
                 >
                   Open-source AI Cloud for builders.
                 </p>
@@ -547,10 +547,10 @@ const HeroSection = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
               >
-                <h1 className="text-4xl font-medium tracking-tight leading-[1.1] mb-6">
-                  <span className="text-white">A vertically integrated</span>
+                <h1 className="hz-t-4xl hz-w-medium hz-tracking-tight hz-mb-5">
+                  <span className="hz-fg">A vertically integrated</span>
                   <br />
-                  <span style={{ color: BRAND_COLOR }}>AI platform.</span>
+                  <span className="hz-fg" >AI platform.</span>
                 </h1>
               </motion.div>
 
@@ -559,7 +559,7 @@ const HeroSection = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.15 }}
               >
-                <p className="text-base text-neutral-400 leading-relaxed mb-6 max-w-[500px] mx-auto">
+                <p className="hz-container hz-t-base hz-fg-muted hz-leading-relaxed hz-mb-5">
                   Agents, models, data, and deployment—with Team, IAM, KMS, and Audit built in.
                 </p>
               </motion.div>
@@ -568,24 +568,24 @@ const HeroSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="flex flex-row items-center justify-center gap-4 flex-wrap mb-6"
+                className="hz-row hz-ai-center hz-jc-center hz-gap-4 hz-wrap hz-mb-5"
               >
                 <Link
                   to="/products"
-                  className="inline-flex justify-center items-center px-6 py-3 rounded-full font-medium tracking-tight transition-all hover:opacity-90 text-sm"
-                  style={{ backgroundColor: BRAND_COLOR, color: '#ffffff' }}
+                  className="hz-btn hz-btn-ghost hz-tracking-tight hz-transition hz-bg-inverse"
+                  
                 >
                   Get Started
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  <ArrowRight className="hz-sq-2 hz-ml-2" />
                 </Link>
                 <a
                   href="https://docs.hanzo.ai"
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="inline-flex justify-center items-center px-6 py-3 rounded-full font-medium tracking-tight transition-colors border border-neutral-700 bg-transparent hover:bg-neutral-900 hover:border-neutral-600 text-sm"
+                  className="hz-btn hz-btn-ghost hz-tracking-tight hz-transition"
                 >
                   Documentation
-                  <ExternalLink className="ml-2 h-4 w-4" />
+                  <ExternalLink className="hz-sq-2 hz-ml-2" />
                 </a>
               </motion.div>
 
@@ -594,14 +594,14 @@ const HeroSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.25 }}
-                className="flex flex-wrap justify-center gap-2"
+                className="hz-row hz-wrap hz-jc-center hz-gap-2"
               >
                 {PROOF_CHIPS.map((chip) => (
                   <div
                     key={chip.label}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-neutral-900/80 border border-neutral-800 text-xs text-neutral-400"
+                    className="hz-btn hz-gap-2 hz-t-xs hz-fg-muted"
                   >
-                    <chip.icon className="w-3 h-3" />
+                    <chip.icon className="hz-sq-1" />
                     {chip.label}
                   </div>
                 ))}
@@ -609,7 +609,7 @@ const HeroSection = () => {
             </div>
 
             {/* Demo stack - tablet */}
-            <div className="space-y-4">
+            <div className="hz-stack-4">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: mounted ? 1 : 0, y: mounted ? 0 : 20 }}
@@ -618,7 +618,7 @@ const HeroSection = () => {
                 <DashboardMock />
               </motion.div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="hz-grid hz-grid-2 hz-gap-4">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: mounted ? 1 : 0, y: mounted ? 0 : 20 }}
@@ -630,7 +630,7 @@ const HeroSection = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: mounted ? 1 : 0, y: mounted ? 0 : 20 }}
                   transition={{ duration: 0.6, delay: 0.6 }}
-                  className="flex justify-center"
+                  className="hz-row hz-jc-center"
                 >
                   <MobileDeviceMock />
                 </motion.div>
@@ -639,17 +639,17 @@ const HeroSection = () => {
           </div>
 
           {/* Mobile Layout (sm): Segmented control */}
-          <div className="md:hidden flex flex-col gap-6">
+          <div className="hz-mobile-only hz-col hz-gap-5">
             {/* Copy section */}
-            <div className="text-center">
+            <div className="hz-align-center">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
               >
                 <p
-                  className="inline-flex text-[11px] font-medium rounded-full px-3 py-1.5 border w-fit mb-4"
-                  style={{ color: BRAND_COLOR, borderColor: `${BRAND_COLOR}40` }}
+                  className="hz-inline hz-t-xs hz-w-medium hz-r-full hz-px-3 hz-py-2 hz-bordered hz-w-fit hz-mb-4"
+                  style={{ color: BRAND.fg, borderColor: `${BRAND.washStrong}` }}
                 >
                   Open-source AI Cloud for builders.
                 </p>
@@ -660,10 +660,10 @@ const HeroSection = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
               >
-                <h1 className="text-2xl font-medium tracking-tight leading-[1.1] mb-4">
-                  <span className="text-white">A vertically integrated</span>
+                <h1 className="hz-t-2xl hz-w-medium hz-tracking-tight hz-mb-4">
+                  <span className="hz-fg">A vertically integrated</span>
                   <br />
-                  <span style={{ color: BRAND_COLOR }}>AI platform.</span>
+                  <span className="hz-fg" >AI platform.</span>
                 </h1>
               </motion.div>
 
@@ -672,7 +672,7 @@ const HeroSection = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.15 }}
               >
-                <p className="text-sm text-neutral-400 leading-relaxed mb-4">
+                <p className="hz-t-sm hz-fg-muted hz-leading-relaxed hz-mb-4">
                   Agents, models, data, and deployment—with Team, IAM, KMS, and Audit built in.
                 </p>
               </motion.div>
@@ -681,24 +681,24 @@ const HeroSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="flex flex-col items-center gap-3 mb-4"
+                className="hz-col hz-ai-center hz-gap-3 hz-mb-4"
               >
                 <Link
                   to="/products"
-                  className="inline-flex justify-center items-center px-6 py-3 rounded-full font-medium tracking-tight transition-all hover:opacity-90 text-sm w-full max-w-[200px]"
-                  style={{ backgroundColor: BRAND_COLOR, color: '#ffffff' }}
+                  className="hz-btn hz-btn-ghost hz-btn-block hz-tracking-tight hz-transition hz-mw-full hz-bg-inverse"
+                  
                 >
                   Get Started
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  <ArrowRight className="hz-sq-2 hz-ml-2" />
                 </Link>
                 <a
                   href="https://docs.hanzo.ai"
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="inline-flex justify-center items-center px-6 py-3 rounded-full font-medium tracking-tight transition-colors border border-neutral-700 bg-transparent hover:bg-neutral-900 hover:border-neutral-600 text-sm w-full max-w-[200px]"
+                  className="hz-btn hz-btn-ghost hz-btn-block hz-tracking-tight hz-transition hz-mw-full"
                 >
                   Documentation
-                  <ExternalLink className="ml-2 h-4 w-4" />
+                  <ExternalLink className="hz-sq-2 hz-ml-2" />
                 </a>
               </motion.div>
 
@@ -707,14 +707,14 @@ const HeroSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.25 }}
-                className="flex flex-wrap justify-center gap-2"
+                className="hz-row hz-wrap hz-jc-center hz-gap-2"
               >
                 {PROOF_CHIPS.slice(0, 4).map((chip) => (
                   <div
                     key={chip.label}
-                    className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-neutral-900/80 border border-neutral-800 text-[10px] text-neutral-400"
+                    className="hz-inline hz-ai-center hz-gap-1 hz-px-2 hz-py-1 hz-r-full hz-bg-surface hz-bordered hz-t-xs hz-fg-muted"
                   >
-                    <chip.icon className="w-2.5 h-2.5" />
+                    <chip.icon className="hz-sq-1" />
                     {chip.label}
                   </div>
                 ))}
@@ -735,7 +735,7 @@ const HeroSection = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.3 }}
-              className="min-h-[300px]"
+              className=""
             >
               <AnimatePresence mode="wait">
                 {mobileTab === "dashboard" && (
@@ -767,7 +767,7 @@ const HeroSection = () => {
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: 10 }}
                     transition={{ duration: 0.2 }}
-                    className="flex justify-center"
+                    className="hz-row hz-jc-center"
                   >
                     <MobileDeviceMock />
                   </motion.div>

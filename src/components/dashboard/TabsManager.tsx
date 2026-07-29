@@ -44,23 +44,23 @@ const TabsManager: React.FC<TabsManagerProps> = ({ initialTabs, onAddTab }) => {
   };
 
   return (
-    <div className="flex flex-col h-full">
-      <div className="flex border-b border-gray-800">
-        <div className="flex-1 flex overflow-x-auto scrollbar-none">
+    <div className="hz-col hz-h-full">
+      <div className="hz-row hz-border-b">
+        <div className="hz-grow hz-row hz-scroll-x">
           {tabs.map(tab => (
             <div
               key={tab.id}
               className={cn(
-                "flex items-center px-4 py-2 border-r border-gray-800 cursor-pointer group transition-colors",
-                activeTabId === tab.id ? "bg-gray-900" : "hover:bg-gray-900/50"
+                "hz-row hz-ai-center hz-px-4 hz-py-2 hz-border-r hz-pointer hz-transition",
+                activeTabId === tab.id ? "hz-bg-surface" : "hz-hoverable"
               )}
               onClick={() => handleTabClick(tab.id)}
             >
-              {tab.icon && <span className="mr-2">{tab.icon}</span>}
-              <span className="truncate max-w-[150px]">{tab.title}</span>
+              {tab.icon && <span className="hz-mr-2">{tab.icon}</span>}
+              <span className="hz-truncate hz-mw-full">{tab.title}</span>
               {tabs.length > 1 && (
                 <button
-                  className="ml-2 opacity-0 group-hover:opacity-100 transition-opacity text-neutral-500 hover:text-[var(--white)]"
+                  className="hz-ml-2 hz-invisible hz-transition hz-fg-muted hz-link"
                   onClick={(e) => handleCloseTab(e, tab.id)}
                 >
                   <X size={14} />
@@ -69,17 +69,17 @@ const TabsManager: React.FC<TabsManagerProps> = ({ initialTabs, onAddTab }) => {
             </div>
           ))}
         </div>
-        <div className="flex items-center">
+        <div className="hz-row hz-ai-center">
           <button
             onClick={onAddTab}
-            className="p-2 hover:bg-gray-800 transition-colors"
+            className="hz-p-2 hz-transition hz-hoverable"
             title="New Tab"
           >
             <Plus size={16} />
           </button>
           <button
             onClick={toggleViewMode}
-            className="p-2 hover:bg-gray-800 transition-colors"
+            className="hz-p-2 hz-transition hz-hoverable"
             title={viewMode === "kanban" ? "Switch to List View" : "Switch to Kanban View"}
           >
             {viewMode === "kanban" ? <List size={16} /> : <LayoutGrid size={16} />}
@@ -87,7 +87,7 @@ const TabsManager: React.FC<TabsManagerProps> = ({ initialTabs, onAddTab }) => {
         </div>
       </div>
       
-      <div className="flex-1 overflow-hidden">
+      <div className="hz-grow hz-clip">
         {activeTab && activeTab.content}
       </div>
     </div>

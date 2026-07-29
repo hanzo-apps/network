@@ -11,23 +11,23 @@ export const SenseiCard = ({ onCardClick }: SenseiCardProps) => {
       href="https://sensei.group" 
       target="_blank" 
       rel="noopener noreferrer"
-      className="block rounded-xl bg-gradient-to-b from-neutral-800/50 to-neutral-900/50 border border-neutral-500/20 cursor-pointer hover:border-neutral-500/40 transition-colors p-4 h-[200px] flex flex-col justify-between"
+      className="hz-card hz-pointer hz-transition hz-col hz-jc-between hz-card-interactive"
       onClick={onCardClick}
     >
       <div>
-        <div className="flex items-center gap-2 mb-3">
-          <div className="p-1.5 rounded-lg bg-neutral-500/20 flex items-center justify-center w-8 h-8">
-            <Shield className="h-4 w-4 text-neutral-400" strokeWidth={1.5} />
+        <div className="hz-row hz-ai-center hz-gap-2 hz-mb-3">
+          <div className="hz-sq-5 hz-p-2 hz-r-lg hz-bg-raised hz-row hz-ai-center hz-jc-center">
+            <Shield className="hz-sq-2 hz-fg-muted" strokeWidth={1.5} />
           </div>
-          <h3 className="text-sm font-semibold text-[var(--white)]">Sensei Group</h3>
+          <h3 className="hz-t-sm hz-w-semibold hz-fg">Sensei Group</h3>
         </div>
-        <p className="text-xs text-neutral-400 leading-relaxed">
+        <p className="hz-t-xs hz-fg-muted hz-leading-relaxed">
           Accelerate enterprise transformation with our elite collective of CXOs and technology experts. We guide organizations through digital evolution with strategic implementation.
         </p>
       </div>
-      <div className="flex items-center text-xs text-neutral-400 font-medium group">
+      <div className="hz-row hz-ai-center hz-t-xs hz-fg-muted hz-w-medium">
         <span>Learn more</span>
-        <ArrowRight className="ml-1 h-3 w-3 group-hover:translate-x-1 transition-transform" />
+        <ArrowRight className="hz-sq-1 hz-ml-1 hz-transition" />
       </div>
     </a>
   );

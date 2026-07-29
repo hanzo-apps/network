@@ -17,13 +17,13 @@ const PhilosophyItem: React.FC<PhilosophyItemProps> = ({ icon, title, descriptio
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay }}
-      className="flex flex-col items-center text-center"
+      className="hz-col hz-ai-center hz-align-center"
     >
-      <div className="w-16 h-16 rounded-full bg-neutral-800/30 flex items-center justify-center mb-4">
+      <div className="hz-sq-8 hz-r-full hz-bg-raised hz-row hz-ai-center hz-jc-center hz-mb-4">
         {icon}
       </div>
-      <h3 className="text-xl font-bold mb-2 text-[var(--white)]">{title}</h3>
-      <p className="text-neutral-300">{description}</p>
+      <h3 className="hz-t-xl hz-w-bold hz-mb-2 hz-fg">{title}</h3>
+      <p className="hz-fg-soft">{description}</p>
     </motion.div>
   );
 };
@@ -31,39 +31,39 @@ const PhilosophyItem: React.FC<PhilosophyItemProps> = ({ icon, title, descriptio
 const PhilosophySection: React.FC = () => {
   const items = [
     {
-      icon: <Shield className="h-8 w-8 text-neutral-400" />,
+      icon: <Shield className="hz-sq-5 hz-fg-muted" />,
       title: "Developer-First",
       description: "Built by developers for developers, with a focus on exceptional DX and intuitive APIs."
     },
     {
-      icon: <Zap className="h-8 w-8 text-neutral-400" />,
+      icon: <Zap className="hz-sq-5 hz-fg-muted" />,
       title: "Open Source",
       description: "Complete transparency with our core tools open source and free forever."
     },
     {
-      icon: <Code className="h-8 w-8 text-neutral-400" />,
+      icon: <Code className="hz-sq-5 hz-fg-muted" />,
       title: "Complete Control",
       description: "No black boxes. You own your data, models, and infrastructure with full control."
     }
   ];
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <div className="inline-block px-4 py-1 rounded-full bg-neutral-800/30 border border-neutral-500/30 text-neutral-300 text-sm font-medium mb-6">
+    <section className="hz-py-7 hz-px-4 hz-rel hz-clip">
+      <div className="hz-container">
+        <div className="hz-align-center hz-mb-7">
+          <div className="hz-px-4 hz-py-1 hz-r-full hz-bg-raised hz-bordered hz-border-strong hz-fg-soft hz-t-sm hz-w-medium hz-mb-5">
             Our Philosophy
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-[var(--white)] mb-6">
+          <h2 className="hz-t-3xl hz-w-bold hz-fg hz-mb-5">
             Building AI, the Right Way
           </h2>
-          <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
+          <p className="hz-container-narrow hz-t-xl hz-fg-soft">
             We believe AI should be powerful, transparent, and fully under your control.
             Our platform is built with these principles at its core.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div className="hz-grid hz-grid-3 hz-gap-7">
           {items.map((item, index) => (
             <PhilosophyItem
               key={index}

@@ -31,7 +31,6 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 
-const BRAND_COLOR = "#ffffff";
 
 // Web3 capability categories
 const CAPABILITIES = [
@@ -194,15 +193,15 @@ const Blockchain = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[var(--black)] text-[var(--white)]">
+    <div className="hz-min-h-screen hz-bg hz-fg">
       <Navbar />
 
       {/* Hero Section */}
-      <section className="pt-24 pb-16 px-4 md:px-8 relative overflow-hidden">
+      <section className="hz-pt-6 hz-pb-6 hz-px-4 hz-rel hz-clip">
         {/* Background gradient */}
-        <div className="absolute inset-0 overflow-hidden z-0 pointer-events-none">
+        <div className="hz-abs hz-inset hz-clip hz-z-base hz-no-pointer">
           <div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full opacity-15"
+            className="hz-center-xy hz-abs hz-r-full hz-dim-more"
             style={{
               background: `radial-gradient(circle, #a3a3a3 0%, transparent 70%)`,
               filter: "blur(100px)",
@@ -210,26 +209,26 @@ const Blockchain = () => {
           />
         </div>
 
-        <div className="max-w-6xl mx-auto relative z-10">
+        <div className="hz-container-wide hz-rel hz-z-raised">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-16"
+            className="hz-align-center hz-mb-7"
           >
             {/* Coming Soon Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-neutral-500/30 bg-neutral-600/10 mb-6">
-              <Clock className="w-4 h-4 text-neutral-400" />
-              <span className="text-sm font-medium text-neutral-400">Coming Soon</span>
+            <div className="hz-btn hz-gap-2 hz-mb-5">
+              <Clock className="hz-sq-2 hz-fg-muted" />
+              <span className="hz-t-sm hz-w-medium hz-fg-muted">Coming Soon</span>
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight mb-6">
-              <span className="text-white">Web3 Infrastructure.</span>
+            <h1 className="hz-t-4xl hz-w-medium hz-tracking-tight hz-mb-5">
+              <span className="hz-fg">Web3 Infrastructure.</span>
               <br />
-              <span className="text-neutral-400">For the AI Era.</span>
+              <span className="hz-fg-muted">For the AI Era.</span>
             </h1>
 
-            <p className="text-lg md:text-xl text-neutral-400 max-w-2xl mx-auto mb-8">
+            <p className="hz-container-narrow hz-mw-md hz-t-lg hz-fg-muted hz-mb-6">
               Blockchain nodes, wallets, payments, smart contracts, and more—all integrated into the Hanzo platform. Build decentralized applications with the same simplicity as traditional apps.
             </p>
 
@@ -238,39 +237,39 @@ const Blockchain = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="max-w-md mx-auto"
+              className="hz-container-narrow hz-mw-sm"
             >
-              <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
-                <div className="flex-1 flex items-center gap-2 px-4 py-3 rounded-lg bg-neutral-900 border border-neutral-800">
-                  <Mail className="w-4 h-4 text-neutral-500" />
+              <form onSubmit={handleSubmit} className="hz-col-row hz-gap-3">
+                <div className="hz-btn hz-grow hz-gap-2">
+                  <Mail className="hz-sq-2 hz-fg-muted" />
                   <input
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email"
-                    className="flex-1 bg-transparent text-white placeholder:text-neutral-600 outline-none text-sm"
+                    className="hz-grow hz-bg-none hz-fg hz-t-sm"
                     required
                   />
                 </div>
                 <Button
                   type="submit"
-                  className="px-6 py-3 rounded-lg font-medium transition-all"
+                  className="hz-px-5 hz-py-3 hz-r-lg hz-w-medium hz-transition"
                   style={{ backgroundColor: "#a3a3a3" }}
                 >
                   {submitted ? (
-                    <span className="flex items-center gap-2">
-                      <Check className="w-4 h-4" />
+                    <span className="hz-row hz-ai-center hz-gap-2">
+                      <Check className="hz-sq-2" />
                       Joined!
                     </span>
                   ) : (
-                    <span className="flex items-center gap-2">
+                    <span className="hz-row hz-ai-center hz-gap-2">
                       Join Waitlist
-                      <Bell className="w-4 h-4" />
+                      <Bell className="hz-sq-2" />
                     </span>
                   )}
                 </Button>
               </form>
-              <p className="text-xs text-neutral-500 mt-3">
+              <p className="hz-t-xs hz-fg-muted hz-mt-3">
                 Be the first to know when Hanzo Blockchain launches. No spam, ever.
               </p>
             </motion.div>
@@ -281,9 +280,9 @@ const Blockchain = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="rounded-2xl border border-neutral-500/20 bg-gradient-to-br from-neutral-800/20 to-transparent p-8 md:p-12"
+            className="hz-card"
           >
-            <div className="grid grid-cols-3 md:grid-cols-6 gap-6">
+            <div className="hz-grid hz-grid-6 hz-gap-5">
               {[
                 { icon: Server, label: "Nodes" },
                 { icon: Wallet, label: "Wallets" },
@@ -299,12 +298,12 @@ const Blockchain = () => {
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.4, delay: 0.3 + idx * 0.05 }}
-                    className="flex flex-col items-center gap-2"
+                    className="hz-col hz-ai-center hz-gap-2"
                   >
-                    <div className="w-12 h-12 md:w-16 md:h-16 rounded-xl bg-neutral-600/10 border border-neutral-500/30 flex items-center justify-center">
-                      <Icon className="w-6 h-6 md:w-8 md:h-8 text-neutral-400" />
+                    <div className="hz-sq-7 hz-r-lg hz-bg-raised hz-bordered hz-border-strong hz-row hz-ai-center hz-jc-center">
+                      <Icon className="hz-sq-4 hz-fg-muted" />
                     </div>
-                    <span className="text-xs md:text-sm text-neutral-400">{item.label}</span>
+                    <span className="hz-t-xs hz-fg-muted">{item.label}</span>
                   </motion.div>
                 );
               })}
@@ -314,23 +313,23 @@ const Blockchain = () => {
       </section>
 
       {/* Products Section */}
-      <section className="py-24 px-4 md:px-8 bg-neutral-950">
-        <div className="max-w-6xl mx-auto">
+      <section className="hz-py-7 hz-px-4 hz-bg-surface">
+        <div className="hz-container-wide">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="hz-align-center hz-mb-7"
           >
-            <h2 className="text-3xl md:text-4xl font-medium text-white mb-4">
+            <h2 className="hz-t-3xl hz-w-medium hz-fg hz-mb-4">
               Web3 Products
             </h2>
-            <p className="text-lg text-neutral-400 max-w-2xl mx-auto">
+            <p className="hz-container-narrow hz-mw-md hz-t-lg hz-fg-muted">
               Explore our suite of blockchain services. Each product is in private beta—apply for early access.
             </p>
           </motion.div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          <div className="hz-grid hz-grid-4 hz-gap-4">
             {PRODUCTS.map((product, index) => {
               const Icon = product.icon;
               return (
@@ -343,21 +342,21 @@ const Blockchain = () => {
                 >
                   <Link
                     to={product.href}
-                    className="block p-5 rounded-xl border border-neutral-800 bg-neutral-900/50 hover:bg-neutral-800/50 hover:border-neutral-700 transition-all group"
+                    className="hz-card hz-transition hz-card-interactive"
                   >
                     <div
-                      className="w-10 h-10 rounded-lg flex items-center justify-center mb-3"
+                      className="hz-sq-6 hz-r-lg hz-row hz-ai-center hz-jc-center hz-mb-3"
                       style={{ backgroundColor: `${product.color}1a` }}
                     >
-                      <Icon className="w-5 h-5" style={{ color: product.color }} />
+                      <Icon className="hz-sq-3" style={{ color: product.color }} />
                     </div>
-                    <h3 className="font-semibold text-white mb-1 group-hover:text-neutral-400 transition-colors">
+                    <h3 className="hz-w-semibold hz-fg hz-mb-1 hz-transition hz-hoverable">
                       {product.name}
                     </h3>
-                    <p className="text-sm text-neutral-500">{product.description}</p>
-                    <div className="mt-3 flex items-center gap-1 text-xs text-neutral-400 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <p className="hz-t-sm hz-fg-muted">{product.description}</p>
+                    <div className="hz-mt-3 hz-row hz-ai-center hz-gap-1 hz-t-xs hz-fg-muted hz-invisible hz-transition">
                       Apply for beta
-                      <ArrowRight className="w-3 h-3" />
+                      <ArrowRight className="hz-sq-1" />
                     </div>
                   </Link>
                 </motion.div>
@@ -368,23 +367,23 @@ const Blockchain = () => {
       </section>
 
       {/* Capabilities Section */}
-      <section className="py-24 px-4 md:px-8">
-        <div className="max-w-6xl mx-auto">
+      <section className="hz-py-7 hz-px-4">
+        <div className="hz-container-wide">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="hz-align-center hz-mb-7"
           >
-            <h2 className="text-3xl md:text-4xl font-medium text-white mb-4">
+            <h2 className="hz-t-3xl hz-w-medium hz-fg hz-mb-4">
               Complete Web3 Infrastructure
             </h2>
-            <p className="text-lg text-neutral-400 max-w-2xl mx-auto">
+            <p className="hz-container-narrow hz-mw-md hz-t-lg hz-fg-muted">
               Everything you need to build decentralized applications, from blockchain data access to compliance tools.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="hz-grid hz-grid-3 hz-gap-4">
             {CAPABILITIES.map((capability, index) => {
               const Icon = capability.icon;
               const isExpanded = expandedCapability === capability.id;
@@ -395,25 +394,25 @@ const Blockchain = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: index * 0.05 }}
-                  className="rounded-xl border border-neutral-800 bg-neutral-900/50 overflow-hidden"
+                  className="hz-r-lg hz-bordered hz-bg-surface hz-clip"
                 >
                   <button
                     onClick={() => setExpandedCapability(isExpanded ? null : capability.id)}
-                    className="w-full p-5 text-left flex items-start gap-4 hover:bg-neutral-800/50 transition-colors"
+                    className="hz-w-full hz-p-4 hz-align-left hz-row hz-ai-start hz-gap-4 hz-transition hz-hoverable"
                   >
-                    <div className="w-10 h-10 rounded-lg bg-neutral-600/10 flex items-center justify-center shrink-0">
-                      <Icon className="w-5 h-5 text-neutral-400" />
+                    <div className="hz-sq-6 hz-r-lg hz-bg-raised hz-row hz-ai-center hz-jc-center hz-none">
+                      <Icon className="hz-sq-3 hz-fg-muted" />
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center justify-between gap-2">
-                        <h3 className="font-semibold text-white">{capability.title}</h3>
+                    <div className="hz-grow">
+                      <div className="hz-row hz-ai-center hz-jc-between hz-gap-2">
+                        <h3 className="hz-w-semibold hz-fg">{capability.title}</h3>
                         {isExpanded ? (
-                          <ChevronUp className="w-4 h-4 text-neutral-500 shrink-0" />
+                          <ChevronUp className="hz-sq-2 hz-fg-muted hz-none" />
                         ) : (
-                          <ChevronDown className="w-4 h-4 text-neutral-500 shrink-0" />
+                          <ChevronDown className="hz-sq-2 hz-fg-muted hz-none" />
                         )}
                       </div>
-                      <p className="text-sm text-neutral-400 mt-1">{capability.description}</p>
+                      <p className="hz-t-sm hz-fg-muted hz-mt-1">{capability.description}</p>
                     </div>
                   </button>
 
@@ -422,12 +421,12 @@ const Blockchain = () => {
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: "auto" }}
                       exit={{ opacity: 0, height: 0 }}
-                      className="px-5 pb-5 border-t border-neutral-800"
+                      className="hz-px-4 hz-pb-4 hz-border-t"
                     >
-                      <ul className="mt-4 space-y-2">
+                      <ul className="hz-mt-4 hz-stack-2">
                         {capability.features.map((feature, idx) => (
-                          <li key={idx} className="flex items-start gap-2 text-sm text-neutral-300">
-                            <Check className="w-4 h-4 text-neutral-400 shrink-0 mt-0.5" />
+                          <li key={idx} className="hz-row hz-ai-start hz-gap-2 hz-t-sm hz-fg-soft">
+                            <Check className="hz-sq-2 hz-fg-muted hz-none hz-mt-1" />
                             {feature}
                           </li>
                         ))}
@@ -442,35 +441,35 @@ const Blockchain = () => {
       </section>
 
       {/* Integration Section */}
-      <section className="py-24 px-4 md:px-8">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <section className="hz-py-7 hz-px-4">
+        <div className="hz-container-wide">
+          <div className="hz-grid hz-grid-2 hz-gap-7 hz-ai-center">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-neutral-500/30 bg-neutral-600/10 mb-6">
-                <Zap className="w-4 h-4 text-neutral-400" />
-                <span className="text-sm font-medium text-neutral-400">Unified Platform</span>
+              <div className="hz-btn hz-gap-2 hz-mb-5">
+                <Zap className="hz-sq-2 hz-fg-muted" />
+                <span className="hz-t-sm hz-w-medium hz-fg-muted">Unified Platform</span>
               </div>
-              <h2 className="text-3xl md:text-4xl font-medium text-white mb-4">
+              <h2 className="hz-t-3xl hz-w-medium hz-fg hz-mb-4">
                 AI + Web3.<br />
-                <span className="text-neutral-400">Better Together.</span>
+                <span className="hz-fg-muted">Better Together.</span>
               </h2>
-              <p className="text-lg text-neutral-400 mb-6">
+              <p className="hz-t-lg hz-fg-muted hz-mb-5">
                 Combine Hanzo's AI capabilities with blockchain infrastructure. Let AI agents manage wallets, execute transactions, and interact with smart contracts autonomously.
               </p>
-              <ul className="space-y-3 mb-8">
+              <ul className="hz-stack-3 hz-mb-6">
                 {[
                   "AI agents that can send on-chain transactions",
                   "Natural language smart contract interaction",
                   "Automated DeFi strategies with AI optimization",
                   "Cross-chain portfolio management",
                 ].map((item, idx) => (
-                  <li key={idx} className="flex items-center gap-3 text-neutral-300">
-                    <div className="w-6 h-6 rounded bg-neutral-600/10 flex items-center justify-center">
-                      <Check className="w-3.5 h-3.5 text-neutral-400" />
+                  <li key={idx} className="hz-row hz-ai-center hz-gap-3 hz-fg-soft">
+                    <div className="hz-sq-4 hz-r-md hz-bg-raised hz-row hz-ai-center hz-jc-center">
+                      <Check className="hz-sq-2 hz-fg-muted" />
                     </div>
                     {item}
                   </li>
@@ -482,18 +481,18 @@ const Blockchain = () => {
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="rounded-xl border border-neutral-800 bg-neutral-900/80 overflow-hidden"
+              className="hz-r-lg hz-bordered hz-bg-surface hz-clip"
             >
-              <div className="flex items-center gap-2 px-4 py-3 border-b border-neutral-800 bg-neutral-950">
-                <div className="flex gap-1.5">
-                  <div className="w-3 h-3 rounded-full bg-neutral-600/80" />
-                  <div className="w-3 h-3 rounded-full bg-neutral-500/80" />
-                  <div className="w-3 h-3 rounded-full bg-neutral-500/80" />
+              <div className="hz-row hz-ai-center hz-gap-2 hz-px-4 hz-py-3 hz-border-b hz-bg-surface">
+                <div className="hz-row hz-gap-2">
+                  <div className="hz-sq-1 hz-r-full hz-bg-raised" />
+                  <div className="hz-sq-1 hz-r-full hz-bg-raised" />
+                  <div className="hz-sq-1 hz-r-full hz-bg-raised" />
                 </div>
-                <span className="ml-2 text-xs text-neutral-500 font-mono">hanzo-agent.ts</span>
+                <span className="hz-ml-2 hz-t-xs hz-fg-muted hz-mono">hanzo-agent.ts</span>
               </div>
-              <div className="p-4 font-mono text-sm bg-neutral-950">
-                <pre className="text-neutral-300 overflow-x-auto">
+              <div className="hz-p-4 hz-mono hz-t-sm hz-bg-surface">
+                <pre className="hz-fg-soft hz-scroll-x">
 {`import { Hanzo } from "@hanzo/ai";
 import { Wallet } from "@hanzo/blockchain";
 
@@ -516,27 +515,27 @@ await agent.run(\`
       </section>
 
       {/* Roadmap Section */}
-      <section className="py-24 px-4 md:px-8 bg-neutral-950">
-        <div className="max-w-4xl mx-auto">
+      <section className="hz-py-7 hz-px-4 hz-bg-surface">
+        <div className="hz-container-narrow">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="hz-align-center hz-mb-7"
           >
-            <h2 className="text-3xl md:text-4xl font-medium text-white mb-4">
+            <h2 className="hz-t-3xl hz-w-medium hz-fg hz-mb-4">
               Development Roadmap
             </h2>
-            <p className="text-lg text-neutral-400">
+            <p className="hz-t-lg hz-fg-muted">
               Our planned timeline for launching Web3 infrastructure.
             </p>
           </motion.div>
 
-          <div className="relative">
+          <div className="hz-rel">
             {/* Timeline line */}
-            <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-neutral-800" />
+            <div className="hz-abs hz-top-0 hz-bottom-0 hz-bg-raised" />
 
-            <div className="space-y-8">
+            <div className="hz-stack-6">
               {ROADMAP.map((item, index) => (
                 <motion.div
                   key={item.phase}
@@ -544,20 +543,20 @@ await agent.run(\`
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: index * 0.1 }}
-                  className={`relative flex items-center gap-6 ${
-                    index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                  className={`hz-rel hz-row hz-ai-center hz-gap-5 ${
+                    index % 2 === 0 ? "" : ""
                   }`}
                 >
                   {/* Timeline dot */}
-                  <div className="absolute left-4 md:left-1/2 w-3 h-3 rounded-full -translate-x-1/2 bg-neutral-600" />
+                  <div className="hz-sq-1 hz-abs hz-r-full hz-bg-raised" />
 
                   {/* Content */}
-                  <div className={`ml-12 md:ml-0 md:w-1/2 ${index % 2 === 0 ? "md:pr-12 md:text-right" : "md:pl-12"}`}>
-                    <div className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-neutral-600/10 text-neutral-400 border border-neutral-500/30 mb-2">
+                  <div className={`hz-ml-4 ${index % 2 === 0 ? "" : ""}`}>
+                    <div className="hz-px-3 hz-py-1 hz-r-full hz-t-xs hz-w-medium hz-bg-raised hz-fg-muted hz-bordered hz-border-strong hz-mb-2">
                       {item.phase}
                     </div>
-                    <h3 className="text-lg font-semibold text-white">{item.title}</h3>
-                    <span className={`text-sm ${item.status === "in-progress" ? "text-neutral-400" : "text-neutral-500"}`}>
+                    <h3 className="hz-t-lg hz-w-semibold hz-fg">{item.title}</h3>
+                    <span className={`hz-t-sm ${item.status === "in-progress" ? "hz-fg-muted" : "hz-fg-muted"}`}>
                       {item.status === "in-progress" ? "In Progress" : "Planned"}
                     </span>
                   </div>
@@ -569,18 +568,18 @@ await agent.run(\`
       </section>
 
       {/* Supported Chains */}
-      <section className="py-24 px-4 md:px-8">
-        <div className="max-w-6xl mx-auto">
+      <section className="hz-py-7 hz-px-4">
+        <div className="hz-container-wide">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="hz-align-center hz-mb-7"
           >
-            <h2 className="text-3xl md:text-4xl font-medium text-white mb-4">
+            <h2 className="hz-t-3xl hz-w-medium hz-fg hz-mb-4">
               Multi-Chain from Day One
             </h2>
-            <p className="text-lg text-neutral-400 max-w-2xl mx-auto">
+            <p className="hz-container-narrow hz-mw-md hz-t-lg hz-fg-muted">
               Support for all major blockchain networks, with more being added continuously.
             </p>
           </motion.div>
@@ -589,7 +588,7 @@ await agent.run(\`
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex flex-wrap justify-center gap-4"
+            className="hz-row hz-wrap hz-jc-center hz-gap-4"
           >
             {[
               "Ethereum",
@@ -607,7 +606,7 @@ await agent.run(\`
             ].map((chain, index) => (
               <div
                 key={chain}
-                className="px-4 py-2 rounded-full border border-neutral-800 bg-neutral-900/50 text-sm text-neutral-300"
+                className="hz-px-4 hz-py-2 hz-r-full hz-bordered hz-bg-surface hz-t-sm hz-fg-soft"
               >
                 {chain}
               </div>
@@ -617,56 +616,56 @@ await agent.run(\`
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 px-4 md:px-8 border-t border-neutral-900">
-        <div className="max-w-4xl mx-auto">
+      <section className="hz-py-7 hz-px-4 hz-border-t">
+        <div className="hz-container-narrow">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="rounded-2xl border border-neutral-500/30 bg-gradient-to-br from-neutral-800/20 to-transparent p-8 md:p-12 text-center"
+            className="hz-card hz-align-center"
           >
-            <div className="w-16 h-16 rounded-2xl bg-neutral-600/10 flex items-center justify-center mx-auto mb-6">
-              <Blocks className="w-8 h-8 text-neutral-400" />
+            <div className="hz-sq-8 hz-r-xl hz-bg-raised hz-row hz-ai-center hz-jc-center hz-mx-auto hz-mb-5">
+              <Blocks className="hz-sq-5 hz-fg-muted" />
             </div>
-            <h2 className="text-3xl md:text-4xl font-medium text-white mb-4">
+            <h2 className="hz-t-3xl hz-w-medium hz-fg hz-mb-4">
               Ready to Build on Web3?
             </h2>
-            <p className="text-lg text-neutral-400 mb-8 max-w-xl mx-auto">
+            <p className="hz-container-narrow hz-mw-md hz-t-lg hz-fg-muted hz-mb-6">
               Join the waitlist to be among the first to access Hanzo's Web3 infrastructure when it launches.
             </p>
 
-            <form onSubmit={handleSubmit} className="max-w-md mx-auto flex flex-col sm:flex-row gap-3">
-              <div className="flex-1 flex items-center gap-2 px-4 py-3 rounded-lg bg-neutral-900 border border-neutral-800">
-                <Mail className="w-4 h-4 text-neutral-500" />
+            <form onSubmit={handleSubmit} className="hz-col-row hz-container-narrow hz-mw-sm hz-gap-3">
+              <div className="hz-btn hz-grow hz-gap-2">
+                <Mail className="hz-sq-2 hz-fg-muted" />
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email"
-                  className="flex-1 bg-transparent text-white placeholder:text-neutral-600 outline-none text-sm"
+                  className="hz-grow hz-bg-none hz-fg hz-t-sm"
                   required
                 />
               </div>
               <Button
                 type="submit"
-                className="px-6 py-3 rounded-lg font-medium"
+                className="hz-px-5 hz-py-3 hz-r-lg hz-w-medium"
                 style={{ backgroundColor: "#a3a3a3" }}
               >
                 {submitted ? "Joined!" : "Join Waitlist"}
               </Button>
             </form>
 
-            <div className="flex flex-wrap justify-center gap-6 mt-8 text-sm text-neutral-500">
-              <span className="flex items-center gap-2">
-                <Lock className="w-4 h-4" />
+            <div className="hz-row hz-wrap hz-jc-center hz-gap-5 hz-mt-6 hz-t-sm hz-fg-muted">
+              <span className="hz-row hz-ai-center hz-gap-2">
+                <Lock className="hz-sq-2" />
                 Enterprise-grade security
               </span>
-              <span className="flex items-center gap-2">
-                <Globe className="w-4 h-4" />
+              <span className="hz-row hz-ai-center hz-gap-2">
+                <Globe className="hz-sq-2" />
                 Multi-chain support
               </span>
-              <span className="flex items-center gap-2">
-                <Zap className="w-4 h-4" />
+              <span className="hz-row hz-ai-center hz-gap-2">
+                <Zap className="hz-sq-2" />
                 AI-native integration
               </span>
             </div>

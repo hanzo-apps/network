@@ -47,44 +47,44 @@ const FeatureComparison = () => {
   const renderFeatureValue = (value: boolean | string) => {
     if (typeof value === "boolean") {
       return value ? (
-        <Check className="h-5 w-5 text-neutral-300 mx-auto" />
+        <Check className="hz-sq-3 hz-fg-soft hz-mx-auto" />
       ) : (
-        <X className="h-5 w-5 text-neutral-600 mx-auto" />
+        <X className="hz-sq-3 hz-fg-faint hz-mx-auto" />
       );
     }
-    return <span className="text-neutral-300 text-center block">{value}</span>;
+    return <span className="hz-fg-soft hz-align-center">{value}</span>;
   };
 
   return (
-    <div className="max-w-7xl mx-auto my-16 px-4">
-      <h2 className="text-2xl font-bold mb-8 text-center">Compare Features Across Plans</h2>
+    <div className="hz-container hz-mt-7 hz-mb-7">
+      <h2 className="hz-t-2xl hz-w-bold hz-mb-6 hz-align-center">Compare Features Across Plans</h2>
       
-      <div className="overflow-x-auto">
-        <table className="w-full border-collapse">
+      <div className="hz-scroll-x">
+        <table className="hz-w-full">
           <thead>
-            <tr className="border-b border-gray-800">
-              <th className="py-4 px-4 text-left">Feature</th>
-              <th className="py-4 px-6 text-center">Pro</th>
-              <th className="py-4 px-6 text-center">Max</th>
-              <th className="py-4 px-6 text-center">Team</th>
-              <th className="py-4 px-6 text-center">Enterprise</th>
+            <tr className="hz-border-b">
+              <th className="hz-py-4 hz-px-4 hz-align-left">Feature</th>
+              <th className="hz-py-4 hz-px-5 hz-align-center">Pro</th>
+              <th className="hz-py-4 hz-px-5 hz-align-center">Max</th>
+              <th className="hz-py-4 hz-px-5 hz-align-center">Team</th>
+              <th className="hz-py-4 hz-px-5 hz-align-center">Enterprise</th>
             </tr>
           </thead>
           <tbody>
             {featureCategories.map((category) => (
               <React.Fragment key={category.name}>
-                <tr className="bg-gray-900/30">
-                  <td colSpan={5} className="py-3 px-4 font-medium text-neutral-300">
+                <tr className="hz-bg-surface">
+                  <td colSpan={5} className="hz-py-3 hz-px-4 hz-w-medium hz-fg-soft">
                     {category.name}
                   </td>
                 </tr>
                 {category.features.map((feature) => (
-                  <tr key={feature.name} className="border-b border-gray-800/50">
-                    <td className="py-3 px-4 text-neutral-400">{feature.name}</td>
-                    <td className="py-3 px-6">{renderFeatureValue(feature.pro)}</td>
-                    <td className="py-3 px-6">{renderFeatureValue(feature.max)}</td>
-                    <td className="py-3 px-6">{renderFeatureValue(feature.team)}</td>
-                    <td className="py-3 px-6">{renderFeatureValue(feature.enterprise)}</td>
+                  <tr key={feature.name} className="hz-border-b">
+                    <td className="hz-py-3 hz-px-4 hz-fg-muted">{feature.name}</td>
+                    <td className="hz-py-3 hz-px-5">{renderFeatureValue(feature.pro)}</td>
+                    <td className="hz-py-3 hz-px-5">{renderFeatureValue(feature.max)}</td>
+                    <td className="hz-py-3 hz-px-5">{renderFeatureValue(feature.team)}</td>
+                    <td className="hz-py-3 hz-px-5">{renderFeatureValue(feature.enterprise)}</td>
                   </tr>
                 ))}
               </React.Fragment>

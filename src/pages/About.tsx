@@ -11,7 +11,7 @@ import OurStory from "@/components/about/OurStory";
 
 const About = () => {
   return (
-    <div className="min-h-screen bg-[var(--black)] text-[var(--white)]">
+    <div className="hz-min-h-screen hz-bg hz-fg">
       <Helmet>
         <title>About Hanzo Industries - Our Story and Evolution</title>
         <meta 
@@ -22,7 +22,7 @@ const About = () => {
       
       <Navbar />
       
-      <main className="pt-20">
+      <main className="hz-pt-6">
         <AboutHero />
         <OurStory />
         <HistoryTimeline />

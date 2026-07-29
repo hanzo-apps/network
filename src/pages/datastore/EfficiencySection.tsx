@@ -17,15 +17,15 @@ const EfficiencyCard = ({ title, mainText, subText, initialY, delay }: Efficienc
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay }}
-      className="bg-gray-900/30 rounded-xl p-8 border border-gray-800 flex flex-col items-center text-center"
+      className="hz-card hz-col hz-ai-center hz-align-center"
     >
-      <ChromeText as="h3" className="text-2xl font-bold mb-4">
+      <ChromeText as="h3" className="hz-t-2xl hz-w-bold hz-mb-4">
         {title}
       </ChromeText>
-      <p className="text-neutral-300 mb-4">
+      <p className="hz-fg-soft hz-mb-4">
         {mainText}
       </p>
-      <p className="text-neutral-400">
+      <p className="hz-fg-muted">
         {subText}
       </p>
     </motion.div>
@@ -65,18 +65,18 @@ const EfficiencySection = () => {
   ];
 
   return (
-    <section className="py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black to-gray-900/50">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <ChromeText as="h2" className="text-3xl md:text-5xl font-bold mb-6">
+    <section className="hz-py-7 hz-px-4">
+      <div className="hz-container-wide">
+        <div className="hz-align-center hz-mb-7">
+          <ChromeText as="h2" className="hz-t-3xl hz-w-bold hz-mb-5">
             Datastore Efficiency
           </ChromeText>
-          <p className="text-xl text-neutral-300 max-w-3xl mx-auto mb-8">
+          <p className="hz-container-narrow hz-t-xl hz-fg-soft hz-mb-6">
             Optimized for peak performance at every level
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="hz-grid hz-grid-2 hz-gap-6">
           {efficiencyItems.map((item, index) => (
             <EfficiencyCard
               key={index}

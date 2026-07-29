@@ -31,33 +31,33 @@ const KanbanColumn: React.FC<KanbanColumnProps> = ({
   return (
     <div 
       key={column.id} 
-      className="w-72 flex flex-col bg-[var(--black)] rounded-lg"
+      className="hz-bw-8 hz-col hz-bg hz-r-lg"
       onDragOver={onDragOver}
       onDrop={onDrop}
     >
-      <div className="flex items-center justify-between p-3 border-b border-gray-800">
-        <div className="flex items-center">
+      <div className="hz-row hz-ai-center hz-jc-between hz-p-3 hz-border-b">
+        <div className="hz-row hz-ai-center">
           {column.icon}
-          <h3 className="font-medium ml-2">{column.title}</h3>
-          <span className="text-sm text-neutral-500 ml-1">{column.tasks.length}</span>
+          <h3 className="hz-w-medium hz-ml-2">{column.title}</h3>
+          <span className="hz-t-sm hz-fg-muted hz-ml-1">{column.tasks.length}</span>
         </div>
-        <div className="flex items-center">
-          <Button size="icon" variant="ghost" className="h-6 w-6 text-neutral-400 hover:text-[var(--white)]" onClick={() => onAddTask(column.id)}>
-            <Plus className="h-4 w-4" />
+        <div className="hz-row hz-ai-center">
+          <Button size="icon" variant="ghost" className="hz-sq-4 hz-fg-muted hz-link" onClick={() => onAddTask(column.id)}>
+            <Plus className="hz-sq-2" />
           </Button>
-          <Button size="icon" variant="ghost" className="h-6 w-6 text-neutral-400 hover:text-[var(--white)]">
-            <MoreHorizontal className="h-4 w-4" />
+          <Button size="icon" variant="ghost" className="hz-sq-4 hz-fg-muted hz-link">
+            <MoreHorizontal className="hz-sq-2" />
           </Button>
         </div>
       </div>
-      <div className="flex-1 overflow-y-auto p-2 space-y-2">
+      <div className="hz-grow hz-scroll-y hz-p-2 hz-stack-2">
         {column.tasks.map((task) => (
           <div
             key={task.id}
             draggable
             onDragStart={() => onDragStart(task)}
             onClick={() => onTaskClick(task)}
-            className="cursor-pointer"
+            className="hz-pointer"
           >
             <TaskCard task={task} />
           </div>

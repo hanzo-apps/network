@@ -44,8 +44,8 @@ const SolutionCapabilities: React.FC = () => {
     const hasMore = capabilities.length > displayCount;
 
     return (
-      <div className="mb-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="hz-mb-7">
+        <div className="hz-grid hz-grid-3 hz-gap-5">
           <AnimatePresence initial={false}>
             {displayItems.map((item, index) => {
               const Icon = getIcon(item);
@@ -57,31 +57,31 @@ const SolutionCapabilities: React.FC = () => {
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.2, delay: index * 0.1 }}
                   whileHover={{ y: -5 }}
-                  className="relative group rounded-xl border border-gray-800 bg-[var(--black)]/50 p-6 backdrop-blur-sm overflow-hidden"
+                  className="hz-card hz-rel hz-glass hz-clip"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-br from-neutral-500/10 to-neutral-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <div className="relative">
-                    <div className="flex items-center justify-between mb-4">
-                      <Icon className="h-6 w-6 text-neutral-400" strokeWidth={1.5} />
-                      <ChevronRight className="h-5 w-5 text-neutral-500 group-hover:text-neutral-400 transition-colors" />
+                  <div className="hz-abs hz-inset hz-invisible hz-transition" />
+                  <div className="hz-rel">
+                    <div className="hz-row hz-ai-center hz-jc-between hz-mb-4">
+                      <Icon className="hz-sq-4 hz-fg-muted" strokeWidth={1.5} />
+                      <ChevronRight className="hz-sq-3 hz-fg-muted hz-transition hz-link" />
                     </div>
-                    <h3 className="text-xl font-semibold mb-2 group-hover:text-neutral-400 transition-colors">
+                    <h3 className="hz-t-xl hz-w-semibold hz-mb-2 hz-transition hz-hoverable">
                       {item}
                     </h3>
-                    <p className="text-neutral-400 text-sm mb-4">
+                    <p className="hz-fg-muted hz-t-sm hz-mb-4">
                       Our specialists deliver comprehensive {item.toLowerCase()} solutions tailored to your 
                       organization's unique challenges and goals.
                     </p>
                     
-                    <div className="flex flex-wrap gap-2 mt-4">
-                      <Link to={`/solutions/${item.toLowerCase().replace(/\s+/g, '-')}`} className="text-xs flex items-center text-neutral-400 hover:text-neutral-300">
-                        <LinkIcon className="h-3 w-3 mr-1" /> Learn more
+                    <div className="hz-row hz-wrap hz-gap-2 hz-mt-4">
+                      <Link to={`/solutions/${item.toLowerCase().replace(/\s+/g, '-')}`} className="hz-t-xs hz-row hz-ai-center hz-fg-muted hz-link">
+                        <LinkIcon className="hz-sq-1 hz-mr-1" /> Learn more
                       </Link>
-                      <a href="#" className="text-xs flex items-center text-neutral-400 hover:text-neutral-300">
-                        <FileText className="h-3 w-3 mr-1" /> Case study
+                      <a href="#" className="hz-t-xs hz-row hz-ai-center hz-fg-muted hz-link">
+                        <FileText className="hz-sq-1 hz-mr-1" /> Case study
                       </a>
-                      <a href="#" className="text-xs flex items-center text-neutral-400 hover:text-neutral-300">
-                        <BookOpen className="h-3 w-3 mr-1" /> White paper
+                      <a href="#" className="hz-t-xs hz-row hz-ai-center hz-fg-muted hz-link">
+                        <BookOpen className="hz-sq-1 hz-mr-1" /> White paper
                       </a>
                     </div>
                   </div>
@@ -92,17 +92,17 @@ const SolutionCapabilities: React.FC = () => {
         </div>
         {hasMore && (
           <motion.div 
-            className="text-center mt-8"
+            className="hz-align-center hz-mt-6"
             initial={false}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.2 }}
           >
             <button
               onClick={() => toggleSection("Capabilities")}
-              className="inline-flex items-center px-6 py-3 rounded-lg border border-neutral-500 text-neutral-400 hover:bg-neutral-600/10 transition-colors"
+              className="hz-btn hz-btn-ghost hz-fg-muted hz-transition"
             >
               View More Capabilities
-              <ChevronRight className="ml-2 h-5 w-5" />
+              <ChevronRight className="hz-sq-3 hz-ml-2" />
             </button>
           </motion.div>
         )}
@@ -116,44 +116,44 @@ const SolutionCapabilities: React.FC = () => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4 }}
-      className="bg-gradient-to-br from-gray-900/70 to-black/80 rounded-xl border border-gray-800 overflow-hidden"
+      className="hz-r-lg hz-bordered hz-clip"
     >
-      <div className="grid grid-cols-1 lg:grid-cols-5">
-        <div className="col-span-3 p-8">
-          <div className="flex items-center gap-2 mb-4">
-            <span className="text-xs text-neutral-400">Case Study</span>
-            <span className="w-1 h-1 rounded-full bg-gray-500"></span>
-            <span className="text-xs px-2 py-1 bg-neutral-800/40 rounded-full text-neutral-300 border border-neutral-500/30">
+      <div className="hz-grid hz-grid-5">
+        <div className="hz-span-full hz-p-6">
+          <div className="hz-row hz-ai-center hz-gap-2 hz-mb-4">
+            <span className="hz-t-xs hz-fg-muted">Case Study</span>
+            <span className="hz-sq-1 hz-r-full hz-bg-raised"></span>
+            <span className="hz-t-xs hz-px-2 hz-py-1 hz-bg-raised hz-r-full hz-fg-soft hz-bordered hz-border-strong">
               {industry}
             </span>
           </div>
-          <h3 className="text-2xl font-bold mb-4 text-[var(--white)]">{title}</h3>
-          <p className="text-neutral-300 mb-6">{description}</p>
+          <h3 className="hz-t-2xl hz-w-bold hz-mb-4 hz-fg">{title}</h3>
+          <p className="hz-fg-soft hz-mb-5">{description}</p>
           
-          <div className="space-y-4 mb-6">
-            <div className="flex items-start gap-2">
-              <CheckCircle className="h-5 w-5 text-neutral-400 flex-shrink-0 mt-0.5" />
-              <p className="text-neutral-400">Reduced development time by 40% through AI-powered automation</p>
+          <div className="hz-stack-4 hz-mb-5">
+            <div className="hz-row hz-ai-start hz-gap-2">
+              <CheckCircle className="hz-sq-3 hz-fg-muted hz-none hz-mt-1" />
+              <p className="hz-fg-muted">Reduced development time by 40% through AI-powered automation</p>
             </div>
-            <div className="flex items-start gap-2">
-              <CheckCircle className="h-5 w-5 text-neutral-400 flex-shrink-0 mt-0.5" />
-              <p className="text-neutral-400">Improved customer satisfaction scores by 35% with new digital experiences</p>
+            <div className="hz-row hz-ai-start hz-gap-2">
+              <CheckCircle className="hz-sq-3 hz-fg-muted hz-none hz-mt-1" />
+              <p className="hz-fg-muted">Improved customer satisfaction scores by 35% with new digital experiences</p>
             </div>
-            <div className="flex items-start gap-2">
-              <CheckCircle className="h-5 w-5 text-neutral-400 flex-shrink-0 mt-0.5" />
-              <p className="text-neutral-400">Achieved 99.99% uptime with Hanzo's enterprise-grade infrastructure</p>
+            <div className="hz-row hz-ai-start hz-gap-2">
+              <CheckCircle className="hz-sq-3 hz-fg-muted hz-none hz-mt-1" />
+              <p className="hz-fg-muted">Achieved 99.99% uptime with Hanzo's enterprise-grade infrastructure</p>
             </div>
           </div>
           
-          <Button className="flex items-center gap-2 bg-[var(--white)] text-black hover:bg-gray-200">
+          <Button className="hz-row hz-ai-center hz-gap-2 hz-bg-inverse hz-fg-inverse hz-hoverable">
             Read Full Case Study <ArrowRight size={16} />
           </Button>
         </div>
-        <div className="col-span-2 bg-gradient-to-br from-neutral-800/40 to-neutral-800/40 flex items-center justify-center p-8">
-          <div className="flex flex-col items-center text-center">
-            <Award className="h-16 w-16 text-neutral-300 mb-4" />
-            <div className="text-4xl font-bold text-[var(--white)] mb-2">200%</div>
-            <div className="text-neutral-300">Return on Investment</div>
+        <div className="hz-span-2 hz-row hz-ai-center hz-jc-center hz-p-6">
+          <div className="hz-col hz-ai-center hz-align-center">
+            <Award className="hz-sq-8 hz-fg-soft hz-mb-4" />
+            <div className="hz-t-4xl hz-w-bold hz-fg hz-mb-2">200%</div>
+            <div className="hz-fg-soft">Return on Investment</div>
           </div>
         </div>
       </div>
@@ -167,75 +167,75 @@ const SolutionCapabilities: React.FC = () => {
     const Icon = featuredService.icon;
     
     return (
-      <div className="mb-20">
+      <div className="hz-mb-7">
         <SectionHeader 
           title="AI & Machine Learning" 
           description="Transform your business with our enterprise-grade AI solutions"
         />
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-          <div className="bg-gradient-to-br from-neutral-800/30 to-neutral-800/20 rounded-xl border border-neutral-500/20 p-8">
-            <div className="mb-6">
-              <div className="h-16 w-16 rounded-lg bg-neutral-800/40 flex items-center justify-center mb-4">
-                <Icon className="h-10 w-10 text-neutral-300" />
+        <div className="hz-grid hz-grid-2 hz-gap-6">
+          <div className="hz-card">
+            <div className="hz-mb-5">
+              <div className="hz-sq-8 hz-r-lg hz-bg-raised hz-row hz-ai-center hz-jc-center hz-mb-4">
+                <Icon className="hz-sq-6 hz-fg-soft" />
               </div>
-              <h3 className="text-2xl font-bold mb-4">Enterprise AI Solutions</h3>
-              <p className="text-neutral-300">
+              <h3 className="hz-t-2xl hz-w-bold hz-mb-4">Enterprise AI Solutions</h3>
+              <p className="hz-fg-soft">
                 Deploy, manage, and scale AI models with unmatched performance and security. Our AI platform
                 provides seamless access to frontier models, private model customization, and robust security for
                 enterprise deployments.
               </p>
             </div>
             
-            <div className="space-y-4 mb-8">
+            <div className="hz-stack-4 hz-mb-6">
               {featuredService.features.map((feature, idx) => (
-                <div key={idx} className="flex items-start gap-3">
-                  <CheckCircle className="h-5 w-5 text-neutral-400 flex-shrink-0 mt-0.5" />
-                  <p className="text-neutral-300">{feature}</p>
+                <div key={idx} className="hz-row hz-ai-start hz-gap-3">
+                  <CheckCircle className="hz-sq-3 hz-fg-muted hz-none hz-mt-1" />
+                  <p className="hz-fg-soft">{feature}</p>
                 </div>
               ))}
             </div>
             
-            <div className="flex flex-wrap gap-4">
-              <Button asChild className="bg-neutral-600 hover:bg-neutral-700">
+            <div className="hz-row hz-wrap hz-gap-4">
+              <Button asChild className="hz-bg-raised hz-hoverable">
                 <Link to="/ai">Explore AI Solutions</Link>
               </Button>
-              <Button asChild variant="outline" className="border-neutral-500/40 text-neutral-400 hover:bg-neutral-600/10">
+              <Button asChild variant="outline" className="hz-border-strong hz-fg-muted hz-link">
                 <a href="#">Request Demo</a>
               </Button>
             </div>
           </div>
           
-          <div className="space-y-6">
-            <div className="bg-gradient-to-br from-gray-900/70 to-black/90 rounded-xl border border-gray-800 p-6">
-              <h4 className="text-lg font-semibold mb-3">Case Study: Financial Services</h4>
-              <p className="text-neutral-400 mb-4">
+          <div className="hz-stack-5">
+            <div className="hz-card">
+              <h4 className="hz-t-lg hz-w-semibold hz-mb-3">Case Study: Financial Services</h4>
+              <p className="hz-fg-muted hz-mb-4">
                 How a leading investment firm used Hanzo's AI platform to analyze market trends and automate 
                 investment decisions, resulting in a 32% increase in portfolio performance.
               </p>
-              <a href="#" className="text-neutral-400 hover:text-neutral-300 flex items-center gap-1.5">
+              <a href="#" className="hz-fg-muted hz-row hz-ai-center hz-gap-2 hz-link">
                 Read case study <ArrowRight size={16} />
               </a>
             </div>
             
-            <div className="bg-gradient-to-br from-gray-900/70 to-black/90 rounded-xl border border-gray-800 p-6">
-              <h4 className="text-lg font-semibold mb-3">White Paper: Enterprise AI Adoption</h4>
-              <p className="text-neutral-400 mb-4">
+            <div className="hz-card">
+              <h4 className="hz-t-lg hz-w-semibold hz-mb-3">White Paper: Enterprise AI Adoption</h4>
+              <p className="hz-fg-muted hz-mb-4">
                 Download our comprehensive guide to implementing AI across large organizations, addressing 
                 challenges around security, compliance, and organizational change.
               </p>
-              <a href="#" className="text-neutral-400 hover:text-neutral-300 flex items-center gap-1.5">
+              <a href="#" className="hz-fg-muted hz-row hz-ai-center hz-gap-2 hz-link">
                 Download white paper <ArrowRight size={16} />
               </a>
             </div>
             
-            <div className="bg-gradient-to-br from-gray-900/70 to-black/90 rounded-xl border border-gray-800 p-6">
-              <h4 className="text-lg font-semibold mb-3">Webinar: The Future of GenAI in Enterprise</h4>
-              <p className="text-neutral-400 mb-4">
+            <div className="hz-card">
+              <h4 className="hz-t-lg hz-w-semibold hz-mb-3">Webinar: The Future of GenAI in Enterprise</h4>
+              <p className="hz-fg-muted hz-mb-4">
                 Join our expert panel discussing how generative AI is transforming enterprise operations and 
                 creating new business opportunities across industries.
               </p>
-              <a href="#" className="text-neutral-400 hover:text-neutral-300 flex items-center gap-1.5">
+              <a href="#" className="hz-fg-muted hz-row hz-ai-center hz-gap-2 hz-link">
                 Register now <ArrowRight size={16} />
               </a>
             </div>
@@ -246,79 +246,79 @@ const SolutionCapabilities: React.FC = () => {
   };
 
   const renderExpertiseSection = () => (
-    <div className="mb-20">
+    <div className="hz-mb-7">
       <SectionHeader 
         title="Technical Expertise"
         description="Our team brings deep expertise across multiple technical domains, helping you implement solutions that drive real business results."
       />
       
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-10">
-        <div className="bg-gradient-to-br from-neutral-800/30 to-neutral-800/20 p-8 rounded-xl border border-neutral-500/20">
-          <h3 className="text-2xl font-bold mb-4 text-[var(--white)]">Case Studies</h3>
-          <p className="text-neutral-300 mb-6">
+      <div className="hz-grid hz-grid-2 hz-gap-6 hz-mb-6">
+        <div className="hz-card">
+          <h3 className="hz-t-2xl hz-w-bold hz-mb-4 hz-fg">Case Studies</h3>
+          <p className="hz-fg-soft hz-mb-5">
             See how we've helped organizations like yours achieve their goals through innovative solutions.
           </p>
-          <div className="space-y-4">
-            <a href="#" className="flex items-center justify-between p-3 rounded-lg bg-[var(--black)]/40 hover:bg-[var(--black)]/60 transition-colors">
-              <div className="flex items-center">
-                <FileText className="h-5 w-5 text-neutral-400 mr-3" />
-                <span className="text-[var(--white)]">Financial Services Digital Transformation</span>
+          <div className="hz-stack-4">
+            <a href="#" className="hz-row hz-ai-center hz-jc-between hz-p-3 hz-r-lg hz-bg-overlay hz-transition hz-hoverable">
+              <div className="hz-row hz-ai-center">
+                <FileText className="hz-sq-3 hz-fg-muted hz-mr-3" />
+                <span className="hz-fg">Financial Services Digital Transformation</span>
               </div>
-              <ExternalLink className="h-4 w-4 text-neutral-400" />
+              <ExternalLink className="hz-sq-2 hz-fg-muted" />
             </a>
-            <a href="#" className="flex items-center justify-between p-3 rounded-lg bg-[var(--black)]/40 hover:bg-[var(--black)]/60 transition-colors">
-              <div className="flex items-center">
-                <FileText className="h-5 w-5 text-neutral-400 mr-3" />
-                <span className="text-[var(--white)]">Healthcare AI Implementation</span>
+            <a href="#" className="hz-row hz-ai-center hz-jc-between hz-p-3 hz-r-lg hz-bg-overlay hz-transition hz-hoverable">
+              <div className="hz-row hz-ai-center">
+                <FileText className="hz-sq-3 hz-fg-muted hz-mr-3" />
+                <span className="hz-fg">Healthcare AI Implementation</span>
               </div>
-              <ExternalLink className="h-4 w-4 text-neutral-400" />
+              <ExternalLink className="hz-sq-2 hz-fg-muted" />
             </a>
-            <a href="#" className="flex items-center justify-between p-3 rounded-lg bg-[var(--black)]/40 hover:bg-[var(--black)]/60 transition-colors">
-              <div className="flex items-center">
-                <FileText className="h-5 w-5 text-neutral-400 mr-3" />
-                <span className="text-[var(--white)]">Retail Analytics Platform</span>
+            <a href="#" className="hz-row hz-ai-center hz-jc-between hz-p-3 hz-r-lg hz-bg-overlay hz-transition hz-hoverable">
+              <div className="hz-row hz-ai-center">
+                <FileText className="hz-sq-3 hz-fg-muted hz-mr-3" />
+                <span className="hz-fg">Retail Analytics Platform</span>
               </div>
-              <ExternalLink className="h-4 w-4 text-neutral-400" />
+              <ExternalLink className="hz-sq-2 hz-fg-muted" />
             </a>
           </div>
-          <div className="mt-6 text-center">
-            <Button variant="outline" className="border-neutral-500/40 text-neutral-400 hover:bg-neutral-600/10">
-              View all case studies <ChevronRight className="ml-2 h-4 w-4" />
+          <div className="hz-mt-5 hz-align-center">
+            <Button variant="outline" className="hz-border-strong hz-fg-muted hz-link">
+              View all case studies <ChevronRight className="hz-sq-2 hz-ml-2" />
             </Button>
           </div>
         </div>
         
-        <div className="bg-gradient-to-br from-neutral-800/30 to-neutral-900/20 p-8 rounded-xl border border-neutral-500/20">
-          <h3 className="text-2xl font-bold mb-4 text-[var(--white)]">White Papers</h3>
-          <p className="text-neutral-300 mb-6">
+        <div className="hz-card">
+          <h3 className="hz-t-2xl hz-w-bold hz-mb-4 hz-fg">White Papers</h3>
+          <p className="hz-fg-soft hz-mb-5">
             Access our thought leadership and research on the latest industry trends and technologies.
           </p>
-          <div className="space-y-4">
-            <a href="#" className="flex items-center justify-between p-3 rounded-lg bg-[var(--black)]/40 hover:bg-[var(--black)]/60 transition-colors">
-              <div className="flex items-center">
-                <BookOpen className="h-5 w-5 text-neutral-400 mr-3" />
-                <span className="text-[var(--white)]">The Future of AI in Enterprise</span>
+          <div className="hz-stack-4">
+            <a href="#" className="hz-row hz-ai-center hz-jc-between hz-p-3 hz-r-lg hz-bg-overlay hz-transition hz-hoverable">
+              <div className="hz-row hz-ai-center">
+                <BookOpen className="hz-sq-3 hz-fg-muted hz-mr-3" />
+                <span className="hz-fg">The Future of AI in Enterprise</span>
               </div>
-              <ExternalLink className="h-4 w-4 text-neutral-400" />
+              <ExternalLink className="hz-sq-2 hz-fg-muted" />
             </a>
-            <a href="#" className="flex items-center justify-between p-3 rounded-lg bg-[var(--black)]/40 hover:bg-[var(--black)]/60 transition-colors">
-              <div className="flex items-center">
-                <BookOpen className="h-5 w-5 text-neutral-400 mr-3" />
-                <span className="text-[var(--white)]">Cloud Security Best Practices</span>
+            <a href="#" className="hz-row hz-ai-center hz-jc-between hz-p-3 hz-r-lg hz-bg-overlay hz-transition hz-hoverable">
+              <div className="hz-row hz-ai-center">
+                <BookOpen className="hz-sq-3 hz-fg-muted hz-mr-3" />
+                <span className="hz-fg">Cloud Security Best Practices</span>
               </div>
-              <ExternalLink className="h-4 w-4 text-neutral-400" />
+              <ExternalLink className="hz-sq-2 hz-fg-muted" />
             </a>
-            <a href="#" className="flex items-center justify-between p-3 rounded-lg bg-[var(--black)]/40 hover:bg-[var(--black)]/60 transition-colors">
-              <div className="flex items-center">
-                <BookOpen className="h-5 w-5 text-neutral-400 mr-3" />
-                <span className="text-[var(--white)]">Digital Transformation Playbook</span>
+            <a href="#" className="hz-row hz-ai-center hz-jc-between hz-p-3 hz-r-lg hz-bg-overlay hz-transition hz-hoverable">
+              <div className="hz-row hz-ai-center">
+                <BookOpen className="hz-sq-3 hz-fg-muted hz-mr-3" />
+                <span className="hz-fg">Digital Transformation Playbook</span>
               </div>
-              <ExternalLink className="h-4 w-4 text-neutral-400" />
+              <ExternalLink className="hz-sq-2 hz-fg-muted" />
             </a>
           </div>
-          <div className="mt-6 text-center">
-            <Button variant="outline" className="border-neutral-500/40 text-neutral-400 hover:bg-neutral-600/10">
-              View all white papers <ChevronRight className="ml-2 h-4 w-4" />
+          <div className="hz-mt-5 hz-align-center">
+            <Button variant="outline" className="hz-border-strong hz-fg-muted hz-link">
+              View all white papers <ChevronRight className="hz-sq-2 hz-ml-2" />
             </Button>
           </div>
         </div>
@@ -327,63 +327,63 @@ const SolutionCapabilities: React.FC = () => {
   );
   
   const renderPartnerSection = () => (
-    <div className="mb-20 bg-gradient-to-br from-gray-900/70 to-black/90 p-10 rounded-2xl border border-gray-800">
+    <div className="hz-card hz-mb-7">
       <SectionHeader 
         title="Expert Partners" 
         description="Access our specialized agencies and expert talent to accelerate your success"
       />
       
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-        <div className="p-6 bg-gradient-to-br from-neutral-800/50 to-neutral-800/30 rounded-xl border border-neutral-500/20 hover:border-neutral-500/40 transition-colors">
-          <div className="p-3 rounded-lg bg-neutral-600/20 self-start inline-block mb-4">
-            <Users className="h-6 w-6 text-neutral-400" strokeWidth={1.5} />
+      <div className="hz-grid hz-grid-2 hz-gap-6">
+        <div className="hz-card hz-transition hz-card-interactive">
+          <div className="hz-p-3 hz-r-lg hz-bg-raised hz-self-start hz-mb-4">
+            <Users className="hz-sq-4 hz-fg-muted" strokeWidth={1.5} />
           </div>
-          <h3 className="text-2xl font-bold text-[var(--white)] mb-3">Hanzo Agency</h3>
-          <p className="text-neutral-300 mb-5">
+          <h3 className="hz-t-2xl hz-w-bold hz-fg hz-mb-3">Hanzo Agency</h3>
+          <p className="hz-fg-soft hz-mb-4">
             Our AI-powered creative agency helps brands transform their digital presence with cutting-edge design, 
             content, and marketing strategies powered by artificial intelligence.
           </p>
-          <div className="flex flex-wrap gap-4">
+          <div className="hz-row hz-wrap hz-gap-4">
             <a 
               href="https://hanzo.agency" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-5 py-2.5 bg-neutral-600 hover:bg-neutral-600 rounded-md text-[var(--white)] transition-colors"
+              className="hz-btn hz-gap-2 hz-fg hz-transition"
             >
               <span>Visit Hanzo Agency</span>
               <ExternalLink size={14} />
             </a>
             <a 
               href="/contact" 
-              className="flex items-center gap-2 px-5 py-2.5 border border-neutral-500/40 hover:border-neutral-500 rounded-md text-neutral-400 hover:text-neutral-300 transition-colors"
+              className="hz-btn hz-btn-ghost hz-gap-2 hz-fg-muted hz-transition"
             >
               <span>Contact us</span>
               <Mail size={14} />
             </a>
           </div>
         </div>
-        <div className="p-6 bg-gradient-to-br from-neutral-800/50 to-neutral-900/30 rounded-xl border border-neutral-500/20 hover:border-neutral-500/40 transition-colors">
-          <div className="p-3 rounded-lg bg-neutral-500/20 self-start inline-block mb-4">
-            <Shield className="h-6 w-6 text-neutral-400" strokeWidth={1.5} />
+        <div className="hz-card hz-transition hz-card-interactive">
+          <div className="hz-p-3 hz-r-lg hz-bg-raised hz-self-start hz-mb-4">
+            <Shield className="hz-sq-4 hz-fg-muted" strokeWidth={1.5} />
           </div>
-          <h3 className="text-2xl font-bold text-[var(--white)] mb-3">Sensei Group</h3>
-          <p className="text-neutral-300 mb-5">
+          <h3 className="hz-t-2xl hz-w-bold hz-fg hz-mb-3">Sensei Group</h3>
+          <p className="hz-fg-soft hz-mb-4">
             Our collective of fractional CXOs and industry experts help enterprises implement transformative 
             technology solutions and drive strategic growth initiatives.
           </p>
-          <div className="flex flex-wrap gap-4">
+          <div className="hz-row hz-wrap hz-gap-4">
             <a 
               href="https://sensei.group" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-5 py-2.5 bg-neutral-600 hover:bg-neutral-500 rounded-md text-[var(--white)] transition-colors"
+              className="hz-btn hz-gap-2 hz-fg hz-transition"
             >
               <span>Visit Sensei Group</span>
               <ExternalLink size={14} />
             </a>
             <a 
               href="tel:+1234567890" 
-              className="flex items-center gap-2 px-5 py-2.5 border border-neutral-500/40 hover:border-neutral-500 rounded-md text-neutral-400 hover:text-neutral-300 transition-colors"
+              className="hz-btn hz-btn-ghost hz-gap-2 hz-fg-muted hz-transition"
             >
               <span>Schedule a call</span>
               <Phone size={14} />
@@ -395,21 +395,21 @@ const SolutionCapabilities: React.FC = () => {
   );
 
   return (
-    <div className="min-h-screen bg-[var(--black)] text-[var(--white)]">
+    <div className="hz-min-h-screen hz-bg hz-fg">
       <Navbar />
       
-      <main className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <div className="inline-block mb-4">
-              <Link to="/solutions" className="text-sm text-neutral-400 hover:text-[var(--white)] flex items-center gap-1">
-                <ChevronRight className="h-4 w-4 rotate-180" /> Back to Solutions
+      <main className="hz-pt-6 hz-pb-6 hz-px-4">
+        <div className="hz-container">
+          <div className="hz-container-narrow hz-align-center hz-mb-7">
+            <div className="hz-mb-4">
+              <Link to="/solutions" className="hz-t-sm hz-fg-muted hz-row hz-ai-center hz-gap-1 hz-link">
+                <ChevronRight className="hz-sq-2" /> Back to Solutions
               </Link>
             </div>
-            <ChromeText as="h1" className="text-4xl sm:text-5xl font-bold mb-6">
+            <ChromeText as="h1" className="hz-t-4xl hz-w-bold hz-mb-5">
               Technical Capabilities
             </ChromeText>
-            <p className="text-neutral-400 text-lg">
+            <p className="hz-fg-muted hz-t-lg">
               Our comprehensive technical capabilities span across a wide range of disciplines, empowering your 
               organization to stay at the forefront of innovation.
             </p>
@@ -419,13 +419,13 @@ const SolutionCapabilities: React.FC = () => {
           {renderFeaturedCapability()}
           
           {/* Case Study */}
-          <div className="mb-20">
+          <div className="hz-mb-7">
             <SectionHeader 
               title="Success Stories" 
               description="Real-world results from our enterprise clients"
             />
             
-            <div className="space-y-8">
+            <div className="hz-stack-6">
               {renderCaseStudy(
                 "Digital Transformation for Global Financial Institution", 
                 "Financial Services",
@@ -441,7 +441,7 @@ const SolutionCapabilities: React.FC = () => {
           </div>
           
           {/* All Capabilities Grid */}
-          <div className="mb-20">
+          <div className="hz-mb-7">
             <SectionHeader 
               title="Explore Our Capabilities" 
               description="Comprehensive technical expertise to transform your business"
@@ -456,26 +456,26 @@ const SolutionCapabilities: React.FC = () => {
           {renderPartnerSection()}
           
           {/* CTA Section */}
-          <div className="mt-20 text-center">
-            <div className="max-w-3xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">Ready to Transform Your Business?</h2>
-              <p className="text-neutral-400 mb-8">
+          <div className="hz-mt-7 hz-align-center">
+            <div className="hz-container-narrow">
+              <h2 className="hz-t-3xl hz-w-bold hz-mb-5">Ready to Transform Your Business?</h2>
+              <p className="hz-fg-muted hz-mb-6">
                 Connect with our team to learn how our capabilities can help you achieve your goals.
               </p>
-              <div className="flex flex-wrap justify-center gap-4">
+              <div className="hz-row hz-wrap hz-jc-center hz-gap-4">
                 <a
                   href="/contact"
-                  className="inline-flex items-center px-6 py-3 rounded-lg bg-neutral-600 hover:bg-neutral-700 text-[var(--white)] font-medium transition-colors"
+                  className="hz-btn hz-fg hz-transition"
                 >
                   Get Started
-                  <ChevronRight className="ml-2 h-5 w-5" />
+                  <ChevronRight className="hz-sq-3 hz-ml-2" />
                 </a>
                 <a
                   href="tel:+1234567890"
-                  className="inline-flex items-center px-6 py-3 rounded-lg border border-neutral-500 text-neutral-400 hover:bg-neutral-600/10 transition-colors"
+                  className="hz-btn hz-btn-ghost hz-fg-muted hz-transition"
                 >
                   Schedule a Call
-                  <Phone className="ml-2 h-5 w-5" />
+                  <Phone className="hz-sq-3 hz-ml-2" />
                 </a>
               </div>
             </div>

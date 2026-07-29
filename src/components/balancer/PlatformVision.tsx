@@ -6,40 +6,40 @@ import { Scale, Network, Shield } from "lucide-react";
 const PlatformVision = () => {
   const visionPoints = [
     {
-      icon: <Scale className="h-10 w-10 text-neutral-400" />,
+      icon: <Scale className="hz-sq-6 hz-fg-muted" />,
       title: "Intelligent Load Distribution",
       description: "Hanzo Balancer dynamically routes traffic based on real-time service health, load, and AI-driven insights to ensure optimal performance and resource utilization."
     },
     {
-      icon: <Network className="h-10 w-10 text-neutral-400" />,
+      icon: <Network className="hz-sq-6 hz-fg-muted" />,
       title: "Global Edge Network",
       description: "Deploy your services globally with our planetary-scale edge network, providing ultra-low latency and instant scaling for AI workloads anywhere in the world."
     },
     {
-      icon: <Shield className="h-10 w-10 text-neutral-400" />,
+      icon: <Shield className="hz-sq-6 hz-fg-muted" />,
       title: "Always-On Security",
       description: "Built-in Web Application Firewall (WAF), DDoS protection, and AI-powered threat detection ensure your services are secured against evolving cyber threats."
     }
   ];
 
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black to-gray-900/30">
-      <div className="max-w-6xl mx-auto">
+    <section className="hz-py-7 hz-px-4">
+      <div className="hz-container-wide">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="hz-align-center hz-mb-7"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Platform Vision</h2>
-          <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
+          <h2 className="hz-t-3xl hz-w-bold hz-mb-5">Platform Vision</h2>
+          <p className="hz-container-narrow hz-t-xl hz-fg-soft">
             Hanzo Balancer represents the next evolution in intelligent traffic management, designed for the AI-first era
             of cloud computing where millisecond performance and dynamic scaling are non-negotiable.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="hz-grid hz-grid-3 hz-gap-6">
           {visionPoints.map((point, index) => (
             <motion.div
               key={index}
@@ -47,11 +47,11 @@ const PlatformVision = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-gray-800/30 p-8 rounded-lg"
+              className="hz-bg-raised hz-p-6 hz-r-lg"
             >
-              <div className="mb-4">{point.icon}</div>
-              <h3 className="text-xl font-semibold mb-3">{point.title}</h3>
-              <p className="text-neutral-300">{point.description}</p>
+              <div className="hz-mb-4">{point.icon}</div>
+              <h3 className="hz-t-xl hz-w-semibold hz-mb-3">{point.title}</h3>
+              <p className="hz-fg-soft">{point.description}</p>
             </motion.div>
           ))}
         </div>

@@ -33,45 +33,45 @@ const ReferralLink = ({ referralLink, referralCode }: ReferralLinkProps) => {
   };
 
   return (
-    <div className="bg-gray-900/30 border border-gray-800 rounded-lg p-6">
-      <h2 className="text-xl font-medium mb-4">Your Referral Link</h2>
-      <div className="flex flex-col md:flex-row gap-4">
-        <div className="relative flex-1">
+    <div className="hz-card">
+      <h2 className="hz-t-xl hz-w-medium hz-mb-4">Your Referral Link</h2>
+      <div className="hz-col-row hz-gap-4">
+        <div className="hz-rel hz-grow">
           <Input 
             value={referralLink} 
             readOnly 
-            className="pr-12 bg-gray-900 border-gray-700"
+            className="hz-px-6 hz-bg-surface"
           />
           <Button 
             variant="ghost" 
             size="sm" 
-            className="absolute right-0 top-0 h-full"
+            className="hz-abs hz-right-0 hz-top-0 hz-h-full"
             onClick={handleCopyLink}
           >
-            {isCopied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+            {isCopied ? <Check className="hz-sq-2" /> : <Copy className="hz-sq-2" />}
           </Button>
         </div>
-        <Button className="flex items-center gap-2">
-          <Share2 className="h-4 w-4" />
+        <Button className="hz-row hz-ai-center hz-gap-2">
+          <Share2 className="hz-sq-2" />
           Share Link
         </Button>
       </div>
       
-      <div className="mt-6 pt-6 border-t border-gray-800">
-        <h3 className="text-lg font-medium mb-4">Send Invites via Email</h3>
-        <form onSubmit={handleSendInvites} className="flex flex-col md:flex-row gap-4">
-          <div className="flex-1">
-            <Label htmlFor="emails" className="sr-only">Email Addresses</Label>
+      <div className="hz-mt-5 hz-pt-6 hz-border-t">
+        <h3 className="hz-t-lg hz-w-medium hz-mb-4">Send Invites via Email</h3>
+        <form onSubmit={handleSendInvites} className="hz-col-row hz-gap-4">
+          <div className="hz-grow">
+            <Label htmlFor="emails" className="hz-sr">Email Addresses</Label>
             <Input 
               id="emails"
               placeholder="Enter email addresses, separated by commas" 
               value={emailInput}
               onChange={(e) => setEmailInput(e.target.value)}
-              className="bg-gray-900 border-gray-700"
+              className="hz-bg-surface"
             />
           </div>
-          <Button type="submit" className="flex items-center gap-2">
-            <Mail className="h-4 w-4" />
+          <Button type="submit" className="hz-row hz-ai-center hz-gap-2">
+            <Mail className="hz-sq-2" />
             Send Invites
           </Button>
         </form>

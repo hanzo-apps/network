@@ -27,17 +27,17 @@ const HeroTitle: React.FC<HeroTitleProps> = ({
         onTitleAnimationComplete();
       }}
     >
-      <div className="inline-block px-4 py-1 rounded-full bg-neutral-800/30 border border-neutral-500/30 text-neutral-300 text-sm font-medium mb-6">
+      <div className="hz-px-4 hz-py-1 hz-r-full hz-bg-raised hz-bordered hz-border-strong hz-fg-soft hz-t-sm hz-w-medium hz-mb-5">
         Open Source AI Engineering Platform
       </div>
       
-      <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-        <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-gray-300">
+      <h1 className="hz-t-5xl hz-w-bold hz-mb-5 hz-leading-tight">
+        <span className="hz-chrome">
           Build As Fast
         </span>
         <br />
         <span 
-          className="bg-clip-text text-transparent bg-gradient-to-r from-neutral-400 via-neutral-400 to-neutral-400"
+          className="hz-chrome"
           style={{
             backgroundPosition: `${(mousePosition.x / (containerRef.current?.offsetWidth || 1)) * 100}% ${(mousePosition.y / (containerRef.current?.offsetHeight || 1)) * 100}%`,
           }}

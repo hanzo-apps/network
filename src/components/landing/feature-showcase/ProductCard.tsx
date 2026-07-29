@@ -33,38 +33,38 @@ const ProductCard: React.FC<ProductCardProps> = ({
         y: -8,
         transition: { duration: 0.2 }
       }}
-      className="bg-gray-900/20 border border-gray-800 rounded-xl p-6 hover:border-gray-700 h-full transition-all group relative overflow-hidden"
+      className="hz-card hz-h-full hz-transition hz-rel hz-clip hz-card-interactive"
     >
       {/* Background gradient effect */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-900/80 via-gray-900/90 to-gray-900/70 opacity-50 z-0"></div>
+      <div className="hz-abs hz-inset hz-dim-more hz-z-base"></div>
       
       {/* Hover background effect */}
-      <div className="absolute inset-0 bg-gradient-to-br from-neutral-800/10 to-neutral-800/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"></div>
+      <div className="hz-abs hz-inset hz-invisible hz-transition hz-z-base"></div>
       
-      <div className="relative z-10">
+      <div className="hz-rel hz-z-raised">
         {/* Icon container with dynamic color and hover effect - now with bigger icons */}
         <div className={cn(
-          "w-24 h-24 rounded-2xl flex items-center justify-center mb-6 transition-all duration-300", 
+          "hz-sq-8 hz-r-xl hz-row hz-ai-center hz-jc-center hz-mb-5 hz-transition", 
           color,
-          `group-hover:${hoverColor}`,
-          "group-hover:shadow-lg group-hover:scale-110"
+          `${hoverColor}`,
+          ""
         )}>
-          {React.cloneElement(icon as React.ReactElement, { className: "h-12 w-12" })}
+          {React.cloneElement(icon as React.ReactElement, { className: "hz-sq-7" })}
         </div>
         
-        <h3 className="text-xl font-bold mb-3 text-[var(--white)] group-hover:text-neutral-100 transition-colors">{title}</h3>
-        <p className="text-neutral-400 mb-5 group-hover:text-neutral-300 transition-colors">{description}</p>
+        <h3 className="hz-t-xl hz-w-bold hz-mb-3 hz-fg hz-transition hz-hoverable">{title}</h3>
+        <p className="hz-fg-muted hz-mb-4 hz-transition hz-link">{description}</p>
         
         {/* Learn more button - now more visible with improved styling */}
         <Button 
           variant="ghost" 
           size="sm" 
-          className="text-neutral-400 hover:text-neutral-300 hover:bg-neutral-800/20 p-2 flex items-center gap-1 transition-all opacity-80 group-hover:opacity-100"
+          className="hz-fg-muted hz-p-2 hz-row hz-ai-center hz-gap-1 hz-transition hz-dim hz-link"
           asChild
         >
           <a href={link}>
             <span>Learn more</span>
-            <ArrowUpRight className="h-3.5 w-3.5 ml-1 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            <ArrowUpRight className="hz-sq-2 hz-ml-1 hz-transition" />
           </a>
         </Button>
       </div>

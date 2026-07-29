@@ -14,25 +14,25 @@ const freeFeatures = [
 
 const PricingPreviewSection = () => {
   return (
-    <section className="py-24 px-4 md:px-8 bg-black">
-      <div className="max-w-4xl mx-auto">
+    <section className="hz-py-7 hz-px-4 hz-bg">
+      <div className="hz-container-narrow">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="hz-align-center hz-mb-7"
         >
           <p
-            className="inline-flex text-xs font-medium rounded-full px-4 py-2 border mb-6"
+            className="hz-inline hz-t-xs hz-w-medium hz-r-full hz-px-4 hz-py-2 hz-bordered hz-mb-5"
             style={{ color: "#ffffff", borderColor: "rgba(255, 255, 255, 0.3)" }}
           >
             Pricing
           </p>
-          <h2 className="text-3xl md:text-5xl font-medium text-white mb-6">
+          <h2 className="hz-t-3xl hz-w-medium hz-fg hz-mb-5">
             Scale forever
           </h2>
-          <p className="text-lg text-neutral-400">
+          <p className="hz-t-lg hz-fg-muted">
             No credit card required. Upgrade when you're ready.
           </p>
         </motion.div>
@@ -43,61 +43,61 @@ const PricingPreviewSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="relative"
+          className="hz-rel"
         >
           {/* Glow effect */}
           <div
-            className="absolute inset-0 rounded-2xl blur-xl opacity-20"
+            className="hz-abs hz-inset hz-r-xl hz-blur-bg hz-dim-more"
             style={{ background: "linear-gradient(135deg, #ffffff, #a3a3a3)" }}
           />
 
-          <div className="relative p-8 md:p-12 rounded-2xl border border-neutral-800 bg-neutral-900/80 backdrop-blur-sm">
-            <div className="grid md:grid-cols-2 gap-8 items-center">
+          <div className="hz-card hz-rel hz-glass">
+            <div className="hz-grid hz-grid-2 hz-gap-6 hz-ai-center">
               {/* Left: Free tier info */}
               <div>
-                <div className="flex items-center gap-2 mb-4">
-                  <Sparkles className="w-5 h-5 text-white" />
-                  <span className="text-sm font-medium text-white">Free Forever</span>
+                <div className="hz-row hz-ai-center hz-gap-2 hz-mb-4">
+                  <Sparkles className="hz-sq-3 hz-fg" />
+                  <span className="hz-t-sm hz-w-medium hz-fg">Free Forever</span>
                 </div>
-                <h3 className="text-3xl md:text-4xl font-bold text-white mb-2">
-                  $0<span className="text-lg font-normal text-neutral-500">/month</span>
+                <h3 className="hz-t-3xl hz-w-bold hz-fg hz-mb-2">
+                  $0<span className="hz-t-lg hz-w-normal hz-fg-muted">/month</span>
                 </h3>
-                <p className="text-neutral-400 mb-6">
+                <p className="hz-fg-muted hz-mb-5">
                   Everything you need to start building. No strings attached.
                 </p>
 
-                <ul className="space-y-3">
+                <ul className="hz-stack-3">
                   {freeFeatures.map((feature) => (
-                    <li key={feature} className="flex items-center gap-3">
-                      <div className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
-                        <Check className="w-3 h-3 text-white" />
+                    <li key={feature} className="hz-row hz-ai-center hz-gap-3">
+                      <div className="hz-sq-3 hz-r-full hz-bg-quiet hz-row hz-ai-center hz-jc-center hz-none">
+                        <Check className="hz-sq-1 hz-fg" />
                       </div>
-                      <span className="text-neutral-300 text-sm">{feature}</span>
+                      <span className="hz-fg-soft hz-t-sm">{feature}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
               {/* Right: CTAs */}
-              <div className="flex flex-col items-center md:items-end gap-4">
+              <div className="hz-col hz-ai-center hz-gap-4">
                 <a
                   href="https://iam.hanzo.ai/sign-up"
-                  className="w-full md:w-auto inline-flex justify-center items-center px-8 py-4 rounded-full font-medium text-white transition-all hover:opacity-90"
+                  className="hz-btn hz-btn-ghost hz-btn-lg hz-btn-block hz-fg hz-transition"
                   style={{ backgroundColor: "#ffffff" }}
                 >
                   Start Building Free
-                  <ArrowRight className="ml-2 h-5 w-5" />
+                  <ArrowRight className="hz-sq-3 hz-ml-2" />
                 </a>
 
                 <Link
                   to="/pricing"
-                  className="inline-flex items-center gap-2 text-sm text-neutral-400 hover:text-white transition-colors"
+                  className="hz-inline hz-ai-center hz-gap-2 hz-t-sm hz-fg-muted hz-transition hz-link"
                 >
                   View all plans
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="hz-sq-2" />
                 </Link>
 
-                <p className="text-xs text-neutral-600 text-center md:text-right mt-4">
+                <p className="hz-t-xs hz-fg-faint hz-align-center hz-mt-4">
                   No credit card required
                   <br />
                   Cancel anytime
@@ -113,13 +113,13 @@ const PricingPreviewSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-8 text-center"
+          className="hz-mt-6 hz-align-center"
         >
-          <p className="text-neutral-500">
+          <p className="hz-fg-muted">
             Need custom limits, SLAs, or dedicated support?{" "}
             <Link
               to="/enterprise"
-              className="text-white hover:underline"
+              className="hz-fg"
             >
               Talk to sales
             </Link>

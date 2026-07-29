@@ -24,24 +24,24 @@ const Sidebar = ({
       initial={{ width: 0, opacity: 0 }}
       animate={{ width: 240, opacity: 1 }}
       exit={{ width: 0, opacity: 0 }}
-      className="bg-gray-900/50 border-r border-gray-800 h-full mr-4 p-4 overflow-y-auto"
+      className="hz-bg-surface hz-border-r hz-h-full hz-mr-4 hz-p-4 hz-scroll-y"
     >
-      <div className="space-y-6">
+      <div className="hz-stack-5">
         <div>
-          <h3 className="text-sm font-medium text-neutral-400 mb-2">MODELS</h3>
-          <div className="space-y-1">
+          <h3 className="hz-t-sm hz-w-medium hz-fg-muted hz-mb-2">MODELS</h3>
+          <div className="hz-stack-1">
             {models.map((model) => (
               <button
                 key={model.id}
                 onClick={() => setModelSelection(model.id)}
-                className={`w-full text-left px-3 py-2 rounded-md text-sm flex items-center ${
-                  modelSelection === model.id ? "bg-neutral-800/50 text-[var(--white)]" : "text-neutral-300 hover:bg-gray-800"
+                className={`hz-btn hz-btn-ghost hz-btn-block hz-align-left ${
+                  modelSelection === model.id ? "hz-bg-raised hz-fg" : "hz-fg-soft hz-hoverable"
                 }`}
               >
-                <Cpu className="w-4 h-4 mr-2" />
+                <Cpu className="hz-sq-2 hz-mr-2" />
                 <div>
                   <div>{model.name}</div>
-                  <div className="text-xs text-neutral-500">{model.provider}</div>
+                  <div className="hz-t-xs hz-fg-muted">{model.provider}</div>
                 </div>
               </button>
             ))}
@@ -49,18 +49,18 @@ const Sidebar = ({
         </div>
         
         <div>
-          <h3 className="text-sm font-medium text-neutral-400 mb-2">SAVED PROJECTS</h3>
-          <div className="space-y-1">
-            <button className="w-full text-left px-3 py-2 rounded-md text-sm text-neutral-300 hover:bg-gray-800 flex items-center">
-              <MessageSquare className="w-4 h-4 mr-2" />
+          <h3 className="hz-t-sm hz-w-medium hz-fg-muted hz-mb-2">SAVED PROJECTS</h3>
+          <div className="hz-stack-1">
+            <button className="hz-btn hz-btn-ghost hz-btn-block hz-align-left hz-fg-soft">
+              <MessageSquare className="hz-sq-2 hz-mr-2" />
               <span>Customer Support Bot</span>
             </button>
-            <button className="w-full text-left px-3 py-2 rounded-md text-sm text-neutral-300 hover:bg-gray-800 flex items-center">
-              <Code className="w-4 h-4 mr-2" />
+            <button className="hz-btn hz-btn-ghost hz-btn-block hz-align-left hz-fg-soft">
+              <Code className="hz-sq-2 hz-mr-2" />
               <span>Code Generator</span>
             </button>
-            <button className="w-full text-left px-3 py-2 rounded-md text-sm text-neutral-300 hover:bg-gray-800 flex items-center">
-              <Bot className="w-4 h-4 mr-2" />
+            <button className="hz-btn hz-btn-ghost hz-btn-block hz-align-left hz-fg-soft">
+              <Bot className="hz-sq-2 hz-mr-2" />
               <span>Data Analysis Agent</span>
             </button>
           </div>

@@ -66,11 +66,11 @@ const FeatureShowcaseSlider: React.FC<FeatureShowcaseSliderProps> = ({ features 
   }, []);
 
   return (
-    <div className="feature-slide-container relative">
+    <div className="feature-slide-container hz-rel">
       {/* Add navigation buttons */}
       <button 
         onClick={scrollLeft}
-        className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-gray-900/80 hover:bg-gray-900 text-[var(--white)] rounded-full p-2 shadow-lg -ml-4 md:flex hidden"
+        className="hz-desktop-only hz-row hz-center-y hz-abs hz-left-0 hz-z-raised hz-bg-surface hz-fg hz-r-full hz-p-2 hz-shadow-lg hz-ml-4 hz-hoverable"
         aria-label="Scroll left"
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -80,7 +80,7 @@ const FeatureShowcaseSlider: React.FC<FeatureShowcaseSliderProps> = ({ features 
       
       <div 
         ref={containerRef}
-        className="flex gap-6 pb-6 overflow-x-auto snap-x snap-mandatory feature-scroll-container scrollbar-hide"
+        className="hz-row hz-gap-5 hz-pb-6 hz-scroll-x feature-scroll-container"
         onMouseDown={handleMouseDown}
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseUp}
@@ -94,7 +94,7 @@ const FeatureShowcaseSlider: React.FC<FeatureShowcaseSliderProps> = ({ features 
           return (
             <motion.div 
               key={index} 
-              className="snap-center flex-shrink-0 w-[350px]"
+              className="hz-none"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
@@ -122,7 +122,7 @@ const FeatureShowcaseSlider: React.FC<FeatureShowcaseSliderProps> = ({ features 
       
       <button 
         onClick={scrollRight}
-        className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-gray-900/80 hover:bg-gray-900 text-[var(--white)] rounded-full p-2 shadow-lg -mr-4 md:flex hidden"
+        className="hz-desktop-only hz-row hz-center-y hz-abs hz-right-0 hz-z-raised hz-bg-surface hz-fg hz-r-full hz-p-2 hz-shadow-lg hz-mr-4 hz-hoverable"
         aria-label="Scroll right"
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -130,9 +130,9 @@ const FeatureShowcaseSlider: React.FC<FeatureShowcaseSliderProps> = ({ features 
         </svg>
       </button>
       
-      <div className="flex justify-center mt-6 gap-2">
-        <div className="bg-gray-700 h-1 w-20 rounded-full overflow-hidden">
-          <div className="bg-neutral-600 h-full w-1/3 rounded-full"></div>
+      <div className="hz-row hz-jc-center hz-mt-5 hz-gap-2">
+        <div className="hz-bg-raised hz-bh-1 hz-bw-8 hz-r-full hz-clip">
+          <div className="hz-bg-raised hz-h-full hz-r-full"></div>
         </div>
       </div>
     </div>

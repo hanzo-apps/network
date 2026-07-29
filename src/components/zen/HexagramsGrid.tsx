@@ -25,39 +25,39 @@ const HexagramsGrid: React.FC<HexagramsGridProps> = ({
   };
   
   return (
-    <div className="py-16" id="hexagrams">
+    <div className="hz-py-7" id="hexagrams">
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="text-center mb-12"
+        className="hz-align-center hz-mb-7"
       >
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[var(--white)]">{title}</h2>
-        <p className="text-lg text-neutral-400 max-w-3xl mx-auto">
+        <h2 className="hz-t-3xl hz-w-bold hz-mb-4 hz-fg">{title}</h2>
+        <p className="hz-container-narrow hz-t-lg hz-fg-muted">
           {description}
         </p>
-        <div className="h-px w-20 bg-gray-800 mx-auto mt-6"></div>
+        <div className="hz-bw-8 hz-bg-raised hz-mx-auto hz-mt-5"></div>
       </motion.div>
       
       <AnimatePresence mode="wait">
         {selectedHexagram && (
-          <div className="mb-10 max-w-3xl mx-auto px-4">
+          <div className="hz-container-narrow hz-mb-6">
             <HexagramDetail hexagram={selectedHexagram} />
           </div>
         )}
       </AnimatePresence>
       
-      <div className="relative px-4">
-        <div className="overflow-x-auto">
-          <div className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-8 gap-2 md:gap-3 min-w-[320px] p-4 md:p-6 bg-gray-900/20 border border-gray-800/50 rounded-lg mx-auto max-w-5xl">
+      <div className="hz-rel hz-px-4">
+        <div className="hz-scroll-x">
+          <div className="hz-grid hz-grid-6 hz-container-wide hz-card hz-gap-2">
             {Array.from({ length: rows }).map((_, rowIndex) => (
               <React.Fragment key={`row-${rowIndex}`}>
                 {Array.from({ length: columns }).map((_, colIndex) => {
                   const index = rowIndex * columns + colIndex;
                   const hexagram = ichingPrinciples[index] || null;
                   
-                  if (!hexagram) return <div key={`empty-${index}`} className="aspect-square"></div>;
+                  if (!hexagram) return <div key={`empty-${index}`} className=""></div>;
                   
                   return (
                     <InteractiveHexagram 
@@ -74,7 +74,7 @@ const HexagramsGrid: React.FC<HexagramsGridProps> = ({
           </div>
         </div>
         
-        <div className="mt-6 text-center text-sm text-neutral-500">
+        <div className="hz-mt-5 hz-align-center hz-t-sm hz-fg-muted">
           Click on a hexagram to view its meaning and principle
         </div>
       </div>

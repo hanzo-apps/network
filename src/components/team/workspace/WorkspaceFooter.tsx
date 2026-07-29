@@ -10,27 +10,27 @@ const WorkspaceFooter = () => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: 0.3 }}
-      className="text-center"
+      className="hz-align-center"
     >
-      <p className="text-lg text-neutral-400 max-w-2xl mx-auto mb-8">
+      <p className="hz-container-narrow hz-mw-md hz-t-lg hz-fg-muted hz-mb-6">
         All workspace tools are fully integrated, allowing AI agents to work across platforms
         seamlessly while maintaining a complete audit trail of all actions.
       </p>
       
-      <div className="inline-flex flex-wrap justify-center gap-4">
-        <Badge className="bg-neutral-800/30 text-neutral-300 border-neutral-500/30 px-3 py-2">
+      <div className="hz-inline hz-wrap hz-jc-center hz-gap-4">
+        <Badge className="hz-bg-raised hz-fg-soft hz-border-strong hz-px-3 hz-py-2">
           Real-time collaboration
         </Badge>
-        <Badge className="bg-neutral-800/30 text-neutral-300 border-neutral-500/30 px-3 py-2">
+        <Badge className="hz-bg-raised hz-fg-soft hz-border-strong hz-px-3 hz-py-2">
           Full audit history
         </Badge>
-        <Badge className="bg-neutral-800/30 text-neutral-300 border-neutral-500/30 px-3 py-2">
+        <Badge className="hz-bg-raised hz-fg-soft hz-border-strong hz-px-3 hz-py-2">
           Seamless integrations
         </Badge>
-        <Badge className="bg-neutral-800/30 text-neutral-300 border-neutral-500/30 px-3 py-2">
+        <Badge className="hz-bg-raised hz-fg-soft hz-border-strong hz-px-3 hz-py-2">
           Human oversight
         </Badge>
-        <Badge className="bg-neutral-800/30 text-neutral-300 border-neutral-500/30 px-3 py-2">
+        <Badge className="hz-bg-raised hz-fg-soft hz-border-strong hz-px-3 hz-py-2">
           Enterprise security
         </Badge>
       </div>

@@ -20,15 +20,15 @@ const FeatureCard = ({
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
     transition={{ duration: 0.4, delay }}
-    className="bg-gray-900/20 border border-gray-800 rounded-xl p-8"
+    className="hz-card"
   >
-    <div className="h-12 w-12 bg-neutral-800/30 rounded-lg flex items-center justify-center mb-6">
-      <Icon className="h-6 w-6 text-neutral-400" />
+    <div className="hz-sq-7 hz-bg-raised hz-r-lg hz-row hz-ai-center hz-jc-center hz-mb-5">
+      <Icon className="hz-sq-4 hz-fg-muted" />
     </div>
-    <ChromeText as="h3" className="text-xl font-bold mb-4">
+    <ChromeText as="h3" className="hz-t-xl hz-w-bold hz-mb-4">
       {title}
     </ChromeText>
-    <p className="text-neutral-400">
+    <p className="hz-fg-muted">
       {description}
     </p>
   </motion.div>
@@ -69,18 +69,18 @@ const KeyFeatures = () => {
   ];
 
   return (
-    <section id="features" className="py-32 px-4 sm:px-6 lg:px-8 bg-[var(--black)]">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-20">
-          <ChromeText as="h2" className="text-3xl md:text-5xl font-bold mb-6">
+    <section id="features" className="hz-py-7 hz-px-4 hz-bg">
+      <div className="hz-container-wide">
+        <div className="hz-align-center hz-mb-7">
+          <ChromeText as="h2" className="hz-t-3xl hz-w-bold hz-mb-5">
             Key Features
           </ChromeText>
-          <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
+          <p className="hz-container-narrow hz-t-xl hz-fg-soft">
             A powerful datastore built for modern analytical applications
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="hz-grid hz-grid-3 hz-gap-6">
           {features.map((feature, index) => (
             <FeatureCard 
               key={feature.title}

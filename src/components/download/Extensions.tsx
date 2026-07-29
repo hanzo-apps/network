@@ -6,83 +6,83 @@ import { Button } from "@/components/ui/button";
 
 const Extensions = () => {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[var(--black)]/50">
-      <div className="max-w-6xl mx-auto">
+    <section className="hz-py-7 hz-px-4 hz-bg-overlay">
+      <div className="hz-container-wide">
         <motion.div
-          className="text-center mb-12"
+          className="hz-align-center hz-mb-7"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-[var(--white)]">
+          <h2 className="hz-t-3xl hz-w-bold hz-mb-4 hz-fg">
             Available everywhere you code
           </h2>
-          <p className="text-xl text-neutral-300 max-w-2xl mx-auto">
+          <p className="hz-container-narrow hz-mw-md hz-t-xl hz-fg-soft">
             Use Hanzo in your browser or directly in VS Code for a seamless development experience
           </p>
         </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="hz-grid hz-grid-2 hz-gap-6">
           <motion.div
-            className="bg-gray-900/50 p-8 rounded-xl border border-gray-800"
+            className="hz-card"
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
           >
-            <div className="flex items-center mb-6">
-              <Chrome className="h-10 w-10 text-neutral-400 mr-4" />
-              <h3 className="text-2xl font-bold text-[var(--white)]">Browser Extensions</h3>
+            <div className="hz-row hz-ai-center hz-mb-5">
+              <Chrome className="hz-sq-6 hz-fg-muted hz-mr-4" />
+              <h3 className="hz-t-2xl hz-w-bold hz-fg">Browser Extensions</h3>
             </div>
             
-            <p className="text-neutral-300 mb-6">
+            <p className="hz-fg-soft hz-mb-5">
               Access Hanzo AI directly in your browser for seamless web development and browsing assistance.
             </p>
             
-            <div className="flex flex-wrap gap-3">
-              <Button variant="outline" className="border-gray-700 text-[var(--white)] hover:bg-gray-800">
-                <Chrome className="mr-2 h-4 w-4" />
+            <div className="hz-row hz-wrap hz-gap-3">
+              <Button variant="outline" className="hz-fg hz-hoverable">
+                <Chrome className="hz-sq-2 hz-mr-2" />
                 Chrome Extension
               </Button>
-              <Button variant="outline" className="border-gray-700 text-[var(--white)] hover:bg-gray-800">
-                <Chrome className="mr-2 h-4 w-4" />
+              <Button variant="outline" className="hz-fg hz-hoverable">
+                <Chrome className="hz-sq-2 hz-mr-2" />
                 Firefox Add-on
               </Button>
-              <Button variant="outline" className="border-gray-700 text-[var(--white)] hover:bg-gray-800">
-                <Chrome className="mr-2 h-4 w-4" />
+              <Button variant="outline" className="hz-fg hz-hoverable">
+                <Chrome className="hz-sq-2 hz-mr-2" />
                 Edge Extension
               </Button>
             </div>
           </motion.div>
           
           <motion.div
-            className="bg-gray-900/50 p-8 rounded-xl border border-gray-800"
+            className="hz-card"
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
           >
-            <div className="flex items-center mb-6">
-              <Code className="h-10 w-10 text-neutral-400 mr-4" />
-              <h3 className="text-2xl font-bold text-[var(--white)]">VS Code Extension</h3>
+            <div className="hz-row hz-ai-center hz-mb-5">
+              <Code className="hz-sq-6 hz-fg-muted hz-mr-4" />
+              <h3 className="hz-t-2xl hz-w-bold hz-fg">VS Code Extension</h3>
             </div>
             
-            <p className="text-neutral-300 mb-6">
+            <p className="hz-fg-soft hz-mb-5">
               Supercharge your development workflow with Hanzo AI integrated directly in VS Code.
             </p>
             
-            <div className="flex flex-wrap gap-3">
-              <Button className="bg-neutral-600 hover:bg-neutral-600 text-[var(--white)]">
-                <Code className="mr-2 h-4 w-4" />
+            <div className="hz-row hz-wrap hz-gap-3">
+              <Button className="hz-bg-raised hz-fg hz-hoverable">
+                <Code className="hz-sq-2 hz-mr-2" />
                 Install for VS Code
               </Button>
-              <Button variant="outline" className="border-gray-700 text-[var(--white)] hover:bg-gray-800">
+              <Button variant="outline" className="hz-fg hz-hoverable">
                 Learn more about Hanzo Code
               </Button>
             </div>
             
-            <p className="text-neutral-400 mt-6 text-sm">
+            <p className="hz-fg-muted hz-mt-5 hz-t-sm">
               Hanzo Code offers dedicated features for developers. Explore our separate Hanzo Code editor for an even more powerful experience.
             </p>
           </motion.div>

@@ -34,26 +34,26 @@ const AIFeatureCard = ({
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay }}
-      className="bg-gray-900/20 border border-gray-800 rounded-lg p-6"
+      className="hz-card"
     >
-      <div className="flex items-center mb-6">
-        <div className="flex-shrink-0">
-          <div className={`flex items-center justify-center h-12 w-12 rounded-lg ${iconBgClass} ${iconTextClass}`}>
+      <div className="hz-row hz-ai-center hz-mb-5">
+        <div className="hz-none">
+          <div className={`hz-sq-7 hz-row hz-ai-center hz-jc-center hz-r-lg ${iconBgClass} ${iconTextClass}`}>
             {icon}
           </div>
         </div>
-        <div className="ml-4">
-          <h3 className="text-xl font-semibold text-[var(--white)]">{title}</h3>
+        <div className="hz-ml-4">
+          <h3 className="hz-t-xl hz-w-semibold hz-fg">{title}</h3>
         </div>
       </div>
-      <p className="text-neutral-300 mb-6">
+      <p className="hz-fg-soft hz-mb-5">
         {description}
       </p>
-      <ul className="space-y-3">
+      <ul className="hz-stack-3">
         {featurePoints.map((point, index) => (
-          <li key={index} className="flex items-start">
-            <span className={`${bulletColor} mr-2`}>•</span>
-            <span className="text-neutral-300">{point.text}</span>
+          <li key={index} className="hz-row hz-ai-start">
+            <span className={`${bulletColor} hz-mr-2`}>•</span>
+            <span className="hz-fg-soft">{point.text}</span>
           </li>
         ))}
       </ul>

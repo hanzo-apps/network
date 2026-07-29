@@ -5,9 +5,9 @@ import { Code, Terminal, PenTool, Layers } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const tabs = [
-  { id: "js", label: "JavaScript", icon: <Code className="h-4 w-4" /> },
-  { id: "py", label: "Python", icon: <Terminal className="h-4 w-4" /> },
-  { id: "api", label: "API", icon: <PenTool className="h-4 w-4" /> }
+  { id: "js", label: "JavaScript", icon: <Code className="hz-sq-2" /> },
+  { id: "py", label: "Python", icon: <Terminal className="hz-sq-2" /> },
+  { id: "api", label: "API", icon: <PenTool className="hz-sq-2" /> }
 ];
 
 const codeExamples = {
@@ -89,61 +89,61 @@ const DeveloperFirst = () => {
   const [activeTab, setActiveTab] = useState("js");
   
   return (
-    <section className="py-32 px-4 sm:px-6 lg:px-8 bg-[var(--black)] relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,_var(--tw-gradient-stops))] from-neutral-800/20 via-transparent to-transparent"></div>
+    <section className="hz-py-7 hz-px-4 hz-bg hz-rel hz-clip">
+      <div className="hz-abs hz-inset"></div>
       
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="hz-container hz-rel hz-z-raised">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="hz-align-center hz-mb-7"
         >
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">Developer-First API & SDKs</h2>
-          <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
+          <h2 className="hz-t-3xl hz-w-bold hz-mb-5">Developer-First API & SDKs</h2>
+          <p className="hz-container-narrow hz-t-xl hz-fg-soft">
             Easy-to-integrate SDKs and APIs designed for minimal friction and maximum flexibility.
           </p>
         </motion.div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-7 gap-10">
-          <div className="lg:col-span-3 flex flex-col justify-center">
+        <div className="hz-grid hz-grid-6 hz-gap-6">
+          <div className="hz-col hz-jc-center">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <div className="flex items-center mb-5">
-                <Layers className="h-6 w-6 text-neutral-400 mr-3" />
-                <h3 className="text-2xl font-bold">Designed for Developers</h3>
+              <div className="hz-row hz-ai-center hz-mb-4">
+                <Layers className="hz-sq-4 hz-fg-muted hz-mr-3" />
+                <h3 className="hz-t-2xl hz-w-bold">Designed for Developers</h3>
               </div>
               
-              <ul className="space-y-4 mb-8">
-                <li className="flex">
-                  <div className="mr-3 text-neutral-400">•</div>
+              <ul className="hz-stack-4 hz-mb-6">
+                <li className="hz-row">
+                  <div className="hz-mr-3 hz-fg-muted">•</div>
                   <div>
-                    <span className="font-medium text-[var(--white)]">OpenTelemetry Integration</span>
-                    <p className="text-neutral-400 mt-1">Seamlessly integrate with your existing observability stack.</p>
+                    <span className="hz-w-medium hz-fg">OpenTelemetry Integration</span>
+                    <p className="hz-fg-muted hz-mt-1">Seamlessly integrate with your existing observability stack.</p>
                   </div>
                 </li>
-                <li className="flex">
-                  <div className="mr-3 text-neutral-400">•</div>
+                <li className="hz-row">
+                  <div className="hz-mr-3 hz-fg-muted">•</div>
                   <div>
-                    <span className="font-medium text-[var(--white)]">API-first, highly customizable</span>
-                    <p className="text-neutral-400 mt-1">Build exactly what you need with our flexible API.</p>
+                    <span className="hz-w-medium hz-fg">API-first, highly customizable</span>
+                    <p className="hz-fg-muted hz-mt-1">Build exactly what you need with our flexible API.</p>
                   </div>
                 </li>
-                <li className="flex">
-                  <div className="mr-3 text-neutral-400">•</div>
+                <li className="hz-row">
+                  <div className="hz-mr-3 hz-fg-muted">•</div>
                   <div>
-                    <span className="font-medium text-[var(--white)]">Robust documentation and code examples</span>
-                    <p className="text-neutral-400 mt-1">Comprehensive guides and examples to get you started quickly.</p>
+                    <span className="hz-w-medium hz-fg">Robust documentation and code examples</span>
+                    <p className="hz-fg-muted hz-mt-1">Comprehensive guides and examples to get you started quickly.</p>
                   </div>
                 </li>
               </ul>
               
-              <div className="flex flex-wrap gap-3">
+              <div className="hz-row hz-wrap hz-gap-3">
                 <Button variant="outline" size="sm">View Documentation</Button>
                 <Button variant="outline" size="sm">API Reference</Button>
                 <Button variant="outline" size="sm">Example Projects</Button>
@@ -156,33 +156,33 @@ const DeveloperFirst = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="lg:col-span-4"
+            className=""
           >
-            <div className="bg-gray-900/50 rounded-xl border border-gray-800 overflow-hidden shadow-xl">
-              <div className="flex border-b border-gray-800">
+            <div className="hz-bg-surface hz-r-lg hz-bordered hz-clip hz-shadow-lg">
+              <div className="hz-row hz-border-b">
                 {tabs.map((tab) => (
                   <button
                     key={tab.id}
-                    className={`flex items-center px-4 py-3 text-sm font-medium ${
+                    className={`hz-row hz-ai-center hz-px-4 hz-py-3 hz-t-sm hz-w-medium ${
                       activeTab === tab.id
-                        ? "bg-gray-800 text-[var(--white)]"
-                        : "text-neutral-400 hover:text-[var(--white)] hover:bg-gray-800/50"
+                        ? "hz-bg-raised hz-fg"
+                        : "hz-fg-muted hz-link"
                     }`}
                     onClick={() => setActiveTab(tab.id)}
                   >
-                    <span className="mr-2">{tab.icon}</span>
+                    <span className="hz-mr-2">{tab.icon}</span>
                     {tab.label}
                   </button>
                 ))}
               </div>
               
-              <div className="p-5 overflow-x-auto">
-                <pre className="text-sm text-neutral-300 font-mono whitespace-pre">
+              <div className="hz-p-4 hz-scroll-x">
+                <pre className="hz-t-sm hz-fg-soft hz-mono">
                   {codeExamples[activeTab as keyof typeof codeExamples]}
                 </pre>
               </div>
               
-              <div className="bg-gray-900 p-3 border-t border-gray-800 text-sm text-neutral-400">
+              <div className="hz-bg-surface hz-p-3 hz-border-t hz-t-sm hz-fg-muted">
                 {activeTab === "js" && "npm install hanzo-analytics"}
                 {activeTab === "py" && "pip install hanzo-analytics"}
                 {activeTab === "api" && "API Key: Get yours from the Hanzo Analytics dashboard"}

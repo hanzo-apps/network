@@ -6,61 +6,61 @@ import { Button } from "@/components/ui/button";
 
 const OperativeUsage = () => {
   return (
-    <section className="py-24 bg-gray-950 relative overflow-hidden" id="get-started">
+    <section className="hz-py-7 hz-bg-surface hz-rel hz-clip" id="get-started">
       {/* Background gradient */}
-      <div className="absolute top-1/2 left-1/4 transform -translate-x-1/2 -translate-y-1/2 w-1/2 h-1/2 bg-neutral-800/10 rounded-full blur-3xl"></div>
+      <div className="hz-center-y hz-abs hz-bg-raised hz-r-full hz-blur-bg"></div>
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+      <div className="hz-container hz-rel hz-z-raised">
+        <div className="hz-container-narrow hz-align-center hz-mb-7">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-[var(--white)] mb-6">
+            <h2 className="hz-t-3xl hz-w-bold hz-fg hz-mb-5">
               Getting Started with Hanzo Operative
             </h2>
-            <p className="text-xl text-neutral-300">
+            <p className="hz-t-xl hz-fg-soft">
               Set up your environment in minutes and start using AI to operate your computer
             </p>
           </motion.div>
         </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
-          <div className="lg:col-span-2 space-y-6">
+        <div className="hz-grid hz-grid-5 hz-gap-6">
+          <div className="hz-stack-5">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="bg-gray-900/30 border border-gray-800 rounded-xl p-6"
+              className="hz-card"
             >
-              <h3 className="text-xl font-semibold text-[var(--white)] mb-4">Installation</h3>
+              <h3 className="hz-t-xl hz-w-semibold hz-fg hz-mb-4">Installation</h3>
               
-              <div className="space-y-4">
+              <div className="hz-stack-4">
                 <div>
-                  <p className="text-neutral-400 mb-2">1. Install the package</p>
-                  <div className="bg-gray-900 rounded-md p-3 font-mono text-sm text-[var(--white)] overflow-x-auto">
+                  <p className="hz-fg-muted hz-mb-2">1. Install the package</p>
+                  <div className="hz-bg-surface hz-r-md hz-p-3 hz-mono hz-t-sm hz-fg hz-scroll-x">
                     pip install hanzo-operative
                   </div>
                 </div>
                 
                 <div>
-                  <p className="text-neutral-400 mb-2">2. Run the operative</p>
-                  <div className="bg-gray-900 rounded-md p-3 font-mono text-sm text-[var(--white)] overflow-x-auto">
+                  <p className="hz-fg-muted hz-mb-2">2. Run the operative</p>
+                  <div className="hz-bg-surface hz-r-md hz-p-3 hz-mono hz-t-sm hz-fg hz-scroll-x">
                     operative
                   </div>
                 </div>
                 
                 <div>
-                  <p className="text-neutral-400 mb-2">3. Enter your API key when prompted</p>
+                  <p className="hz-fg-muted hz-mb-2">3. Enter your API key when prompted</p>
                 </div>
               </div>
               
-              <div className="mt-6">
-                <Button size="sm" variant="outline" className="text-neutral-300 border-gray-700">
-                  <Terminal className="h-4 w-4 mr-2" />
+              <div className="hz-mt-5">
+                <Button size="sm" variant="outline" className="hz-fg-soft">
+                  <Terminal className="hz-sq-2 hz-mr-2" />
                   Copy Installation Commands
                 </Button>
               </div>
@@ -71,11 +71,11 @@ const OperativeUsage = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="bg-gray-900/30 border border-gray-800 rounded-xl p-6"
+              className="hz-card"
             >
-              <h3 className="text-xl font-semibold text-[var(--white)] mb-4">System Requirements</h3>
+              <h3 className="hz-t-xl hz-w-semibold hz-fg hz-mb-4">System Requirements</h3>
               
-              <ul className="space-y-2 text-neutral-400">
+              <ul className="hz-stack-2 hz-fg-muted">
                 <li>• macOS, Windows, or Linux (with X server)</li>
                 <li>• Python 3.8 or higher</li>
                 <li>• 8GB RAM recommended</li>
@@ -89,41 +89,41 @@ const OperativeUsage = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="lg:col-span-3 bg-gray-900/30 border border-gray-800 rounded-xl p-6 h-full"
+            className="hz-card hz-h-full"
           >
-            <h3 className="text-xl font-semibold text-[var(--white)] mb-4">Basic Usage</h3>
+            <h3 className="hz-t-xl hz-w-semibold hz-fg hz-mb-4">Basic Usage</h3>
             
-            <div className="space-y-6">
+            <div className="hz-stack-5">
               <div>
-                <p className="text-neutral-400 mb-2">Running with default settings (GPT-4o)</p>
-                <div className="bg-gray-900 rounded-md p-3 font-mono text-sm text-[var(--white)] overflow-x-auto">
+                <p className="hz-fg-muted hz-mb-2">Running with default settings (GPT-4o)</p>
+                <div className="hz-bg-surface hz-r-md hz-p-3 hz-mono hz-t-sm hz-fg hz-scroll-x">
                   operative
                 </div>
               </div>
               
               <div>
-                <p className="text-neutral-400 mb-2">Using voice input mode</p>
-                <div className="bg-gray-900 rounded-md p-3 font-mono text-sm text-[var(--white)] overflow-x-auto">
+                <p className="hz-fg-muted hz-mb-2">Using voice input mode</p>
+                <div className="hz-bg-surface hz-r-md hz-p-3 hz-mono hz-t-sm hz-fg hz-scroll-x">
                   operative --voice
                 </div>
               </div>
               
               <div>
-                <p className="text-neutral-400 mb-2">Using OCR mode for enhanced element detection</p>
-                <div className="bg-gray-900 rounded-md p-3 font-mono text-sm text-[var(--white)] overflow-x-auto">
+                <p className="hz-fg-muted hz-mb-2">Using OCR mode for enhanced element detection</p>
+                <div className="hz-bg-surface hz-r-md hz-p-3 hz-mono hz-t-sm hz-fg hz-scroll-x">
                   operative -m gpt-4-with-ocr
                 </div>
               </div>
               
               <div>
-                <p className="text-neutral-400 mb-2">Using Set-of-Mark (SoM) prompting</p>
-                <div className="bg-gray-900 rounded-md p-3 font-mono text-sm text-[var(--white)] overflow-x-auto">
+                <p className="hz-fg-muted hz-mb-2">Using Set-of-Mark (SoM) prompting</p>
+                <div className="hz-bg-surface hz-r-md hz-p-3 hz-mono hz-t-sm hz-fg hz-scroll-x">
                   operative -m gpt-4-with-som
                 </div>
               </div>
               
-              <div className="pt-2">
-                <p className="text-neutral-400">After running any of these commands, you'll be prompted to enter an objective for the AI to accomplish.</p>
+              <div className="hz-pt-4">
+                <p className="hz-fg-muted">After running any of these commands, you'll be prompted to enter an objective for the AI to accomplish.</p>
               </div>
             </div>
           </motion.div>

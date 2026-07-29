@@ -1,3 +1,4 @@
+import { BRAND } from '@/lib/brand';
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -20,7 +21,6 @@ import {
 } from "lucide-react";
 import { CodeTabs } from "@/components/ui/code-block";
 
-const BRAND_COLOR = "#ffffff";
 
 // Multi-language code examples for the API section
 const API_CODE_EXAMPLES = [
@@ -109,8 +109,8 @@ const DeveloperExperienceSection = () => {
   };
 
   return (
-    <section className="py-24 px-4 md:px-8 bg-black">
-      <div className="max-w-6xl mx-auto space-y-24">
+    <section className="hz-py-7 hz-px-4 hz-bg">
+      <div className="hz-container-wide hz-stack-6">
 
         {/* IDE Agents Section */}
         <motion.div
@@ -118,52 +118,52 @@ const DeveloperExperienceSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="grid lg:grid-cols-2 gap-12 items-center"
+          className="hz-grid hz-grid-2 hz-gap-7 hz-ai-center"
         >
           <div>
             <p
-              className="inline-flex text-xs font-medium rounded-full px-4 py-2 border mb-6"
-              style={{ color: BRAND_COLOR, borderColor: `${BRAND_COLOR}4d` }}
+              className="hz-inline hz-t-xs hz-w-medium hz-r-full hz-px-4 hz-py-2 hz-bordered hz-mb-5"
+              style={{ color: BRAND.fg, borderColor: `${BRAND.washStrong}` }}
             >
               Works where developers live
             </p>
-            <h2 className="text-3xl md:text-4xl font-medium text-white mb-4">
+            <h2 className="hz-t-3xl hz-w-medium hz-fg hz-mb-4">
               VS Code. JetBrains. Terminal. Remote.
             </h2>
-            <p className="text-lg text-neutral-400 mb-8">
+            <p className="hz-t-lg hz-fg-muted hz-mb-6">
               Hanzo reads your repo structure first, edits across files coherently, and executes tasks step-by-step—locally or in isolated remote sandboxes.
             </p>
             <Link
               to="/extensions"
-              className="inline-flex items-center px-5 py-2.5 rounded-full text-sm font-medium transition-colors bg-white text-black hover:opacity-90"
+              className="hz-btn hz-btn-primary hz-transition hz-fg-inverse"
             >
               Install the IDE extension
-              <ArrowRight className="ml-2 h-4 w-4" />
+              <ArrowRight className="hz-sq-2 hz-ml-2" />
             </Link>
           </div>
 
           {/* IDE Preview */}
-          <div className="rounded-xl border border-neutral-800 bg-neutral-900/80 overflow-hidden">
-            <div className="flex items-center gap-2 px-4 py-3 border-b border-neutral-800 bg-neutral-950">
-              <div className="flex gap-1.5">
-                <div className="w-3 h-3 rounded-full bg-neutral-600/80" />
-                <div className="w-3 h-3 rounded-full bg-neutral-500/80" />
-                <div className="w-3 h-3 rounded-full bg-neutral-500/80" />
+          <div className="hz-r-lg hz-bordered hz-bg-surface hz-clip">
+            <div className="hz-row hz-ai-center hz-gap-2 hz-px-4 hz-py-3 hz-border-b hz-bg-surface">
+              <div className="hz-row hz-gap-2">
+                <div className="hz-sq-1 hz-r-full hz-bg-raised" />
+                <div className="hz-sq-1 hz-r-full hz-bg-raised" />
+                <div className="hz-sq-1 hz-r-full hz-bg-raised" />
               </div>
-              <span className="ml-2 text-xs text-neutral-500">VS Code - Hanzo Extension</span>
+              <span className="hz-ml-2 hz-t-xs hz-fg-muted">VS Code - Hanzo Extension</span>
             </div>
-            <div className="p-4 space-y-3 bg-neutral-950">
-              <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-neutral-900 border border-neutral-800">
-                <MonitorUp className="w-4 h-4 text-white" />
-                <span className="text-sm text-neutral-300">Reading repo structure...</span>
+            <div className="hz-p-4 hz-stack-3 hz-bg-surface">
+              <div className="hz-btn hz-gap-2">
+                <MonitorUp className="hz-sq-2 hz-fg" />
+                <span className="hz-t-sm hz-fg-soft">Reading repo structure...</span>
               </div>
-              <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-neutral-900 border border-neutral-800">
-                <Check className="w-4 h-4 text-neutral-400" />
-                <span className="text-sm text-neutral-300">Edited 4 files cohesively</span>
+              <div className="hz-btn hz-gap-2">
+                <Check className="hz-sq-2 hz-fg-muted" />
+                <span className="hz-t-sm hz-fg-soft">Edited 4 files cohesively</span>
               </div>
-              <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-neutral-500/10 border border-neutral-500/30">
-                <Check className="w-4 h-4 text-neutral-400" />
-                <span className="text-sm text-neutral-400">All tests passing</span>
+              <div className="hz-btn hz-gap-2">
+                <Check className="hz-sq-2 hz-fg-muted" />
+                <span className="hz-t-sm hz-fg-muted">All tests passing</span>
               </div>
             </div>
           </div>
@@ -175,94 +175,94 @@ const DeveloperExperienceSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="grid lg:grid-cols-2 gap-12 items-center"
+          className="hz-grid hz-grid-2 hz-gap-7 hz-ai-center"
         >
           {/* Terminal Preview */}
-          <div className="order-2 lg:order-1 rounded-xl border border-neutral-800 bg-neutral-900/80 overflow-hidden">
-            <div className="flex items-center gap-2 px-4 py-3 border-b border-neutral-800 bg-neutral-950">
-              <div className="flex gap-1.5">
-                <div className="w-3 h-3 rounded-full bg-neutral-600/80" />
-                <div className="w-3 h-3 rounded-full bg-neutral-500/80" />
-                <div className="w-3 h-3 rounded-full bg-neutral-500/80" />
+          <div className="hz-r-lg hz-bordered hz-bg-surface hz-clip">
+            <div className="hz-row hz-ai-center hz-gap-2 hz-px-4 hz-py-3 hz-border-b hz-bg-surface">
+              <div className="hz-row hz-gap-2">
+                <div className="hz-sq-1 hz-r-full hz-bg-raised" />
+                <div className="hz-sq-1 hz-r-full hz-bg-raised" />
+                <div className="hz-sq-1 hz-r-full hz-bg-raised" />
               </div>
-              <span className="ml-2 text-xs text-neutral-500 font-mono">terminal</span>
+              <span className="hz-ml-2 hz-t-xs hz-fg-muted hz-mono">terminal</span>
               <button
                 onClick={handleCopyInstall}
-                className="ml-auto p-1 rounded hover:bg-neutral-800 transition-colors"
+                className="hz-ml-auto hz-p-1 hz-r-md hz-transition hz-hoverable"
               >
                 {copied ? (
-                  <Check className="h-3 w-3 text-neutral-400" />
+                  <Check className="hz-sq-1 hz-fg-muted" />
                 ) : (
-                  <Copy className="h-3 w-3 text-neutral-500" />
+                  <Copy className="hz-sq-1 hz-fg-muted" />
                 )}
               </button>
             </div>
-            <div className="p-4 font-mono text-sm bg-neutral-950">
-              <div className="mb-2">
-                <span className="text-neutral-500">$ </span>
-                <span className="text-neutral-400">curl</span>
-                <span className="text-neutral-300"> -fsSL </span>
-                <span className="text-neutral-400">hanzo.sh/install.sh</span>
-                <span className="text-neutral-300"> | </span>
-                <span className="text-neutral-400">sh</span>
+            <div className="hz-p-4 hz-mono hz-t-sm hz-bg-surface">
+              <div className="hz-mb-2">
+                <span className="hz-fg-muted">$ </span>
+                <span className="hz-fg-muted">curl</span>
+                <span className="hz-fg-soft"> -fsSL </span>
+                <span className="hz-fg-muted">hanzo.sh/install.sh</span>
+                <span className="hz-fg-soft"> | </span>
+                <span className="hz-fg-muted">sh</span>
               </div>
-              <div className="mb-4">
-                <span className="text-neutral-500">$ </span>
-                <span className="text-neutral-400">hanzo</span>
-                <span className="text-neutral-400"> dev</span>
-                <span className="text-neutral-400"> "Fix rate limiting. Add metrics. Add tests. Open a PR."</span>
+              <div className="hz-mb-4">
+                <span className="hz-fg-muted">$ </span>
+                <span className="hz-fg-muted">hanzo</span>
+                <span className="hz-fg-muted"> dev</span>
+                <span className="hz-fg-muted"> "Fix rate limiting. Add metrics. Add tests. Open a PR."</span>
               </div>
-              <div className="text-neutral-400 mb-1">
-                <span className="text-neutral-400">✓ </span>Plan created
+              <div className="hz-fg-muted hz-mb-1">
+                <span className="hz-fg-muted">✓ </span>Plan created
               </div>
-              <div className="text-neutral-400 mb-1">
-                <span className="text-neutral-400">✓ </span>Implementation complete
+              <div className="hz-fg-muted hz-mb-1">
+                <span className="hz-fg-muted">✓ </span>Implementation complete
               </div>
-              <div className="text-neutral-400 mb-1">
-                <span className="text-neutral-400">✓ </span>Tests passing (12/12)
+              <div className="hz-fg-muted hz-mb-1">
+                <span className="hz-fg-muted">✓ </span>Tests passing (12/12)
               </div>
-              <div className="text-white">
-                <span className="text-neutral-400">✓ </span>PR opened: #247
+              <div className="hz-fg">
+                <span className="hz-fg-muted">✓ </span>PR opened: #247
               </div>
             </div>
           </div>
 
-          <div className="order-1 lg:order-2">
+          <div className="hz-order-first">
             <p
-              className="inline-flex items-center text-xs font-medium rounded-full px-4 py-2 border mb-6"
-              style={{ color: BRAND_COLOR, borderColor: `${BRAND_COLOR}4d` }}
+              className="hz-btn hz-btn-ghost hz-t-xs hz-mb-5"
+              style={{ color: BRAND.fg, borderColor: `${BRAND.washStrong}` }}
             >
-              <Bot className="w-3.5 h-3.5 mr-1.5" />
+              <Bot className="hz-sq-2 hz-mr-2" />
               Hanzo Dev
             </p>
-            <h2 className="text-3xl md:text-4xl font-medium text-white mb-4">
+            <h2 className="hz-t-3xl hz-w-medium hz-fg hz-mb-4">
               AI coding agent in your terminal.
             </h2>
-            <p className="text-neutral-400 mb-6">
-              Install <code className="px-1.5 py-0.5 rounded bg-neutral-800 text-neutral-300 text-sm">@hanzo/dev</code> and <code className="px-1.5 py-0.5 rounded bg-neutral-800 text-neutral-300 text-sm">@hanzo/cli</code> via curl.
+            <p className="hz-fg-muted hz-mb-5">
+              Install <code className="hz-px-2 hz-py-1 hz-r-md hz-bg-raised hz-fg-soft hz-t-sm">@hanzo/dev</code> and <code className="hz-px-2 hz-py-1 hz-r-md hz-bg-raised hz-fg-soft hz-t-sm">@hanzo/cli</code> via curl.
             </p>
-            <ul className="space-y-3 text-neutral-400 mb-8">
-              <li className="flex items-center gap-3">
-                <div className="w-6 h-6 rounded bg-neutral-800 flex items-center justify-center">
-                  <Code className="w-3.5 h-3.5 text-neutral-500" />
+            <ul className="hz-stack-3 hz-fg-muted hz-mb-6">
+              <li className="hz-row hz-ai-center hz-gap-3">
+                <div className="hz-sq-4 hz-r-md hz-bg-raised hz-row hz-ai-center hz-jc-center">
+                  <Code className="hz-sq-2 hz-fg-muted" />
                 </div>
                 Generate APIs, scripts, components, and tests
               </li>
-              <li className="flex items-center gap-3">
-                <div className="w-6 h-6 rounded bg-neutral-800 flex items-center justify-center">
-                  <Bug className="w-3.5 h-3.5 text-neutral-500" />
+              <li className="hz-row hz-ai-center hz-gap-3">
+                <div className="hz-sq-4 hz-r-md hz-bg-raised hz-row hz-ai-center hz-jc-center">
+                  <Bug className="hz-sq-2 hz-fg-muted" />
                 </div>
                 Debug and fix using your real codebase context
               </li>
-              <li className="flex items-center gap-3">
-                <div className="w-6 h-6 rounded bg-neutral-800 flex items-center justify-center">
-                  <Workflow className="w-3.5 h-3.5 text-neutral-500" />
+              <li className="hz-row hz-ai-center hz-gap-3">
+                <div className="hz-sq-4 hz-r-md hz-bg-raised hz-row hz-ai-center hz-jc-center">
+                  <Workflow className="hz-sq-2 hz-fg-muted" />
                 </div>
                 Scaffold CI/CD and release workflows
               </li>
-              <li className="flex items-center gap-3">
-                <div className="w-6 h-6 rounded bg-neutral-800 flex items-center justify-center">
-                  <Box className="w-3.5 h-3.5 text-neutral-500" />
+              <li className="hz-row hz-ai-center hz-gap-3">
+                <div className="hz-sq-4 hz-r-md hz-bg-raised hz-row hz-ai-center hz-jc-center">
+                  <Box className="hz-sq-2 hz-fg-muted" />
                 </div>
                 No framework lock-in
               </li>
@@ -277,19 +277,19 @@ const DeveloperExperienceSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="text-center mb-12">
+          <div className="hz-align-center hz-mb-7">
             <p
-              className="inline-flex text-xs font-medium rounded-full px-4 py-2 border mb-6"
-              style={{ color: BRAND_COLOR, borderColor: `${BRAND_COLOR}4d` }}
+              className="hz-inline hz-t-xs hz-w-medium hz-r-full hz-px-4 hz-py-2 hz-bordered hz-mb-5"
+              style={{ color: BRAND.fg, borderColor: `${BRAND.washStrong}` }}
             >
               Remote Agents
             </p>
-            <h2 className="text-3xl md:text-4xl font-medium text-white mb-4">
+            <h2 className="hz-t-3xl hz-w-medium hz-fg hz-mb-4">
               Secure remote execution for teams
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <div className="hz-grid hz-grid-4 hz-gap-5 hz-mb-6">
             {[
               { icon: Zap, title: "Parallel runs", desc: "Execute across repos simultaneously" },
               { icon: Users, title: "Shared workspaces", desc: "Collaborate via shared environments" },
@@ -304,25 +304,25 @@ const DeveloperExperienceSection = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: index * 0.1 }}
-                  className="p-5 rounded-xl border border-neutral-800 bg-neutral-900/50 text-center"
+                  className="hz-card hz-align-center"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-neutral-800 flex items-center justify-center mb-4 mx-auto">
-                    <Icon className="w-5 h-5 text-neutral-400" />
+                  <div className="hz-sq-6 hz-r-lg hz-bg-raised hz-row hz-ai-center hz-jc-center hz-mb-4 hz-mx-auto">
+                    <Icon className="hz-sq-3 hz-fg-muted" />
                   </div>
-                  <h3 className="text-base font-semibold text-white mb-1">{item.title}</h3>
-                  <p className="text-sm text-neutral-500">{item.desc}</p>
+                  <h3 className="hz-t-base hz-w-semibold hz-fg hz-mb-1">{item.title}</h3>
+                  <p className="hz-t-sm hz-fg-muted">{item.desc}</p>
                 </motion.div>
               );
             })}
           </div>
 
-          <div className="text-center">
+          <div className="hz-align-center">
             <Link
               to="/remote"
-              className="inline-flex items-center px-5 py-2.5 rounded-full text-sm font-medium transition-colors border border-neutral-700 hover:bg-neutral-900 text-white"
+              className="hz-btn hz-btn-ghost hz-transition hz-fg"
             >
               Enable Remote Agents
-              <ArrowRight className="ml-2 h-4 w-4" />
+              <ArrowRight className="hz-sq-2 hz-ml-2" />
             </Link>
           </div>
         </motion.div>
@@ -333,30 +333,30 @@ const DeveloperExperienceSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="rounded-2xl border border-white/30 bg-gradient-to-br from-white/10 to-transparent p-8 md:p-12"
+          className="hz-card"
         >
-          <div className="grid lg:grid-cols-2 gap-8 items-start">
+          <div className="hz-grid hz-grid-2 hz-gap-6 hz-ai-start">
             <div>
               <p
-                className="inline-flex text-xs font-medium rounded-full px-4 py-2 border mb-6"
-                style={{ color: BRAND_COLOR, borderColor: `${BRAND_COLOR}4d` }}
+                className="hz-inline hz-t-xs hz-w-medium hz-r-full hz-px-4 hz-py-2 hz-bordered hz-mb-5"
+                style={{ color: BRAND.fg, borderColor: `${BRAND.washStrong}` }}
               >
                 Hanzo AI API
               </p>
-              <h2 className="text-3xl md:text-4xl font-medium text-white mb-4">
+              <h2 className="hz-t-3xl hz-w-medium hz-fg hz-mb-4">
                 One API for models + tools.
               </h2>
-              <p className="text-lg text-neutral-400 mb-6">
+              <p className="hz-t-lg hz-fg-muted hz-mb-5">
                 Streaming, tool calling, and agent execution behind a single endpoint. Compatible with existing OpenAI SDKs by switching the base URL.
               </p>
               <a
                 href="https://docs.hanzo.ai/api"
                 target="_blank"
                 rel="noreferrer noopener"
-                className="inline-flex items-center px-5 py-2.5 rounded-full text-sm font-medium transition-colors bg-white text-black hover:bg-neutral-200"
+                className="hz-btn hz-btn-primary hz-transition hz-fg-inverse"
               >
                 View API reference
-                <ExternalLink className="ml-2 h-4 w-4" />
+                <ExternalLink className="hz-sq-2 hz-ml-2" />
               </a>
             </div>
             <CodeTabs tabs={API_CODE_EXAMPLES} />

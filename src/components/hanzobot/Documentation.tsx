@@ -28,22 +28,22 @@ const Documentation = () => {
   ];
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-950">
-      <div className="max-w-7xl mx-auto">
+    <section className="hz-py-7 hz-px-4 hz-bg-surface">
+      <div className="hz-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="hz-align-center hz-mb-7"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-[var(--white)] mb-4">Documentation</h2>
-          <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
+          <h2 className="hz-t-3xl hz-w-bold hz-fg hz-mb-4">Documentation</h2>
+          <p className="hz-container-narrow hz-t-xl hz-fg-soft">
             Comprehensive guides to help you build, deploy, and manage your agents
           </p>
         </motion.div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+        <div className="hz-grid hz-grid-4 hz-gap-5">
           {docs.map((section, index) => (
             <motion.div
               key={index}
@@ -51,21 +51,21 @@ const Documentation = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-gray-900/30 border border-gray-800 rounded-xl p-6"
+              className="hz-card"
             >
-              <div className="flex items-center mb-4">
-                <section.icon className="h-5 w-5 text-neutral-400 mr-2" />
-                <h3 className="text-lg font-semibold text-[var(--white)]">{section.title}</h3>
+              <div className="hz-row hz-ai-center hz-mb-4">
+                <section.icon className="hz-sq-3 hz-fg-muted hz-mr-2" />
+                <h3 className="hz-t-lg hz-w-semibold hz-fg">{section.title}</h3>
               </div>
               
-              <ul className="space-y-2">
+              <ul className="hz-stack-2">
                 {section.items.map((item, i) => (
                   <li key={i}>
                     <a 
                       href="#" 
-                      className="text-neutral-400 hover:text-neutral-400 transition-colors flex items-center py-1"
+                      className="hz-fg-muted hz-transition hz-row hz-ai-center hz-py-1 hz-link"
                     >
-                      <div className="w-1 h-1 bg-gray-600 rounded-full mr-2"></div>
+                      <div className="hz-sq-1 hz-bg-raised hz-r-full hz-mr-2"></div>
                       {item}
                     </a>
                   </li>
@@ -80,13 +80,13 @@ const Documentation = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-10 text-center"
+          className="hz-mt-6 hz-align-center"
         >
           <a 
             href="#" 
-            className="inline-flex items-center text-neutral-400 hover:text-neutral-300"
+            className="hz-inline hz-ai-center hz-fg-muted hz-link"
           >
-            <Book className="h-5 w-5 mr-2" />
+            <Book className="hz-sq-3 hz-mr-2" />
             View Complete Documentation
           </a>
         </motion.div>

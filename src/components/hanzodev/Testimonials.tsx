@@ -1,8 +1,8 @@
+import { BRAND } from '@/lib/brand';
 import React from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
-const BRAND_COLOR = "#ffffff";
 
 const testimonials = [
   {
@@ -38,21 +38,21 @@ const companyLogos = [
 
 const Testimonials = () => {
   return (
-    <section className="py-24 px-4 bg-black">
-      <div className="max-w-6xl mx-auto">
+    <section className="hz-py-7 hz-px-4 hz-bg">
+      <div className="hz-container-wide">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="hz-align-center hz-mb-7"
         >
           <p
-            className="inline-flex text-xs font-medium rounded-full px-4 py-2 border mb-6"
-            style={{ color: BRAND_COLOR, borderColor: `${BRAND_COLOR}4d` }}
+            className="hz-inline hz-t-xs hz-w-medium hz-r-full hz-px-4 hz-py-2 hz-bordered hz-mb-5"
+            style={{ color: BRAND.fg, borderColor: `${BRAND.washStrong}` }}
           >
             Testimonials
           </p>
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+          <h2 className="hz-t-3xl hz-w-bold hz-fg hz-mb-4">
             What developers are saying
           </h2>
         </motion.div>
@@ -62,13 +62,13 @@ const Testimonials = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="flex justify-center gap-8 mb-16 overflow-hidden"
+          className="hz-row hz-jc-center hz-gap-6 hz-mb-7 hz-clip"
         >
-          <div className="flex gap-8 animate-marquee">
+          <div className="hz-row hz-gap-6">
             {[...companyLogos, ...companyLogos].map((logo, i) => (
               <div
                 key={i}
-                className="text-neutral-600 text-lg font-medium whitespace-nowrap"
+                className="hz-fg-faint hz-t-lg hz-w-medium hz-whitespace-nowrap"
               >
                 {logo}
               </div>
@@ -77,7 +77,7 @@ const Testimonials = () => {
         </motion.div>
 
         {/* Testimonial cards */}
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="hz-grid hz-grid-3 hz-gap-5">
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={testimonial.company}
@@ -85,37 +85,35 @@ const Testimonials = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="bg-neutral-900/50 border border-neutral-800 rounded-xl p-6 hover:border-white/30 transition-colors group"
+              className="hz-card hz-transition hz-card-interactive"
             >
               {/* Company logo */}
-              <div className="flex items-center gap-3 mb-4">
+              <div className="hz-row hz-ai-center hz-gap-3 hz-mb-4">
                 <div
-                  className="w-10 h-10 rounded-lg flex items-center justify-center text-white font-bold"
-                  style={{ backgroundColor: `${BRAND_COLOR}40` }}
-                >
+                  className="hz-sq-6 hz-r-lg hz-row hz-ai-center hz-jc-center hz-fg hz-w-bold hz-bg-quiet"
+                  >
                   {testimonial.logo}
                 </div>
-                <span className="text-white font-semibold">{testimonial.company}</span>
+                <span className="hz-fg hz-w-semibold">{testimonial.company}</span>
               </div>
 
               {/* Quote */}
-              <blockquote className="text-neutral-300 text-sm mb-6 leading-relaxed">
+              <blockquote className="hz-fg-soft hz-t-sm hz-mb-5 hz-leading-relaxed">
                 "{testimonial.quote}"
               </blockquote>
 
               {/* Author */}
-              <div className="flex items-center justify-between">
+              <div className="hz-row hz-ai-center hz-jc-between">
                 <div>
-                  <div className="text-white font-medium text-sm">{testimonial.author}</div>
-                  <div className="text-neutral-500 text-xs">{testimonial.title}</div>
+                  <div className="hz-fg hz-w-medium hz-t-sm">{testimonial.author}</div>
+                  <div className="hz-fg-muted hz-t-xs">{testimonial.title}</div>
                 </div>
                 <a
                   href={testimonial.link}
-                  className="text-xs flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity"
-                  style={{ color: BRAND_COLOR }}
-                >
+                  className="hz-t-xs hz-row hz-ai-center hz-gap-1 hz-invisible hz-transition hz-fg"
+                  >
                   Read story
-                  <ArrowRight className="w-3 h-3" />
+                  <ArrowRight className="hz-sq-1" />
                 </a>
               </div>
             </motion.div>

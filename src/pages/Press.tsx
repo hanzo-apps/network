@@ -21,7 +21,6 @@ import {
   Phone,
 } from "lucide-react";
 
-const BRAND_COLOR = "#ffffff";
 
 // Company facts
 const companyFacts = [
@@ -88,7 +87,7 @@ const socialLinks = [
 ];
 
 const LogoPreview = ({ isDark }: { isDark: boolean }) => (
-  <svg viewBox="0 0 67 67" className="w-8 h-8">
+  <svg viewBox="0 0 67 67" className="hz-sq-5">
     <path d="M22.21 67V44.6369H0V67H22.21Z" fill={isDark ? "#ffffff" : "#000000"} />
     <path d="M0 44.6369L22.21 46.8285V44.6369H0Z" fill="#DDDDDD" />
     <path d="M66.7038 22.3184H22.2534L0.0878906 44.6367H44.4634L66.7038 22.3184Z" fill={isDark ? "#ffffff" : "#000000"} />
@@ -103,7 +102,7 @@ const Press = () => {
   const { isDarkMode } = useTheme();
 
   return (
-    <div className={`min-h-screen ${isDarkMode ? "bg-black text-white" : "bg-white text-black"}`}>
+    <div className={`hz-min-h-screen ${isDarkMode ? "hz-bg hz-fg" : "hz-bg-inverse hz-fg-inverse"}`}>
       <Helmet>
         <title>Press - Hanzo Industries Inc</title>
         <meta name="description" content="Press resources, media kit, and contact information for Hanzo Industries Inc. Download logos, brand assets, and find press contacts." />
@@ -111,28 +110,28 @@ const Press = () => {
 
       <Navbar />
 
-      <main className="pt-32 pb-24 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
+      <main className="hz-pt-6 hz-pb-6 hz-px-4">
+        <div className="hz-container-wide">
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="hz-align-center hz-mb-7"
           >
-            <div className={`inline-block px-4 py-1 rounded-full text-sm font-medium mb-4 ${
-              isDarkMode ? "bg-neutral-900 text-neutral-300" : "bg-neutral-100 text-neutral-600"
+            <div className={`hz-px-4 hz-py-1 hz-r-full hz-t-sm hz-w-medium hz-mb-4 ${
+              isDarkMode ? "hz-bg-surface hz-fg-soft" : "hz-bg-inverse hz-fg-faint"
             }`}>
               Press & Media
             </div>
-            <h1 className={`text-4xl md:text-6xl font-bold mb-6 ${
+            <h1 className={`hz-t-4xl hz-w-bold hz-mb-5 ${
               isDarkMode
-                ? "bg-clip-text text-transparent bg-gradient-to-b from-white via-white/90 to-white/70"
-                : "text-black"
+                ? "hz-chrome"
+                : "hz-fg-inverse"
             }`}>
               Press Resources
             </h1>
-            <p className={`text-xl max-w-3xl mx-auto ${isDarkMode ? "text-neutral-400" : "text-neutral-600"}`}>
+            <p className={`hz-container-narrow hz-t-xl ${isDarkMode ? "hz-fg-muted" : "hz-fg-faint"}`}>
               Everything you need to write about Hanzo Industries Inc. Download our press kit, access brand assets, and find media contacts.
             </p>
           </motion.div>
@@ -142,27 +141,27 @@ const Press = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="mb-20"
+            className="hz-mb-7"
           >
-            <div className={`p-8 rounded-2xl border ${
+            <div className={`hz-p-6 hz-r-xl hz-bordered ${
               isDarkMode
-                ? "bg-gradient-to-b from-neutral-900 to-black border-neutral-800"
-                : "bg-gradient-to-b from-neutral-50 to-white border-neutral-200"
+                ? ""
+                : "hz-border-strong"
             }`}>
-              <div className="flex items-center gap-3 mb-6">
-                <Building2 className={`w-6 h-6 ${isDarkMode ? "text-neutral-400" : "text-neutral-500"}`} />
-                <h2 className="text-2xl font-bold">About Hanzo Industries Inc</h2>
+              <div className="hz-row hz-ai-center hz-gap-3 hz-mb-5">
+                <Building2 className={`hz-sq-4 ${isDarkMode ? "hz-fg-muted" : "hz-fg-muted"}`} />
+                <h2 className="hz-t-2xl hz-w-bold">About Hanzo Industries Inc</h2>
               </div>
-              <p className={`text-lg mb-8 leading-relaxed ${isDarkMode ? "text-neutral-300" : "text-neutral-600"}`}>
+              <p className={`hz-t-lg hz-mb-6 hz-leading-relaxed ${isDarkMode ? "hz-fg-soft" : "hz-fg-faint"}`}>
                 Hanzo Industries Inc is an AI technology company building the infrastructure for the next generation of intelligent applications. Founded in 2016 and headquartered in Los Angeles, Hanzo provides enterprise-grade AI platforms, developer tools, and cloud services to companies worldwide. Our mission is to make AI accessible, safe, and beneficial for everyone.
               </p>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              <div className="hz-grid hz-grid-4 hz-gap-5">
                 {companyFacts.map((fact) => (
-                  <div key={fact.label} className="text-center">
-                    <div className="text-3xl font-bold mb-1" style={{ color: BRAND_COLOR }}>
+                  <div key={fact.label} className="hz-align-center">
+                    <div className="hz-t-3xl hz-w-bold hz-mb-1 hz-fg" >
                       {fact.value}
                     </div>
-                    <div className={`text-sm ${isDarkMode ? "text-neutral-500" : "text-neutral-400"}`}>
+                    <div className={`hz-t-sm ${isDarkMode ? "hz-fg-muted" : "hz-fg-muted"}`}>
                       {fact.label}
                     </div>
                   </div>
@@ -176,47 +175,47 @@ const Press = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="mb-20"
+            className="hz-mb-7"
           >
-            <h2 className="text-2xl font-bold mb-8 flex items-center gap-3">
-              <Mail className={`w-6 h-6 ${isDarkMode ? "text-neutral-400" : "text-neutral-500"}`} />
+            <h2 className="hz-t-2xl hz-w-bold hz-mb-6 hz-row hz-ai-center hz-gap-3">
+              <Mail className={`hz-sq-4 ${isDarkMode ? "hz-fg-muted" : "hz-fg-muted"}`} />
               Press Contact
             </h2>
-            <div className={`p-8 rounded-2xl border ${
+            <div className={`hz-p-6 hz-r-xl hz-bordered ${
               isDarkMode
-                ? "bg-neutral-900/50 border-neutral-800"
-                : "bg-neutral-50 border-neutral-200"
+                ? "hz-bg-surface"
+                : "hz-bg-inverse hz-border-strong"
             }`}>
-              <div className="grid md:grid-cols-2 gap-8">
+              <div className="hz-grid hz-grid-2 hz-gap-6">
                 <div>
-                  <h3 className="font-semibold mb-4">Media Inquiries</h3>
-                  <div className="space-y-3">
+                  <h3 className="hz-w-semibold hz-mb-4">Media Inquiries</h3>
+                  <div className="hz-stack-3">
                     <a
                       href="mailto:press@hanzo.ai"
-                      className={`flex items-center gap-2 transition-colors ${
-                        isDarkMode ? "text-neutral-300 hover:text-white" : "text-neutral-600 hover:text-black"
+                      className={`hz-row hz-ai-center hz-gap-2 hz-transition ${
+                        isDarkMode ? "hz-fg-soft hz-hoverable" : "hz-fg-faint hz-link"
                       }`}
                     >
-                      <Mail className="w-4 h-4" />
+                      <Mail className="hz-sq-2" />
                       press@hanzo.ai
                     </a>
-                    <div className={`flex items-center gap-2 ${isDarkMode ? "text-neutral-400" : "text-neutral-500"}`}>
-                      <Phone className="w-4 h-4" />
+                    <div className={`hz-row hz-ai-center hz-gap-2 ${isDarkMode ? "hz-fg-muted" : "hz-fg-muted"}`}>
+                      <Phone className="hz-sq-2" />
                       +1 (424) 335-0550
                     </div>
                   </div>
                 </div>
                 <div>
-                  <h3 className="font-semibold mb-4">Headquarters</h3>
-                  <div className={`space-y-1 ${isDarkMode ? "text-neutral-400" : "text-neutral-500"}`}>
-                    <p className="font-medium">Hanzo Industries Inc</p>
+                  <h3 className="hz-w-semibold hz-mb-4">Headquarters</h3>
+                  <div className={`hz-stack-1 ${isDarkMode ? "hz-fg-muted" : "hz-fg-muted"}`}>
+                    <p className="hz-w-medium">Hanzo Industries Inc</p>
                     <p>Los Angeles, California</p>
                     <p>United States</p>
                   </div>
                 </div>
               </div>
-              <div className="mt-8 pt-6 border-t border-neutral-800/50">
-                <p className={`text-sm ${isDarkMode ? "text-neutral-500" : "text-neutral-400"}`}>
+              <div className="hz-mt-6 hz-pt-6 hz-border-t">
+                <p className={`hz-t-sm ${isDarkMode ? "hz-fg-muted" : "hz-fg-muted"}`}>
                   For urgent press inquiries, please include "URGENT" in your email subject line. We typically respond within 24 hours.
                 </p>
               </div>
@@ -228,38 +227,38 @@ const Press = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="mb-20"
+            className="hz-mb-7"
           >
-            <div className="flex items-center justify-between mb-8">
-              <h2 className="text-2xl font-bold flex items-center gap-3">
-                <Palette className={`w-6 h-6 ${isDarkMode ? "text-neutral-400" : "text-neutral-500"}`} />
+            <div className="hz-row hz-ai-center hz-jc-between hz-mb-6">
+              <h2 className="hz-t-2xl hz-w-bold hz-row hz-ai-center hz-gap-3">
+                <Palette className={`hz-sq-4 ${isDarkMode ? "hz-fg-muted" : "hz-fg-muted"}`} />
                 Brand Assets
               </h2>
               <Link to="/brand">
-                <Button variant="outline" size="sm" className="gap-2">
-                  <FileText className="w-4 h-4" />
+                <Button variant="outline" size="sm" className="hz-gap-2">
+                  <FileText className="hz-sq-2" />
                   Brand Guidelines
                 </Button>
               </Link>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-6 mb-8">
+            <div className="hz-grid hz-grid-3 hz-gap-5 hz-mb-6">
               {logoAssets.map((asset, index) => (
                 <div
                   key={asset.name}
-                  className={`rounded-xl border overflow-hidden ${
-                    isDarkMode ? "border-neutral-800" : "border-neutral-200"
+                  className={`hz-r-lg hz-bordered hz-clip ${
+                    isDarkMode ? "" : "hz-border-strong"
                   }`}
                 >
-                  <div className={`h-32 flex items-center justify-center ${asset.preview}`}>
+                  <div className={`hz-bh-8 hz-row hz-ai-center hz-jc-center ${asset.preview}`}>
                     <LogoPreview isDark={asset.logoColor === "white"} />
                   </div>
-                  <div className={`p-4 ${isDarkMode ? "bg-neutral-900" : "bg-neutral-50"}`}>
-                    <h3 className="font-semibold mb-1">{asset.name}</h3>
-                    <p className={`text-sm mb-2 ${isDarkMode ? "text-neutral-400" : "text-neutral-500"}`}>
+                  <div className={`hz-p-4 ${isDarkMode ? "hz-bg-surface" : "hz-bg-inverse"}`}>
+                    <h3 className="hz-w-semibold hz-mb-1">{asset.name}</h3>
+                    <p className={`hz-t-sm hz-mb-2 ${isDarkMode ? "hz-fg-muted" : "hz-fg-muted"}`}>
                       {asset.description}
                     </p>
-                    <p className={`text-xs ${isDarkMode ? "text-neutral-500" : "text-neutral-400"}`}>
+                    <p className={`hz-t-xs ${isDarkMode ? "hz-fg-muted" : "hz-fg-muted"}`}>
                       {asset.format}
                     </p>
                   </div>
@@ -267,14 +266,14 @@ const Press = () => {
               ))}
             </div>
 
-            <div className="flex flex-wrap gap-4">
-              <Button className="gap-2" style={{ backgroundColor: BRAND_COLOR }}>
-                <Download className="w-4 h-4" />
+            <div className="hz-row hz-wrap hz-gap-4">
+              <Button className="hz-gap-2 hz-bg-inverse" >
+                <Download className="hz-sq-2" />
                 Download Press Kit (ZIP)
               </Button>
               <Link to="/brand">
-                <Button variant="outline" className="gap-2">
-                  <Palette className="w-4 h-4" />
+                <Button variant="outline" className="hz-gap-2">
+                  <Palette className="hz-sq-2" />
                   View Brand Guidelines
                 </Button>
               </Link>
@@ -286,35 +285,35 @@ const Press = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="mb-20"
+            className="hz-mb-7"
           >
-            <h2 className="text-2xl font-bold mb-8 flex items-center gap-3">
-              <Calendar className={`w-6 h-6 ${isDarkMode ? "text-neutral-400" : "text-neutral-500"}`} />
+            <h2 className="hz-t-2xl hz-w-bold hz-mb-6 hz-row hz-ai-center hz-gap-3">
+              <Calendar className={`hz-sq-4 ${isDarkMode ? "hz-fg-muted" : "hz-fg-muted"}`} />
               Recent News
             </h2>
-            <div className="space-y-4">
+            <div className="hz-stack-4">
               {pressReleases.map((release) => (
                 <Link
                   key={release.title}
                   to={release.link}
-                  className={`block p-6 rounded-xl border transition-all group ${
+                  className={`hz-p-5 hz-r-lg hz-bordered hz-transition ${
                     isDarkMode
-                      ? "bg-neutral-900/50 border-neutral-800 hover:border-neutral-700"
-                      : "bg-neutral-50 border-neutral-200 hover:border-neutral-300"
+                      ? "hz-bg-surface hz-hoverable"
+                      : "hz-bg-inverse hz-border-strong hz-hoverable"
                   }`}
                 >
-                  <div className="flex items-start justify-between gap-4">
+                  <div className="hz-row hz-ai-start hz-jc-between hz-gap-4">
                     <div>
-                      <div className={`text-sm mb-2 ${isDarkMode ? "text-neutral-500" : "text-neutral-400"}`}>
+                      <div className={`hz-t-sm hz-mb-2 ${isDarkMode ? "hz-fg-muted" : "hz-fg-muted"}`}>
                         {release.date}
                       </div>
-                      <h3 className="font-semibold mb-2 group-hover:underline">{release.title}</h3>
-                      <p className={`text-sm ${isDarkMode ? "text-neutral-400" : "text-neutral-500"}`}>
+                      <h3 className="hz-w-semibold hz-mb-2">{release.title}</h3>
+                      <p className={`hz-t-sm ${isDarkMode ? "hz-fg-muted" : "hz-fg-muted"}`}>
                         {release.description}
                       </p>
                     </div>
-                    <ExternalLink className={`w-5 h-5 flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity ${
-                      isDarkMode ? "text-neutral-500" : "text-neutral-400"
+                    <ExternalLink className={`hz-sq-3 hz-none hz-invisible hz-transition ${
+                      isDarkMode ? "hz-fg-muted" : "hz-fg-muted"
                     }`} />
                   </div>
                 </Link>
@@ -327,27 +326,27 @@ const Press = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="mb-20"
+            className="hz-mb-7"
           >
-            <h2 className="text-2xl font-bold mb-8 flex items-center gap-3">
-              <Globe className={`w-6 h-6 ${isDarkMode ? "text-neutral-400" : "text-neutral-500"}`} />
+            <h2 className="hz-t-2xl hz-w-bold hz-mb-6 hz-row hz-ai-center hz-gap-3">
+              <Globe className={`hz-sq-4 ${isDarkMode ? "hz-fg-muted" : "hz-fg-muted"}`} />
               Connect With Us
             </h2>
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+            <div className="hz-grid hz-grid-5 hz-gap-4">
               {socialLinks.map((social) => (
                 <a
                   key={social.name}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`p-4 rounded-xl border text-center transition-all ${
+                  className={`hz-p-4 hz-r-lg hz-bordered hz-align-center hz-transition ${
                     isDarkMode
-                      ? "bg-neutral-900/50 border-neutral-800 hover:border-neutral-700"
-                      : "bg-neutral-50 border-neutral-200 hover:border-neutral-300"
+                      ? "hz-bg-surface hz-hoverable"
+                      : "hz-bg-inverse hz-border-strong hz-hoverable"
                   }`}
                 >
-                  <div className="font-semibold mb-1">{social.name}</div>
-                  <div className={`text-sm ${isDarkMode ? "text-neutral-400" : "text-neutral-500"}`}>
+                  <div className="hz-w-semibold hz-mb-1">{social.name}</div>
+                  <div className={`hz-t-sm ${isDarkMode ? "hz-fg-muted" : "hz-fg-muted"}`}>
                     {social.handle}
                   </div>
                 </a>
@@ -361,28 +360,28 @@ const Press = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
           >
-            <h2 className="text-2xl font-bold mb-8 flex items-center gap-3">
-              <Users className={`w-6 h-6 ${isDarkMode ? "text-neutral-400" : "text-neutral-500"}`} />
+            <h2 className="hz-t-2xl hz-w-bold hz-mb-6 hz-row hz-ai-center hz-gap-3">
+              <Users className={`hz-sq-4 ${isDarkMode ? "hz-fg-muted" : "hz-fg-muted"}`} />
               Leadership
             </h2>
-            <div className={`p-8 rounded-2xl border text-center ${
+            <div className={`hz-p-6 hz-r-xl hz-bordered hz-align-center ${
               isDarkMode
-                ? "bg-neutral-900/50 border-neutral-800"
-                : "bg-neutral-50 border-neutral-200"
+                ? "hz-bg-surface"
+                : "hz-bg-inverse hz-border-strong"
             }`}>
-              <p className={`mb-6 ${isDarkMode ? "text-neutral-400" : "text-neutral-500"}`}>
+              <p className={`hz-mb-5 ${isDarkMode ? "hz-fg-muted" : "hz-fg-muted"}`}>
                 For executive bios and headshots, please visit our team page or contact our press team.
               </p>
-              <div className="flex flex-wrap gap-4 justify-center">
+              <div className="hz-row hz-wrap hz-gap-4 hz-jc-center">
                 <Link to="/team">
-                  <Button variant="outline" className="gap-2">
-                    <Users className="w-4 h-4" />
+                  <Button variant="outline" className="hz-gap-2">
+                    <Users className="hz-sq-2" />
                     View Team
                   </Button>
                 </Link>
                 <a href="mailto:press@hanzo.ai">
-                  <Button className="gap-2" style={{ backgroundColor: BRAND_COLOR }}>
-                    <Mail className="w-4 h-4" />
+                  <Button className="hz-gap-2 hz-bg-inverse" >
+                    <Mail className="hz-sq-2" />
                     Request Executive Bios
                   </Button>
                 </a>

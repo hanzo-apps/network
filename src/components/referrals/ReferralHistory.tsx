@@ -24,36 +24,36 @@ interface ReferralHistoryProps {
 
 const ReferralHistory = ({ referralHistory }: ReferralHistoryProps) => {
   return (
-    <div className="bg-gray-900/30 border border-gray-800 rounded-lg p-6">
-      <h2 className="text-xl font-medium mb-4">Referral History</h2>
+    <div className="hz-card">
+      <h2 className="hz-t-xl hz-w-medium hz-mb-4">Referral History</h2>
       
-      <div className="rounded-lg border border-gray-800 overflow-hidden">
+      <div className="hz-r-lg hz-bordered hz-clip">
         <Table>
-          <TableHeader className="bg-gray-900">
+          <TableHeader className="hz-bg-surface">
             <TableRow>
               <TableHead>Name</TableHead>
               <TableHead>Email</TableHead>
               <TableHead>Date</TableHead>
               <TableHead>Status</TableHead>
-              <TableHead className="text-right">Credits</TableHead>
+              <TableHead className="hz-align-right">Credits</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {referralHistory.map((referral) => (
-              <TableRow key={referral.id} className="border-gray-800">
-                <TableCell className="font-medium">{referral.name}</TableCell>
+              <TableRow key={referral.id} className="">
+                <TableCell className="hz-w-medium">{referral.name}</TableCell>
                 <TableCell>{referral.email}</TableCell>
                 <TableCell>{referral.date}</TableCell>
                 <TableCell>
-                  <span className={`px-2 py-1 rounded-full text-xs ${
+                  <span className={`hz-px-2 hz-py-1 hz-r-full hz-t-xs ${
                     referral.status === 'Completed' 
-                      ? 'bg-neutral-800/30 text-neutral-300' 
-                      : 'bg-neutral-800/30 text-neutral-300'
+                      ? 'hz-bg-raised hz-fg-soft' 
+                      : 'hz-bg-raised hz-fg-soft'
                   }`}>
                     {referral.status}
                   </span>
                 </TableCell>
-                <TableCell className="text-right">
+                <TableCell className="hz-align-right">
                   {referral.credits > 0 ? `$${referral.credits}` : '-'}
                 </TableCell>
               </TableRow>

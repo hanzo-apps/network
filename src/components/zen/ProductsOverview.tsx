@@ -10,7 +10,7 @@ import {
 
 const AICloudSVG = () => (
   <svg 
-    className="absolute -bottom-10 -right-10 opacity-10 w-40 h-40 text-neutral-400" 
+    className="hz-sq-8 hz-abs hz-dim-more hz-fg-muted" 
     viewBox="0 0 200 200" 
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -34,7 +34,7 @@ const AICloudSVG = () => (
 
 const DxPlatformSVG = () => (
   <svg 
-    className="absolute -bottom-10 -right-10 opacity-10 w-40 h-40 text-neutral-400" 
+    className="hz-sq-8 hz-abs hz-dim-more hz-fg-muted" 
     viewBox="0 0 200 200" 
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -63,7 +63,7 @@ const EcosystemDetail: React.FC<EcosystemDetailProps> = ({ isOpen, onClose, type
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          className="hz-fixed hz-inset hz-bg-surface hz-glass hz-z-overlay hz-row hz-ai-center hz-jc-center hz-p-4"
           onClick={onClose}
         >
           <motion.div
@@ -71,33 +71,33 @@ const EcosystemDetail: React.FC<EcosystemDetailProps> = ({ isOpen, onClose, type
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             transition={{ type: "spring", damping: 25 }}
-            className="bg-gradient-to-br from-gray-900 to-black border border-white/10 rounded-2xl max-w-3xl w-full p-6 shadow-xl overflow-y-auto max-h-[80vh]"
+            className="hz-card hz-mw-lg hz-w-full hz-shadow-lg hz-scroll-y"
             onClick={(e) => e.stopPropagation()}
           >
             {type === 'cloud' ? (
               <>
-                <div className="mb-6">
-                  <h3 className="text-2xl font-medium text-white mb-2 flex items-center">
-                    <Cloud className="mr-2 h-6 w-6 text-neutral-400" />
+                <div className="hz-mb-5">
+                  <h3 className="hz-t-2xl hz-w-medium hz-fg hz-mb-2 hz-row hz-ai-center">
+                    <Cloud className="hz-sq-4 hz-mr-2 hz-fg-muted" />
                     Hanzo AI Cloud
                   </h3>
-                  <p className="text-neutral-400">
+                  <p className="hz-fg-muted">
                     Our comprehensive AI platform providing seamless access to cutting-edge AI capabilities with enterprise-grade reliability and security.
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                <div className="hz-grid hz-grid-2 hz-gap-4 hz-mb-5">
                   <motion.div 
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 }}
-                    className="bg-white/5 rounded-xl p-4 border border-white/10"
+                    className="hz-card"
                   >
-                    <div className="flex items-center mb-2">
-                      <Brain className="h-5 w-5 text-neutral-400 mr-2" />
-                      <h4 className="text-white font-medium">AI Model Hub</h4>
+                    <div className="hz-row hz-ai-center hz-mb-2">
+                      <Brain className="hz-sq-3 hz-fg-muted hz-mr-2" />
+                      <h4 className="hz-fg hz-w-medium">AI Model Hub</h4>
                     </div>
-                    <p className="text-neutral-400 text-sm">
+                    <p className="hz-fg-muted hz-t-sm">
                       Access to leading open and proprietary AI models with unified API, optimized inference, and cost management.
                     </p>
                   </motion.div>
@@ -106,13 +106,13 @@ const EcosystemDetail: React.FC<EcosystemDetailProps> = ({ isOpen, onClose, type
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2 }}
-                    className="bg-white/5 rounded-xl p-4 border border-white/10"
+                    className="hz-card"
                   >
-                    <div className="flex items-center mb-2">
-                      <Database className="h-5 w-5 text-neutral-400 mr-2" />
-                      <h4 className="text-white font-medium">Vector Database</h4>
+                    <div className="hz-row hz-ai-center hz-mb-2">
+                      <Database className="hz-sq-3 hz-fg-muted hz-mr-2" />
+                      <h4 className="hz-fg hz-w-medium">Vector Database</h4>
                     </div>
-                    <p className="text-neutral-400 text-sm">
+                    <p className="hz-fg-muted hz-t-sm">
                       High-performance vector storage and retrieval for AI applications with advanced filtering and hybrid search.
                     </p>
                   </motion.div>
@@ -121,13 +121,13 @@ const EcosystemDetail: React.FC<EcosystemDetailProps> = ({ isOpen, onClose, type
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 }}
-                    className="bg-white/5 rounded-xl p-4 border border-white/10"
+                    className="hz-card"
                   >
-                    <div className="flex items-center mb-2">
-                      <Bot className="h-5 w-5 text-neutral-400 mr-2" />
-                      <h4 className="text-white font-medium">Agent Framework</h4>
+                    <div className="hz-row hz-ai-center hz-mb-2">
+                      <Bot className="hz-sq-3 hz-fg-muted hz-mr-2" />
+                      <h4 className="hz-fg hz-w-medium">Agent Framework</h4>
                     </div>
-                    <p className="text-neutral-400 text-sm">
+                    <p className="hz-fg-muted hz-t-sm">
                       Build, deploy and manage intelligent agents that can reason, plan, and execute complex tasks autonomously.
                     </p>
                   </motion.div>
@@ -136,55 +136,55 @@ const EcosystemDetail: React.FC<EcosystemDetailProps> = ({ isOpen, onClose, type
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4 }}
-                    className="bg-white/5 rounded-xl p-4 border border-white/10"
+                    className="hz-card"
                   >
-                    <div className="flex items-center mb-2">
-                      <Lock className="h-5 w-5 text-neutral-400 mr-2" />
-                      <h4 className="text-white font-medium">Enterprise Security</h4>
+                    <div className="hz-row hz-ai-center hz-mb-2">
+                      <Lock className="hz-sq-3 hz-fg-muted hz-mr-2" />
+                      <h4 className="hz-fg hz-w-medium">Enterprise Security</h4>
                     </div>
-                    <p className="text-neutral-400 text-sm">
+                    <p className="hz-fg-muted hz-t-sm">
                       SOC 2 compliance, end-to-end encryption, and comprehensive audit logging for mission-critical AI systems.
                     </p>
                   </motion.div>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-white/10 flex justify-between items-center">
-                  <div className="text-neutral-500 text-sm">
+                <div className="hz-mt-5 hz-pt-4 hz-border-t hz-row hz-jc-between hz-ai-center">
+                  <div className="hz-fg-muted hz-t-sm">
                     Unified AI infrastructure for the enlightened engineer
                   </div>
                   <Link 
                     to="/ai" 
-                    className="text-neutral-400 hover:text-neutral-300 transition-colors text-sm flex items-center"
+                    className="hz-fg-muted hz-transition hz-t-sm hz-row hz-ai-center hz-link"
                   >
                     <span>Learn more about AI Cloud</span>
-                    <ArrowRight className="ml-2 h-3 w-3" />
+                    <ArrowRight className="hz-sq-1 hz-ml-2" />
                   </Link>
                 </div>
               </>
             ) : (
               <>
-                <div className="mb-6">
-                  <h3 className="text-2xl font-medium text-white mb-2 flex items-center">
-                    <Code className="mr-2 h-6 w-6 text-neutral-400" />
+                <div className="hz-mb-5">
+                  <h3 className="hz-t-2xl hz-w-medium hz-fg hz-mb-2 hz-row hz-ai-center">
+                    <Code className="hz-sq-4 hz-mr-2 hz-fg-muted" />
                     Developer Experience Platform
                   </h3>
-                  <p className="text-neutral-400">
+                  <p className="hz-fg-muted">
                     Our integrated toolkit designed to streamline the software development lifecycle, from code to production.
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                <div className="hz-grid hz-grid-2 hz-gap-4 hz-mb-5">
                   <motion.div 
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 }}
-                    className="bg-white/5 rounded-xl p-4 border border-white/10"
+                    className="hz-card"
                   >
-                    <div className="flex items-center mb-2">
-                      <GitBranch className="h-5 w-5 text-neutral-400 mr-2" />
-                      <h4 className="text-white font-medium">CI/CD Pipeline</h4>
+                    <div className="hz-row hz-ai-center hz-mb-2">
+                      <GitBranch className="hz-sq-3 hz-fg-muted hz-mr-2" />
+                      <h4 className="hz-fg hz-w-medium">CI/CD Pipeline</h4>
                     </div>
-                    <p className="text-neutral-400 text-sm">
+                    <p className="hz-fg-muted hz-t-sm">
                       Automated testing, integration, and deployment with intelligent optimization and failure prediction.
                     </p>
                   </motion.div>
@@ -193,13 +193,13 @@ const EcosystemDetail: React.FC<EcosystemDetailProps> = ({ isOpen, onClose, type
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2 }}
-                    className="bg-white/5 rounded-xl p-4 border border-white/10"
+                    className="hz-card"
                   >
-                    <div className="flex items-center mb-2">
-                      <Terminal className="h-5 w-5 text-neutral-400 mr-2" />
-                      <h4 className="text-white font-medium">Dev Tools</h4>
+                    <div className="hz-row hz-ai-center hz-mb-2">
+                      <Terminal className="hz-sq-3 hz-fg-muted hz-mr-2" />
+                      <h4 className="hz-fg hz-w-medium">Dev Tools</h4>
                     </div>
-                    <p className="text-neutral-400 text-sm">
+                    <p className="hz-fg-muted hz-t-sm">
                       Enhanced CLI, IDE integrations, and AI-assisted coding tools that anticipate developer needs.
                     </p>
                   </motion.div>
@@ -208,13 +208,13 @@ const EcosystemDetail: React.FC<EcosystemDetailProps> = ({ isOpen, onClose, type
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 }}
-                    className="bg-white/5 rounded-xl p-4 border border-white/10"
+                    className="hz-card"
                   >
-                    <div className="flex items-center mb-2">
-                      <Zap className="h-5 w-5 text-neutral-400 mr-2" />
-                      <h4 className="text-white font-medium">Edge Computing</h4>
+                    <div className="hz-row hz-ai-center hz-mb-2">
+                      <Zap className="hz-sq-3 hz-fg-muted hz-mr-2" />
+                      <h4 className="hz-fg hz-w-medium">Edge Computing</h4>
                     </div>
-                    <p className="text-neutral-400 text-sm">
+                    <p className="hz-fg-muted hz-t-sm">
                       Global edge network for low-latency deployment with intelligent traffic routing and caching.
                     </p>
                   </motion.div>
@@ -223,28 +223,28 @@ const EcosystemDetail: React.FC<EcosystemDetailProps> = ({ isOpen, onClose, type
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4 }}
-                    className="bg-white/5 rounded-xl p-4 border border-white/10"
+                    className="hz-card"
                   >
-                    <div className="flex items-center mb-2">
-                      <Network className="h-5 w-5 text-neutral-400 mr-2" />
-                      <h4 className="text-white font-medium">Observability</h4>
+                    <div className="hz-row hz-ai-center hz-mb-2">
+                      <Network className="hz-sq-3 hz-fg-muted hz-mr-2" />
+                      <h4 className="hz-fg hz-w-medium">Observability</h4>
                     </div>
-                    <p className="text-neutral-400 text-sm">
+                    <p className="hz-fg-muted hz-t-sm">
                       Comprehensive monitoring, logging, and analytics with AI-powered anomaly detection and recommendation.
                     </p>
                   </motion.div>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-white/10 flex justify-between items-center">
-                  <div className="text-neutral-500 text-sm">
+                <div className="hz-mt-5 hz-pt-4 hz-border-t hz-row hz-jc-between hz-ai-center">
+                  <div className="hz-fg-muted hz-t-sm">
                     Build with tranquility, deploy with confidence
                   </div>
                   <Link 
                     to="/platform" 
-                    className="text-neutral-400 hover:text-neutral-300 transition-colors text-sm flex items-center"
+                    className="hz-fg-muted hz-transition hz-t-sm hz-row hz-ai-center hz-link"
                   >
                     <span>Learn more about DX Platform</span>
-                    <ArrowRight className="ml-2 h-3 w-3" />
+                    <ArrowRight className="hz-sq-1 hz-ml-2" />
                   </Link>
                 </div>
               </>
@@ -291,71 +291,71 @@ const ProductsOverview = () => {
   ];
 
   return (
-    <section className="py-24 px-4 bg-[var(--black)] relative">
+    <section className="hz-py-7 hz-px-4 hz-bg hz-rel">
       <div 
-        className="absolute inset-0 pointer-events-none opacity-30"
+        className="hz-abs hz-inset hz-no-pointer hz-dim-more"
         style={{
           background: "radial-gradient(circle at 50% 30%, rgba(25,25,25,1), rgba(0,0,0,1))"
         }}
       />
       
-      <div className="max-w-screen-2xl w-full mx-auto relative z-10">
+      <div className="hz-container-narrow hz-w-full hz-rel hz-z-raised">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="hz-align-center hz-mb-7"
         >
-          <h2 className="text-3xl font-bold mb-4 inline-block bg-clip-text text-transparent bg-gradient-to-b from-white via-white/90 to-white/50">
+          <h2 className="hz-t-3xl hz-w-bold hz-mb-4 hz-chrome">
             The Way of Building
           </h2>
-          <p className="text-neutral-500 max-w-2xl mx-auto">
+          <p className="hz-container-narrow hz-mw-md hz-fg-muted">
             Each tool embodies our principles. Together, they form a complete system for enlightened engineering.
           </p>
         </motion.div>
 
         {/* AI Ecosystem Overview */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+        <div className="hz-grid hz-grid-2 hz-gap-6 hz-mb-7">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
             whileHover={{ y: -5 }}
-            className="relative overflow-hidden rounded-2xl border border-neutral-500/20 bg-gradient-to-br from-neutral-950/20 to-black p-6 cursor-pointer group"
+            className="hz-card hz-rel hz-clip hz-pointer"
             onClick={() => setSelectedSystem('cloud')}
           >
-            <div className="relative z-10">
-              <div className="flex items-center mb-4">
-                <div className="p-2 rounded-xl bg-neutral-600/10 mr-4">
-                  <Cloud className="h-8 w-8 text-neutral-400" />
+            <div className="hz-rel hz-z-raised">
+              <div className="hz-row hz-ai-center hz-mb-4">
+                <div className="hz-p-2 hz-r-lg hz-bg-raised hz-mr-4">
+                  <Cloud className="hz-sq-5 hz-fg-muted" />
                 </div>
-                <h3 className="text-2xl font-bold text-white">AI Cloud</h3>
+                <h3 className="hz-t-2xl hz-w-bold hz-fg">AI Cloud</h3>
               </div>
               
-              <p className="text-neutral-300 mb-4">
+              <p className="hz-fg-soft hz-mb-4">
                 Our unified AI infrastructure combines vector databases, model inference, 
                 and agent frameworks into a coherent platform built for enlightened engineers.
               </p>
               
-              <div className="flex flex-wrap gap-2 mb-6">
-                <span className="px-2 py-1 bg-neutral-600/10 rounded-full text-xs text-neutral-300">Vector DB</span>
-                <span className="px-2 py-1 bg-neutral-600/10 rounded-full text-xs text-neutral-300">Multi-Model</span>
-                <span className="px-2 py-1 bg-neutral-600/10 rounded-full text-xs text-neutral-300">Agents</span>
-                <span className="px-2 py-1 bg-neutral-600/10 rounded-full text-xs text-neutral-300">Enterprise Ready</span>
+              <div className="hz-row hz-wrap hz-gap-2 hz-mb-5">
+                <span className="hz-px-2 hz-py-1 hz-bg-raised hz-r-full hz-t-xs hz-fg-soft">Vector DB</span>
+                <span className="hz-px-2 hz-py-1 hz-bg-raised hz-r-full hz-t-xs hz-fg-soft">Multi-Model</span>
+                <span className="hz-px-2 hz-py-1 hz-bg-raised hz-r-full hz-t-xs hz-fg-soft">Agents</span>
+                <span className="hz-px-2 hz-py-1 hz-bg-raised hz-r-full hz-t-xs hz-fg-soft">Enterprise Ready</span>
               </div>
               
-              <button className="flex items-center text-neutral-400 group-hover:text-neutral-300 transition">
+              <button className="hz-row hz-ai-center hz-fg-muted hz-transition hz-link">
                 <span>Explore AI Cloud</span>
-                <ArrowRight className="ml-2 h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="hz-sq-2 hz-ml-2 hz-transition" />
               </button>
             </div>
             
             <AICloudSVG />
             
             <motion.div 
-              className="absolute inset-0 bg-neutral-600/5 opacity-0 group-hover:opacity-100 transition-opacity"
+              className="hz-abs hz-inset hz-bg-raised hz-invisible hz-transition"
               initial={false}
               whileHover={{ opacity: 0.1 }}
             />
@@ -367,46 +367,46 @@ const ProductsOverview = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
             whileHover={{ y: -5 }}
-            className="relative overflow-hidden rounded-2xl border border-neutral-500/20 bg-gradient-to-br from-neutral-950/20 to-black p-6 cursor-pointer group"
+            className="hz-card hz-rel hz-clip hz-pointer"
             onClick={() => setSelectedSystem('dx')}
           >
-            <div className="relative z-10">
-              <div className="flex items-center mb-4">
-                <div className="p-2 rounded-xl bg-neutral-600/10 mr-4">
-                  <Code className="h-8 w-8 text-neutral-400" />
+            <div className="hz-rel hz-z-raised">
+              <div className="hz-row hz-ai-center hz-mb-4">
+                <div className="hz-p-2 hz-r-lg hz-bg-raised hz-mr-4">
+                  <Code className="hz-sq-5 hz-fg-muted" />
                 </div>
-                <h3 className="text-2xl font-bold text-white">DX Platform</h3>
+                <h3 className="hz-t-2xl hz-w-bold hz-fg">DX Platform</h3>
               </div>
               
-              <p className="text-neutral-300 mb-4">
+              <p className="hz-fg-soft hz-mb-4">
                 Our developer experience platform streamlines engineering workflow with 
                 automated CI/CD, observability, and edge computing in perfect harmony.
               </p>
               
-              <div className="flex flex-wrap gap-2 mb-6">
-                <span className="px-2 py-1 bg-neutral-600/10 rounded-full text-xs text-neutral-300">CI/CD</span>
-                <span className="px-2 py-1 bg-neutral-600/10 rounded-full text-xs text-neutral-300">Dev Tools</span>
-                <span className="px-2 py-1 bg-neutral-600/10 rounded-full text-xs text-neutral-300">Edge</span>
-                <span className="px-2 py-1 bg-neutral-600/10 rounded-full text-xs text-neutral-300">Observability</span>
+              <div className="hz-row hz-wrap hz-gap-2 hz-mb-5">
+                <span className="hz-px-2 hz-py-1 hz-bg-raised hz-r-full hz-t-xs hz-fg-soft">CI/CD</span>
+                <span className="hz-px-2 hz-py-1 hz-bg-raised hz-r-full hz-t-xs hz-fg-soft">Dev Tools</span>
+                <span className="hz-px-2 hz-py-1 hz-bg-raised hz-r-full hz-t-xs hz-fg-soft">Edge</span>
+                <span className="hz-px-2 hz-py-1 hz-bg-raised hz-r-full hz-t-xs hz-fg-soft">Observability</span>
               </div>
               
-              <button className="flex items-center text-neutral-400 group-hover:text-neutral-300 transition">
+              <button className="hz-row hz-ai-center hz-fg-muted hz-transition hz-link">
                 <span>Explore DX Platform</span>
-                <ArrowRight className="ml-2 h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="hz-sq-2 hz-ml-2 hz-transition" />
               </button>
             </div>
             
             <DxPlatformSVG />
             
             <motion.div 
-              className="absolute inset-0 bg-neutral-600/5 opacity-0 group-hover:opacity-100 transition-opacity"
+              className="hz-abs hz-inset hz-bg-raised hz-invisible hz-transition"
               initial={false}
               whileHover={{ opacity: 0.1 }}
             />
           </motion.div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
+        <div className="hz-grid hz-grid-4 hz-gap-6">
           {products.map((product, index) => (
             <motion.div
               key={product.name}
@@ -418,22 +418,22 @@ const ProductsOverview = () => {
                 y: -5,
                 transition: { duration: 0.2 }
               }}
-              className="bg-gradient-to-br from-gray-900/40 to-black border border-white/5 rounded-2xl p-6 hover:border-white/10 transition-all duration-300 group"
+              className="hz-card hz-transition hz-card-interactive"
             >
-              <div className="flex items-center mb-4">
-                <div className="w-10 h-10 rounded-full bg-[var(--white)]/5 flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
-                  <product.icon className="h-5 w-5 text-[var(--white)]" />
+              <div className="hz-row hz-ai-center hz-mb-4">
+                <div className="hz-sq-6 hz-r-full hz-bg-surface hz-row hz-ai-center hz-jc-center hz-mr-4 hz-transition">
+                  <product.icon className="hz-sq-3 hz-fg" />
                 </div>
-                <h3 className="text-[var(--white)] text-lg font-medium">{product.name}</h3>
+                <h3 className="hz-fg hz-t-lg hz-w-medium">{product.name}</h3>
               </div>
-              <p className="text-neutral-400 mb-4">{product.description}</p>
-              <div className="text-neutral-600 text-sm italic mb-6">"{product.principle}"</div>
+              <p className="hz-fg-muted hz-mb-4">{product.description}</p>
+              <div className="hz-fg-faint hz-t-sm hz-italic hz-mb-5">"{product.principle}"</div>
               <Link 
                 to={product.path} 
-                className="text-neutral-400 hover:text-[var(--white)] text-sm flex items-center transition-colors"
+                className="hz-fg-muted hz-t-sm hz-row hz-ai-center hz-transition hz-link"
               >
-                <span className="group-hover:underline">Learn more</span>
-                <ArrowRight className="ml-2 h-3 w-3 group-hover:translate-x-1 transition-transform" />
+                <span className="">Learn more</span>
+                <ArrowRight className="hz-sq-1 hz-ml-2 hz-transition" />
               </Link>
             </motion.div>
           ))}
@@ -444,15 +444,15 @@ const ProductsOverview = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
-          className="mt-16 text-center border border-white/5 rounded-2xl p-8 bg-gradient-to-b from-transparent to-gray-900/20"
+          className="hz-card hz-mt-7 hz-align-center"
         >
-          <h3 className="text-2xl font-medium mb-4 text-[var(--white)]">Seek guidance from a Sensei</h3>
-          <p className="text-neutral-500 max-w-2xl mx-auto mb-6">
+          <h3 className="hz-t-2xl hz-w-medium hz-mb-4 hz-fg">Seek guidance from a Sensei</h3>
+          <p className="hz-container-narrow hz-mw-md hz-fg-muted hz-mb-5">
             Our masters can guide your team through the 64 principles and practices of enlightened engineering.
           </p>
           <Link 
             to="/contact" 
-            className="inline-flex items-center px-6 py-3 bg-[var(--white)]/5 hover:bg-[var(--white)]/10 border border-white/10 rounded-xl text-[var(--white)] transition-all duration-300 hover:shadow-lg hover:shadow-neutral-900/10"
+            className="hz-btn hz-btn-primary hz-fg hz-transition"
           >
             Request Sensei Consultation
           </Link>

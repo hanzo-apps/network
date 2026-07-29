@@ -24,7 +24,7 @@ const BillingTabsLink: React.FC<BillingTabsLinkProps> = ({
     <Button 
       variant={variant} 
       onClick={handleClick}
-      className="bg-[var(--black)] hover:bg-neutral-900 border border-white/10 text-[var(--white)]"
+      className="hz-bg hz-bordered hz-fg hz-hoverable"
     >
       {children}
     </Button>

@@ -18,25 +18,25 @@ const KanbanBoard = () => {
     {
       id: "backlog",
       title: "Backlog",
-      icon: <Clock className="h-4 w-4 text-neutral-400" />,
+      icon: <Clock className="hz-sq-2 hz-fg-muted" />,
       tasks: tasks.filter(task => task.status === "backlog")
     },
     {
       id: "todo",
       title: "Todo",
-      icon: <CheckCircle className="h-4 w-4 text-neutral-400" />,
+      icon: <CheckCircle className="hz-sq-2 hz-fg-muted" />,
       tasks: tasks.filter(task => task.status === "todo")
     },
     {
       id: "in-progress",
       title: "In Progress",
-      icon: <Zap className="h-4 w-4 text-neutral-400" />,
+      icon: <Zap className="hz-sq-2 hz-fg-muted" />,
       tasks: tasks.filter(task => task.status === "in-progress")
     },
     {
       id: "done",
       title: "Done",
-      icon: <CheckCircle className="h-4 w-4 text-neutral-400" />,
+      icon: <CheckCircle className="hz-sq-2 hz-fg-muted" />,
       tasks: tasks.filter(task => task.status === "done")
     }
   ];
@@ -90,8 +90,8 @@ const KanbanBoard = () => {
   };
 
   return (
-    <div className="h-full overflow-x-auto">
-      <div className="flex space-x-4 h-full pb-6 min-w-max">
+    <div className="hz-h-full hz-scroll-x">
+      <div className="hz-row hz-inline-4 hz-h-full hz-pb-6">
         {columns.map((column) => (
           <KanbanColumn
             key={column.id}

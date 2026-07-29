@@ -45,19 +45,19 @@ const AccountLayout = ({ children }: { children?: React.ReactNode }) => {
   };
 
   if (isLoading) {
-    return <div className="flex items-center justify-center min-h-screen">Loading...</div>;
+    return <div className="hz-row hz-ai-center hz-jc-center hz-min-h-screen">Loading...</div>;
   }
 
   return (
-    <div className="min-h-screen bg-[var(--black)] text-[var(--white)]">
+    <div className="hz-min-h-screen hz-bg hz-fg">
       <Navbar />
       
-      <main className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
+      <main className="hz-pt-6 hz-pb-6 hz-px-4">
+        <div className="hz-container-wide">
           <AnimatedSection>
-            <div className="flex justify-between items-center mb-10">
+            <div className="hz-row hz-jc-between hz-ai-center hz-mb-6">
               <AnimatedHeading>
-                <h1 className="text-3xl sm:text-4xl font-medium">Account</h1>
+                <h1 className="hz-t-3xl hz-w-medium">Account</h1>
               </AnimatedHeading>
               
               {currentOrganization && (
@@ -65,25 +65,25 @@ const AccountLayout = ({ children }: { children?: React.ReactNode }) => {
                   value={currentOrganization.id} 
                   onValueChange={switchOrganization}
                 >
-                  <SelectTrigger className="w-[250px] bg-[var(--black)] border-neutral-800/30">
+                  <SelectTrigger className="hz-bg">
                     <SelectValue>
-                      <div className="flex items-center">
-                        <div className="h-6 w-6 bg-neutral-900 rounded-full mr-2 flex items-center justify-center text-sm">
+                      <div className="hz-row hz-ai-center">
+                        <div className="hz-sq-4 hz-bg-surface hz-r-full hz-mr-2 hz-row hz-ai-center hz-jc-center hz-t-sm">
                           {currentOrganization.name.charAt(0)}
                         </div>
                         {currentOrganization.name}
                       </div>
                     </SelectValue>
                   </SelectTrigger>
-                  <SelectContent className="bg-[var(--black)] border-neutral-800/30">
+                  <SelectContent className="hz-bg">
                     {organizations.map((org) => (
-                      <SelectItem key={org.id} value={org.id} className="text-[var(--white)] hover:bg-neutral-900/30">
-                        <div className="flex items-center">
-                          <div className="h-6 w-6 bg-neutral-900 rounded-full mr-2 flex items-center justify-center text-sm">
+                      <SelectItem key={org.id} value={org.id} className="hz-fg hz-hoverable">
+                        <div className="hz-row hz-ai-center">
+                          <div className="hz-sq-4 hz-bg-surface hz-r-full hz-mr-2 hz-row hz-ai-center hz-jc-center hz-t-sm">
                             {org.name.charAt(0)}
                           </div>
                           {org.name}
-                          <span className="ml-2 text-neutral-400 text-xs">({org.role})</span>
+                          <span className="hz-ml-2 hz-fg-muted hz-t-xs">({org.role})</span>
                         </div>
                       </SelectItem>
                     ))}
@@ -92,39 +92,39 @@ const AccountLayout = ({ children }: { children?: React.ReactNode }) => {
               )}
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div className="hz-grid hz-grid-4 hz-gap-6">
               {/* Sidebar Navigation */}
-              <div className="col-span-1">
-                <div className="backdrop-blur-xl bg-[var(--black)]/40 border border-white/5 rounded-xl p-4 space-y-1">
+              <div className="">
+                <div className="hz-card hz-glass hz-stack-1">
                   {accountNavItems.map((item) => (
                     <Link 
                       key={item.path} 
                       to={item.path}
-                      className={`flex items-center space-x-3 p-3 rounded-lg transition-colors ${
+                      className={`hz-row hz-ai-center hz-inline-3 hz-p-3 hz-r-lg hz-transition ${
                         isActive(item.path) 
-                          ? 'bg-[var(--white)]/5 text-[var(--white)]' 
-                          : 'text-neutral-400 hover:bg-[var(--white)]/5 hover:text-[var(--white)]'
+                          ? 'hz-bg-surface hz-fg' 
+                          : 'hz-fg-muted hz-link'
                       }`}
                     >
-                      <item.icon className="w-5 h-5" />
-                      <span className="font-medium">{item.name}</span>
-                      {isActive(item.path) && <ChevronRight className="ml-auto w-4 h-4" />}
+                      <item.icon className="hz-sq-3" />
+                      <span className="hz-w-medium">{item.name}</span>
+                      {isActive(item.path) && <ChevronRight className="hz-sq-2 hz-ml-auto" />}
                     </Link>
                   ))}
                   
                   <Button 
                     variant="ghost" 
-                    className="w-full justify-start text-neutral-400 hover:text-neutral-300 hover:bg-neutral-800/10 mt-6 p-3"
+                    className="hz-w-full hz-jc-start hz-fg-muted hz-mt-5 hz-p-3 hz-link"
                   >
-                    <LogOut className="w-5 h-5 mr-3" />
+                    <LogOut className="hz-sq-3 hz-mr-3" />
                     Sign Out
                   </Button>
                 </div>
               </div>
               
               {/* Main Content */}
-              <div className="col-span-1 md:col-span-3">
-                <div className="backdrop-blur-xl bg-[var(--black)]/40 border border-white/5 rounded-xl p-8">
+              <div className="">
+                <div className="hz-card hz-glass">
                   {children || <Outlet />}
                 </div>
               </div>
@@ -133,7 +133,7 @@ const AccountLayout = ({ children }: { children?: React.ReactNode }) => {
         </div>
       </main>
 
-      <div className="w-full">
+      <div className="hz-w-full">
         <Footer />
       </div>
     </div>

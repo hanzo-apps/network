@@ -24,7 +24,7 @@ const WisdomDialog: React.FC<WisdomDialogProps> = ({ principle, isOpen, onClose 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          className="hz-fixed hz-inset hz-bg-surface hz-glass hz-z-overlay hz-row hz-ai-center hz-jc-center hz-p-4"
           onClick={onClose}
         >
           <motion.div
@@ -32,44 +32,44 @@ const WisdomDialog: React.FC<WisdomDialogProps> = ({ principle, isOpen, onClose 
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             transition={{ type: "spring", damping: 25 }}
-            className="bg-gradient-to-br from-gray-900 to-black border border-white/10 rounded-2xl max-w-md w-full p-6 shadow-xl"
+            className="hz-card hz-mw-sm hz-w-full hz-shadow-lg"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-start justify-between mb-4">
-              <div className="flex items-center">
-                <div className="w-8 h-8 flex items-center justify-center bg-white/10 rounded-full text-white mr-3">
+            <div className="hz-row hz-ai-start hz-jc-between hz-mb-4">
+              <div className="hz-row hz-ai-center">
+                <div className="hz-sq-5 hz-row hz-ai-center hz-jc-center hz-bg-quiet hz-r-full hz-fg hz-mr-3">
                   {principle.emoji}
                 </div>
                 <div>
-                  <h3 className="text-white text-xl font-medium">{principle.title}</h3>
-                  <div className="text-neutral-400 text-sm">
+                  <h3 className="hz-fg hz-t-xl hz-w-medium">{principle.title}</h3>
+                  <div className="hz-fg-muted hz-t-sm">
                     {principle.discipline}
                   </div>
                 </div>
               </div>
               <button 
                 onClick={onClose}
-                className="text-neutral-400 hover:text-white transition-colors"
+                className="hz-fg-muted hz-transition hz-link"
               >
                 <X size={20} />
               </button>
             </div>
             
-            <div className="mb-4 text-neutral-200 font-medium">
+            <div className="hz-mb-4 hz-fg hz-w-medium">
               "{principle.description}"
             </div>
             
-            <div className="text-neutral-400 text-sm">
+            <div className="hz-fg-muted hz-t-sm">
               Deep mastery of this principle leads to engineering excellence. Apply it consistently to create systems that are elegant, resilient, and sustainable.
             </div>
             
-            <div className="mt-6 pt-4 border-t border-white/10 text-center">
+            <div className="hz-mt-5 hz-pt-4 hz-border-t hz-align-center">
               <Link 
                 to="/philosophy" 
-                className="text-neutral-400 hover:text-white transition-colors text-sm flex items-center justify-center"
+                className="hz-fg-muted hz-transition hz-t-sm hz-row hz-ai-center hz-jc-center hz-link"
               >
                 <span>Explore more principles</span>
-                <ArrowRight className="ml-2 h-3 w-3" />
+                <ArrowRight className="hz-sq-1 hz-ml-2" />
               </Link>
             </div>
           </motion.div>
@@ -102,39 +102,39 @@ const PrinciplesPreview = () => {
   };
 
   return (
-    <section className="py-24 px-4 relative" id="principles">
+    <section className="hz-py-7 hz-px-4 hz-rel" id="principles">
       <div 
-        className="absolute inset-0 pointer-events-none opacity-50"
+        className="hz-abs hz-inset hz-no-pointer hz-dim-more"
         style={{
           background: "linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(20,20,20,1) 100%)"
         }}
       />
       
-      <div className="max-w-6xl mx-auto">
+      <div className="hz-container-wide">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="hz-align-center hz-mb-7"
         >
-          <h2 className="text-3xl font-bold mb-4 inline-block bg-clip-text text-transparent bg-gradient-to-b from-white via-white/90 to-white/50">
+          <h2 className="hz-t-3xl hz-w-bold hz-mb-4 hz-chrome">
             Zen of Hanzo
           </h2>
-          <p className="text-neutral-500 max-w-2xl mx-auto">
+          <p className="hz-container-narrow hz-mw-md hz-fg-muted">
             Engineering principles rooted in ancient wisdom, designed for modern developers building 
             next-generation AI systems and applications.
           </p>
         </motion.div>
         
         {/* Discipline Filter */}
-        <div className="flex flex-wrap justify-center gap-2 mb-12">
+        <div className="hz-row hz-wrap hz-jc-center hz-gap-2 hz-mb-7">
           <button
-            className={`px-3 py-1 rounded-full text-sm ${
+            className={`hz-px-3 hz-py-1 hz-r-full hz-t-sm ${
               selectedDiscipline === null 
-                ? "bg-white/20 text-white" 
-                : "bg-gray-800/50 text-gray-400 hover:bg-gray-800 hover:text-gray-300"
-            } transition-colors`}
+                ? "hz-bg-quiet hz-fg" 
+                : "hz-bg-raised hz-fg-muted hz-link"
+            } hz-transition`}
             onClick={() => setSelectedDiscipline(null)}
           >
             All
@@ -142,11 +142,11 @@ const PrinciplesPreview = () => {
           {disciplines.map(discipline => (
             <button
               key={discipline}
-              className={`px-3 py-1 rounded-full text-sm ${
+              className={`hz-px-3 hz-py-1 hz-r-full hz-t-sm ${
                 selectedDiscipline === discipline 
-                  ? "bg-white/20 text-white" 
-                  : "bg-gray-800/50 text-gray-400 hover:bg-gray-800 hover:text-gray-300"
-              } transition-colors`}
+                  ? "hz-bg-quiet hz-fg" 
+                  : "hz-bg-raised hz-fg-muted hz-link"
+              } hz-transition`}
               onClick={() => setSelectedDiscipline(discipline)}
             >
               {discipline}
@@ -154,7 +154,7 @@ const PrinciplesPreview = () => {
           ))}
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="hz-grid hz-grid-4 hz-gap-5">
           {(selectedDiscipline 
             ? previewPrinciples.filter(p => p?.discipline === selectedDiscipline)
             : previewPrinciples
@@ -174,28 +174,28 @@ const PrinciplesPreview = () => {
                 y: -5, 
                 transition: { duration: 0.2 }
               }}
-              className="bg-gradient-to-br from-gray-900/40 to-gray-950/70 border border-white/10 rounded-2xl p-6 hover:border-white/30 hover:shadow-lg transition-all duration-300 relative overflow-hidden group"
+              className="hz-card hz-transition hz-rel hz-clip hz-card-interactive"
               onClick={() => openWisdomDialog(principle)}
             >
-              <div className="absolute top-2 right-2 text-white/40 opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="hz-abs hz-fg-soft hz-invisible hz-transition">
                 <Info size={16} />
               </div>
               
-              <div className="flex items-center mb-4">
-                <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center mr-3 text-lg">
+              <div className="hz-row hz-ai-center hz-mb-4">
+                <div className="hz-sq-6 hz-r-full hz-bg-quiet hz-row hz-ai-center hz-jc-center hz-mr-3 hz-t-lg">
                   {principle.emoji}
                 </div>
                 <div>
-                  <h3 className="text-white text-lg font-medium">{principle.title}</h3>
-                  <div className="text-neutral-500 text-sm">
+                  <h3 className="hz-fg hz-t-lg hz-w-medium">{principle.title}</h3>
+                  <div className="hz-fg-muted hz-t-sm">
                     {principle.discipline}
                   </div>
                 </div>
               </div>
-              <p className="text-neutral-400 text-sm mb-4">{principle.description}</p>
+              <p className="hz-fg-muted hz-t-sm hz-mb-4">{principle.description}</p>
               
               <motion.div 
-                className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl"
+                className="hz-abs hz-inset hz-bg-quiet hz-invisible hz-transition hz-r-xl"
                 initial={false}
                 whileHover={{ scale: 1.05, opacity: 0.1 }}
               />
@@ -203,10 +203,10 @@ const PrinciplesPreview = () => {
           ))}
         </div>
         
-        <div className="text-center mt-12">
-          <Link to="/philosophy" className="inline-flex items-center text-neutral-400 hover:text-white transition-colors group">
-            <span className="group-hover:underline">Learn more principles</span>
-            <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+        <div className="hz-align-center hz-mt-7">
+          <Link to="/philosophy" className="hz-inline hz-ai-center hz-fg-muted hz-transition hz-link">
+            <span className="">Learn more principles</span>
+            <ArrowRight className="hz-sq-2 hz-ml-2 hz-transition" />
           </Link>
         </div>
       </div>

@@ -4,33 +4,33 @@ import { motion } from "framer-motion";
 
 const ArchitectureOverview = () => {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
+    <section className="hz-py-7 hz-px-4">
+      <div className="hz-container-wide">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="hz-align-center hz-mb-7"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Hanzo Balancer Architecture Overview</h2>
-          <p className="text-xl text-neutral-300 max-w-4xl mx-auto">
+          <h2 className="hz-t-3xl hz-w-bold hz-mb-5">Hanzo Balancer Architecture Overview</h2>
+          <p className="hz-container-narrow hz-t-xl hz-fg-soft">
             Unlike a traditional reverse proxy, which requires manual configuration, Hanzo Balancer uses service 
             discovery to dynamically configure routing. Hanzo Balancer supports all major protocols, leveraging a rich set 
             of middleware for load balancing, rate-limiting, circuit-breakers, mirroring, authentication, and more.
           </p>
         </motion.div>
 
-        <div className="flex flex-col md:flex-row items-center gap-12 mb-16">
+        <div className="hz-col-row hz-ai-center hz-gap-7 hz-mb-7">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="w-full md:w-1/2"
+            className="hz-w-full"
           >
-            <div className="bg-gray-800/30 border border-gray-700 rounded-lg p-4 aspect-video flex items-center justify-center">
-              <p className="text-xl text-neutral-400">Hanzo Balancer Architecture Diagram</p>
+            <div className="hz-card hz-row hz-ai-center hz-jc-center">
+              <p className="hz-t-xl hz-fg-muted">Hanzo Balancer Architecture Diagram</p>
               {/* Replace with actual diagram image when available */}
             </div>
           </motion.div>
@@ -40,21 +40,21 @@ const ArchitectureOverview = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="w-full md:w-1/2"
+            className="hz-w-full"
           >
-            <p className="text-neutral-300 mb-6">
+            <p className="hz-fg-soft hz-mb-5">
               Hanzo Balancer also supports SSL termination and works with ACME providers (like Let's Encrypt) 
               for automatic certificate generation. Hanzo Balancer's extensive features and capabilities make it 
               the comprehensive gateway to all your applications.
             </p>
-            <div className="bg-gradient-to-r from-neutral-800/30 to-neutral-900/30 border border-neutral-500/20 rounded-lg p-6">
-              <h3 className="text-xl font-semibold mb-3">Maximize Uptime, Solve Issues Quickly</h3>
-              <p className="text-neutral-300 mb-4">
+            <div className="hz-card">
+              <h3 className="hz-t-xl hz-w-semibold hz-mb-3">Maximize Uptime, Solve Issues Quickly</h3>
+              <p className="hz-fg-soft hz-mb-4">
                 Need support with Hanzo Balancer? Our team of experts is here to help 24/7/365!
               </p>
               <a 
                 href="#support" 
-                className="inline-block px-4 py-2 bg-neutral-600 hover:bg-neutral-700 rounded-md font-medium transition-colors"
+                className="hz-px-4 hz-py-2 hz-bg-raised hz-r-md hz-w-medium hz-transition hz-hoverable"
               >
                 REQUEST COMMERCIAL SUPPORT
               </a>

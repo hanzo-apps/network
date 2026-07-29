@@ -22,7 +22,7 @@ const ChatMessages: React.FC<ChatMessagesProps> = ({
   endOfMessagesRef
 }) => {
   return (
-    <div className="flex-1 overflow-y-auto p-4 space-y-4">
+    <div className="hz-grow hz-scroll-y hz-p-4 hz-stack-4">
       {chatHistory.map((chat) => (
         <ChatMessage 
           key={chat.id} 
@@ -32,15 +32,15 @@ const ChatMessages: React.FC<ChatMessagesProps> = ({
       ))}
       
       {isTyping && (
-        <div className="flex justify-start mb-4">
-          <div className="bg-neutral-600/40 h-8 w-8 rounded-full flex items-center justify-center mr-2">
-            <Bot className="h-4 w-4 text-[var(--white)]" />
+        <div className="hz-row hz-jc-start hz-mb-4">
+          <div className="hz-sq-5 hz-bg-raised hz-r-full hz-row hz-ai-center hz-jc-center hz-mr-2">
+            <Bot className="hz-sq-2 hz-fg" />
           </div>
-          <div className="bg-gray-800/60 py-3 px-4 rounded-lg border border-gray-700/50">
-            <div className="flex space-x-1">
-              <div className="h-2 w-2 bg-gray-400 rounded-full animate-bounce"></div>
-              <div className="h-2 w-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "0.2s" }}></div>
-              <div className="h-2 w-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "0.4s" }}></div>
+          <div className="hz-bg-raised hz-py-3 hz-px-4 hz-r-lg hz-bordered">
+            <div className="hz-row hz-inline-1">
+              <div className="hz-sq-1 hz-bg-raised hz-r-full"></div>
+              <div className="hz-sq-1 hz-bg-raised hz-r-full" style={{ animationDelay: "0.2s" }}></div>
+              <div className="hz-sq-1 hz-bg-raised hz-r-full" style={{ animationDelay: "0.4s" }}></div>
             </div>
           </div>
         </div>

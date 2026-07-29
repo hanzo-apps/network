@@ -18,7 +18,7 @@ const GlobeRenderer: React.FC<GlobeRendererProps> = ({ width, height }) => {
   return (
     <div 
       ref={containerRef} 
-      className="w-full h-full rounded-lg overflow-hidden"
+      className="hz-w-full hz-h-full hz-r-lg hz-clip"
       style={{ 
         background: 'radial-gradient(circle at center, rgba(25, 34, 55, 0.4) 0%, rgba(10, 14, 25, 0.8) 70%)',
       }}

@@ -13,7 +13,7 @@ import CallToAction from "@/components/payments/CallToAction";
 
 const Payments = () => {
   return (
-    <div className="min-h-screen bg-[var(--black)] text-[var(--white)]">
+    <div className="hz-min-h-screen hz-bg hz-fg">
       <Navbar />
       <main>
         <HeroSection />

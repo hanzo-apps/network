@@ -22,7 +22,7 @@ const JapaneseWave: React.FC<JapaneseWaveProps> = ({
   speed = 20,
 }) => {
   return (
-    <div className={`overflow-hidden ${className}`} style={{ width }}>
+    <div className={`hz-clip ${className}`} style={{ width }}>
       <motion.svg
         viewBox="0 0 1440 320"
         height={height}

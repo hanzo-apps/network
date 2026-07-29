@@ -10,22 +10,22 @@ import {
 
 const benefits = [
   {
-    icon: <Zap className="h-6 w-6 text-neutral-400" />,
+    icon: <Zap className="hz-sq-4 hz-fg-muted" />,
     title: "Precision Monitoring",
     description: "Identify exactly where and why issues occur in real-time."
   },
   {
-    icon: <Target className="h-6 w-6 text-neutral-400" />,
+    icon: <Target className="hz-sq-4 hz-fg-muted" />,
     title: "Faster Debugging",
     description: "Detailed traces and logs provide the clarity needed for rapid resolution."
   },
   {
-    icon: <Lightbulb className="h-6 w-6 text-neutral-400" />,
+    icon: <Lightbulb className="hz-sq-4 hz-fg-muted" />,
     title: "Optimized User Experiences",
     description: "Understand user behavior deeply, driving improvements that matter."
   },
   {
-    icon: <BarChart4 className="h-6 w-6 text-neutral-400" />,
+    icon: <BarChart4 className="hz-sq-4 hz-fg-muted" />,
     title: "Informed Decisions",
     description: "Reliable analytics and predictive insights empower smarter product and operational decisions."
   }
@@ -33,19 +33,19 @@ const benefits = [
 
 const Benefits = () => {
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-900/20 to-black relative">
-      <div className="max-w-6xl mx-auto relative z-10">
+    <section className="hz-py-7 hz-px-4 hz-rel">
+      <div className="hz-container-wide hz-rel hz-z-raised">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="max-w-3xl mx-auto text-center mb-16"
+          className="hz-container-narrow hz-align-center hz-mb-7"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Why Leading Teams Choose Hanzo Observability</h2>
+          <h2 className="hz-t-3xl hz-w-bold hz-mb-5">Why Leading Teams Choose Hanzo Observability</h2>
         </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="hz-grid hz-grid-4 hz-gap-6">
           {benefits.map((benefit, index) => (
             <motion.div
               key={index}
@@ -53,13 +53,13 @@ const Benefits = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-gray-900/30 rounded-xl p-6 border border-gray-800"
+              className="hz-card"
             >
-              <div className="bg-gray-800/60 p-3 rounded-lg w-fit mb-5">
+              <div className="hz-bg-raised hz-p-3 hz-r-lg hz-w-fit hz-mb-4">
                 {benefit.icon}
               </div>
-              <h3 className="text-lg font-bold mb-3">{benefit.title}</h3>
-              <p className="text-neutral-400 text-sm">{benefit.description}</p>
+              <h3 className="hz-t-lg hz-w-bold hz-mb-3">{benefit.title}</h3>
+              <p className="hz-fg-muted hz-t-sm">{benefit.description}</p>
             </motion.div>
           ))}
         </div>
@@ -69,15 +69,15 @@ const Benefits = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="mt-20 text-center"
+          className="hz-mt-7 hz-align-center"
         >
-          <div className="inline-block p-4 bg-gradient-to-r from-gray-800/50 to-gray-900/50 rounded-xl">
-            <blockquote className="text-xl italic text-neutral-300 max-w-2xl mx-auto">
+          <div className="hz-p-4 hz-r-lg">
+            <blockquote className="hz-container-narrow hz-mw-md hz-t-xl hz-italic hz-fg-soft">
               "Hanzo Observability has been critical to our AI operations, giving us unprecedented visibility into our models' performance and significantly improving our debugging time."
             </blockquote>
-            <div className="mt-4 text-neutral-400">
-              <div className="font-medium">Alex Chen</div>
-              <div className="text-sm">AI Engineering Lead, Triller</div>
+            <div className="hz-mt-4 hz-fg-muted">
+              <div className="hz-w-medium">Alex Chen</div>
+              <div className="hz-t-sm">AI Engineering Lead, Triller</div>
             </div>
           </div>
         </motion.div>

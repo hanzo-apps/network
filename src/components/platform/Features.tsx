@@ -43,15 +43,15 @@ const features = [
 
 const Features = () => {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[var(--black)]">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
+    <section className="hz-py-7 hz-px-4 hz-bg">
+      <div className="hz-container">
+        <div className="hz-align-center hz-mb-7">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-3xl md:text-4xl font-bold mb-4"
+            className="hz-t-3xl hz-w-bold hz-mb-4"
           >
             Freedom to Build, Power to Deploy
           </motion.h2>
@@ -60,7 +60,7 @@ const Features = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-xl text-neutral-300 max-w-3xl mx-auto"
+            className="hz-container-narrow hz-t-xl hz-fg-soft"
           >
             Everything you love about Hanzo Cloud, available as free and open source software you can run anywhere.
           </motion.p>
@@ -73,27 +73,27 @@ const Features = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            className={`mb-32 flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 lg:gap-16 items-center`}
+            className={`hz-mb-7 hz-col ${index % 2 === 0 ? '' : ''} hz-gap-6 hz-ai-center`}
           >
-            <div className="w-full lg:w-1/2">
-              <div className="flex items-center mb-4">
-                <div className="h-12 w-12 rounded-lg flex items-center justify-center bg-neutral-800/20 text-neutral-400 mr-4">
-                  <feature.icon className="h-6 w-6" />
+            <div className="hz-w-full">
+              <div className="hz-row hz-ai-center hz-mb-4">
+                <div className="hz-sq-7 hz-r-lg hz-row hz-ai-center hz-jc-center hz-bg-raised hz-fg-muted hz-mr-4">
+                  <feature.icon className="hz-sq-4" />
                 </div>
-                <h2 className="text-3xl font-bold">{feature.title}</h2>
+                <h2 className="hz-t-3xl hz-w-bold">{feature.title}</h2>
               </div>
-              <p className="text-xl text-neutral-300 mb-4">{feature.description}</p>
-              <p className="text-neutral-400 mb-6">{feature.details}</p>
+              <p className="hz-t-xl hz-fg-soft hz-mb-4">{feature.description}</p>
+              <p className="hz-fg-muted hz-mb-5">{feature.details}</p>
               
-              <a href="#learn-more" className="inline-flex items-center text-neutral-400 hover:text-neutral-300 transition-colors">
-                Learn More <ArrowRight className="ml-2 h-4 w-4" />
+              <a href="#learn-more" className="hz-inline hz-ai-center hz-fg-muted hz-transition hz-link">
+                Learn More <ArrowRight className="hz-sq-2 hz-ml-2" />
               </a>
               
-              <div className="mt-8">
-                <p className="text-sm text-neutral-500 mb-2">Replaces</p>
-                <div className="flex flex-wrap gap-4">
+              <div className="hz-mt-6">
+                <p className="hz-t-sm hz-fg-muted hz-mb-2">Replaces</p>
+                <div className="hz-row hz-wrap hz-gap-4">
                   {feature.replaces.map((replace, i) => (
-                    <span key={i} className="px-3 py-1 bg-gray-800 rounded-full text-xs text-neutral-400">
+                    <span key={i} className="hz-px-3 hz-py-1 hz-bg-raised hz-r-full hz-t-xs hz-fg-muted">
                       {replace}
                     </span>
                   ))}
@@ -101,9 +101,9 @@ const Features = () => {
               </div>
             </div>
             
-            <div className="w-full lg:w-1/2 bg-gray-900/50 rounded-xl overflow-hidden border border-gray-800">
-              <div className="aspect-video p-8 flex items-center justify-center bg-gradient-to-br from-neutral-800/10 to-neutral-800/10">
-                <feature.icon className="h-24 w-24 text-neutral-400/70" />
+            <div className="hz-w-full hz-bg-surface hz-r-lg hz-clip hz-bordered">
+              <div className="hz-p-6 hz-row hz-ai-center hz-jc-center">
+                <feature.icon className="hz-sq-8 hz-fg-muted" />
               </div>
             </div>
           </motion.div>
@@ -114,25 +114,25 @@ const Features = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="bg-gradient-to-br from-gray-900 to-gray-800/50 rounded-xl p-8 border border-gray-700"
+          className="hz-card"
         >
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="space-y-4">
-              <Code2 className="h-10 w-10 text-neutral-400" />
-              <h3 className="text-xl font-bold">MIT Licensed</h3>
-              <p className="text-neutral-400">Fork it, modify it, use it commercially. We believe in true open source.</p>
+          <div className="hz-grid hz-grid-3 hz-gap-6">
+            <div className="hz-stack-4">
+              <Code2 className="hz-sq-6 hz-fg-muted" />
+              <h3 className="hz-t-xl hz-w-bold">MIT Licensed</h3>
+              <p className="hz-fg-muted">Fork it, modify it, use it commercially. We believe in true open source.</p>
             </div>
             
-            <div className="space-y-4">
-              <Lock className="h-10 w-10 text-neutral-400" />
-              <h3 className="text-xl font-bold">Data Sovereignty</h3>
-              <p className="text-neutral-400">Keep your code, data, and models on your infrastructure. No vendor lock-in.</p>
+            <div className="hz-stack-4">
+              <Lock className="hz-sq-6 hz-fg-muted" />
+              <h3 className="hz-t-xl hz-w-bold">Data Sovereignty</h3>
+              <p className="hz-fg-muted">Keep your code, data, and models on your infrastructure. No vendor lock-in.</p>
             </div>
             
-            <div className="space-y-4">
-              <Network className="h-10 w-10 text-neutral-400" />
-              <h3 className="text-xl font-bold">Enterprise Ready</h3>
-              <p className="text-neutral-400">Scale from a laptop to a data center with enterprise support available.</p>
+            <div className="hz-stack-4">
+              <Network className="hz-sq-6 hz-fg-muted" />
+              <h3 className="hz-t-xl hz-w-bold">Enterprise Ready</h3>
+              <p className="hz-fg-muted">Scale from a laptop to a data center with enterprise support available.</p>
             </div>
           </div>
         </motion.div>

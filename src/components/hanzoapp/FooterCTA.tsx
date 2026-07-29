@@ -1,51 +1,50 @@
+import { BRAND } from '@/lib/brand';
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, Download } from "lucide-react";
 
-const BRAND_COLOR = "#ffffff";
 
 const FooterCTA = () => {
   return (
-    <section className="py-24 px-4 md:px-8 bg-black relative overflow-hidden">
+    <section className="hz-py-7 hz-px-4 hz-bg hz-rel hz-clip">
       {/* Background gradient */}
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full opacity-20"
+        className="hz-center-xy hz-abs hz-r-full hz-dim-more"
         style={{
-          background: `radial-gradient(circle, ${BRAND_COLOR} 0%, transparent 70%)`,
+          background: `radial-gradient(circle, ${BRAND.fg} 0%, transparent 70%)`,
           filter: "blur(100px)",
         }}
       />
 
-      <div className="max-w-4xl mx-auto relative z-10 text-center">
+      <div className="hz-container-narrow hz-rel hz-z-raised hz-align-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+          <h2 className="hz-t-3xl hz-w-bold hz-fg hz-mb-4">
             Start building today
           </h2>
-          <p className="text-xl text-neutral-400 mb-8 max-w-2xl mx-auto">
+          <p className="hz-container-narrow hz-mw-md hz-t-xl hz-fg-muted hz-mb-6">
             Web, desktop, local, or decentralized. Choose your way.
           </p>
 
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
+          <div className="hz-col-row hz-jc-center hz-gap-4">
             <a
               href="https://hanzo.app"
               target="_blank"
               rel="noreferrer noopener"
-              className="inline-flex items-center justify-center px-8 py-4 rounded-full font-medium text-white text-lg transition-all hover:opacity-90"
-              style={{ backgroundColor: BRAND_COLOR }}
-            >
+              className="hz-btn hz-btn-ghost hz-btn-lg hz-fg hz-transition hz-bg-inverse"
+              >
               Open hanzo.app
-              <ArrowRight className="ml-2 h-5 w-5" />
+              <ArrowRight className="hz-sq-3 hz-ml-2" />
             </a>
             <Link
               to="/download"
-              className="inline-flex items-center justify-center px-8 py-4 rounded-full font-medium text-white text-lg border border-neutral-700 hover:bg-neutral-900 transition-colors"
+              className="hz-btn hz-btn-ghost hz-btn-lg hz-fg hz-transition"
             >
-              <Download className="mr-2 h-5 w-5" />
+              <Download className="hz-sq-3 hz-mr-2" />
               Download desktop
             </Link>
           </div>

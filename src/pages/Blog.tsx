@@ -1,3 +1,4 @@
+import { BRAND } from '@/lib/brand';
 import React from "react";
 import { Helmet } from "react-helmet";
 import { motion } from "framer-motion";
@@ -7,7 +8,6 @@ import Footer from "@/components/Footer";
 import { CalendarIcon, User, Tag, ArrowRight, Rss, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const BRAND_COLOR = "#ffffff";
 
 // Sample blog post data
 const blogPosts = [
@@ -55,7 +55,7 @@ const blogPosts = [
 
 const Blog = () => {
   return (
-    <div className="min-h-screen bg-[var(--black)] text-[var(--white)]">
+    <div className="hz-min-h-screen hz-bg hz-fg">
       <Helmet>
         <title>Blog - Hanzo AI</title>
         <meta
@@ -68,27 +68,26 @@ const Blog = () => {
 
       <main>
         {/* Hero Section */}
-        <section className="relative pt-24 pb-16 px-4 md:px-8 lg:px-12 overflow-hidden">
-          <div className="absolute inset-0 overflow-hidden z-0 pointer-events-none">
+        <section className="hz-rel hz-pt-6 hz-pb-6 hz-px-4 hz-clip">
+          <div className="hz-abs hz-inset hz-clip hz-z-base hz-no-pointer">
             <div
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full opacity-10"
+              className="hz-center-xy hz-abs hz-r-full hz-dim-more"
               style={{
-                background: `radial-gradient(circle, ${BRAND_COLOR} 0%, transparent 70%)`,
+                background: `radial-gradient(circle, ${BRAND.fg} 0%, transparent 70%)`,
                 filter: "blur(100px)",
               }}
             />
           </div>
 
-          <div className="max-w-5xl mx-auto relative z-10">
-            <div className="text-center">
+          <div className="hz-container-wide hz-rel hz-z-raised">
+            <div className="hz-align-center">
               <motion.div
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4 }}
-                className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium mb-6"
-                style={{ backgroundColor: `${BRAND_COLOR}20`, color: BRAND_COLOR }}
-              >
-                <BookOpen className="w-3.5 h-3.5" />
+                className="hz-inline hz-ai-center hz-gap-2 hz-px-3 hz-py-1 hz-r-full hz-t-xs hz-w-medium hz-mb-5 hz-bg-quiet hz-fg"
+                >
+                <BookOpen className="hz-sq-2" />
                 Engineering Blog
               </motion.div>
 
@@ -96,18 +95,18 @@ const Blog = () => {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.05 }}
-                className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-medium tracking-tight leading-[1.1] mb-6"
+                className="hz-t-3xl hz-w-medium hz-tracking-tight hz-mb-5"
               >
-                <span className="text-white">Insights from</span>
+                <span className="hz-fg">Insights from</span>
                 <br />
-                <span className="text-neutral-400">the team.</span>
+                <span className="hz-fg-muted">the team.</span>
               </motion.h1>
 
               <motion.p
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.1 }}
-                className="text-base lg:text-lg text-neutral-400 leading-relaxed mb-10 max-w-3xl mx-auto"
+                className="hz-container-narrow hz-t-base hz-fg-muted hz-leading-relaxed hz-mb-6"
               >
                 Tutorials, product updates, and deep dives into AI development
                 from the Hanzo engineering team.
@@ -117,18 +116,17 @@ const Blog = () => {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.15 }}
-                className="flex flex-wrap items-center justify-center gap-4"
+                className="hz-row hz-wrap hz-ai-center hz-jc-center hz-gap-4"
               >
                 <a
                   href="#posts"
-                  className="inline-flex items-center px-6 py-3 rounded-full font-medium transition-all hover:opacity-90 text-sm"
-                  style={{ backgroundColor: BRAND_COLOR, color: "#000000" }}
-                >
+                  className="hz-btn hz-btn-ghost hz-transition hz-bg-inverse"
+                  >
                   Latest Posts
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  <ArrowRight className="hz-sq-2 hz-ml-2" />
                 </a>
-                <button className="inline-flex items-center px-6 py-3 rounded-full font-medium transition-colors border border-neutral-700 bg-transparent hover:bg-neutral-900 text-sm text-white">
-                  <Rss className="w-4 h-4 mr-2" />
+                <button className="hz-btn hz-btn-ghost hz-transition hz-fg">
+                  <Rss className="hz-sq-2 hz-mr-2" />
                   Subscribe to RSS
                 </button>
               </motion.div>
@@ -137,65 +135,63 @@ const Blog = () => {
         </section>
 
         {/* Blog Content */}
-        <section id="posts" className="py-16 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
+        <section id="posts" className="hz-py-7 hz-px-4">
+          <div className="hz-container">
             {/* Featured Post */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="mb-16"
+              className="hz-mb-7"
             >
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-gradient-to-br from-white/10 to-neutral-900/50 rounded-xl overflow-hidden border border-neutral-800">
-                <div className="p-8 flex flex-col justify-center">
-                  <div className="flex items-center space-x-4 mb-4">
+              <div className="hz-grid hz-grid-2 hz-gap-6 hz-r-lg hz-clip hz-bordered">
+                <div className="hz-p-6 hz-col hz-jc-center">
+                  <div className="hz-row hz-ai-center hz-inline-4 hz-mb-4">
                     <span
-                      className="px-3 py-1 rounded-full text-sm"
-                      style={{ backgroundColor: `${BRAND_COLOR}20`, color: BRAND_COLOR }}
-                    >
+                      className="hz-px-3 hz-py-1 hz-r-full hz-t-sm hz-bg-quiet hz-fg"
+                      >
                       Featured
                     </span>
-                    <span className="text-neutral-400 text-sm flex items-center">
-                      <CalendarIcon className="h-4 w-4 mr-1" />
+                    <span className="hz-fg-muted hz-t-sm hz-row hz-ai-center">
+                      <CalendarIcon className="hz-sq-2 hz-mr-1" />
                       {blogPosts[0].date}
                     </span>
                   </div>
 
-                  <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white">{blogPosts[0].title}</h2>
-                  <p className="text-neutral-300 mb-6">{blogPosts[0].excerpt}</p>
+                  <h2 className="hz-t-2xl hz-w-bold hz-mb-4 hz-fg">{blogPosts[0].title}</h2>
+                  <p className="hz-fg-soft hz-mb-5">{blogPosts[0].excerpt}</p>
 
-                  <div className="flex items-center space-x-4 mb-6">
-                    <div className="flex items-center">
-                      <User className="h-4 w-4 text-neutral-400 mr-2" />
-                      <span className="text-neutral-400 text-sm">{blogPosts[0].author}</span>
+                  <div className="hz-row hz-ai-center hz-inline-4 hz-mb-5">
+                    <div className="hz-row hz-ai-center">
+                      <User className="hz-sq-2 hz-fg-muted hz-mr-2" />
+                      <span className="hz-fg-muted hz-t-sm">{blogPosts[0].author}</span>
                     </div>
-                    <div className="flex items-center">
-                      <Tag className="h-4 w-4 text-neutral-400 mr-2" />
-                      <span className="text-neutral-400 text-sm">{blogPosts[0].category}</span>
+                    <div className="hz-row hz-ai-center">
+                      <Tag className="hz-sq-2 hz-fg-muted hz-mr-2" />
+                      <span className="hz-fg-muted hz-t-sm">{blogPosts[0].category}</span>
                     </div>
                   </div>
 
                   <button
-                    className="inline-flex items-center w-fit px-6 py-3 rounded-full font-medium transition-all hover:opacity-90 text-sm"
-                    style={{ backgroundColor: BRAND_COLOR, color: "#000000" }}
-                  >
+                    className="hz-btn hz-btn-ghost hz-w-fit hz-transition hz-bg-inverse"
+                    >
                     Read Article
-                    <ArrowRight className="ml-2 h-4 w-4" />
+                    <ArrowRight className="hz-sq-2 hz-ml-2" />
                   </button>
                 </div>
 
-                <div className="relative h-64 md:h-auto">
+                <div className="hz-rel hz-bh-8">
                   <img
                     src={blogPosts[0].imageUrl}
                     alt={blogPosts[0].title}
-                    className="absolute inset-0 w-full h-full object-cover"
+                    className="hz-abs hz-inset hz-w-full hz-h-full hz-object-cover"
                   />
                 </div>
               </div>
             </motion.div>
 
             {/* Blog Post Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="hz-grid hz-grid-3 hz-gap-6">
               {blogPosts.slice(1).map((post, index) => (
                 <motion.div
                   key={post.id}
@@ -203,40 +199,39 @@ const Blog = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="bg-neutral-900/50 rounded-xl overflow-hidden border border-neutral-800 hover:border-neutral-700 transition-colors"
+                  className="hz-bg-surface hz-r-lg hz-clip hz-bordered hz-transition hz-hoverable"
                 >
-                  <div className="relative h-48">
+                  <div className="hz-rel hz-bh-8">
                     <img
                       src={post.imageUrl}
                       alt={post.title}
-                      className="absolute inset-0 w-full h-full object-cover"
+                      className="hz-abs hz-inset hz-w-full hz-h-full hz-object-cover"
                     />
                   </div>
 
-                  <div className="p-6">
-                    <div className="flex items-center space-x-4 mb-3">
-                      <span className="text-neutral-400 text-sm flex items-center">
-                        <CalendarIcon className="h-4 w-4 mr-1" />
+                  <div className="hz-p-5">
+                    <div className="hz-row hz-ai-center hz-inline-4 hz-mb-3">
+                      <span className="hz-fg-muted hz-t-sm hz-row hz-ai-center">
+                        <CalendarIcon className="hz-sq-2 hz-mr-1" />
                         {post.date}
                       </span>
-                      <span className="text-neutral-400 text-sm flex items-center">
-                        <Tag className="h-4 w-4 mr-1" />
+                      <span className="hz-fg-muted hz-t-sm hz-row hz-ai-center">
+                        <Tag className="hz-sq-2 hz-mr-1" />
                         {post.category}
                       </span>
                     </div>
 
-                    <h3 className="text-xl font-bold mb-3 text-white">{post.title}</h3>
-                    <p className="text-neutral-400 mb-4 line-clamp-3">{post.excerpt}</p>
+                    <h3 className="hz-t-xl hz-w-bold hz-mb-3 hz-fg">{post.title}</h3>
+                    <p className="hz-fg-muted hz-mb-4 hz-clamp-3">{post.excerpt}</p>
 
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center">
-                        <User className="h-4 w-4 text-neutral-500 mr-2" />
-                        <span className="text-neutral-500 text-sm">{post.author}</span>
+                    <div className="hz-row hz-ai-center hz-jc-between">
+                      <div className="hz-row hz-ai-center">
+                        <User className="hz-sq-2 hz-fg-muted hz-mr-2" />
+                        <span className="hz-fg-muted hz-t-sm">{post.author}</span>
                       </div>
                       <button
-                        className="text-sm font-medium transition-colors"
-                        style={{ color: BRAND_COLOR }}
-                      >
+                        className="hz-t-sm hz-w-medium hz-transition hz-fg"
+                        >
                         Read More →
                       </button>
                     </div>
@@ -248,16 +243,16 @@ const Blog = () => {
         </section>
 
         {/* Newsletter CTA Section */}
-        <section className="py-24 px-4 md:px-8 bg-gradient-to-b from-neutral-900/30 to-black relative overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/10 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-white/5 rounded-full blur-3xl pointer-events-none" />
+        <section className="hz-py-7 hz-px-4 hz-rel hz-clip">
+          <div className="hz-sq-8 hz-abs hz-bg-quiet hz-r-full hz-blur-bg hz-no-pointer" />
+          <div className="hz-sq-8 hz-abs hz-bg-quiet hz-r-full hz-blur-bg hz-no-pointer" />
 
-          <div className="max-w-4xl mx-auto text-center relative z-10">
+          <div className="hz-container-narrow hz-align-center hz-rel hz-z-raised">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-3xl md:text-4xl font-bold text-white mb-4"
+              className="hz-t-3xl hz-w-bold hz-fg hz-mb-4"
             >
               Stay up to date
             </motion.h2>
@@ -267,7 +262,7 @@ const Blog = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-lg text-neutral-400 mb-10 max-w-2xl mx-auto"
+              className="hz-container-narrow hz-mw-md hz-t-lg hz-fg-muted hz-mb-6"
             >
               Get the latest Hanzo news, product updates, and tutorials delivered directly to your inbox.
             </motion.p>
@@ -277,17 +272,16 @@ const Blog = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto"
+              className="hz-col-row hz-container-narrow hz-mw-sm hz-gap-3"
             >
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-grow px-4 py-3 bg-neutral-900 border border-neutral-800 rounded-full text-white placeholder:text-neutral-500 focus:outline-none focus:border-neutral-600"
+                className="hz-grow hz-px-4 hz-py-3 hz-bg-surface hz-bordered hz-r-full hz-fg"
               />
               <button
-                className="inline-flex items-center justify-center px-8 py-3 rounded-full font-medium transition-all hover:opacity-90 text-base"
-                style={{ backgroundColor: BRAND_COLOR, color: "#000000" }}
-              >
+                className="hz-btn hz-btn-ghost hz-btn-lg hz-transition hz-bg-inverse"
+                >
                 Subscribe
               </button>
             </motion.div>

@@ -5,40 +5,40 @@ import { Cpu, Clock, Users, LineChart } from "lucide-react";
 
 const UnifiedPlatform = () => {
   return (
-    <section className="py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black to-gray-900/20 relative">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-neutral-800/10 via-transparent to-transparent"></div>
+    <section className="hz-py-7 hz-px-4 hz-rel">
+      <div className="hz-abs hz-inset"></div>
       
-      <div className="max-w-6xl mx-auto relative z-10">
+      <div className="hz-container-wide hz-rel hz-z-raised">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="max-w-3xl mx-auto text-center mb-20"
+          className="hz-container-narrow hz-align-center hz-mb-7"
         >
-          <div className="inline-flex items-center justify-center mb-6 bg-neutral-800/30 p-3 rounded-full">
-            <Cpu className="h-7 w-7 text-neutral-400" />
+          <div className="hz-inline hz-ai-center hz-jc-center hz-mb-5 hz-bg-raised hz-p-3 hz-r-full">
+            <Cpu className="hz-sq-5 hz-fg-muted" />
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">Unified Intelligence Platform</h2>
-          <p className="text-xl text-neutral-300">
+          <h2 className="hz-t-3xl hz-w-bold hz-mb-5">Unified Intelligence Platform</h2>
+          <p className="hz-t-xl hz-fg-soft">
             Bring all your AI observability needs under one seamless platform. Hanzo integrates monitoring, analytics, debugging, and evaluation into a single powerful toolkit.
           </p>
         </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="hz-grid hz-grid-3 hz-gap-6">
           {[
             {
-              icon: <Clock className="h-7 w-7 text-neutral-400" />,
+              icon: <Clock className="hz-sq-5 hz-fg-muted" />,
               title: "Real-time System Tracing",
               description: "Capture and analyze every event in your AI system with microsecond precision."
             },
             {
-              icon: <Users className="h-7 w-7 text-neutral-400" />,
+              icon: <Users className="hz-sq-5 hz-fg-muted" />,
               title: "Cross-team Collaboration",
               description: "Unite your engineering, data science, and product teams with role-based views and controls."
             },
             {
-              icon: <LineChart className="h-7 w-7 text-neutral-400" />,
+              icon: <LineChart className="hz-sq-5 hz-fg-muted" />,
               title: "Intelligent Event Analytics",
               description: "Reveal patterns and insights that would otherwise remain hidden in your operational data."
             }
@@ -49,13 +49,13 @@ const UnifiedPlatform = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-gradient-to-br from-gray-900 to-black/80 rounded-xl p-8 border border-gray-800 hover:border-gray-700 transition-colors"
+              className="hz-card hz-transition hz-card-interactive"
             >
-              <div className="bg-neutral-800/20 p-3 rounded-lg w-fit mb-5">
+              <div className="hz-bg-raised hz-p-3 hz-r-lg hz-w-fit hz-mb-4">
                 {feature.icon}
               </div>
-              <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
-              <p className="text-neutral-400">{feature.description}</p>
+              <h3 className="hz-t-xl hz-w-bold hz-mb-3">{feature.title}</h3>
+              <p className="hz-fg-muted">{feature.description}</p>
             </motion.div>
           ))}
         </div>
@@ -65,16 +65,16 @@ const UnifiedPlatform = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.3 }}
-          className="mt-20 relative h-80 overflow-hidden rounded-xl border border-gray-800"
+          className="hz-mt-7 hz-rel hz-bh-8 hz-clip hz-r-lg hz-bordered"
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black z-10"></div>
+          <div className="hz-abs hz-inset hz-z-raised"></div>
           
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="grid grid-cols-4 gap-4 w-full p-8">
+          <div className="hz-abs hz-inset hz-row hz-ai-center hz-jc-center">
+            <div className="hz-grid hz-grid-4 hz-gap-4 hz-w-full hz-p-6">
               {Array.from({ length: 12 }).map((_, idx) => (
                 <div 
                   key={idx} 
-                  className="h-20 bg-gradient-to-br from-gray-800/60 to-gray-900/60 rounded-lg border border-gray-700/30 opacity-60"
+                  className="hz-bh-8 hz-r-lg hz-bordered hz-dim"
                   style={{ 
                     opacity: Math.random() * 0.5 + 0.3,
                     transform: `scale(${Math.random() * 0.3 + 0.8})` 
@@ -84,10 +84,10 @@ const UnifiedPlatform = () => {
             </div>
           </div>
           
-          <div className="absolute inset-0 flex items-center justify-center z-20">
-            <div className="text-center">
-              <h3 className="text-2xl md:text-3xl font-bold mb-4">Everything in One Place</h3>
-              <p className="text-neutral-300 max-w-md">
+          <div className="hz-abs hz-inset hz-row hz-ai-center hz-jc-center hz-z-raised">
+            <div className="hz-align-center">
+              <h3 className="hz-t-2xl hz-w-bold hz-mb-4">Everything in One Place</h3>
+              <p className="hz-fg-soft hz-mw-sm">
                 End fragmentation in your AI operations with Hanzo's all-in-one observability platform
               </p>
             </div>

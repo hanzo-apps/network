@@ -14,64 +14,64 @@ import { Card, CardContent } from "@/components/ui/card";
 const HumanAIIntegration = () => {
   const features = [
     {
-      icon: <Video className="h-10 w-10 text-neutral-400" />,
+      icon: <Video className="hz-sq-6 hz-fg-muted" />,
       title: "Train via Zoom",
       description: "Simply have a Zoom call with your AI agents. They learn by watching and listening, just like a human team member would."
     },
     {
-      icon: <Monitor className="h-10 w-10 text-neutral-400" />,
+      icon: <Monitor className="hz-sq-6 hz-fg-muted" />,
       title: "Watch Them Work",
       description: "View your AI agents' work in real-time through a virtual desktop. Provide feedback and guidance as needed."
     },
     {
-      icon: <MessageSquare className="h-10 w-10 text-neutral-400" />,
+      icon: <MessageSquare className="hz-sq-6 hz-fg-muted" />,
       title: "Seamless Communication",
       description: "Chat with your AI team members through your existing communication channels like Slack, Teams, or email."
     },
     {
-      icon: <Lightbulb className="h-10 w-10 text-neutral-400" />,
+      icon: <Lightbulb className="hz-sq-6 hz-fg-muted" />,
       title: "Proactive Suggestions",
       description: "AI agents will proactively offer insights and suggestions based on their observations of your workflow."
     },
     {
-      icon: <Workflow className="h-10 w-10 text-neutral-400" />,
+      icon: <Workflow className="hz-sq-6 hz-fg-muted" />,
       title: "Workflow Automation",
       description: "Agents learn your repetitive tasks and offer to automate them, saving you time for more creative work."
     },
     {
-      icon: <Users className="h-10 w-10 text-neutral-400" />,
+      icon: <Users className="hz-sq-6 hz-fg-muted" />,
       title: "Human Escalation",
       description: "When tasks require human judgment, agents automatically escalate to the appropriate team member."
     }
   ];
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-950">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <section className="hz-py-7 hz-px-4 hz-bg-surface">
+      <div className="hz-container">
+        <div className="hz-grid hz-grid-2 hz-gap-7 hz-ai-center">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <div className="inline-flex p-2 rounded-full bg-neutral-800/20 border border-neutral-500/20 text-neutral-400 mb-4">
-              <Users className="h-6 w-6" />
+            <div className="hz-inline hz-p-2 hz-r-full hz-bg-raised hz-bordered hz-border-strong hz-fg-muted hz-mb-4">
+              <Users className="hz-sq-4" />
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            <h2 className="hz-t-3xl hz-w-bold hz-mb-5">
               Human-AI Integration
             </h2>
-            <p className="text-xl text-neutral-300 mb-8">
+            <p className="hz-t-xl hz-fg-soft hz-mb-6">
               Our AI agents are designed to work alongside your human team, 
               creating a seamless integration that enhances productivity and creativity.
             </p>
             
-            <div className="relative aspect-video rounded-xl overflow-hidden border border-neutral-500/20 bg-[var(--black)]/50">
-              <div className="absolute inset-0 flex items-center justify-center">
+            <div className="hz-rel hz-r-lg hz-clip hz-bordered hz-border-strong hz-bg-overlay">
+              <div className="hz-abs hz-inset hz-row hz-ai-center hz-jc-center">
                 {/* This would be a real video in production */}
-                <div className="text-center p-8">
-                  <Video className="h-16 w-16 text-neutral-400 mx-auto mb-4 opacity-70" />
-                  <p className="text-neutral-400">Interactive demo video would be here</p>
+                <div className="hz-align-center hz-p-6">
+                  <Video className="hz-sq-8 hz-fg-muted hz-mx-auto hz-mb-4 hz-dim" />
+                  <p className="hz-fg-muted">Interactive demo video would be here</p>
                 </div>
               </div>
             </div>
@@ -83,18 +83,18 @@ const HumanAIIntegration = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="hz-grid hz-grid-2 hz-gap-5">
               {features.map((feature, index) => (
                 <Card 
                   key={index} 
-                  className="bg-[var(--black)]/40 border border-neutral-800/20 backdrop-blur-sm overflow-hidden"
+                  className="hz-bg-overlay hz-bordered hz-glass hz-clip"
                 >
-                  <CardContent className="p-6">
-                    <div className="bg-neutral-800/20 p-3 rounded-lg inline-flex mb-4">
+                  <CardContent className="hz-p-5">
+                    <div className="hz-bg-raised hz-p-3 hz-r-lg hz-inline hz-mb-4">
                       {feature.icon}
                     </div>
-                    <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                    <p className="text-neutral-400">{feature.description}</p>
+                    <h3 className="hz-t-xl hz-w-semibold hz-mb-2">{feature.title}</h3>
+                    <p className="hz-fg-muted">{feature.description}</p>
                   </CardContent>
                 </Card>
               ))}

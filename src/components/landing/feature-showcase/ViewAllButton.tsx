@@ -34,7 +34,7 @@ const ViewAllButton: React.FC<ViewAllButtonProps> = ({ href, text, hoverColor })
   const colorClasses = hoverColorMap[hoverColor] || hoverColorMap.blue;
   
   return (
-    <div className="flex justify-center mb-12">
+    <div className="hz-row hz-jc-center hz-mb-7">
       <motion.div
         whileHover={{ scale: 1.05 }}
         transition={{ type: "spring", stiffness: 400, damping: 10 }}
@@ -43,16 +43,16 @@ const ViewAllButton: React.FC<ViewAllButtonProps> = ({ href, text, hoverColor })
           variant="outline" 
           size="sm"
           className={cn(
-            "group border-gray-700 transition-all duration-300",
+            "hz-transition",
             colorClasses.bg,
             colorClasses.border,
             colorClasses.text
           )}
           asChild
         >
-          <a href={href} className="flex items-center gap-2">
+          <a href={href} className="hz-row hz-ai-center hz-gap-2">
             <span>{text}</span>
-            <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="hz-sq-2 hz-transition" />
           </a>
         </Button>
       </motion.div>

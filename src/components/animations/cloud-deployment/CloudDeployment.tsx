@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import { TooltipProvider } from "@/components/ui/radix-tooltip";
+import { TooltipProvider } from "@/components/ui/tooltip";
 import { useDeploymentSequence } from "./hooks/useDeploymentSequence";
 import BackgroundGrid from "./BackgroundGrid";
 import ZoomControls from "./ZoomControls";
@@ -22,9 +22,9 @@ const CloudDeployment: React.FC = () => {
   };
 
   return (
-    <div className="relative h-[460px] w-full overflow-hidden rounded-xl bg-[var(--black)]/90 border border-gray-800 shadow-lg">
+    <div className="hz-rel hz-w-full hz-clip hz-r-lg hz-bg-overlay hz-bordered hz-shadow-lg">
       {/* Semi-transparent blue gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-neutral-950/20 to-neutral-950/20 pointer-events-none"></div>
+      <div className="hz-abs hz-inset hz-no-pointer"></div>
       
       {/* Zoom controls */}
       <ZoomControls />

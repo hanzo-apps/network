@@ -70,62 +70,62 @@ const InvoicesList = () => {
   return (
     <motion.div 
       variants={cardAnimation}
-      className="rounded-xl border border-gray-800 bg-[var(--black)]/60 overflow-hidden"
+      className="hz-r-lg hz-bordered hz-bg-overlay hz-clip"
     >
-      <div className="p-6 border-b border-gray-800 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-        <div className="flex items-center gap-3">
-          <Calendar className="h-5 w-5 text-neutral-400" />
-          <div className="space-y-1">
-            <h3 className="text-xl font-medium">Invoice History</h3>
-            <p className="text-sm text-neutral-400">View and download past invoices</p>
+      <div className="hz-col-row hz-p-5 hz-border-b hz-jc-between hz-ai-start hz-gap-4">
+        <div className="hz-row hz-ai-center hz-gap-3">
+          <Calendar className="hz-sq-3 hz-fg-muted" />
+          <div className="hz-stack-1">
+            <h3 className="hz-t-xl hz-w-medium">Invoice History</h3>
+            <p className="hz-t-sm hz-fg-muted">View and download past invoices</p>
           </div>
         </div>
         
-        <div className="flex items-center gap-2">
-          <Button variant="outline" size="sm" className="border-gray-700 bg-[var(--black)] hover:bg-gray-900">
-            <Filter className="h-4 w-4 mr-2" />
+        <div className="hz-row hz-ai-center hz-gap-2">
+          <Button variant="outline" size="sm" className="hz-bg hz-hoverable">
+            <Filter className="hz-sq-2 hz-mr-2" />
             Filter
           </Button>
           
-          <Button className="bg-[var(--white)] hover:bg-gray-200 text-black">
-            <Download className="h-4 w-4 mr-2" />
+          <Button className="hz-bg-inverse hz-fg-inverse hz-hoverable">
+            <Download className="hz-sq-2 hz-mr-2" />
             Export All
           </Button>
         </div>
       </div>
       
       {filteredInvoices.length > 0 ? (
-        <div className="overflow-x-auto">
+        <div className="hz-scroll-x">
           <Table>
-            <TableHeader className="bg-[var(--black)]">
-              <TableRow className="border-b border-gray-800 hover:bg-transparent">
-                <TableHead className="text-neutral-400 font-medium py-3 px-6">Invoice</TableHead>
-                <TableHead className="text-neutral-400 font-medium py-3 px-6">Date</TableHead>
-                <TableHead className="text-neutral-400 font-medium py-3 px-6">Due Date</TableHead>
-                <TableHead className="text-neutral-400 font-medium py-3 px-6">Amount</TableHead>
-                <TableHead className="text-neutral-400 font-medium py-3 px-6">Status</TableHead>
-                <TableHead className="text-right text-neutral-400 font-medium py-3 px-6">Actions</TableHead>
+            <TableHeader className="hz-bg">
+              <TableRow className="hz-border-b hz-hoverable">
+                <TableHead className="hz-fg-muted hz-w-medium hz-py-3 hz-px-5">Invoice</TableHead>
+                <TableHead className="hz-fg-muted hz-w-medium hz-py-3 hz-px-5">Date</TableHead>
+                <TableHead className="hz-fg-muted hz-w-medium hz-py-3 hz-px-5">Due Date</TableHead>
+                <TableHead className="hz-fg-muted hz-w-medium hz-py-3 hz-px-5">Amount</TableHead>
+                <TableHead className="hz-fg-muted hz-w-medium hz-py-3 hz-px-5">Status</TableHead>
+                <TableHead className="hz-align-right hz-fg-muted hz-w-medium hz-py-3 hz-px-5">Actions</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {filteredInvoices.map((invoice) => (
-                <TableRow key={invoice.id} className="border-t border-gray-800 hover:bg-gray-900/30">
-                  <TableCell className="py-4 px-6">{invoice.id}</TableCell>
-                  <TableCell className="py-4 px-6">{invoice.date}</TableCell>
-                  <TableCell className="py-4 px-6">{invoice.dueDate}</TableCell>
-                  <TableCell className="py-4 px-6">{invoice.amount}</TableCell>
-                  <TableCell className="py-4 px-6">
-                    <span className={`inline-block px-2 py-1 rounded-full text-xs ${statusColors[invoice.status]}`}>
+                <TableRow key={invoice.id} className="hz-border-t hz-hoverable">
+                  <TableCell className="hz-py-4 hz-px-5">{invoice.id}</TableCell>
+                  <TableCell className="hz-py-4 hz-px-5">{invoice.date}</TableCell>
+                  <TableCell className="hz-py-4 hz-px-5">{invoice.dueDate}</TableCell>
+                  <TableCell className="hz-py-4 hz-px-5">{invoice.amount}</TableCell>
+                  <TableCell className="hz-py-4 hz-px-5">
+                    <span className={`hz-px-2 hz-py-1 hz-r-full hz-t-xs ${statusColors[invoice.status]}`}>
                       {invoice.status}
                     </span>
                   </TableCell>
-                  <TableCell className="py-4 px-6 text-right">
+                  <TableCell className="hz-py-4 hz-px-5 hz-align-right">
                     <Button 
                       variant="ghost" 
                       size="sm"
-                      className="text-neutral-400 hover:text-[var(--white)] hover:bg-gray-800"
+                      className="hz-fg-muted hz-link"
                     >
-                      <Download className="h-4 w-4 mr-2" />
+                      <Download className="hz-sq-2 hz-mr-2" />
                       Download
                     </Button>
                   </TableCell>
@@ -135,10 +135,10 @@ const InvoicesList = () => {
           </Table>
         </div>
       ) : (
-        <div className="py-16 text-center">
-          <FileText className="h-12 w-12 mx-auto mb-4 text-neutral-600" />
-          <h3 className="text-xl font-medium mb-2">No Invoices Found</h3>
-          <p className="text-neutral-400 max-w-md mx-auto">
+        <div className="hz-py-7 hz-align-center">
+          <FileText className="hz-sq-7 hz-mx-auto hz-mb-4 hz-fg-faint" />
+          <h3 className="hz-t-xl hz-w-medium hz-mb-2">No Invoices Found</h3>
+          <p className="hz-container-narrow hz-mw-sm hz-fg-muted">
             Once you start using our services, your invoices will appear here.
           </p>
         </div>

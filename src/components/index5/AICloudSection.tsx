@@ -10,26 +10,26 @@ const AICloudSection: React.FC = () => {
   const navigate = useNavigate();
   
   const features = [
-    { icon: <Cloud className="h-6 w-6 text-neutral-400" />, title: "Global Infrastructure", description: "Deploy AI models across 35+ regions worldwide" },
-    { icon: <Server className="h-6 w-6 text-neutral-400" />, title: "Compute Scaling", description: "Automatically scale resources based on demand" },
-    { icon: <Shield className="h-6 w-6 text-neutral-400" />, title: "Enterprise Security", description: "SOC 2 Type II, HIPAA, and GDPR compliant" },
-    { icon: <Zap className="h-6 w-6 text-neutral-400" />, title: "Low Latency", description: "Sub-100ms response times for AI inference" },
-    { icon: <Globe className="h-6 w-6 text-neutral-400" />, title: "Global Edge Network", description: "Serve models from the edge for faster responses" },
-    { icon: <Server className="h-6 w-6 text-neutral-400" />, title: "Model Optimization", description: "Automatic optimization for faster performance" }
+    { icon: <Cloud className="hz-sq-4 hz-fg-muted" />, title: "Global Infrastructure", description: "Deploy AI models across 35+ regions worldwide" },
+    { icon: <Server className="hz-sq-4 hz-fg-muted" />, title: "Compute Scaling", description: "Automatically scale resources based on demand" },
+    { icon: <Shield className="hz-sq-4 hz-fg-muted" />, title: "Enterprise Security", description: "SOC 2 Type II, HIPAA, and GDPR compliant" },
+    { icon: <Zap className="hz-sq-4 hz-fg-muted" />, title: "Low Latency", description: "Sub-100ms response times for AI inference" },
+    { icon: <Globe className="hz-sq-4 hz-fg-muted" />, title: "Global Edge Network", description: "Serve models from the edge for faster responses" },
+    { icon: <Server className="hz-sq-4 hz-fg-muted" />, title: "Model Optimization", description: "Automatic optimization for faster performance" }
   ];
   
   return (
-    <section className="py-24 px-4 relative" id="ai-cloud">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
+    <section className="hz-py-7 hz-px-4 hz-rel" id="ai-cloud">
+      <div className="hz-container">
+        <div className="hz-align-center hz-mb-7">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="mb-4"
+            className="hz-mb-4"
           >
-            <span className="inline-block px-4 py-1 rounded-full bg-neutral-800/30 border border-neutral-500/30 text-neutral-300 text-sm font-medium">
+            <span className="hz-px-4 hz-py-1 hz-r-full hz-bg-raised hz-bordered hz-border-strong hz-fg-soft hz-t-sm hz-w-medium">
               Enterprise Scale
             </span>
           </motion.div>
@@ -42,18 +42,18 @@ const AICloudSection: React.FC = () => {
           >
             <ChromeText 
               as="h2" 
-              className="text-3xl md:text-5xl font-bold mb-6"
+              className="hz-t-3xl hz-w-bold hz-mb-5"
             >
               AI Cloud Platform
             </ChromeText>
             
-            <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
+            <p className="hz-container-narrow hz-t-xl hz-fg-soft">
               Deploy, manage, and scale AI models with enterprise-grade reliability and security
             </p>
           </motion.div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
+        <div className="hz-grid hz-grid-3 hz-gap-5 hz-mt-7">
           {features.map((feature, index) => (
             <motion.div
               key={feature.title}
@@ -61,13 +61,13 @@ const AICloudSection: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
-              className="bg-gradient-to-br from-neutral-800/20 to-neutral-800/5 p-6 rounded-xl border border-neutral-500/20 hover:border-neutral-500/40 transition-all duration-300"
+              className="hz-card hz-transition hz-card-interactive"
             >
-              <div className="bg-neutral-600/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+              <div className="hz-sq-7 hz-bg-raised hz-r-lg hz-row hz-ai-center hz-jc-center hz-mb-4">
                 {feature.icon}
               </div>
-              <h3 className="text-xl font-bold mb-2 text-[var(--white)]">{feature.title}</h3>
-              <p className="text-neutral-300">{feature.description}</p>
+              <h3 className="hz-t-xl hz-w-bold hz-mb-2 hz-fg">{feature.title}</h3>
+              <p className="hz-fg-soft">{feature.description}</p>
             </motion.div>
           ))}
         </div>
@@ -77,13 +77,13 @@ const AICloudSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-16 flex justify-center"
+          className="hz-mt-7 hz-row hz-jc-center"
         >
           <Button 
-            className="text-lg px-8 py-6 bg-neutral-600 hover:bg-neutral-700"
+            className="hz-t-lg hz-px-6 hz-py-5 hz-bg-raised hz-hoverable"
             onClick={() => navigate('/cloud')}
           >
-            Explore AI Cloud <ArrowRight className="ml-2 h-5 w-5" />
+            Explore AI Cloud <ArrowRight className="hz-sq-3 hz-ml-2" />
           </Button>
         </motion.div>
       </div>

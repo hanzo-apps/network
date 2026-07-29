@@ -114,17 +114,17 @@ const Background: React.FC = () => {
   }, []);
 
   return (
-    <div className="fixed inset-0 -z-10">
+    <div className="hz-fixed hz-inset hz-z-behind">
       <canvas 
         ref={canvasRef} 
-        className="absolute inset-0 w-full h-full"
+        className="hz-abs hz-inset hz-w-full hz-h-full"
       />
       
-      <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/20 to-black"></div>
+      <div className="hz-abs hz-inset"></div>
       
       {/* Animated grid overlay */}
       <motion.div 
-        className="absolute inset-0" 
+        className="hz-abs hz-inset" 
         initial={{ opacity: 0.05 }}
         animate={{ opacity: [0.05, 0.1, 0.05] }}
         transition={{ duration: 8, repeat: Infinity, repeatType: "reverse" }}
@@ -136,7 +136,7 @@ const Background: React.FC = () => {
       
       {/* Animated glow spots */}
       <motion.div
-        className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-[100px] bg-neutral-600/10"
+        className="hz-sq-8 hz-abs hz-r-full hz-blur-bg hz-bg-raised"
         animate={{ 
           scale: [1, 1.2, 1],
           opacity: [0.1, 0.15, 0.1],
@@ -145,7 +145,7 @@ const Background: React.FC = () => {
       />
       
       <motion.div
-        className="absolute bottom-1/3 right-1/3 w-64 h-64 rounded-full blur-[100px] bg-neutral-500/10"
+        className="hz-sq-8 hz-abs hz-r-full hz-blur-bg hz-bg-raised"
         animate={{ 
           scale: [1, 1.3, 1],
           opacity: [0.08, 0.12, 0.08],

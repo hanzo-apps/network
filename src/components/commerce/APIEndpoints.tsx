@@ -10,9 +10,9 @@ interface EndpointProps {
 
 const EndpointCard = ({ path, description }: EndpointProps) => {
   return (
-    <div className="bg-gray-900/40 border border-gray-800 rounded-lg p-4 hover:border-neutral-500/30 transition-all duration-300">
-      <div className="font-mono text-sm text-neutral-400 mb-2">{path}</div>
-      <p className="text-neutral-400 text-sm">{description}</p>
+    <div className="hz-card hz-transition hz-card-interactive">
+      <div className="hz-mono hz-t-sm hz-fg-muted hz-mb-2">{path}</div>
+      <p className="hz-fg-muted hz-t-sm">{description}</p>
     </div>
   );
 };
@@ -110,43 +110,43 @@ const APIEndpoints = () => {
   const tabClasses = "data-[state=active]:bg-neutral-500/10 data-[state=active]:text-neutral-400 border-b-0";
 
   return (
-    <section className="py-16 bg-gradient-to-b from-black to-gray-900/30">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-10">
-          <h2 className="text-3xl font-bold mb-4">Comprehensive API</h2>
-          <p className="text-neutral-400 max-w-2xl mx-auto">
+    <section className="hz-py-7">
+      <div className="hz-container hz-mx-auto hz-px-4">
+        <div className="hz-align-center hz-mb-6">
+          <h2 className="hz-t-3xl hz-w-bold hz-mb-4">Comprehensive API</h2>
+          <p className="hz-container-narrow hz-mw-md hz-fg-muted">
             A complete API-first platform that powers your e-commerce business with flexible endpoints for every need.
           </p>
         </div>
         
-        <div className="max-w-5xl mx-auto">
-          <Tabs defaultValue="commerce" className="w-full" onValueChange={setActiveCategory}>
-            <TabsList className="w-full mb-6 bg-gray-900/50 border border-gray-800 rounded-lg p-1 h-auto flex flex-wrap">
-              <TabsTrigger value="commerce" className={cn(tabClasses, "flex-1")}>
+        <div className="hz-container-wide">
+          <Tabs defaultValue="commerce" className="hz-w-full" onValueChange={setActiveCategory}>
+            <TabsList className="hz-w-full hz-mb-5 hz-bg-surface hz-bordered hz-r-lg hz-p-1 hz-row hz-wrap">
+              <TabsTrigger value="commerce" className={cn(tabClasses, "hz-grow")}>
                 Commerce
               </TabsTrigger>
-              <TabsTrigger value="identity" className={cn(tabClasses, "flex-1")}>
+              <TabsTrigger value="identity" className={cn(tabClasses, "hz-grow")}>
                 Identity
               </TabsTrigger>
-              <TabsTrigger value="marketing" className={cn(tabClasses, "flex-1")}>
+              <TabsTrigger value="marketing" className={cn(tabClasses, "hz-grow")}>
                 Marketing
               </TabsTrigger>
-              <TabsTrigger value="payments" className={cn(tabClasses, "flex-1")}>
+              <TabsTrigger value="payments" className={cn(tabClasses, "hz-grow")}>
                 Payments
               </TabsTrigger>
-              <TabsTrigger value="platform" className={cn(tabClasses, "flex-1")}>
+              <TabsTrigger value="platform" className={cn(tabClasses, "hz-grow")}>
                 Platform
               </TabsTrigger>
             </TabsList>
             
             {Object.keys(endpointCategories).map((category) => (
-              <TabsContent key={category} value={category} className="mt-0">
-                <div className="bg-gray-900/20 border border-gray-800 rounded-xl p-6">
-                  <h3 className="text-xl font-semibold mb-4 text-neutral-400">
+              <TabsContent key={category} value={category} className="hz-mt-0">
+                <div className="hz-card">
+                  <h3 className="hz-t-xl hz-w-semibold hz-mb-4 hz-fg-muted">
                     Hanzo {category.charAt(0).toUpperCase() + category.slice(1)} API Endpoints
                   </h3>
                   
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <div className="hz-grid hz-grid-2 hz-gap-3">
                     {endpointCategories[category as keyof typeof endpointCategories].map((endpoint, index) => (
                       <EndpointCard
                         key={index}

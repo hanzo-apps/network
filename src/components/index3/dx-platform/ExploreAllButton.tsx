@@ -6,16 +6,16 @@ import { Link } from "react-router-dom";
 
 const ExploreAllButton: React.FC = () => {
   return (
-    <div className="text-center mt-8">
+    <div className="hz-align-center hz-mt-6">
       <Button 
         variant="outline" 
-        className="group px-6" 
+        className="hz-px-5" 
         radius="full"
         asChild
       >
         <Link to="/platform">
           Explore All Platform Tools
-          <ExternalLink className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+          <ExternalLink className="hz-sq-2 hz-ml-2 hz-transition" />
         </Link>
       </Button>
     </div>

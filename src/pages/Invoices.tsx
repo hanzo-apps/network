@@ -9,7 +9,7 @@ const Invoices = () => {
     <AnimatedSection>
       <AnimatedHeading>Invoices</AnimatedHeading>
       
-      <div className="space-y-8">
+      <div className="hz-stack-6">
         <InvoicesSummary />
         <InvoicesList />
       </div>

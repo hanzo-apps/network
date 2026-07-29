@@ -14,33 +14,33 @@ interface DXPlatformGridProps {
 
 const DXPlatformGrid: React.FC<DXPlatformGridProps> = ({ isHovered, setIsHovered }) => {
   return (
-    <div className="space-y-8">
+    <div className="hz-stack-6">
       {/* Enhanced Platform Visual with Grid Layout */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="mb-12"
+        className="hz-mb-7"
       >
-        <div className="relative h-80 w-full bg-gray-900/30 rounded-xl overflow-hidden border border-gray-800">
-          <div className="absolute inset-0 bg-gradient-to-br from-neutral-900/10 to-neutral-800/10"></div>
+        <div className="hz-rel hz-bh-8 hz-w-full hz-bg-surface hz-r-lg hz-clip hz-bordered">
+          <div className="hz-abs hz-inset"></div>
           
           {/* Background grid pattern with enhanced visibility */}
-          <div className="absolute inset-0 grid grid-cols-16 grid-rows-8 gap-4 p-4 opacity-30">
+          <div className="hz-grid hz-grid-6 hz-abs hz-inset hz-gap-4 hz-p-4 hz-dim-more">
             {Array(16 * 8).fill(0).map((_, i) => (
-              <div key={i} className="border border-neutral-500/20 rounded-sm"></div>
+              <div key={i} className="hz-bordered hz-border-strong hz-r-sm"></div>
             ))}
           </div>
           
           {/* Central platform hub */}
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-            <div className="w-28 h-28 rounded-full bg-gradient-to-br from-neutral-600/30 to-neutral-600/30 border border-neutral-500/40 flex items-center justify-center">
-              <span className="text-xl font-bold text-[var(--white)]">Hanzo DX</span>
+          <div className="hz-center-xy hz-abs">
+            <div className="hz-sq-8 hz-r-full hz-bordered hz-border-strong hz-row hz-ai-center hz-jc-center">
+              <span className="hz-t-xl hz-w-bold hz-fg">Hanzo DX</span>
             </div>
             
             {/* Connection lines to product categories */}
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full">
+            <div className="hz-center-xy hz-abs hz-w-full hz-h-full">
               {dxPlatformData.slice(0, 12).map((platform, index) => {
                 const angle = (index / 12) * Math.PI * 2;
                 const distance = 180;
@@ -50,7 +50,7 @@ const DXPlatformGrid: React.FC<DXPlatformGridProps> = ({ isHovered, setIsHovered
                 return (
                   <React.Fragment key={platform.id}>
                     <div 
-                      className="absolute w-0.5 bg-gradient-to-b from-neutral-500/20 to-neutral-500/40"
+                      className="hz-abs hz-bw-1"
                       style={{
                         height: distance,
                         transform: `rotate(${angle + Math.PI/2}rad)`,
@@ -60,7 +60,7 @@ const DXPlatformGrid: React.FC<DXPlatformGridProps> = ({ isHovered, setIsHovered
                       }}
                     />
                     <div 
-                      className="absolute p-2 rounded-lg bg-gradient-to-br from-neutral-900/40 to-neutral-800/40 border border-neutral-500/30 flex items-center justify-center"
+                      className="hz-abs hz-p-2 hz-r-lg hz-bordered hz-border-strong hz-row hz-ai-center hz-jc-center"
                       style={{
                         width: '80px',
                         height: '40px',
@@ -71,7 +71,7 @@ const DXPlatformGrid: React.FC<DXPlatformGridProps> = ({ isHovered, setIsHovered
                       onMouseEnter={() => setIsHovered(platform.id)}
                       onMouseLeave={() => setIsHovered(null)}
                     >
-                      <span className="text-xs font-medium text-[var(--white)] whitespace-nowrap">{platform.title}</span>
+                      <span className="hz-t-xs hz-w-medium hz-fg hz-whitespace-nowrap">{platform.title}</span>
                     </div>
                   </React.Fragment>
                 );
@@ -82,7 +82,7 @@ const DXPlatformGrid: React.FC<DXPlatformGridProps> = ({ isHovered, setIsHovered
       </motion.div>
       
       {/* Products grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
+      <div className="hz-grid hz-grid-4 hz-gap-4">
         {/* Display all platform cards */}
         {dxPlatformData.map((platform) => (
           <DXPlatformCard
@@ -107,21 +107,21 @@ const DXPlatformGrid: React.FC<DXPlatformGridProps> = ({ isHovered, setIsHovered
           onMouseEnter={() => setIsHovered("more")}
           onMouseLeave={() => setIsHovered(null)}
         >
-          <Link to="/platform" className="bg-gray-900/20 border border-gray-800 rounded-xl p-6 group hover:bg-gray-900/30 transition-colors h-full flex flex-col">
-            <div className="h-12 w-12 rounded-lg flex items-center justify-center mb-4 transition-colors duration-300 bg-neutral-800/30 group-hover:bg-neutral-600/30">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-neutral-400 group-hover:text-neutral-300 transition-colors duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <Link to="/platform" className="hz-card hz-transition hz-h-full hz-col hz-card-interactive">
+            <div className="hz-sq-7 hz-r-lg hz-row hz-ai-center hz-jc-center hz-mb-4 hz-transition hz-bg-raised hz-hoverable">
+              <svg xmlns="http://www.w3.org/2000/svg" className="hz-sq-4 hz-fg-muted hz-transition hz-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
             </div>
-            <ChromeText as="h3" className="text-xl font-bold mb-2">
+            <ChromeText as="h3" className="hz-t-xl hz-w-bold hz-mb-2">
               Explore More
             </ChromeText>
-            <p className="text-neutral-300 mb-4 text-sm">
+            <p className="hz-fg-soft hz-mb-4 hz-t-sm">
               Discover our complete DX Platform and developer tools ecosystem
             </p>
-            <div className="mt-auto">
+            <div className="hz-mt-auto">
               <Button 
-                className="bg-gradient-to-r from-neutral-600 to-neutral-600 hover:from-neutral-500 hover:to-neutral-500 text-[var(--white)] w-full"
+                className="hz-fg hz-w-full"
                 radius="full"
               >
                 View All Tools
@@ -137,25 +137,25 @@ const DXPlatformGrid: React.FC<DXPlatformGridProps> = ({ isHovered, setIsHovered
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="mt-16 p-8 bg-gradient-to-r from-neutral-900/20 to-neutral-800/20 rounded-xl border border-neutral-500/20"
+        className="hz-card hz-mt-7"
       >
-        <div className="max-w-4xl mx-auto text-center">
-          <ChromeText as="h2" className="text-2xl md:text-3xl font-bold mb-4">
+        <div className="hz-container-narrow hz-align-center">
+          <ChromeText as="h2" className="hz-t-2xl hz-w-bold hz-mb-4">
             Start Building Today, Risk-Free
           </ChromeText>
-          <p className="text-lg text-neutral-300 mb-6">
+          <p className="hz-t-lg hz-fg-soft hz-mb-5">
             Sign up now and receive $5 in free credits. Earn an additional $5 credit for every friend who joins through your referral link.
           </p>
           <Button 
             asChild
             size="lg"
-            className="px-8 py-3 bg-gradient-to-r from-neutral-600 to-neutral-600 hover:from-neutral-500 hover:to-neutral-500 text-[var(--white)] font-medium shadow-lg transition-all duration-300"
+            className="hz-px-6 hz-py-3 hz-fg hz-w-medium hz-shadow-lg hz-transition"
             radius="full"
           >
             <Link to="/signup">Get Started Free</Link>
           </Button>
-          <p className="mt-4 text-sm text-neutral-400">
-            No credit card required. <Link to="/referrals" className="text-neutral-400 hover:text-neutral-300 underline">Learn more</Link> about our referral program.
+          <p className="hz-mt-4 hz-t-sm hz-fg-muted">
+            No credit card required. <Link to="/referrals" className="hz-fg-muted hz-underline hz-link">Learn more</Link> about our referral program.
           </p>
         </div>
       </motion.div>

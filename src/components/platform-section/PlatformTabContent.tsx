@@ -16,7 +16,7 @@ interface PlatformTabContentProps {
 
 const PlatformTabContent: React.FC<PlatformTabContentProps> = ({ features }) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div className="hz-grid hz-grid-3 hz-gap-6">
       {features.map((feature, index) => (
         <PlatformFeatureCard
           key={feature.title}

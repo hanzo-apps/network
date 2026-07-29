@@ -11,44 +11,44 @@ const VideoMeetingsCard = () => {
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: 0.2 }}
-      className="bg-gray-900/30 border border-neutral-800/20 rounded-xl overflow-hidden shadow-xl"
+      className="hz-bg-surface hz-bordered hz-r-lg hz-clip hz-shadow-lg"
     >
-      <div className="border-b border-gray-800 p-3 flex items-center">
-        <Video className="h-5 w-5 text-neutral-400 mr-2" />
-        <span className="font-medium">Video Meetings</span>
-        <Badge variant="outline" className="ml-auto bg-neutral-800/30 border-neutral-500/30 text-neutral-300">
+      <div className="hz-border-b hz-p-3 hz-row hz-ai-center">
+        <Video className="hz-sq-3 hz-fg-muted hz-mr-2" />
+        <span className="hz-w-medium">Video Meetings</span>
+        <Badge variant="outline" className="hz-ml-auto hz-bg-raised hz-border-strong hz-fg-soft">
           Zoom-style
         </Badge>
       </div>
-      <div className="p-4">
-        <div className="bg-[var(--black)]/60 rounded-lg p-4">
-          <div className="mb-4 flex items-center justify-between">
-            <h3 className="font-medium text-[var(--white)]">Weekly Sprint Planning</h3>
-            <Badge className="bg-neutral-600/30 text-neutral-400 border-neutral-500/30">Live</Badge>
+      <div className="hz-p-4">
+        <div className="hz-bg-overlay hz-r-lg hz-p-4">
+          <div className="hz-mb-4 hz-row hz-ai-center hz-jc-between">
+            <h3 className="hz-w-medium hz-fg">Weekly Sprint Planning</h3>
+            <Badge className="hz-bg-raised hz-fg-muted hz-border-strong">Live</Badge>
           </div>
           
-          <div className="grid grid-cols-2 gap-2 mb-3">
-            <div className="aspect-video bg-gray-800 rounded-md relative">
-              <div className="absolute bottom-2 left-2 bg-[var(--black)]/60 px-2 py-1 rounded text-xs">Sarah Johnson</div>
+          <div className="hz-grid hz-grid-2 hz-gap-2 hz-mb-3">
+            <div className="hz-bg-raised hz-r-md hz-rel">
+              <div className="hz-abs hz-bg-overlay hz-px-2 hz-py-1 hz-r-md hz-t-xs">Sarah Johnson</div>
             </div>
-            <div className="aspect-video bg-gray-800 rounded-md relative">
-              <div className="absolute bottom-2 left-2 bg-[var(--black)]/60 px-2 py-1 rounded text-xs">John Doe</div>
+            <div className="hz-bg-raised hz-r-md hz-rel">
+              <div className="hz-abs hz-bg-overlay hz-px-2 hz-py-1 hz-r-md hz-t-xs">John Doe</div>
             </div>
-            <div className="aspect-video bg-neutral-800/30 rounded-md relative border border-neutral-700/50">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <Bot className="h-10 w-10 text-neutral-400" />
+            <div className="hz-bg-raised hz-r-md hz-rel hz-bordered">
+              <div className="hz-abs hz-inset hz-row hz-ai-center hz-jc-center">
+                <Bot className="hz-sq-6 hz-fg-muted" />
               </div>
-              <div className="absolute bottom-2 left-2 bg-neutral-800/60 px-2 py-1 rounded text-xs">DevBot</div>
+              <div className="hz-abs hz-bg-raised hz-px-2 hz-py-1 hz-r-md hz-t-xs">DevBot</div>
             </div>
-            <div className="aspect-video bg-neutral-800/30 rounded-md relative border border-neutral-700/50">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <Bot className="h-10 w-10 text-neutral-400" />
+            <div className="hz-bg-raised hz-r-md hz-rel hz-bordered">
+              <div className="hz-abs hz-inset hz-row hz-ai-center hz-jc-center">
+                <Bot className="hz-sq-6 hz-fg-muted" />
               </div>
-              <div className="absolute bottom-2 left-2 bg-neutral-800/60 px-2 py-1 rounded text-xs">AnalyticsBot</div>
+              <div className="hz-abs hz-bg-raised hz-px-2 hz-py-1 hz-r-md hz-t-xs">AnalyticsBot</div>
             </div>
           </div>
 
-          <div className="text-center text-xs text-neutral-400 py-1">
+          <div className="hz-align-center hz-t-xs hz-fg-muted hz-py-1">
             AI agents are learning from this meeting and will automatically implement the discussed tasks
           </div>
         </div>

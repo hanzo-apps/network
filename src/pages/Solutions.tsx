@@ -10,11 +10,11 @@ import CallToAction from "@/components/index3/CallToAction";
 
 const Solutions: React.FC = () => {
   return (
-    <div className="min-h-screen bg-[var(--black)] text-[var(--white)]">
+    <div className="hz-min-h-screen hz-bg hz-fg">
       <Navbar />
       
-      <main className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
+      <main className="hz-pt-6 hz-pb-6 hz-px-4">
+        <div className="hz-container">
           <SolutionsHero />
           <MainCards />
           <UnifiedAICloud />

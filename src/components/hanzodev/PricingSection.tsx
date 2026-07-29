@@ -1,10 +1,10 @@
+import { BRAND } from '@/lib/brand';
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, Check, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const BRAND_COLOR = "#ffffff";
 
 const plans = [
   {
@@ -52,29 +52,29 @@ const plans = [
 
 const PricingSection = () => {
   return (
-    <section className="py-24 px-4 bg-black">
-      <div className="max-w-6xl mx-auto">
+    <section className="hz-py-7 hz-px-4 hz-bg">
+      <div className="hz-container-wide">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="hz-align-center hz-mb-7"
         >
           <p
-            className="inline-flex text-xs font-medium rounded-full px-4 py-2 border mb-6"
-            style={{ color: BRAND_COLOR, borderColor: `${BRAND_COLOR}4d` }}
+            className="hz-inline hz-t-xs hz-w-medium hz-r-full hz-px-4 hz-py-2 hz-bordered hz-mb-5"
+            style={{ color: BRAND.fg, borderColor: `${BRAND.washStrong}` }}
           >
             Pricing
           </p>
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+          <h2 className="hz-t-3xl hz-w-bold hz-fg hz-mb-4">
             Choose your plan
           </h2>
-          <p className="text-lg text-neutral-400 max-w-2xl mx-auto">
+          <p className="hz-container-narrow hz-mw-md hz-t-lg hz-fg-muted">
             Start building with Hanzo Dev today. Scale as your needs grow.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="hz-grid hz-grid-3 hz-gap-5">
           {plans.map((plan, index) => (
             <motion.div
               key={plan.name}
@@ -82,54 +82,53 @@ const PricingSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className={`relative rounded-2xl p-8 ${
+              className={`hz-rel hz-r-xl hz-p-6 ${
                 plan.highlight
-                  ? "bg-gradient-to-b from-white/20 to-transparent border-2"
-                  : "bg-neutral-900/50 border"
-              } border-neutral-800`}
-              style={plan.highlight ? { borderColor: BRAND_COLOR } : {}}
+                  ? "hz-bordered hz-border-strong"
+                  : "hz-bg-surface hz-bordered"
+              } `}
+              style={plan.highlight ? { borderColor: BRAND.fg } : {}}
             >
               {plan.highlight && (
                 <div
-                  className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-xs font-medium text-white"
-                  style={{ backgroundColor: BRAND_COLOR }}
-                >
+                  className="hz-center-x hz-abs hz-px-4 hz-py-1 hz-r-full hz-t-xs hz-w-medium hz-fg hz-bg-inverse"
+                  >
                   Most Popular
                 </div>
               )}
 
-              <div className="mb-6">
-                <h3 className="text-xl font-semibold text-white mb-2">{plan.name}</h3>
-                <p className="text-sm text-neutral-400">{plan.description}</p>
+              <div className="hz-mb-5">
+                <h3 className="hz-t-xl hz-w-semibold hz-fg hz-mb-2">{plan.name}</h3>
+                <p className="hz-t-sm hz-fg-muted">{plan.description}</p>
               </div>
 
-              <div className="mb-6">
-                <div className="flex items-baseline gap-1">
-                  <span className="text-4xl font-bold text-white">{plan.price}</span>
+              <div className="hz-mb-5">
+                <div className="hz-row hz-ai-baseline hz-gap-1">
+                  <span className="hz-t-4xl hz-w-bold hz-fg">{plan.price}</span>
                 </div>
-                <p className="text-xs text-neutral-500 mt-2">{plan.period}</p>
+                <p className="hz-t-xs hz-fg-muted hz-mt-2">{plan.period}</p>
               </div>
 
               <Button
-                className={`w-full mb-6 ${
+                className={`hz-w-full hz-mb-5 ${
                   plan.highlight
-                    ? "text-white"
-                    : "bg-white/10 hover:bg-white/20 text-white"
+                    ? "hz-fg"
+                    : "hz-bg-quiet hz-fg hz-hoverable"
                 }`}
-                style={plan.highlight ? { backgroundColor: BRAND_COLOR } : {}}
+                style={plan.highlight ? { backgroundColor: BRAND.fg } : {}}
                 asChild
               >
                 <Link to="/signup">
                   Try Hanzo
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  <ArrowRight className="hz-sq-2 hz-ml-2" />
                 </Link>
               </Button>
 
-              <ul className="space-y-3">
+              <ul className="hz-stack-3">
                 {plan.features.map((feature) => (
-                  <li key={feature} className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-neutral-400 flex-shrink-0 mt-0.5" />
-                    <span className="text-sm text-neutral-300">{feature}</span>
+                  <li key={feature} className="hz-row hz-ai-start hz-gap-3">
+                    <Check className="hz-sq-3 hz-fg-muted hz-none hz-mt-1" />
+                    <span className="hz-t-sm hz-fg-soft">{feature}</span>
                   </li>
                 ))}
               </ul>
@@ -141,7 +140,7 @@ const PricingSection = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-center text-sm text-neutral-500 mt-8"
+          className="hz-align-center hz-t-sm hz-fg-muted hz-mt-6"
         >
           Extra usage limits apply. Prices shown don't include applicable tax.
         </motion.p>

@@ -1,3 +1,4 @@
+import { BRAND } from '@/lib/brand';
 import React, { useState } from "react";
 import { Helmet } from "react-helmet";
 import { motion } from "framer-motion";
@@ -474,88 +475,88 @@ const ModelCard = ({ model }: { model: any }) => {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className={`bg-neutral-950 border rounded-xl p-6 ${
+      className={`hz-card ${
         model.badge === "FLAGSHIP"
-          ? "border-white/30 ring-1 ring-white/10"
-          : "border-neutral-800"
+          ? "hz-ring"
+          : ""
       }`}
     >
-      <div className="flex items-start justify-between mb-4">
+      <div className="hz-row hz-ai-start hz-jc-between hz-mb-4">
         <div>
-          <div className="flex items-center gap-2 mb-1">
-            <h3 className="text-lg font-bold text-white">{model.name}</h3>
+          <div className="hz-row hz-ai-center hz-gap-2 hz-mb-1">
+            <h3 className="hz-t-lg hz-w-bold hz-fg">{model.name}</h3>
             {model.badge && (
-              <span className="px-2 py-0.5 text-[10px] font-bold rounded-full bg-white/10 text-white border border-white/20">
+              <span className="hz-px-2 hz-py-1 hz-t-xs hz-w-bold hz-r-full hz-bg-quiet hz-fg hz-bordered">
                 {model.badge}
               </span>
             )}
           </div>
           {model.base && (
-            <p className="text-xs text-neutral-500">Based on {model.base}</p>
+            <p className="hz-t-xs hz-fg-muted">Based on {model.base}</p>
           )}
         </div>
         <span
-          className={`text-xs px-2 py-1 rounded-full ${
+          className={`hz-t-xs hz-px-2 hz-py-1 hz-r-full ${
             model.status === "Released" || model.status === "Latest" || model.status === "Trained"
-              ? "bg-white/10 text-white border border-white/20"
+              ? "hz-bg-quiet hz-fg hz-bordered"
               : model.status === "Training"
-              ? "bg-neutral-800 text-neutral-300 border border-neutral-700"
-              : "bg-neutral-900 text-neutral-400 border border-neutral-800"
+              ? "hz-bg-raised hz-fg-soft hz-bordered"
+              : "hz-bg-surface hz-fg-muted hz-bordered"
           }`}
         >
           {model.status}
         </span>
       </div>
 
-      <div className="grid grid-cols-2 gap-4 mb-4">
+      <div className="hz-grid hz-grid-2 hz-gap-4 hz-mb-4">
         {model.params && (
           <div>
-            <p className="text-[10px] text-neutral-500 uppercase tracking-wider mb-1">
+            <p className="hz-t-xs hz-fg-muted hz-upper hz-tracking-wide hz-mb-1">
               Parameters
             </p>
-            <p className="text-sm font-medium text-white">{model.params}</p>
+            <p className="hz-t-sm hz-w-medium hz-fg">{model.params}</p>
           </div>
         )}
         {model.context && (
           <div>
-            <p className="text-[10px] text-neutral-500 uppercase tracking-wider mb-1">
+            <p className="hz-t-xs hz-fg-muted hz-upper hz-tracking-wide hz-mb-1">
               Context
             </p>
-            <p className="text-sm font-medium text-white">{model.context}</p>
+            <p className="hz-t-sm hz-w-medium hz-fg">{model.context}</p>
           </div>
         )}
         {model.license && (
           <div>
-            <p className="text-[10px] text-neutral-500 uppercase tracking-wider mb-1">
+            <p className="hz-t-xs hz-fg-muted hz-upper hz-tracking-wide hz-mb-1">
               License
             </p>
-            <p className="text-sm font-medium text-white">{model.license}</p>
+            <p className="hz-t-sm hz-w-medium hz-fg">{model.license}</p>
           </div>
         )}
         {model.performance && (
           <div>
-            <p className="text-[10px] text-neutral-500 uppercase tracking-wider mb-1">
+            <p className="hz-t-xs hz-fg-muted hz-upper hz-tracking-wide hz-mb-1">
               Performance
             </p>
-            <p className="text-sm font-medium text-white">{model.performance}</p>
+            <p className="hz-t-sm hz-w-medium hz-fg">{model.performance}</p>
           </div>
         )}
       </div>
 
-      <div className="space-y-2 mb-4">
+      <div className="hz-stack-2 hz-mb-4">
         {model.features.slice(0, isExpanded ? undefined : 3).map((feature: string, idx: number) => (
-          <div key={idx} className="flex items-center gap-2">
-            <Check className="w-3 h-3 text-neutral-400" />
-            <span className="text-sm text-neutral-300">{feature}</span>
+          <div key={idx} className="hz-row hz-ai-center hz-gap-2">
+            <Check className="hz-sq-1 hz-fg-muted" />
+            <span className="hz-t-sm hz-fg-soft">{feature}</span>
           </div>
         ))}
         {model.features.length > 3 && !isExpanded && (
           <button
             onClick={() => setIsExpanded(true)}
-            className="text-xs text-neutral-500 hover:text-white flex items-center gap-1"
+            className="hz-t-xs hz-fg-muted hz-row hz-ai-center hz-gap-1 hz-link"
           >
             +{model.features.length - 3} more
-            <ChevronDown className="w-3 h-3" />
+            <ChevronDown className="hz-sq-1" />
           </button>
         )}
       </div>
@@ -565,10 +566,10 @@ const ModelCard = ({ model }: { model: any }) => {
           href={model.huggingface}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 text-sm text-neutral-400 hover:text-white transition-colors"
+          className="hz-inline hz-ai-center hz-gap-2 hz-t-sm hz-fg-muted hz-transition hz-link"
         >
           <span>View on HuggingFace</span>
-          <ExternalLink className="w-3 h-3" />
+          <ExternalLink className="hz-sq-1" />
         </a>
       )}
     </motion.div>
@@ -585,18 +586,18 @@ const FamilySection = ({
   const Icon = family.icon;
 
   return (
-    <section id={familyKey} className="py-16 border-t border-neutral-800 first:border-t-0">
-      <div className="flex items-center gap-4 mb-8">
-        <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-white/5 border border-white/10">
-          <Icon className="w-6 h-6 text-white" />
+    <section id={familyKey} className="hz-py-7 hz-border-t">
+      <div className="hz-row hz-ai-center hz-gap-4 hz-mb-6">
+        <div className="hz-sq-7 hz-r-lg hz-row hz-ai-center hz-jc-center hz-bg-quiet hz-bordered">
+          <Icon className="hz-sq-4 hz-fg" />
         </div>
         <div>
-          <h2 className="text-2xl font-bold text-white">{family.title}</h2>
-          <p className="text-neutral-400">{family.description}</p>
+          <h2 className="hz-t-2xl hz-w-bold hz-fg">{family.title}</h2>
+          <p className="hz-fg-muted">{family.description}</p>
         </div>
       </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="hz-grid hz-grid-3 hz-gap-5">
         {family.models.map((model) => (
           <ModelCard key={model.name} model={model} />
         ))}
@@ -605,11 +606,10 @@ const FamilySection = ({
   );
 };
 
-const BRAND_COLOR = "#ffffff";
 
 const ZenModels = () => {
   return (
-    <div className="min-h-screen bg-[var(--black)] text-[var(--white)]">
+    <div className="hz-min-h-screen hz-bg hz-fg">
       <Helmet>
         <title>Zen LM - Open Foundation Models for Agentic AI | Hanzo AI</title>
         <meta
@@ -621,27 +621,27 @@ const ZenModels = () => {
 
       <main>
         {/* Hero Section */}
-        <section className="relative pt-24 pb-16 px-4 md:px-8 lg:px-12 overflow-hidden">
+        <section className="hz-rel hz-pt-6 hz-pb-6 hz-px-4 hz-clip">
           {/* Background gradient */}
-          <div className="absolute inset-0 overflow-hidden z-0 pointer-events-none">
+          <div className="hz-abs hz-inset hz-clip hz-z-base hz-no-pointer">
             <div
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full opacity-15"
+              className="hz-center-xy hz-abs hz-r-full hz-dim-more"
               style={{
-                background: `radial-gradient(circle, ${BRAND_COLOR} 0%, transparent 70%)`,
+                background: `radial-gradient(circle, ${BRAND.fg} 0%, transparent 70%)`,
                 filter: "blur(100px)",
               }}
             />
           </div>
 
-          <div className="max-w-7xl mx-auto relative z-10">
+          <div className="hz-container hz-rel hz-z-raised">
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
-              className="mb-6 text-center"
+              className="hz-mb-5 hz-align-center"
             >
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-neutral-600/10 text-neutral-400 border border-neutral-500/20">
-                <Code2 className="w-3 h-3" />
+              <span className="hz-inline hz-ai-center hz-gap-2 hz-px-3 hz-py-1 hz-r-full hz-t-xs hz-w-medium hz-bg-raised hz-fg-muted hz-bordered hz-border-strong">
+                <Code2 className="hz-sq-1" />
                 30+ Open Models
               </span>
             </motion.div>
@@ -650,18 +650,18 @@ const ZenModels = () => {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.05 }}
-              className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-medium tracking-tight leading-[1.1] mb-6 text-center"
+              className="hz-t-3xl hz-w-medium hz-tracking-tight hz-mb-5 hz-align-center"
             >
-              <span className="text-white">Open Foundation Models</span>
+              <span className="hz-fg">Open Foundation Models</span>
               <br />
-              <span className="text-neutral-400">for Agentic AI</span>
+              <span className="hz-fg-muted">for Agentic AI</span>
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.1 }}
-              className="text-base lg:text-lg text-neutral-400 leading-relaxed mb-8 max-w-3xl mx-auto text-center"
+              className="hz-container-narrow hz-t-base hz-fg-muted hz-leading-relaxed hz-mb-6 hz-align-center"
             >
               Zen LM provides production-ready AI models for agentic coding, multimodal understanding,
               and creative generation. Our flagship Zen Coder models are trained on 8.47B tokens
@@ -673,30 +673,29 @@ const ZenModels = () => {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.15 }}
-              className="flex flex-wrap justify-center items-center gap-4 mb-8"
+              className="hz-row hz-wrap hz-jc-center hz-ai-center hz-gap-4 hz-mb-6"
             >
               <a
                 href="#models"
-                className="inline-flex items-center px-6 py-3 rounded-full font-medium transition-all hover:opacity-90 text-sm"
-                style={{ backgroundColor: BRAND_COLOR, color: "#000000" }}
-              >
+                className="hz-btn hz-btn-ghost hz-transition hz-bg-inverse"
+                >
                 Explore Models
-                <ArrowRight className="ml-2 h-4 w-4" />
+                <ArrowRight className="hz-sq-2 hz-ml-2" />
               </a>
               <a
                 href="#dataset"
-                className="inline-flex items-center px-6 py-3 rounded-full font-medium transition-colors border border-neutral-700 bg-transparent hover:bg-neutral-900 text-sm text-white"
+                className="hz-btn hz-btn-ghost hz-transition hz-fg"
               >
-                <Database className="mr-2 h-4 w-4" />
+                <Database className="hz-sq-2 hz-mr-2" />
                 Training Data
               </a>
               <a
                 href="https://zenlm.org/research"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center px-6 py-3 rounded-full font-medium transition-colors border border-neutral-700 bg-transparent hover:bg-neutral-900 text-sm text-white"
+                className="hz-btn hz-btn-ghost hz-transition hz-fg"
               >
-                <BookOpen className="mr-2 h-4 w-4" />
+                <BookOpen className="hz-sq-2 hz-mr-2" />
                 Research Papers
               </a>
             </motion.div>
@@ -706,13 +705,13 @@ const ZenModels = () => {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.2 }}
-              className="flex flex-wrap justify-center gap-3"
+              className="hz-row hz-wrap hz-jc-center hz-gap-3"
             >
               <a
                 href="https://huggingface.co/zenlm"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium bg-neutral-900 border border-neutral-800 text-neutral-400 hover:text-white hover:border-neutral-700 transition-all"
+                className="hz-btn hz-gap-2 hz-fg-muted hz-transition"
               >
                 🤗 HuggingFace
               </a>
@@ -720,18 +719,18 @@ const ZenModels = () => {
                 href="https://github.com/zenlm"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium bg-neutral-900 border border-neutral-800 text-neutral-400 hover:text-white hover:border-neutral-700 transition-all"
+                className="hz-btn hz-gap-2 hz-fg-muted hz-transition"
               >
-                <Github className="w-4 h-4" />
+                <Github className="hz-sq-2" />
                 GitHub
               </a>
               <a
                 href="https://zenlm.org"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium bg-neutral-900 border border-neutral-800 text-neutral-400 hover:text-white hover:border-neutral-700 transition-all"
+                className="hz-btn hz-gap-2 hz-fg-muted hz-transition"
               >
-                <Globe className="w-4 h-4" />
+                <Globe className="hz-sq-2" />
                 zenlm.org
               </a>
             </motion.div>
@@ -739,68 +738,68 @@ const ZenModels = () => {
         </section>
 
         {/* Zen Coder Feature Section */}
-        <section id="zen-coder" className="py-20 px-4 md:px-8">
-          <div className="max-w-7xl mx-auto py-12 px-8 rounded-2xl bg-neutral-950 border border-neutral-800">
+        <section id="zen-coder" className="hz-py-7 hz-px-4">
+          <div className="hz-container hz-py-7 hz-r-xl hz-bg-surface hz-bordered">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center mb-10"
+              className="hz-align-center hz-mb-6"
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
+              <h2 className="hz-t-3xl hz-w-bold hz-fg hz-mb-3">
                 Zen Coder - Agentic Coding Models
               </h2>
-              <p className="text-neutral-400 text-lg">
+              <p className="hz-fg-muted hz-t-lg">
                 Fine-tuned on 8.47B tokens of real programming sessions
               </p>
             </motion.div>
 
             {/* Models Table */}
-            <div className="overflow-x-auto mb-10">
-              <table className="w-full border-collapse bg-black border border-neutral-800 rounded-xl overflow-hidden">
+            <div className="hz-scroll-x hz-mb-6">
+              <table className="hz-w-full hz-bg hz-bordered hz-r-lg hz-clip">
                 <thead>
-                  <tr className="bg-neutral-900/80">
-                    <th className="px-6 py-4 text-left text-xs font-semibold text-neutral-400 uppercase tracking-wider">Model</th>
-                    <th className="px-6 py-4 text-left text-xs font-semibold text-neutral-400 uppercase tracking-wider">Size</th>
-                    <th className="px-6 py-4 text-left text-xs font-semibold text-neutral-400 uppercase tracking-wider">Base</th>
-                    <th className="px-6 py-4 text-left text-xs font-semibold text-neutral-400 uppercase tracking-wider">VRAM</th>
-                    <th className="px-6 py-4 text-left text-xs font-semibold text-neutral-400 uppercase tracking-wider">Context</th>
-                    <th className="px-6 py-4 text-left text-xs font-semibold text-neutral-400 uppercase tracking-wider">Status</th>
+                  <tr className="hz-bg-surface">
+                    <th className="hz-px-5 hz-py-4 hz-align-left hz-t-xs hz-w-semibold hz-fg-muted hz-upper hz-tracking-wide">Model</th>
+                    <th className="hz-px-5 hz-py-4 hz-align-left hz-t-xs hz-w-semibold hz-fg-muted hz-upper hz-tracking-wide">Size</th>
+                    <th className="hz-px-5 hz-py-4 hz-align-left hz-t-xs hz-w-semibold hz-fg-muted hz-upper hz-tracking-wide">Base</th>
+                    <th className="hz-px-5 hz-py-4 hz-align-left hz-t-xs hz-w-semibold hz-fg-muted hz-upper hz-tracking-wide">VRAM</th>
+                    <th className="hz-px-5 hz-py-4 hz-align-left hz-t-xs hz-w-semibold hz-fg-muted hz-upper hz-tracking-wide">Context</th>
+                    <th className="hz-px-5 hz-py-4 hz-align-left hz-t-xs hz-w-semibold hz-fg-muted hz-upper hz-tracking-wide">Status</th>
                   </tr>
                 </thead>
                 <tbody>
                   {ZEN_CODER_MODELS.map((model) => (
                     <tr
                       key={model.name}
-                      className={`border-t border-neutral-800 hover:bg-neutral-900/50 transition-colors ${model.flagship ? "bg-white/5" : ""}`}
+                      className={`hz-border-t hz-transition hz-hoverable ${model.flagship ? "hz-bg-quiet" : ""}`}
                     >
-                      <td className="px-6 py-4">
-                        <div className="flex items-center gap-2">
-                          <span className="font-semibold text-white">{model.name}</span>
+                      <td className="hz-px-5 hz-py-4">
+                        <div className="hz-row hz-ai-center hz-gap-2">
+                          <span className="hz-w-semibold hz-fg">{model.name}</span>
                           {model.flagship && (
-                            <span className="px-2 py-0.5 text-[10px] font-bold rounded-full bg-white/10 text-white border border-white/20">
+                            <span className="hz-px-2 hz-py-1 hz-t-xs hz-w-bold hz-r-full hz-bg-quiet hz-fg hz-bordered">
                               FLAGSHIP
                             </span>
                           )}
                           {model.frontier && (
-                            <span className="px-2 py-0.5 text-[10px] font-bold rounded-full bg-white/10 text-white border border-white/20">
+                            <span className="hz-px-2 hz-py-1 hz-t-xs hz-w-bold hz-r-full hz-bg-quiet hz-fg hz-bordered">
                               FRONTIER
                             </span>
                           )}
                         </div>
                       </td>
-                      <td className="px-6 py-4 text-neutral-300">{model.size}</td>
-                      <td className="px-6 py-4 text-neutral-300">{model.base}</td>
-                      <td className="px-6 py-4 text-neutral-300">{model.vram}</td>
-                      <td className="px-6 py-4 text-neutral-300">{model.context}</td>
-                      <td className="px-6 py-4">
+                      <td className="hz-px-5 hz-py-4 hz-fg-soft">{model.size}</td>
+                      <td className="hz-px-5 hz-py-4 hz-fg-soft">{model.base}</td>
+                      <td className="hz-px-5 hz-py-4 hz-fg-soft">{model.vram}</td>
+                      <td className="hz-px-5 hz-py-4 hz-fg-soft">{model.context}</td>
+                      <td className="hz-px-5 hz-py-4">
                         <span
-                          className={`inline-block px-3 py-1 text-xs font-semibold rounded-full uppercase ${
+                          className={`hz-px-3 hz-py-1 hz-t-xs hz-w-semibold hz-r-full hz-upper ${
                             model.status === "Trained"
-                              ? "bg-white/10 text-white border border-white/20"
+                              ? "hz-bg-quiet hz-fg hz-bordered"
                               : model.status === "Training"
-                              ? "bg-neutral-800 text-neutral-300 border border-neutral-700"
-                              : "bg-neutral-900 text-neutral-400 border border-neutral-800"
+                              ? "hz-bg-raised hz-fg-soft hz-bordered"
+                              : "hz-bg-surface hz-fg-muted hz-bordered"
                           }`}
                           style={model.status === "Training" ? { animation: "pulse 2s infinite" } : {}}
                         >
@@ -814,30 +813,30 @@ const ZenModels = () => {
             </div>
 
             {/* Coder Features Grid */}
-            <div className="grid md:grid-cols-3 gap-6">
-              <div className="p-6 bg-black border border-neutral-800 rounded-xl hover:border-neutral-600 transition-colors">
-                <h3 className="text-lg font-semibold text-white mb-2">Real Agentic Data</h3>
-                <p className="text-neutral-400 text-sm">
+            <div className="hz-grid hz-grid-3 hz-gap-5">
+              <div className="hz-card hz-transition hz-card-interactive">
+                <h3 className="hz-t-lg hz-w-semibold hz-fg hz-mb-2">Real Agentic Data</h3>
+                <p className="hz-fg-muted hz-t-sm">
                   Trained on actual agentic debug sessions - not synthetic data. Real debugging workflows,
                   multi-file refactoring, and tool use patterns.
                 </p>
               </div>
-              <div className="p-6 bg-black border border-neutral-800 rounded-xl hover:border-neutral-600 transition-colors">
-                <h3 className="text-lg font-semibold text-white mb-2">Production Code</h3>
-                <p className="text-neutral-400 text-sm">
+              <div className="hz-card hz-transition hz-card-interactive">
+                <h3 className="hz-t-lg hz-w-semibold hz-fg hz-mb-2">Production Code</h3>
+                <p className="hz-fg-muted hz-t-sm">
                   15 years of professional development across AI, Web3, cryptography, and modern software
                   engineering from 1,452 repositories.
                 </p>
               </div>
-              <div className="p-6 bg-black border border-neutral-800 rounded-xl hover:border-neutral-600 transition-colors">
-                <h3 className="text-lg font-semibold text-white mb-2">Open Training</h3>
-                <p className="text-neutral-400 text-sm">
+              <div className="hz-card hz-transition hz-card-interactive">
+                <h3 className="hz-t-lg hz-w-semibold hz-fg hz-mb-2">Open Training</h3>
+                <p className="hz-fg-muted hz-t-sm">
                   Use{" "}
                   <a
                     href="https://github.com/zenlm/zen-trainer"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="underline text-white hover:text-neutral-300"
+                    className="hz-underline hz-fg hz-hoverable"
                   >
                     zen-trainer
                   </a>
@@ -849,20 +848,20 @@ const ZenModels = () => {
         </section>
 
         {/* Complete AI Model Ecosystem */}
-        <section id="overview" className="py-20 px-4 md:px-8">
-          <div className="max-w-7xl mx-auto">
+        <section id="overview" className="hz-py-7 hz-px-4">
+          <div className="hz-container">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center mb-12"
+              className="hz-align-center hz-mb-7"
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
+              <h2 className="hz-t-3xl hz-w-bold hz-fg hz-mb-3">
                 Complete AI Model Ecosystem
               </h2>
             </motion.div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="hz-grid hz-grid-3 hz-gap-5">
               {ECOSYSTEM_CATEGORIES.map((category, idx) => {
                 const Icon = category.icon;
                 return (
@@ -872,13 +871,13 @@ const ZenModels = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: idx * 0.1 }}
-                    className="p-6 bg-neutral-950 border border-neutral-800 rounded-xl text-center hover:border-neutral-500/30 transition-all hover:-translate-y-1"
+                    className="hz-card hz-align-center hz-transition hz-card-interactive"
                   >
-                    <div className="text-4xl mb-4 mx-auto w-16 h-16 flex items-center justify-center rounded-xl bg-neutral-600/10 border border-neutral-500/20">
-                      <Icon className="w-8 h-8 text-neutral-400" />
+                    <div className="hz-sq-8 hz-t-4xl hz-mb-4 hz-mx-auto hz-row hz-ai-center hz-jc-center hz-r-lg hz-bg-raised hz-bordered hz-border-strong">
+                      <Icon className="hz-sq-5 hz-fg-muted" />
                     </div>
-                    <h3 className="text-lg font-semibold text-white mb-2">{category.title}</h3>
-                    <p className="text-neutral-400 text-sm">{category.description}</p>
+                    <h3 className="hz-t-lg hz-w-semibold hz-fg hz-mb-2">{category.title}</h3>
+                    <p className="hz-fg-muted hz-t-sm">{category.description}</p>
                   </motion.div>
                 );
               })}
@@ -887,23 +886,23 @@ const ZenModels = () => {
         </section>
 
         {/* Dataset Section */}
-        <section id="dataset" className="py-20 px-4 md:px-8 bg-neutral-950/50">
-          <div className="max-w-7xl mx-auto py-12 px-8 rounded-2xl bg-neutral-950 border border-neutral-800">
+        <section id="dataset" className="hz-py-7 hz-px-4 hz-bg-surface">
+          <div className="hz-container hz-py-7 hz-r-xl hz-bg-surface hz-bordered">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center mb-10"
+              className="hz-align-center hz-mb-6"
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
+              <h2 className="hz-t-3xl hz-w-bold hz-fg hz-mb-3">
                 Zen Agentic Dataset
               </h2>
-              <p className="text-neutral-400 text-lg">
+              <p className="hz-fg-muted hz-t-lg">
                 8.47 Billion Tokens of Real-World Agentic Programming
               </p>
             </motion.div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+            <div className="hz-grid hz-grid-4 hz-gap-5 hz-mb-6">
               {DATASET_STATS.map((stat, idx) => (
                 <motion.div
                   key={stat.label}
@@ -911,32 +910,31 @@ const ZenModels = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1 }}
-                  className="p-6 bg-black border border-neutral-800 rounded-xl text-center hover:border-neutral-600 transition-all"
+                  className="hz-card hz-align-center hz-transition hz-card-interactive"
                 >
-                  <div className="text-3xl font-bold text-white mb-2">
+                  <div className="hz-t-3xl hz-w-bold hz-fg hz-mb-2">
                     {stat.value}
                   </div>
-                  <h3 className="text-lg font-semibold text-neutral-300 mb-1">{stat.label}</h3>
-                  <p className="text-neutral-500 text-sm">{stat.description}</p>
+                  <h3 className="hz-t-lg hz-w-semibold hz-fg-soft hz-mb-1">{stat.label}</h3>
+                  <p className="hz-fg-muted hz-t-sm">{stat.description}</p>
                 </motion.div>
               ))}
             </div>
 
-            <div className="text-center">
-              <p className="text-neutral-400 mb-6">Available for research and commercial licensing.</p>
-              <div className="flex flex-wrap justify-center gap-4">
+            <div className="hz-align-center">
+              <p className="hz-fg-muted hz-mb-5">Available for research and commercial licensing.</p>
+              <div className="hz-row hz-wrap hz-jc-center hz-gap-4">
                 <a
                   href="mailto:z@hanzo.ai"
-                  className="inline-flex items-center px-6 py-3 rounded-full font-medium transition-all hover:opacity-90 text-sm"
-                  style={{ backgroundColor: BRAND_COLOR, color: "#000000" }}
-                >
+                  className="hz-btn hz-btn-ghost hz-transition hz-bg-inverse"
+                  >
                   Request Access
                 </a>
                 <a
                   href="https://huggingface.co/datasets/hanzoai/zen-agentic-dataset"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center px-6 py-3 rounded-full font-medium transition-colors border border-neutral-700 text-white hover:bg-neutral-900 text-sm"
+                  className="hz-btn hz-btn-ghost hz-transition hz-fg"
                 >
                   View on HuggingFace
                 </a>
@@ -946,19 +944,19 @@ const ZenModels = () => {
         </section>
 
         {/* Model Families Section */}
-        <section className="py-20 px-4 md:px-8">
-          <div className="max-w-7xl mx-auto">
+        <section className="hz-py-7 hz-px-4">
+          <div className="hz-container">
             {/* Quick Nav */}
-            <div id="models" className="mb-12 flex flex-wrap gap-3 justify-center">
+            <div id="models" className="hz-mb-7 hz-row hz-wrap hz-gap-3 hz-jc-center">
               {Object.entries(MODEL_FAMILIES).map(([key, family]) => {
                 const Icon = family.icon;
                 return (
                   <a
                     key={key}
                     href={`#${key}`}
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-neutral-800 hover:border-neutral-500/30 transition-colors text-sm text-neutral-400 hover:text-white"
+                    className="hz-btn hz-btn-ghost hz-gap-2 hz-transition hz-fg-muted"
                   >
-                    <Icon className="w-4 h-4" />
+                    <Icon className="hz-sq-2" />
                     {family.title}
                   </a>
                 );
@@ -973,36 +971,35 @@ const ZenModels = () => {
         </section>
 
         {/* Get Started Section */}
-        <section id="downloads" className="py-20 px-4 md:px-8 border-t border-neutral-800">
-          <div className="max-w-7xl mx-auto">
+        <section id="downloads" className="hz-py-7 hz-px-4 hz-border-t">
+          <div className="hz-container">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center mb-12"
+              className="hz-align-center hz-mb-7"
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
+              <h2 className="hz-t-3xl hz-w-bold hz-fg hz-mb-3">
                 Get Started
               </h2>
             </motion.div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="hz-grid hz-grid-4 hz-gap-5">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="p-6 bg-neutral-950 border border-neutral-800 rounded-xl text-center hover:border-neutral-500/30 transition-all hover:-translate-y-1"
+                className="hz-card hz-align-center hz-transition hz-card-interactive"
               >
-                <Download className="w-8 h-8 mx-auto mb-4 text-neutral-400" />
-                <h3 className="text-xl font-semibold text-white mb-2">HuggingFace</h3>
-                <p className="text-neutral-400 text-sm mb-4">Access all 30+ models via HuggingFace Hub</p>
+                <Download className="hz-sq-5 hz-mx-auto hz-mb-4 hz-fg-muted" />
+                <h3 className="hz-t-xl hz-w-semibold hz-fg hz-mb-2">HuggingFace</h3>
+                <p className="hz-fg-muted hz-t-sm hz-mb-4">Access all 30+ models via HuggingFace Hub</p>
                 <a
                   href="https://huggingface.co/zenlm"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center px-4 py-2 rounded-full font-medium transition-all hover:opacity-90 text-sm"
-                  style={{ backgroundColor: BRAND_COLOR, color: "#000000" }}
-                >
+                  className="hz-btn hz-btn-ghost hz-transition hz-bg-inverse"
+                  >
                   Visit HuggingFace
                 </a>
               </motion.div>
@@ -1012,18 +1009,17 @@ const ZenModels = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
-                className="p-6 bg-neutral-950 border border-neutral-800 rounded-xl text-center hover:border-neutral-500/30 transition-all hover:-translate-y-1"
+                className="hz-card hz-align-center hz-transition hz-card-interactive"
               >
-                <Github className="w-8 h-8 mx-auto mb-4 text-neutral-400" />
-                <h3 className="text-xl font-semibold text-white mb-2">GitHub</h3>
-                <p className="text-neutral-400 text-sm mb-4">Training code, documentation, and source</p>
+                <Github className="hz-sq-5 hz-mx-auto hz-mb-4 hz-fg-muted" />
+                <h3 className="hz-t-xl hz-w-semibold hz-fg hz-mb-2">GitHub</h3>
+                <p className="hz-fg-muted hz-t-sm hz-mb-4">Training code, documentation, and source</p>
                 <a
                   href="https://github.com/zenlm"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center px-4 py-2 rounded-full font-medium transition-all hover:opacity-90 text-sm"
-                  style={{ backgroundColor: BRAND_COLOR, color: "#000000" }}
-                >
+                  className="hz-btn hz-btn-ghost hz-transition hz-bg-inverse"
+                  >
                   View on GitHub
                 </a>
               </motion.div>
@@ -1033,13 +1029,13 @@ const ZenModels = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
-                className="p-6 bg-neutral-950 border border-neutral-800 rounded-xl text-center hover:border-neutral-500/30 transition-all hover:-translate-y-1"
+                className="hz-card hz-align-center hz-transition hz-card-interactive"
               >
-                <Terminal className="w-8 h-8 mx-auto mb-4 text-neutral-400" />
-                <h3 className="text-xl font-semibold text-white mb-2">zen-trainer</h3>
-                <p className="text-neutral-400 text-sm mb-4">Fine-tune models on your own data</p>
-                <div className="bg-black border border-neutral-800 rounded-lg p-3">
-                  <code className="text-sm text-white">pip install zen-trainer</code>
+                <Terminal className="hz-sq-5 hz-mx-auto hz-mb-4 hz-fg-muted" />
+                <h3 className="hz-t-xl hz-w-semibold hz-fg hz-mb-2">zen-trainer</h3>
+                <p className="hz-fg-muted hz-t-sm hz-mb-4">Fine-tune models on your own data</p>
+                <div className="hz-card hz-card-tight">
+                  <code className="hz-t-sm hz-fg">pip install zen-trainer</code>
                 </div>
               </motion.div>
 
@@ -1048,18 +1044,17 @@ const ZenModels = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.3 }}
-                className="p-6 bg-neutral-950 border border-neutral-800 rounded-xl text-center hover:border-neutral-500/30 transition-all hover:-translate-y-1"
+                className="hz-card hz-align-center hz-transition hz-card-interactive"
               >
-                <BookOpen className="w-8 h-8 mx-auto mb-4 text-neutral-400" />
-                <h3 className="text-xl font-semibold text-white mb-2">Research</h3>
-                <p className="text-neutral-400 text-sm mb-4">Technical papers and whitepapers</p>
+                <BookOpen className="hz-sq-5 hz-mx-auto hz-mb-4 hz-fg-muted" />
+                <h3 className="hz-t-xl hz-w-semibold hz-fg hz-mb-2">Research</h3>
+                <p className="hz-fg-muted hz-t-sm hz-mb-4">Technical papers and whitepapers</p>
                 <a
                   href="https://zenlm.org/research"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center px-4 py-2 rounded-full font-medium transition-all hover:opacity-90 text-sm"
-                  style={{ backgroundColor: BRAND_COLOR, color: "#000000" }}
-                >
+                  className="hz-btn hz-btn-ghost hz-transition hz-bg-inverse"
+                  >
                   Read Papers
                 </a>
               </motion.div>
@@ -1068,47 +1063,47 @@ const ZenModels = () => {
         </section>
 
         {/* Infrastructure Section */}
-        <section className="py-20 px-4 md:px-8 bg-neutral-950/50 border-t border-neutral-800">
-          <div className="max-w-7xl mx-auto">
+        <section className="hz-py-7 hz-px-4 hz-bg-surface hz-border-t">
+          <div className="hz-container">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center mb-12"
+              className="hz-align-center hz-mb-7"
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
+              <h2 className="hz-t-3xl hz-w-bold hz-fg hz-mb-3">
                 Infrastructure
               </h2>
-              <p className="text-neutral-400">
+              <p className="hz-fg-muted">
                 Train and deploy Zen models with our optimized platforms
               </p>
             </motion.div>
 
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="hz-grid hz-grid-2 hz-gap-6">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="bg-black border border-neutral-800 rounded-xl p-8 hover:border-neutral-500/30 transition-colors"
+                className="hz-card hz-transition hz-card-interactive"
               >
-                <div className="flex items-center gap-3 mb-4">
-                  <Layers className="w-6 h-6 text-neutral-400" />
-                  <h3 className="text-xl font-bold text-white">Zen Gym</h3>
+                <div className="hz-row hz-ai-center hz-gap-3 hz-mb-4">
+                  <Layers className="hz-sq-4 hz-fg-muted" />
+                  <h3 className="hz-t-xl hz-w-bold hz-fg">Zen Gym</h3>
                 </div>
-                <p className="text-neutral-400 mb-4">
+                <p className="hz-fg-muted hz-mb-4">
                   Unified training platform for all Zen models with 2-5x
                   speedup.
                 </p>
-                <div className="space-y-2 mb-6">
+                <div className="hz-stack-2 hz-mb-5">
                   {[
                     "LoRA, QLoRA, GRPO, GSPO, DPO, PPO",
                     "Unsloth acceleration",
                     "FlashAttention-2",
                     "Liger Kernel optimization",
                   ].map((feature, idx) => (
-                    <div key={idx} className="flex items-center gap-2">
-                      <Check className="w-3 h-3 text-neutral-400" />
-                      <span className="text-sm text-neutral-300">{feature}</span>
+                    <div key={idx} className="hz-row hz-ai-center hz-gap-2">
+                      <Check className="hz-sq-1 hz-fg-muted" />
+                      <span className="hz-t-sm hz-fg-soft">{feature}</span>
                     </div>
                   ))}
                 </div>
@@ -1116,10 +1111,10 @@ const ZenModels = () => {
                   href="https://github.com/zenlm/zen-gym"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm text-neutral-400 hover:text-white transition-colors"
+                  className="hz-inline hz-ai-center hz-gap-2 hz-t-sm hz-fg-muted hz-transition hz-link"
                 >
                   View on GitHub
-                  <ExternalLink className="w-3 h-3" />
+                  <ExternalLink className="hz-sq-1" />
                 </a>
               </motion.div>
 
@@ -1128,26 +1123,26 @@ const ZenModels = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
-                className="bg-black border border-neutral-800 rounded-xl p-8 hover:border-neutral-500/30 transition-colors"
+                className="hz-card hz-transition hz-card-interactive"
               >
-                <div className="flex items-center gap-3 mb-4">
-                  <Zap className="w-6 h-6 text-neutral-400" />
-                  <h3 className="text-xl font-bold text-white">Zen Engine</h3>
+                <div className="hz-row hz-ai-center hz-gap-3 hz-mb-4">
+                  <Zap className="hz-sq-4 hz-fg-muted" />
+                  <h3 className="hz-t-xl hz-w-bold hz-fg">Zen Engine</h3>
                 </div>
-                <p className="text-neutral-400 mb-4">
+                <p className="hz-fg-muted hz-mb-4">
                   High-performance inference for all Zen models with
                   OpenAI-compatible API.
                 </p>
-                <div className="space-y-2 mb-6">
+                <div className="hz-stack-2 hz-mb-5">
                   {[
                     "44K tokens/sec (M3 Max)",
                     "OpenAI-compatible REST API",
                     "PyTorch, MLX, GGUF formats",
                     "MCP integration",
                   ].map((feature, idx) => (
-                    <div key={idx} className="flex items-center gap-2">
-                      <Check className="w-3 h-3 text-neutral-400" />
-                      <span className="text-sm text-neutral-300">{feature}</span>
+                    <div key={idx} className="hz-row hz-ai-center hz-gap-2">
+                      <Check className="hz-sq-1 hz-fg-muted" />
+                      <span className="hz-t-sm hz-fg-soft">{feature}</span>
                     </div>
                   ))}
                 </div>
@@ -1155,10 +1150,10 @@ const ZenModels = () => {
                   href="https://github.com/zenlm/zen-engine"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm text-neutral-400 hover:text-white transition-colors"
+                  className="hz-inline hz-ai-center hz-gap-2 hz-t-sm hz-fg-muted hz-transition hz-link"
                 >
                   View on GitHub
-                  <ExternalLink className="w-3 h-3" />
+                  <ExternalLink className="hz-sq-1" />
                 </a>
               </motion.div>
             </div>
@@ -1166,35 +1161,34 @@ const ZenModels = () => {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 px-4 md:px-8 border-t border-neutral-800">
-          <div className="max-w-7xl mx-auto">
+        <section className="hz-py-7 hz-px-4 hz-border-t">
+          <div className="hz-container">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center"
+              className="hz-align-center"
             >
-              <h2 className="text-3xl font-bold text-white mb-4">
+              <h2 className="hz-t-3xl hz-w-bold hz-fg hz-mb-4">
                 Ready to build with Zen?
               </h2>
-              <p className="text-neutral-400 mb-8 max-w-2xl mx-auto">
+              <p className="hz-container-narrow hz-mw-md hz-fg-muted hz-mb-6">
                 All models are open source under Apache 2.0 or MIT license. Start
                 building today.
               </p>
-              <div className="flex flex-wrap justify-center gap-4">
+              <div className="hz-row hz-wrap hz-jc-center hz-gap-4">
                 <a
                   href="https://huggingface.co/zenlm"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center px-6 py-3 rounded-full font-medium transition-all hover:opacity-90 text-sm"
-                  style={{ backgroundColor: BRAND_COLOR, color: "#000000" }}
-                >
+                  className="hz-btn hz-btn-ghost hz-transition hz-bg-inverse"
+                  >
                   Get Started
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  <ArrowRight className="hz-sq-2 hz-ml-2" />
                 </a>
                 <Link
                   to="/dev"
-                  className="inline-flex items-center px-6 py-3 rounded-full font-medium transition-colors border border-neutral-700 bg-transparent hover:bg-neutral-900 text-sm text-white"
+                  className="hz-btn hz-btn-ghost hz-transition hz-fg"
                 >
                   Try Hanzo Dev
                 </Link>
@@ -1202,9 +1196,9 @@ const ZenModels = () => {
                   href="https://zenlm.org"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center px-6 py-3 rounded-full font-medium transition-colors border border-neutral-700 bg-transparent hover:bg-neutral-900 text-sm text-white"
+                  className="hz-btn hz-btn-ghost hz-transition hz-fg"
                 >
-                  <Globe className="mr-2 h-4 w-4" />
+                  <Globe className="hz-sq-2 hz-mr-2" />
                   Visit zenlm.org
                 </a>
               </div>

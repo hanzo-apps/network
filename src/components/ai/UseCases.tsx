@@ -50,31 +50,31 @@ const UseCases = () => {
   ];
 
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-[var(--black)] relative">
+    <section className="hz-py-7 hz-px-4 hz-bg hz-rel">
       {/* Background elements */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 right-0 w-72 h-72 bg-neutral-800/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-neutral-800/10 rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2"></div>
+      <div className="hz-abs hz-top-0 hz-left-0 hz-w-full hz-h-full hz-clip hz-no-pointer">
+        <div className="hz-sq-8 hz-abs hz-right-0 hz-bg-raised hz-r-full hz-blur-bg"></div>
+        <div className="hz-sq-8 hz-abs hz-bottom-0 hz-left-0 hz-bg-raised hz-r-full hz-blur-bg"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+      <div className="hz-container hz-rel hz-z-raised">
+        <div className="hz-container-narrow hz-align-center hz-mb-7">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-[var(--white)] mb-6">
+            <h2 className="hz-t-3xl hz-w-bold hz-fg hz-mb-5">
               Versatile AI Use Cases
             </h2>
-            <p className="text-xl text-neutral-300">
+            <p className="hz-t-xl hz-fg-soft">
               Hanzo's AI platform supports a wide range of intelligent applications across industries
             </p>
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="hz-grid hz-grid-3 hz-gap-6">
           {useCases.map((useCase, index) => (
             <motion.div
               key={index}
@@ -82,13 +82,13 @@ const UseCases = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-gray-900/20 border border-gray-800 rounded-xl p-8 hover:bg-gray-900/40 transition-colors group"
+              className="hz-card hz-transition hz-card-interactive"
             >
-              <div className={`h-14 w-14 rounded-xl flex items-center justify-center mb-6 transition-colors duration-300 ${useCase.color} group-hover:bg-opacity-30`}>
-                <useCase.icon className={`h-7 w-7 ${useCase.textColor}`} />
+              <div className={`hz-sq-7 hz-r-lg hz-row hz-ai-center hz-jc-center hz-mb-5 hz-transition ${useCase.color} hz-hoverable`}>
+                <useCase.icon className={`hz-sq-5 ${useCase.textColor}`} />
               </div>
-              <h3 className="text-xl font-semibold text-[var(--white)] mb-3">{useCase.title}</h3>
-              <p className="text-neutral-400">{useCase.description}</p>
+              <h3 className="hz-t-xl hz-w-semibold hz-fg hz-mb-3">{useCase.title}</h3>
+              <p className="hz-fg-muted">{useCase.description}</p>
             </motion.div>
           ))}
         </div>
@@ -99,15 +99,15 @@ const UseCases = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-16 bg-gray-900/30 border border-gray-800 rounded-xl overflow-hidden"
+          className="hz-mt-7 hz-bg-surface hz-bordered hz-r-lg hz-clip"
         >
-          <div className="flex flex-col lg:flex-row">
-            <div className="lg:w-1/2 p-8 flex flex-col justify-center">
-              <h3 className="text-2xl font-bold text-[var(--white)] mb-4">Simple Implementation</h3>
-              <p className="text-neutral-400 mb-6">
+          <div className="hz-col-row">
+            <div className="hz-p-6 hz-col hz-jc-center">
+              <h3 className="hz-t-2xl hz-w-bold hz-fg hz-mb-4">Simple Implementation</h3>
+              <p className="hz-fg-muted hz-mb-5">
                 Build powerful AI applications with just a few lines of code using our intuitive SDK
               </p>
-              <div className="bg-gray-950 rounded-lg p-4 font-mono text-sm text-neutral-300 overflow-x-auto">
+              <div className="hz-bg-surface hz-r-lg hz-p-4 hz-mono hz-t-sm hz-fg-soft hz-scroll-x">
                 <pre>
 {`import { Hanzo } from '@hanzo/ai';
 
@@ -130,18 +130,18 @@ console.log(response);`}
                 </pre>
               </div>
             </div>
-            <div className="lg:w-1/2 bg-gray-950 p-8 flex flex-col">
-              <h4 className="text-lg font-semibold text-[var(--white)] mb-4 flex items-center">
-                <BookOpen className="h-4 w-4 mr-2 text-neutral-400" />
+            <div className="hz-bg-surface hz-p-6 hz-col">
+              <h4 className="hz-t-lg hz-w-semibold hz-fg hz-mb-4 hz-row hz-ai-center">
+                <BookOpen className="hz-sq-2 hz-mr-2 hz-fg-muted" />
                 Documentation Example
               </h4>
-              <div className="flex flex-col h-full space-y-4 overflow-y-auto">
-                <div className="bg-gray-900 rounded-lg p-4">
-                  <div className="flex items-center mb-2">
-                    <Database className="h-4 w-4 text-neutral-400 mr-2" />
-                    <h5 className="text-neutral-400 font-medium">Vector Search</h5>
+              <div className="hz-col hz-h-full hz-stack-4 hz-scroll-y">
+                <div className="hz-bg-surface hz-r-lg hz-p-4">
+                  <div className="hz-row hz-ai-center hz-mb-2">
+                    <Database className="hz-sq-2 hz-fg-muted hz-mr-2" />
+                    <h5 className="hz-fg-muted hz-w-medium">Vector Search</h5>
                   </div>
-                  <pre className="text-xs text-neutral-300 overflow-x-auto">
+                  <pre className="hz-t-xs hz-fg-soft hz-scroll-x">
 {`// Create a vector store
 const vectorStore = hanzo.vectorStore('my-store');
 
@@ -159,12 +159,12 @@ const results = await vectorStore.search(
                   </pre>
                 </div>
 
-                <div className="bg-gray-900 rounded-lg p-4">
-                  <div className="flex items-center mb-2">
-                    <Bot className="h-4 w-4 text-neutral-400 mr-2" />
-                    <h5 className="text-neutral-400 font-medium">AI Agents</h5>
+                <div className="hz-bg-surface hz-r-lg hz-p-4">
+                  <div className="hz-row hz-ai-center hz-mb-2">
+                    <Bot className="hz-sq-2 hz-fg-muted hz-mr-2" />
+                    <h5 className="hz-fg-muted hz-w-medium">AI Agents</h5>
                   </div>
-                  <pre className="text-xs text-neutral-300 overflow-x-auto">
+                  <pre className="hz-t-xs hz-fg-soft hz-scroll-x">
 {`// Create an agent with tools
 const agent = hanzo.agent({
   model: 'claude-3-opus',

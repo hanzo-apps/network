@@ -6,21 +6,21 @@ import { Button } from "@/components/ui/button";
 
 const statsItems = [
   { 
-    icon: <Github className="h-6 w-6" />,
+    icon: <Github className="hz-sq-4" />,
     value: 17,
     suffix: "M+",
     label: "Downloads",
     countUpDuration: 2
   },
   { 
-    icon: <Github className="h-6 w-6" />,
+    icon: <Github className="hz-sq-4" />,
     value: 25,
     suffix: "K+",
     label: "GitHub Stars",
     countUpDuration: 2.2
   },
   { 
-    icon: <Users className="h-6 w-6" />,
+    icon: <Users className="hz-sq-4" />,
     value: 280,
     suffix: "+",
     label: "Contributors",
@@ -71,19 +71,19 @@ const Community = () => {
   };
 
   return (
-    <section className="py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black to-gray-900/30 relative overflow-hidden">
-      <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:20px_20px]"></div>
+    <section className="hz-py-7 hz-px-4 hz-rel hz-clip">
+      <div className="hz-abs hz-inset hz-bg-surface"></div>
       
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="hz-container hz-rel hz-z-raised">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-20"
+          className="hz-align-center hz-mb-7"
         >
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">Powered by Community, Improved by Collaboration</h2>
-          <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
+          <h2 className="hz-t-3xl hz-w-bold hz-mb-5">Powered by Community, Improved by Collaboration</h2>
+          <p className="hz-container-narrow hz-t-xl hz-fg-soft">
             Join thousands of developers building the future of analytics together.
           </p>
         </motion.div>
@@ -93,21 +93,21 @@ const Community = () => {
             variants={containerVariants}
             initial="hidden"
             animate={controls}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16"
+            className="hz-grid hz-grid-3 hz-gap-6 hz-mb-7"
           >
             {statsItems.map((item, index) => (
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="bg-gray-900/50 rounded-xl p-8 border border-gray-800 text-center"
+                className="hz-card hz-align-center"
               >
-                <div className="flex justify-center mb-4">
-                  <div className="p-3 bg-neutral-800/30 rounded-full border border-neutral-800/30 text-neutral-400">
+                <div className="hz-row hz-jc-center hz-mb-4">
+                  <div className="hz-card hz-card-tight hz-fg-muted">
                     {item.icon}
                   </div>
                 </div>
                 
-                <div className="text-4xl font-bold mb-2">
+                <div className="hz-t-4xl hz-w-bold hz-mb-2">
                   {isInView ? (
                     <CountUp end={item.value} duration={item.countUpDuration} />
                   ) : (
@@ -116,7 +116,7 @@ const Community = () => {
                   <span>{item.suffix}</span>
                 </div>
                 
-                <div className="text-neutral-400">{item.label}</div>
+                <div className="hz-fg-muted">{item.label}</div>
               </motion.div>
             ))}
           </motion.div>
@@ -125,66 +125,66 @@ const Community = () => {
             variants={containerVariants}
             initial="hidden"
             animate={controls}
-            className="grid grid-cols-1 md:grid-cols-2 gap-8"
+            className="hz-grid hz-grid-2 hz-gap-6"
           >
             <motion.div
               variants={itemVariants}
-              className="bg-gray-900/50 rounded-xl border border-gray-800 p-8"
+              className="hz-card"
             >
-              <div className="flex items-center mb-6">
-                <Github className="h-6 w-6 text-neutral-400 mr-3" />
-                <h3 className="text-2xl font-bold">Open Source</h3>
+              <div className="hz-row hz-ai-center hz-mb-5">
+                <Github className="hz-sq-4 hz-fg-muted hz-mr-3" />
+                <h3 className="hz-t-2xl hz-w-bold">Open Source</h3>
               </div>
               
-              <p className="text-neutral-400 mb-6">
+              <p className="hz-fg-muted hz-mb-5">
                 Hanzo Analytics is fully open source, with a vibrant community of developers contributing from around the world. Join us on GitHub to collaborate on the future of analytics.
               </p>
               
-              <div className="space-y-4 mb-8">
-                <div className="flex items-center">
-                  <div className="w-8 h-8 rounded-full bg-gray-700 mr-3"></div>
-                  <div className="flex-1">
-                    <div className="h-2 w-3/4 bg-gray-700 rounded"></div>
-                    <div className="h-2 w-1/2 bg-gray-700 rounded mt-2"></div>
+              <div className="hz-stack-4 hz-mb-6">
+                <div className="hz-row hz-ai-center">
+                  <div className="hz-sq-5 hz-r-full hz-bg-raised hz-mr-3"></div>
+                  <div className="hz-grow">
+                    <div className="hz-bh-1 hz-bg-raised hz-r-md"></div>
+                    <div className="hz-bh-1 hz-bg-raised hz-r-md hz-mt-2"></div>
                   </div>
                 </div>
-                <div className="flex items-center">
-                  <div className="w-8 h-8 rounded-full bg-gray-700 mr-3"></div>
-                  <div className="flex-1">
-                    <div className="h-2 w-3/4 bg-gray-700 rounded"></div>
-                    <div className="h-2 w-1/2 bg-gray-700 rounded mt-2"></div>
+                <div className="hz-row hz-ai-center">
+                  <div className="hz-sq-5 hz-r-full hz-bg-raised hz-mr-3"></div>
+                  <div className="hz-grow">
+                    <div className="hz-bh-1 hz-bg-raised hz-r-md"></div>
+                    <div className="hz-bh-1 hz-bg-raised hz-r-md hz-mt-2"></div>
                   </div>
                 </div>
-                <div className="flex items-center">
-                  <div className="w-8 h-8 rounded-full bg-gray-700 mr-3"></div>
-                  <div className="flex-1">
-                    <div className="h-2 w-3/4 bg-gray-700 rounded"></div>
-                    <div className="h-2 w-1/2 bg-gray-700 rounded mt-2"></div>
+                <div className="hz-row hz-ai-center">
+                  <div className="hz-sq-5 hz-r-full hz-bg-raised hz-mr-3"></div>
+                  <div className="hz-grow">
+                    <div className="hz-bh-1 hz-bg-raised hz-r-md"></div>
+                    <div className="hz-bh-1 hz-bg-raised hz-r-md hz-mt-2"></div>
                   </div>
                 </div>
               </div>
               
-              <Button variant="outline" className="flex items-center gap-2">
-                <Github className="h-4 w-4" />
+              <Button variant="outline" className="hz-row hz-ai-center hz-gap-2">
+                <Github className="hz-sq-2" />
                 GitHub Repo
-                <ExternalLink className="h-3 w-3 ml-1" />
+                <ExternalLink className="hz-sq-1 hz-ml-1" />
               </Button>
             </motion.div>
             
             <motion.div
               variants={itemVariants}
-              className="bg-gray-900/50 rounded-xl border border-gray-800 p-8"
+              className="hz-card"
             >
-              <div className="flex items-center mb-6">
-                <BookOpen className="h-6 w-6 text-neutral-400 mr-3" />
-                <h3 className="text-2xl font-bold">Resources</h3>
+              <div className="hz-row hz-ai-center hz-mb-5">
+                <BookOpen className="hz-sq-4 hz-fg-muted hz-mr-3" />
+                <h3 className="hz-t-2xl hz-w-bold">Resources</h3>
               </div>
               
-              <p className="text-neutral-400 mb-6">
+              <p className="hz-fg-muted hz-mb-5">
                 Access comprehensive documentation, tutorials, and examples to help you make the most of Hanzo Analytics.
               </p>
               
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+              <div className="hz-grid hz-grid-2 hz-gap-4 hz-mb-6">
                 {[
                   { 
                     title: "Documentation", 
@@ -210,17 +210,17 @@ const Community = () => {
                   <a 
                     key={i} 
                     href={resource.link} 
-                    className="block p-4 bg-gray-800/50 hover:bg-gray-800 rounded-lg border border-gray-700 transition-colors"
+                    className="hz-card hz-transition hz-card-interactive"
                   >
-                    <h4 className="font-medium text-[var(--white)] mb-1">{resource.title}</h4>
-                    <p className="text-sm text-neutral-400">{resource.description}</p>
+                    <h4 className="hz-w-medium hz-fg hz-mb-1">{resource.title}</h4>
+                    <p className="hz-t-sm hz-fg-muted">{resource.description}</p>
                   </a>
                 ))}
               </div>
               
-              <Button variant="outline" className="flex items-center gap-2">
+              <Button variant="outline" className="hz-row hz-ai-center hz-gap-2">
                 Browse All Resources
-                <ExternalLink className="h-3 w-3 ml-1" />
+                <ExternalLink className="hz-sq-1 hz-ml-1" />
               </Button>
             </motion.div>
           </motion.div>

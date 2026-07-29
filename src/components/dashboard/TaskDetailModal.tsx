@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/radix-dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -60,99 +60,99 @@ const TaskDetailModal: React.FC<TaskDetailModalProps> = ({
 
   return (
     <Dialog open={!!task} onOpenChange={() => onClose()}>
-      <DialogContent className="max-w-2xl">
+      <DialogContent className="hz-mw-md">
         <DialogHeader>
           <DialogTitle>
             <Input 
               name="title"
               value={editedTask.title}
               onChange={handleChange}
-              className="text-xl font-semibold mt-2 bg-transparent border-none focus:ring-0 px-0 h-auto"
+              className="hz-t-xl hz-w-semibold hz-mt-2 hz-bg-none hz-border-none hz-px-0"
             />
           </DialogTitle>
         </DialogHeader>
 
-        <div className="grid grid-cols-3 gap-6">
-          <div className="col-span-2">
-            <div className="mb-6">
-              <label className="block text-sm font-medium text-neutral-400 mb-1">Description</label>
+        <div className="hz-grid hz-grid-3 hz-gap-5">
+          <div className="hz-span-2">
+            <div className="hz-mb-5">
+              <label className="hz-t-sm hz-w-medium hz-fg-muted hz-mb-1">Description</label>
               <Textarea 
                 name="description"
                 value={editedTask.description || ""}
                 onChange={handleChange}
                 placeholder="Add a description..."
-                className="min-h-32 bg-gray-900 border-gray-800"
+                className="hz-bg-surface"
               />
             </div>
 
-            <div className="mb-6">
-              <div className="flex justify-between mb-2">
-                <label className="block text-sm font-medium text-neutral-400">Assignees</label>
-                <Button size="sm" variant="ghost" className="text-neutral-400 hover:text-neutral-300 h-6 px-2">
-                  <PlusCircle className="h-3.5 w-3.5 mr-1" />
+            <div className="hz-mb-5">
+              <div className="hz-row hz-jc-between hz-mb-2">
+                <label className="hz-t-sm hz-w-medium hz-fg-muted">Assignees</label>
+                <Button size="sm" variant="ghost" className="hz-fg-muted hz-bh-4 hz-px-2 hz-link">
+                  <PlusCircle className="hz-sq-2 hz-mr-1" />
                   Add
                 </Button>
               </div>
-              <div className="flex flex-wrap gap-2">
+              <div className="hz-row hz-wrap hz-gap-2">
                 {editedTask.assignees?.map(assignee => (
                   <div 
                     key={assignee.id}
-                    className="flex items-center gap-2 bg-gray-800 px-2 py-1 rounded text-sm"
+                    className="hz-row hz-ai-center hz-gap-2 hz-bg-raised hz-px-2 hz-py-1 hz-r-md hz-t-sm"
                   >
-                    <div className="w-5 h-5 rounded-full bg-neutral-800 flex items-center justify-center text-xs">
+                    <div className="hz-sq-3 hz-r-full hz-bg-raised hz-row hz-ai-center hz-jc-center hz-t-xs">
                       {assignee.name.charAt(0)}
                     </div>
                     <span>{assignee.name}</span>
-                    <button className="text-neutral-400 hover:text-[var(--white)]">
-                      <X className="h-3 w-3" />
+                    <button className="hz-fg-muted hz-link">
+                      <X className="hz-sq-1" />
                     </button>
                   </div>
                 ))}
                 {!editedTask.assignees?.length && (
-                  <div className="text-sm text-neutral-500">No assignees</div>
+                  <div className="hz-t-sm hz-fg-muted">No assignees</div>
                 )}
               </div>
             </div>
 
-            <div className="mb-6">
-              <div className="flex justify-between mb-2">
-                <label className="block text-sm font-medium text-neutral-400">Labels</label>
-                <Button size="sm" variant="ghost" className="text-neutral-400 hover:text-neutral-300 h-6 px-2">
-                  <PlusCircle className="h-3.5 w-3.5 mr-1" />
+            <div className="hz-mb-5">
+              <div className="hz-row hz-jc-between hz-mb-2">
+                <label className="hz-t-sm hz-w-medium hz-fg-muted">Labels</label>
+                <Button size="sm" variant="ghost" className="hz-fg-muted hz-bh-4 hz-px-2 hz-link">
+                  <PlusCircle className="hz-sq-2 hz-mr-1" />
                   Add
                 </Button>
               </div>
-              <div className="flex flex-wrap gap-2">
+              <div className="hz-row hz-wrap hz-gap-2">
                 {editedTask.labels?.map(label => (
                   <div 
                     key={label.id}
-                    className="flex items-center gap-2 px-2 py-1 rounded text-sm"
+                    className="hz-row hz-ai-center hz-gap-2 hz-px-2 hz-py-1 hz-r-md hz-t-sm"
                     style={{ backgroundColor: `${label.color}20`, color: label.color }}
                   >
                     <span>{label.name}</span>
                     <button>
-                      <X className="h-3 w-3" />
+                      <X className="hz-sq-1" />
                     </button>
                   </div>
                 ))}
                 {!editedTask.labels?.length && (
-                  <div className="text-sm text-neutral-500">No labels</div>
+                  <div className="hz-t-sm hz-fg-muted">No labels</div>
                 )}
               </div>
             </div>
           </div>
 
-          <div className="space-y-6">
+          <div className="hz-stack-5">
             <div>
-              <label className="block text-sm font-medium text-neutral-400 mb-1">Status</label>
-              <div className="space-y-1">
+              <label className="hz-t-sm hz-w-medium hz-fg-muted hz-mb-1">Status</label>
+              <div className="hz-stack-1">
                 {statusOptions.map(option => (
                   <div 
                     key={option.value}
-                    className={`px-3 py-2 rounded cursor-pointer ${
+                    className={`hz-px-3 hz-py-2 hz-r-md hz-pointer ${
                       editedTask.status === option.value 
-                        ? 'bg-neutral-800/30 border border-neutral-800' 
-                        : 'hover:bg-gray-800'
+                        ? 'hz-bg-raised hz-bordered' 
+                        : 'hz-hoverable'
                     }`}
                     onClick={() => setEditedTask(prev => ({ ...prev, status: option.value }))}
                   >
@@ -163,19 +163,19 @@ const TaskDetailModal: React.FC<TaskDetailModalProps> = ({
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-neutral-400 mb-1">Priority</label>
-              <div className="space-y-1">
+              <label className="hz-t-sm hz-w-medium hz-fg-muted hz-mb-1">Priority</label>
+              <div className="hz-stack-1">
                 {priorityOptions.map(option => (
                   <div 
                     key={option.value}
-                    className={`px-3 py-2 rounded cursor-pointer flex items-center ${
+                    className={`hz-btn hz-btn-ghost hz-pointer ${
                       editedTask.priority === option.value 
-                        ? 'bg-gray-800' 
-                        : 'hover:bg-gray-800/50'
+                        ? 'hz-bg-raised' 
+                        : 'hz-hoverable'
                     }`}
                     onClick={() => setEditedTask(prev => ({ ...prev, priority: option.value as "low" | "medium" | "high" }))}
                   >
-                    <div className={`w-2 h-2 rounded-full ${option.color} mr-2`}></div>
+                    <div className={`hz-sq-1 hz-r-full ${option.color} hz-mr-2`}></div>
                     {option.label}
                   </div>
                 ))}
@@ -183,30 +183,30 @@ const TaskDetailModal: React.FC<TaskDetailModalProps> = ({
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-neutral-400 mb-1">Due Date</label>
+              <label className="hz-t-sm hz-w-medium hz-fg-muted hz-mb-1">Due Date</label>
               <Input 
                 type="date"
                 name="dueDate"
                 value={editedTask.dueDate || ""}
                 onChange={handleChange}
-                className="bg-gray-900 border-gray-800"
+                className="hz-bg-surface"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-neutral-400 mb-1">AI Agents</label>
+              <label className="hz-t-sm hz-w-medium hz-fg-muted hz-mb-1">AI Agents</label>
               <Button 
                 variant="outline" 
-                className="w-full justify-start bg-gray-900 border-gray-800"
+                className="hz-w-full hz-jc-start hz-bg-surface"
               >
-                <Bot className="mr-2 h-4 w-4" />
+                <Bot className="hz-sq-2 hz-mr-2" />
                 Assign Agent
               </Button>
             </div>
           </div>
         </div>
 
-        <div className="flex justify-end gap-2 mt-6">
+        <div className="hz-row hz-jc-end hz-gap-2 hz-mt-5">
           <Button variant="ghost" onClick={onClose}>
             Cancel
           </Button>

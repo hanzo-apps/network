@@ -6,17 +6,17 @@ import { Button } from "@/components/ui/button";
 
 const CallToAction = () => {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto text-center">
+    <section className="hz-py-7 hz-px-4">
+      <div className="hz-container-narrow hz-align-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="inline-flex items-center px-3 py-1 rounded-full bg-neutral-800/30 border border-neutral-500/30 mb-6"
+          className="hz-inline hz-ai-center hz-px-3 hz-py-1 hz-r-full hz-bg-raised hz-bordered hz-border-strong hz-mb-5"
         >
-          <Activity className="h-4 w-4 text-neutral-400 mr-2" />
-          <span className="text-sm text-neutral-300">Get Started Today</span>
+          <Activity className="hz-sq-2 hz-fg-muted hz-mr-2" />
+          <span className="hz-t-sm hz-fg-soft">Get Started Today</span>
         </motion.div>
         
         <motion.h2
@@ -24,7 +24,7 @@ const CallToAction = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-3xl md:text-4xl font-bold text-[var(--white)] mb-6"
+          className="hz-t-3xl hz-w-bold hz-fg hz-mb-5"
         >
           Build Real-time Experiences in Minutes
         </motion.h2>
@@ -34,7 +34,7 @@ const CallToAction = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-xl text-neutral-300 mb-8"
+          className="hz-t-xl hz-fg-soft hz-mb-6"
         >
           Join thousands of developers building with Hanzo Realtime.
           No credit card required to get started.
@@ -45,21 +45,21 @@ const CallToAction = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          className="hz-col-row hz-ai-center hz-jc-center hz-gap-4"
         >
           <Button 
             size="lg" 
-            className="bg-neutral-600 hover:bg-neutral-700 text-[var(--white)] px-8 py-6 text-lg w-full sm:w-auto"
+            className="hz-bg-raised hz-fg hz-px-6 hz-py-5 hz-t-lg hz-w-full hz-hoverable"
           >
-            Start Building <ArrowRight className="ml-2 h-5 w-5" />
+            Start Building <ArrowRight className="hz-sq-3 hz-ml-2" />
           </Button>
           <Button 
             size="lg" 
             variant="outline" 
-            className="border-gray-700 text-[var(--white)] hover:bg-gray-800 px-8 py-6 text-lg w-full sm:w-auto"
+            className="hz-fg hz-px-6 hz-py-5 hz-t-lg hz-w-full hz-hoverable"
           >
-            <a href="https://docs.hanzo.ai" className="flex items-center">
-              Documentation <ChevronRight className="ml-2 h-5 w-5" />
+            <a href="https://docs.hanzo.ai" className="hz-row hz-ai-center">
+              Documentation <ChevronRight className="hz-sq-3 hz-ml-2" />
             </a>
           </Button>
         </motion.div>

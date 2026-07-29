@@ -24,7 +24,7 @@ const IndividualPlans = () => {
   const plans = [
     {
       name: "Pro",
-      icon: <Code className="h-6 w-6 text-neutral-400" />,
+      icon: <Code className="hz-sq-4 hz-fg-muted" />,
       price: "$20",
       billingPeriod: "/month",
       description: "Ideal for hobbyists and occasional use",
@@ -42,7 +42,7 @@ const IndividualPlans = () => {
     },
     {
       name: "Max",
-      icon: <Zap className="h-6 w-6 text-neutral-400" />,
+      icon: <Zap className="hz-sq-4 hz-fg-muted" />,
       price: "$200",
       billingPeriod: "/month",
       description: "For professionals and small businesses",
@@ -61,7 +61,7 @@ const IndividualPlans = () => {
     },
     {
       name: "Team",
-      icon: <Users className="h-6 w-6 text-neutral-400" />,
+      icon: <Users className="hz-sq-4 hz-fg-muted" />,
       price: "$30",
       billingPeriod: "/user/month",
       description: "Collaborative teams requiring unified billing",
@@ -80,8 +80,8 @@ const IndividualPlans = () => {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto mb-16">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+    <div className="hz-container hz-mb-7">
+      <div className="hz-grid hz-grid-3 hz-gap-6 hz-mb-6">
         {plans.map((plan) => (
           <PricingPlan
             key={plan.name}

@@ -66,88 +66,88 @@ const AgentsList = ({ viewMode = "grid" }: AgentsListProps) => {
   };
 
   return (
-    <div className="h-full flex flex-col">
-      <div className="flex justify-between items-center mb-4">
-        <div className="relative w-80">
-          <Search className="absolute left-3 top-2.5 h-4 w-4 text-neutral-500" />
+    <div className="hz-h-full hz-col">
+      <div className="hz-row hz-jc-between hz-ai-center hz-mb-4">
+        <div className="hz-rel hz-bw-8">
+          <Search className="hz-sq-2 hz-abs hz-fg-muted" />
           <Input 
             placeholder="Search agents..." 
-            className="bg-[var(--black)] border-gray-800 pl-10"
+            className="hz-bg hz-px-6"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
         </div>
-        <div className="flex space-x-2">
+        <div className="hz-row hz-inline-2">
           <Button 
             variant="ghost" 
-            className="border border-gray-800" 
+            className="hz-bordered" 
             onClick={toggleDisplayMode}
             title={displayMode === "grid" ? "Switch to List View" : "Switch to Grid View"}
           >
-            {displayMode === "grid" ? <List className="h-4 w-4" /> : <LayoutGrid className="h-4 w-4" />}
+            {displayMode === "grid" ? <List className="hz-sq-2" /> : <LayoutGrid className="hz-sq-2" />}
           </Button>
-          <Button className="bg-[var(--black)] hover:bg-gray-900 border border-gray-800">
-            <PlusCircle className="h-4 w-4 mr-2" />
+          <Button className="hz-bg hz-bordered hz-hoverable">
+            <PlusCircle className="hz-sq-2 hz-mr-2" />
             New Agent
           </Button>
         </div>
       </div>
       
       {displayMode === "grid" ? (
-        <div className="border border-gray-800 rounded-lg overflow-hidden">
-          <table className="w-full text-sm">
+        <div className="hz-bordered hz-r-lg hz-clip">
+          <table className="hz-w-full hz-t-sm">
             <thead>
-              <tr className="bg-[var(--black)] text-left">
-                <th className="px-4 py-3 font-medium text-neutral-400">Name</th>
-                <th className="px-4 py-3 font-medium text-neutral-400">Status</th>
-                <th className="px-4 py-3 font-medium text-neutral-400">Type</th>
-                <th className="px-4 py-3 font-medium text-neutral-400">Model</th>
-                <th className="px-4 py-3 font-medium text-neutral-400">Tasks</th>
-                <th className="px-4 py-3 font-medium text-neutral-400">Memory</th>
-                <th className="px-4 py-3 font-medium text-neutral-400">Tokens</th>
-                <th className="px-4 py-3 font-medium text-neutral-400">Cost</th>
-                <th className="px-4 py-3 font-medium text-neutral-400">Actions</th>
+              <tr className="hz-bg hz-align-left">
+                <th className="hz-px-4 hz-py-3 hz-w-medium hz-fg-muted">Name</th>
+                <th className="hz-px-4 hz-py-3 hz-w-medium hz-fg-muted">Status</th>
+                <th className="hz-px-4 hz-py-3 hz-w-medium hz-fg-muted">Type</th>
+                <th className="hz-px-4 hz-py-3 hz-w-medium hz-fg-muted">Model</th>
+                <th className="hz-px-4 hz-py-3 hz-w-medium hz-fg-muted">Tasks</th>
+                <th className="hz-px-4 hz-py-3 hz-w-medium hz-fg-muted">Memory</th>
+                <th className="hz-px-4 hz-py-3 hz-w-medium hz-fg-muted">Tokens</th>
+                <th className="hz-px-4 hz-py-3 hz-w-medium hz-fg-muted">Cost</th>
+                <th className="hz-px-4 hz-py-3 hz-w-medium hz-fg-muted">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-800">
+            <tbody className="">
               {filteredAgents.map((agent) => (
                 <tr 
                   key={agent.id} 
-                  className="bg-[var(--black)] hover:bg-gray-900/60 cursor-pointer"
+                  className="hz-bg hz-pointer hz-hoverable"
                   onClick={() => handleAgentClick(agent)}
                 >
-                  <td className="px-4 py-3">
-                    <div className="flex items-center">
-                      <div className="w-8 h-8 rounded-md bg-neutral-800/30 border border-neutral-800/50 flex items-center justify-center mr-3">
-                        <Bot className="h-4 w-4 text-neutral-400" />
+                  <td className="hz-px-4 hz-py-3">
+                    <div className="hz-row hz-ai-center">
+                      <div className="hz-sq-5 hz-r-md hz-bg-raised hz-bordered hz-row hz-ai-center hz-jc-center hz-mr-3">
+                        <Bot className="hz-sq-2 hz-fg-muted" />
                       </div>
                       <div>
-                        <div className="font-medium">{agent.name}</div>
-                        <div className="text-xs text-neutral-500">Last active: {agent.lastActive}</div>
+                        <div className="hz-w-medium">{agent.name}</div>
+                        <div className="hz-t-xs hz-fg-muted">Last active: {agent.lastActive}</div>
                       </div>
                     </div>
                   </td>
-                  <td className="px-4 py-3">
-                    <div className="flex items-center">
-                      <div className={`h-2 w-2 rounded-full ${statusColors[agent.status]} mr-2`}></div>
+                  <td className="hz-px-4 hz-py-3">
+                    <div className="hz-row hz-ai-center">
+                      <div className={`hz-sq-1 hz-r-full ${statusColors[agent.status]} hz-mr-2`}></div>
                       {getStatusText(agent.status)}
                     </div>
                   </td>
-                  <td className="px-4 py-3">
-                    <div className="flex items-center">
-                      {agent.type === "Research" && <Database className="h-4 w-4 mr-1 text-neutral-400" />}
-                      {agent.type === "Coding" && <Brain className="h-4 w-4 mr-1 text-neutral-400" />}
-                      {agent.type === "Assistant" && <Activity className="h-4 w-4 mr-1 text-neutral-400" />}
+                  <td className="hz-px-4 hz-py-3">
+                    <div className="hz-row hz-ai-center">
+                      {agent.type === "Research" && <Database className="hz-sq-2 hz-mr-1 hz-fg-muted" />}
+                      {agent.type === "Coding" && <Brain className="hz-sq-2 hz-mr-1 hz-fg-muted" />}
+                      {agent.type === "Assistant" && <Activity className="hz-sq-2 hz-mr-1 hz-fg-muted" />}
                       {agent.type}
                     </div>
                   </td>
-                  <td className="px-4 py-3 text-neutral-300">{agent.model}</td>
-                  <td className="px-4 py-3">{agent.tasks}</td>
-                  <td className="px-4 py-3">
-                    <div className="flex items-center">
+                  <td className="hz-px-4 hz-py-3 hz-fg-soft">{agent.model}</td>
+                  <td className="hz-px-4 hz-py-3">{agent.tasks}</td>
+                  <td className="hz-px-4 hz-py-3">
+                    <div className="hz-row hz-ai-center">
                       <Progress 
                         value={agent.memory} 
-                        className="h-1.5 w-16 mr-2 bg-gray-800" 
+                        className="hz-bh-1 hz-bw-8 hz-mr-2 hz-bg-raised" 
                         style={{
                           '--progress-background': agent.memory > 80 ? 'bg-neutral-600' : 
                             agent.memory > 60 ? 'bg-neutral-500' : 
@@ -157,21 +157,21 @@ const AgentsList = ({ viewMode = "grid" }: AgentsListProps) => {
                       <span>{agent.memory}%</span>
                     </div>
                   </td>
-                  <td className="px-4 py-3">{agent.tokens.toLocaleString()}</td>
-                  <td className="px-4 py-3">${agent.cost.toFixed(2)}</td>
-                  <td className="px-4 py-3">
-                    <div className="flex space-x-1" onClick={(e) => e.stopPropagation()}>
+                  <td className="hz-px-4 hz-py-3">{agent.tokens.toLocaleString()}</td>
+                  <td className="hz-px-4 hz-py-3">${agent.cost.toFixed(2)}</td>
+                  <td className="hz-px-4 hz-py-3">
+                    <div className="hz-row hz-inline-1" onClick={(e) => e.stopPropagation()}>
                       {agent.status === "running" ? (
-                        <Button size="icon" variant="ghost" className="h-8 w-8 text-neutral-400 hover:text-[var(--white)]" onClick={(e) => handleStatusToggle(agent, e)}>
-                          <StopCircle className="h-4 w-4" />
+                        <Button size="icon" variant="ghost" className="hz-sq-5 hz-fg-muted hz-link" onClick={(e) => handleStatusToggle(agent, e)}>
+                          <StopCircle className="hz-sq-2" />
                         </Button>
                       ) : (
-                        <Button size="icon" variant="ghost" className="h-8 w-8 text-neutral-400 hover:text-[var(--white)]" onClick={(e) => handleStatusToggle(agent, e)}>
-                          <PlayCircle className="h-4 w-4" />
+                        <Button size="icon" variant="ghost" className="hz-sq-5 hz-fg-muted hz-link" onClick={(e) => handleStatusToggle(agent, e)}>
+                          <PlayCircle className="hz-sq-2" />
                         </Button>
                       )}
-                      <Button size="icon" variant="ghost" className="h-8 w-8 text-neutral-400 hover:text-[var(--white)]">
-                        <Settings className="h-4 w-4" />
+                      <Button size="icon" variant="ghost" className="hz-sq-5 hz-fg-muted hz-link">
+                        <Settings className="hz-sq-2" />
                       </Button>
                     </div>
                   </td>
@@ -181,63 +181,63 @@ const AgentsList = ({ viewMode = "grid" }: AgentsListProps) => {
           </table>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="hz-grid hz-grid-3 hz-gap-4">
           {filteredAgents.map((agent) => (
             <div 
               key={agent.id}
-              className="bg-[var(--black)] border border-gray-800 rounded-lg p-4 cursor-pointer hover:bg-gray-900/20 transition-colors"
+              className="hz-card hz-pointer hz-transition hz-card-interactive"
               onClick={() => handleAgentClick(agent)}
             >
-              <div className="flex items-center justify-between mb-3">
-                <div className="flex items-center">
-                  <div className="w-8 h-8 rounded-md bg-neutral-800/30 border border-neutral-800/50 flex items-center justify-center mr-3">
-                    <Bot className="h-4 w-4 text-neutral-400" />
+              <div className="hz-row hz-ai-center hz-jc-between hz-mb-3">
+                <div className="hz-row hz-ai-center">
+                  <div className="hz-sq-5 hz-r-md hz-bg-raised hz-bordered hz-row hz-ai-center hz-jc-center hz-mr-3">
+                    <Bot className="hz-sq-2 hz-fg-muted" />
                   </div>
                   <div>
-                    <div className="font-medium">{agent.name}</div>
-                    <div className="text-xs text-neutral-500">Last active: {agent.lastActive}</div>
+                    <div className="hz-w-medium">{agent.name}</div>
+                    <div className="hz-t-xs hz-fg-muted">Last active: {agent.lastActive}</div>
                   </div>
                 </div>
-                <div className="flex items-center">
-                  <div className={`h-2 w-2 rounded-full ${statusColors[agent.status]} mr-2`}></div>
-                  <span className="text-sm">{getStatusText(agent.status)}</span>
+                <div className="hz-row hz-ai-center">
+                  <div className={`hz-sq-1 hz-r-full ${statusColors[agent.status]} hz-mr-2`}></div>
+                  <span className="hz-t-sm">{getStatusText(agent.status)}</span>
                 </div>
               </div>
               
-              <div className="mb-3 text-sm">
-                <div className="flex justify-between mb-1">
-                  <span className="text-neutral-400">Type:</span>
-                  <span className="flex items-center">
-                    {agent.type === "Research" && <Database className="h-3 w-3 mr-1 text-neutral-400" />}
-                    {agent.type === "Coding" && <Brain className="h-3 w-3 mr-1 text-neutral-400" />}
-                    {agent.type === "Assistant" && <Activity className="h-3 w-3 mr-1 text-neutral-400" />}
+              <div className="hz-mb-3 hz-t-sm">
+                <div className="hz-row hz-jc-between hz-mb-1">
+                  <span className="hz-fg-muted">Type:</span>
+                  <span className="hz-row hz-ai-center">
+                    {agent.type === "Research" && <Database className="hz-sq-1 hz-mr-1 hz-fg-muted" />}
+                    {agent.type === "Coding" && <Brain className="hz-sq-1 hz-mr-1 hz-fg-muted" />}
+                    {agent.type === "Assistant" && <Activity className="hz-sq-1 hz-mr-1 hz-fg-muted" />}
                     {agent.type}
                   </span>
                 </div>
-                <div className="flex justify-between mb-1">
-                  <span className="text-neutral-400">Model:</span>
+                <div className="hz-row hz-jc-between hz-mb-1">
+                  <span className="hz-fg-muted">Model:</span>
                   <span>{agent.model}</span>
                 </div>
-                <div className="flex justify-between mb-1">
-                  <span className="text-neutral-400">Tasks:</span>
+                <div className="hz-row hz-jc-between hz-mb-1">
+                  <span className="hz-fg-muted">Tasks:</span>
                   <span>{agent.tasks}</span>
                 </div>
-                <div className="flex justify-between mb-1">
-                  <span className="text-neutral-400">Tokens:</span>
+                <div className="hz-row hz-jc-between hz-mb-1">
+                  <span className="hz-fg-muted">Tokens:</span>
                   <span>{agent.tokens.toLocaleString()}</span>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-neutral-400">Cost:</span>
+                <div className="hz-row hz-jc-between">
+                  <span className="hz-fg-muted">Cost:</span>
                   <span>${agent.cost.toFixed(2)}</span>
                 </div>
               </div>
               
-              <div className="flex items-center justify-between">
-                <div className="flex items-center text-sm">
-                  <span className="text-neutral-400 mr-2">Memory:</span>
+              <div className="hz-row hz-ai-center hz-jc-between">
+                <div className="hz-row hz-ai-center hz-t-sm">
+                  <span className="hz-fg-muted hz-mr-2">Memory:</span>
                   <Progress 
                     value={agent.memory} 
-                    className="h-1.5 w-16 mr-2 bg-gray-800" 
+                    className="hz-bh-1 hz-bw-8 hz-mr-2 hz-bg-raised" 
                     style={{
                       '--progress-background': agent.memory > 80 ? 'bg-neutral-600' : 
                         agent.memory > 60 ? 'bg-neutral-500' : 
@@ -247,18 +247,18 @@ const AgentsList = ({ viewMode = "grid" }: AgentsListProps) => {
                   <span>{agent.memory}%</span>
                 </div>
                 
-                <div className="flex space-x-1" onClick={(e) => e.stopPropagation()}>
+                <div className="hz-row hz-inline-1" onClick={(e) => e.stopPropagation()}>
                   {agent.status === "running" ? (
-                    <Button size="icon" variant="ghost" className="h-8 w-8 text-neutral-400 hover:text-[var(--white)]" onClick={(e) => handleStatusToggle(agent, e)}>
-                      <StopCircle className="h-4 w-4" />
+                    <Button size="icon" variant="ghost" className="hz-sq-5 hz-fg-muted hz-link" onClick={(e) => handleStatusToggle(agent, e)}>
+                      <StopCircle className="hz-sq-2" />
                     </Button>
                   ) : (
-                    <Button size="icon" variant="ghost" className="h-8 w-8 text-neutral-400 hover:text-[var(--white)]" onClick={(e) => handleStatusToggle(agent, e)}>
-                      <PlayCircle className="h-4 w-4" />
+                    <Button size="icon" variant="ghost" className="hz-sq-5 hz-fg-muted hz-link" onClick={(e) => handleStatusToggle(agent, e)}>
+                      <PlayCircle className="hz-sq-2" />
                     </Button>
                   )}
-                  <Button size="icon" variant="ghost" className="h-8 w-8 text-neutral-400 hover:text-[var(--white)]">
-                    <Settings className="h-4 w-4" />
+                  <Button size="icon" variant="ghost" className="hz-sq-5 hz-fg-muted hz-link">
+                    <Settings className="hz-sq-2" />
                   </Button>
                 </div>
               </div>

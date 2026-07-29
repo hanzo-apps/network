@@ -11,7 +11,7 @@ interface NotificationsProps {
 
 const Notifications: React.FC<NotificationsProps> = ({ notifications, onDismiss }) => {
   return (
-    <div className="absolute top-2 right-2 z-30 flex flex-col space-y-2 max-w-xs">
+    <div className="hz-abs hz-z-header hz-col hz-stack-2 hz-mw-xs">
       <AnimatePresence>
         {notifications.map(notification => (
           <motion.div
@@ -19,27 +19,27 @@ const Notifications: React.FC<NotificationsProps> = ({ notifications, onDismiss 
             initial={{ opacity: 0, x: 20, scale: 0.95 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
             exit={{ opacity: 0, x: 20, scale: 0.95 }}
-            className={`rounded-md p-3 shadow-lg ${
-              notification.type === 'success' ? 'bg-gray-900/90 border border-gray-700' :
-              notification.type === 'error' ? 'bg-neutral-800/80 border border-neutral-700' :
-              'bg-neutral-800/80 border border-neutral-700'
+            className={`hz-r-md hz-p-3 hz-shadow-lg ${
+              notification.type === 'success' ? 'hz-bg-surface hz-bordered' :
+              notification.type === 'error' ? 'hz-bg-raised hz-bordered' :
+              'hz-bg-raised hz-bordered'
             }`}
           >
-            <div className="flex items-start">
-              <div className="flex-shrink-0 mt-0.5">
-                {notification.type === 'success' && <Check className="h-4 w-4 text-neutral-400" />}
-                {notification.type === 'error' && <X className="h-4 w-4 text-neutral-400" />}
-                {notification.type === 'info' && <Cloud className="h-4 w-4 text-neutral-400" />}
+            <div className="hz-row hz-ai-start">
+              <div className="hz-none hz-mt-1">
+                {notification.type === 'success' && <Check className="hz-sq-2 hz-fg-muted" />}
+                {notification.type === 'error' && <X className="hz-sq-2 hz-fg-muted" />}
+                {notification.type === 'info' && <Cloud className="hz-sq-2 hz-fg-muted" />}
               </div>
-              <div className="ml-2">
-                <p className="text-sm font-medium text-neutral-100">{notification.title}</p>
-                <p className="text-xs text-neutral-300">{notification.message}</p>
+              <div className="hz-ml-2">
+                <p className="hz-t-sm hz-w-medium hz-fg">{notification.title}</p>
+                <p className="hz-t-xs hz-fg-soft">{notification.message}</p>
               </div>
               <button 
-                className="ml-4 flex-shrink-0 text-neutral-400 hover:text-neutral-300"
+                className="hz-ml-4 hz-none hz-fg-muted hz-link"
                 onClick={() => onDismiss(notification.id)}
               >
-                <X className="h-4 w-4" />
+                <X className="hz-sq-2" />
               </button>
             </div>
           </motion.div>

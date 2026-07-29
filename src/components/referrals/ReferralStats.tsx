@@ -9,51 +9,51 @@ interface ReferralStatsProps {
 
 const ReferralStatsComponent = ({ referralStats }: ReferralStatsProps) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-      <div className="bg-gray-900/30 border border-gray-800 rounded-lg p-6">
-        <div className="flex items-center gap-4">
-          <div className="h-12 w-12 rounded-full bg-gray-800 flex items-center justify-center">
-            <Mail className="h-6 w-6 text-neutral-400" />
+    <div className="hz-grid hz-grid-4 hz-gap-5">
+      <div className="hz-card">
+        <div className="hz-row hz-ai-center hz-gap-4">
+          <div className="hz-sq-7 hz-r-full hz-bg-raised hz-row hz-ai-center hz-jc-center">
+            <Mail className="hz-sq-4 hz-fg-muted" />
           </div>
           <div>
-            <div className="text-sm text-neutral-400">Total Invited</div>
-            <div className="text-2xl font-bold">{referralStats.totalInvited}</div>
+            <div className="hz-t-sm hz-fg-muted">Total Invited</div>
+            <div className="hz-t-2xl hz-w-bold">{referralStats.totalInvited}</div>
           </div>
         </div>
       </div>
       
-      <div className="bg-gray-900/30 border border-gray-800 rounded-lg p-6">
-        <div className="flex items-center gap-4">
-          <div className="h-12 w-12 rounded-full bg-gray-800 flex items-center justify-center">
-            <User className="h-6 w-6 text-neutral-400" />
+      <div className="hz-card">
+        <div className="hz-row hz-ai-center hz-gap-4">
+          <div className="hz-sq-7 hz-r-full hz-bg-raised hz-row hz-ai-center hz-jc-center">
+            <User className="hz-sq-4 hz-fg-muted" />
           </div>
           <div>
-            <div className="text-sm text-neutral-400">Signed Up</div>
-            <div className="text-2xl font-bold">{referralStats.signedUp}</div>
+            <div className="hz-t-sm hz-fg-muted">Signed Up</div>
+            <div className="hz-t-2xl hz-w-bold">{referralStats.signedUp}</div>
           </div>
         </div>
       </div>
       
-      <div className="bg-gray-900/30 border border-gray-800 rounded-lg p-6">
-        <div className="flex items-center gap-4">
-          <div className="h-12 w-12 rounded-full bg-gray-800 flex items-center justify-center">
-            <DollarSign className="h-6 w-6 text-neutral-400" />
+      <div className="hz-card">
+        <div className="hz-row hz-ai-center hz-gap-4">
+          <div className="hz-sq-7 hz-r-full hz-bg-raised hz-row hz-ai-center hz-jc-center">
+            <DollarSign className="hz-sq-4 hz-fg-muted" />
           </div>
           <div>
-            <div className="text-sm text-neutral-400">Credits Earned</div>
-            <div className="text-2xl font-bold">${referralStats.creditsEarned}</div>
+            <div className="hz-t-sm hz-fg-muted">Credits Earned</div>
+            <div className="hz-t-2xl hz-w-bold">${referralStats.creditsEarned}</div>
           </div>
         </div>
       </div>
       
-      <div className="bg-gray-900/30 border border-gray-800 rounded-lg p-6">
-        <div className="flex items-center gap-4">
-          <div className="h-12 w-12 rounded-full bg-gray-800 flex items-center justify-center">
-            <Clock className="h-6 w-6 text-neutral-400" />
+      <div className="hz-card">
+        <div className="hz-row hz-ai-center hz-gap-4">
+          <div className="hz-sq-7 hz-r-full hz-bg-raised hz-row hz-ai-center hz-jc-center">
+            <Clock className="hz-sq-4 hz-fg-muted" />
           </div>
           <div>
-            <div className="text-sm text-neutral-400">Pending</div>
-            <div className="text-2xl font-bold">{referralStats.pending}</div>
+            <div className="hz-t-sm hz-fg-muted">Pending</div>
+            <div className="hz-t-2xl hz-w-bold">{referralStats.pending}</div>
           </div>
         </div>
       </div>

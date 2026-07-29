@@ -15,7 +15,6 @@ import {
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
-const BRAND_COLOR = "#ffffff";
 
 // Quick action presets
 const chatPresets = [
@@ -42,26 +41,26 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-[85vh] flex flex-col items-center justify-center overflow-hidden">
+    <section className="hz-rel hz-col hz-ai-center hz-jc-center hz-clip">
       {/* Subtle background gradient */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/3 left-1/4 w-[600px] h-[600px] bg-white/5 rounded-full blur-[120px]"></div>
-        <div className="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] bg-neutral-800/30 rounded-full blur-[100px]"></div>
+      <div className="hz-abs hz-inset hz-no-pointer">
+        <div className="hz-abs hz-bg-quiet hz-r-full hz-blur-bg"></div>
+        <div className="hz-abs hz-bg-raised hz-r-full hz-blur-bg"></div>
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 relative z-10">
-        <div className="max-w-3xl mx-auto">
+      <div className="hz-container hz-mx-auto hz-px-4 hz-rel hz-z-raised">
+        <div className="hz-container-narrow">
           {/* Main headline */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-8"
+            className="hz-align-center hz-mb-6"
           >
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-4 tracking-tight">
+            <h1 className="hz-t-5xl hz-w-bold hz-fg hz-mb-4 hz-tracking-tight">
               Meet your
               <br />
-              <span style={{ color: BRAND_COLOR }}>thinking partner.</span>
+              <span className="hz-fg" >thinking partner.</span>
             </h1>
           </motion.div>
 
@@ -70,7 +69,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-xl text-neutral-400 text-center mb-10 max-w-xl mx-auto"
+            className="hz-container-narrow hz-mw-md hz-t-xl hz-fg-muted hz-align-center hz-mb-6"
           >
             Tackle any big, bold, bewildering challenge with Hanzo AI.
           </motion.p>
@@ -81,23 +80,22 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             onSubmit={handleChatSubmit}
-            className="mb-6"
+            className="hz-mb-5"
           >
-            <div className="relative flex items-center">
+            <div className="hz-rel hz-row hz-ai-center">
               <input
                 type="text"
                 value={chatInput}
                 onChange={(e) => setChatInput(e.target.value)}
                 placeholder="How can I help you today?"
-                className="w-full bg-neutral-900 border border-neutral-700 rounded-xl px-5 py-4 pr-36 text-base text-white placeholder-neutral-500 focus:outline-none focus:border-neutral-600 transition-colors"
+                className="hz-w-full hz-bg-surface hz-bordered hz-r-lg hz-px-4 hz-py-4 hz-px-6 hz-t-base hz-fg hz-transition"
               />
               <Button
                 type="submit"
-                className="absolute right-2 px-5 py-2 rounded-lg text-sm font-medium flex items-center gap-2"
-                style={{ backgroundColor: BRAND_COLOR }}
-              >
+                className="hz-btn hz-btn-ghost hz-abs hz-gap-2 hz-bg-inverse"
+                >
                 Ask Hanzo
-                <ArrowUp className="w-4 h-4" />
+                <ArrowUp className="hz-sq-2" />
               </Button>
             </div>
           </motion.form>
@@ -107,7 +105,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex justify-center gap-3"
+            className="hz-row hz-jc-center hz-gap-3"
           >
             {chatPresets.map((preset) => {
               const Icon = preset.icon;
@@ -115,9 +113,9 @@ const HeroSection = () => {
                 <button
                   key={preset.label}
                   onClick={() => handlePresetClick(preset.label)}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-neutral-900 border border-neutral-800 text-neutral-300 text-sm font-medium hover:bg-neutral-800 hover:text-white transition-colors"
+                  className="hz-btn hz-gap-2 hz-fg-soft hz-transition"
                 >
-                  <Icon className="w-4 h-4" />
+                  <Icon className="hz-sq-2" />
                   {preset.label}
                 </button>
               );
@@ -134,40 +132,40 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.3, delay: 1 }}
-            className="fixed bottom-6 right-6 z-50 max-w-sm"
+            className="hz-fixed hz-z-overlay hz-mw-xs"
           >
-            <div className="bg-neutral-900 border border-neutral-800 rounded-2xl p-5 shadow-2xl">
+            <div className="hz-card hz-shadow-lg">
               {/* Header with close button */}
-              <div className="flex items-center justify-between mb-3">
-                <div className="flex items-center gap-2 text-neutral-500 text-xs">
-                  <span className="w-1.5 h-1.5 rounded-full bg-neutral-500"></span>
+              <div className="hz-row hz-ai-center hz-jc-between hz-mb-3">
+                <div className="hz-row hz-ai-center hz-gap-2 hz-fg-muted hz-t-xs">
+                  <span className="hz-sq-1 hz-r-full hz-bg-raised"></span>
                   Preview
                 </div>
                 <button
                   onClick={() => setShowMacOSPromo(false)}
-                  className="text-neutral-500 hover:text-white transition-colors"
+                  className="hz-fg-muted hz-transition hz-link"
                 >
-                  <X className="w-4 h-4" />
+                  <X className="hz-sq-2" />
                 </button>
               </div>
 
-              <div className="flex gap-4">
+              <div className="hz-row hz-gap-4">
                 {/* Text content */}
-                <div className="flex-1">
-                  <h3 className="text-white font-semibold text-lg mb-2">
+                <div className="hz-grow">
+                  <h3 className="hz-fg hz-w-semibold hz-t-lg hz-mb-2">
                     Some tasks just work better on macOS
                   </h3>
-                  <p className="text-neutral-400 text-sm mb-4">
+                  <p className="hz-fg-muted hz-t-sm hz-mb-4">
                     With Hanzo Dev, AI can now work directly with your local files and tools. Available in the macOS app.
                   </p>
 
                   {/* Action buttons */}
-                  <div className="flex gap-2">
+                  <div className="hz-row hz-gap-2">
                     <Link to="/download">
                       <Button
                         size="sm"
                         variant="outline"
-                        className="text-white border-neutral-700 hover:bg-neutral-800"
+                        className="hz-fg hz-hoverable"
                       >
                         Download
                       </Button>
@@ -175,9 +173,8 @@ const HeroSection = () => {
                     <Link to="/dev">
                       <Button
                         size="sm"
-                        className="text-white"
-                        style={{ backgroundColor: BRAND_COLOR }}
-                      >
+                        className="hz-fg hz-bg-inverse"
+                        >
                         Learn more
                       </Button>
                     </Link>
@@ -185,18 +182,18 @@ const HeroSection = () => {
                 </div>
 
                 {/* Visual - Checklist illustration */}
-                <div className="w-24 h-24 bg-white/10 rounded-xl flex flex-col items-start justify-center p-3 shrink-0">
-                  <div className="flex items-center gap-2 mb-2">
-                    <CheckSquare className="w-4 h-4 text-white" />
-                    <div className="w-10 h-1.5 bg-neutral-700 rounded"></div>
+                <div className="hz-sq-8 hz-bg-quiet hz-r-lg hz-col hz-ai-start hz-jc-center hz-p-3 hz-none">
+                  <div className="hz-row hz-ai-center hz-gap-2 hz-mb-2">
+                    <CheckSquare className="hz-sq-2 hz-fg" />
+                    <div className="hz-bw-6 hz-bh-1 hz-bg-raised hz-r-md"></div>
                   </div>
-                  <div className="flex items-center gap-2 mb-2">
-                    <Square className="w-4 h-4 text-neutral-600" />
-                    <div className="w-8 h-1.5 bg-neutral-700 rounded"></div>
+                  <div className="hz-row hz-ai-center hz-gap-2 hz-mb-2">
+                    <Square className="hz-sq-2 hz-fg-faint" />
+                    <div className="hz-bw-5 hz-bh-1 hz-bg-raised hz-r-md"></div>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <Square className="w-4 h-4 text-neutral-600" />
-                    <div className="w-6 h-1.5 bg-neutral-700 rounded"></div>
+                  <div className="hz-row hz-ai-center hz-gap-2">
+                    <Square className="hz-sq-2 hz-fg-faint" />
+                    <div className="hz-bw-4 hz-bh-1 hz-bg-raised hz-r-md"></div>
                   </div>
                 </div>
               </div>

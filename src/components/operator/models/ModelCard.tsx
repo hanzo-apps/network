@@ -18,30 +18,30 @@ const ModelCard = ({ model, index }: ModelCardProps) => {
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       className={`
-        bg-gray-900/30 border rounded-xl p-6 hover:bg-gray-900/50 transition-colors relative
-        ${model.recommended ? 'border-neutral-500/50' : 'border-gray-800'}
+        hz-card hz-transition hz-rel hz-card-interactive
+        ${model.recommended ? 'hz-border-strong' : ''}
       `}
     >
       {model.recommended && (
-        <span className="absolute top-0 right-6 -translate-y-1/2 px-3 py-1 bg-neutral-600 text-[var(--white)] text-xs font-semibold rounded-full">
+        <span className="hz-abs hz-top-0 hz-px-3 hz-py-1 hz-bg-raised hz-fg hz-t-xs hz-w-semibold hz-r-full">
           Recommended
         </span>
       )}
       
-      <h3 className="text-xl font-semibold text-[var(--white)] mb-1">{model.name}</h3>
-      <p className="text-sm text-neutral-400 mb-4">by {model.provider}</p>
+      <h3 className="hz-t-xl hz-w-semibold hz-fg hz-mb-1">{model.name}</h3>
+      <p className="hz-t-sm hz-fg-muted hz-mb-4">by {model.provider}</p>
       
-      <ul className="space-y-2 mb-6">
+      <ul className="hz-stack-2 hz-mb-5">
         {model.features.map((feature, i) => (
-          <li key={i} className="flex items-start">
-            <Check className="h-5 w-5 text-neutral-400 mr-2 flex-shrink-0 mt-0.5" />
-            <span className="text-neutral-300 text-sm">{feature}</span>
+          <li key={i} className="hz-row hz-ai-start">
+            <Check className="hz-sq-3 hz-fg-muted hz-mr-2 hz-none hz-mt-1" />
+            <span className="hz-fg-soft hz-t-sm">{feature}</span>
           </li>
         ))}
       </ul>
       
-      <div className="pt-2 mt-auto">
-        <p className="text-sm text-neutral-400 font-mono">{model.command}</p>
+      <div className="hz-pt-4 hz-mt-auto">
+        <p className="hz-t-sm hz-fg-muted hz-mono">{model.command}</p>
       </div>
     </motion.div>
   );

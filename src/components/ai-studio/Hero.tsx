@@ -4,12 +4,12 @@ import ChromeText from "@/components/ui/chrome-text";
 
 const Hero = () => {
   return (
-    <div className="bg-gradient-to-r from-neutral-900/20 to-neutral-800/20 py-10 px-4">
-      <div className="max-w-7xl mx-auto">
-        <ChromeText as="h1" className="text-4xl font-bold mb-2">
+    <div className="hz-py-6 hz-px-4">
+      <div className="hz-container">
+        <ChromeText as="h1" className="hz-t-4xl hz-w-bold hz-mb-2">
           Hanzo AI Studio
         </ChromeText>
-        <p className="text-neutral-300 max-w-xl">
+        <p className="hz-fg-soft hz-mw-md">
           Your workspace for AI model experimentation, prompt engineering, and creating agent-based applications.
         </p>
       </div>

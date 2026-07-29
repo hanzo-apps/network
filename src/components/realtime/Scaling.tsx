@@ -5,45 +5,45 @@ import { Activity, Users, Zap, Cpu, Server, Network } from "lucide-react";
 
 const Scaling = () => {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black to-neutral-950/10">
-      <div className="max-w-7xl mx-auto">
+    <section className="hz-py-7 hz-px-4">
+      <div className="hz-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="hz-align-center hz-mb-7"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-[var(--white)] mb-4">
+          <h2 className="hz-t-3xl hz-w-bold hz-fg hz-mb-4">
             Scale to Millions of Connections
           </h2>
-          <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
+          <p className="hz-container-narrow hz-t-xl hz-fg-soft">
             Built for massive scale from day one, with no infrastructure management required
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="hz-grid hz-grid-3 hz-gap-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="bg-gradient-to-br from-neutral-800/20 to-transparent rounded-xl border border-neutral-500/20 p-6"
+            className="hz-card"
           >
-            <Activity className="h-8 w-8 text-neutral-400 mb-4" />
-            <h3 className="text-xl font-semibold text-[var(--white)] mb-2">High Throughput</h3>
-            <p className="text-neutral-300">
+            <Activity className="hz-sq-5 hz-fg-muted hz-mb-4" />
+            <h3 className="hz-t-xl hz-w-semibold hz-fg hz-mb-2">High Throughput</h3>
+            <p className="hz-fg-soft">
               Process millions of messages per second with sub-millisecond latency. 
               Perfect for high-frequency data updates and time-sensitive applications.
             </p>
             
-            <div className="mt-6 pt-6 border-t border-gray-800">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-neutral-400 text-sm">Message throughput</span>
-                <span className="text-[var(--white)] font-medium">Unlimited</span>
+            <div className="hz-mt-5 hz-pt-6 hz-border-t">
+              <div className="hz-row hz-ai-center hz-jc-between hz-mb-2">
+                <span className="hz-fg-muted hz-t-sm">Message throughput</span>
+                <span className="hz-fg hz-w-medium">Unlimited</span>
               </div>
-              <div className="w-full bg-gray-800 h-2 rounded-full overflow-hidden">
-                <div className="bg-neutral-600 h-full rounded-full" style={{ width: "100%" }}></div>
+              <div className="hz-w-full hz-bg-raised hz-bh-1 hz-r-full hz-clip">
+                <div className="hz-bg-raised hz-h-full hz-r-full" style={{ width: "100%" }}></div>
               </div>
             </div>
           </motion.div>
@@ -53,22 +53,22 @@ const Scaling = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="bg-gradient-to-br from-neutral-800/20 to-transparent rounded-xl border border-neutral-500/20 p-6"
+            className="hz-card"
           >
-            <Users className="h-8 w-8 text-neutral-400 mb-4" />
-            <h3 className="text-xl font-semibold text-[var(--white)] mb-2">Concurrent Connections</h3>
-            <p className="text-neutral-300">
+            <Users className="hz-sq-5 hz-fg-muted hz-mb-4" />
+            <h3 className="hz-t-xl hz-w-semibold hz-fg hz-mb-2">Concurrent Connections</h3>
+            <p className="hz-fg-soft">
               Support millions of simultaneous client connections with automatic
               scaling. No connection limits or throttling to worry about.
             </p>
             
-            <div className="mt-6 pt-6 border-t border-gray-800">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-neutral-400 text-sm">Connection capacity</span>
-                <span className="text-[var(--white)] font-medium">Millions+</span>
+            <div className="hz-mt-5 hz-pt-6 hz-border-t">
+              <div className="hz-row hz-ai-center hz-jc-between hz-mb-2">
+                <span className="hz-fg-muted hz-t-sm">Connection capacity</span>
+                <span className="hz-fg hz-w-medium">Millions+</span>
               </div>
-              <div className="w-full bg-gray-800 h-2 rounded-full overflow-hidden">
-                <div className="bg-neutral-600 h-full rounded-full" style={{ width: "95%" }}></div>
+              <div className="hz-w-full hz-bg-raised hz-bh-1 hz-r-full hz-clip">
+                <div className="hz-bg-raised hz-h-full hz-r-full" style={{ width: "95%" }}></div>
               </div>
             </div>
           </motion.div>
@@ -78,22 +78,22 @@ const Scaling = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="bg-gradient-to-br from-neutral-900/20 to-transparent rounded-xl border border-neutral-500/20 p-6"
+            className="hz-card"
           >
-            <Network className="h-8 w-8 text-neutral-400 mb-4" />
-            <h3 className="text-xl font-semibold text-[var(--white)] mb-2">Global Edge Network</h3>
-            <p className="text-neutral-300">
+            <Network className="hz-sq-5 hz-fg-muted hz-mb-4" />
+            <h3 className="hz-t-xl hz-w-semibold hz-fg hz-mb-2">Global Edge Network</h3>
+            <p className="hz-fg-soft">
               Deployed at the edge across 200+ locations worldwide, ensuring
               low-latency connections for users anywhere on the planet.
             </p>
             
-            <div className="mt-6 pt-6 border-t border-gray-800">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-neutral-400 text-sm">Global coverage</span>
-                <span className="text-[var(--white)] font-medium">200+ regions</span>
+            <div className="hz-mt-5 hz-pt-6 hz-border-t">
+              <div className="hz-row hz-ai-center hz-jc-between hz-mb-2">
+                <span className="hz-fg-muted hz-t-sm">Global coverage</span>
+                <span className="hz-fg hz-w-medium">200+ regions</span>
               </div>
-              <div className="w-full bg-gray-800 h-2 rounded-full overflow-hidden">
-                <div className="bg-neutral-500 h-full rounded-full" style={{ width: "90%" }}></div>
+              <div className="hz-w-full hz-bg-raised hz-bh-1 hz-r-full hz-clip">
+                <div className="hz-bg-raised hz-h-full hz-r-full" style={{ width: "90%" }}></div>
               </div>
             </div>
           </motion.div>
@@ -104,29 +104,29 @@ const Scaling = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6"
+          className="hz-grid hz-grid-3 hz-mt-7 hz-gap-5"
         >
-          <div className="bg-[var(--black)]/40 rounded-lg border border-gray-800 p-4 flex items-center">
-            <Zap className="h-8 w-8 text-neutral-400 mr-4" />
+          <div className="hz-card hz-row hz-ai-center">
+            <Zap className="hz-sq-5 hz-fg-muted hz-mr-4" />
             <div>
-              <h4 className="text-[var(--white)] font-medium">Auto-scaling</h4>
-              <p className="text-neutral-400 text-sm">Scales automatically based on demand</p>
+              <h4 className="hz-fg hz-w-medium">Auto-scaling</h4>
+              <p className="hz-fg-muted hz-t-sm">Scales automatically based on demand</p>
             </div>
           </div>
           
-          <div className="bg-[var(--black)]/40 rounded-lg border border-gray-800 p-4 flex items-center">
-            <Cpu className="h-8 w-8 text-neutral-400 mr-4" />
+          <div className="hz-card hz-row hz-ai-center">
+            <Cpu className="hz-sq-5 hz-fg-muted hz-mr-4" />
             <div>
-              <h4 className="text-[var(--white)] font-medium">High Availability</h4>
-              <p className="text-neutral-400 text-sm">99.99% uptime SLA guarantee</p>
+              <h4 className="hz-fg hz-w-medium">High Availability</h4>
+              <p className="hz-fg-muted hz-t-sm">99.99% uptime SLA guarantee</p>
             </div>
           </div>
           
-          <div className="bg-[var(--black)]/40 rounded-lg border border-gray-800 p-4 flex items-center">
-            <Server className="h-8 w-8 text-neutral-400 mr-4" />
+          <div className="hz-card hz-row hz-ai-center">
+            <Server className="hz-sq-5 hz-fg-muted hz-mr-4" />
             <div>
-              <h4 className="text-[var(--white)] font-medium">Zero Management</h4>
-              <p className="text-neutral-400 text-sm">No servers or infrastructure to manage</p>
+              <h4 className="hz-fg hz-w-medium">Zero Management</h4>
+              <p className="hz-fg-muted hz-t-sm">No servers or infrastructure to manage</p>
             </div>
           </div>
         </motion.div>

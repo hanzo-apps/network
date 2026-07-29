@@ -42,7 +42,7 @@ export const MasonryGrid: React.FC<MasonryGridProps> = ({
     columnItems[columnIndex].push(
       <div 
         key={index} 
-        className="mb-4"
+        className="hz-mb-4"
         style={{ marginBottom: `${gap}px` }}
       >
         {child}
@@ -52,13 +52,13 @@ export const MasonryGrid: React.FC<MasonryGridProps> = ({
 
   return (
     <div 
-      className={`flex w-full ${className}`} 
+      className={`hz-row hz-w-full ${className}`} 
       style={{ gap: `${gap}px` }}
     >
       {columnItems.map((column, index) => (
         <div 
           key={index} 
-          className="flex-1 flex flex-col"
+          className="hz-grow hz-col"
         >
           {column}
         </div>
@@ -72,7 +72,7 @@ export const MasonryItem: React.FC<{
   className?: string;
 }> = ({ children, className = "" }) => {
   return (
-    <div className={`w-full overflow-hidden ${className}`}>
+    <div className={`hz-w-full hz-clip ${className}`}>
       {children}
     </div>
   );

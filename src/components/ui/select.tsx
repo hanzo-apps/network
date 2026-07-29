@@ -1,152 +1,100 @@
+import * as React from 'react'
+import { Select as GuiSelect, Adapt, Sheet as GuiSheet } from '@hanzo/gui'
+import { Check, ChevronDown } from 'lucide-react'
+import { cn } from '@/lib/utils'
 
-import * as React from "react"
-import * as SelectPrimitive from "@radix-ui/react-select"
-import { Check, ChevronDown, ChevronUp } from "lucide-react"
+/**
+ * Select on the gui backend. `Adapt` is why this one is worth the primitive:
+ * on a phone the same markup becomes a bottom sheet instead of a 200px
+ * dropdown pinned to a 44px trigger.
+ */
+type Ctx = { placeholder?: string }
+const SelectCtx = React.createContext<Ctx>({})
 
-import { cn } from "@/lib/utils"
-
-const Select = SelectPrimitive.Root
-
-const SelectGroup = SelectPrimitive.Group
-
-const SelectValue = SelectPrimitive.Value
+const Select = ({ children, ...props }: React.ComponentPropsWithoutRef<typeof GuiSelect>) => (
+  <GuiSelect {...props}>{children}</GuiSelect>
+)
 
 const SelectTrigger = React.forwardRef<
-  React.ElementRef<typeof SelectPrimitive.Trigger>,
-  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger>
+  React.ElementRef<typeof GuiSelect.Trigger>,
+  React.ComponentPropsWithoutRef<typeof GuiSelect.Trigger> & { className?: string }
 >(({ className, children, ...props }, ref) => (
-  <SelectPrimitive.Trigger
+  <GuiSelect.Trigger
     ref={ref}
-    className={cn(
-      "flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1",
-      className
-    )}
+    unstyled
+    iconAfter={<ChevronDown className="hz-sq-2 hz-fg-muted" />}
+    className={cn('hz-row hz-nowrap hz-ai-center hz-jc-between hz-gap-2 hz-input hz-tap hz-pointer', className)}
     {...props}
   >
     {children}
-    <SelectPrimitive.Icon asChild>
-      <ChevronDown className="h-4 w-4 opacity-50" />
-    </SelectPrimitive.Icon>
-  </SelectPrimitive.Trigger>
+  </GuiSelect.Trigger>
 ))
-SelectTrigger.displayName = SelectPrimitive.Trigger.displayName
+SelectTrigger.displayName = 'SelectTrigger'
 
-const SelectScrollUpButton = React.forwardRef<
-  React.ElementRef<typeof SelectPrimitive.ScrollUpButton>,
-  React.ComponentPropsWithoutRef<typeof SelectPrimitive.ScrollUpButton>
->(({ className, ...props }, ref) => (
-  <SelectPrimitive.ScrollUpButton
-    ref={ref}
-    className={cn("flex cursor-default items-center justify-center py-1", className)}
-    {...props}
-  >
-    <ChevronUp className="h-4 w-4" />
-  </SelectPrimitive.ScrollUpButton>
-))
-SelectScrollUpButton.displayName = SelectPrimitive.ScrollUpButton.displayName
+const SelectValue = ({
+  placeholder,
+  children,
+  ...props
+}: { placeholder?: string; className?: string; children?: React.ReactNode }) => (
+  <SelectCtx.Provider value={{ placeholder }}>
+    <GuiSelect.Value placeholder={placeholder} {...props}>
+      {children}
+    </GuiSelect.Value>
+  </SelectCtx.Provider>
+)
 
-const SelectScrollDownButton = React.forwardRef<
-  React.ElementRef<typeof SelectPrimitive.ScrollDownButton>,
-  React.ComponentPropsWithoutRef<typeof SelectPrimitive.ScrollDownButton>
->(({ className, ...props }, ref) => (
-  <SelectPrimitive.ScrollDownButton
-    ref={ref}
-    className={cn("flex cursor-default items-center justify-center py-1", className)}
-    {...props}
-  >
-    <ChevronDown className="h-4 w-4" />
-  </SelectPrimitive.ScrollDownButton>
-))
-SelectScrollDownButton.displayName =
-  SelectPrimitive.ScrollDownButton.displayName
+const SelectContent = ({ className, children }: { className?: string; children?: React.ReactNode }) => {
+  let i = 0
+  const indexed = React.Children.map(children, (c) =>
+    React.isValidElement(c) && (c.type as { displayName?: string })?.displayName === 'SelectItem'
+      ? React.cloneElement(c as React.ReactElement<{ index?: number }>, { index: i++ })
+      : c,
+  )
+  return (
+  <>
+    <Adapt when={"maxMd" as never} platform="touch">
+      <GuiSheet modal dismissOnSnapToBottom snapPointsMode="fit">
+        <GuiSheet.Frame className={cn('hz-card hz-r-none hz-bg-raised', className)}>
+          <Adapt.Contents />
+        </GuiSheet.Frame>
+        <GuiSheet.Overlay className="hz-bg-scrim" />
+      </GuiSheet>
+    </Adapt>
+    <GuiSelect.Content>
+      <GuiSelect.Viewport className={cn('hz-card hz-card-flush hz-bg-raised hz-shadow-lg hz-clip', className)}>
+        {indexed}
+      </GuiSelect.Viewport>
+    </GuiSelect.Content>
+  </>
+  )
+}
 
-const SelectContent = React.forwardRef<
-  React.ElementRef<typeof SelectPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content>
->(({ className, children, position = "popper", ...props }, ref) => (
-  <SelectPrimitive.Portal>
-    <SelectPrimitive.Content
-      ref={ref}
-      className={cn(
-        "relative z-50 max-h-96 min-w-[8rem] overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
-        position === "popper" &&
-          "data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1",
-        className
-      )}
-      position={position}
-      {...props}
-    >
-      <SelectScrollUpButton />
-      <SelectPrimitive.Viewport
-        className={cn("p-1", 
-          position === "popper" &&
-            "h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)]"
-        )}
-      >
-        {children}
-      </SelectPrimitive.Viewport>
-      <SelectScrollDownButton />
-    </SelectPrimitive.Content>
-  </SelectPrimitive.Portal>
-))
-SelectContent.displayName = SelectPrimitive.Content.displayName
-
-const SelectLabel = React.forwardRef<
-  React.ElementRef<typeof SelectPrimitive.Label>,
-  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Label>
->(({ className, ...props }, ref) => (
-  <SelectPrimitive.Label
-    ref={ref}
-    className={cn("py-1.5 pl-8 pr-2 text-sm font-semibold", className)}
-    {...props}
-  />
-))
-SelectLabel.displayName = SelectPrimitive.Label.displayName
-
+/* gui addresses an option by its position, so a caller that only knows the
+   value gets the index from the content order. */
 const SelectItem = React.forwardRef<
-  React.ElementRef<typeof SelectPrimitive.Item>,
-  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Item>
->(({ className, children, ...props }, ref) => (
-  <SelectPrimitive.Item
-    ref={ref}
-    className={cn(
-      "relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
-      className
-    )}
-    {...props}
-  >
-    <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
-      <SelectPrimitive.ItemIndicator>
-        <Check className="h-4 w-4" />
-      </SelectPrimitive.ItemIndicator>
-    </span>
-
-    <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
-  </SelectPrimitive.Item>
+  React.ElementRef<typeof GuiSelect.Item>,
+  Omit<React.ComponentPropsWithoutRef<typeof GuiSelect.Item>, 'index'> & { className?: string; index?: number }
+>(({ className, children, index = 0, ...props }, ref) => (
+  <GuiSelect.Item ref={ref} unstyled index={index} className={cn('hz-row hz-nowrap hz-ai-center hz-gap-2 hz-px-4 hz-tap hz-t-sm hz-link', className)} {...props}>
+    <GuiSelect.ItemText>{children}</GuiSelect.ItemText>
+    <GuiSelect.ItemIndicator marginLeft="auto">
+      <Check className="hz-sq-2" />
+    </GuiSelect.ItemIndicator>
+  </GuiSelect.Item>
 ))
-SelectItem.displayName = SelectPrimitive.Item.displayName
+SelectItem.displayName = 'SelectItem'
 
-const SelectSeparator = React.forwardRef<
-  React.ElementRef<typeof SelectPrimitive.Separator>,
-  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Separator>
->(({ className, ...props }, ref) => (
-  <SelectPrimitive.Separator
-    ref={ref}
-    className={cn("-mx-1 my-1 h-px bg-muted", className)}
-    {...props}
-  />
-))
-SelectSeparator.displayName = SelectPrimitive.Separator.displayName
+const SelectGroup = GuiSelect.Group
+const SelectLabel = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
+  <div className={cn('hz-px-4 hz-py-2 hz-t-xs hz-fg-faint hz-upper hz-tracking-widest', className)} {...props} />
+)
+const SelectSeparator = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
+  <div className={cn('hz-divider', className)} {...props} />
+)
+const SelectScrollUpButton = () => null
+const SelectScrollDownButton = () => null
 
 export {
-  Select,
-  SelectGroup,
-  SelectValue,
-  SelectTrigger,
-  SelectContent,
-  SelectLabel,
-  SelectItem,
-  SelectSeparator,
-  SelectScrollUpButton,
-  SelectScrollDownButton,
+  Select, SelectGroup, SelectValue, SelectTrigger, SelectContent,
+  SelectLabel, SelectItem, SelectSeparator, SelectScrollUpButton, SelectScrollDownButton,
 }

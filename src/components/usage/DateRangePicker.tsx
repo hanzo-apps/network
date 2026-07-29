@@ -31,31 +31,31 @@ const DateRangePicker = ({ dateRange, onDateRangeChange }: DateRangePickerProps)
   };
 
   return (
-    <div className="flex items-center space-x-2">
+    <div className="hz-row hz-ai-center hz-inline-2">
       <Button 
         variant="outline" 
         size="sm" 
-        className="border-gray-700 hover:bg-gray-800"
+        className="hz-hoverable"
         onClick={handlePrevious}
       >
-        <ChevronLeft className="h-4 w-4" />
+        <ChevronLeft className="hz-sq-2" />
       </Button>
       
       <Button 
         variant="outline"
-        className="border-gray-700 hover:bg-gray-800"
+        className="hz-hoverable"
       >
-        <Calendar className="h-4 w-4 mr-2" />
+        <Calendar className="hz-sq-2 hz-mr-2" />
         <span>{dateRange.start} - {dateRange.end}</span>
       </Button>
       
       <Button 
         variant="outline" 
         size="sm" 
-        className="border-gray-700 hover:bg-gray-800"
+        className="hz-hoverable"
         onClick={handleNext}
       >
-        <ChevronRight className="h-4 w-4" />
+        <ChevronRight className="hz-sq-2" />
       </Button>
     </div>
   );

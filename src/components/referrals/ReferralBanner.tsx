@@ -12,21 +12,21 @@ const ReferralBanner = () => {
   };
 
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-[var(--black)] relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-r from-neutral-800/5 to-neutral-800/5"></div>
-      <div className="absolute -top-40 -right-40 w-80 h-80 bg-neutral-600/5 rounded-full blur-3xl"></div>
-      <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-neutral-600/5 rounded-full blur-3xl"></div>
+    <section className="hz-py-7 hz-px-4 hz-bg hz-rel hz-clip">
+      <div className="hz-abs hz-inset"></div>
+      <div className="hz-sq-8 hz-abs hz-bg-raised hz-r-full hz-blur-bg"></div>
+      <div className="hz-sq-8 hz-abs hz-bg-raised hz-r-full hz-blur-bg"></div>
       
-      <div className="max-w-6xl mx-auto">
-        <div className="backdrop-blur-xl bg-[var(--black)]/40 border border-white/5 rounded-xl p-10">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="flex-1">
-              <div className="flex items-center mb-5">
-                <Gift className="h-8 w-8 text-neutral-300 mr-4" />
-                <h2 className="text-2xl md:text-3xl font-medium">Join Our Referral Program</h2>
+      <div className="hz-container-wide">
+        <div className="hz-card hz-glass">
+          <div className="hz-col-row hz-ai-center hz-jc-between hz-gap-6">
+            <div className="hz-grow">
+              <div className="hz-row hz-ai-center hz-mb-4">
+                <Gift className="hz-sq-5 hz-fg-soft hz-mr-4" />
+                <h2 className="hz-t-2xl hz-w-medium">Join Our Referral Program</h2>
               </div>
-              <p className="text-lg text-neutral-300 mb-6 leading-relaxed">
-                Get <span className="text-neutral-300 font-medium">$5 in credit</span> every time a friend signs up and pays for any plan. 
+              <p className="hz-t-lg hz-fg-soft hz-mb-5 hz-leading-relaxed">
+                Get <span className="hz-fg-soft hz-w-medium">$5 in credit</span> every time a friend signs up and pays for any plan. 
                 Share the power of Hanzo AI with your network and earn rewards!
               </p>
             </div>
@@ -34,9 +34,9 @@ const ReferralBanner = () => {
             <Button 
               onClick={handleReferralClick}
               size="lg" 
-              className="bg-[var(--black)] hover:bg-neutral-900 text-[var(--white)] px-8 py-7 text-lg border border-white/10"
+              className="hz-bg hz-fg hz-px-6 hz-py-5 hz-t-lg hz-bordered hz-hoverable"
             >
-              Start Referring <ArrowRight className="ml-2 h-5 w-5" />
+              Start Referring <ArrowRight className="hz-sq-3 hz-ml-2" />
             </Button>
           </div>
         </div>

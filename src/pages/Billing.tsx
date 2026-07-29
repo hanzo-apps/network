@@ -13,24 +13,24 @@ const BillingPage = () => {
   return (
     <AnimatedSection>
       <AnimatedHeading>
-        <h2 className="text-2xl font-medium mb-8">Billing</h2>
+        <h2 className="hz-t-2xl hz-w-medium hz-mb-6">Billing</h2>
       </AnimatedHeading>
 
-      <div className="mb-8 flex flex-wrap gap-4">
+      <div className="hz-mb-6 hz-row hz-wrap hz-gap-4">
         <Button 
           variant="outline" 
           onClick={() => navigate('/account/invoices')}
-          className="bg-[var(--black)] hover:bg-neutral-900 border border-white/10 text-[var(--white)] flex items-center"
+          className="hz-bg hz-bordered hz-fg hz-row hz-ai-center hz-hoverable"
         >
-          <FileText className="h-4 w-4 mr-2" />
+          <FileText className="hz-sq-2 hz-mr-2" />
           View Billing History
         </Button>
         <Button 
           variant="outline" 
           onClick={() => navigate('/account/billing#payment-methods')}
-          className="bg-[var(--black)] hover:bg-neutral-900 border border-white/10 text-[var(--white)] flex items-center"
+          className="hz-bg hz-bordered hz-fg hz-row hz-ai-center hz-hoverable"
         >
-          <CreditCard className="h-4 w-4 mr-2" />
+          <CreditCard className="hz-sq-2 hz-mr-2" />
           Manage Payment Methods
         </Button>
       </div>

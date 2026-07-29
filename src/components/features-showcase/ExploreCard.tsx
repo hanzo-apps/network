@@ -16,26 +16,26 @@ const ExploreCard: React.FC<ExploreCardProps> = ({
 }) => {
   return (
     <motion.div 
-      className="feature-card h-full w-full flex flex-col items-center p-6 rounded-xl border border-gray-800 bg-gradient-to-br from-neutral-800/30 to-neutral-800/30 backdrop-blur-sm"
+      className="hz-card feature-card hz-h-full hz-w-full hz-col hz-ai-center hz-glass"
       whileHover={{ scale: 1.03 }}
       transition={{ duration: 0.2 }}
     >
-      <div className="w-16 h-16 rounded-full flex items-center justify-center mb-4 bg-gradient-to-r from-neutral-600 to-neutral-600">
-        <ArrowRight className="h-8 w-8 text-[var(--white)]" />
+      <div className="hz-sq-8 hz-r-full hz-row hz-ai-center hz-jc-center hz-mb-4">
+        <ArrowRight className="hz-sq-5 hz-fg" />
       </div>
       
-      <h3 className="text-xl font-bold mb-3 text-[var(--white)] text-center">{title}</h3>
+      <h3 className="hz-t-xl hz-w-bold hz-mb-3 hz-fg hz-align-center">{title}</h3>
       
-      <p className="text-neutral-300 text-center mb-6 flex-grow">
+      <p className="hz-fg-soft hz-align-center hz-mb-5 hz-grow">
         {description}
       </p>
       
       <a 
         href={link} 
-        className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-2 text-sm bg-gradient-to-r from-neutral-600 to-neutral-600 text-[var(--white)] hover:from-neutral-500 hover:to-neutral-500 transition-colors"
+        className="hz-btn hz-gap-2 hz-fg hz-transition"
       >
         Explore Platform
-        <ArrowRight className="h-4 w-4" />
+        <ArrowRight className="hz-sq-2" />
       </a>
     </motion.div>
   );

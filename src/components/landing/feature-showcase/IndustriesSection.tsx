@@ -34,7 +34,7 @@ const IndustriesSection: React.FC = () => {
   ];
 
   return (
-    <div className="mb-16">
+    <div className="hz-mb-7">
       <SectionHeader
         badge="Industry Solutions"
         badgeColor="bg-neutral-800/30 border border-neutral-500/30 text-neutral-300"
@@ -42,7 +42,7 @@ const IndustriesSection: React.FC = () => {
         description="Transform your business operations with tailored AI solutions designed for your industry's unique challenges."
       />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+      <div className="hz-grid hz-grid-3 hz-gap-5 hz-mb-6">
         {industryCards.map((industry, index) => (
           <IndustryCard 
             key={index}

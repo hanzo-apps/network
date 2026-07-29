@@ -7,12 +7,12 @@ const Background = () => {
   return (
     <>
       {/* Subtle grid background */}
-      <GridLines spacing={40} opacity={0.07} className="fixed inset-0 -z-10" />
+      <GridLines spacing={40} opacity={0.07} className="hz-fixed hz-inset hz-z-behind" />
       
       {/* Subtle gradient accents */}
-      <div className="fixed inset-0 -z-10 opacity-20">
-        <div className="absolute -top-80 -right-80 w-96 h-96 bg-neutral-500/10 rounded-full blur-[120px]"></div>
-        <div className="absolute top-1/3 left-1/4 w-[30rem] h-[30rem] bg-neutral-600/5 rounded-full blur-[100px]"></div>
+      <div className="hz-fixed hz-inset hz-z-behind hz-dim-more">
+        <div className="hz-sq-8 hz-abs hz-bg-raised hz-r-full hz-blur-bg"></div>
+        <div className="hz-abs hz-bg-raised hz-r-full hz-blur-bg"></div>
       </div>
     </>
   );

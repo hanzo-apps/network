@@ -10,7 +10,7 @@ interface AITunnelGridProps {
 
 const AITunnelGrid: React.FC<AITunnelGridProps> = ({ mousePosition }) => {
   return (
-    <div className="absolute inset-0 w-full h-full overflow-hidden">
+    <div className="hz-abs hz-inset hz-w-full hz-h-full hz-clip">
       {/* Moving tunnel rings */}
       <TunnelSegments />
       

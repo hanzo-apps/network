@@ -46,24 +46,24 @@ const PricingPlans = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[var(--black)] text-[var(--white)]">
+    <div className="hz-min-h-screen hz-bg hz-fg">
       <Navbar />
       
-      <main className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
+      <main className="hz-pt-6 hz-pb-6 hz-px-4">
         <PricingHeader />
         
         {/* Tab Navigation */}
-        <div className="max-w-3xl mx-auto mb-12">
-          <div className="flex justify-center">
-            <div className="bg-gray-900/50 rounded-full p-1 border border-gray-800">
+        <div className="hz-container-narrow hz-mb-7">
+          <div className="hz-row hz-jc-center">
+            <div className="hz-bg-surface hz-r-full hz-p-1 hz-bordered">
               {tabs.map((tab) => (
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-200 ${
+                  className={`hz-px-5 hz-py-3 hz-r-full hz-t-sm hz-w-medium hz-transition ${
                     activeTab === tab.id
-                      ? "bg-white text-black"
-                      : "text-neutral-400 hover:text-white"
+                      ? "hz-bg-inverse hz-fg-inverse"
+                      : "hz-fg-muted hz-link"
                   }`}
                 >
                   {tab.label}

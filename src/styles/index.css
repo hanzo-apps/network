@@ -1,7 +1,17 @@
-@import 'tailwindcss';
-
-/* Main CSS file that imports all other CSS files */
-@import "./base.css";
-@import "./typography.css";
-@import "./themes.css";
-@import "./utilities.css";
+/* hanzo.network — the whole stylesheet, in import order.
+ *
+ * 1. @hanzo/design  — the tokens. Colour, type, spacing, radius, elevation,
+ *    motion, z-ladder and element defaults, plus self-hosted Geist. This is the
+ *    same file hanzo.ai, console, chat and app import, which is what keeps this
+ *    site on the ecosystem's look instead of a private palette. Dark is
+ *    `:root`; `.light` is the light counterpart.
+ * 2. system.css     — the site's design-system class vocabulary, expressed
+ *    entirely in those tokens.
+ * 3. site.css       — the few named treatments that belong to this site alone
+ *    (ambient field, chrome text, the mega-menu transitions).
+ *
+ * There is no fourth layer, no utility framework and no per-page stylesheet.
+ */
+@import '@hanzo/design/styles.css';
+@import './system.css';
+@import './site.css';

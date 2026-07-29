@@ -35,21 +35,21 @@ const BillingHistory = () => {
   };
 
   return (
-    <div className="space-y-8">
-      <div className="flex items-center justify-between">
+    <div className="hz-stack-6">
+      <div className="hz-row hz-ai-center hz-jc-between">
         <BillingTabsLink tabId="overview" variant="ghost">
-          <ArrowLeft className="h-4 w-4 mr-2" /> Back to Overview
+          <ArrowLeft className="hz-sq-2 hz-mr-2" /> Back to Overview
         </BillingTabsLink>
         <Button variant="outline">
-          <Filter className="h-4 w-4 mr-2" />
+          <Filter className="hz-sq-2 hz-mr-2" />
           Filter
         </Button>
       </div>
       
-      <div className="bg-gray-900/30 border border-gray-800 rounded-lg p-6">
-        <h3 className="text-xl font-medium mb-6">Invoice History</h3>
+      <div className="hz-card">
+        <h3 className="hz-t-xl hz-w-medium hz-mb-5">Invoice History</h3>
         
-        <div className="overflow-x-auto">
+        <div className="hz-scroll-x">
           <Table>
             <TableHeader>
               <TableRow>
@@ -58,24 +58,24 @@ const BillingHistory = () => {
                 <TableHead>Description</TableHead>
                 <TableHead>Amount</TableHead>
                 <TableHead>Status</TableHead>
-                <TableHead className="text-right">Actions</TableHead>
+                <TableHead className="hz-align-right">Actions</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {invoices.map(invoice => (
                 <TableRow key={invoice.id}>
-                  <TableCell className="font-medium">{invoice.id}</TableCell>
+                  <TableCell className="hz-w-medium">{invoice.id}</TableCell>
                   <TableCell>{invoice.date}</TableCell>
                   <TableCell>{invoice.description}</TableCell>
                   <TableCell>{invoice.amount}</TableCell>
                   <TableCell>
-                    <span className={`px-2 py-1 rounded-full text-xs ${getStatusColor(invoice.status)}`}>
+                    <span className={`hz-px-2 hz-py-1 hz-r-full hz-t-xs ${getStatusColor(invoice.status)}`}>
                       {invoice.status}
                     </span>
                   </TableCell>
-                  <TableCell className="text-right">
+                  <TableCell className="hz-align-right">
                     <Button variant="ghost" size="sm">
-                      <Download className="h-4 w-4 mr-2" />
+                      <Download className="hz-sq-2 hz-mr-2" />
                       PDF
                     </Button>
                   </TableCell>

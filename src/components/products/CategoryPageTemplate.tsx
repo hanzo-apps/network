@@ -72,13 +72,13 @@ interface CategoryPageTemplateProps {
 
 const StatusBadge = ({ status }: { status: Product['status'] }) => {
   const variants = {
-    ga: { label: 'GA', className: 'bg-neutral-500/20 text-neutral-400 border-neutral-500/30' },
-    beta: { label: 'Beta', className: 'bg-neutral-500/20 text-neutral-400 border-neutral-500/30' },
-    alpha: { label: 'Alpha', className: 'bg-neutral-500/20 text-neutral-400 border-neutral-500/30' },
-    coming: { label: 'Coming Soon', className: 'bg-neutral-500/20 text-neutral-400 border-neutral-500/30' }
+    ga: { label: 'GA', className: 'hz-bg-raised hz-fg-muted hz-border-strong' },
+    beta: { label: 'Beta', className: 'hz-bg-raised hz-fg-muted hz-border-strong' },
+    alpha: { label: 'Alpha', className: 'hz-bg-raised hz-fg-muted hz-border-strong' },
+    coming: { label: 'Coming Soon', className: 'hz-bg-raised hz-fg-muted hz-border-strong' }
   };
   return (
-    <Badge variant="outline" className={`${variants[status].className} text-xs`}>
+    <Badge variant="outline" className={`${variants[status].className} hz-t-xs`}>
       {variants[status].label}
     </Badge>
   );
@@ -100,57 +100,57 @@ export const CategoryPageTemplate: React.FC<CategoryPageTemplateProps> = ({
     : { all: products };
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="hz-min-h-screen hz-bg hz-fg">
       {/* Hero Section */}
-      <section className="relative py-24 px-4 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-neutral-900/50 to-black" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.03)_0%,transparent_70%)]" />
+      <section className="hz-rel hz-py-7 hz-px-4 hz-clip">
+        <div className="hz-abs hz-inset" />
+        <div className="hz-abs hz-inset" />
 
-        <div className="max-w-6xl mx-auto relative z-10">
+        <div className="hz-container-wide hz-rel hz-z-raised">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-center"
+            className="hz-align-center"
           >
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <div className="p-4 rounded-2xl bg-white/5 border border-white/10">
-                <CategoryIcon className="h-10 w-10 text-white" />
+            <div className="hz-row hz-ai-center hz-jc-center hz-gap-3 hz-mb-5">
+              <div className="hz-card">
+                <CategoryIcon className="hz-sq-6 hz-fg" />
               </div>
             </div>
 
-            <h1 className="text-4xl md:text-6xl font-bold mb-4">
+            <h1 className="hz-t-4xl hz-w-bold hz-mb-4">
               Hanzo {category.name}
             </h1>
 
-            <p className="text-xl md:text-2xl text-neutral-400 mb-6">
+            <p className="hz-t-xl hz-fg-muted hz-mb-5">
               {category.tagline}
             </p>
 
-            <p className="text-lg text-neutral-500 max-w-3xl mx-auto mb-10">
+            <p className="hz-container-narrow hz-t-lg hz-fg-muted hz-mb-6">
               {category.description}
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="hz-col-row hz-gap-4 hz-jc-center">
               <Button
                 size="lg"
-                className="bg-white text-black hover:bg-neutral-200"
+                className="hz-bg-inverse hz-fg-inverse hz-hoverable"
                 asChild
               >
                 <Link to="/pricing">
                   Get Started Free
-                  <ArrowRight className="ml-2 h-5 w-5" />
+                  <ArrowRight className="hz-sq-3 hz-ml-2" />
                 </Link>
               </Button>
               <Button
                 size="lg"
                 variant="outline"
-                className="border-white/20 hover:bg-white/5"
+                className="hz-hoverable"
                 asChild
               >
                 <a href="https://docs.hanzo.ai" target="_blank" rel="noopener noreferrer">
                   View Documentation
-                  <ExternalLink className="ml-2 h-4 w-4" />
+                  <ExternalLink className="hz-sq-2 hz-ml-2" />
                 </a>
               </Button>
             </div>
@@ -159,8 +159,8 @@ export const CategoryPageTemplate: React.FC<CategoryPageTemplateProps> = ({
       </section>
 
       {/* Products Grid */}
-      <section className="py-16 px-4 border-t border-white/10">
-        <div className="max-w-6xl mx-auto">
+      <section className="hz-py-7 hz-px-4 hz-border-t">
+        <div className="hz-container-wide">
           {subcategories ? (
             // Render grouped by subcategory (for ML products)
             subcategories.map((subcategory, subIndex) => {
@@ -168,13 +168,13 @@ export const CategoryPageTemplate: React.FC<CategoryPageTemplateProps> = ({
               if (subProducts.length === 0) return null;
 
               return (
-                <div key={subcategory} className="mb-16 last:mb-0">
-                  <h2 className="text-2xl font-bold mb-2">{subcategory}</h2>
-                  <p className="text-neutral-500 mb-8">
+                <div key={subcategory} className="hz-mb-7">
+                  <h2 className="hz-t-2xl hz-w-bold hz-mb-2">{subcategory}</h2>
+                  <p className="hz-fg-muted hz-mb-6">
                     {getSubcategoryDescription(subcategory)}
                   </p>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <div className="hz-grid hz-grid-3 hz-gap-5">
                     {subProducts.map((product, index) => (
                       <ProductCard
                         key={product.id}
@@ -188,7 +188,7 @@ export const CategoryPageTemplate: React.FC<CategoryPageTemplateProps> = ({
             })
           ) : (
             // Render flat grid
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="hz-grid hz-grid-3 hz-gap-5">
               {products.map((product, index) => (
                 <ProductCard key={product.id} product={product} index={index} />
               ))}
@@ -198,52 +198,52 @@ export const CategoryPageTemplate: React.FC<CategoryPageTemplateProps> = ({
       </section>
 
       {/* Quick Start Section */}
-      <section className="py-16 px-4 border-t border-white/10 bg-neutral-900/30">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-2xl font-bold mb-6">Quick Start</h2>
-          <p className="text-neutral-400 mb-8">
+      <section className="hz-py-7 hz-px-4 hz-border-t hz-bg-surface">
+        <div className="hz-container-narrow hz-align-center">
+          <h2 className="hz-t-2xl hz-w-bold hz-mb-5">Quick Start</h2>
+          <p className="hz-fg-muted hz-mb-6">
             Install the Hanzo CLI to get started with any {category.name} product
           </p>
 
-          <div className="bg-black rounded-xl p-6 max-w-2xl mx-auto">
-            <div className="flex items-center justify-between font-mono text-sm">
-              <code className="text-neutral-400">curl -fsSL hanzo.sh/install.sh | sh</code>
-              <Button variant="ghost" size="sm" className="text-neutral-400 hover:text-white">
+          <div className="hz-container-narrow hz-mw-md hz-bg hz-r-lg hz-p-5">
+            <div className="hz-row hz-ai-center hz-jc-between hz-mono hz-t-sm">
+              <code className="hz-fg-muted">curl -fsSL hanzo.sh/install.sh | sh</code>
+              <Button variant="ghost" size="sm" className="hz-fg-muted hz-link">
                 Copy
               </Button>
             </div>
           </div>
 
-          <p className="text-neutral-500 mt-6 text-sm">
-            Then run <code className="bg-neutral-800 px-2 py-1 rounded">hanzo --help</code> to see available commands
+          <p className="hz-fg-muted hz-mt-5 hz-t-sm">
+            Then run <code className="hz-bg-raised hz-px-2 hz-py-1 hz-r-md">hanzo --help</code> to see available commands
           </p>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 px-4 border-t border-white/10">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+      <section className="hz-py-7 hz-px-4 hz-border-t">
+        <div className="hz-container-narrow hz-align-center">
+          <h2 className="hz-t-3xl hz-w-bold hz-mb-5">
             Build with Hanzo {category.name}
           </h2>
-          <p className="text-lg text-neutral-400 mb-10">
+          <p className="hz-t-lg hz-fg-muted hz-mb-6">
             Open source, self-hostable, and available on Hanzo Cloud.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="hz-col-row hz-gap-4 hz-jc-center">
             <Button
               size="lg"
-              className="bg-white text-black hover:bg-neutral-200"
+              className="hz-bg-inverse hz-fg-inverse hz-hoverable"
               asChild
             >
               <Link to="/pricing">
                 Start Building
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <ArrowRight className="hz-sq-3 hz-ml-2" />
               </Link>
             </Button>
             <Button
               size="lg"
               variant="outline"
-              className="border-white/20 hover:bg-white/5"
+              className="hz-hoverable"
               asChild
             >
               <Link to="/contact">
@@ -268,33 +268,33 @@ const ProductCard: React.FC<{ product: Product; index: number }> = ({ product, i
       transition={{ duration: 0.3, delay: index * 0.05 }}
     >
       <Link to={product.href}>
-        <Card className="bg-neutral-900/50 border-neutral-800 hover:border-neutral-600 transition-all duration-300 h-full group cursor-pointer hover:bg-neutral-900/80">
+        <Card className="hz-bg-surface hz-transition hz-h-full hz-pointer hz-hoverable">
           <CardHeader>
-            <div className="flex items-start justify-between">
-              <div className="p-2 rounded-lg bg-white/5 border border-white/10 group-hover:border-white/20 transition-colors">
-                <IconComponent className="h-5 w-5 text-white" />
+            <div className="hz-row hz-ai-start hz-jc-between">
+              <div className="hz-p-2 hz-r-lg hz-bg-quiet hz-bordered hz-transition hz-hoverable">
+                <IconComponent className="hz-sq-3 hz-fg" />
               </div>
               <StatusBadge status={product.status} />
             </div>
-            <CardTitle className="text-lg mt-4 group-hover:text-white transition-colors flex items-center gap-2">
+            <CardTitle className="hz-t-lg hz-mt-4 hz-transition hz-row hz-ai-center hz-gap-2 hz-hoverable">
               {product.shortName}
-              <ArrowRight className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <ArrowRight className="hz-sq-2 hz-invisible hz-transition" />
             </CardTitle>
-            <CardDescription className="text-neutral-400">
+            <CardDescription className="hz-fg-muted">
               {product.tagline}
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-neutral-500 line-clamp-2">
+            <p className="hz-t-sm hz-fg-muted hz-clamp-2">
               {product.description}
             </p>
 
-            <div className="flex flex-wrap gap-2 mt-4">
+            <div className="hz-row hz-wrap hz-gap-2 hz-mt-4">
               {product.features.slice(0, 3).map((feature) => (
                 <Badge
                   key={feature}
                   variant="outline"
-                  className="bg-neutral-800/50 border-neutral-700 text-neutral-400 text-xs"
+                  className="hz-bg-raised hz-fg-muted hz-t-xs"
                 >
                   {feature}
                 </Badge>

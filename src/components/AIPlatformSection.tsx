@@ -13,32 +13,32 @@ const AIPlatformSection = () => {
   const [hovered, setHovered] = useState<number | null>(null);
 
   return (
-    <section className="relative py-20 sm:py-32 overflow-hidden">
+    <section className="hz-rel hz-py-7 hz-clip">
       {/* Background elements - simplified */}
-      <div className="absolute inset-0 bg-[var(--black)]" />
-      <div className="absolute inset-0 bg-gradient-to-b from-neutral-800/5 to-black/90"></div>
+      <div className="hz-abs hz-inset hz-bg" />
+      <div className="hz-abs hz-inset"></div>
       
       <GridLines spacing={60} opacity={0.2} color="rgba(147, 51, 234, 0.15)" />
       
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="hz-container hz-rel hz-z-raised">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="hz-align-center hz-mb-7"
         >
-          <div className="flex justify-center mb-4">
-            <span className="inline-block px-4 py-1 rounded-full bg-neutral-800/30 border border-neutral-500/30 text-neutral-300 text-sm font-medium">
+          <div className="hz-row hz-jc-center hz-mb-4">
+            <span className="hz-px-4 hz-py-1 hz-r-full hz-bg-raised hz-bordered hz-border-strong hz-fg-soft hz-t-sm hz-w-medium">
               Unified AI Development
             </span>
           </div>
-          <div className="flex justify-center">
-            <ChromeText as="h2" className="text-4xl md:text-5xl font-bold mb-6">
+          <div className="hz-row hz-jc-center">
+            <ChromeText as="h2" className="hz-t-4xl hz-w-bold hz-mb-5">
               AI Engineering Platform
             </ChromeText>
           </div>
-          <p className="text-lg md:text-xl text-neutral-300 max-w-3xl mx-auto">
+          <p className="hz-container-narrow hz-t-lg hz-fg-soft">
             Build powerful AI experiences with our comprehensive platform designed for developers,
             researchers, and enterprises to create, deploy, and scale AI applications.
           </p>
@@ -49,9 +49,9 @@ const AIPlatformSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mx-auto max-w-7xl"
+          className="hz-container"
         >
-          <MasonryGrid columns={4} gap={20} className="mb-12">
+          <MasonryGrid columns={4} gap={20} className="hz-mb-7">
             {aiPlatformFeatures.map((feature, index) => {
               const isFeatureHovered = hovered === index;
               const gradientClasses = getColorClasses(feature.color, 'gradient', isFeatureHovered);
@@ -67,19 +67,19 @@ const AIPlatformSection = () => {
                     transition={{ duration: 0.2 }}
                   >
                     <ArchitecturalBox
-                      className={`h-full bg-gradient-to-br ${gradientClasses} ${borderClasses} backdrop-blur-sm border p-6 rounded-2xl transition-colors duration-300`}
+                      className={`hz-h-full ${gradientClasses} ${borderClasses} hz-glass hz-bordered hz-p-5 hz-r-xl hz-transition`}
                       showCorners={true}
                       cornerSize={16}
                       cornerColor={isFeatureHovered ? `rgba(147, 51, 234, 0.4)` : "rgba(147, 51, 234, 0.2)"}
                     >
-                      <div className="mb-4">
+                      <div className="hz-mb-4">
                         {React.createElement(feature.icon, { 
                           size: 32, 
                           className: textColorClass
                         })}
                       </div>
-                      <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                      <p className="text-neutral-400">{feature.description}</p>
+                      <h3 className="hz-t-xl hz-w-semibold hz-mb-2">{feature.title}</h3>
+                      <p className="hz-fg-muted">{feature.description}</p>
                     </ArchitecturalBox>
                   </motion.div>
                 </MasonryItem>
@@ -93,14 +93,14 @@ const AIPlatformSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-center"
+          className="hz-align-center"
         >
           <Button
             size="lg"
-            className="bg-gradient-to-r from-neutral-700 to-neutral-700 hover:from-neutral-600 hover:to-neutral-600 rounded-full"
+            className="hz-r-full"
           >
-            <a href="/ai" className="flex items-center">
-              Explore the Platform <ArrowRight className="ml-2 h-5 w-5" />
+            <a href="/ai" className="hz-row hz-ai-center">
+              Explore the Platform <ArrowRight className="hz-sq-3 hz-ml-2" />
             </a>
           </Button>
         </motion.div>

@@ -17,17 +17,17 @@ const MessageInput: React.FC<MessageInputProps> = ({
   isTyping 
 }) => {
   return (
-    <div className="p-4 border-t border-gray-800">
-      <form onSubmit={handleSendMessage} className="flex items-center">
-        <div className="flex items-center space-x-2 mr-2">
-          <Button type="button" variant="ghost" size="icon" className="text-neutral-400 hover:text-[var(--white)]">
-            <Paperclip className="h-5 w-5" />
+    <div className="hz-p-4 hz-border-t">
+      <form onSubmit={handleSendMessage} className="hz-row hz-ai-center">
+        <div className="hz-row hz-ai-center hz-inline-2 hz-mr-2">
+          <Button type="button" variant="ghost" size="icon" className="hz-fg-muted hz-link">
+            <Paperclip className="hz-sq-3" />
           </Button>
-          <Button type="button" variant="ghost" size="icon" className="text-neutral-400 hover:text-[var(--white)]">
-            <Camera className="h-5 w-5" />
+          <Button type="button" variant="ghost" size="icon" className="hz-fg-muted hz-link">
+            <Camera className="hz-sq-3" />
           </Button>
-          <Button type="button" variant="ghost" size="icon" className="text-neutral-400 hover:text-[var(--white)]">
-            <Mic className="h-5 w-5" />
+          <Button type="button" variant="ghost" size="icon" className="hz-fg-muted hz-link">
+            <Mic className="hz-sq-3" />
           </Button>
         </div>
         
@@ -36,17 +36,17 @@ const MessageInput: React.FC<MessageInputProps> = ({
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           placeholder="Type your message..."
-          className="flex-1 bg-gray-800/50 border border-gray-700 rounded-l-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-neutral-500"
+          className="hz-grow hz-bg-raised hz-bordered hz-px-4 hz-py-2"
         />
         <Button 
           type="submit" 
           disabled={isTyping}
-          className="rounded-l-none bg-neutral-600 hover:bg-neutral-700 h-[42px]"
+          className="hz-bg-raised hz-hoverable"
         >
           {isTyping ? (
-            <RefreshCw className="h-5 w-5 animate-spin" />
+            <RefreshCw className="hz-sq-3" />
           ) : (
-            <Send className="h-5 w-5" />
+            <Send className="hz-sq-3" />
           )}
         </Button>
       </form>

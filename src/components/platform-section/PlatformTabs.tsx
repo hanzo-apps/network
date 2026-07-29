@@ -9,33 +9,33 @@ interface PlatformTabsProps {
 
 const PlatformTabs: React.FC<PlatformTabsProps> = ({ activeTab, setActiveTab }) => {
   return (
-    <div className="flex space-x-2 border-b border-gray-800 pb-2 overflow-x-auto">
+    <div className="hz-row hz-inline-2 hz-border-b hz-pb-4 hz-scroll-x">
       <button
         onClick={() => setActiveTab("platform")}
-        className={`px-4 py-2 rounded-t-lg whitespace-nowrap ${
+        className={`hz-px-4 hz-py-2 hz-whitespace-nowrap ${
           activeTab === "platform"
-            ? "text-[var(--white)] border-b-2 border-neutral-500"
-            : "text-neutral-400 hover:text-[var(--white)]"
+            ? "hz-fg hz-border-strong"
+            : "hz-fg-muted hz-link"
         }`}
       >
         Platform Vision
       </button>
       <button
         onClick={() => setActiveTab("capabilities")}
-        className={`px-4 py-2 rounded-t-lg whitespace-nowrap ${
+        className={`hz-px-4 hz-py-2 hz-whitespace-nowrap ${
           activeTab === "capabilities"
-            ? "text-[var(--white)] border-b-2 border-neutral-500"
-            : "text-neutral-400 hover:text-[var(--white)]"
+            ? "hz-fg hz-border-strong"
+            : "hz-fg-muted hz-link"
         }`}
       >
         Core Capabilities
       </button>
       <button
         onClick={() => setActiveTab("solutions")}
-        className={`px-4 py-2 rounded-t-lg whitespace-nowrap ${
+        className={`hz-px-4 hz-py-2 hz-whitespace-nowrap ${
           activeTab === "solutions"
-            ? "text-[var(--white)] border-b-2 border-neutral-500"
-            : "text-neutral-400 hover:text-[var(--white)]"
+            ? "hz-fg hz-border-strong"
+            : "hz-fg-muted hz-link"
         }`}
       >
         Enterprise Solutions

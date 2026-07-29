@@ -22,13 +22,13 @@ const PlatformFeatureCard: React.FC<PlatformFeatureCardProps> = ({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: 0.1 * index }}
-      className="bg-gray-900/20 border border-gray-800 rounded-xl p-6"
+      className="hz-card"
     >
-      <div className="h-12 w-12 bg-neutral-800/30 rounded-lg flex items-center justify-center mb-4">
-        <Icon className="h-6 w-6 text-neutral-400" />
+      <div className="hz-sq-7 hz-bg-raised hz-r-lg hz-row hz-ai-center hz-jc-center hz-mb-4">
+        <Icon className="hz-sq-4 hz-fg-muted" />
       </div>
-      <h3 className="text-xl font-bold mb-2 text-[var(--white)]">{title}</h3>
-      <p className="text-neutral-400">{description}</p>
+      <h3 className="hz-t-xl hz-w-bold hz-mb-2 hz-fg">{title}</h3>
+      <p className="hz-fg-muted">{description}</p>
     </motion.div>
   );
 };

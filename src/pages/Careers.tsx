@@ -70,22 +70,22 @@ const jobOpenings = [
 
 const benefits = [
   {
-    icon: <Globe className="h-6 w-6 text-neutral-400" />,
+    icon: <Globe className="hz-sq-4 hz-fg-muted" />,
     title: "Remote-First Culture",
     description: "Work from anywhere in the world with our distributed team."
   },
   {
-    icon: <Clock className="h-6 w-6 text-neutral-400" />,
+    icon: <Clock className="hz-sq-4 hz-fg-muted" />,
     title: "Flexible Hours",
     description: "Set your own schedule and work when you're most productive."
   },
   {
-    icon: <Users className="h-6 w-6 text-neutral-400" />,
+    icon: <Users className="hz-sq-4 hz-fg-muted" />,
     title: "Collaborative Environment",
     description: "Work with talented individuals from diverse backgrounds."
   },
   {
-    icon: <Sparkles className="h-6 w-6 text-neutral-400" />,
+    icon: <Sparkles className="hz-sq-4 hz-fg-muted" />,
     title: "Cutting-Edge Tech",
     description: "Access to the latest AI technologies and resources."
   }
@@ -93,34 +93,34 @@ const benefits = [
 
 const Careers = () => {
   return (
-    <div className="min-h-screen bg-[var(--black)]">
+    <div className="hz-min-h-screen hz-bg">
       <Helmet>
         <title>Careers - Hanzo AI</title>
         <meta name="description" content="Join the Hanzo AI team and help build the future of AI. Explore current job openings and benefits." />
       </Helmet>
       <Navbar />
       <main>
-        <section className="py-32 px-4 sm:px-6 lg:px-8 bg-[var(--black)] relative overflow-hidden">
-          <div className="absolute top-20 right-20 w-64 h-64 bg-neutral-800/5 rounded-full blur-3xl"></div>
-          <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-neutral-800/5 rounded-full blur-3xl"></div>
+        <section className="hz-py-7 hz-px-4 hz-bg hz-rel hz-clip">
+          <div className="hz-sq-8 hz-abs hz-bg-raised hz-r-full hz-blur-bg"></div>
+          <div className="hz-sq-8 hz-abs hz-bg-raised hz-r-full hz-blur-bg"></div>
           
-          <div className="max-w-7xl mx-auto">
+          <div className="hz-container">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-center mb-16"
+              className="hz-align-center hz-mb-7"
             >
-              <div className="inline-block px-4 py-1 rounded-full bg-neutral-800/30 border border-neutral-500/30 text-neutral-300 text-sm font-medium mb-6">
+              <div className="hz-px-4 hz-py-1 hz-r-full hz-bg-raised hz-bordered hz-border-strong hz-fg-soft hz-t-sm hz-w-medium hz-mb-5">
                 Join Our Team
               </div>
               <ChromeText 
                 as="h1" 
-                className="text-4xl md:text-6xl font-bold mb-6"
+                className="hz-t-4xl hz-w-bold hz-mb-5"
               >
                 Build the Future of AI
               </ChromeText>
-              <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
+              <p className="hz-container-narrow hz-t-xl hz-fg-soft">
                 Join a team passionate about democratizing access to AI and creating technology that empowers developers worldwide.
               </p>
             </motion.div>
@@ -129,37 +129,37 @@ const Careers = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="mb-24"
+              className="hz-mb-7"
             >
-              <h2 className="text-3xl font-bold mb-8 text-center">Open Positions</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <h2 className="hz-t-3xl hz-w-bold hz-mb-6 hz-align-center">Open Positions</h2>
+              <div className="hz-grid hz-grid-2 hz-gap-5">
                 {jobOpenings.map((job, index) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.3, delay: 0.1 * index }}
-                    className="bg-gray-900/20 border border-gray-800 rounded-xl p-6 hover:border-neutral-500/30 transition-colors"
+                    className="hz-card hz-transition hz-card-interactive"
                   >
-                    <div className="flex items-start gap-4">
-                      <div className="p-3 rounded-lg bg-neutral-800/20">
-                        <Briefcase className="h-6 w-6 text-neutral-400" />
+                    <div className="hz-row hz-ai-start hz-gap-4">
+                      <div className="hz-p-3 hz-r-lg hz-bg-raised">
+                        <Briefcase className="hz-sq-4 hz-fg-muted" />
                       </div>
                       <div>
-                        <h3 className="text-xl font-bold mb-1">{job.title}</h3>
-                        <div className="flex flex-wrap gap-3 mb-3">
-                          <span className="inline-flex items-center text-sm text-neutral-400">
-                            <MapPin className="h-4 w-4 mr-1" /> {job.location}
+                        <h3 className="hz-t-xl hz-w-bold hz-mb-1">{job.title}</h3>
+                        <div className="hz-row hz-wrap hz-gap-3 hz-mb-3">
+                          <span className="hz-inline hz-ai-center hz-t-sm hz-fg-muted">
+                            <MapPin className="hz-sq-2 hz-mr-1" /> {job.location}
                           </span>
-                          <span className="inline-flex items-center text-sm text-neutral-400">
-                            <Clock className="h-4 w-4 mr-1" /> {job.type}
+                          <span className="hz-inline hz-ai-center hz-t-sm hz-fg-muted">
+                            <Clock className="hz-sq-2 hz-mr-1" /> {job.type}
                           </span>
-                          <span className="inline-flex items-center text-sm text-neutral-400">
-                            <Users className="h-4 w-4 mr-1" /> {job.department}
+                          <span className="hz-inline hz-ai-center hz-t-sm hz-fg-muted">
+                            <Users className="hz-sq-2 hz-mr-1" /> {job.department}
                           </span>
                         </div>
-                        <p className="text-neutral-300 mb-4">{job.description}</p>
-                        <Button variant="outline" className="text-[var(--white)] border-white/20 bg-[var(--white)]/5 hover:bg-[var(--white)]/10">
+                        <p className="hz-fg-soft hz-mb-4">{job.description}</p>
+                        <Button variant="outline" className="hz-fg hz-bg-surface hz-hoverable">
                           Apply Now
                         </Button>
                       </div>
@@ -168,11 +168,11 @@ const Careers = () => {
                 ))}
               </div>
               
-              <div className="mt-8 text-center">
-                <p className="text-neutral-400 mb-4">Don't see a position that fits your skills?</p>
+              <div className="hz-mt-6 hz-align-center">
+                <p className="hz-fg-muted hz-mb-4">Don't see a position that fits your skills?</p>
                 <Button 
                   variant="outline" 
-                  className="text-[var(--white)] border-white/20 bg-[var(--white)]/5 hover:bg-[var(--white)]/10"
+                  className="hz-fg hz-bg-surface hz-hoverable"
                 >
                   Submit Open Application
                 </Button>
@@ -183,23 +183,23 @@ const Careers = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="mb-24"
+              className="hz-mb-7"
             >
-              <h2 className="text-3xl font-bold mb-8 text-center">Benefits & Perks</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <h2 className="hz-t-3xl hz-w-bold hz-mb-6 hz-align-center">Benefits & Perks</h2>
+              <div className="hz-grid hz-grid-4 hz-gap-5">
                 {benefits.map((benefit, index) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.3, delay: 0.05 * index }}
-                    className="bg-gray-900/20 border border-gray-800 rounded-xl p-6 text-center"
+                    className="hz-card hz-align-center"
                   >
-                    <div className="w-12 h-12 mx-auto rounded-full bg-gray-800/50 flex items-center justify-center mb-4">
+                    <div className="hz-sq-7 hz-mx-auto hz-r-full hz-bg-raised hz-row hz-ai-center hz-jc-center hz-mb-4">
                       {benefit.icon}
                     </div>
-                    <h3 className="text-lg font-bold mb-2">{benefit.title}</h3>
-                    <p className="text-neutral-400">{benefit.description}</p>
+                    <h3 className="hz-t-lg hz-w-bold hz-mb-2">{benefit.title}</h3>
+                    <p className="hz-fg-muted">{benefit.description}</p>
                   </motion.div>
                 ))}
               </div>
@@ -209,44 +209,44 @@ const Careers = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="text-center bg-gray-900/20 border border-gray-800 rounded-xl p-8"
+              className="hz-card hz-align-center"
             >
-              <h2 className="text-2xl font-bold mb-4">Our Hiring Process</h2>
-              <p className="text-neutral-300 mb-6 max-w-3xl mx-auto">
+              <h2 className="hz-t-2xl hz-w-bold hz-mb-4">Our Hiring Process</h2>
+              <p className="hz-container-narrow hz-fg-soft hz-mb-5">
                 We've designed our hiring process to be straightforward, respectful of your time, and focused on finding the right match for both you and Hanzo.
               </p>
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-                <div className="p-4">
-                  <div className="w-10 h-10 rounded-full bg-neutral-800/30 flex items-center justify-center mb-3 mx-auto">
-                    <span className="text-[var(--white)] font-medium">1</span>
+              <div className="hz-grid hz-grid-4 hz-gap-4 hz-mb-6">
+                <div className="hz-p-4">
+                  <div className="hz-sq-6 hz-r-full hz-bg-raised hz-row hz-ai-center hz-jc-center hz-mb-3 hz-mx-auto">
+                    <span className="hz-fg hz-w-medium">1</span>
                   </div>
-                  <h3 className="font-medium mb-1">Application Review</h3>
-                  <p className="text-sm text-neutral-400">We review your resume and application materials</p>
+                  <h3 className="hz-w-medium hz-mb-1">Application Review</h3>
+                  <p className="hz-t-sm hz-fg-muted">We review your resume and application materials</p>
                 </div>
-                <div className="p-4">
-                  <div className="w-10 h-10 rounded-full bg-neutral-800/30 flex items-center justify-center mb-3 mx-auto">
-                    <span className="text-[var(--white)] font-medium">2</span>
+                <div className="hz-p-4">
+                  <div className="hz-sq-6 hz-r-full hz-bg-raised hz-row hz-ai-center hz-jc-center hz-mb-3 hz-mx-auto">
+                    <span className="hz-fg hz-w-medium">2</span>
                   </div>
-                  <h3 className="font-medium mb-1">Initial Interview</h3>
-                  <p className="text-sm text-neutral-400">Get to know you and your experience</p>
+                  <h3 className="hz-w-medium hz-mb-1">Initial Interview</h3>
+                  <p className="hz-t-sm hz-fg-muted">Get to know you and your experience</p>
                 </div>
-                <div className="p-4">
-                  <div className="w-10 h-10 rounded-full bg-neutral-800/30 flex items-center justify-center mb-3 mx-auto">
-                    <span className="text-[var(--white)] font-medium">3</span>
+                <div className="hz-p-4">
+                  <div className="hz-sq-6 hz-r-full hz-bg-raised hz-row hz-ai-center hz-jc-center hz-mb-3 hz-mx-auto">
+                    <span className="hz-fg hz-w-medium">3</span>
                   </div>
-                  <h3 className="font-medium mb-1">Technical Assessment</h3>
-                  <p className="text-sm text-neutral-400">Showcase your skills (no whiteboarding)</p>
+                  <h3 className="hz-w-medium hz-mb-1">Technical Assessment</h3>
+                  <p className="hz-t-sm hz-fg-muted">Showcase your skills (no whiteboarding)</p>
                 </div>
-                <div className="p-4">
-                  <div className="w-10 h-10 rounded-full bg-neutral-800/30 flex items-center justify-center mb-3 mx-auto">
-                    <span className="text-[var(--white)] font-medium">4</span>
+                <div className="hz-p-4">
+                  <div className="hz-sq-6 hz-r-full hz-bg-raised hz-row hz-ai-center hz-jc-center hz-mb-3 hz-mx-auto">
+                    <span className="hz-fg hz-w-medium">4</span>
                   </div>
-                  <h3 className="font-medium mb-1">Final Interview</h3>
-                  <p className="text-sm text-neutral-400">Meet the team and discuss next steps</p>
+                  <h3 className="hz-w-medium hz-mb-1">Final Interview</h3>
+                  <p className="hz-t-sm hz-fg-muted">Meet the team and discuss next steps</p>
                 </div>
               </div>
               <Button 
-                className="bg-gradient-to-r from-neutral-700 to-neutral-500 hover:from-neutral-600 hover:to-neutral-400"
+                className=""
               >
                 <a href="#open-positions">Browse Open Positions</a>
               </Button>

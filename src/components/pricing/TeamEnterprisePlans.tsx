@@ -23,7 +23,7 @@ const TeamEnterprisePlans = () => {
   const plans = [
     {
       name: "Team",
-      icon: <Users className="h-6 w-6 text-neutral-400" />,
+      icon: <Users className="hz-sq-4 hz-fg-muted" />,
       price: "$30",
       billingPeriod: "/user/month",
       description: "Collaborative teams requiring unified billing",
@@ -42,7 +42,7 @@ const TeamEnterprisePlans = () => {
     },
     {
       name: "Enterprise",
-      icon: <Shield className="h-6 w-6 text-neutral-400" />,
+      icon: <Shield className="hz-sq-4 hz-fg-muted" />,
       price: "Custom",
       description: "For large businesses requiring enterprise-grade security",
       features: [
@@ -60,8 +60,8 @@ const TeamEnterprisePlans = () => {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto mb-16">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+    <div className="hz-container hz-mb-7">
+      <div className="hz-grid hz-grid-2 hz-gap-6 hz-mb-6">
         {plans.map((plan) => (
           <PricingPlan
             key={plan.name}

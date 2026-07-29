@@ -5,37 +5,37 @@ import { Crop, MonitorSmartphone } from "lucide-react";
 
 const ScreenCapture = () => {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[var(--black)]/50">
-      <div className="max-w-6xl mx-auto">
+    <section className="hz-py-7 hz-px-4 hz-bg-overlay">
+      <div className="hz-container-wide">
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center"
+          className="hz-grid hz-grid-2 hz-gap-7 hz-ai-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
         >
-          <div className="order-2 md:order-1 rounded-xl overflow-hidden shadow-2xl border border-gray-800">
-            <div className="relative pb-[120%] h-0 bg-gray-900">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-neutral-400">Screen capture preview</span>
+          <div className="hz-r-lg hz-clip hz-shadow-lg hz-bordered">
+            <div className="hz-rel hz-bh-1 hz-bg-surface">
+              <div className="hz-abs hz-inset hz-row hz-ai-center hz-jc-center">
+                <span className="hz-fg-muted">Screen capture preview</span>
               </div>
             </div>
           </div>
           
-          <div className="order-1 md:order-2">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-[var(--white)]">
+          <div className="hz-order-first">
+            <h2 className="hz-t-3xl hz-w-bold hz-mb-5 hz-fg">
               Use Apps & Your Screen as input
             </h2>
-            <p className="text-xl text-neutral-300 mb-6">
+            <p className="hz-t-xl hz-fg-soft hz-mb-5">
               Capture any part of your screen for instant insights and explanations
             </p>
             
-            <div className="flex items-center space-x-4 text-neutral-400">
-              <Crop className="h-6 w-6 text-neutral-400" />
+            <div className="hz-row hz-ai-center hz-inline-4 hz-fg-muted">
+              <Crop className="hz-sq-4 hz-fg-muted" />
               <span>Select any region of your screen</span>
             </div>
-            <div className="flex items-center space-x-4 text-neutral-400 mt-3">
-              <MonitorSmartphone className="h-6 w-6 text-neutral-400" />
+            <div className="hz-row hz-ai-center hz-inline-4 hz-fg-muted hz-mt-3">
+              <MonitorSmartphone className="hz-sq-4 hz-fg-muted" />
               <span>Ask questions without leaving your workflow</span>
             </div>
           </div>

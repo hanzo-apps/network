@@ -26,32 +26,32 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
   };
 
   return (
-    <div className="bg-gray-900 rounded-md p-3 border border-gray-800 hover:border-gray-700 cursor-pointer transition-colors">
+    <div className="hz-card hz-card-tight hz-pointer hz-transition hz-card-interactive">
       {/* Task ID and Priority */}
-      <div className="flex items-center justify-between mb-2">
-        <div className="text-xs text-neutral-500 flex items-center">
+      <div className="hz-row hz-ai-center hz-jc-between hz-mb-2">
+        <div className="hz-t-xs hz-fg-muted hz-row hz-ai-center">
           <span>HAN-{task.id}</span>
         </div>
         {task.priority && (
-          <div className={cn("h-2 w-2 rounded-full", priorityColors[task.priority])}></div>
+          <div className={cn("hz-sq-1 hz-r-full", priorityColors[task.priority])}></div>
         )}
       </div>
       
       {/* Title */}
-      <h3 className="font-medium text-sm mb-2">{task.title}</h3>
+      <h3 className="hz-w-medium hz-t-sm hz-mb-2">{task.title}</h3>
       
       {/* Description (optional) */}
       {task.description && (
-        <p className="text-xs text-neutral-400 mb-3 line-clamp-2">{task.description}</p>
+        <p className="hz-t-xs hz-fg-muted hz-mb-3 hz-clamp-2">{task.description}</p>
       )}
       
       {/* Labels */}
       {task.labels && task.labels.length > 0 && (
-        <div className="flex flex-wrap gap-1 mb-3">
+        <div className="hz-row hz-wrap hz-gap-1 hz-mb-3">
           {task.labels.map(label => (
             <span 
               key={label.id} 
-              className="px-2 py-0.5 text-xs rounded-full" 
+              className="hz-px-2 hz-py-1 hz-t-xs hz-r-full" 
               style={{ backgroundColor: `${label.color}20`, color: label.color }}
             >
               {label.name}
@@ -61,17 +61,17 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
       )}
       
       {/* Footer */}
-      <div className="flex items-center justify-between mt-2">
+      <div className="hz-row hz-ai-center hz-jc-between hz-mt-2">
         {/* Assignees */}
-        <div className="flex -space-x-2">
+        <div className="hz-row">
           {task.assignees && task.assignees.map((assignee, index) => (
             <div 
               key={assignee.id} 
-              className="h-6 w-6 rounded-full bg-gray-700 border-2 border-gray-900 flex items-center justify-center text-[10px]"
+              className="hz-sq-4 hz-r-full hz-bg-raised hz-bordered hz-border-strong hz-row hz-ai-center hz-jc-center hz-t-xs"
               title={assignee.name}
             >
               {assignee.avatar ? (
-                <img src={assignee.avatar} alt={assignee.name} className="h-full w-full rounded-full" />
+                <img src={assignee.avatar} alt={assignee.name} className="hz-h-full hz-w-full hz-r-full" />
               ) : (
                 assignee.name.charAt(0)
               )}
@@ -80,26 +80,26 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
           
           {task.agentCount && task.agentCount > 0 && (
             <div 
-              className="h-6 w-6 rounded-full bg-neutral-800 border-2 border-gray-900 flex items-center justify-center"
+              className="hz-sq-4 hz-r-full hz-bg-raised hz-bordered hz-border-strong hz-row hz-ai-center hz-jc-center"
               title={`${task.agentCount} AI agents`}
             >
-              <Bot className="h-3 w-3 text-neutral-400" />
+              <Bot className="hz-sq-1 hz-fg-muted" />
             </div>
           )}
         </div>
         
         {/* Metadata */}
-        <div className="flex items-center space-x-2 text-neutral-400">
+        <div className="hz-row hz-ai-center hz-inline-2 hz-fg-muted">
           {task.messageCount && task.messageCount > 0 && (
-            <div className="flex items-center text-xs">
-              <MessageSquare className="h-3 w-3 mr-1" />
+            <div className="hz-row hz-ai-center hz-t-xs">
+              <MessageSquare className="hz-sq-1 hz-mr-1" />
               {task.messageCount}
             </div>
           )}
           
           {task.dueDate && (
-            <div className="flex items-center text-xs">
-              <AlertCircle className="h-3 w-3 mr-1" />
+            <div className="hz-row hz-ai-center hz-t-xs">
+              <AlertCircle className="hz-sq-1 hz-mr-1" />
               {new Date(task.dueDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
             </div>
           )}

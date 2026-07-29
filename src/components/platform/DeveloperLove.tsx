@@ -57,29 +57,29 @@ const tweets = [
 
 const DeveloperLove = () => {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-900 to-black">
-      <div className="max-w-7xl mx-auto">
+    <section className="hz-py-7 hz-px-4">
+      <div className="hz-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="hz-align-center hz-mb-7"
         >
-          <h2 className="text-3xl font-bold mb-4">…and loved by developers</h2>
-          <div className="flex justify-center">
+          <h2 className="hz-t-3xl hz-w-bold hz-mb-4">…and loved by developers</h2>
+          <div className="hz-row hz-jc-center">
             <a 
               href="https://twitter.com/search?q=hanzo" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center text-neutral-400 hover:text-neutral-300 transition-colors"
+              className="hz-inline hz-ai-center hz-fg-muted hz-transition hz-link"
             >
-              Join nearly 1M developers building with Hanzo <ArrowRight className="ml-2 h-4 w-4" />
+              Join nearly 1M developers building with Hanzo <ArrowRight className="hz-sq-2 hz-ml-2" />
             </a>
           </div>
         </motion.div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="hz-grid hz-grid-4 hz-gap-4">
           {tweets.map((tweet, index) => (
             <motion.div
               key={index}
@@ -87,20 +87,20 @@ const DeveloperLove = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: index * 0.05 }}
-              className="bg-gray-900/50 rounded-xl p-4 border border-gray-800"
+              className="hz-card"
             >
-              <div className="flex items-center mb-3">
+              <div className="hz-row hz-ai-center hz-mb-3">
                 <img
                   src={tweet.avatar}
                   alt={tweet.name}
-                  className="h-10 w-10 rounded-full object-cover mr-3"
+                  className="hz-sq-6 hz-r-full hz-object-cover hz-mr-3"
                 />
                 <div>
-                  <h4 className="font-semibold text-[var(--white)]">{tweet.name}</h4>
-                  <p className="text-sm text-neutral-400">{tweet.handle}</p>
+                  <h4 className="hz-w-semibold hz-fg">{tweet.name}</h4>
+                  <p className="hz-t-sm hz-fg-muted">{tweet.handle}</p>
                 </div>
               </div>
-              <p className="text-neutral-300 text-sm">{tweet.content}</p>
+              <p className="hz-fg-soft hz-t-sm">{tweet.content}</p>
             </motion.div>
           ))}
         </div>

@@ -97,29 +97,29 @@ const BillingPlans = () => {
 
   return (
     <AnimatedSection>
-      <div className="space-y-6">
-        <div className="flex items-center mb-4">
-          <Button variant="ghost" onClick={() => navigate('/account/billing')} className="mr-4">
-            <ArrowLeft className="h-4 w-4 mr-2" />
+      <div className="hz-stack-5">
+        <div className="hz-row hz-ai-center hz-mb-4">
+          <Button variant="ghost" onClick={() => navigate('/account/billing')} className="hz-mr-4">
+            <ArrowLeft className="hz-sq-2 hz-mr-2" />
             Back to Billing
           </Button>
         </div>
         
         <AnimatedHeading>
-          <h2 className="text-2xl font-bold mb-6">Choose a Plan</h2>
+          <h2 className="hz-t-2xl hz-w-bold hz-mb-5">Choose a Plan</h2>
         </AnimatedHeading>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="hz-grid hz-grid-3 hz-gap-5">
           {plans.map(plan => (
             <Card 
               key={plan.id} 
-              className={`bg-gray-900/30 border ${
-                plan.popular ? 'border-neutral-500' : 'border-gray-800'
-              } relative`}
+              className={`hz-bg-surface hz-bordered ${
+                plan.popular ? 'hz-border-strong' : ''
+              } hz-rel`}
             >
               {plan.popular && (
-                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                  <span className="bg-neutral-600 text-[var(--white)] px-3 py-1 rounded-full text-xs font-medium">
+                <div className="hz-center-x hz-abs">
+                  <span className="hz-bg-raised hz-fg hz-px-3 hz-py-1 hz-r-full hz-t-xs hz-w-medium">
                     Most Popular
                   </span>
                 </div>
@@ -127,19 +127,19 @@ const BillingPlans = () => {
               
               <CardHeader>
                 <CardTitle>{plan.name}</CardTitle>
-                <CardDescription className="text-neutral-400">{plan.description}</CardDescription>
-                <div className="mt-4">
-                  <span className="text-3xl font-bold">${plan.price}</span>
-                  <span className="text-neutral-400">/{plan.interval}</span>
+                <CardDescription className="hz-fg-muted">{plan.description}</CardDescription>
+                <div className="hz-mt-4">
+                  <span className="hz-t-3xl hz-w-bold">${plan.price}</span>
+                  <span className="hz-fg-muted">/{plan.interval}</span>
                 </div>
               </CardHeader>
               
               <CardContent>
-                <ul className="space-y-2">
+                <ul className="hz-stack-2">
                   {plan.features.map((feature, index) => (
-                    <li key={index} className="flex items-start">
-                      <Check className="h-5 w-5 text-neutral-400 mr-2 shrink-0" />
-                      <span className="text-sm">{feature}</span>
+                    <li key={index} className="hz-row hz-ai-start">
+                      <Check className="hz-sq-3 hz-fg-muted hz-mr-2 hz-none" />
+                      <span className="hz-t-sm">{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -147,8 +147,8 @@ const BillingPlans = () => {
               
               <CardFooter>
                 <Button 
-                  className={`w-full ${
-                    plan.popular ? 'bg-neutral-600 hover:bg-neutral-700' : ''
+                  className={`hz-w-full ${
+                    plan.popular ? 'hz-bg-raised hz-hoverable' : ''
                   }`}
                   variant={plan.popular ? 'default' : 'outline'}
                   onClick={() => handleUpgrade(plan.id)}
@@ -161,9 +161,9 @@ const BillingPlans = () => {
           ))}
         </div>
         
-        <div className="mt-8 bg-gray-900/30 border border-gray-800 rounded-lg p-6">
-          <h3 className="text-xl font-medium mb-4">Enterprise Plan</h3>
-          <p className="text-neutral-400 mb-4">
+        <div className="hz-card hz-mt-6">
+          <h3 className="hz-t-xl hz-w-medium hz-mb-4">Enterprise Plan</h3>
+          <p className="hz-fg-muted hz-mb-4">
             Need a custom solution for your organization? Our Enterprise plan offers custom pricing, 
             dedicated support, and tailored features for your specific needs.
           </p>

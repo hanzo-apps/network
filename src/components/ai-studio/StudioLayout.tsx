@@ -34,7 +34,7 @@ const StudioLayout = ({
   handleSubmit
 }: StudioLayoutProps) => {
   return (
-    <div className="flex-1 flex overflow-hidden max-w-7xl mx-auto w-full p-4">
+    <div className="hz-container hz-grow hz-row hz-clip hz-w-full hz-p-4">
       <Sidebar 
         showSidebar={showSidebar}
         models={models}
@@ -42,7 +42,7 @@ const StudioLayout = ({
         setModelSelection={setModelSelection}
       />
       
-      <div className="flex-1 flex flex-col bg-gray-900/30 border border-gray-800 rounded-lg overflow-hidden">
+      <div className="hz-grow hz-col hz-bg-surface hz-bordered hz-r-lg hz-clip">
         <Toolbar 
           showSidebar={showSidebar}
           setShowSidebar={setShowSidebar}

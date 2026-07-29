@@ -136,7 +136,7 @@ const Carousel = React.forwardRef<
         <div
           ref={ref}
           onKeyDownCapture={handleKeyDown}
-          className={cn("relative", className)}
+          className={cn("hz-rel", className)}
           role="region"
           aria-roledescription="carousel"
           {...props}
@@ -156,12 +156,12 @@ const CarouselContent = React.forwardRef<
   const { carouselRef, orientation } = useCarousel()
 
   return (
-    <div ref={carouselRef} className="overflow-hidden">
+    <div ref={carouselRef} className="hz-clip">
       <div
         ref={ref}
         className={cn(
-          "flex",
-          orientation === "horizontal" ? "-ml-4" : "-mt-4 flex-col",
+          "hz-row",
+          orientation === "horizontal" ? "hz-ml-4" : "hz-mt-4 hz-col",
           className
         )}
         {...props}
@@ -183,8 +183,8 @@ const CarouselItem = React.forwardRef<
       role="group"
       aria-roledescription="slide"
       className={cn(
-        "min-w-0 shrink-0 grow-0 basis-full",
-        orientation === "horizontal" ? "pl-4" : "pt-4",
+        "hz-none",
+        orientation === "horizontal" ? "hz-px-4" : "hz-pt-4",
         className
       )}
       {...props}
@@ -205,18 +205,18 @@ const CarouselPrevious = React.forwardRef<
       variant={variant}
       size={size}
       className={cn(
-        "absolute h-8 w-8 rounded-full",
+        "hz-sq-5 hz-abs hz-r-full",
         orientation === "horizontal"
-          ? "-left-12 top-1/2 -translate-y-1/2"
-          : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
+          ? "hz-center-y"
+          : "hz-center-x",
         className
       )}
       disabled={!canScrollPrev}
       onClick={scrollPrev}
       {...props}
     >
-      <ArrowLeft className="h-4 w-4" />
-      <span className="sr-only">Previous slide</span>
+      <ArrowLeft className="hz-sq-2" />
+      <span className="hz-sr">Previous slide</span>
     </Button>
   )
 })
@@ -234,18 +234,18 @@ const CarouselNext = React.forwardRef<
       variant={variant}
       size={size}
       className={cn(
-        "absolute h-8 w-8 rounded-full",
+        "hz-sq-5 hz-abs hz-r-full",
         orientation === "horizontal"
-          ? "-right-12 top-1/2 -translate-y-1/2"
-          : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
+          ? "hz-center-y"
+          : "hz-center-x",
         className
       )}
       disabled={!canScrollNext}
       onClick={scrollNext}
       {...props}
     >
-      <ArrowRight className="h-4 w-4" />
-      <span className="sr-only">Next slide</span>
+      <ArrowRight className="hz-sq-2" />
+      <span className="hz-sr">Next slide</span>
     </Button>
   )
 })

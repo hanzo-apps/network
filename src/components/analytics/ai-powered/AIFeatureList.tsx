@@ -10,19 +10,19 @@ const AIFeatureList = () => {
   
   const features = [
     {
-      icon: <Eye className="h-10 w-10 text-neutral-400" />,
+      icon: <Eye className="hz-sq-6 hz-fg-muted" />,
       title: "Real-time anomaly detection",
       description: "Automatically identify unusual patterns and potential issues before they impact your business.",
       delay: 0
     },
     {
-      icon: <AlertTriangle className="h-10 w-10 text-neutral-400" />,
+      icon: <AlertTriangle className="hz-sq-6 hz-fg-muted" />,
       title: "Predictive alerts and proactive monitoring",
       description: "Get alerted about potential problems before they occur with AI-powered predictive monitoring.",
       delay: 0.1
     },
     {
-      icon: <Zap className="h-10 w-10 text-neutral-400" />,
+      icon: <Zap className="hz-sq-6 hz-fg-muted" />,
       title: "Deep integration with Hanzo Cloud and Base",
       description: "Seamlessly connect your analytics with your entire infrastructure for comprehensive visibility.",
       delay: 0.2
@@ -30,7 +30,7 @@ const AIFeatureList = () => {
   ];
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16" ref={ref}>
+    <div className="hz-grid hz-grid-3 hz-gap-6 hz-mb-7" ref={ref}>
       {features.map((feature, index) => (
         <AIFeatureCard
           key={index}

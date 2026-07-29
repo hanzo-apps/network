@@ -1,75 +1,75 @@
+import { BRAND } from '@/lib/brand';
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, Users, Crown, Clock, Monitor, Laptop, Gauge, Shield, Play, TestTube, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const BRAND_COLOR = "#ffffff";
 
 const AgentCodeDemo = () => {
   return (
-    <div className="bg-neutral-950 rounded-xl border border-neutral-800 overflow-hidden">
+    <div className="hz-bg-surface hz-r-lg hz-bordered hz-clip">
       {/* IDE header */}
-      <div className="flex items-center justify-between px-4 py-2 border-b border-neutral-800 bg-neutral-900/50">
-        <div className="flex items-center gap-4">
-          <div className="flex gap-1.5">
-            <div className="w-3 h-3 rounded-full bg-neutral-600" />
-            <div className="w-3 h-3 rounded-full bg-neutral-500" />
-            <div className="w-3 h-3 rounded-full bg-neutral-500" />
+      <div className="hz-row hz-ai-center hz-jc-between hz-px-4 hz-py-2 hz-border-b hz-bg-surface">
+        <div className="hz-row hz-ai-center hz-gap-4">
+          <div className="hz-row hz-gap-2">
+            <div className="hz-sq-1 hz-r-full hz-bg-raised" />
+            <div className="hz-sq-1 hz-r-full hz-bg-raised" />
+            <div className="hz-sq-1 hz-r-full hz-bg-raised" />
           </div>
-          <span className="text-xs text-neutral-500">Hanzo AI</span>
+          <span className="hz-t-xs hz-fg-muted">Hanzo AI</span>
         </div>
-        <div className="flex items-center gap-2">
-          <span className="text-xs text-neutral-400">signal-server</span>
+        <div className="hz-row hz-ai-center hz-gap-2">
+          <span className="hz-t-xs hz-fg-muted">signal-server</span>
         </div>
       </div>
 
-      <div className="grid grid-cols-12">
+      <div className="hz-grid hz-grid-6">
         {/* File tree */}
-        <div className="col-span-3 border-r border-neutral-800 p-3 text-xs font-mono">
-          <div className="text-neutral-500 mb-2">service</div>
-          <div className="ml-2 space-y-1">
-            <div className="text-neutral-400">RateLimiter.java</div>
-            <div className="text-neutral-400">RateLimitConfig.java</div>
-            <div className="text-white bg-neutral-800 px-2 py-0.5 rounded">RateLimitMetrics.java</div>
+        <div className="hz-span-full hz-border-r hz-p-3 hz-t-xs hz-mono">
+          <div className="hz-fg-muted hz-mb-2">service</div>
+          <div className="hz-ml-2 hz-stack-1">
+            <div className="hz-fg-muted">RateLimiter.java</div>
+            <div className="hz-fg-muted">RateLimitConfig.java</div>
+            <div className="hz-fg hz-bg-raised hz-px-2 hz-py-1 hz-r-md">RateLimitMetrics.java</div>
           </div>
-          <div className="text-neutral-500 mt-3 mb-2">delivery</div>
-          <div className="ml-2 space-y-1">
-            <div className="text-neutral-400">MessageDeliveryLoop.java</div>
-            <div className="text-neutral-400">NoopDeliveryLoop.java</div>
+          <div className="hz-fg-muted hz-mt-3 hz-mb-2">delivery</div>
+          <div className="hz-ml-2 hz-stack-1">
+            <div className="hz-fg-muted">MessageDeliveryLoop.java</div>
+            <div className="hz-fg-muted">NoopDeliveryLoop.java</div>
           </div>
         </div>
 
         {/* Code panel */}
-        <div className="col-span-5 border-r border-neutral-800 p-4 font-mono text-xs">
-          <div className="text-neutral-500 mb-2">package service.limits;</div>
-          <div className="space-y-1">
-            <div><span className="text-neutral-400">import</span> java.time.Instant;</div>
-            <div><span className="text-neutral-400">import</span> java.util.concurrent.*;</div>
-            <div className="mt-3"><span className="text-neutral-400">public class</span> <span className="text-neutral-400">RateLimitMetrics</span> {"{"}</div>
-            <div className="ml-4 text-neutral-400">// allowedCount, blockedCount, resetCount</div>
-            <div className="ml-4"><span className="text-neutral-400">private final</span> AtomicLong allowed = <span className="text-neutral-400">new</span> AtomicLong();</div>
-            <div className="ml-4"><span className="text-neutral-400">private final</span> AtomicLong blocked = <span className="text-neutral-400">new</span> AtomicLong();</div>
-            <div className="mt-3 ml-4"><span className="text-neutral-400">public void</span> <span className="text-neutral-400">markAllowed</span>() {"{"}</div>
-            <div className="ml-8">allowed.incrementAndGet();</div>
-            <div className="ml-8">lastAllowed.set(Instant.now());</div>
-            <div className="ml-4">{"}"}</div>
+        <div className="hz-span-full hz-border-r hz-p-4 hz-mono hz-t-xs">
+          <div className="hz-fg-muted hz-mb-2">package service.limits;</div>
+          <div className="hz-stack-1">
+            <div><span className="hz-fg-muted">import</span> java.time.Instant;</div>
+            <div><span className="hz-fg-muted">import</span> java.util.concurrent.*;</div>
+            <div className="hz-mt-3"><span className="hz-fg-muted">public class</span> <span className="hz-fg-muted">RateLimitMetrics</span> {"{"}</div>
+            <div className="hz-ml-4 hz-fg-muted">// allowedCount, blockedCount, resetCount</div>
+            <div className="hz-ml-4"><span className="hz-fg-muted">private final</span> AtomicLong allowed = <span className="hz-fg-muted">new</span> AtomicLong();</div>
+            <div className="hz-ml-4"><span className="hz-fg-muted">private final</span> AtomicLong blocked = <span className="hz-fg-muted">new</span> AtomicLong();</div>
+            <div className="hz-mt-3 hz-ml-4"><span className="hz-fg-muted">public void</span> <span className="hz-fg-muted">markAllowed</span>() {"{"}</div>
+            <div className="hz-ml-4">allowed.incrementAndGet();</div>
+            <div className="hz-ml-4">lastAllowed.set(Instant.now());</div>
+            <div className="hz-ml-4">{"}"}</div>
           </div>
         </div>
 
         {/* Task panel */}
-        <div className="col-span-4 p-4">
-          <div className="mb-4">
-            <div className="text-xs text-neutral-500 mb-1">Task</div>
-            <div className="text-sm text-white">Improve the rate limiting implementation.</div>
+        <div className="hz-span-full hz-p-4">
+          <div className="hz-mb-4">
+            <div className="hz-t-xs hz-fg-muted hz-mb-1">Task</div>
+            <div className="hz-t-sm hz-fg">Improve the rate limiting implementation.</div>
           </div>
-          <div className="bg-neutral-900/50 rounded-lg p-3 mb-4">
-            <div className="text-xs text-neutral-400 mb-2">Thought for 2 minutes.</div>
-            <div className="text-xs text-neutral-300">I'll proceed with implementing all the improvements starting with Enhanced Metrics and Observability...</div>
+          <div className="hz-bg-surface hz-r-lg hz-p-3 hz-mb-4">
+            <div className="hz-t-xs hz-fg-muted hz-mb-2">Thought for 2 minutes.</div>
+            <div className="hz-t-xs hz-fg-soft">I'll proceed with implementing all the improvements starting with Enhanced Metrics and Observability...</div>
           </div>
-          <div className="flex items-center gap-2 text-xs">
-            <div className="w-2 h-2 rounded-full bg-neutral-500 animate-pulse" />
-            <span className="text-neutral-400">Hanzo AI thinking...</span>
+          <div className="hz-row hz-ai-center hz-gap-2 hz-t-xs">
+            <div className="hz-sq-1 hz-r-full hz-bg-raised" />
+            <span className="hz-fg-muted">Hanzo AI thinking...</span>
           </div>
         </div>
       </div>
@@ -130,46 +130,45 @@ const ideFeatures = [
 
 const MultiAgentSection = () => {
   return (
-    <section className="py-24 px-4 bg-black relative overflow-hidden">
+    <section className="hz-py-7 hz-px-4 hz-bg hz-rel hz-clip">
       {/* Background gradient */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-20"
+      <div className="hz-center-xy hz-abs hz-r-full hz-dim-more"
         style={{
-          background: `radial-gradient(circle, ${BRAND_COLOR} 0%, transparent 70%)`,
+          background: `radial-gradient(circle, ${BRAND.fg} 0%, transparent 70%)`,
           filter: "blur(100px)",
         }}
       />
 
-      <div className="max-w-6xl mx-auto relative z-10">
+      <div className="hz-container-wide hz-rel hz-z-raised">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="hz-align-center hz-mb-7"
         >
           <p
-            className="inline-flex text-xs font-medium rounded-full px-4 py-2 border mb-6"
-            style={{ color: BRAND_COLOR, borderColor: `${BRAND_COLOR}4d` }}
+            className="hz-inline hz-t-xs hz-w-medium hz-r-full hz-px-4 hz-py-2 hz-bordered hz-mb-5"
+            style={{ color: BRAND.fg, borderColor: `${BRAND.washStrong}` }}
           >
             Hanzo Autonomous Agent
           </p>
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+          <h2 className="hz-t-3xl hz-w-bold hz-fg hz-mb-4">
             Run multiple autonomous agents in parallel
             <br />
             locally and remotely
           </h2>
-          <p className="text-lg text-neutral-400 max-w-2xl mx-auto">
+          <p className="hz-container-narrow hz-mw-md hz-t-lg hz-fg-muted">
             Multi-agent remote execution with LLM consensus to select the best execution for each task.
           </p>
           <Button
             size="lg"
-            className="mt-8 text-white"
-            style={{ backgroundColor: BRAND_COLOR }}
+            className="hz-mt-6 hz-fg hz-bg-inverse"
             asChild
           >
             <Link to="/signup">
               Get Started Now
-              <ArrowRight className="ml-2 h-5 w-5" />
+              <ArrowRight className="hz-sq-3 hz-ml-2" />
             </Link>
           </Button>
         </motion.div>
@@ -179,13 +178,13 @@ const MultiAgentSection = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-16"
+          className="hz-mb-7"
         >
           <AgentCodeDemo />
         </motion.div>
 
         {/* Multi-agent features */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
+        <div className="hz-grid hz-grid-4 hz-gap-5 hz-mb-7">
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
@@ -195,16 +194,15 @@ const MultiAgentSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-neutral-900/50 border border-neutral-800 rounded-xl p-6 hover:border-white/30 transition-colors"
+                className="hz-card hz-transition hz-card-interactive"
               >
                 <div
-                  className="w-12 h-12 rounded-lg flex items-center justify-center mb-4"
-                  style={{ backgroundColor: `${BRAND_COLOR}20` }}
-                >
-                  <Icon className="w-6 h-6" style={{ color: BRAND_COLOR }} />
+                  className="hz-sq-7 hz-r-lg hz-row hz-ai-center hz-jc-center hz-mb-4 hz-bg-quiet"
+                  >
+                  <Icon className="hz-sq-4 hz-fg" />
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2">{feature.title}</h3>
-                <p className="text-sm text-neutral-400">{feature.description}</p>
+                <h3 className="hz-t-lg hz-w-semibold hz-fg hz-mb-2">{feature.title}</h3>
+                <p className="hz-t-sm hz-fg-muted">{feature.description}</p>
               </motion.div>
             );
           })}
@@ -215,29 +213,28 @@ const MultiAgentSection = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="hz-align-center hz-mb-7"
         >
-          <h3 className="text-2xl md:text-4xl font-bold text-white mb-4">
+          <h3 className="hz-t-2xl hz-w-bold hz-fg hz-mb-4">
             Hanzo Agents on +35 IDEs
           </h3>
-          <p className="text-neutral-400 mb-6">
+          <p className="hz-fg-muted hz-mb-5">
             Hanzo Agents run tasks on the Hanzo IDE, VSCode, JetBrains & more...
           </p>
           <Button
             size="lg"
-            className="text-white"
-            style={{ backgroundColor: BRAND_COLOR }}
+            className="hz-fg hz-bg-inverse"
             asChild
           >
             <Link to="/download">
               Get Started Now
-              <ArrowRight className="ml-2 h-5 w-5" />
+              <ArrowRight className="hz-sq-3 hz-ml-2" />
             </Link>
           </Button>
         </motion.div>
 
         {/* IDE features */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="hz-grid hz-grid-3 hz-gap-5">
           {ideFeatures.slice(1).map((feature, index) => {
             const Icon = feature.icon;
             return (
@@ -247,16 +244,15 @@ const MultiAgentSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-neutral-900/50 border border-neutral-800 rounded-xl p-6 hover:border-white/30 transition-colors"
+                className="hz-card hz-transition hz-card-interactive"
               >
                 <div
-                  className="w-12 h-12 rounded-lg flex items-center justify-center mb-4"
-                  style={{ backgroundColor: `${BRAND_COLOR}20` }}
-                >
-                  <Icon className="w-6 h-6" style={{ color: BRAND_COLOR }} />
+                  className="hz-sq-7 hz-r-lg hz-row hz-ai-center hz-jc-center hz-mb-4 hz-bg-quiet"
+                  >
+                  <Icon className="hz-sq-4 hz-fg" />
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2">{feature.title}</h3>
-                <p className="text-sm text-neutral-400">{feature.description}</p>
+                <h3 className="hz-t-lg hz-w-semibold hz-fg hz-mb-2">{feature.title}</h3>
+                <p className="hz-t-sm hz-fg-muted">{feature.description}</p>
               </motion.div>
             );
           })}

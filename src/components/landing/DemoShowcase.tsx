@@ -6,72 +6,72 @@ import { Play, Terminal } from "lucide-react";
 
 const DemoShowcase: React.FC = () => {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-black to-neutral-800/10" />
+    <section className="hz-py-7 hz-px-4 hz-rel hz-clip">
+      <div className="hz-abs hz-inset" />
       
-      <div className="max-w-7xl mx-auto relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-12">
+      <div className="hz-container hz-rel hz-z-raised">
+        <div className="hz-col-row hz-ai-center hz-gap-7">
           <motion.div 
-            className="w-full lg:w-1/2"
+            className="hz-w-full"
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <div className="inline-block px-4 py-1 rounded-full bg-neutral-800/30 border border-neutral-500/30 text-neutral-300 text-sm font-medium mb-6">
+            <div className="hz-px-4 hz-py-1 hz-r-full hz-bg-raised hz-bordered hz-border-strong hz-fg-soft hz-t-sm hz-w-medium hz-mb-5">
               See it in action
             </div>
             
-            <h2 className="text-3xl md:text-4xl font-bold text-[var(--white)] mb-6">
+            <h2 className="hz-t-3xl hz-w-bold hz-fg hz-mb-5">
               AI Engineering in Real Time
             </h2>
             
-            <p className="text-xl text-neutral-300 mb-8">
+            <p className="hz-t-xl hz-fg-soft hz-mb-6">
               Watch how Hanzo accelerates development and delivers better AI experiences with our 
               integrated tools and services.
             </p>
             
             <Button 
-              className="bg-gradient-to-r from-neutral-600 to-neutral-600 hover:from-neutral-700 hover:to-neutral-700 rounded-full px-6 py-6 text-[var(--white)]"
+              className="hz-r-full hz-px-5 hz-py-5 hz-fg"
             >
-              <Play className="mr-2 h-5 w-5" /> Watch Demo
+              <Play className="hz-sq-3 hz-mr-2" /> Watch Demo
             </Button>
           </motion.div>
           
           <motion.div 
-            className="w-full lg:w-1/2"
+            className="hz-w-full"
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <div className="bg-gray-900 border border-gray-800 rounded-xl overflow-hidden shadow-2xl">
-              <div className="bg-gray-950 p-3 flex items-center border-b border-gray-800">
-                <div className="flex space-x-2 mr-4">
-                  <div className="w-3 h-3 rounded-full bg-neutral-600"></div>
-                  <div className="w-3 h-3 rounded-full bg-neutral-500"></div>
-                  <div className="w-3 h-3 rounded-full bg-neutral-500"></div>
+            <div className="hz-bg-surface hz-bordered hz-r-lg hz-clip hz-shadow-lg">
+              <div className="hz-bg-surface hz-p-3 hz-row hz-ai-center hz-border-b">
+                <div className="hz-row hz-inline-2 hz-mr-4">
+                  <div className="hz-sq-1 hz-r-full hz-bg-raised"></div>
+                  <div className="hz-sq-1 hz-r-full hz-bg-raised"></div>
+                  <div className="hz-sq-1 hz-r-full hz-bg-raised"></div>
                 </div>
-                <div className="flex items-center bg-gray-800 px-4 py-1 rounded-md text-neutral-400 text-sm">
-                  <Terminal className="h-4 w-4 mr-2" /> hanzo-demo.tsx
+                <div className="hz-row hz-ai-center hz-bg-raised hz-px-4 hz-py-1 hz-r-md hz-fg-muted hz-t-sm">
+                  <Terminal className="hz-sq-2 hz-mr-2" /> hanzo-demo.tsx
                 </div>
               </div>
               
-              <div className="p-6 font-mono text-sm">
+              <div className="hz-p-5 hz-mono hz-t-sm">
                 <pre className="language-typescript">
-                  <code className="block text-neutral-400">import {"{"} <span className="text-neutral-400">useHanzoAI</span> {"}"} from <span className="text-neutral-300">'@hanzo/ai'</span>;</code>
-                  <code className="block mt-4 text-neutral-400">function <span className="text-neutral-400">AIAssistant</span><span className="text-[var(--white)]">()</span> <span className="text-[var(--white)]">{"{"}</span></code>
-                  <code className="block ml-4 text-neutral-400">const {"{"} <span className="text-neutral-400">assistant, isLoading, error</span> {"}"} = <span className="text-neutral-400">useHanzoAI</span>({"{"}</code>
-                  <code className="block ml-8 text-neutral-400">model: <span className="text-neutral-300">'gpt-4'</span>,</code>
-                  <code className="block ml-8 text-neutral-400">temperature: <span className="text-neutral-400">0.7</span>,</code>
-                  <code className="block ml-8 text-neutral-400">systemPrompt: <span className="text-neutral-300">'You are a helpful AI assistant.'</span></code>
-                  <code className="block ml-4 text-[var(--white)]">{"})"}</code>
-                  <code className="block mt-4 ml-4 text-neutral-400">return <span className="text-[var(--white)]">(</span></code>
-                  <code className="block ml-8 text-[var(--white)]">{"<"}<span className="text-neutral-400">div</span> <span className="text-neutral-400">className</span>=<span className="text-neutral-300">"ai-container"</span>{">"}</code>
-                  <code className="block ml-12 text-[var(--white)]">{"{"}<span className="text-neutral-400">isLoading</span> ? <span className="text-neutral-300">'Loading...'</span> : <span className="text-neutral-400">assistant</span>.response{"}"}</code>
-                  <code className="block ml-8 text-[var(--white)]">{"</div>"}</code>
-                  <code className="block ml-4 text-[var(--white)]">)</code>
-                  <code className="block text-[var(--white)]">{"}"}</code>
+                  <code className="hz-fg-muted">import {"{"} <span className="hz-fg-muted">useHanzoAI</span> {"}"} from <span className="hz-fg-soft">'@hanzo/ai'</span>;</code>
+                  <code className="hz-mt-4 hz-fg-muted">function <span className="hz-fg-muted">AIAssistant</span><span className="hz-fg">()</span> <span className="hz-fg">{"{"}</span></code>
+                  <code className="hz-ml-4 hz-fg-muted">const {"{"} <span className="hz-fg-muted">assistant, isLoading, error</span> {"}"} = <span className="hz-fg-muted">useHanzoAI</span>({"{"}</code>
+                  <code className="hz-ml-4 hz-fg-muted">model: <span className="hz-fg-soft">'gpt-4'</span>,</code>
+                  <code className="hz-ml-4 hz-fg-muted">temperature: <span className="hz-fg-muted">0.7</span>,</code>
+                  <code className="hz-ml-4 hz-fg-muted">systemPrompt: <span className="hz-fg-soft">'You are a helpful AI assistant.'</span></code>
+                  <code className="hz-ml-4 hz-fg">{"})"}</code>
+                  <code className="hz-mt-4 hz-ml-4 hz-fg-muted">return <span className="hz-fg">(</span></code>
+                  <code className="hz-ml-4 hz-fg">{"<"}<span className="hz-fg-muted">div</span> <span className="hz-fg-muted">className</span>=<span className="hz-fg-soft">"ai-container"</span>{">"}</code>
+                  <code className="hz-ml-4 hz-fg">{"{"}<span className="hz-fg-muted">isLoading</span> ? <span className="hz-fg-soft">'Loading...'</span> : <span className="hz-fg-muted">assistant</span>.response{"}"}</code>
+                  <code className="hz-ml-4 hz-fg">{"</div>"}</code>
+                  <code className="hz-ml-4 hz-fg">)</code>
+                  <code className="hz-fg">{"}"}</code>
                 </pre>
               </div>
             </div>

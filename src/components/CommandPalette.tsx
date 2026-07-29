@@ -23,7 +23,6 @@ import {
   Command,
 } from "lucide-react";
 
-const BRAND_COLOR = "#ffffff";
 
 interface CommandItem {
   id: string;
@@ -178,7 +177,7 @@ const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose }) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100]"
+            className="hz-fixed hz-inset hz-bg-surface hz-glass hz-z-overlay"
           />
 
           {/* Command palette */}
@@ -187,12 +186,12 @@ const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose }) => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: -20 }}
             transition={{ duration: 0.15 }}
-            className="fixed top-[15%] left-1/2 -translate-x-1/2 w-full max-w-xl z-[101]"
+            className="hz-center-x hz-fixed hz-w-full hz-mw-md hz-z-overlay"
           >
-            <div className="bg-neutral-900 border border-neutral-700 rounded-xl shadow-2xl overflow-hidden">
+            <div className="hz-bg-surface hz-bordered hz-r-lg hz-shadow-lg hz-clip">
               {/* Search input */}
-              <div className="flex items-center gap-3 px-4 py-3 border-b border-neutral-800">
-                <Search className="w-5 h-5 text-neutral-500" />
+              <div className="hz-row hz-ai-center hz-gap-3 hz-px-4 hz-py-3 hz-border-b">
+                <Search className="hz-sq-3 hz-fg-muted" />
                 <input
                   ref={inputRef}
                   type="text"
@@ -200,23 +199,23 @@ const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose }) => {
                   onChange={(e) => setSearch(e.target.value)}
                   onKeyDown={handleKeyDown}
                   placeholder="Search pages, products, docs..."
-                  className="flex-1 bg-transparent text-white text-sm placeholder-neutral-500 outline-none"
+                  className="hz-grow hz-bg-none hz-fg hz-t-sm"
                 />
-                <kbd className="px-2 py-1 text-[10px] font-mono bg-neutral-800 rounded text-neutral-500">
+                <kbd className="hz-px-2 hz-py-1 hz-t-xs hz-mono hz-bg-raised hz-r-md hz-fg-muted">
                   ESC
                 </kbd>
               </div>
 
               {/* Results */}
-              <div className="max-h-[400px] overflow-y-auto py-2">
+              <div className="hz-scroll-y hz-py-2">
                 {Object.keys(groupedCommands).length === 0 ? (
-                  <div className="px-4 py-8 text-center text-neutral-500 text-sm">
+                  <div className="hz-px-4 hz-py-6 hz-align-center hz-fg-muted hz-t-sm">
                     No results found for "{search}"
                   </div>
                 ) : (
                   Object.entries(groupedCommands).map(([category, items]) => (
                     <div key={category}>
-                      <div className="px-4 py-2 text-[10px] font-semibold text-neutral-500 uppercase tracking-wider">
+                      <div className="hz-px-4 hz-py-2 hz-t-xs hz-w-semibold hz-fg-muted hz-upper hz-tracking-wide">
                         {category}
                       </div>
                       {items.map((cmd) => {
@@ -229,40 +228,40 @@ const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose }) => {
                             key={cmd.id}
                             onClick={() => handleSelect(cmd)}
                             onMouseEnter={() => setSelectedIndex(index)}
-                            className={`w-full flex items-center gap-3 px-4 py-2.5 text-left transition-colors ${
+                            className={`hz-w-full hz-row hz-ai-center hz-gap-3 hz-px-4 hz-py-2 hz-align-left hz-transition ${
                               isSelected
-                                ? "bg-neutral-800 text-white"
-                                : "text-neutral-300 hover:bg-neutral-800/50"
+                                ? "hz-bg-raised hz-fg"
+                                : "hz-fg-soft hz-hoverable"
                             }`}
                           >
                             <div
-                              className={`w-8 h-8 rounded-lg flex items-center justify-center ${
-                                isSelected ? "bg-white/20" : "bg-neutral-800"
+                              className={`hz-sq-5 hz-r-lg hz-row hz-ai-center hz-jc-center ${
+                                isSelected ? "hz-bg-quiet" : "hz-bg-raised"
                               }`}
                             >
                               <Icon
-                                className={`w-4 h-4 ${
-                                  isSelected ? "text-white" : "text-neutral-500"
+                                className={`hz-sq-2 ${
+                                  isSelected ? "hz-fg" : "hz-fg-muted"
                                 }`}
                               />
                             </div>
-                            <div className="flex-1 min-w-0">
-                              <div className="flex items-center gap-2">
-                                <span className="text-sm font-medium truncate">
+                            <div className="hz-grow">
+                              <div className="hz-row hz-ai-center hz-gap-2">
+                                <span className="hz-t-sm hz-w-medium hz-truncate">
                                   {cmd.title}
                                 </span>
                                 {cmd.external && (
-                                  <ExternalLink className="w-3 h-3 text-neutral-500" />
+                                  <ExternalLink className="hz-sq-1 hz-fg-muted" />
                                 )}
                               </div>
                               {cmd.description && (
-                                <div className="text-xs text-neutral-500 truncate">
+                                <div className="hz-t-xs hz-fg-muted hz-truncate">
                                   {cmd.description}
                                 </div>
                               )}
                             </div>
                             {isSelected && (
-                              <ArrowRight className="w-4 h-4 text-neutral-500" />
+                              <ArrowRight className="hz-sq-2 hz-fg-muted" />
                             )}
                           </button>
                         );
@@ -273,20 +272,20 @@ const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose }) => {
               </div>
 
               {/* Footer */}
-              <div className="px-4 py-2 border-t border-neutral-800 flex items-center justify-between">
-                <div className="flex items-center gap-4 text-[10px] text-neutral-500">
-                  <span className="flex items-center gap-1">
-                    <kbd className="px-1.5 py-0.5 bg-neutral-800 rounded">↑</kbd>
-                    <kbd className="px-1.5 py-0.5 bg-neutral-800 rounded">↓</kbd>
+              <div className="hz-px-4 hz-py-2 hz-border-t hz-row hz-ai-center hz-jc-between">
+                <div className="hz-row hz-ai-center hz-gap-4 hz-t-xs hz-fg-muted">
+                  <span className="hz-row hz-ai-center hz-gap-1">
+                    <kbd className="hz-px-2 hz-py-1 hz-bg-raised hz-r-md">↑</kbd>
+                    <kbd className="hz-px-2 hz-py-1 hz-bg-raised hz-r-md">↓</kbd>
                     Navigate
                   </span>
-                  <span className="flex items-center gap-1">
-                    <kbd className="px-1.5 py-0.5 bg-neutral-800 rounded">↵</kbd>
+                  <span className="hz-row hz-ai-center hz-gap-1">
+                    <kbd className="hz-px-2 hz-py-1 hz-bg-raised hz-r-md">↵</kbd>
                     Select
                   </span>
                 </div>
-                <div className="flex items-center gap-1 text-[10px] text-neutral-500">
-                  <Command className="w-3 h-3" />
+                <div className="hz-row hz-ai-center hz-gap-1 hz-t-xs hz-fg-muted">
+                  <Command className="hz-sq-1" />
                   <span>K to toggle</span>
                 </div>
               </div>

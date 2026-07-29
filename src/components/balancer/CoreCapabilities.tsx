@@ -45,22 +45,22 @@ const CoreCapabilities = () => {
   ];
 
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gray-900/20">
-      <div className="max-w-6xl mx-auto">
+    <section className="hz-py-7 hz-px-4 hz-bg-surface">
+      <div className="hz-container-wide">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="hz-align-center hz-mb-7"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Core Capabilities</h2>
-          <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
+          <h2 className="hz-t-3xl hz-w-bold hz-mb-5">Core Capabilities</h2>
+          <p className="hz-container-narrow hz-t-xl hz-fg-soft">
             Hanzo Balancer provides a comprehensive set of features to handle the most demanding traffic management requirements.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="hz-grid hz-grid-3 hz-gap-6">
           {capabilities.map((capability, index) => (
             <motion.div
               key={index}
@@ -68,13 +68,13 @@ const CoreCapabilities = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-gray-800/30 p-6 rounded-lg border border-gray-700/50"
+              className="hz-card"
             >
-              <div className="bg-neutral-800/20 p-3 rounded-full w-fit mb-4">
-                <capability.icon className="h-6 w-6 text-neutral-400" />
+              <div className="hz-bg-raised hz-p-3 hz-r-full hz-w-fit hz-mb-4">
+                <capability.icon className="hz-sq-4 hz-fg-muted" />
               </div>
-              <h3 className="text-xl font-semibold mb-3">{capability.title}</h3>
-              <p className="text-neutral-300">{capability.description}</p>
+              <h3 className="hz-t-xl hz-w-semibold hz-mb-3">{capability.title}</h3>
+              <p className="hz-fg-soft">{capability.description}</p>
             </motion.div>
           ))}
         </div>

@@ -5,58 +5,58 @@ import { Link } from "react-router-dom";
 
 const ExpertServices: React.FC = () => {
   return (
-    <div className="mb-24 bg-gradient-to-br from-gray-900/70 to-black/90 p-10 rounded-2xl border border-gray-800">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-        <div className="p-6 bg-gradient-to-br from-neutral-800/50 to-neutral-800/30 rounded-xl border border-neutral-500/20 hover:border-neutral-500/40 transition-colors h-full">
-          <div className="p-3 rounded-lg bg-neutral-600/20 self-start inline-block mb-4">
-            <Users className="h-6 w-6 text-neutral-400" strokeWidth={1.5} />
+    <div className="hz-card hz-mb-7">
+      <div className="hz-grid hz-grid-2 hz-gap-6">
+        <div className="hz-card hz-transition hz-h-full hz-card-interactive">
+          <div className="hz-p-3 hz-r-lg hz-bg-raised hz-self-start hz-mb-4">
+            <Users className="hz-sq-4 hz-fg-muted" strokeWidth={1.5} />
           </div>
-          <h3 className="text-2xl font-bold text-[var(--white)] mb-3">Hanzo Agency</h3>
-          <p className="text-neutral-300 mb-5">
+          <h3 className="hz-t-2xl hz-w-bold hz-fg hz-mb-3">Hanzo Agency</h3>
+          <p className="hz-fg-soft hz-mb-4">
             Our AI-powered creative agency helps brands transform their digital presence with cutting-edge design, 
             content, and marketing strategies powered by artificial intelligence.
           </p>
-          <div className="flex flex-wrap gap-4">
+          <div className="hz-row hz-wrap hz-gap-4">
             <a 
               href="https://hanzo.agency" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-5 py-2.5 bg-neutral-600 hover:bg-neutral-600 rounded-md text-[var(--white)] transition-colors"
+              className="hz-btn hz-gap-2 hz-fg hz-transition"
             >
               <span>Visit Hanzo Agency</span>
               <ExternalLink size={14} />
             </a>
             <a 
               href="/contact" 
-              className="flex items-center gap-2 px-5 py-2.5 border border-neutral-500/40 hover:border-neutral-500 rounded-md text-neutral-400 hover:text-neutral-300 transition-colors"
+              className="hz-btn hz-btn-ghost hz-gap-2 hz-fg-muted hz-transition"
             >
               <span>Contact us</span>
               <Mail size={14} />
             </a>
           </div>
         </div>
-        <div className="p-6 bg-gradient-to-br from-neutral-800/50 to-neutral-900/30 rounded-xl border border-neutral-500/20 hover:border-neutral-500/40 transition-colors h-full">
-          <div className="p-3 rounded-lg bg-neutral-500/20 self-start inline-block mb-4">
-            <Shield className="h-6 w-6 text-neutral-400" strokeWidth={1.5} />
+        <div className="hz-card hz-transition hz-h-full hz-card-interactive">
+          <div className="hz-p-3 hz-r-lg hz-bg-raised hz-self-start hz-mb-4">
+            <Shield className="hz-sq-4 hz-fg-muted" strokeWidth={1.5} />
           </div>
-          <h3 className="text-2xl font-bold text-[var(--white)] mb-3">Sensei Group</h3>
-          <p className="text-neutral-300 mb-5">
+          <h3 className="hz-t-2xl hz-w-bold hz-fg hz-mb-3">Sensei Group</h3>
+          <p className="hz-fg-soft hz-mb-4">
             Our collective of fractional CXOs and industry experts help enterprises implement transformative 
             technology solutions and drive strategic growth initiatives.
           </p>
-          <div className="flex flex-wrap gap-4">
+          <div className="hz-row hz-wrap hz-gap-4">
             <a 
               href="https://sensei.group" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-5 py-2.5 bg-neutral-600 hover:bg-neutral-500 rounded-md text-[var(--white)] transition-colors"
+              className="hz-btn hz-gap-2 hz-fg hz-transition"
             >
               <span>Visit Sensei Group</span>
               <ExternalLink size={14} />
             </a>
             <a 
               href="tel:+1234567890" 
-              className="flex items-center gap-2 px-5 py-2.5 border border-neutral-500/40 hover:border-neutral-500 rounded-md text-neutral-400 hover:text-neutral-300 transition-colors"
+              className="hz-btn hz-btn-ghost hz-gap-2 hz-fg-muted hz-transition"
             >
               <span>Schedule a call</span>
               <Phone size={14} />

@@ -8,7 +8,7 @@ interface BackgroundProps {
 
 const Background: React.FC<BackgroundProps> = ({ mousePosition }) => {
   return (
-    <div className="fixed inset-0 -z-10">
+    <div className="hz-fixed hz-inset hz-z-behind">
       <div 
         style={{
           transform: `perspective(1000px) rotateX(${(mousePosition.y - 0.5) * 5}deg) rotateY(${(mousePosition.x - 0.5) * -5}deg)`,
@@ -18,7 +18,7 @@ const Background: React.FC<BackgroundProps> = ({ mousePosition }) => {
         <GridLines spacing={60} opacity={0.1} />
       </div>
       
-      <div className="absolute inset-0 bg-gradient-to-b from-neutral-800/10 to-neutral-800/10 opacity-40"></div>
+      <div className="hz-abs hz-inset hz-dim-more"></div>
       
       {/* Dynamic blueprint lines */}
       <BlueprintLine orientation="vertical" position="20%" color="rgba(147, 51, 234, 0.1)" />

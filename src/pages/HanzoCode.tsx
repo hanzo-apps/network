@@ -14,7 +14,7 @@ import HanzoCodeAgents from "@/components/hanzocode/HanzoCodeAgents";
 
 const HanzoCode = () => {
   return (
-    <div className="min-h-screen bg-[var(--black)] text-[var(--white)]">
+    <div className="hz-min-h-screen hz-bg hz-fg">
       <Navbar />
       <main>
         <HanzoCodeHero />

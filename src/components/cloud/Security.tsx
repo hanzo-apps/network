@@ -6,34 +6,34 @@ import { Button } from "@/components/ui/button";
 
 const Security = () => {
   return (
-    <section id="security" className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-900 to-black">
-      <div className="max-w-7xl mx-auto">
+    <section id="security" className="hz-py-7 hz-px-4">
+      <div className="hz-container">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="hz-align-center hz-mb-7"
         >
-          <Shield className="w-16 h-16 text-neutral-400 mx-auto mb-6" />
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+          <Shield className="hz-sq-8 hz-fg-muted hz-mx-auto hz-mb-5" />
+          <h2 className="hz-t-3xl hz-w-bold hz-mb-5">
             Enterprise-Ready
           </h2>
-          <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
+          <p className="hz-container-narrow hz-t-xl hz-fg-soft">
             Apps running on Hanzo Machines are KVM hardware-isolated, built on a memory-safe stack and running directly on our own metal.
           </p>
         </motion.div>
 
-        <div className="flex flex-col md:flex-row gap-16 items-start">
+        <div className="hz-col-row hz-gap-7 hz-ai-start">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="flex-1"
+            className="hz-grow"
           >
-            <h3 className="text-2xl font-bold mb-6">Enterprise Features</h3>
-            <ul className="space-y-4">
+            <h3 className="hz-t-2xl hz-w-bold hz-mb-5">Enterprise Features</h3>
+            <ul className="hz-stack-4">
               {[
                 "Single Sign-On",
                 "Guaranteed Support Response Times",
@@ -41,9 +41,9 @@ const Security = () => {
                 "Memory-safe Rust and Go stack",
                 "CI/CD Integration"
               ].map((feature, index) => (
-                <li key={index} className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-neutral-400 mr-3 mt-1" />
-                  <span className="text-neutral-300">{feature}</span>
+                <li key={index} className="hz-row hz-ai-start">
+                  <CheckCircle className="hz-sq-3 hz-fg-muted hz-mr-3 hz-mt-1" />
+                  <span className="hz-fg-soft">{feature}</span>
                 </li>
               ))}
             </ul>
@@ -54,15 +54,15 @@ const Security = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex-1"
+            className="hz-grow"
           >
-            <div className="bg-gradient-to-br from-neutral-800/20 to-neutral-800/20 rounded-xl p-8 border border-neutral-800/30">
-              <Lock className="w-12 h-12 text-neutral-400 mb-6" />
-              <h3 className="text-xl font-bold mb-4">Hanzo.io Security</h3>
-              <p className="text-neutral-300 mb-8">
+            <div className="hz-card">
+              <Lock className="hz-sq-7 hz-fg-muted hz-mb-5" />
+              <h3 className="hz-t-xl hz-w-bold hz-mb-4">Hanzo.io Security</h3>
+              <p className="hz-fg-soft hz-mb-6">
                 Our security team works around the clock to ensure your applications and data are protected. We employ industry-leading practices and regularly undergo independent security audits.
               </p>
-              <Button variant="outline" className="bg-transparent text-[var(--white)] hover:bg-[var(--white)] hover:text-black border border-white">
+              <Button variant="outline" className="hz-bg-none hz-fg hz-bordered hz-hoverable">
                 <a href="https://hanzo.ai/security">Security Details</a>
               </Button>
             </div>
@@ -74,14 +74,14 @@ const Security = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="mt-20 text-center"
+          className="hz-mt-7 hz-align-center"
         >
-          <p className="text-xl font-semibold mb-8">Trusted by teams at</p>
-          <div className="flex flex-wrap justify-center items-center gap-12">
-            <div className="h-12 w-32 bg-gray-800/50 rounded-md"></div>
-            <div className="h-12 w-32 bg-gray-800/50 rounded-md"></div>
-            <div className="h-12 w-32 bg-gray-800/50 rounded-md"></div>
-            <div className="h-12 w-32 bg-gray-800/50 rounded-md"></div>
+          <p className="hz-t-xl hz-w-semibold hz-mb-6">Trusted by teams at</p>
+          <div className="hz-row hz-wrap hz-jc-center hz-ai-center hz-gap-7">
+            <div className="hz-bh-7 hz-bw-8 hz-bg-raised hz-r-md"></div>
+            <div className="hz-bh-7 hz-bw-8 hz-bg-raised hz-r-md"></div>
+            <div className="hz-bh-7 hz-bw-8 hz-bg-raised hz-r-md"></div>
+            <div className="hz-bh-7 hz-bw-8 hz-bg-raised hz-r-md"></div>
           </div>
         </motion.div>
       </div>

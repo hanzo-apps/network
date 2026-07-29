@@ -16,13 +16,13 @@ const CloudServiceGrid: React.FC<CloudServiceGridProps> = ({ isHovered, setIsHov
   const mainServices = cloudServiceData.slice(0, 11);
   
   return (
-    <div className="space-y-8 relative">
+    <div className="hz-stack-6 hz-rel">
       {/* Add architectural grid lines */}
-      <div className="absolute inset-0 -z-10">
+      <div className="hz-abs hz-inset hz-z-behind">
         <GridLines spacing={60} opacity={0.15} color="rgba(59, 130, 246, 0.2)" />
       </div>
       
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
+      <div className="hz-grid hz-grid-4 hz-gap-4">
         {/* Regular service cards */}
         {mainServices.map((service) => (
           <CloudServiceCard
@@ -41,20 +41,20 @@ const CloudServiceGrid: React.FC<CloudServiceGridProps> = ({ isHovered, setIsHov
         {/* Special "Learn More" card as the last item */}
         <Link
           to="/cloud"
-          className="bg-gray-900/20 border border-gray-800 rounded-xl p-6 hover:bg-gray-900/30 transition-all duration-300 h-full flex flex-col justify-center items-center"
+          className="hz-card hz-transition hz-h-full hz-col hz-jc-center hz-ai-center hz-card-interactive"
           onMouseEnter={() => setIsHovered("learn-more")}
           onMouseLeave={() => setIsHovered(null)}
         >
-          <div className="text-center space-y-4">
-            <div className="w-12 h-12 mx-auto bg-neutral-600/10 rounded-full flex items-center justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-neutral-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <div className="hz-align-center hz-stack-4">
+            <div className="hz-sq-7 hz-mx-auto hz-bg-raised hz-r-full hz-row hz-ai-center hz-jc-center">
+              <svg xmlns="http://www.w3.org/2000/svg" className="hz-sq-4 hz-fg-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
             </div>
-            <h3 className="text-xl font-semibold text-[var(--white)]">Explore More</h3>
-            <p className="text-neutral-300 text-sm">Discover our full range of cloud solutions and services</p>
+            <h3 className="hz-t-xl hz-w-semibold hz-fg">Explore More</h3>
+            <p className="hz-fg-soft hz-t-sm">Discover our full range of cloud solutions and services</p>
             <Button 
-              className="mt-2 bg-gradient-to-r from-neutral-600 to-neutral-500 hover:from-neutral-500 hover:to-neutral-400 text-[var(--white)] border-none"
+              className="hz-mt-2 hz-fg hz-border-none"
               radius="full"
             >
               View All Services

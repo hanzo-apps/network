@@ -80,23 +80,23 @@ const SignUp = () => {
   };
   
   return (
-    <div className="min-h-screen bg-[var(--black)] text-[var(--white)] flex items-center justify-center p-4">
-      <div className="w-full max-w-md space-y-6">
-        <div className="text-center">
-          <h1 className="text-3xl font-bold">Create Account</h1>
-          <p className="text-neutral-400 mt-2">
+    <div className="hz-min-h-screen hz-bg hz-fg hz-row hz-ai-center hz-jc-center hz-p-4">
+      <div className="hz-w-full hz-mw-sm hz-stack-5">
+        <div className="hz-align-center">
+          <h1 className="hz-t-3xl hz-w-bold">Create Account</h1>
+          <p className="hz-fg-muted hz-mt-2">
             {step === 1 ? 'Enter your details to get started' : 'Set up your profile'}
           </p>
         </div>
         
-        <div className="bg-gray-900/50 border border-gray-800 rounded-lg p-6">
-          <form onSubmit={handleSubmit} className="space-y-4">
+        <div className="hz-card">
+          <form onSubmit={handleSubmit} className="hz-stack-4">
             {step === 1 ? (
               <>
-                <div className="space-y-2">
+                <div className="hz-stack-2">
                   <Label htmlFor="email">Email</Label>
-                  <div className="relative">
-                    <Mail className="absolute left-3 top-3 h-4 w-4 text-neutral-400" />
+                  <div className="hz-rel">
+                    <Mail className="hz-sq-2 hz-abs hz-fg-muted" />
                     <Input
                       id="email"
                       name="email"
@@ -104,15 +104,15 @@ const SignUp = () => {
                       placeholder="you@example.com"
                       value={formData.email}
                       onChange={handleChange}
-                      className="pl-10"
+                      className="hz-px-6"
                     />
                   </div>
                 </div>
                 
-                <div className="space-y-2">
+                <div className="hz-stack-2">
                   <Label htmlFor="password">Password</Label>
-                  <div className="relative">
-                    <Lock className="absolute left-3 top-3 h-4 w-4 text-neutral-400" />
+                  <div className="hz-rel">
+                    <Lock className="hz-sq-2 hz-abs hz-fg-muted" />
                     <Input
                       id="password"
                       name="password"
@@ -120,15 +120,15 @@ const SignUp = () => {
                       placeholder="••••••••"
                       value={formData.password}
                       onChange={handleChange}
-                      className="pl-10"
+                      className="hz-px-6"
                     />
                   </div>
                 </div>
                 
-                <div className="space-y-2">
+                <div className="hz-stack-2">
                   <Label htmlFor="confirmPassword">Confirm Password</Label>
-                  <div className="relative">
-                    <Lock className="absolute left-3 top-3 h-4 w-4 text-neutral-400" />
+                  <div className="hz-rel">
+                    <Lock className="hz-sq-2 hz-abs hz-fg-muted" />
                     <Input
                       id="confirmPassword"
                       name="confirmPassword"
@@ -136,42 +136,42 @@ const SignUp = () => {
                       placeholder="••••••••"
                       value={formData.confirmPassword}
                       onChange={handleChange}
-                      className="pl-10"
+                      className="hz-px-6"
                     />
                   </div>
                 </div>
                 
-                <div className="flex items-center space-x-2 pt-2">
+                <div className="hz-row hz-ai-center hz-inline-2 hz-pt-4">
                   <Checkbox 
                     id="terms" 
                     checked={formData.agreeToTerms}
                     onCheckedChange={handleCheckboxChange}
                   />
-                  <Label htmlFor="terms" className="text-sm">
-                    I agree to the <a href="/terms" className="text-neutral-400 hover:underline">Terms of Service</a> and <a href="/privacy" className="text-neutral-400 hover:underline">Privacy Policy</a>
+                  <Label htmlFor="terms" className="hz-t-sm">
+                    I agree to the <a href="/terms" className="hz-fg-muted">Terms of Service</a> and <a href="/privacy" className="hz-fg-muted">Privacy Policy</a>
                   </Label>
                 </div>
               </>
             ) : (
               <>
-                <div className="space-y-2">
+                <div className="hz-stack-2">
                   <Label htmlFor="name">Full Name</Label>
-                  <div className="relative">
-                    <User className="absolute left-3 top-3 h-4 w-4 text-neutral-400" />
+                  <div className="hz-rel">
+                    <User className="hz-sq-2 hz-abs hz-fg-muted" />
                     <Input
                       id="name"
                       name="name"
                       placeholder="John Doe"
                       value={formData.name}
                       onChange={handleChange}
-                      className="pl-10"
+                      className="hz-px-6"
                     />
                   </div>
                 </div>
                 
-                <div className="space-y-2">
+                <div className="hz-stack-2">
                   <Label htmlFor="organization">Organization Name</Label>
-                  <div className="relative">
+                  <div className="hz-rel">
                     <Input
                       id="organization"
                       name="organization"
@@ -182,9 +182,9 @@ const SignUp = () => {
                   </div>
                 </div>
                 
-                <div className="space-y-2">
+                <div className="hz-stack-2">
                   <Label htmlFor="role">Your Role (Optional)</Label>
-                  <div className="relative">
+                  <div className="hz-rel">
                     <Input
                       id="role"
                       name="role"
@@ -199,17 +199,17 @@ const SignUp = () => {
             
             <Button 
               type="submit" 
-              className="w-full mt-6 bg-neutral-600 hover:bg-neutral-700 text-[var(--white)]"
+              className="hz-w-full hz-mt-5 hz-bg-raised hz-fg hz-hoverable"
             >
               {step === 1 ? 'Continue' : 'Create Account'}
-              <ArrowRight className="ml-2 h-4 w-4" />
+              <ArrowRight className="hz-sq-2 hz-ml-2" />
             </Button>
           </form>
         </div>
         
-        <div className="text-center text-sm text-neutral-400">
+        <div className="hz-align-center hz-t-sm hz-fg-muted">
           Already have an account?{" "}
-          <a href="/login" className="text-neutral-400 hover:underline">
+          <a href="/login" className="hz-fg-muted">
             Sign in
           </a>
         </div>

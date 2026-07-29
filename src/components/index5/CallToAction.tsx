@@ -10,33 +10,33 @@ const CallToAction: React.FC = () => {
   const navigate = useNavigate();
   
   return (
-    <section className="py-24 px-4 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-r from-neutral-800/20 to-neutral-800/20 opacity-30"></div>
-      <div className="absolute -top-40 -right-40 w-80 h-80 bg-neutral-600/10 rounded-full blur-3xl"></div>
-      <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-neutral-600/10 rounded-full blur-3xl"></div>
+    <section className="hz-py-7 hz-px-4 hz-rel hz-clip">
+      <div className="hz-abs hz-inset hz-dim-more"></div>
+      <div className="hz-sq-8 hz-abs hz-bg-raised hz-r-full hz-blur-bg"></div>
+      <div className="hz-sq-8 hz-abs hz-bg-raised hz-r-full hz-blur-bg"></div>
       
-      <div className="max-w-5xl mx-auto relative z-10">
+      <div className="hz-container-wide hz-rel hz-z-raised">
         <motion.div 
-          className="text-center"
+          className="hz-align-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <ChromeText as="h2" className="text-3xl md:text-5xl font-bold mb-6 mx-auto text-center">
+          <ChromeText as="h2" className="hz-t-3xl hz-w-bold hz-mb-5 hz-mx-auto hz-align-center">
             Start Building Today
           </ChromeText>
-          <p className="text-xl text-neutral-300 max-w-3xl mx-auto mb-10">
+          <p className="hz-container-narrow hz-t-xl hz-fg-soft hz-mb-6">
             Join thousands of developers building the future with Hanzo AI Cloud and DX Platform.
             Get started for free and scale as you grow.
           </p>
           
           <Button 
             size="lg"
-            className="bg-[var(--white)] hover:bg-gray-100 text-black px-10 py-7 rounded-lg text-xl font-medium shadow-lg hover:shadow-xl transition-all"
+            className="hz-bg-inverse hz-fg-inverse hz-px-6 hz-py-5 hz-r-lg hz-t-xl hz-w-medium hz-shadow-lg hz-transition hz-hoverable"
             onClick={() => navigate('/signup')}
           >
-            Start Building for Free <ArrowRight className="ml-2 h-5 w-5" />
+            Start Building for Free <ArrowRight className="hz-sq-3 hz-ml-2" />
           </Button>
         </motion.div>
       </div>

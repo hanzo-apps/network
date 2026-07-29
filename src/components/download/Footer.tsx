@@ -4,11 +4,11 @@ import { motion } from "framer-motion";
 
 const FooterSection = ({ title, links }: { title: string; links: string[] }) => (
   <div>
-    <h3 className="text-[var(--white)] font-semibold mb-3">{title}</h3>
-    <ul className="space-y-2">
+    <h3 className="hz-fg hz-w-semibold hz-mb-3">{title}</h3>
+    <ul className="hz-stack-2">
       {links.map((link, index) => (
         <li key={index}>
-          <a href={link === "Discord Server" ? "https://discord.gg/XthHQQj" : "#"} className="text-neutral-500 hover:text-[var(--white)] text-sm">
+          <a href={link === "Discord Server" ? "https://discord.gg/XthHQQj" : "#"} className="hz-fg-muted hz-t-sm hz-link">
             {link}
           </a>
         </li>
@@ -30,10 +30,10 @@ const DownloadFooter = () => {
   ];
 
   return (
-    <section className="py-12 px-4 sm:px-6 lg:px-8 bg-[var(--black)]/80 border-t border-gray-800">
-      <div className="max-w-6xl mx-auto">
+    <section className="hz-py-7 hz-px-4 hz-bg-overlay hz-border-t">
+      <div className="hz-container-wide">
         <motion.div 
-          className="grid grid-cols-2 md:grid-cols-5 gap-8"
+          className="hz-grid hz-grid-5 hz-gap-6"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -46,7 +46,7 @@ const DownloadFooter = () => {
           <FooterSection title="Prompt Library" links={promptLibrary} />
         </motion.div>
         
-        <div className="mt-12 pt-6 border-t border-gray-800 text-center text-neutral-500 text-sm">
+        <div className="hz-mt-7 hz-pt-6 hz-border-t hz-align-center hz-fg-muted hz-t-sm">
           © 2025 Hanzo AI. All rights reserved. Not associated with or endorsed by ChatGPT, Perplexity, or Claude.
         </div>
       </div>

@@ -16,15 +16,15 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({ badge, badgeColor, title,
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      className="text-center mb-12"
+      className="hz-align-center hz-mb-7"
     >
-      <div className={`inline-block px-4 py-1 rounded-full ${badgeColor} text-sm font-medium mb-6`}>
+      <div className={`hz-px-4 hz-py-1 hz-r-full ${badgeColor} hz-t-sm hz-w-medium hz-mb-5`}>
         {badge}
       </div>
-      <h3 className="text-3xl font-bold text-[var(--white)] mb-6">
+      <h3 className="hz-t-3xl hz-w-bold hz-fg hz-mb-5">
         {title}
       </h3>
-      <p className="text-lg text-neutral-300 max-w-3xl mx-auto">
+      <p className="hz-container-narrow hz-t-lg hz-fg-soft">
         {description}
       </p>
     </motion.div>

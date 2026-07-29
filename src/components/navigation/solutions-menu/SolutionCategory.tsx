@@ -13,19 +13,19 @@ export const SolutionCategory = ({ title, items, onItemClick }: SolutionCategory
   const displayItems = items.slice(0, 8);
 
   return (
-    <div className="space-y-4">
-      <div className="flex items-center justify-between">
-        <h3 className="text-lg font-semibold text-[var(--white)]">{title}</h3>
+    <div className="hz-stack-4">
+      <div className="hz-row hz-ai-center hz-jc-between">
+        <h3 className="hz-t-lg hz-w-semibold hz-fg">{title}</h3>
         <Link 
           to="/solutions" 
-          className="text-neutral-400 hover:text-neutral-300 text-sm font-medium"
+          className="hz-fg-muted hz-t-sm hz-w-medium hz-link"
           onClick={onItemClick}
         >
           View all
         </Link>
       </div>
       
-      <div className="grid grid-cols-1 gap-3">
+      <div className="hz-grid hz-gap-3">
         {displayItems.map((item: string) => {
           const Icon = getIcon(item);
           const itemSlug = item.toLowerCase().replace(/\s+/g, '-');
@@ -33,14 +33,14 @@ export const SolutionCategory = ({ title, items, onItemClick }: SolutionCategory
             <Link 
               to={`/solutions/${itemSlug}`} 
               key={item} 
-              className="flex items-center space-x-3 group"
+              className="hz-row hz-ai-center hz-inline-3"
               onClick={onItemClick}
             >
-              <div className="w-10 h-10 flex items-center justify-center shrink-0">
-                <Icon className="h-5 w-5 text-neutral-400 group-hover:text-[var(--white)] transition-colors" strokeWidth={1.5} />
+              <div className="hz-sq-6 hz-row hz-ai-center hz-jc-center hz-none">
+                <Icon className="hz-sq-3 hz-fg-muted hz-transition hz-link" strokeWidth={1.5} />
               </div>
-              <div className="flex-1">
-                <div className="text-neutral-300 group-hover:text-[var(--white)] font-medium truncate">{item}</div>
+              <div className="hz-grow">
+                <div className="hz-fg-soft hz-w-medium hz-truncate hz-hoverable">{item}</div>
               </div>
             </Link>
           );

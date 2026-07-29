@@ -14,42 +14,42 @@ import {
 
 const features = [
   {
-    icon: <History className="h-7 w-7 text-neutral-400" />,
+    icon: <History className="hz-sq-5 hz-fg-muted" />,
     title: "Tracing and Logging",
     description: "End-to-end traces for rapid debugging, detailed logs for every inference request."
   },
   {
-    icon: <BarChart className="h-7 w-7 text-neutral-400" />,
+    icon: <BarChart className="hz-sq-5 hz-fg-muted" />,
     title: "Real-time Metrics",
     description: "Instant visibility into system health, latency, throughput, and cost efficiency."
   },
   {
-    icon: <MessageSquare className="h-7 w-7 text-neutral-400" />,
+    icon: <MessageSquare className="hz-sq-5 hz-fg-muted" />,
     title: "Prompt Management",
     description: "Collaboratively version, test, and deploy prompts with low-latency retrieval."
   },
   {
-    icon: <Sparkles className="h-7 w-7 text-neutral-400" />,
+    icon: <Sparkles className="hz-sq-5 hz-fg-muted" />,
     title: "Playground",
     description: "Experiment rapidly with different prompts and models directly in the Hanzo interface."
   },
   {
-    icon: <FileBadge className="h-7 w-7 text-neutral-400" />,
+    icon: <FileBadge className="hz-sq-5 hz-fg-muted" />,
     title: "Evaluation & Feedback",
     description: "Collect, annotate, and systematically evaluate model outputs and user feedback."
   },
   {
-    icon: <Database className="h-7 w-7 text-neutral-400" />,
+    icon: <Database className="hz-sq-5 hz-fg-muted" />,
     title: "Datasets",
     description: "Generate robust datasets from live production data to enhance model training and evaluation."
   },
   {
-    icon: <Users className="h-7 w-7 text-neutral-400" />,
+    icon: <Users className="hz-sq-5 hz-fg-muted" />,
     title: "User Journey Analytics",
     description: "Visualize and optimize user paths, retention rates, and conversion funnels."
   },
   {
-    icon: <AlertTriangle className="h-7 w-7 text-neutral-400" />,
+    icon: <AlertTriangle className="hz-sq-5 hz-fg-muted" />,
     title: "Predictive Analytics",
     description: "AI-driven anomaly detection and predictive alerts prevent downtime and performance degradation."
   }
@@ -57,24 +57,24 @@ const features = [
 
 const Features = () => {
   return (
-    <section className="py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-900/20 to-black relative">
-      <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:30px_30px]"></div>
+    <section className="hz-py-7 hz-px-4 hz-rel">
+      <div className="hz-abs hz-inset hz-bg-surface"></div>
       
-      <div className="max-w-6xl mx-auto relative z-10">
+      <div className="hz-container-wide hz-rel hz-z-raised">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="max-w-3xl mx-auto text-center mb-20"
+          className="hz-container-narrow hz-align-center hz-mb-7"
         >
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">Complete Observability for Your AI Stack</h2>
-          <p className="text-xl text-neutral-300">
+          <h2 className="hz-t-3xl hz-w-bold hz-mb-5">Complete Observability for Your AI Stack</h2>
+          <p className="hz-t-xl hz-fg-soft">
             Hanzo Observability equips your team with powerful tools for real-time monitoring, comprehensive tracing, and actionable insights.
           </p>
         </motion.div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="hz-grid hz-grid-4 hz-gap-6">
           {features.map((feature, index) => (
             <motion.div
               key={index}
@@ -82,13 +82,13 @@ const Features = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.05 }}
-              className="bg-gray-900/30 p-6 rounded-xl border border-gray-800 hover:border-gray-700 transition-colors"
+              className="hz-card hz-transition hz-card-interactive"
             >
-              <div className="bg-gray-800/60 p-3 rounded-lg w-fit mb-5">
+              <div className="hz-bg-raised hz-p-3 hz-r-lg hz-w-fit hz-mb-4">
                 {feature.icon}
               </div>
-              <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
-              <p className="text-neutral-400">{feature.description}</p>
+              <h3 className="hz-t-xl hz-w-bold hz-mb-3">{feature.title}</h3>
+              <p className="hz-fg-muted">{feature.description}</p>
             </motion.div>
           ))}
         </div>

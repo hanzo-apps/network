@@ -26,12 +26,12 @@ const ProductSection: React.FC<ProductSectionProps> = ({
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      className={`rounded-xl ${bgClass} p-8 backdrop-blur-sm border border-white/10`}
+      className={`hz-r-lg ${bgClass} hz-p-6 hz-glass hz-bordered`}
     >
-      <h3 className="text-2xl md:text-3xl font-bold mb-2">{title}</h3>
-      {subtitle && <p className="text-neutral-300 mb-6">{subtitle}</p>}
+      <h3 className="hz-t-2xl hz-w-bold hz-mb-2">{title}</h3>
+      {subtitle && <p className="hz-fg-soft hz-mb-5">{subtitle}</p>}
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="hz-grid hz-grid-3 hz-gap-4">
         {products.map((product, index) => {
           // Handle products in format "Name – Description"
           let name, description;
@@ -49,10 +49,10 @@ const ProductSection: React.FC<ProductSectionProps> = ({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: index * 0.05 }}
-              className="bg-[var(--black)]/30 p-4 rounded-lg border border-neutral-500/10 hover:border-neutral-500/30 transition-colors"
+              className="hz-card hz-transition hz-card-interactive"
             >
-              <h4 className="text-lg font-semibold text-neutral-400 mb-1">{name}</h4>
-              <p className="text-neutral-300 text-sm">{description}</p>
+              <h4 className="hz-t-lg hz-w-semibold hz-fg-muted hz-mb-1">{name}</h4>
+              <p className="hz-fg-soft hz-t-sm">{description}</p>
             </motion.div>
           );
         })}

@@ -14,72 +14,72 @@ export const SolutionsMenu = () => {
   return (
     <NavMenu label="Solutions">
       {(closeMenu) => (
-        <div className="w-full">
+        <div className="hz-w-full">
           {/* Featured Row */}
           <div className={cn(
-            "mb-4 pb-4 border-b",
-            isDarkMode ? "border-neutral-800" : "border-neutral-200"
+            "hz-mb-4 hz-pb-4 hz-border-b",
+            isDarkMode ? "" : "hz-border-strong"
           )}>
-            <div className="flex items-center gap-2 mb-2">
-              <Sparkles className="h-3.5 w-3.5 text-white" />
+            <div className="hz-row hz-ai-center hz-gap-2 hz-mb-2">
+              <Sparkles className="hz-sq-2 hz-fg" />
               <span className={cn(
-                "text-xs font-medium uppercase tracking-wider",
-                isDarkMode ? "text-neutral-400" : "text-neutral-500"
+                "hz-t-xs hz-w-medium hz-upper hz-tracking-wide",
+                isDarkMode ? "hz-fg-muted" : "hz-fg-muted"
               )}>Featured Solutions</span>
             </div>
-            <div className="flex flex-wrap gap-2">
+            <div className="hz-row hz-wrap hz-gap-2">
               <Link
                 to="/agency"
                 onClick={closeMenu}
                 className={cn(
-                  "flex items-center gap-2 px-3 py-1.5 rounded-lg border transition-all group",
+                  "hz-btn hz-btn-ghost hz-gap-2 hz-transition",
                   isDarkMode
-                    ? "bg-neutral-900/50 border-neutral-800 hover:border-white/50 hover:bg-neutral-800/50"
-                    : "bg-neutral-100 border-neutral-200 hover:border-white/50 hover:bg-neutral-50"
+                    ? "hz-bg-surface hz-hoverable"
+                    : "hz-bg-inverse hz-border-strong hz-hoverable"
                 )}
               >
                 <Shield className={cn(
-                  "h-3.5 w-3.5 group-hover:text-white",
-                  isDarkMode ? "text-neutral-400" : "text-neutral-500"
+                  "hz-sq-2 hz-hoverable",
+                  isDarkMode ? "hz-fg-muted" : "hz-fg-muted"
                 )} />
                 <span className={cn(
-                  "text-sm font-medium group-hover:text-white",
-                  isDarkMode ? "text-neutral-300" : "text-neutral-700"
+                  "hz-t-sm hz-w-medium hz-hoverable",
+                  isDarkMode ? "hz-fg-soft" : "hz-fg-faint"
                 )}>Hanzo Agency</span>
               </Link>
               <Link
                 to="/enterprise"
                 onClick={closeMenu}
                 className={cn(
-                  "flex items-center gap-2 px-3 py-1.5 rounded-lg border transition-all group",
+                  "hz-btn hz-btn-ghost hz-gap-2 hz-transition",
                   isDarkMode
-                    ? "bg-neutral-900/50 border-neutral-800 hover:border-white/50 hover:bg-neutral-800/50"
-                    : "bg-neutral-100 border-neutral-200 hover:border-white/50 hover:bg-neutral-50"
+                    ? "hz-bg-surface hz-hoverable"
+                    : "hz-bg-inverse hz-border-strong hz-hoverable"
                 )}
               >
                 <Building2 className={cn(
-                  "h-3.5 w-3.5 group-hover:text-white",
-                  isDarkMode ? "text-neutral-400" : "text-neutral-500"
+                  "hz-sq-2 hz-hoverable",
+                  isDarkMode ? "hz-fg-muted" : "hz-fg-muted"
                 )} />
                 <span className={cn(
-                  "text-sm font-medium group-hover:text-white",
-                  isDarkMode ? "text-neutral-300" : "text-neutral-700"
+                  "hz-t-sm hz-w-medium hz-hoverable",
+                  isDarkMode ? "hz-fg-soft" : "hz-fg-faint"
                 )}>Enterprise</span>
               </Link>
             </div>
           </div>
 
           {/* Two Column Grid - Capabilities & Industries */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-4">
+          <div className="hz-grid hz-grid-4 hz-gap-5 hz-gap-4">
             {/* Capabilities */}
-            <div className="space-y-1.5">
+            <div className="hz-stack-2">
               <h3 className={cn(
-                "text-[10px] font-semibold uppercase tracking-wider mb-2",
-                isDarkMode ? "text-neutral-500" : "text-neutral-400"
+                "hz-t-xs hz-w-semibold hz-upper hz-tracking-wide hz-mb-2",
+                isDarkMode ? "hz-fg-muted" : "hz-fg-muted"
               )}>
                 Capabilities
               </h3>
-              <div className="space-y-0.5">
+              <div className="hz-stack-1">
                 {capabilitiesNav[0].items.slice(0, ITEMS_PER_CATEGORY).map((item) => {
                   const Icon = item.icon;
                   return (
@@ -87,15 +87,15 @@ export const SolutionsMenu = () => {
                       key={item.title}
                       to={item.href}
                       onClick={closeMenu}
-                      className="flex items-center gap-1.5 py-0.5 group"
+                      className="hz-row hz-ai-center hz-gap-2 hz-py-1"
                     >
                       {Icon && <Icon className={cn(
-                        "h-3 w-3 group-hover:text-white",
-                        isDarkMode ? "text-neutral-500" : "text-neutral-400"
+                        "hz-sq-1 hz-hoverable",
+                        isDarkMode ? "hz-fg-muted" : "hz-fg-muted"
                       )} />}
                       <span className={cn(
-                        "text-xs transition-colors group-hover:text-white",
-                        isDarkMode ? "text-neutral-400" : "text-neutral-600"
+                        "hz-t-xs hz-transition hz-hoverable",
+                        isDarkMode ? "hz-fg-muted" : "hz-fg-faint"
                       )}>
                         {item.title}
                       </span>
@@ -107,26 +107,26 @@ export const SolutionsMenu = () => {
                     to="/solutions"
                     onClick={closeMenu}
                     className={cn(
-                      "flex items-center gap-1 py-0.5 text-[10px] transition-colors hover:text-white",
-                      isDarkMode ? "text-neutral-600" : "text-neutral-500"
+                      "hz-row hz-ai-center hz-gap-1 hz-py-1 hz-t-xs hz-transition hz-hoverable",
+                      isDarkMode ? "hz-fg-faint" : "hz-fg-muted"
                     )}
                   >
                     +{capabilitiesNav[0].items.length - ITEMS_PER_CATEGORY} more
-                    <ArrowRight className="h-2.5 w-2.5" />
+                    <ArrowRight className="hz-sq-1" />
                   </Link>
                 )}
               </div>
             </div>
 
             {/* Industries - split into two columns */}
-            <div className="space-y-1.5">
+            <div className="hz-stack-2">
               <h3 className={cn(
-                "text-[10px] font-semibold uppercase tracking-wider mb-2",
-                isDarkMode ? "text-neutral-500" : "text-neutral-400"
+                "hz-t-xs hz-w-semibold hz-upper hz-tracking-wide hz-mb-2",
+                isDarkMode ? "hz-fg-muted" : "hz-fg-muted"
               )}>
                 Industries
               </h3>
-              <div className="space-y-0.5">
+              <div className="hz-stack-1">
                 {industriesNav[0].items.slice(0, ITEMS_PER_CATEGORY).map((item) => {
                   const Icon = item.icon;
                   return (
@@ -134,15 +134,15 @@ export const SolutionsMenu = () => {
                       key={item.title}
                       to={item.href}
                       onClick={closeMenu}
-                      className="flex items-center gap-1.5 py-0.5 group"
+                      className="hz-row hz-ai-center hz-gap-2 hz-py-1"
                     >
                       {Icon && <Icon className={cn(
-                        "h-3 w-3 group-hover:text-white",
-                        isDarkMode ? "text-neutral-500" : "text-neutral-400"
+                        "hz-sq-1 hz-hoverable",
+                        isDarkMode ? "hz-fg-muted" : "hz-fg-muted"
                       )} />}
                       <span className={cn(
-                        "text-xs transition-colors group-hover:text-white",
-                        isDarkMode ? "text-neutral-400" : "text-neutral-600"
+                        "hz-t-xs hz-transition hz-hoverable",
+                        isDarkMode ? "hz-fg-muted" : "hz-fg-faint"
                       )}>
                         {item.title}
                       </span>
@@ -154,26 +154,26 @@ export const SolutionsMenu = () => {
                     to="/industries"
                     onClick={closeMenu}
                     className={cn(
-                      "flex items-center gap-1 py-0.5 text-[10px] transition-colors hover:text-white",
-                      isDarkMode ? "text-neutral-600" : "text-neutral-500"
+                      "hz-row hz-ai-center hz-gap-1 hz-py-1 hz-t-xs hz-transition hz-hoverable",
+                      isDarkMode ? "hz-fg-faint" : "hz-fg-muted"
                     )}
                   >
                     +{industriesNav[0].items.length - ITEMS_PER_CATEGORY} more
-                    <ArrowRight className="h-2.5 w-2.5" />
+                    <ArrowRight className="hz-sq-1" />
                   </Link>
                 )}
               </div>
             </div>
 
             {/* More Industries */}
-            <div className="space-y-1.5">
+            <div className="hz-stack-2">
               <h3 className={cn(
-                "text-[10px] font-semibold uppercase tracking-wider mb-2",
-                isDarkMode ? "text-neutral-500" : "text-neutral-400"
+                "hz-t-xs hz-w-semibold hz-upper hz-tracking-wide hz-mb-2",
+                isDarkMode ? "hz-fg-muted" : "hz-fg-muted"
               )}>
                 More Industries
               </h3>
-              <div className="space-y-0.5">
+              <div className="hz-stack-1">
                 {industriesNav[0].items.slice(ITEMS_PER_CATEGORY, ITEMS_PER_CATEGORY * 2).map((item) => {
                   const Icon = item.icon;
                   return (
@@ -181,15 +181,15 @@ export const SolutionsMenu = () => {
                       key={item.title}
                       to={item.href}
                       onClick={closeMenu}
-                      className="flex items-center gap-1.5 py-0.5 group"
+                      className="hz-row hz-ai-center hz-gap-2 hz-py-1"
                     >
                       {Icon && <Icon className={cn(
-                        "h-3 w-3 group-hover:text-white",
-                        isDarkMode ? "text-neutral-500" : "text-neutral-400"
+                        "hz-sq-1 hz-hoverable",
+                        isDarkMode ? "hz-fg-muted" : "hz-fg-muted"
                       )} />}
                       <span className={cn(
-                        "text-xs transition-colors group-hover:text-white",
-                        isDarkMode ? "text-neutral-400" : "text-neutral-600"
+                        "hz-t-xs hz-transition hz-hoverable",
+                        isDarkMode ? "hz-fg-muted" : "hz-fg-faint"
                       )}>
                         {item.title}
                       </span>
@@ -200,22 +200,22 @@ export const SolutionsMenu = () => {
             </div>
 
             {/* Use Cases */}
-            <div className="space-y-1.5">
+            <div className="hz-stack-2">
               <h3 className={cn(
-                "text-[10px] font-semibold uppercase tracking-wider mb-2",
-                isDarkMode ? "text-neutral-500" : "text-neutral-400"
+                "hz-t-xs hz-w-semibold hz-upper hz-tracking-wide hz-mb-2",
+                isDarkMode ? "hz-fg-muted" : "hz-fg-muted"
               )}>
                 Use Cases
               </h3>
-              <div className="space-y-0.5">
+              <div className="hz-stack-1">
                 <Link
                   to="/solutions/automation"
                   onClick={closeMenu}
-                  className="flex items-center gap-1.5 py-0.5 group"
+                  className="hz-row hz-ai-center hz-gap-2 hz-py-1"
                 >
                   <span className={cn(
-                    "text-xs transition-colors group-hover:text-white",
-                    isDarkMode ? "text-neutral-400" : "text-neutral-600"
+                    "hz-t-xs hz-transition hz-hoverable",
+                    isDarkMode ? "hz-fg-muted" : "hz-fg-faint"
                   )}>
                     Automation
                   </span>
@@ -223,11 +223,11 @@ export const SolutionsMenu = () => {
                 <Link
                   to="/solutions/analytics"
                   onClick={closeMenu}
-                  className="flex items-center gap-1.5 py-0.5 group"
+                  className="hz-row hz-ai-center hz-gap-2 hz-py-1"
                 >
                   <span className={cn(
-                    "text-xs transition-colors group-hover:text-white",
-                    isDarkMode ? "text-neutral-400" : "text-neutral-600"
+                    "hz-t-xs hz-transition hz-hoverable",
+                    isDarkMode ? "hz-fg-muted" : "hz-fg-faint"
                   )}>
                     Analytics
                   </span>
@@ -235,11 +235,11 @@ export const SolutionsMenu = () => {
                 <Link
                   to="/solutions/content"
                   onClick={closeMenu}
-                  className="flex items-center gap-1.5 py-0.5 group"
+                  className="hz-row hz-ai-center hz-gap-2 hz-py-1"
                 >
                   <span className={cn(
-                    "text-xs transition-colors group-hover:text-white",
-                    isDarkMode ? "text-neutral-400" : "text-neutral-600"
+                    "hz-t-xs hz-transition hz-hoverable",
+                    isDarkMode ? "hz-fg-muted" : "hz-fg-faint"
                   )}>
                     Content Generation
                   </span>
@@ -247,11 +247,11 @@ export const SolutionsMenu = () => {
                 <Link
                   to="/solutions/customer-support"
                   onClick={closeMenu}
-                  className="flex items-center gap-1.5 py-0.5 group"
+                  className="hz-row hz-ai-center hz-gap-2 hz-py-1"
                 >
                   <span className={cn(
-                    "text-xs transition-colors group-hover:text-white",
-                    isDarkMode ? "text-neutral-400" : "text-neutral-600"
+                    "hz-t-xs hz-transition hz-hoverable",
+                    isDarkMode ? "hz-fg-muted" : "hz-fg-faint"
                   )}>
                     Customer Support
                   </span>
@@ -262,24 +262,24 @@ export const SolutionsMenu = () => {
 
           {/* Footer */}
           <div className={cn(
-            "mt-4 pt-4 border-t flex items-center justify-between",
-            isDarkMode ? "border-neutral-800" : "border-neutral-200"
+            "hz-mt-4 hz-pt-4 hz-border-t hz-row hz-ai-center hz-jc-between",
+            isDarkMode ? "" : "hz-border-strong"
           )}>
-            <div className="flex items-center gap-3">
+            <div className="hz-row hz-ai-center hz-gap-3">
               <span className={cn(
-                "text-[10px]",
-                isDarkMode ? "text-neutral-500" : "text-neutral-400"
+                "hz-t-xs",
+                isDarkMode ? "hz-fg-muted" : "hz-fg-muted"
               )}>Need custom solutions?</span>
             </div>
-            <div className="flex gap-2">
+            <div className="hz-row hz-gap-2">
               <Button
                 size="sm"
                 variant="outline"
                 className={cn(
-                  "h-7 text-xs px-3",
+                  "hz-bh-5 hz-t-xs hz-px-3",
                   isDarkMode
-                    ? "bg-transparent border-neutral-700 text-neutral-300 hover:bg-neutral-800 hover:text-white"
-                    : "bg-transparent border-neutral-300 text-neutral-700 hover:bg-neutral-100 hover:text-black"
+                    ? "hz-bg-none hz-fg-soft hz-hoverable"
+                    : "hz-bg-none hz-border-strong hz-fg-faint hz-link"
                 )}
                 asChild
               >
@@ -289,12 +289,12 @@ export const SolutionsMenu = () => {
               </Button>
               <Button
                 size="sm"
-                className="bg-white text-black hover:bg-white/80 h-7 text-xs px-3"
+                className="hz-bg-inverse hz-fg-inverse hz-bh-5 hz-t-xs hz-px-3 hz-hoverable"
                 asChild
               >
                 <Link to="/solutions" onClick={closeMenu}>
                   All Solutions
-                  <ArrowRight className="ml-1 h-3 w-3" />
+                  <ArrowRight className="hz-sq-1 hz-ml-1" />
                 </Link>
               </Button>
             </div>

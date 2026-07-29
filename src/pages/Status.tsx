@@ -1,3 +1,4 @@
+import { BRAND } from '@/lib/brand';
 import React from "react";
 import { Helmet } from "react-helmet";
 import { motion } from "framer-motion";
@@ -15,7 +16,6 @@ import {
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-const BRAND_COLOR = "#ffffff";
 
 const services = [
   { name: "API Gateway", status: "operational", uptime: "99.99%", latency: "45ms" },
@@ -38,7 +38,7 @@ const StatusPage = () => {
   const allOperational = services.every((s) => s.status === "operational");
 
   return (
-    <div className="min-h-screen bg-[var(--black)] text-[var(--white)]">
+    <div className="hz-min-h-screen hz-bg hz-fg">
       <Helmet>
         <title>System Status - Hanzo AI</title>
         <meta
@@ -51,30 +51,30 @@ const StatusPage = () => {
 
       <main>
         {/* Hero Section */}
-        <section className="relative pt-24 pb-16 px-4 md:px-8 lg:px-12 overflow-hidden">
-          <div className="absolute inset-0 overflow-hidden z-0 pointer-events-none">
+        <section className="hz-rel hz-pt-6 hz-pb-6 hz-px-4 hz-clip">
+          <div className="hz-abs hz-inset hz-clip hz-z-base hz-no-pointer">
             <div
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full opacity-15"
+              className="hz-center-xy hz-abs hz-r-full hz-dim-more"
               style={{
-                background: `radial-gradient(circle, ${BRAND_COLOR} 0%, transparent 70%)`,
+                background: `radial-gradient(circle, ${BRAND.fg} 0%, transparent 70%)`,
                 filter: "blur(100px)",
               }}
             />
           </div>
 
-          <div className="max-w-5xl mx-auto relative z-10">
-            <div className="text-center">
+          <div className="hz-container-wide hz-rel hz-z-raised">
+            <div className="hz-align-center">
               <motion.div
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4 }}
-                className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-6 ${
+                className={`hz-btn hz-btn-ghost hz-gap-2 hz-mb-5 ${
                   allOperational
-                    ? "bg-neutral-500/20 text-neutral-400"
-                    : "bg-neutral-500/20 text-neutral-400"
+                    ? "hz-bg-raised hz-fg-muted"
+                    : "hz-bg-raised hz-fg-muted"
                 }`}
               >
-                <CheckCircle className="w-4 h-4" />
+                <CheckCircle className="hz-sq-2" />
                 {allOperational ? "All Systems Operational" : "Partial Outage"}
               </motion.div>
 
@@ -82,18 +82,18 @@ const StatusPage = () => {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.05 }}
-                className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-medium tracking-tight leading-[1.1] mb-6"
+                className="hz-t-3xl hz-w-medium hz-tracking-tight hz-mb-5"
               >
-                <span className="text-white">System</span>
+                <span className="hz-fg">System</span>
                 <br />
-                <span className="text-neutral-400">Status.</span>
+                <span className="hz-fg-muted">Status.</span>
               </motion.h1>
 
               <motion.p
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.1 }}
-                className="text-base lg:text-lg text-neutral-400 leading-relaxed mb-10 max-w-3xl mx-auto"
+                className="hz-container-narrow hz-t-base hz-fg-muted hz-leading-relaxed hz-mb-6"
               >
                 Real-time status of Hanzo AI infrastructure and services.
                 Subscribe to updates or check our incident history.
@@ -103,20 +103,20 @@ const StatusPage = () => {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.15 }}
-                className="flex flex-wrap items-center justify-center gap-4"
+                className="hz-row hz-wrap hz-ai-center hz-jc-center hz-gap-4"
               >
-                <button className="inline-flex items-center px-6 py-3 rounded-full font-medium transition-all text-sm bg-neutral-500/20 text-neutral-400 border border-neutral-500/30 hover:bg-neutral-500/30">
-                  <Bell className="w-4 h-4 mr-2" />
+                <button className="hz-btn hz-transition hz-fg-muted">
+                  <Bell className="hz-sq-2 hz-mr-2" />
                   Subscribe to Updates
                 </button>
                 <a
                   href="https://docs.hanzo.ai/status"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center px-6 py-3 rounded-full font-medium transition-colors border border-neutral-700 bg-transparent hover:bg-neutral-900 text-sm text-white"
+                  className="hz-btn hz-btn-ghost hz-transition hz-fg"
                 >
                   API Status Endpoint
-                  <ExternalLink className="ml-2 h-4 w-4" />
+                  <ExternalLink className="hz-sq-2 hz-ml-2" />
                 </a>
               </motion.div>
             </div>
@@ -124,25 +124,25 @@ const StatusPage = () => {
         </section>
 
         {/* Services Status */}
-        <section className="py-16 px-4 md:px-8">
-          <div className="max-w-6xl mx-auto">
+        <section className="hz-py-7 hz-px-4">
+          <div className="hz-container-wide">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="mb-8"
+              className="hz-mb-6"
             >
-              <h2 className="text-2xl font-bold text-white mb-2">Services</h2>
-              <p className="text-neutral-400">Current status of all Hanzo AI services</p>
+              <h2 className="hz-t-2xl hz-w-bold hz-fg hz-mb-2">Services</h2>
+              <p className="hz-fg-muted">Current status of all Hanzo AI services</p>
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-neutral-900/80 border border-neutral-800 rounded-xl overflow-hidden"
+              className="hz-bg-surface hz-bordered hz-r-lg hz-clip"
             >
-              <div className="divide-y divide-neutral-800">
+              <div className="">
                 {services.map((service, index) => (
                   <motion.div
                     key={service.name}
@@ -150,22 +150,22 @@ const StatusPage = () => {
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.05 }}
-                    className="px-6 py-4 flex items-center justify-between hover:bg-neutral-800/50 transition-colors"
+                    className="hz-px-5 hz-py-4 hz-row hz-ai-center hz-jc-between hz-transition hz-hoverable"
                   >
-                    <div className="flex items-center gap-4">
-                      <Server className="h-5 w-5 text-neutral-500" />
-                      <span className="font-medium text-white">{service.name}</span>
+                    <div className="hz-row hz-ai-center hz-gap-4">
+                      <Server className="hz-sq-3 hz-fg-muted" />
+                      <span className="hz-w-medium hz-fg">{service.name}</span>
                     </div>
-                    <div className="flex items-center gap-6">
-                      <span className="text-sm text-neutral-500 hidden sm:block">
+                    <div className="hz-row hz-ai-center hz-gap-5">
+                      <span className="hz-desktop-only hz-t-sm hz-fg-muted">
                         {service.latency} avg
                       </span>
-                      <span className="text-sm text-neutral-400 hidden md:block">
+                      <span className="hz-desktop-only hz-t-sm hz-fg-muted">
                         {service.uptime} uptime
                       </span>
-                      <div className="flex items-center gap-2">
-                        <CheckCircle className="h-4 w-4 text-neutral-400" />
-                        <span className="text-sm text-neutral-400">Operational</span>
+                      <div className="hz-row hz-ai-center hz-gap-2">
+                        <CheckCircle className="hz-sq-2 hz-fg-muted" />
+                        <span className="hz-t-sm hz-fg-muted">Operational</span>
                       </div>
                     </div>
                   </motion.div>
@@ -176,19 +176,19 @@ const StatusPage = () => {
         </section>
 
         {/* Regions Status */}
-        <section className="py-16 px-4 md:px-8 bg-gradient-to-b from-black to-neutral-900/30">
-          <div className="max-w-6xl mx-auto">
+        <section className="hz-py-7 hz-px-4">
+          <div className="hz-container-wide">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="mb-8"
+              className="hz-mb-6"
             >
-              <h2 className="text-2xl font-bold text-white mb-2">Global Regions</h2>
-              <p className="text-neutral-400">Status across all deployment regions</p>
+              <h2 className="hz-t-2xl hz-w-bold hz-fg hz-mb-2">Global Regions</h2>
+              <p className="hz-fg-muted">Status across all deployment regions</p>
             </motion.div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="hz-grid hz-grid-4 hz-gap-4">
               {regions.map((region, index) => (
                 <motion.div
                   key={region.code}
@@ -196,17 +196,17 @@ const StatusPage = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="bg-neutral-900/80 border border-neutral-800 rounded-xl p-6"
+                  className="hz-card"
                 >
-                  <div className="flex items-center gap-3 mb-4">
-                    <Globe className="h-5 w-5 text-neutral-500" />
-                    <span className="font-medium text-white">{region.name}</span>
+                  <div className="hz-row hz-ai-center hz-gap-3 hz-mb-4">
+                    <Globe className="hz-sq-3 hz-fg-muted" />
+                    <span className="hz-w-medium hz-fg">{region.name}</span>
                   </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-neutral-500 font-mono">{region.code}</span>
-                    <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-neutral-500 animate-pulse" />
-                      <span className="text-xs text-neutral-400">Active</span>
+                  <div className="hz-row hz-ai-center hz-jc-between">
+                    <span className="hz-t-sm hz-fg-muted hz-mono">{region.code}</span>
+                    <div className="hz-row hz-ai-center hz-gap-2">
+                      <div className="hz-sq-1 hz-r-full hz-bg-raised" />
+                      <span className="hz-t-xs hz-fg-muted">Active</span>
                     </div>
                   </div>
                 </motion.div>
@@ -216,27 +216,27 @@ const StatusPage = () => {
         </section>
 
         {/* Recent Incidents */}
-        <section className="py-16 px-4 md:px-8">
-          <div className="max-w-6xl mx-auto">
+        <section className="hz-py-7 hz-px-4">
+          <div className="hz-container-wide">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="mb-8"
+              className="hz-mb-6"
             >
-              <h2 className="text-2xl font-bold text-white mb-2">Recent Incidents</h2>
-              <p className="text-neutral-400">Incident history for the past 90 days</p>
+              <h2 className="hz-t-2xl hz-w-bold hz-fg hz-mb-2">Recent Incidents</h2>
+              <p className="hz-fg-muted">Incident history for the past 90 days</p>
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-neutral-900/80 border border-neutral-800 rounded-xl p-8 text-center"
+              className="hz-card hz-align-center"
             >
-              <Activity className="h-12 w-12 text-neutral-400 mx-auto mb-4" />
-              <h3 className="text-lg font-medium text-white mb-2">No Recent Incidents</h3>
-              <p className="text-neutral-400">
+              <Activity className="hz-sq-7 hz-fg-muted hz-mx-auto hz-mb-4" />
+              <h3 className="hz-t-lg hz-w-medium hz-fg hz-mb-2">No Recent Incidents</h3>
+              <p className="hz-fg-muted">
                 All systems have been operating normally for the past 90 days.
               </p>
             </motion.div>
@@ -244,16 +244,16 @@ const StatusPage = () => {
         </section>
 
         {/* CTA Section */}
-        <section className="py-24 px-4 md:px-8 bg-gradient-to-b from-neutral-900/30 to-black relative overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-neutral-500/10 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-neutral-500/5 rounded-full blur-3xl pointer-events-none" />
+        <section className="hz-py-7 hz-px-4 hz-rel hz-clip">
+          <div className="hz-sq-8 hz-abs hz-bg-raised hz-r-full hz-blur-bg hz-no-pointer" />
+          <div className="hz-sq-8 hz-abs hz-bg-raised hz-r-full hz-blur-bg hz-no-pointer" />
 
-          <div className="max-w-4xl mx-auto text-center relative z-10">
+          <div className="hz-container-narrow hz-align-center hz-rel hz-z-raised">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-3xl md:text-4xl font-bold text-white mb-4"
+              className="hz-t-3xl hz-w-bold hz-fg hz-mb-4"
             >
               Need help with an issue?
             </motion.h2>
@@ -263,7 +263,7 @@ const StatusPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-lg text-neutral-400 mb-10 max-w-2xl mx-auto"
+              className="hz-container-narrow hz-mw-md hz-t-lg hz-fg-muted hz-mb-6"
             >
               Our support team is available 24/7 to help you resolve any issues.
             </motion.p>
@@ -273,20 +273,20 @@ const StatusPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="flex flex-wrap items-center justify-center gap-4"
+              className="hz-row hz-wrap hz-ai-center hz-jc-center hz-gap-4"
             >
               <Link
                 to="/contact"
-                className="inline-flex items-center px-8 py-4 rounded-full font-medium transition-all hover:opacity-90 text-base bg-neutral-500 text-white"
+                className="hz-btn hz-btn-lg hz-transition hz-fg"
               >
                 Contact Support
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <ArrowRight className="hz-sq-3 hz-ml-2" />
               </Link>
               <a
                 href="https://docs.hanzo.ai"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center px-8 py-4 rounded-full font-medium transition-colors border border-neutral-700 bg-transparent hover:bg-neutral-900 text-base text-white"
+                className="hz-btn hz-btn-ghost hz-btn-lg hz-transition hz-fg"
               >
                 View Documentation
               </a>

@@ -1,0 +1,247 @@
+/* hanzo.network — the named treatments this site owns.
+ *
+ * Everything generic lives in system.css; this file is only the handful of
+ * effects that are particular to this surface (the ambient compute field behind
+ * the hero, the chrome wordmark, the mega-menu transition, the feature rail).
+ * All of it resolves to @hanzo/design tokens — no literal colours, so the site
+ * stays monochrome with the rest of the ecosystem.
+ */
+
+/* ── glass ────────────────────────────────────────────────────────────── */
+
+.neo-blur,
+.glass-card,
+.glass-panel {
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: var(--elevation-2, 0 4px 24px rgb(0 0 0 / .4));
+}
+.glass-button {
+  background: var(--white-05);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: background-color var(--duration-fast, 150ms) var(--ease-out, ease);
+}
+.glass-button:hover { background: var(--white-10); }
+
+/* The card shape older sections reach for by name. Same shape as `hz-card`. */
+.card,
+.mono-card,
+.vercel-card {
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  transition: transform var(--duration-base, 250ms) var(--ease-out, ease),
+              border-color var(--duration-base, 250ms) var(--ease-out, ease),
+              background-color var(--duration-base, 250ms) var(--ease-out, ease);
+}
+.mono-card:hover,
+.vercel-card:hover { background: var(--surface-card-emphasis); border-color: var(--border-strong); }
+
+/* ── wordmark chrome ──────────────────────────────────────────────────── */
+
+.chrome-text,
+.text-gradient {
+  background: linear-gradient(135deg,
+    var(--neutral-100) 0%, var(--pure-white) 25%,
+    var(--neutral-200) 50%, var(--neutral-400) 75%, var(--neutral-200) 100%);
+  background-size: 200% 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  transition: background-position var(--duration-slow, 400ms) var(--ease-out, ease);
+}
+.light-chrome-text {
+  background: linear-gradient(135deg,
+    var(--neutral-700) 0%, var(--neutral-500) 25%,
+    var(--neutral-700) 50%, var(--neutral-800) 75%, var(--neutral-700) 100%);
+  background-size: 200% 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+@keyframes shine { to { background-position: 200% center; } }
+
+/* ── controls addressed by name in older sections ─────────────────────── */
+
+.mono-button,
+.mono-button-outline,
+.tab-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding-inline: var(--space-4);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border);
+  background: var(--surface-card);
+  color: var(--foreground);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  cursor: pointer;
+  transition: background-color var(--duration-fast, 150ms) var(--ease-out, ease),
+              color var(--duration-fast, 150ms) var(--ease-out, ease),
+              border-color var(--duration-fast, 150ms) var(--ease-out, ease);
+}
+.mono-button:hover { background: var(--surface-card-emphasis); }
+.mono-button-outline { background: transparent; color: var(--muted-foreground); }
+.mono-button-outline:hover { background: var(--white-05); color: var(--foreground); }
+.tab-button { border-color: transparent; color: var(--muted-foreground); background: transparent; }
+.tab-button:hover { background: var(--white-05); color: var(--foreground); }
+.tab-button.active,
+.mono-tab-active { background: var(--primary); color: var(--primary-foreground); }
+
+.mono-input,
+.mono-select {
+  min-height: 44px;
+  padding: var(--space-2) var(--space-3);
+  background: var(--surface-card-quiet);
+  border: 1px solid var(--input);
+  border-radius: var(--radius-md);
+  color: var(--foreground);
+  font: inherit;
+}
+.mono-input::placeholder { color: var(--text-tertiary); }
+
+.mono-tabs {
+  display: flex;
+  gap: var(--space-1);
+  padding: var(--space-1);
+  background: var(--surface-card-quiet);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+.mono-tab {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  padding-inline: var(--space-3);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+}
+.mono-tab:hover { background: var(--white-05); color: var(--foreground); }
+
+.gradient-border {
+  position: relative;
+  border-radius: var(--radius-lg);
+  background: var(--surface-card-emphasis);
+  backdrop-filter: blur(10px);
+}
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(45deg, var(--neutral-700), var(--neutral-500), var(--neutral-700));
+  z-index: -1;
+  border-radius: calc(var(--radius-lg) + 1px);
+  opacity: .5;
+  transition: opacity var(--duration-base, 250ms) var(--ease-out, ease);
+}
+.gradient-border:hover::before { opacity: 1; }
+
+/* ── the feature rail ─────────────────────────────────────────────────── */
+
+.feature-card,
+.testimonial-card {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  transition: transform var(--duration-base, 250ms) var(--ease-out, ease),
+              box-shadow var(--duration-base, 250ms) var(--ease-out, ease),
+              border-color var(--duration-base, 250ms) var(--ease-out, ease);
+}
+.feature-card:hover,
+.testimonial-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--elevation-3, 0 12px 32px rgb(0 0 0 / .5));
+  border-color: var(--border-strong);
+}
+.feature-slide-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: var(--space-2);
+  mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+}
+.feature-scroll-container {
+  scroll-behavior: smooth;
+  padding-inline: 5%;
+  cursor: grab;
+  width: max-content;
+  min-width: 100%;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.feature-scroll-container:active { cursor: grabbing; }
+.feature-scroll-container::-webkit-scrollbar { display: none; }
+
+.progress-bar {
+  height: 4px;
+  border-radius: 2px;
+  background: var(--neutral-400);
+  transition: width var(--duration-base, 250ms) var(--ease-in-out, ease-in-out);
+}
+
+/* ── ambient field ────────────────────────────────────────────────────── */
+
+.ambient-bg { position: absolute; inset: 0; overflow: hidden; z-index: -1; }
+.ambient-bg-dot {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--white-15);
+  filter: blur(80px);
+  animation: float 10s infinite ease-in-out;
+}
+@keyframes float {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(10%, 10%); }
+  50% { transform: translate(5%, -5%); }
+  75% { transform: translate(-10%, 5%); }
+}
+.animate-float { animation: float 15s ease-in-out infinite; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.animate-fadeIn { animation: fadeIn var(--duration-base, 250ms) var(--ease-out, ease) both; }
+.reveal-content { animation: fadeIn var(--duration-slow, 400ms) var(--ease-out, ease) both; }
+.subtle-hover { transition: opacity var(--duration-fast, 150ms) var(--ease-out, ease); }
+.subtle-hover:hover { opacity: .8; }
+
+/* ── mega menu ────────────────────────────────────────────────────────── */
+
+.mega-menu-enter { opacity: 0; transform: translateY(-8px); }
+.mega-menu-enter-active { opacity: 1; transform: none; transition: opacity 200ms var(--ease-out, ease), transform 200ms var(--ease-out, ease); }
+.mega-menu-exit { opacity: 1; }
+.mega-menu-exit-active { opacity: 0; transform: translateY(-8px); transition: opacity 150ms var(--ease-in, ease), transform 150ms var(--ease-in, ease); }
+
+/* ── odds and ends the markup still names ─────────────────────────────── */
+
+.section-spacing { padding-block: var(--section-y); }
+.zen-page { background: var(--background); color: var(--foreground); }
+.scrollbar-hide { scrollbar-width: none; -ms-overflow-style: none; }
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.cursor-grab { cursor: grab; }
+.cursor-grabbing { cursor: grabbing; }
+.backdrop-blur-sm { backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+.backdrop-blur-md { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+.backdrop-blur-lg { backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); }
+
+/* Code sample colouring — greyscale, like everything else. */
+.language-typescript { color: var(--neutral-100); }
+.language-typescript .keyword { color: var(--neutral-300); }
+.language-typescript .string { color: var(--neutral-400); }
+.language-typescript .number { color: var(--neutral-500); }
+.language-typescript .function { color: var(--neutral-200); }
+
+/* Media never outgrows its column — the commonest source of a phone-width
+   horizontal scroll. */
+img, svg, video, canvas, iframe { max-width: 100%; }
+
+/* The app shell fills the viewport; the router paints inside it. */
+#root { width: 100%; min-height: 100vh; min-height: 100dvh; }

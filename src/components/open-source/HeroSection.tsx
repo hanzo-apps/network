@@ -6,42 +6,42 @@ import { Github, Star, GitBranch } from "lucide-react";
 
 const HeroSection = () => {
   return (
-    <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto text-center">
+    <section className="hz-pt-6 hz-pb-6 hz-px-4">
+      <div className="hz-container hz-align-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-neutral-400 to-neutral-400 mb-6">
+          <h1 className="hz-t-4xl hz-w-bold hz-chrome hz-mb-5">
             Built in the Open, For Everyone
           </h1>
-          <p className="text-xl text-neutral-300 max-w-3xl mx-auto mb-10">
+          <p className="hz-container-narrow hz-t-xl hz-fg-soft hz-mb-6">
             Hanzo is proudly open source. We believe in transparency, collaboration, and community-driven innovation. 
             Everything we build is available for you to use, modify, and contribute to.
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="hz-row hz-wrap hz-jc-center hz-gap-4">
             <Button 
               size="sm" 
-              className="bg-neutral-600 hover:bg-neutral-700"
+              className="hz-bg-raised hz-hoverable"
             >
-              <Github className="mr-2 h-4 w-4" />
+              <Github className="hz-sq-2 hz-mr-2" />
               <a href="https://github.com/hanzoai" target="_blank" rel="noopener noreferrer">View on GitHub</a>
             </Button>
             <Button 
               size="sm" 
               variant="outline" 
-              className="border-neutral-500/30 text-[var(--white)] hover:bg-neutral-800/30"
+              className="hz-border-strong hz-fg hz-hoverable"
             >
-              <Star className="mr-2 h-4 w-4" />
+              <Star className="hz-sq-2 hz-mr-2" />
               <a href="https://github.com/hanzoai/platform" target="_blank" rel="noopener noreferrer">Star Platform Repo</a>
             </Button>
             <Button 
               size="sm" 
               variant="outline" 
-              className="border-neutral-500/30 text-[var(--white)] hover:bg-neutral-800/30"
+              className="hz-border-strong hz-fg hz-hoverable"
             >
-              <GitBranch className="mr-2 h-4 w-4" />
+              <GitBranch className="hz-sq-2 hz-mr-2" />
               <a href="https://github.com/hanzoai/platform/fork" target="_blank" rel="noopener noreferrer">Fork & Contribute</a>
             </Button>
           </div>

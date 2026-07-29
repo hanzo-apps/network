@@ -9,7 +9,7 @@ const AITunnelParticles: React.FC = () => {
   const particleCount = 140; // Slightly reduced for better performance
   
   return (
-    <div className="absolute inset-0 w-full h-full">
+    <div className="hz-abs hz-inset hz-w-full hz-h-full">
       <TrailGenerator trailCount={trailCount} />
       <ParticleGenerator particleCount={particleCount} />
     </div>

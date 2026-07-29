@@ -5,44 +5,44 @@ import { Plug, Code, FileText } from "lucide-react";
 
 const Integrations = () => {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black to-gray-900/20">
-      <div className="max-w-6xl mx-auto">
+    <section className="hz-py-7 hz-px-4">
+      <div className="hz-container-wide">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="hz-align-center hz-mb-7"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Powerful Integrations & APIs</h2>
-          <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
+          <h2 className="hz-t-3xl hz-w-bold hz-mb-5">Powerful Integrations & APIs</h2>
+          <p className="hz-container-narrow hz-t-xl hz-fg-soft">
             Connect Hanzo Payments to your existing systems with ease through powerful APIs and pre-built integrations.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 mb-16">
+        <div className="hz-grid hz-grid-5 hz-gap-6 hz-mb-7">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="lg:col-span-2 bg-gray-900/30 border border-gray-800 p-6 rounded-lg"
+            className="hz-card"
           >
-            <div className="bg-gray-800/50 p-3 rounded-full w-fit mb-4">
-              <Plug className="h-6 w-6 text-neutral-400" />
+            <div className="hz-bg-raised hz-p-3 hz-r-full hz-w-fit hz-mb-4">
+              <Plug className="hz-sq-4 hz-fg-muted" />
             </div>
-            <h3 className="text-2xl font-bold mb-4">Pre-built Integrations</h3>
-            <p className="text-neutral-400 mb-6">
+            <h3 className="hz-t-2xl hz-w-bold hz-mb-4">Pre-built Integrations</h3>
+            <p className="hz-fg-muted hz-mb-5">
               Hundreds of pre-built integrations with popular services, including:
             </p>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            <div className="hz-grid hz-grid-3 hz-gap-3">
               {['Salesforce', 'Adobe', 'SAP', 'QuickBooks', 'Shopify', 'WooCommerce', 'Magento', 'WordPress', 'Squarespace', 'NetSuite', 'Xero', 'HubSpot'].map((integration, index) => (
-                <div key={index} className="py-2 px-3 bg-gray-800 rounded-md text-sm text-center text-neutral-300">
+                <div key={index} className="hz-py-2 hz-px-3 hz-bg-raised hz-r-md hz-t-sm hz-align-center hz-fg-soft">
                   {integration}
                 </div>
               ))}
             </div>
-            <p className="text-neutral-400 mt-4 text-sm text-center">
+            <p className="hz-fg-muted hz-mt-4 hz-t-sm hz-align-center">
               And many more via the Hanzo App Marketplace
             </p>
           </motion.div>
@@ -52,16 +52,16 @@ const Integrations = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="lg:col-span-3 bg-gray-900/30 border border-gray-800 rounded-lg overflow-hidden"
+            className="hz-bg-surface hz-bordered hz-r-lg hz-clip"
           >
-            <div className="p-6 border-b border-gray-800">
-              <h3 className="text-2xl font-bold mb-2">Developer-First APIs</h3>
-              <p className="text-neutral-400">
+            <div className="hz-p-5 hz-border-b">
+              <h3 className="hz-t-2xl hz-w-bold hz-mb-2">Developer-First APIs</h3>
+              <p className="hz-fg-muted">
                 Comprehensive API and detailed developer documentation for custom integrations.
               </p>
             </div>
-            <div className="p-6 bg-gray-950 font-mono text-sm overflow-auto" style={{ maxHeight: '300px' }}>
-              <pre className="text-neutral-300">
+            <div className="hz-p-5 hz-bg-surface hz-mono hz-t-sm hz-scroll-y" style={{ maxHeight: '300px' }}>
+              <pre className="hz-fg-soft">
 {`// Create a payment intent
 const paymentIntent = await hanzo.paymentIntents.create({
   amount: 2000,
@@ -87,29 +87,29 @@ const { paymentIntent: confirmed, error } = await hanzo.confirmPayment(
 );`}
               </pre>
             </div>
-            <div className="p-4 flex justify-between items-center border-t border-gray-800">
-              <span className="text-sm text-neutral-400">API Reference</span>
-              <div className="flex space-x-2">
-                <button className="px-3 py-1 bg-gray-800 rounded text-sm">Copy</button>
-                <button className="px-3 py-1 bg-neutral-600 rounded text-sm">Try it</button>
+            <div className="hz-p-4 hz-row hz-jc-between hz-ai-center hz-border-t">
+              <span className="hz-t-sm hz-fg-muted">API Reference</span>
+              <div className="hz-row hz-inline-2">
+                <button className="hz-px-3 hz-py-1 hz-bg-raised hz-r-md hz-t-sm">Copy</button>
+                <button className="hz-px-3 hz-py-1 hz-bg-raised hz-r-md hz-t-sm">Try it</button>
               </div>
             </div>
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="hz-grid hz-grid-3 hz-gap-5">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="bg-gray-900/30 border border-gray-800 p-6 rounded-lg"
+            className="hz-card"
           >
-            <div className="bg-gray-800/50 p-3 rounded-full w-fit mb-4">
-              <Code className="h-6 w-6 text-neutral-400" />
+            <div className="hz-bg-raised hz-p-3 hz-r-full hz-w-fit hz-mb-4">
+              <Code className="hz-sq-4 hz-fg-muted" />
             </div>
-            <h3 className="text-xl font-semibold mb-3">Easy to Implement</h3>
-            <p className="text-neutral-400">
+            <h3 className="hz-t-xl hz-w-semibold hz-mb-3">Easy to Implement</h3>
+            <p className="hz-fg-muted">
               Quick integration with just a few lines of code, with SDKs for all major programming languages.
             </p>
           </motion.div>
@@ -119,13 +119,13 @@ const { paymentIntent: confirmed, error } = await hanzo.confirmPayment(
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="bg-gray-900/30 border border-gray-800 p-6 rounded-lg"
+            className="hz-card"
           >
-            <div className="bg-gray-800/50 p-3 rounded-full w-fit mb-4">
-              <FileText className="h-6 w-6 text-neutral-400" />
+            <div className="hz-bg-raised hz-p-3 hz-r-full hz-w-fit hz-mb-4">
+              <FileText className="hz-sq-4 hz-fg-muted" />
             </div>
-            <h3 className="text-xl font-semibold mb-3">Comprehensive Documentation</h3>
-            <p className="text-neutral-400">
+            <h3 className="hz-t-xl hz-w-semibold hz-mb-3">Comprehensive Documentation</h3>
+            <p className="hz-fg-muted">
               Detailed guides, API reference, and code examples to help you integrate Hanzo Payments quickly.
             </p>
           </motion.div>
@@ -135,15 +135,15 @@ const { paymentIntent: confirmed, error } = await hanzo.confirmPayment(
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="bg-gray-900/30 border border-gray-800 p-6 rounded-lg flex flex-col justify-between"
+            className="hz-card hz-col hz-jc-between"
           >
             <div>
-              <h3 className="text-xl font-semibold mb-3">Explore Our APIs</h3>
-              <p className="text-neutral-400 mb-4">
+              <h3 className="hz-t-xl hz-w-semibold hz-mb-3">Explore Our APIs</h3>
+              <p className="hz-fg-muted hz-mb-4">
                 Get started with quickstart guides, examples, and developer tools.
               </p>
             </div>
-            <button className="w-full py-2 bg-neutral-600 hover:bg-neutral-700 rounded-md transition duration-200">
+            <button className="hz-w-full hz-py-2 hz-bg-raised hz-r-md hz-transition hz-hoverable">
               API Reference
             </button>
           </motion.div>

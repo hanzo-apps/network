@@ -52,7 +52,7 @@ const AgentDetailModal: React.FC<AgentDetailModalProps> = ({ agent, isOpen, onCl
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          className="hz-fixed hz-inset hz-bg-surface hz-glass hz-z-overlay hz-row hz-ai-center hz-jc-center hz-p-4"
           onClick={onClose}
         >
           <motion.div
@@ -60,66 +60,66 @@ const AgentDetailModal: React.FC<AgentDetailModalProps> = ({ agent, isOpen, onCl
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             transition={{ type: "spring", damping: 25 }}
-            className={`bg-gradient-to-br from-gray-900 to-black border border-white/10 rounded-2xl max-w-lg w-full p-6 shadow-xl`}
+            className={`hz-card hz-mw-sm hz-w-full hz-shadow-lg`}
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-start justify-between mb-6">
-              <div className="flex items-center">
-                <div className={`p-3 rounded-xl bg-gradient-to-br ${agent.gradient} mr-4`}>
-                  <Icon className="h-6 w-6 text-white" />
+            <div className="hz-row hz-ai-start hz-jc-between hz-mb-5">
+              <div className="hz-row hz-ai-center">
+                <div className={`hz-p-3 hz-r-lg ${agent.gradient} hz-mr-4`}>
+                  <Icon className="hz-sq-4 hz-fg" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-semibold text-white">{agent.name}</h3>
-                  <p className="text-neutral-400">{agent.role}</p>
+                  <h3 className="hz-t-2xl hz-w-semibold hz-fg">{agent.name}</h3>
+                  <p className="hz-fg-muted">{agent.role}</p>
                 </div>
               </div>
               <button
                 onClick={onClose}
-                className="text-neutral-400 hover:text-white transition-colors"
+                className="hz-fg-muted hz-transition hz-link"
               >
                 <X size={24} />
               </button>
             </div>
             
-            <div className="mb-6">
-              <p className="text-neutral-300">{agent.description}</p>
+            <div className="hz-mb-5">
+              <p className="hz-fg-soft">{agent.description}</p>
             </div>
             
-            <div className="grid grid-cols-1 gap-4 mb-6">
-              <div className="bg-white/5 rounded-xl p-4 border border-white/10">
-                <h4 className="text-lg font-medium text-white mb-2">Expertise</h4>
-                <ul className="space-y-2">
-                  <li className="flex items-center text-neutral-300">
-                    <span className="mr-2 text-neutral-400">•</span>
+            <div className="hz-grid hz-gap-4 hz-mb-5">
+              <div className="hz-card">
+                <h4 className="hz-t-lg hz-w-medium hz-fg hz-mb-2">Expertise</h4>
+                <ul className="hz-stack-2">
+                  <li className="hz-row hz-ai-center hz-fg-soft">
+                    <span className="hz-mr-2 hz-fg-muted">•</span>
                     Machine learning & data processing
                   </li>
-                  <li className="flex items-center text-neutral-300">
-                    <span className="mr-2 text-neutral-400">•</span>
+                  <li className="hz-row hz-ai-center hz-fg-soft">
+                    <span className="hz-mr-2 hz-fg-muted">•</span>
                     Neural network optimization
                   </li>
-                  <li className="flex items-center text-neutral-300">
-                    <span className="mr-2 text-neutral-400">•</span>
+                  <li className="hz-row hz-ai-center hz-fg-soft">
+                    <span className="hz-mr-2 hz-fg-muted">•</span>
                     Natural language processing
                   </li>
                 </ul>
               </div>
               
-              <div className="bg-white/5 rounded-xl p-4 border border-white/10">
-                <h4 className="text-lg font-medium text-white mb-2">Integration</h4>
-                <p className="text-neutral-300">
+              <div className="hz-card">
+                <h4 className="hz-t-lg hz-w-medium hz-fg hz-mb-2">Integration</h4>
+                <p className="hz-fg-soft">
                   Works seamlessly with human teams via natural language interfaces,
                   and integrates with all major productivity tools and platforms.
                 </p>
               </div>
             </div>
             
-            <div className="flex justify-center">
+            <div className="hz-row hz-jc-center">
               <Link 
                 to={`/team/${agent.name.toLowerCase()}`}
-                className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-neutral-600 to-neutral-600 rounded-xl text-white"
+                className="hz-btn hz-fg"
               >
                 View Full Profile
-                <ArrowRight className="ml-2 h-4 w-4" />
+                <ArrowRight className="hz-sq-2 hz-ml-2" />
               </Link>
             </div>
           </motion.div>
@@ -267,22 +267,22 @@ const AgentGallery = () => {
   ];
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[var(--black)]">
-      <div className="max-w-7xl mx-auto">
+    <section className="hz-py-7 hz-px-4 hz-bg">
+      <div className="hz-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="hz-align-center hz-mb-7"
         >
-          <div className="inline-flex p-2 rounded-full bg-neutral-800/20 border border-neutral-500/20 text-neutral-400 mb-4">
-            <Bot className="h-6 w-6" />
+          <div className="hz-inline hz-p-2 hz-r-full hz-bg-raised hz-bordered hz-border-strong hz-fg-muted hz-mb-4">
+            <Bot className="hz-sq-4" />
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+          <h2 className="hz-t-3xl hz-w-bold hz-mb-5">
             Meet Your AI Team
           </h2>
-          <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
+          <p className="hz-container-narrow hz-t-xl hz-fg-soft">
             Our AI team members can handle a wide range of tasks across leadership, engineering, 
             business, and creative functions. Each agent is specialized and 
             trained to excel in their domain.

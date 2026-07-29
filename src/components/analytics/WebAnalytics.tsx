@@ -87,25 +87,25 @@ const WebAnalytics = () => {
   };
 
   return (
-    <section className="py-32 px-4 sm:px-6 lg:px-8 bg-[var(--black)] relative">
-      <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-neutral-800 via-transparent to-transparent"></div>
+    <section className="hz-py-7 hz-px-4 hz-bg hz-rel">
+      <div className="hz-abs hz-inset hz-dim-more"></div>
       
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="hz-container hz-rel hz-z-raised">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="hz-align-center hz-mb-7"
         >
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">Comprehensive Web Analytics</h2>
-          <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
+          <h2 className="hz-t-3xl hz-w-bold hz-mb-5">Comprehensive Web Analytics</h2>
+          <p className="hz-container-narrow hz-t-xl hz-fg-soft">
             Hanzo Analytics delivers real-time insights into every interaction, from clicks to conversions.
           </p>
         </motion.div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20">
-          <div className="space-y-8">
+        <div className="hz-grid hz-grid-2 hz-gap-7 hz-mb-7">
+          <div className="hz-stack-6">
             {features.map((feature, index) => (
               <motion.div
                 key={feature.title}
@@ -113,14 +113,14 @@ const WebAnalytics = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="flex"
+                className="hz-row"
               >
-                <div className="mr-4 mt-1 bg-neutral-800/30 p-2 rounded-lg text-neutral-400">
+                <div className="hz-mr-4 hz-mt-1 hz-bg-raised hz-p-2 hz-r-lg hz-fg-muted">
                   {feature.icon}
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-[var(--white)] mb-2">{feature.title}</h3>
-                  <p className="text-neutral-400">{feature.description}</p>
+                  <h3 className="hz-t-xl hz-w-bold hz-fg hz-mb-2">{feature.title}</h3>
+                  <p className="hz-fg-muted">{feature.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -131,25 +131,25 @@ const WebAnalytics = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="relative"
+            className="hz-rel"
             ref={chartRef}
           >
-            <div className="bg-gray-900/30 rounded-xl p-6 border border-gray-800">
-              <div className="flex justify-between items-center mb-4">
-                <h3 className="text-lg font-medium">Live User Activity</h3>
-                <div className="bg-neutral-500 animate-pulse h-2 w-2 rounded-full"></div>
+            <div className="hz-card">
+              <div className="hz-row hz-jc-between hz-ai-center hz-mb-4">
+                <h3 className="hz-t-lg hz-w-medium">Live User Activity</h3>
+                <div className="hz-sq-1 hz-bg-raised hz-r-full"></div>
               </div>
               
-              <div className="h-80 w-full relative">
+              <div className="hz-bh-8 hz-w-full hz-rel">
                 {/* Chart grid */}
-                <div className="absolute inset-0 grid grid-cols-6 grid-rows-5">
+                <div className="hz-grid hz-grid-6 hz-abs hz-inset">
                   {Array(30).fill(0).map((_, i) => (
-                    <div key={i} className="border-b border-r border-gray-800 opacity-30"></div>
+                    <div key={i} className="hz-border-b hz-border-r hz-dim-more"></div>
                   ))}
                 </div>
                 
                 {/* Chart area */}
-                <div className="absolute inset-0 p-4">
+                <div className="hz-abs hz-inset hz-p-4">
                   <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
                     {/* Chart lines */}
                     <motion.path
@@ -197,7 +197,7 @@ const WebAnalytics = () => {
                 
                 {/* Tooltip */}
                 <motion.div
-                  className="absolute bg-gray-800 rounded p-2 text-xs w-32 shadow-lg border border-gray-700"
+                  className="hz-abs hz-bg-raised hz-r-md hz-p-2 hz-t-xs hz-bw-8 hz-shadow-lg hz-bordered"
                   style={{ top: "30%", left: "60%" }}
                   initial={{ opacity: 0, y: 10 }}
                   animate={controls}
@@ -209,19 +209,19 @@ const WebAnalytics = () => {
                     }
                   }}
                 >
-                  <div className="flex justify-between">
+                  <div className="hz-row hz-jc-between">
                     <span>Pageviews</span>
-                    <span className="font-bold">1,240</span>
+                    <span className="hz-w-bold">1,240</span>
                   </div>
-                  <div className="flex justify-between mt-1">
+                  <div className="hz-row hz-jc-between hz-mt-1">
                     <span>Users</span>
-                    <span className="font-bold">876</span>
+                    <span className="hz-w-bold">876</span>
                   </div>
-                  <div className="text-neutral-400 text-right mt-1">+24.5%</div>
+                  <div className="hz-fg-muted hz-align-right hz-mt-1">+24.5%</div>
                 </motion.div>
               </div>
               
-              <div className="flex justify-between text-sm text-neutral-400 mt-2">
+              <div className="hz-row hz-jc-between hz-t-sm hz-fg-muted hz-mt-2">
                 <span>00:00</span>
                 <span>06:00</span>
                 <span>12:00</span>

@@ -11,16 +11,16 @@ const BrowserCard = ({ icon: Icon, title, description, buttonText }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      className="bg-gray-900/30 border border-gray-800 rounded-xl p-8 flex flex-col"
+      className="hz-card hz-col"
     >
-      <div className="mb-4">
-        <Icon className="h-12 w-12 text-neutral-400 mb-4" />
-        <h3 className="text-2xl font-bold mb-2">{title}</h3>
-        <p className="text-neutral-300 mb-6">{description}</p>
+      <div className="hz-mb-4">
+        <Icon className="hz-sq-7 hz-fg-muted hz-mb-4" />
+        <h3 className="hz-t-2xl hz-w-bold hz-mb-2">{title}</h3>
+        <p className="hz-fg-soft hz-mb-5">{description}</p>
       </div>
       
-      <div className="mt-auto">
-        <Button className="w-full bg-neutral-600 hover:bg-neutral-600">
+      <div className="hz-mt-auto">
+        <Button className="hz-w-full hz-bg-raised hz-hoverable">
           {buttonText}
         </Button>
       </div>
@@ -30,22 +30,22 @@ const BrowserCard = ({ icon: Icon, title, description, buttonText }) => {
 
 const HanzoExtensionBrowsers = () => {
   return (
-    <section id="browsers" className="py-20 px-4 sm:px-6 lg:px-8 bg-[var(--black)]">
-      <div className="max-w-7xl mx-auto">
+    <section id="browsers" className="hz-py-7 hz-px-4 hz-bg">
+      <div className="hz-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="hz-align-center hz-mb-7"
         >
-          <h2 className="text-3xl font-bold mb-4">Available on All Major Browsers</h2>
-          <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
+          <h2 className="hz-t-3xl hz-w-bold hz-mb-4">Available on All Major Browsers</h2>
+          <p className="hz-container-narrow hz-t-xl hz-fg-soft">
             Install the Hanzo Extension on your preferred browser
           </p>
         </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="hz-grid hz-grid-4 hz-gap-6">
           <BrowserCard 
             icon={Chrome}
             title="Chrome"

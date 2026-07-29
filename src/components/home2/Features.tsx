@@ -5,22 +5,22 @@ import { Terminal, Zap, Shield, Bot } from "lucide-react";
 
 const features = [
   {
-    icon: <Terminal className="h-6 w-6" />,
+    icon: <Terminal className="hz-sq-4" />,
     title: "Developer-First",
     description: "Built by developers, for developers. Simple APIs with complete flexibility."
   },
   {
-    icon: <Zap className="h-6 w-6" />,
+    icon: <Zap className="hz-sq-4" />,
     title: "Lightning Fast",
     description: "Optimized inference with custom routing and advanced caching."
   },
   {
-    icon: <Shield className="h-6 w-6" />,
+    icon: <Shield className="hz-sq-4" />,
     title: "Enterprise Ready",
     description: "SOC 2, GDPR, and HIPAA compliant with 99.9% uptime SLA."
   },
   {
-    icon: <Bot className="h-6 w-6" />,
+    icon: <Bot className="hz-sq-4" />,
     title: "Model Flexibility",
     description: "Use any model from OpenAI, Anthropic, or bring your own models."
   }
@@ -28,18 +28,18 @@ const features = [
 
 const Features = () => {
   return (
-    <section className="py-20 relative">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+    <section className="hz-py-7 hz-rel">
+      <div className="hz-container hz-mx-auto hz-px-4">
+        <div className="hz-align-center hz-mb-7">
+          <h2 className="hz-t-3xl hz-w-bold hz-mb-4">
             Everything You Need for AI Engineering
           </h2>
-          <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
+          <p className="hz-container-narrow hz-t-xl hz-fg-soft">
             A complete platform to build, deploy, and scale AI applications
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="hz-grid hz-grid-4 hz-gap-6">
           {features.map((feature, index) => (
             <motion.div
               key={index}
@@ -47,27 +47,27 @@ const Features = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-gray-900/50 border border-gray-800 rounded-xl p-6 hover:border-neutral-500/30 transition-colors"
+              className="hz-card hz-transition hz-card-interactive"
             >
-              <div className="h-12 w-12 rounded-lg bg-neutral-800/30 flex items-center justify-center mb-4">
+              <div className="hz-sq-7 hz-r-lg hz-bg-raised hz-row hz-ai-center hz-jc-center hz-mb-4">
                 {feature.icon}
               </div>
-              <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
-              <p className="text-neutral-400">{feature.description}</p>
+              <h3 className="hz-t-xl hz-w-bold hz-mb-2">{feature.title}</h3>
+              <p className="hz-fg-muted">{feature.description}</p>
             </motion.div>
           ))}
         </div>
         
-        <div className="mt-16 bg-gray-900/30 border border-gray-800 rounded-xl p-8 max-w-5xl mx-auto">
-          <div className="flex flex-col md:flex-row items-center">
-            <div className="flex-1 mb-8 md:mb-0 md:mr-8">
-              <h3 className="text-2xl font-bold mb-4">Simple API. Powerful Results.</h3>
-              <p className="text-neutral-300 mb-4">
+        <div className="hz-container-wide hz-card hz-mt-7">
+          <div className="hz-col-row hz-ai-center">
+            <div className="hz-grow hz-mb-6">
+              <h3 className="hz-t-2xl hz-w-bold hz-mb-4">Simple API. Powerful Results.</h3>
+              <p className="hz-fg-soft hz-mb-4">
                 Just a few lines of code to integrate state-of-the-art AI into your applications.
               </p>
             </div>
-            <div className="flex-1 bg-gray-950 p-4 rounded-lg font-mono text-sm overflow-auto">
-              <pre className="text-neutral-300">
+            <div className="hz-grow hz-bg-surface hz-p-4 hz-r-lg hz-mono hz-t-sm hz-scroll-y">
+              <pre className="hz-fg-soft">
                 <code>
 {`import { HanzoAI } from '@hanzo/ai';
 

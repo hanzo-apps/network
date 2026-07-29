@@ -124,73 +124,73 @@ const CopyButton = ({ text }: { text: string }) => {
   return (
     <button
       onClick={copy}
-      className="p-2 hover:bg-white/10 rounded transition-colors"
+      className="hz-p-2 hz-r-md hz-transition hz-hoverable"
       title="Copy to clipboard"
     >
-      {copied ? <Check className="h-4 w-4 text-neutral-400" /> : <Copy className="h-4 w-4 text-neutral-400" />}
+      {copied ? <Check className="hz-sq-2 hz-fg-muted" /> : <Copy className="hz-sq-2 hz-fg-muted" />}
     </button>
   );
 };
 
 export default function Products() {
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="hz-min-h-screen hz-bg hz-fg">
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-4 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-neutral-900/50 to-black" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.03)_0%,transparent_70%)]" />
+      <section className="hz-rel hz-pt-6 hz-pb-6 hz-px-4 hz-clip">
+        <div className="hz-abs hz-inset" />
+        <div className="hz-abs hz-inset" />
 
-        <div className="max-w-6xl mx-auto relative z-10">
+        <div className="hz-container-wide hz-rel hz-z-raised">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-center"
+            className="hz-align-center"
           >
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+            <h1 className="hz-t-4xl hz-w-bold hz-mb-5">
               The Complete AI Infrastructure
             </h1>
 
-            <p className="text-xl md:text-2xl text-neutral-400 mb-6">
+            <p className="hz-t-xl hz-fg-muted hz-mb-5">
               The complete stack for AI-native applications.
             </p>
 
-            <p className="text-lg text-neutral-500 max-w-3xl mx-auto mb-10">
+            <p className="hz-container-narrow hz-t-lg hz-fg-muted hz-mb-6">
               From databases to ML pipelines, serverless compute to observability.
               Everything you need to build, deploy, and scale AI applications.
             </p>
 
             {/* Quick Install */}
-            <div className="bg-neutral-900/50 rounded-2xl p-6 max-w-2xl mx-auto mb-10 border border-neutral-800">
-              <p className="text-sm text-neutral-400 mb-3">Get started in seconds</p>
-              <div className="flex items-center justify-between bg-black rounded-xl p-4 font-mono">
-                <code className="text-neutral-400">curl -fsSL hanzo.sh/install.sh | sh</code>
+            <div className="hz-container-narrow hz-mw-md hz-card hz-mb-6">
+              <p className="hz-t-sm hz-fg-muted hz-mb-3">Get started in seconds</p>
+              <div className="hz-row hz-ai-center hz-jc-between hz-bg hz-r-lg hz-p-4 hz-mono">
+                <code className="hz-fg-muted">curl -fsSL hanzo.sh/install.sh | sh</code>
                 <CopyButton text="curl -fsSL hanzo.sh/install.sh | sh" />
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="hz-col-row hz-gap-4 hz-jc-center">
               <Button
                 size="lg"
-                className="bg-white text-black hover:bg-neutral-300"
+                className="hz-bg-inverse hz-fg-inverse hz-hoverable"
                 asChild
               >
                 <Link to="/pricing">
                   Start Free
-                  <ArrowRight className="ml-2 h-5 w-5" />
+                  <ArrowRight className="hz-sq-3 hz-ml-2" />
                 </Link>
               </Button>
               <Button
                 size="lg"
                 variant="outline"
-                className="border-neutral-700 hover:bg-neutral-900 hover:border-neutral-600"
+                className="hz-hoverable"
                 asChild
               >
                 <a href="https://docs.hanzo.ai" target="_blank" rel="noopener noreferrer">
                   Documentation
-                  <ExternalLink className="ml-2 h-4 w-4" />
+                  <ExternalLink className="hz-sq-2 hz-ml-2" />
                 </a>
               </Button>
             </div>
@@ -199,25 +199,25 @@ export default function Products() {
       </section>
 
       {/* Partners */}
-      <section className="py-12 px-4 border-t border-white/5">
-        <div className="max-w-6xl mx-auto text-center">
-          <p className="text-xs uppercase tracking-widest text-neutral-500 mb-6">
+      <section className="hz-py-7 hz-px-4 hz-border-t">
+        <div className="hz-container-wide hz-align-center">
+          <p className="hz-t-xs hz-upper hz-tracking-widest hz-fg-muted hz-mb-5">
             Trusted by teams at
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-x-10 gap-y-4 opacity-50">
-            <span className="text-sm font-medium text-neutral-400">Techstars '17</span>
-            <span className="text-sm font-medium text-neutral-400">NVIDIA</span>
-            <span className="text-sm font-medium text-neutral-400">Google Cloud</span>
-            <span className="text-sm font-medium text-neutral-400">Nebius</span>
-            <span className="text-sm font-medium text-neutral-400">DigitalOcean</span>
+          <div className="hz-row hz-wrap hz-jc-center hz-ai-center hz-gap-6 hz-gap-4 hz-dim-more">
+            <span className="hz-t-sm hz-w-medium hz-fg-muted">Techstars '17</span>
+            <span className="hz-t-sm hz-w-medium hz-fg-muted">NVIDIA</span>
+            <span className="hz-t-sm hz-w-medium hz-fg-muted">Google Cloud</span>
+            <span className="hz-t-sm hz-w-medium hz-fg-muted">Nebius</span>
+            <span className="hz-t-sm hz-w-medium hz-fg-muted">DigitalOcean</span>
           </div>
         </div>
       </section>
 
       {/* Categories Grid */}
-      <section className="py-20 px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <section className="hz-py-7 hz-px-4">
+        <div className="hz-container-wide">
+          <div className="hz-grid hz-grid-3 hz-gap-5">
             {categories.map((category, index) => {
               const IconComponent = iconMap[category.icon] || Database;
               const productCount = allProducts.filter(p => p.category === category.id).length;
@@ -230,26 +230,26 @@ export default function Products() {
                   transition={{ duration: 0.3, delay: index * 0.1 }}
                 >
                   <Link to={category.href}>
-                    <Card className="bg-neutral-900/50 border-neutral-800 hover:border-neutral-600 transition-all duration-300 h-full group cursor-pointer hover:bg-neutral-900/80">
+                    <Card className="hz-bg-surface hz-transition hz-h-full hz-pointer hz-hoverable">
                       <CardHeader>
-                        <div className="flex items-start justify-between">
-                          <div className="p-3 rounded-xl bg-white/5 border border-white/10 group-hover:border-white/20 transition-colors">
-                            <IconComponent className="h-6 w-6 text-white" />
+                        <div className="hz-row hz-ai-start hz-jc-between">
+                          <div className="hz-card hz-card-tight hz-transition hz-card-interactive">
+                            <IconComponent className="hz-sq-4 hz-fg" />
                           </div>
-                          <span className="text-sm text-neutral-500">
+                          <span className="hz-t-sm hz-fg-muted">
                             {productCount} products
                           </span>
                         </div>
-                        <CardTitle className="text-xl mt-4 group-hover:text-white transition-colors flex items-center gap-2">
+                        <CardTitle className="hz-t-xl hz-mt-4 hz-transition hz-row hz-ai-center hz-gap-2 hz-hoverable">
                           {category.name}
-                          <ArrowRight className="h-5 w-5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                          <ArrowRight className="hz-sq-3 hz-invisible hz-transition" />
                         </CardTitle>
-                        <CardDescription className="text-neutral-400">
+                        <CardDescription className="hz-fg-muted">
                           {category.tagline}
                         </CardDescription>
                       </CardHeader>
                       <CardContent>
-                        <p className="text-sm text-neutral-500">
+                        <p className="hz-t-sm hz-fg-muted">
                           {category.description}
                         </p>
                       </CardContent>
@@ -268,19 +268,19 @@ export default function Products() {
         const CategoryIcon = iconMap[category.icon] || Database;
 
         return (
-          <section key={category.id} className="py-16 px-4 border-t border-white/5">
-            <div className="max-w-6xl mx-auto">
-              <div className="flex items-center gap-3 mb-8">
-                <div className="p-2 rounded-lg bg-white/5 border border-white/10">
-                  <CategoryIcon className="h-5 w-5 text-white" />
+          <section key={category.id} className="hz-py-7 hz-px-4 hz-border-t">
+            <div className="hz-container-wide">
+              <div className="hz-row hz-ai-center hz-gap-3 hz-mb-6">
+                <div className="hz-p-2 hz-r-lg hz-bg-quiet hz-bordered">
+                  <CategoryIcon className="hz-sq-3 hz-fg" />
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold">{category.name}</h2>
-                  <p className="text-sm text-neutral-500">{category.tagline}</p>
+                  <h2 className="hz-t-2xl hz-w-bold">{category.name}</h2>
+                  <p className="hz-t-sm hz-fg-muted">{category.tagline}</p>
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+              <div className="hz-grid hz-grid-4 hz-gap-4">
                 {products.map((product, idx) => {
                   const ProductIcon = iconMap[product.icon] || Database;
                   return (
@@ -291,24 +291,24 @@ export default function Products() {
                       transition={{ duration: 0.2, delay: idx * 0.03 }}
                     >
                       <Link to={product.href}>
-                        <div className="group p-4 rounded-xl bg-neutral-900/50 border border-neutral-800 hover:border-neutral-600 hover:bg-neutral-900/80 transition-all h-full">
-                          <div className="flex items-start gap-3">
-                            <div className="p-2 rounded-lg bg-white/5 border border-white/10 group-hover:border-white/20 transition-colors">
-                              <ProductIcon className="h-4 w-4 text-neutral-400 group-hover:text-white transition-colors" />
+                        <div className="hz-card hz-transition hz-h-full hz-card-interactive">
+                          <div className="hz-row hz-ai-start hz-gap-3">
+                            <div className="hz-p-2 hz-r-lg hz-bg-quiet hz-bordered hz-transition hz-hoverable">
+                              <ProductIcon className="hz-sq-2 hz-fg-muted hz-transition hz-link" />
                             </div>
-                            <div className="flex-1 min-w-0">
-                              <div className="flex items-center gap-2">
-                                <h3 className="font-medium text-sm group-hover:text-white transition-colors truncate">
+                            <div className="hz-grow">
+                              <div className="hz-row hz-ai-center hz-gap-2">
+                                <h3 className="hz-w-medium hz-t-sm hz-transition hz-truncate hz-hoverable">
                                   {product.shortName}
                                 </h3>
                                 {product.status === 'beta' && (
-                                  <span className="text-[10px] px-1.5 py-0.5 rounded bg-neutral-500/20 text-neutral-400">beta</span>
+                                  <span className="hz-t-xs hz-px-2 hz-py-1 hz-r-md hz-bg-raised hz-fg-muted">beta</span>
                                 )}
                                 {product.status === 'coming' && (
-                                  <span className="text-[10px] px-1.5 py-0.5 rounded bg-neutral-500/20 text-neutral-400">soon</span>
+                                  <span className="hz-t-xs hz-px-2 hz-py-1 hz-r-md hz-bg-raised hz-fg-muted">soon</span>
                                 )}
                               </div>
-                              <p className="text-xs text-neutral-500 mt-1 line-clamp-2">
+                              <p className="hz-t-xs hz-fg-muted hz-mt-1 hz-clamp-2">
                                 {product.tagline}
                               </p>
                             </div>
@@ -325,52 +325,52 @@ export default function Products() {
       })}
 
       {/* Zen Section */}
-      <section className="py-20 px-4 border-t border-white/10 bg-neutral-900/30">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+      <section className="hz-py-7 hz-px-4 hz-border-t hz-bg-surface">
+        <div className="hz-container-narrow hz-align-center">
+          <h2 className="hz-t-3xl hz-w-bold hz-mb-5">
             Built on Zen
           </h2>
-          <p className="text-lg text-neutral-400 mb-8">
+          <p className="hz-t-lg hz-fg-muted hz-mb-6">
             Our flagship MoDE architecture LLM powers intelligent features across all Hanzo products.
             Context-aware, efficient, and designed for developers.
           </p>
           <Button
             variant="outline"
-            className="border-white/20 hover:bg-white/5"
+            className="hz-hoverable"
             asChild
           >
             <Link to="/zen">
               Learn about Zen
-              <ArrowRight className="ml-2 h-4 w-4" />
+              <ArrowRight className="hz-sq-2 hz-ml-2" />
             </Link>
           </Button>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 px-4 border-t border-white/10">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+      <section className="hz-py-7 hz-px-4 hz-border-t">
+        <div className="hz-container-narrow hz-align-center">
+          <h2 className="hz-t-3xl hz-w-bold hz-mb-5">
             Ready to build?
           </h2>
-          <p className="text-lg text-neutral-400 mb-10">
+          <p className="hz-t-lg hz-fg-muted hz-mb-6">
             Free tier for all products. No credit card required. Scale as you grow.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="hz-col-row hz-gap-4 hz-jc-center">
             <Button
               size="lg"
-              className="bg-white text-black hover:bg-neutral-300"
+              className="hz-bg-inverse hz-fg-inverse hz-hoverable"
               asChild
             >
               <Link to="/pricing">
                 Start Building
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <ArrowRight className="hz-sq-3 hz-ml-2" />
               </Link>
             </Button>
             <Button
               size="lg"
               variant="outline"
-              className="border-neutral-700 hover:bg-neutral-900 hover:border-neutral-600"
+              className="hz-hoverable"
               asChild
             >
               <Link to="/contact">

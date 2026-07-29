@@ -1,3 +1,4 @@
+import { BRAND } from '@/lib/brand';
 import React from "react";
 import { Helmet } from "react-helmet";
 import { motion } from "framer-motion";
@@ -6,7 +7,6 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Shield, Lock, Eye, FileText, ArrowRight, ExternalLink, CheckCircle } from "lucide-react";
 
-const BRAND_COLOR = "#ffffff";
 
 const PRIVACY_HIGHLIGHTS = [
   {
@@ -33,7 +33,7 @@ const PRIVACY_HIGHLIGHTS = [
 
 const Privacy = () => {
   return (
-    <div className="min-h-screen bg-[var(--black)] text-[var(--white)]">
+    <div className="hz-min-h-screen hz-bg hz-fg">
       <Helmet>
         <title>Privacy Policy - Hanzo AI</title>
         <meta
@@ -46,27 +46,26 @@ const Privacy = () => {
 
       <main>
         {/* Hero Section */}
-        <section className="relative pt-24 pb-16 px-4 md:px-8 lg:px-12 overflow-hidden">
-          <div className="absolute inset-0 overflow-hidden z-0 pointer-events-none">
+        <section className="hz-rel hz-pt-6 hz-pb-6 hz-px-4 hz-clip">
+          <div className="hz-abs hz-inset hz-clip hz-z-base hz-no-pointer">
             <div
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full opacity-10"
+              className="hz-center-xy hz-abs hz-r-full hz-dim-more"
               style={{
-                background: `radial-gradient(circle, ${BRAND_COLOR} 0%, transparent 70%)`,
+                background: `radial-gradient(circle, ${BRAND.fg} 0%, transparent 70%)`,
                 filter: "blur(100px)",
               }}
             />
           </div>
 
-          <div className="max-w-5xl mx-auto relative z-10">
-            <div className="text-center">
+          <div className="hz-container-wide hz-rel hz-z-raised">
+            <div className="hz-align-center">
               <motion.div
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4 }}
-                className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium mb-6"
-                style={{ backgroundColor: `${BRAND_COLOR}20`, color: BRAND_COLOR }}
-              >
-                <Shield className="w-3.5 h-3.5" />
+                className="hz-inline hz-ai-center hz-gap-2 hz-px-3 hz-py-1 hz-r-full hz-t-xs hz-w-medium hz-mb-5 hz-bg-quiet hz-fg"
+                >
+                <Shield className="hz-sq-2" />
                 GDPR & CCPA Compliant
               </motion.div>
 
@@ -74,18 +73,18 @@ const Privacy = () => {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.05 }}
-                className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-medium tracking-tight leading-[1.1] mb-6"
+                className="hz-t-3xl hz-w-medium hz-tracking-tight hz-mb-5"
               >
-                <span className="text-white">Your privacy</span>
+                <span className="hz-fg">Your privacy</span>
                 <br />
-                <span className="text-neutral-400">is our priority.</span>
+                <span className="hz-fg-muted">is our priority.</span>
               </motion.h1>
 
               <motion.p
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.1 }}
-                className="text-base lg:text-lg text-neutral-400 leading-relaxed mb-10 max-w-3xl mx-auto"
+                className="hz-container-narrow hz-t-base hz-fg-muted hz-leading-relaxed hz-mb-6"
               >
                 We believe in transparency and giving you control over your data.
                 This policy explains how we collect, use, and protect your information.
@@ -95,15 +94,15 @@ const Privacy = () => {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.15 }}
-                className="flex flex-wrap justify-center gap-3 mb-8"
+                className="hz-row hz-wrap hz-jc-center hz-gap-3 hz-mb-6"
               >
                 {["GDPR", "CCPA", "SOC 2", "HIPAA"].map((badge) => (
                   <div
                     key={badge}
-                    className="flex items-center gap-2 px-4 py-2 rounded-lg bg-neutral-900 border border-neutral-800"
+                    className="hz-btn hz-gap-2"
                   >
-                    <CheckCircle className="w-4 h-4 text-neutral-400" />
-                    <span className="text-sm font-medium text-white">{badge}</span>
+                    <CheckCircle className="hz-sq-2 hz-fg-muted" />
+                    <span className="hz-t-sm hz-w-medium hz-fg">{badge}</span>
                   </div>
                 ))}
               </motion.div>
@@ -112,9 +111,9 @@ const Privacy = () => {
         </section>
 
         {/* Privacy Highlights */}
-        <section className="py-16 px-4 md:px-8 bg-gradient-to-b from-black to-neutral-900/30">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <section className="hz-py-7 hz-px-4">
+          <div className="hz-container-wide">
+            <div className="hz-grid hz-grid-4 hz-gap-5">
               {PRIVACY_HIGHLIGHTS.map((item, index) => {
                 const Icon = item.icon;
                 return (
@@ -124,16 +123,15 @@ const Privacy = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
-                    className="bg-neutral-900/50 border border-neutral-800 rounded-xl p-6"
+                    className="hz-card"
                   >
                     <div
-                      className="w-12 h-12 rounded-lg flex items-center justify-center mb-4"
-                      style={{ backgroundColor: `${BRAND_COLOR}15` }}
-                    >
-                      <Icon className="w-6 h-6" style={{ color: BRAND_COLOR }} />
+                      className="hz-sq-7 hz-r-lg hz-row hz-ai-center hz-jc-center hz-mb-4 hz-bg-quiet"
+                      >
+                      <Icon className="hz-sq-4 hz-fg" />
                     </div>
-                    <h3 className="text-lg font-semibold text-white mb-2">{item.title}</h3>
-                    <p className="text-sm text-neutral-400">{item.description}</p>
+                    <h3 className="hz-t-lg hz-w-semibold hz-fg hz-mb-2">{item.title}</h3>
+                    <p className="hz-t-sm hz-fg-muted">{item.description}</p>
                   </motion.div>
                 );
               })}
@@ -142,55 +140,55 @@ const Privacy = () => {
         </section>
 
         {/* Policy Content */}
-        <section className="py-16 px-4 md:px-8">
-          <div className="max-w-4xl mx-auto">
-            <div className="prose prose-invert max-w-none">
+        <section className="hz-py-7 hz-px-4">
+          <div className="hz-container-narrow">
+            <div className="hz-prose">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
               >
-                <h2 className="text-2xl font-semibold mt-8 mb-4 text-white">Information We Collect</h2>
-                <p className="text-neutral-300 mb-6">
+                <h2 className="hz-t-2xl hz-w-semibold hz-mt-6 hz-mb-4 hz-fg">Information We Collect</h2>
+                <p className="hz-fg-soft hz-mb-5">
                   We collect information that you provide directly to us when you use our services,
                   including personal information such as your name, email address, and payment information.
                   We also collect usage data and analytics to improve our services.
                 </p>
 
-                <h2 className="text-2xl font-semibold mt-8 mb-4 text-white">How We Use Your Information</h2>
-                <p className="text-neutral-300 mb-6">
+                <h2 className="hz-t-2xl hz-w-semibold hz-mt-6 hz-mb-4 hz-fg">How We Use Your Information</h2>
+                <p className="hz-fg-soft hz-mb-5">
                   We use the information we collect to provide, maintain, and improve our services,
                   process transactions, send communications, and develop new products and services.
                 </p>
 
-                <h2 className="text-2xl font-semibold mt-8 mb-4 text-white">Sharing Your Information</h2>
-                <p className="text-neutral-300 mb-6">
+                <h2 className="hz-t-2xl hz-w-semibold hz-mt-6 hz-mb-4 hz-fg">Sharing Your Information</h2>
+                <p className="hz-fg-soft hz-mb-5">
                   We may share your information with third-party service providers to help us operate our business
                   and provide our services. We may also share information if required by law or to protect our rights.
                 </p>
 
-                <h2 className="text-2xl font-semibold mt-8 mb-4 text-white">Data Security</h2>
-                <p className="text-neutral-300 mb-6">
+                <h2 className="hz-t-2xl hz-w-semibold hz-mt-6 hz-mb-4 hz-fg">Data Security</h2>
+                <p className="hz-fg-soft hz-mb-5">
                   We implement appropriate security measures to protect your personal information.
                   All data is encrypted at rest with AES-256 and in transit with TLS 1.3.
                 </p>
 
-                <h2 className="text-2xl font-semibold mt-8 mb-4 text-white">Your Rights</h2>
-                <p className="text-neutral-300 mb-6">
+                <h2 className="hz-t-2xl hz-w-semibold hz-mt-6 hz-mb-4 hz-fg">Your Rights</h2>
+                <p className="hz-fg-soft hz-mb-5">
                   You can access, update, or delete your account information at any time by
                   logging into your account or contacting us directly. Under GDPR and CCPA,
                   you have additional rights including data portability and the right to opt-out.
                 </p>
 
-                <h2 className="text-2xl font-semibold mt-8 mb-4 text-white">Contact Us</h2>
-                <p className="text-neutral-300 mb-6">
+                <h2 className="hz-t-2xl hz-w-semibold hz-mt-6 hz-mb-4 hz-fg">Contact Us</h2>
+                <p className="hz-fg-soft hz-mb-5">
                   If you have any questions about this Privacy Policy, please contact us at{" "}
-                  <a href="mailto:privacy@hanzo.ai" className="text-white hover:underline">
+                  <a href="mailto:privacy@hanzo.ai" className="hz-fg">
                     privacy@hanzo.ai
                   </a>
                 </p>
 
-                <p className="mt-8 text-neutral-500 text-sm">
+                <p className="hz-mt-6 hz-fg-muted hz-t-sm">
                   Last updated: {new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
                 </p>
               </motion.div>
@@ -199,16 +197,16 @@ const Privacy = () => {
         </section>
 
         {/* CTA Section */}
-        <section className="py-24 px-4 md:px-8 bg-gradient-to-b from-neutral-900/30 to-black relative overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/10 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-white/5 rounded-full blur-3xl pointer-events-none" />
+        <section className="hz-py-7 hz-px-4 hz-rel hz-clip">
+          <div className="hz-sq-8 hz-abs hz-bg-quiet hz-r-full hz-blur-bg hz-no-pointer" />
+          <div className="hz-sq-8 hz-abs hz-bg-quiet hz-r-full hz-blur-bg hz-no-pointer" />
 
-          <div className="max-w-4xl mx-auto text-center relative z-10">
+          <div className="hz-container-narrow hz-align-center hz-rel hz-z-raised">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-3xl md:text-4xl font-bold text-white mb-4"
+              className="hz-t-3xl hz-w-bold hz-fg hz-mb-4"
             >
               Questions about privacy?
             </motion.h2>
@@ -218,7 +216,7 @@ const Privacy = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-lg text-neutral-400 mb-10 max-w-2xl mx-auto"
+              className="hz-container-narrow hz-mw-md hz-t-lg hz-fg-muted hz-mb-6"
             >
               Our team is here to help. Contact us for any questions about how we handle your data.
             </motion.p>
@@ -228,19 +226,18 @@ const Privacy = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="flex flex-wrap items-center justify-center gap-4"
+              className="hz-row hz-wrap hz-ai-center hz-jc-center hz-gap-4"
             >
               <Link
                 to="/contact"
-                className="inline-flex items-center px-8 py-4 rounded-full font-medium transition-all hover:opacity-90 text-base"
-                style={{ backgroundColor: BRAND_COLOR, color: "#000000" }}
-              >
+                className="hz-btn hz-btn-ghost hz-btn-lg hz-transition hz-bg-inverse"
+                >
                 Contact Us
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <ArrowRight className="hz-sq-3 hz-ml-2" />
               </Link>
               <Link
                 to="/security"
-                className="inline-flex items-center px-8 py-4 rounded-full font-medium transition-colors border border-neutral-700 bg-transparent hover:bg-neutral-900 text-base text-white"
+                className="hz-btn hz-btn-ghost hz-btn-lg hz-transition hz-fg"
               >
                 View Security Page
               </Link>

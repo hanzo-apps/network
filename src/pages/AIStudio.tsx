@@ -46,10 +46,10 @@ const AIStudio = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[var(--black)] text-[var(--white)] flex flex-col">
+    <div className="hz-min-h-screen hz-bg hz-fg hz-col">
       <Navbar />
       
-      <main className="flex-1 flex flex-col mt-16">
+      <main className="hz-grow hz-col hz-mt-7">
         <Hero />
         
         <StudioLayout 

@@ -12,19 +12,19 @@ const HanzoCodeCompanies = () => {
   ];
 
   return (
-    <section className="py-12 px-4 sm:px-6 lg:px-8 bg-[var(--black)]/60">
-      <div className="max-w-7xl mx-auto">
+    <section className="hz-py-7 hz-px-4 hz-bg-overlay">
+      <div className="hz-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-8"
+          className="hz-align-center hz-mb-6"
         >
-          <p className="text-xl text-neutral-400">Trusted by engineers at</p>
+          <p className="hz-t-xl hz-fg-muted">Trusted by engineers at</p>
         </motion.div>
         
-        <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+        <div className="hz-row hz-wrap hz-jc-center hz-ai-center hz-gap-6">
           {companies.map((company, index) => (
             <motion.div
               key={index}
@@ -32,12 +32,12 @@ const HanzoCodeCompanies = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="h-8 w-24 flex items-center justify-center"
+              className="hz-bh-5 hz-bw-8 hz-row hz-ai-center hz-jc-center"
             >
               <img
                 src={company.logo}
                 alt={company.name}
-                className="h-8 object-contain opacity-70 hover:opacity-100 transition-opacity"
+                className="hz-bh-5 hz-object-contain hz-dim hz-transition"
               />
             </motion.div>
           ))}

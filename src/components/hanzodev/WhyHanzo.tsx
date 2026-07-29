@@ -15,7 +15,6 @@ import {
   Copy,
 } from "lucide-react";
 
-const BRAND_COLOR = "#ffffff";
 
 const VALUE_PROPS = [
   {
@@ -115,25 +114,25 @@ const VALUE_PROPS = [
 
 const WhyHanzo = () => {
   return (
-    <section className="py-24 px-4 md:px-8 bg-black">
-      <div className="max-w-6xl mx-auto">
+    <section className="hz-py-7 hz-px-4 hz-bg">
+      <div className="hz-container-wide">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="hz-align-center hz-mb-7"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="hz-t-3xl hz-w-bold hz-fg hz-mb-4">
             Why Hanzo
           </h2>
-          <p className="text-neutral-400 max-w-2xl mx-auto">
+          <p className="hz-container-narrow hz-mw-md hz-fg-muted">
             The all-in-one agentic engineering platform
           </p>
         </motion.div>
 
         {/* Value Props */}
-        <div className="space-y-20">
+        <div className="hz-stack-6">
           {VALUE_PROPS.map((prop, propIndex) => (
             <motion.div
               key={prop.title}
@@ -143,18 +142,18 @@ const WhyHanzo = () => {
               transition={{ delay: propIndex * 0.1 }}
             >
               {/* Prop Header */}
-              <div className="mb-8">
+              <div className="hz-mb-6">
                 <h3
-                  className="text-2xl md:text-3xl font-bold mb-2"
+                  className="hz-t-2xl hz-w-bold hz-mb-2"
                   style={{ color: prop.color }}
                 >
                   {prop.title}
                 </h3>
-                <p className="text-neutral-400">{prop.subtitle}</p>
+                <p className="hz-fg-muted">{prop.subtitle}</p>
               </div>
 
               {/* Features Grid */}
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="hz-grid hz-grid-2 hz-gap-5">
                 {prop.features.map((feature, featureIndex) => {
                   const Icon = feature.icon;
                   return (
@@ -164,18 +163,18 @@ const WhyHanzo = () => {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: featureIndex * 0.05 }}
-                      className="bg-neutral-900/50 border border-neutral-800 rounded-xl p-6 hover:border-neutral-700 transition-colors"
+                      className="hz-card hz-transition hz-card-interactive"
                     >
                       <div
-                        className="w-10 h-10 rounded-lg flex items-center justify-center mb-4"
+                        className="hz-sq-6 hz-r-lg hz-row hz-ai-center hz-jc-center hz-mb-4"
                         style={{ backgroundColor: `${prop.color}20` }}
                       >
-                        <Icon className="w-5 h-5" style={{ color: prop.color }} />
+                        <Icon className="hz-sq-3" style={{ color: prop.color }} />
                       </div>
-                      <h4 className="text-lg font-semibold text-white mb-2">
+                      <h4 className="hz-t-lg hz-w-semibold hz-fg hz-mb-2">
                         {feature.title}
                       </h4>
-                      <p className="text-sm text-neutral-400">
+                      <p className="hz-t-sm hz-fg-muted">
                         {feature.description}
                       </p>
                     </motion.div>

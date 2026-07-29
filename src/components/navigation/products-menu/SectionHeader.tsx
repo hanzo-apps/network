@@ -11,20 +11,20 @@ interface SectionHeaderProps {
 
 const SectionHeader = ({ title, link, linkText }: SectionHeaderProps) => {
   return (
-    <div className="flex items-center justify-between mb-4">
+    <div className="hz-row hz-ai-center hz-jc-between hz-mb-4">
       <Link to={link}>
-        <h3 className="text-xl font-semibold text-[var(--white)] hover:text-neutral-300 transition-colors">
+        <h3 className="hz-t-xl hz-w-semibold hz-fg hz-transition hz-hoverable">
           {title}
         </h3>
       </Link>
       <Link 
         to={link} 
         className={cn(
-          "text-sm text-neutral-400 hover:text-neutral-300 flex items-center group"
+          "hz-t-sm hz-fg-muted hz-row hz-ai-center hz-link"
         )}
       >
         {linkText}
-        <ChevronRight className="h-4 w-4 ml-1 group-hover:translate-x-0.5 transition-transform" />
+        <ChevronRight className="hz-sq-2 hz-ml-1 hz-transition" />
       </Link>
     </div>
   );

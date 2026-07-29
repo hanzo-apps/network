@@ -11,32 +11,32 @@ const PricingTier = ({ title, price, description, features, highlight = false, c
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      className={`border rounded-xl p-8 h-full ${
+      className={`hz-bordered hz-r-lg hz-p-6 hz-h-full ${
         highlight 
-          ? "border-neutral-500 bg-gradient-to-b from-neutral-800/20 to-black" 
-          : "border-gray-800 bg-gray-900/20"
+          ? "hz-border-strong" 
+          : "hz-bg-surface"
       }`}
     >
-      <h3 className="text-2xl font-semibold mb-2">{title}</h3>
-      <div className="mb-4">
-        <div className="text-3xl font-bold">{price}</div>
-        <p className="text-neutral-400">{description}</p>
+      <h3 className="hz-t-2xl hz-w-semibold hz-mb-2">{title}</h3>
+      <div className="hz-mb-4">
+        <div className="hz-t-3xl hz-w-bold">{price}</div>
+        <p className="hz-fg-muted">{description}</p>
       </div>
       
-      <ul className="space-y-3 mb-8">
+      <ul className="hz-stack-3 hz-mb-6">
         {features.map((feature, index) => (
-          <li key={index} className="flex items-start gap-2">
-            <Check className="h-5 w-5 text-neutral-400 mt-1 flex-shrink-0" />
-            <span className="text-neutral-300">{feature}</span>
+          <li key={index} className="hz-row hz-ai-start hz-gap-2">
+            <Check className="hz-sq-3 hz-fg-muted hz-mt-1 hz-none" />
+            <span className="hz-fg-soft">{feature}</span>
           </li>
         ))}
       </ul>
       
       <Button
-        className={`w-full ${
+        className={`hz-w-full ${
           highlight
-            ? "bg-neutral-600 hover:bg-neutral-700 text-[var(--white)]"
-            : "bg-gray-800 text-[var(--white)] hover:bg-gray-700"
+            ? "hz-bg-raised hz-fg hz-hoverable"
+            : "hz-bg-raised hz-fg hz-hoverable"
         }`}
       >
         {cta}
@@ -79,22 +79,22 @@ const HanzoAppPricing = () => {
   ];
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[var(--black)]">
-      <div className="max-w-7xl mx-auto">
+    <section className="hz-py-7 hz-px-4 hz-bg">
+      <div className="hz-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="hz-align-center hz-mb-7"
         >
-          <h2 className="text-3xl font-bold mb-4">Pricing</h2>
-          <p className="text-xl text-neutral-300">
+          <h2 className="hz-t-3xl hz-w-bold hz-mb-4">Pricing</h2>
+          <p className="hz-t-xl hz-fg-soft">
             Free 14 day trial. No credit card required.
           </p>
         </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="hz-grid hz-grid-3 hz-gap-6">
           <PricingTier 
             title="Starter"
             price="$35/month"

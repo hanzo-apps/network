@@ -6,25 +6,25 @@ import { Button } from "@/components/ui/button";
 
 const CallToAction = () => {
   return (
-    <section className="max-w-4xl mx-auto mb-16">
+    <section className="hz-container-narrow hz-mb-7">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="backdrop-blur-xl bg-gradient-to-b from-zinc-900/40 to-zinc-900/80 border border-zinc-800/50 rounded-2xl p-10 text-center"
+        className="hz-card hz-glass hz-align-center"
       >
-        <h2 className="text-3xl md:text-4xl font-medium mb-6 text-[var(--white)]">
+        <h2 className="hz-t-3xl hz-w-medium hz-mb-5 hz-fg">
           Start building today
         </h2>
-        <p className="text-zinc-400 mb-8 max-w-2xl mx-auto leading-relaxed">
+        <p className="hz-container-narrow hz-mw-md hz-fg-muted hz-mb-6 hz-leading-relaxed">
           Join thousands of developers who are creating the next generation of applications on our platform.
         </p>
         <Button 
           size="lg" 
-          className="h-12 px-8 bg-[var(--white)] hover:bg-zinc-200 text-black transition-colors duration-300"
+          className="hz-bh-7 hz-px-6 hz-bg-inverse hz-fg-inverse hz-transition hz-hoverable"
         >
-          Deploy your first project <ArrowRight className="ml-2 h-4 w-4" />
+          Deploy your first project <ArrowRight className="hz-sq-2 hz-ml-2" />
         </Button>
       </motion.div>
     </section>

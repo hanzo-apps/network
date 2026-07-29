@@ -48,22 +48,22 @@ const Features = () => {
   ];
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[var(--black)]">
-      <div className="max-w-7xl mx-auto">
+    <section className="hz-py-7 hz-px-4 hz-bg">
+      <div className="hz-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="hz-align-center hz-mb-7"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-[var(--white)] mb-4">Key Features</h2>
-          <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
+          <h2 className="hz-t-3xl hz-w-bold hz-fg hz-mb-4">Key Features</h2>
+          <p className="hz-container-narrow hz-t-xl hz-fg-soft">
             Designed with flexibility and extensibility in mind to power the next generation of AI agents
           </p>
         </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="hz-grid hz-grid-4 hz-gap-6">
           {features.map((feature, index) => (
             <motion.div
               key={index}
@@ -71,11 +71,11 @@ const Features = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-gray-900/20 border border-gray-800 rounded-xl p-6 hover:bg-gray-900/30 hover:border-neutral-500/30 transition-colors"
+              className="hz-card hz-transition hz-card-interactive"
             >
-              <feature.icon className="h-10 w-10 text-neutral-400 mb-4" />
-              <h3 className="text-xl font-semibold text-[var(--white)] mb-2">{feature.title}</h3>
-              <p className="text-neutral-400">{feature.description}</p>
+              <feature.icon className="hz-sq-6 hz-fg-muted hz-mb-4" />
+              <h3 className="hz-t-xl hz-w-semibold hz-fg hz-mb-2">{feature.title}</h3>
+              <p className="hz-fg-muted">{feature.description}</p>
             </motion.div>
           ))}
         </div>

@@ -40,26 +40,26 @@ const buildCards: BuildCard[] = [
 
 const WhatYouCanBuildSection: React.FC = () => {
   return (
-    <section className="py-24 px-4 md:px-8 bg-black">
-      <div className="max-w-6xl mx-auto">
+    <section className="hz-py-7 hz-px-4 hz-bg">
+      <div className="hz-container-wide">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="hz-align-center hz-mb-7"
         >
-          <h2 className="text-3xl md:text-5xl font-medium text-white mb-4">
+          <h2 className="hz-t-3xl hz-w-medium hz-fg hz-mb-4">
             What you can build
           </h2>
-          <p className="text-lg text-neutral-400 max-w-2xl mx-auto">
+          <p className="hz-container-narrow hz-mw-md hz-t-lg hz-fg-muted">
             Templates and primitives for any stack.
           </p>
         </motion.div>
 
         {/* Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="hz-grid hz-grid-3 hz-gap-5">
           {buildCards.map((card, index) => {
             const Icon = card.icon;
             return (
@@ -69,36 +69,36 @@ const WhatYouCanBuildSection: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.15 }}
-                className="group"
+                className=""
               >
-                <div className="h-full p-8 rounded-2xl border border-neutral-800 bg-neutral-950 hover:bg-neutral-900/50 transition-all duration-300 hover:border-neutral-700">
+                <div className="hz-card hz-h-full hz-transition hz-card-interactive">
                   {/* Icon */}
                   <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center mb-6"
+                    className="hz-sq-7 hz-r-lg hz-row hz-ai-center hz-jc-center hz-mb-5"
                     style={{ backgroundColor: "rgba(255, 255, 255, 0.1)" }}
                   >
-                    <Icon className="w-6 h-6" style={{ color: "#ffffff" }} />
+                    <Icon className="hz-sq-4" style={{ color: "#ffffff" }} />
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-xl font-semibold text-white mb-3">
+                  <h3 className="hz-t-xl hz-w-semibold hz-fg hz-mb-3">
                     {card.title}
                   </h3>
 
                   {/* Sentence */}
-                  <p className="text-neutral-400 mb-6 leading-relaxed">
+                  <p className="hz-fg-muted hz-mb-5 hz-leading-relaxed">
                     {card.sentence}
                   </p>
 
                   {/* Bullets */}
-                  <ul className="space-y-2.5 mb-8">
+                  <ul className="hz-stack-2 hz-mb-6">
                     {card.bullets.map((bullet) => (
-                      <li key={bullet} className="flex items-center gap-3 text-sm">
+                      <li key={bullet} className="hz-row hz-ai-center hz-gap-3 hz-t-sm">
                         <div
-                          className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+                          className="hz-sq-1 hz-r-full hz-none"
                           style={{ backgroundColor: "#ffffff" }}
                         />
-                        <span className="text-neutral-300">{bullet}</span>
+                        <span className="hz-fg-soft">{bullet}</span>
                       </li>
                     ))}
                   </ul>
@@ -106,11 +106,11 @@ const WhatYouCanBuildSection: React.FC = () => {
                   {/* Link */}
                   <a
                     href={card.linkHref}
-                    className="inline-flex items-center gap-2 text-sm font-medium transition-colors hover:opacity-80"
+                    className="hz-inline hz-ai-center hz-gap-2 hz-t-sm hz-w-medium hz-transition"
                     style={{ color: "#ffffff" }}
                   >
                     {card.linkText}
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight className="hz-sq-2 hz-transition" />
                   </a>
                 </div>
               </motion.div>

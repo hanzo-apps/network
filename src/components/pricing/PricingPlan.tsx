@@ -1,8 +1,8 @@
 
 import React from "react";
-import { Button } from "@/components/ui/radix-button";
+import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
-import { Dialog, DialogTrigger } from "@/components/ui/radix-dialog";
+import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 
 interface PricingPlanProps {
   name: string;
@@ -47,7 +47,7 @@ const PricingPlan = ({
     if (githubLink || name === "Dev") {
       return (
         <Button
-          className={`w-full mb-8 ${buttonClass}`}
+          className={`hz-w-full hz-mb-6 ${buttonClass}`}
           onClick={() => {
             window.open('https://github.com/hanzoai/', '_blank');
           }}
@@ -58,7 +58,7 @@ const PricingPlan = ({
     } else if (name === "Team" && showDetails) {
       return (
         <Button
-          className={`w-full mb-8 ${buttonClass}`}
+          className={`hz-w-full hz-mb-6 ${buttonClass}`}
           onClick={() => {
             const teamConfigSection = document.getElementById('team-config-section');
             if (teamConfigSection) {
@@ -72,7 +72,7 @@ const PricingPlan = ({
     } else if (name === "Pro" && showDetails) {
       return (
         <Button
-          className={`w-full mb-8 ${buttonClass}`}
+          className={`hz-w-full hz-mb-6 ${buttonClass}`}
           onClick={() => {
             const teamConfigSection = document.getElementById('team-config-section');
             if (teamConfigSection) {
@@ -86,7 +86,7 @@ const PricingPlan = ({
       );
     } else {
       return (
-        <Button className={`w-full mb-8 ${buttonClass}`}>
+        <Button className={`hz-w-full hz-mb-6 ${buttonClass}`}>
           Get Started
         </Button>
       );
@@ -95,38 +95,38 @@ const PricingPlan = ({
 
   return (
     <div 
-      className={`relative rounded-2xl border ${borderColor} ${bgColor} p-8 backdrop-blur-sm transition-all duration-300 hover:border-gray-700 hover:bg-gray-900/20`}
+      className={`hz-rel hz-r-xl hz-bordered ${borderColor} ${bgColor} hz-p-6 hz-glass hz-transition hz-hoverable`}
     >
       {popular && (
-        <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-          <div className="bg-[var(--white)] text-black px-3 py-1 rounded-full text-sm font-medium">
+        <div className="hz-center-x hz-abs">
+          <div className="hz-bg-inverse hz-fg-inverse hz-px-3 hz-py-1 hz-r-full hz-t-sm hz-w-medium">
             Most Popular
           </div>
         </div>
       )}
 
-      <div className="flex items-center gap-3 mb-4">
+      <div className="hz-row hz-ai-center hz-gap-3 hz-mb-4">
         {icon}
-        <h3 className="text-xl font-semibold">{name}</h3>
+        <h3 className="hz-t-xl hz-w-semibold">{name}</h3>
       </div>
       
-      <div className="mb-6">
-        <div className="flex items-baseline gap-1 mb-2">
-          <span className="text-4xl font-bold">{price}</span>
+      <div className="hz-mb-5">
+        <div className="hz-row hz-ai-baseline hz-gap-1 hz-mb-2">
+          <span className="hz-t-4xl hz-w-bold">{price}</span>
           {billingPeriod && (
-            <span className="text-neutral-400">{billingPeriod}</span>
+            <span className="hz-fg-muted">{billingPeriod}</span>
           )}
         </div>
-        <p className="text-neutral-400">{description}</p>
+        <p className="hz-fg-muted">{description}</p>
       </div>
 
       {renderButton()}
 
-      <ul className="space-y-4">
+      <ul className="hz-stack-4">
         {features.map((feature) => (
-          <li key={feature} className="flex items-start gap-3">
-            <Check className="h-5 w-5 text-neutral-400 mt-0.5 flex-shrink-0" />
-            <span className="text-neutral-300">{feature}</span>
+          <li key={feature} className="hz-row hz-ai-start hz-gap-3">
+            <Check className="hz-sq-3 hz-fg-muted hz-mt-1 hz-none" />
+            <span className="hz-fg-soft">{feature}</span>
           </li>
         ))}
       </ul>
