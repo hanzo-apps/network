@@ -14,16 +14,16 @@ interface DeploymentNodeProps {
 const DeploymentNode: React.FC<DeploymentNodeProps> = ({ node, onClick }) => {
   const getNodeBackgroundClass = () => {
     switch(node.type) {
-      case 'app': return 'bg-neutral-600/20 border border-neutral-500/30';
-      case 'redis': return 'bg-neutral-600/20 border border-neutral-500/30';
-      case 'postgres': return 'bg-neutral-600/20 border border-neutral-500/30';
-      case 'github': return 'bg-gray-500/20 border border-gray-500/30';
-      case 'volume': return 'bg-neutral-500/20 border border-neutral-500/30';
+      case 'app': return 'hz-bg-surface hz-bordered';
+      case 'redis': return 'hz-bg-surface hz-bordered';
+      case 'postgres': return 'hz-bg-surface hz-bordered';
+      case 'github': return 'hz-bg-surface hz-bordered';
+      case 'volume': return 'hz-bg-surface hz-bordered';
       case 'network': 
         return node.id === 'network-public' 
-          ? 'bg-neutral-500/20 border-2 border-neutral-500/50' // Highlighted yellow for public network
-          : 'bg-neutral-600/20 border-2 border-neutral-400/40'; // Yellow outline for private network
-      default: return 'bg-neutral-600/20 border border-neutral-500/30';
+          ? 'hz-bg-surface hz-bordered' // Highlighted yellow for public network
+          : 'hz-bg-surface hz-bordered'; // Yellow outline for private network
+      default: return 'hz-bg-surface hz-bordered';
     }
   };
 

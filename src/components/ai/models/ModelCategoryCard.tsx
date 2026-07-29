@@ -19,11 +19,11 @@ const ModelCategoryCard = ({ model, modelIndex, categoryIndex }: ModelCategoryCa
   // Use monochrome styling for frontier AI models, subtle color for others
   const isFrontierAI = categoryIndex === 0;
   const cardClasses = isFrontierAI 
-    ? "bg-[var(--black)]/50 border border-gray-800/50 rounded-xl p-6 hover:border-gray-700/50 transition-colors"
-    : "bg-[var(--black)]/30 border border-gray-800/30 rounded-xl p-6 hover:border-gray-700/30 transition-colors";
+    ? "hz-bg-surface hz-bordered hz-r-xl hz-p-3 hz-transition"
+    : "hz-bg-surface hz-bordered hz-r-xl hz-p-3 hz-transition";
     
-  const iconColor = isFrontierAI ? "text-neutral-400" : "text-neutral-500";
-  const checkColor = isFrontierAI ? "text-neutral-400" : "text-neutral-500";
+  const iconColor = isFrontierAI ? "hz-fg-muted" : "hz-fg-muted";
+  const checkColor = isFrontierAI ? "hz-fg-muted" : "hz-fg-muted";
 
   return (
     <motion.div

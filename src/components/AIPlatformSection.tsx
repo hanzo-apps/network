@@ -7,7 +7,7 @@ import ChromeText from "@/components/ui/chrome-text";
 import { MasonryGrid, MasonryItem } from "@/components/ui/masonry-grid";
 import { ArchitecturalBox, GridLines } from "@/components/ui/architectural-elements";
 import { aiPlatformFeatures } from "./data/ai-platform-data";
-import { getColorClasses } from "./utils/tailwind-helpers";
+import { BRAND } from "@/lib/brand";
 
 const AIPlatformSection = () => {
   const [hovered, setHovered] = useState<number | null>(null);
@@ -54,9 +54,6 @@ const AIPlatformSection = () => {
           <MasonryGrid columns={4} gap={20} className="hz-mb-7">
             {aiPlatformFeatures.map((feature, index) => {
               const isFeatureHovered = hovered === index;
-              const gradientClasses = getColorClasses(feature.color, 'gradient', isFeatureHovered);
-              const borderClasses = getColorClasses(feature.color, 'border', isFeatureHovered);
-              const textColorClass = getColorClasses(feature.color, 'text', isFeatureHovered);
               
               return (
                 <MasonryItem key={feature.id}>
@@ -67,15 +64,15 @@ const AIPlatformSection = () => {
                     transition={{ duration: 0.2 }}
                   >
                     <ArchitecturalBox
-                      className={`hz-h-full ${gradientClasses} ${borderClasses} hz-glass hz-bordered hz-p-5 hz-r-xl hz-transition`}
+                      className="hz-h-full hz-glass hz-bordered hz-p-5 hz-r-xl hz-transition"
                       showCorners={true}
                       cornerSize={16}
-                      cornerColor={isFeatureHovered ? `rgba(147, 51, 234, 0.4)` : "rgba(147, 51, 234, 0.2)"}
+                      cornerColor={isFeatureHovered ? BRAND.cornerStrong : BRAND.cornerSoft}
                     >
                       <div className="hz-mb-4">
                         {React.createElement(feature.icon, { 
                           size: 32, 
-                          className: textColorClass
+                          className: "hz-fg-muted"
                         })}
                       </div>
                       <h3 className="hz-t-xl hz-w-semibold hz-mb-2">{feature.title}</h3>

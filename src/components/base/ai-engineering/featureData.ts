@@ -24,9 +24,9 @@ export const featureData: AIFeature[] = [
       { text: "Performance optimization for inference workloads" }
     ],
     delay: 0.1,
-    iconBgClass: "bg-neutral-800/30",
-    iconTextClass: "text-neutral-400",
-    bulletColor: "text-neutral-400"
+    iconBgClass: "hz-bg-surface",
+    iconTextClass: "hz-fg-muted",
+    bulletColor: "hz-fg-muted"
   },
   {
     icon: React.createElement(Search, { className: "hz-sq-4" }),
@@ -38,9 +38,9 @@ export const featureData: AIFeature[] = [
       { text: "Hybrid search combining vector and traditional queries" }
     ],
     delay: 0.2,
-    iconBgClass: "bg-neutral-800/30",
-    iconTextClass: "text-neutral-400",
-    bulletColor: "text-neutral-400"
+    iconBgClass: "hz-bg-surface",
+    iconTextClass: "hz-fg-muted",
+    bulletColor: "hz-fg-muted"
   },
   {
     icon: React.createElement(Database, { className: "hz-sq-4" }),
@@ -52,9 +52,9 @@ export const featureData: AIFeature[] = [
       { text: "Scalable batch and stream processing" }
     ],
     delay: 0.3,
-    iconBgClass: "bg-neutral-800/30",
-    iconTextClass: "text-neutral-400",
-    bulletColor: "text-neutral-400"
+    iconBgClass: "hz-bg-surface",
+    iconTextClass: "hz-fg-muted",
+    bulletColor: "hz-fg-muted"
   },
   {
     icon: React.createElement(Sparkles, { className: "hz-sq-4" }),
@@ -66,8 +66,8 @@ export const featureData: AIFeature[] = [
       { text: "Real-time anomaly detection and predictive analytics" }
     ],
     delay: 0.4,
-    iconBgClass: "bg-neutral-800/30",
-    iconTextClass: "text-neutral-400",
-    bulletColor: "text-neutral-400"
+    iconBgClass: "hz-bg-surface",
+    iconTextClass: "hz-fg-muted",
+    bulletColor: "hz-fg-muted"
   }
 ];

@@ -192,7 +192,7 @@ const HeroSection = () => {
             {[
               { name: "docs-api", status: "live", region: "us-east-1", time: "2m ago" },
               { name: "chat-service", status: "live", region: "eu-west-1", time: "1h ago" },
-              { name: "ml-pipeline", status: "building", region: "us-west-2", time: "now" },
+              { name: "", status: "building", region: "us-west-2", time: "now" },
             ].map((deploy) => (
               <div key={deploy.name} className="hz-row hz-ai-center hz-jc-between hz-p-2 hz-r-lg hz-bg-surface hz-bordered">
                 <div className="hz-row hz-ai-center hz-gap-2">

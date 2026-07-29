@@ -41,12 +41,12 @@ const labelMap = {
 };
 
 const colorMap = {
-  discord: "hover:bg-[#5865F2]/20 hover:border-[#5865F2]/50",
-  github: "hover:bg-neutral-700",
-  docs: "hover:bg-neutral-600/20 hover:border-neutral-500/50",
-  discussions: "hover:bg-neutral-600/20 hover:border-neutral-500/50",
-  twitter: "hover:bg-neutral-700",
-  slack: "hover:bg-[#4A154B]/20 hover:border-[#4A154B]/50",
+  discord: "hz-hoverable",
+  github: "",
+  docs: "",
+  discussions: "",
+  twitter: "",
+  slack: "hz-hoverable",
 };
 
 export function CommunitySection({ productName, links, contributors, stars }: CommunitySectionProps) {

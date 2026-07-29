@@ -250,10 +250,10 @@ const SolutionIndustries: React.FC = () => {
 
     const industry = industryData[activeIndustry] || industryData["Financial Services"];
     const colorClasses = {
-      blue: "from-neutral-800/30 to-neutral-800/10 border-neutral-500/20",
-      pink: "from-neutral-900/30 to-neutral-900/10 border-neutral-500/20",
-      green: "from-neutral-800/30 to-neutral-800/10 border-neutral-500/20",
-      indigo: "from-neutral-900/30 to-neutral-900/10 border-neutral-500/20"
+      blue: "hz-bordered",
+      pink: "hz-bordered",
+      green: "hz-bordered",
+      indigo: "hz-bordered"
     };
     
     return (

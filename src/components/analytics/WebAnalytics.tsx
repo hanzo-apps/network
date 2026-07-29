@@ -40,7 +40,7 @@ const WebAnalytics = () => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !animationTriggered) {
-          controls.start("animate");
+          controls.start("");
           setAnimationTriggered(true);
         }
       },

@@ -18,7 +18,7 @@ const ProductSection: React.FC<ProductSectionProps> = ({
   title,
   subtitle,
   products,
-  bgClass = "bg-gradient-to-br from-neutral-800/20 to-neutral-900/20"
+  bgClass = ""
 }) => {
   return (
     <motion.div

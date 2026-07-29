@@ -45,10 +45,10 @@ const languageLogos: Record<string, JSX.Element> = {
 };
 
 const registryColors: Record<string, string> = {
-  npm: "bg-neutral-600/10 text-neutral-400 border-neutral-500/30",
-  pypi: "bg-neutral-600/10 text-neutral-400 border-neutral-500/30",
-  "crates.io": "bg-neutral-500/10 text-neutral-400 border-neutral-500/30",
-  "go modules": "bg-neutral-500/10 text-neutral-400 border-neutral-500/30",
+  npm: "hz-bg-surface hz-fg-muted hz-bordered",
+  pypi: "hz-bg-surface hz-fg-muted hz-bordered",
+  "crates.io": "hz-bg-surface hz-fg-muted hz-bordered",
+  "go modules": "hz-bg-surface hz-fg-muted hz-bordered",
 };
 
 export function SDKSection({ productName, sdks }: SDKSectionProps) {

@@ -22,39 +22,39 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
 }) => {
   const colorClasses: Record<string, { bg: string, text: string, border: string }> = {
     blue: { 
-      bg: "bg-neutral-800/20", 
-      text: "text-neutral-400", 
-      border: "border-neutral-800/50" 
+      bg: "hz-bg-surface", 
+      text: "hz-fg-muted", 
+      border: "hz-bordered" 
     },
     purple: { 
-      bg: "bg-neutral-800/20", 
-      text: "text-neutral-400", 
-      border: "border-neutral-800/50" 
+      bg: "hz-bg-surface", 
+      text: "hz-fg-muted", 
+      border: "hz-bordered" 
     },
     green: { 
-      bg: "bg-neutral-800/20", 
-      text: "text-neutral-400", 
-      border: "border-neutral-800/50" 
+      bg: "hz-bg-surface", 
+      text: "hz-fg-muted", 
+      border: "hz-bordered" 
     },
     amber: { 
-      bg: "bg-neutral-800/20", 
-      text: "text-neutral-400", 
-      border: "border-neutral-800/50" 
+      bg: "hz-bg-surface", 
+      text: "hz-fg-muted", 
+      border: "hz-bordered" 
     },
     indigo: { 
-      bg: "bg-neutral-800/20", 
-      text: "text-neutral-400", 
-      border: "border-neutral-800/50" 
+      bg: "hz-bg-surface", 
+      text: "hz-fg-muted", 
+      border: "hz-bordered" 
     },
     cyan: { 
-      bg: "bg-neutral-800/20", 
-      text: "text-neutral-400", 
-      border: "border-neutral-800/50" 
+      bg: "hz-bg-surface", 
+      text: "hz-fg-muted", 
+      border: "hz-bordered" 
     },
     rose: { 
-      bg: "bg-neutral-900/20", 
-      text: "text-neutral-400", 
-      border: "border-neutral-800/50" 
+      bg: "hz-bg-surface", 
+      text: "hz-fg-muted", 
+      border: "hz-bordered" 
     },
   };
 

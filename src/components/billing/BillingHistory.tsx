@@ -21,18 +21,8 @@ const BillingHistory = () => {
     { id: 'INV-005', date: 'Feb 15, 2024', amount: '$49.00', status: 'Paid', description: 'Pro Plan - Monthly' },
   ];
 
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'Paid':
-        return 'bg-neutral-800/20 text-neutral-400';
-      case 'Pending':
-        return 'bg-neutral-800/20 text-neutral-400';
-      case 'Failed':
-        return 'bg-neutral-800/20 text-neutral-400';
-      default:
-        return 'bg-gray-900/20 text-neutral-400';
-    }
-  };
+  /* A role from src/styles/system.css, never a framework utility. */
+  const getStatusColor = (_status: string) => 'hz-bg-surface hz-fg-muted';
 
   return (
     <div className="hz-stack-6">

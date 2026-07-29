@@ -81,12 +81,12 @@ const RepoCard: React.FC<RepoCardProps> = ({ repo, view }) => {
 
   const getBadgeVariant = (type: string) => {
     switch (type) {
-      case 'featured': return 'bg-white/10 text-white border-white/30';
-      case 'recommended': return 'bg-neutral-600/10 text-neutral-400 border-neutral-500/30';
-      case 'experimental': return 'bg-neutral-500/10 text-neutral-400 border-neutral-500/30';
-      case 'stable': return 'bg-neutral-500/10 text-neutral-400 border-neutral-500/30';
-      case 'active': return 'bg-neutral-600/10 text-neutral-400 border-neutral-500/30';
-      default: return 'bg-neutral-800 text-neutral-400 border-neutral-700';
+      case 'featured': return 'hz-bg-surface hz-fg hz-bordered';
+      case 'recommended': return 'hz-bg-surface hz-fg-muted hz-bordered';
+      case 'experimental': return 'hz-bg-surface hz-fg-muted hz-bordered';
+      case 'stable': return 'hz-bg-surface hz-fg-muted hz-bordered';
+      case 'active': return 'hz-bg-surface hz-fg-muted hz-bordered';
+      default: return 'hz-bg-surface hz-fg-muted hz-bordered';
     }
   };
 

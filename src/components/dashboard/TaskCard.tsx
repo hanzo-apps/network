@@ -20,9 +20,9 @@ interface TaskCardProps {
 
 const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
   const priorityColors = {
-    low: "bg-gray-500",
-    medium: "bg-neutral-500",
-    high: "bg-neutral-600"
+    low: "hz-bg-surface",
+    medium: "hz-bg-surface",
+    high: "hz-bg-surface"
   };
 
   return (
