@@ -9,8 +9,9 @@ Marketing site for Hanzo Network, the decentralized AI compute marketplace (hanz
 - **@hanzo/design** tokens + **@hanzo/ui** on the **@hanzo/gui** backend
 - **@hanzo/logo** for the mark
 - Framer Motion (animations), Three.js (3D)
-- **TypeScript 7** (`tsgo`, the Go compiler) types the tree — `pnpm typecheck`,
-  and `pnpm build` gates the bundle on it. ~1.7s cold against tsc's ~13s.
+- **TypeScript 5.9** (`tsc`) types the tree — `pnpm typecheck`, and `pnpm build`
+  runs it before Vite. Not `tsgo`/`@typescript/native-preview`: the Go-native
+  compiler ships no JS compiler API, so the tooling around it breaks.
 
 No Tailwind, no shadcn, no Radix: zero config, zero directives, zero utility
 class names, zero `@radix-ui/*` dependencies.
