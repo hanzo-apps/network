@@ -1,10 +1,11 @@
 
 import { getIcon } from "@/constants/iconMappings";
+import type { SolutionItem } from "@/constants/navigation";
 import { Link } from "react-router-dom";
 
 interface SolutionCategoryProps {
   title: string;
-  items: string[];
+  items: SolutionItem[];
   onItemClick: () => void;
 }
 
@@ -26,13 +27,12 @@ export const SolutionCategory = ({ title, items, onItemClick }: SolutionCategory
       </div>
       
       <div className="hz-grid hz-gap-3">
-        {displayItems.map((item: string) => {
-          const Icon = getIcon(item);
-          const itemSlug = item.toLowerCase().replace(/\s+/g, '-');
+        {displayItems.map((item) => {
+          const Icon = getIcon(item.name);
           return (
-            <Link 
-              to={`/solutions/${itemSlug}`} 
-              key={item} 
+            <Link
+              to={item.href}
+              key={item.href}
               className="hz-row hz-ai-center hz-inline-3"
               onClick={onItemClick}
             >
@@ -40,7 +40,7 @@ export const SolutionCategory = ({ title, items, onItemClick }: SolutionCategory
                 <Icon className="hz-sq-3 hz-fg-muted hz-transition hz-link" strokeWidth={1.5} />
               </div>
               <div className="hz-grow">
-                <div className="hz-fg-soft hz-w-medium hz-truncate hz-hoverable">{item}</div>
+                <div className="hz-fg-soft hz-w-medium hz-truncate hz-hoverable">{item.name}</div>
               </div>
             </Link>
           );

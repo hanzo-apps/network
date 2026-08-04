@@ -1,9 +1,9 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import InteractiveHexagram, { HexagramDetails } from "./InteractiveHexagram";
+import InteractiveHexagram from "./InteractiveHexagram";
 import HexagramDetail from "./HexagramDetail";
-import { ichingPrinciples } from "./data/ichingPrinciples";
+import { ichingPrinciples, type Hexagram } from "./data/ichingPrinciples";
 
 interface HexagramsGridProps {
   title?: string;
@@ -14,13 +14,13 @@ const HexagramsGrid: React.FC<HexagramsGridProps> = ({
   title = "The 64 Hexagrams",
   description = "Ancient wisdom for modern engineering"
 }) => {
-  const [selectedHexagram, setSelectedHexagram] = useState<HexagramDetails | null>(null);
+  const [selectedHexagram, setSelectedHexagram] = useState<Hexagram | null>(null);
   
   // Create a grid of 8x8 = 64 hexagrams
   const rows = 8;
   const columns = 8;
   
-  const handleHexagramClick = (hexagram: HexagramDetails) => {
+  const handleHexagramClick = (hexagram: Hexagram) => {
     setSelectedHexagram(hexagram);
   };
   

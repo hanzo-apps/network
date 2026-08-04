@@ -1,11 +1,11 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { HexagramDetails } from "./InteractiveHexagram";
+import type { Hexagram } from "./data/ichingPrinciples";
 import IChingHexagram from "./svg/IChingHexagram";
 
 interface HexagramDetailProps {
-  hexagram: HexagramDetails;
+  hexagram: Hexagram;
 }
 
 const HexagramDetail: React.FC<HexagramDetailProps> = ({ hexagram }) => {

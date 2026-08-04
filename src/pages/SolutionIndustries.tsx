@@ -52,10 +52,10 @@ const SolutionIndustries: React.FC = () => {
         <div className="hz-grid hz-grid-3 hz-gap-5">
           <AnimatePresence initial={false}>
             {displayItems.map((item, index) => {
-              const Icon = getIcon(item);
+              const Icon = getIcon(item.name);
               return (
                 <motion.div
-                  key={item}
+                  key={item.href}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
@@ -70,16 +70,15 @@ const SolutionIndustries: React.FC = () => {
                       <ChevronRight className="hz-sq-3 hz-fg-muted hz-transition hz-link" />
                     </div>
                     <h3 className="hz-t-xl hz-w-semibold hz-mb-2 hz-transition hz-hoverable">
-                      {item}
+                      {item.name}
                     </h3>
                     <p className="hz-fg-muted hz-t-sm hz-mb-4">
-                      Explore our specialized solutions for the {item.toLowerCase()} industry, designed to address 
-                      your sector's unique challenges.
+                      {item.description}
                     </p>
                     
                     <div className="hz-row hz-wrap hz-gap-2 hz-mt-4">
                       <button 
-                        onClick={() => setActiveIndustry(item)}
+                        onClick={() => setActiveIndustry(item.name)}
                         className="hz-t-xs hz-row hz-ai-center hz-fg-muted hz-link"
                       >
                         <LinkIcon className="hz-sq-1 hz-mr-1" /> Learn more
