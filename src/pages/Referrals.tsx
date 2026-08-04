@@ -9,7 +9,7 @@ import { Copy, Check, Gift, Users, Share2, DollarSign } from "lucide-react";
 import ChromeText from "@/components/ui/chrome-text";
 import { GridLines } from "@/components/ui/architectural-elements";
 import { Link } from "react-router-dom";
-import { useToast } from "@/components/ui/use-toast";
+import { useToast } from "@/hooks/use-toast";
 
 const Referrals = () => {
   const [copied, setCopied] = useState(false);

@@ -7,8 +7,10 @@ Marketing site for Hanzo Network, the decentralized AI compute marketplace (hanz
 - React 19 + TypeScript (Vite 5, SWC)
 - React Router v6 (client-side routing)
 - **@hanzo/design** tokens + **@hanzo/ui** on the **@hanzo/gui** backend
-- **@hanzo/logo** for the mark, **@hanzo/brand** for brand data
+- **@hanzo/logo** for the mark
 - Framer Motion (animations), Three.js (3D)
+- **TypeScript 7** (`tsgo`, the Go compiler) types the tree — `pnpm typecheck`,
+  and `pnpm build` gates the bundle on it. ~1.7s cold against tsc's ~13s.
 
 No Tailwind, no shadcn, no Radix: zero config, zero directives, zero utility
 class names, zero `@radix-ui/*` dependencies.
@@ -48,10 +50,12 @@ They keep the part names the pages already used (`DialogHeader`,
 `TabsTrigger`, …), so adopting the backend did not mean touching 268 call
 sites.
 
-`@hanzo/ui`'s DEFAULT entry still resolves to its shadcn/Radix backend at
-8.0.26; this site imports only `@hanzo/ui/gui-config`, which pulls no Radix.
-When the gui-backed `@hanzo/ui` publishes, `src/components/ui/gui.tsx` is the
-one file that changes.
+This site imports exactly one thing from `@hanzo/ui`: `@hanzo/ui/gui-config`.
+That entry reads `@hanzogui/config/v5`, which is why `@hanzogui/config` is a
+direct dependency — `@hanzo/ui` declares it as a peer (`>=8.0.0`) and an app
+that leaves it unsatisfied silently resolves an older config. Nothing here
+pulls Radix; `@radix-ui/*` is absent from the tree and from the bundle.
+`src/components/ui/gui.tsx` is the one file that changes when the backend does.
 
 ### The migration
 
@@ -158,3 +162,26 @@ image tag takes the host down instead of leaving it alone.
 
 - Shares the same component library and routes as hanzo.app, hanzo.id, hanzo.one, and sensei.group. Only `NetworkLanding.tsx` and `index.html` metadata are unique.
 - Brand color is cyan (#06b6d4) in the dev console message, vs red for other Hanzo sites.
+
+## Unreached modules
+
+249 of 688 modules under `src/` are unreachable from `src/main.tsx` — whole
+alternate homepages (`index3/` … `index6/`), an unrouted `pages/Privacy.tsx`,
+`Terms.tsx`, `About.tsx`, `Careers.tsx`, and the `animations/cloud-deployment/`
+and `zen/` hexagram trees. They still typecheck and still cost review time, but
+they ship no bytes: Rollup drops them.
+
+Two of them are *live* decisions, not dead weight, and want a human call before
+anyone deletes in bulk:
+
+- `pages/Privacy.tsx` / `pages/Terms.tsx` exist but have no `<Route>`. A
+  marketing site wants those URLs — the fix is probably to route them, not to
+  delete them.
+- `components/CommandPalette.tsx` (300 lines, used by `Navbar`) and
+  `components/dashboard/CommandPalette.tsx` (163 lines, used by `Dashboard`)
+  are two implementations of one idea. One should survive; which one is a
+  product decision.
+
+Reproduce the list with the import-graph walk from `src/main.tsx` — resolve
+`@/` to `src/`, follow `from '…'` and `import('…')`, and diff against
+`find src -name '*.ts*'`.

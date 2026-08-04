@@ -76,13 +76,13 @@ const DeploymentNode: React.FC<DeploymentNodeProps> = ({ node, onClick }) => {
 const DeploymentNodeWithTooltip: React.FC<DeploymentNodeProps> = (props) => {
   return (
     <TooltipProvider>
-      <Tooltip>
+      <Tooltip placement="top">
         <TooltipTrigger asChild>
           <span>
             <DeploymentNode {...props} />
           </span>
         </TooltipTrigger>
-        <TooltipContent side="top">
+        <TooltipContent>
           <p>{props.node.label}</p>
           {props.node.statusMessage && <p className="hz-t-xs hz-dim">{props.node.statusMessage}</p>}
         </TooltipContent>

@@ -88,7 +88,7 @@ export const useDeploymentSequence = () => {
     ];
 
     // Execute sequence
-    const timeouts: NodeJS.Timeout[] = [];
+    const timeouts: ReturnType<typeof setTimeout>[] = [];
     sequence.forEach(item => {
       const timeout = setTimeout(item.action, item.delay);
       timeouts.push(timeout);

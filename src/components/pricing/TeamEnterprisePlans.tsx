@@ -73,7 +73,6 @@ const TeamEnterprisePlans = () => {
             features={plan.features}
             popular={plan.popular}
             showDetails={plan.showDetails}
-            customColor={plan.customColor}
           />
         ))}
       </div>

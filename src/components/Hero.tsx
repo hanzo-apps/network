@@ -1,6 +1,6 @@
 
 import { useState, useEffect, useRef } from "react";
-import { useToast } from "@/components/ui/use-toast";
+import { useToast } from "@/hooks/use-toast";
 import HeroTitle from "@/components/hero/HeroTitle";
 import HeroDescription from "@/components/hero/HeroDescription";
 import HeroButtons from "@/components/hero/HeroButtons";

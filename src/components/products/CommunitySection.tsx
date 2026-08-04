@@ -1,3 +1,4 @@
+import type * as React from "react";
 import { motion } from "framer-motion";
 import { ExternalLink, Github, MessageCircle, Users, BookOpen } from "lucide-react";
 
@@ -14,18 +15,21 @@ interface CommunitySectionProps {
   stars?: string;
 }
 
-const iconMap = {
+/** Every entry renders the same way: one icon contract, className and all. */
+type IconProps = { className?: string };
+
+const iconMap: Record<CommunityLink["type"], React.ComponentType<IconProps>> = {
   discord: MessageCircle,
   github: Github,
   docs: BookOpen,
   discussions: Users,
-  twitter: () => (
-    <svg className="hz-sq-3" fill="currentColor" viewBox="0 0 24 24">
+  twitter: ({ className }: IconProps) => (
+    <svg className={className} fill="currentColor" viewBox="0 0 24 24">
       <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
     </svg>
   ),
-  slack: () => (
-    <svg className="hz-sq-3" fill="currentColor" viewBox="0 0 24 24">
+  slack: ({ className }: IconProps) => (
+    <svg className={className} fill="currentColor" viewBox="0 0 24 24">
       <path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z" />
     </svg>
   ),
@@ -111,7 +115,7 @@ export function CommunitySection({ productName, links, contributors, stars }: Co
                 className={`hz-card hz-row hz-ai-center hz-gap-3 hz-transition ${colorClass}`}
               >
                 <div className="hz-sq-6 hz-r-lg hz-bg-raised hz-row hz-ai-center hz-jc-center">
-                  {typeof Icon === "function" ? <Icon /> : <Icon className="hz-sq-3 hz-fg-soft" />}
+                  <Icon className="hz-sq-3 hz-fg-soft" />
                 </div>
                 <div className="hz-grow">
                   <span className="hz-w-medium hz-fg">{label}</span>

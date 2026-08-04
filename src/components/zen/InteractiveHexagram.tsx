@@ -2,21 +2,12 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import IChingHexagram from "./svg/IChingHexagram";
-
-export interface HexagramDetails {
-  id: string;
-  name: string;
-  chineseName: string;
-  pinyin: string;
-  lines: { type: 'solid' | 'broken' }[];
-  principle: string;
-  description?: string;
-}
+import type { Hexagram } from "./data/ichingPrinciples";
 
 interface InteractiveHexagramProps {
-  hexagram: HexagramDetails;
+  hexagram: Hexagram;
   index: number;
-  onClick: (hexagram: HexagramDetails) => void;
+  onClick: (hexagram: Hexagram) => void;
   isSelected?: boolean;
 }
 
