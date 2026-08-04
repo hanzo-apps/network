@@ -8,21 +8,21 @@ const DXPlatform = () => {
   const [isHovered, setIsHovered] = useState<string | null>(null);
 
   return (
-    <section className="py-32 px-4 sm:px-6 lg:px-8 bg-[var(--black)] relative overflow-hidden">
+    <section className="hz-py-7 hz-px-4 hz-bg hz-rel hz-clip">
       {/* Decorative elements */}
-      <div className="absolute top-1/4 right-0 w-1/3 h-1/3 bg-neutral-800/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-1/4 left-0 w-1/3 h-1/3 bg-neutral-800/5 rounded-full blur-3xl"></div>
+      <div className="hz-abs hz-right-0 hz-bg-raised hz-r-full hz-blur-bg"></div>
+      <div className="hz-abs hz-left-0 hz-bg-raised hz-r-full hz-blur-bg"></div>
       
-      <div className="max-w-7xl mx-auto relative z-10">
-        <div className="text-center mb-16">
+      <div className="hz-container hz-rel hz-z-raised">
+        <div className="hz-align-center hz-mb-7">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="mb-4"
+            className="hz-mb-4"
           >
-            <span className="inline-block px-4 py-1 rounded-full bg-neutral-800/30 border border-neutral-500/30 text-neutral-300 text-sm font-medium">
+            <span className="hz-px-4 hz-py-1 hz-r-full hz-bg-raised hz-bordered hz-border-strong hz-fg-soft hz-t-sm hz-w-medium">
               Developer Experience
             </span>
           </motion.div>
@@ -35,12 +35,12 @@ const DXPlatform = () => {
           >
             <ChromeText 
               as="h2" 
-              className="text-3xl md:text-5xl font-bold mb-6"
+              className="hz-t-3xl hz-w-bold hz-mb-5"
             >
               The DX Platform
             </ChromeText>
             
-            <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
+            <p className="hz-container-narrow hz-t-xl hz-fg-soft">
               Unify your development workflow with tools designed to increase productivity, enable collaboration, and accelerate innovation.
             </p>
           </motion.div>
@@ -53,9 +53,9 @@ const DXPlatform = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-20 text-center"
+          className="hz-mt-7 hz-align-center"
         >
-          <p className="text-neutral-400 mb-6 max-w-3xl mx-auto">
+          <p className="hz-container-narrow hz-fg-muted hz-mb-5">
             Join thousands of developers who build faster and ship more reliable software with the Hanzo DX Platform.
           </p>
         </motion.div>

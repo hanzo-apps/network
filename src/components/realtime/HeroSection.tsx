@@ -6,30 +6,30 @@ import { Button } from "@/components/ui/button";
 
 const HeroSection = () => {
   return (
-    <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-neutral-800/20 to-transparent" />
+    <section className="hz-pt-6 hz-pb-6 hz-px-4 hz-rel hz-clip">
+      <div className="hz-abs hz-inset" />
       
-      <div className="max-w-7xl mx-auto relative z-10">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
-          <div className="w-full lg:w-1/2">
+      <div className="hz-container hz-rel hz-z-raised">
+        <div className="hz-col-row hz-ai-center hz-jc-between hz-gap-7">
+          <div className="hz-w-full">
             <motion.div 
               initial={{ opacity: 0 }} 
               animate={{ opacity: 1 }} 
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center px-3 py-1 rounded-full bg-neutral-800/30 border border-neutral-500/30 mb-6"
+              className="hz-inline hz-ai-center hz-px-3 hz-py-1 hz-r-full hz-bg-raised hz-bordered hz-border-strong hz-mb-5"
             >
-              <Activity className="h-4 w-4 text-neutral-400 mr-2" />
-              <span className="text-sm text-neutral-300">Real-time Data Synchronization</span>
+              <Activity className="hz-sq-2 hz-fg-muted hz-mr-2" />
+              <span className="hz-t-sm hz-fg-soft">Real-time Data Synchronization</span>
             </motion.div>
             
             <motion.h1 
               initial={{ opacity: 0, y: 20 }} 
               animate={{ opacity: 1, y: 0 }} 
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-[var(--white)]"
+              className="hz-t-4xl hz-w-bold hz-mb-5 hz-fg"
             >
               Instant data sync <br/>
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-neutral-400 to-neutral-400">
+              <span className="hz-chrome">
                 across all clients
               </span>
             </motion.h1>
@@ -38,7 +38,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }} 
               animate={{ opacity: 1, y: 0 }} 
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-lg md:text-xl text-neutral-300 mb-8 max-w-xl"
+              className="hz-t-lg hz-fg-soft hz-mb-6 hz-mw-md"
             >
               Build collaborative, interactive experiences with Hanzo Realtime. 
               Synchronize data across clients in milliseconds with our reliable 
@@ -49,70 +49,70 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }} 
               animate={{ opacity: 1, y: 0 }} 
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="flex flex-wrap gap-4"
+              className="hz-row hz-wrap hz-gap-4"
             >
               <Button 
                 size="lg" 
-                className="bg-neutral-600 hover:bg-neutral-700 text-[var(--white)] px-6"
+                className="hz-bg-raised hz-fg hz-px-5 hz-hoverable"
               >
-                Start Building <ArrowRight className="ml-2 h-4 w-4" />
+                Start Building <ArrowRight className="hz-sq-2 hz-ml-2" />
               </Button>
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="border-gray-700 text-[var(--white)] hover:bg-gray-800"
+                className="hz-fg hz-hoverable"
               >
                 View Documentation
               </Button>
             </motion.div>
           </div>
           
-          <div className="w-full lg:w-1/2">
+          <div className="hz-w-full">
             <motion.div 
               initial={{ opacity: 0, scale: 0.9 }} 
               animate={{ opacity: 1, scale: 1 }} 
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="bg-[var(--black)]/60 border border-gray-800 p-6 rounded-xl"
+              className="hz-card"
             >
-              <div className="flex justify-between items-center mb-4">
-                <div className="flex items-center">
-                  <div className="h-3 w-3 rounded-full bg-neutral-500 mr-3 animate-pulse" />
-                  <span className="text-neutral-300 text-sm">Live connection</span>
+              <div className="hz-row hz-jc-between hz-ai-center hz-mb-4">
+                <div className="hz-row hz-ai-center">
+                  <div className="hz-sq-1 hz-r-full hz-bg-raised hz-mr-3" />
+                  <span className="hz-fg-soft hz-t-sm">Live connection</span>
                 </div>
-                <div className="flex items-center">
-                  <Radio className="h-4 w-4 text-neutral-400 mr-2" />
-                  <span className="text-neutral-300 text-sm">10ms latency</span>
+                <div className="hz-row hz-ai-center">
+                  <Radio className="hz-sq-2 hz-fg-muted hz-mr-2" />
+                  <span className="hz-fg-soft hz-t-sm">10ms latency</span>
                 </div>
               </div>
               
-              <div className="space-y-4">
-                <div className="h-14 bg-gradient-to-r from-neutral-800/40 to-neutral-800/40 rounded-lg border border-neutral-500/30 p-4 flex items-center">
-                  <Zap className="h-5 w-5 text-neutral-400 mr-3" />
-                  <span className="text-neutral-200">Client data synchronized in real-time</span>
+              <div className="hz-stack-4">
+                <div className="hz-card hz-bh-7 hz-row hz-ai-center">
+                  <Zap className="hz-sq-3 hz-fg-muted hz-mr-3" />
+                  <span className="hz-fg">Client data synchronized in real-time</span>
                 </div>
                 
-                <div className="grid grid-cols-3 gap-4">
+                <div className="hz-grid hz-grid-3 hz-gap-4">
                   {[1, 2, 3].map((i) => (
                     <div 
                       key={i}
-                      className="h-24 rounded-lg border border-gray-800 p-4 flex flex-col justify-center items-center bg-gradient-to-br from-gray-900 to-gray-950"
+                      className="hz-card hz-bh-8 hz-col hz-jc-center hz-ai-center"
                     >
-                      <div className="h-2 w-2 rounded-full bg-neutral-600 mb-2 animate-pulse" />
-                      <span className="text-xs text-neutral-400 text-center">Client {i}</span>
-                      <span className="text-xs text-neutral-500 text-center">Connected</span>
+                      <div className="hz-sq-1 hz-r-full hz-bg-raised hz-mb-2" />
+                      <span className="hz-t-xs hz-fg-muted hz-align-center">Client {i}</span>
+                      <span className="hz-t-xs hz-fg-muted hz-align-center">Connected</span>
                     </div>
                   ))}
                 </div>
                 
-                <div className="h-36 bg-gray-900 rounded-lg border border-gray-800 p-3 overflow-hidden font-mono text-xs">
-                  <div className="text-neutral-400">// Subscribe to real-time updates</div>
-                  <div className="text-neutral-300">const channel = await hanzo.realtime.subscribe(</div>
-                  <div className="text-neutral-300 pl-4">'room-updates',</div>
-                  <div className="text-neutral-300 pl-4">(message) =&gt; {`{`}</div>
-                  <div className="text-neutral-300 pl-8">console.log('New message:', message);</div>
-                  <div className="text-neutral-300 pl-8">updateUIWithData(message.data);</div>
-                  <div className="text-neutral-300 pl-4">{`}`}</div>
-                  <div className="text-neutral-300">);</div>
+                <div className="hz-card hz-card-tight hz-bh-8 hz-clip hz-mono hz-t-xs">
+                  <div className="hz-fg-muted">// Subscribe to real-time updates</div>
+                  <div className="hz-fg-soft">const channel = await hanzo.realtime.subscribe(</div>
+                  <div className="hz-fg-soft hz-px-4">'room-updates',</div>
+                  <div className="hz-fg-soft hz-px-4">(message) =&gt; {`{`}</div>
+                  <div className="hz-fg-soft hz-px-6">console.log('New message:', message);</div>
+                  <div className="hz-fg-soft hz-px-6">updateUIWithData(message.data);</div>
+                  <div className="hz-fg-soft hz-px-4">{`}`}</div>
+                  <div className="hz-fg-soft">);</div>
                 </div>
               </div>
             </motion.div>

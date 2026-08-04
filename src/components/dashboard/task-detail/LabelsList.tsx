@@ -16,29 +16,29 @@ interface LabelsListProps {
 
 const LabelsList: React.FC<LabelsListProps> = ({ labels = [], onRemove }) => {
   return (
-    <div className="mb-6">
-      <div className="flex justify-between mb-2">
-        <label className="block text-sm font-medium text-neutral-400">Labels</label>
-        <Button size="sm" variant="ghost" className="text-neutral-400 hover:text-neutral-300 h-6 px-2">
-          <PlusCircle className="h-3.5 w-3.5 mr-1" />
+    <div className="hz-mb-5">
+      <div className="hz-row hz-jc-between hz-mb-2">
+        <label className="hz-t-sm hz-w-medium hz-fg-muted">Labels</label>
+        <Button size="sm" variant="ghost" className="hz-fg-muted hz-bh-4 hz-px-2 hz-link">
+          <PlusCircle className="hz-sq-2 hz-mr-1" />
           Add
         </Button>
       </div>
-      <div className="flex flex-wrap gap-2">
+      <div className="hz-row hz-wrap hz-gap-2">
         {labels.map(label => (
           <div 
             key={label.id}
-            className="flex items-center gap-2 px-2 py-1 rounded text-sm"
+            className="hz-row hz-ai-center hz-gap-2 hz-px-2 hz-py-1 hz-r-md hz-t-sm"
             style={{ backgroundColor: `${label.color}20`, color: label.color }}
           >
             <span>{label.name}</span>
             <button onClick={() => onRemove && onRemove(label.id)}>
-              <X className="h-3 w-3" />
+              <X className="hz-sq-1" />
             </button>
           </div>
         ))}
         {!labels.length && (
-          <div className="text-sm text-neutral-500">No labels</div>
+          <div className="hz-t-sm hz-fg-muted">No labels</div>
         )}
       </div>
     </div>

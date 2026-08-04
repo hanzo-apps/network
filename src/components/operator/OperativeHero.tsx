@@ -6,39 +6,39 @@ import { Terminal, Eye, Cpu, MousePointer, Keyboard } from "lucide-react";
 
 const OperativeHero = () => {
   return (
-    <section className="py-32 relative overflow-hidden">
+    <section className="hz-py-7 hz-rel hz-clip">
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-neutral-800/20 to-transparent"></div>
-      <div className="absolute top-1/3 -left-1/4 w-1/2 h-1/2 bg-neutral-600/10 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-neutral-600/10 rounded-full blur-3xl"></div>
+      <div className="hz-abs hz-inset"></div>
+      <div className="hz-abs hz-bg-raised hz-r-full hz-blur-bg"></div>
+      <div className="hz-abs hz-bg-raised hz-r-full hz-blur-bg"></div>
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center">
+      <div className="hz-container hz-rel hz-z-raised">
+        <div className="hz-align-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="inline-block px-4 py-1 rounded-full bg-neutral-800/30 border border-neutral-500/30 text-neutral-300 text-sm font-medium mb-6">
+            <span className="hz-px-4 hz-py-1 hz-r-full hz-bg-raised hz-bordered hz-border-strong hz-fg-soft hz-t-sm hz-w-medium hz-mb-5">
               AI Engineering Framework
             </span>
             
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-[var(--white)] mb-6 bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-neutral-300">
+            <h1 className="hz-t-5xl hz-w-bold hz-tracking-tight hz-fg hz-mb-5 hz-chrome">
               Hanzo Operative
             </h1>
 
-            <p className="mt-6 text-xl text-neutral-300 max-w-3xl mx-auto">
+            <p className="hz-container-narrow hz-mt-5 hz-t-xl hz-fg-soft">
               A framework that enables multimodal AI models to operate a computer using the same inputs and 
               outputs as a human operator, viewing the screen and executing mouse and keyboard actions to achieve objectives.
             </p>
 
-            <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="text-lg px-8">
+            <div className="hz-col-row hz-mt-6 hz-gap-4 hz-jc-center">
+              <Button size="lg" className="hz-t-lg hz-px-6">
                 <a href="#get-started">Get Started</a>
               </Button>
-              <Button size="lg" variant="outline" className="text-lg px-8 text-[var(--white)] border-white/20 bg-[var(--white)]/5 hover:bg-[var(--white)]/10">
-                <a href="https://docs.hanzo.ai/operative" className="flex items-center gap-2">
-                  <Terminal className="h-5 w-5" />
+              <Button size="lg" variant="outline" className="hz-t-lg hz-px-6 hz-fg hz-bg-surface hz-hoverable">
+                <a href="https://docs.hanzo.ai/operative" className="hz-row hz-ai-center hz-gap-2">
+                  <Terminal className="hz-sq-3" />
                   View Docs
                 </a>
               </Button>
@@ -49,31 +49,31 @@ const OperativeHero = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-4xl mx-auto"
+            className="hz-grid hz-grid-4 hz-container-narrow hz-mt-7 hz-gap-5"
           >
-            <div className="flex flex-col items-center">
-              <div className="h-12 w-12 rounded-lg bg-neutral-800/30 flex items-center justify-center mb-4">
-                <Eye className="h-6 w-6 text-neutral-400" />
+            <div className="hz-col hz-ai-center">
+              <div className="hz-sq-7 hz-r-lg hz-bg-raised hz-row hz-ai-center hz-jc-center hz-mb-4">
+                <Eye className="hz-sq-4 hz-fg-muted" />
               </div>
-              <p className="text-sm font-medium text-neutral-300">Screen Vision</p>
+              <p className="hz-t-sm hz-w-medium hz-fg-soft">Screen Vision</p>
             </div>
-            <div className="flex flex-col items-center">
-              <div className="h-12 w-12 rounded-lg bg-neutral-800/30 flex items-center justify-center mb-4">
-                <Cpu className="h-6 w-6 text-neutral-400" />
+            <div className="hz-col hz-ai-center">
+              <div className="hz-sq-7 hz-r-lg hz-bg-raised hz-row hz-ai-center hz-jc-center hz-mb-4">
+                <Cpu className="hz-sq-4 hz-fg-muted" />
               </div>
-              <p className="text-sm font-medium text-neutral-300">Multimodal Models</p>
+              <p className="hz-t-sm hz-w-medium hz-fg-soft">Multimodal Models</p>
             </div>
-            <div className="flex flex-col items-center">
-              <div className="h-12 w-12 rounded-lg bg-neutral-800/30 flex items-center justify-center mb-4">
-                <MousePointer className="h-6 w-6 text-neutral-400" />
+            <div className="hz-col hz-ai-center">
+              <div className="hz-sq-7 hz-r-lg hz-bg-raised hz-row hz-ai-center hz-jc-center hz-mb-4">
+                <MousePointer className="hz-sq-4 hz-fg-muted" />
               </div>
-              <p className="text-sm font-medium text-neutral-300">Cursor Control</p>
+              <p className="hz-t-sm hz-w-medium hz-fg-soft">Cursor Control</p>
             </div>
-            <div className="flex flex-col items-center">
-              <div className="h-12 w-12 rounded-lg bg-neutral-800/30 flex items-center justify-center mb-4">
-                <Keyboard className="h-6 w-6 text-neutral-400" />
+            <div className="hz-col hz-ai-center">
+              <div className="hz-sq-7 hz-r-lg hz-bg-raised hz-row hz-ai-center hz-jc-center hz-mb-4">
+                <Keyboard className="hz-sq-4 hz-fg-muted" />
               </div>
-              <p className="text-sm font-medium text-neutral-300">Keyboard Actions</p>
+              <p className="hz-t-sm hz-w-medium hz-fg-soft">Keyboard Actions</p>
             </div>
           </motion.div>
         </div>

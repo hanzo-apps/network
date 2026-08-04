@@ -26,21 +26,21 @@ const CallToAction = () => {
   }, []);
 
   return (
-    <section ref={containerRef} className="py-24 px-4 sm:px-6 lg:px-8 bg-[var(--black)] relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-r from-neutral-800/20 to-neutral-800/20 opacity-30"></div>
-      <div className="absolute -top-40 -right-40 w-80 h-80 bg-neutral-600/10 rounded-full blur-3xl"></div>
-      <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-neutral-600/10 rounded-full blur-3xl"></div>
+    <section ref={containerRef} className="hz-py-7 hz-px-4 hz-bg hz-rel hz-clip">
+      <div className="hz-abs hz-inset hz-dim-more"></div>
+      <div className="hz-sq-8 hz-abs hz-bg-raised hz-r-full hz-blur-bg"></div>
+      <div className="hz-sq-8 hz-abs hz-bg-raised hz-r-full hz-blur-bg"></div>
       
-      <div className="max-w-5xl mx-auto relative z-10">
+      <div className="hz-container-wide hz-rel hz-z-raised">
         <motion.div 
-          className="text-center"
+          className="hz-align-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
         >
           <h2 
-            className="text-3xl md:text-5xl font-bold mb-6 text-gradient-steel"
+            className="hz-t-3xl hz-w-bold hz-mb-5 hz-fg-soft"
             style={{
               backgroundPosition: `${(mousePosition.x / (containerRef.current?.offsetWidth || 1)) * 100}% ${(mousePosition.y / (containerRef.current?.offsetHeight || 1)) * 100}%`,
             }}
@@ -48,65 +48,65 @@ const CallToAction = () => {
             Do everything 100x faster
           </h2>
           
-          <p className="text-xl text-neutral-300 mb-12 max-w-2xl mx-auto">
+          <p className="hz-container-narrow hz-mw-md hz-t-xl hz-fg-soft hz-mb-7">
             Hanzo AI lets models understand your desktop activity. Build faster.
           </p>
           
-          <div className="flex flex-col sm:flex-row justify-center gap-4 mb-8">
+          <div className="hz-col-row hz-jc-center hz-gap-4 hz-mb-6">
             <Button 
               size="sm"
-              className="bg-gradient-to-r from-neutral-600 to-neutral-500 hover:from-neutral-500 hover:to-neutral-400 text-[var(--white)] shadow-lg hover:shadow-xl transition-all flex items-center"
+              className="hz-fg hz-shadow-lg hz-transition hz-row hz-ai-center"
             >
-              <Apple className="mr-2 h-4 w-4" />
+              <Apple className="hz-sq-2 hz-mr-2" />
               Download (Apple Silicon)
             </Button>
             <Button 
               size="sm"
-              className="bg-gradient-to-r from-neutral-600 to-neutral-500 hover:from-neutral-500 hover:to-neutral-400 text-[var(--white)] shadow-lg hover:shadow-xl transition-all flex items-center"
+              className="hz-fg hz-shadow-lg hz-transition hz-row hz-ai-center"
             >
-              <Apple className="mr-2 h-4 w-4" />
+              <Apple className="hz-sq-2 hz-mr-2" />
               Download (Intel Mac)
             </Button>
             <Button 
               size="sm"
-              className="bg-gradient-to-r from-gray-600 to-gray-500 hover:from-gray-500 hover:to-gray-400 text-[var(--white)] shadow-lg hover:shadow-xl transition-all flex items-center"
+              className="hz-fg hz-shadow-lg hz-transition hz-row hz-ai-center"
             >
-              <ArrowDown className="mr-2 h-4 w-4" />
+              <ArrowDown className="hz-sq-2 hz-mr-2" />
               Download for Windows
             </Button>
           </div>
           
-          <div className="flex flex-wrap justify-center gap-4 mb-8">
+          <div className="hz-row hz-wrap hz-jc-center hz-gap-4 hz-mb-6">
             <Button 
               size="sm"
               variant="outline"
-              className="border-gray-700 text-[var(--white)] hover:bg-gray-800"
+              className="hz-fg hz-hoverable"
             >
-              <Chrome className="mr-2 h-4 w-4" />
+              <Chrome className="hz-sq-2 hz-mr-2" />
               Chrome Extension
             </Button>
             <Button 
               size="sm"
               variant="outline"
-              className="border-gray-700 text-[var(--white)] hover:bg-gray-800"
+              className="hz-fg hz-hoverable"
             >
-              <Chrome className="mr-2 h-4 w-4" />
+              <Chrome className="hz-sq-2 hz-mr-2" />
               Safari Extension
             </Button>
             <Button 
               size="sm"
               variant="outline"
-              className="border-gray-700 text-[var(--white)] hover:bg-gray-800"
+              className="hz-fg hz-hoverable"
             >
-              <Chrome className="mr-2 h-4 w-4" />
+              <Chrome className="hz-sq-2 hz-mr-2" />
               Firefox Add-on
             </Button>
             <Button 
               size="sm"
               variant="outline"
-              className="border-gray-700 text-[var(--white)] hover:bg-gray-800"
+              className="hz-fg hz-hoverable"
             >
-              <Chrome className="mr-2 h-4 w-4" />
+              <Chrome className="hz-sq-2 hz-mr-2" />
               Edge Extension
             </Button>
           </div>

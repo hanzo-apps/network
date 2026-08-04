@@ -4,14 +4,14 @@ import { Gift } from 'lucide-react';
 
 const ReferralHeader = () => {
   return (
-    <div className="flex flex-col md:flex-row items-center justify-between gap-6 bg-gradient-to-r from-neutral-800/30 to-neutral-900/30 p-8 rounded-xl border border-neutral-500/20">
-      <div className="flex items-center gap-6">
-        <div className="h-16 w-16 rounded-full bg-neutral-800/50 border border-neutral-500/30 flex items-center justify-center flex-shrink-0">
-          <Gift className="h-8 w-8 text-neutral-300" />
+    <div className="hz-col-row hz-card hz-ai-center hz-jc-between hz-gap-5">
+      <div className="hz-row hz-ai-center hz-gap-5">
+        <div className="hz-sq-8 hz-r-full hz-bg-raised hz-bordered hz-border-strong hz-row hz-ai-center hz-jc-center hz-none">
+          <Gift className="hz-sq-5 hz-fg-soft" />
         </div>
-        <div className="text-center">
-          <h1 className="text-3xl font-bold mb-2">Referral Program</h1>
-          <p className="text-lg text-neutral-300">Get $5 in credits for every friend who signs up and pays for any plan</p>
+        <div className="hz-align-center">
+          <h1 className="hz-t-3xl hz-w-bold hz-mb-2">Referral Program</h1>
+          <p className="hz-t-lg hz-fg-soft">Get $5 in credits for every friend who signs up and pays for any plan</p>
         </div>
       </div>
     </div>

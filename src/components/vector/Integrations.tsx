@@ -10,24 +10,24 @@ const Integrations = () => {
   ];
   
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[var(--black)]">
-      <div className="max-w-7xl mx-auto">
+    <section className="hz-py-7 hz-px-4 hz-bg">
+      <div className="hz-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="hz-align-center hz-mb-7"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-[var(--white)] mb-6">
+          <h2 className="hz-t-3xl hz-w-bold hz-fg hz-mb-5">
             Plays Nicely With Your Favorite AI Dev Tools
           </h2>
-          <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
+          <p className="hz-container-narrow hz-t-xl hz-fg-soft">
             Seamlessly integrate Hanzo Vector with popular AI frameworks, libraries, and platforms.
           </p>
         </motion.div>
         
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+        <div className="hz-grid hz-grid-6 hz-gap-5">
           {tools.map((tool, index) => (
             <motion.div
               key={index}
@@ -35,9 +35,9 @@ const Integrations = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.05 }}
-              className="bg-gray-900/30 border border-gray-800 rounded-xl p-6 flex flex-col items-center justify-center aspect-square hover:bg-gray-900/50 transition-colors group"
+              className="hz-card hz-col hz-ai-center hz-jc-center hz-transition hz-card-interactive"
             >
-              <div className="text-xl font-semibold text-neutral-300 group-hover:text-neutral-400 transition-colors">
+              <div className="hz-t-xl hz-w-semibold hz-fg-soft hz-transition hz-hoverable">
                 {tool}
               </div>
             </motion.div>

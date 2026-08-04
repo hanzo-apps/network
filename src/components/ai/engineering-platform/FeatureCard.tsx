@@ -32,20 +32,20 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay }}
-      className="bg-gray-900/30 border border-gray-800 rounded-xl p-6 h-full flex flex-col"
+      className="hz-card hz-h-full hz-col"
     >
-      <div className={`w-12 h-12 rounded-lg ${iconBgClass} flex items-center justify-center mb-4`}>
+      <div className={`hz-sq-7 hz-r-lg ${iconBgClass} hz-row hz-ai-center hz-jc-center hz-mb-4`}>
         <div className={iconTextClass}>{icon}</div>
       </div>
       
-      <h3 className="text-xl font-bold mb-2">{title}</h3>
-      <p className="text-neutral-400 mb-4 flex-grow">{description}</p>
+      <h3 className="hz-t-xl hz-w-bold hz-mb-2">{title}</h3>
+      <p className="hz-fg-muted hz-mb-4 hz-grow">{description}</p>
       
-      <ul className="space-y-2">
+      <ul className="hz-stack-2">
         {featurePoints.map((point, index) => (
-          <li key={index} className="flex items-start">
-            <span className={`${bulletColor} mr-2 text-lg`}>•</span>
-            <span className="text-sm text-neutral-300">{point.text}</span>
+          <li key={index} className="hz-row hz-ai-start">
+            <span className={`${bulletColor} hz-mr-2 hz-t-lg`}>•</span>
+            <span className="hz-t-sm hz-fg-soft">{point.text}</span>
           </li>
         ))}
       </ul>

@@ -42,40 +42,40 @@ const AddCreditsDialog = ({ isOpen, onClose }: AddCreditsDialogProps) => {
   if (!isOpen) return null;
 
   return (
-    <div className="bg-gray-900/50 border border-gray-800 rounded-lg p-6">
-      <div className="flex justify-between items-center mb-4">
-        <h3 className="text-lg font-medium">Add Credits to Your Account</h3>
+    <div className="hz-card">
+      <div className="hz-row hz-jc-between hz-ai-center hz-mb-4">
+        <h3 className="hz-t-lg hz-w-medium">Add Credits to Your Account</h3>
         <Button variant="ghost" size="sm" onClick={onClose}>
-          <X className="h-4 w-4" />
+          <X className="hz-sq-2" />
         </Button>
       </div>
       
-      <form onSubmit={handlePurchaseCredits} className="space-y-4">
-        <div className="space-y-2">
+      <form onSubmit={handlePurchaseCredits} className="hz-stack-4">
+        <div className="hz-stack-2">
           <Label htmlFor="creditAmount">Amount (USD)</Label>
-          <div className="relative">
-            <div className="absolute left-3 top-3 text-neutral-400">$</div>
+          <div className="hz-rel">
+            <div className="hz-abs hz-fg-muted">$</div>
             <Input
               id="creditAmount"
               name="creditAmount"
               placeholder="50"
               value={creditAmount}
               onChange={handleCreditAmountChange}
-              className="bg-gray-800 border-gray-700 pl-8"
+              className="hz-bg-raised hz-px-6"
             />
           </div>
-          <p className="text-sm text-neutral-400">Minimum amount: $10</p>
+          <p className="hz-t-sm hz-fg-muted">Minimum amount: $10</p>
         </div>
         
         {/* Preset amounts */}
-        <div className="flex flex-wrap gap-2 mt-2">
+        <div className="hz-row hz-wrap hz-gap-2 hz-mt-2">
           {['10', '25', '50', '100', '500'].map(amount => (
             <Button
               key={amount}
               type="button"
               variant="outline"
               className={`${
-                creditAmount === amount ? 'border-neutral-500 bg-neutral-800/20' : ''
+                creditAmount === amount ? 'hz-border-strong hz-bg-raised' : ''
               }`}
               onClick={() => setCreditAmount(amount)}
             >
@@ -84,7 +84,7 @@ const AddCreditsDialog = ({ isOpen, onClose }: AddCreditsDialogProps) => {
           ))}
         </div>
         
-        <Button type="submit" className="w-full mt-4">
+        <Button type="submit" className="hz-w-full hz-mt-4">
           Purchase Credits
         </Button>
       </form>

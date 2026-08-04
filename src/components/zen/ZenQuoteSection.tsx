@@ -10,28 +10,28 @@ interface ZenQuoteSectionProps {
 
 const ZenQuoteSection: React.FC<ZenQuoteSectionProps> = ({ quote, attribution }) => {
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black to-gray-950/30">
-      <div className="max-w-4xl mx-auto">
+    <section className="hz-py-7 hz-px-4">
+      <div className="hz-container-narrow">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center"
+          className="hz-align-center"
         >
-          <div className="relative p-12 bg-gradient-to-br from-gray-900/40 to-black backdrop-blur-lg border border-gray-800/30 rounded-lg">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
-              <TaijiSymbol size={48} className="text-[var(--white)]/80" animate={true} />
+          <div className="hz-card hz-rel hz-glass">
+            <div className="hz-center-x hz-abs hz-top-0">
+              <TaijiSymbol size={48} className="hz-fg" animate={true} />
             </div>
             
-            <p className="text-neutral-300 md:text-xl leading-relaxed mb-8 max-w-2xl mx-auto">
+            <p className="hz-container-narrow hz-mw-md hz-fg-soft hz-leading-relaxed hz-mb-6">
               "{quote}"
             </p>
             
-            <div className="w-24 h-px bg-gradient-to-r from-transparent via-gray-700 to-transparent mx-auto mb-4"></div>
+            <div className="hz-bw-8 hz-mx-auto hz-mb-4"></div>
             
             {attribution && (
-              <p className="text-neutral-500 text-sm italic">
+              <p className="hz-fg-muted hz-t-sm hz-italic">
                 {attribution}
               </p>
             )}

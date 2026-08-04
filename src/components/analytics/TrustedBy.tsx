@@ -15,19 +15,19 @@ const clients = [
 
 const TrustedBy = () => {
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black to-gray-900/20">
-      <div className="max-w-6xl mx-auto">
+    <section className="hz-py-7 hz-px-4">
+      <div className="hz-container-wide">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-10"
+          className="hz-align-center hz-mb-6"
         >
-          <h2 className="text-2xl font-medium text-neutral-400">Trusted by Industry Leaders</h2>
+          <h2 className="hz-t-2xl hz-w-medium hz-fg-muted">Trusted by Industry Leaders</h2>
         </motion.div>
         
-        <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-10 px-4">
+        <div className="hz-row hz-wrap hz-jc-center hz-ai-center hz-gap-5 hz-px-4">
           {clients.map((client, index) => (
             <motion.div
               key={client.name}
@@ -35,7 +35,7 @@ const TrustedBy = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: client.delay }}
-              className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-gray-400 to-gray-300 bg-clip-text text-transparent"
+              className="hz-t-2xl hz-w-bold hz-chrome"
             >
               {client.name}
             </motion.div>

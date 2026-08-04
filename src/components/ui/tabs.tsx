@@ -1,54 +1,43 @@
+import * as React from 'react'
+import { Tabs as GuiTabs } from '@hanzo/gui'
+import { cn } from '@/lib/utils'
 
-import * as React from "react"
-import * as TabsPrimitive from "@radix-ui/react-tabs"
-
-import { cn } from "@/lib/utils"
-
-const Tabs = TabsPrimitive.Root
+/**
+ * Tabs on the gui backend. The shadcn shape (Tabs / TabsList / TabsTrigger /
+ * TabsContent, `value` + `onValueChange`) is kept so the pages that use it did
+ * not have to change; the roving focus, keyboard handling and ARIA come from
+ * @hanzogui/tabs instead of Radix.
+ */
+const Tabs = React.forwardRef<
+  React.ElementRef<typeof GuiTabs>,
+  React.ComponentPropsWithoutRef<typeof GuiTabs> & { className?: string }
+>(({ className, ...props }, ref) => (
+  <GuiTabs ref={ref} unstyled className={cn('hz-col', className)} {...props} />
+))
+Tabs.displayName = 'Tabs'
 
 const TabsList = React.forwardRef<
-  React.ElementRef<typeof TabsPrimitive.List>,
-  React.ComponentPropsWithoutRef<typeof TabsPrimitive.List>
+  React.ElementRef<typeof GuiTabs.List>,
+  React.ComponentPropsWithoutRef<typeof GuiTabs.List> & { className?: string }
 >(({ className, ...props }, ref) => (
-  <TabsPrimitive.List
-    ref={ref}
-    className={cn(
-      "inline-flex h-10 items-center justify-center rounded-md bg-muted p-1 text-muted-foreground",
-      className
-    )}
-    {...props}
-  />
+  <GuiTabs.List ref={ref} unstyled className={cn('mono-tabs', className)} {...props} />
 ))
-TabsList.displayName = TabsPrimitive.List.displayName
+TabsList.displayName = 'TabsList'
 
 const TabsTrigger = React.forwardRef<
-  React.ElementRef<typeof TabsPrimitive.Trigger>,
-  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger>
+  React.ElementRef<typeof GuiTabs.Tab>,
+  React.ComponentPropsWithoutRef<typeof GuiTabs.Tab> & { className?: string }
 >(({ className, ...props }, ref) => (
-  <TabsPrimitive.Trigger
-    ref={ref}
-    className={cn(
-      "inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm",
-      className
-    )}
-    {...props}
-  />
+  <GuiTabs.Tab ref={ref} unstyled className={cn('mono-tab', className)} {...props} />
 ))
-TabsTrigger.displayName = TabsPrimitive.Trigger.displayName
+TabsTrigger.displayName = 'TabsTrigger'
 
 const TabsContent = React.forwardRef<
-  React.ElementRef<typeof TabsPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Content>
+  React.ElementRef<typeof GuiTabs.Content>,
+  React.ComponentPropsWithoutRef<typeof GuiTabs.Content> & { className?: string }
 >(({ className, ...props }, ref) => (
-  <TabsPrimitive.Content
-    ref={ref}
-    className={cn(
-      "mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
-      className
-    )}
-    {...props}
-  />
+  <GuiTabs.Content ref={ref} unstyled className={cn('hz-mt-4', className)} {...props} />
 ))
-TabsContent.displayName = TabsPrimitive.Content.displayName
+TabsContent.displayName = 'TabsContent'
 
 export { Tabs, TabsList, TabsTrigger, TabsContent }

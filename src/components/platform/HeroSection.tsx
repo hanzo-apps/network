@@ -28,21 +28,21 @@ const HeroSection = () => {
   return (
     <section 
       ref={containerRef}
-      className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
+      className="hz-pt-6 hz-pb-6 hz-px-4 hz-rel hz-clip"
     >
       {/* Background elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-neutral-800/10 to-neutral-800/10 opacity-30"></div>
-      <div className="absolute -top-40 -right-40 w-80 h-80 bg-neutral-600/10 rounded-full blur-3xl"></div>
-      <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-neutral-600/10 rounded-full blur-3xl"></div>
+      <div className="hz-abs hz-inset hz-dim-more"></div>
+      <div className="hz-sq-8 hz-abs hz-bg-raised hz-r-full hz-blur-bg"></div>
+      <div className="hz-sq-8 hz-abs hz-bg-raised hz-r-full hz-blur-bg"></div>
       
-      <div className="max-w-5xl mx-auto text-center relative z-10">
+      <div className="hz-container-wide hz-align-center hz-rel hz-z-raised">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="mb-6"
+          className="hz-mb-5"
         >
-          <span className="inline-block px-4 py-1 rounded-full bg-neutral-800/30 border border-neutral-500/30 text-neutral-300 text-sm font-medium">
+          <span className="hz-px-4 hz-py-1 hz-r-full hz-bg-raised hz-bordered hz-border-strong hz-fg-soft hz-t-sm hz-w-medium">
             Open Source
           </span>
         </motion.div>
@@ -51,24 +51,24 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-8"
+          className="hz-mb-6"
         >
           <ChromeText 
             as="h1" 
-            className="text-4xl md:text-6xl font-bold mb-6"
+            className="hz-t-4xl hz-w-bold hz-mb-5"
             style={{
               backgroundPosition: `${(mousePosition.x / (containerRef.current?.offsetWidth || 1)) * 100}% ${(mousePosition.y / (containerRef.current?.offsetHeight || 1)) * 100}%`,
             }}
           >
             Hanzo Platform
           </ChromeText>
-          <p className="text-xl md:text-2xl text-neutral-300 max-w-3xl mx-auto mb-8">
+          <p className="hz-container-narrow hz-t-xl hz-fg-soft hz-mb-6">
             The free, forever, open-source version of our cloud infrastructure.
           </p>
-          <p className="text-lg md:text-xl text-neutral-400 max-w-3xl mx-auto mb-8">
+          <p className="hz-container-narrow hz-t-lg hz-fg-muted hz-mb-6">
             Build locally, deploy anywhere. Hanzo Platform gives developers the same powerful experience as our cloud offering, but with the freedom to run it on your own hardware.
           </p>
-          <p className="text-lg md:text-xl text-neutral-400 max-w-3xl mx-auto mb-12">
+          <p className="hz-container-narrow hz-t-lg hz-fg-muted hz-mb-7">
             Permissively licensed, community-driven, and built for the modern developer who values sovereignty and control over their stack.
           </p>
         </motion.div>
@@ -77,32 +77,32 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex flex-col sm:flex-row justify-center gap-4"
+          className="hz-col-row hz-jc-center hz-gap-4"
         >
           <Button 
             size="lg"
-            className="bg-gradient-to-r from-neutral-600 to-neutral-500 hover:from-neutral-500 hover:to-neutral-400 text-[var(--white)] px-8 py-6 rounded-lg text-lg font-medium shadow-lg hover:shadow-xl transition-all flex items-center"
+            className="hz-btn hz-btn-lg hz-fg hz-shadow-lg hz-transition"
           >
-            <Github className="mr-2 h-5 w-5" />
-            <a href="https://github.com/hanzo/platform" className="flex-1">Get on GitHub</a>
+            <Github className="hz-sq-3 hz-mr-2" />
+            <a href="https://github.com/hanzo/platform" className="hz-grow">Get on GitHub</a>
           </Button>
           
           <Button 
             size="lg"
             variant="outline"
-            className="text-[var(--white)] border-gray-700 hover:bg-[var(--white)]/10 px-8 py-6 text-lg rounded-lg font-medium flex items-center"
+            className="hz-btn hz-btn-ghost hz-btn-lg hz-fg"
           >
-            <Terminal className="mr-2 h-5 w-5" />
-            <span className="flex-1">Quick Start</span>
+            <Terminal className="hz-sq-3 hz-mr-2" />
+            <span className="hz-grow">Quick Start</span>
           </Button>
           
           <Button 
             size="lg"
             variant="outline"
-            className="text-[var(--white)] border-gray-700 hover:bg-[var(--white)]/10 px-8 py-6 text-lg rounded-lg font-medium flex items-center"
+            className="hz-btn hz-btn-ghost hz-btn-lg hz-fg"
           >
-            <Download className="mr-2 h-5 w-5" />
-            <span className="flex-1">Download CLI</span>
+            <Download className="hz-sq-3 hz-mr-2" />
+            <span className="hz-grow">Download CLI</span>
           </Button>
         </motion.div>
         
@@ -110,9 +110,9 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-16 px-4 py-3 bg-gray-900/50 rounded-lg inline-block"
+          className="hz-mt-7 hz-px-4 hz-py-3 hz-bg-surface hz-r-lg"
         >
-          <code className="text-sm text-neutral-300">
+          <code className="hz-t-sm hz-fg-soft">
             npx @hanzo/cli create my-new-project
           </code>
         </motion.div>

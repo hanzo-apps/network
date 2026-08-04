@@ -10,7 +10,7 @@ import MachinesCTA from "@/components/machines/MachinesCTA";
 
 const Machines = () => {
   return (
-    <div className="min-h-screen bg-[var(--black)] text-[var(--white)]">
+    <div className="hz-min-h-screen hz-bg hz-fg">
       <Navbar />
       <MachinesHero />
       <MachinesFeatures />

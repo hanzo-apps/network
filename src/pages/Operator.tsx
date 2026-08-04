@@ -23,7 +23,7 @@ const Operator = () => {
       
       <Navbar />
       
-      <main className="bg-[var(--black)] pt-16">
+      <main className="hz-bg hz-pt-6">
         <OperativeHero />
         <OperativeFeatures />
         <OperativeDemo />

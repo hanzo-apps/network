@@ -64,14 +64,14 @@ const principles: Principle[] = [
 
 const ZenManifesto: React.FC = () => {
   return (
-    <div className="relative">
-      <div className="absolute -z-10 top-0 left-0 right-0 h-full">
+    <div className="hz-rel">
+      <div className="hz-abs hz-z-behind hz-top-0 hz-left-0 hz-right-0 hz-h-full">
         <JapaneseWave 
           color="#a3a3a3" 
           height={300} 
           opacity={0.05} 
           speed={30} 
-          className="absolute top-1/4"
+          className="hz-abs"
         />
         <JapaneseWave 
           color="#737373" 
@@ -79,27 +79,27 @@ const ZenManifesto: React.FC = () => {
           delay={1} 
           opacity={0.03} 
           speed={35} 
-          className="absolute top-2/3"
+          className="hz-abs"
         />
       </div>
       
-      <div className="max-w-4xl mx-auto px-4 py-16">
+      <div className="hz-container-narrow hz-py-7">
         <motion.div 
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="hz-align-center hz-mb-7"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[var(--white)]">Our AI Engineering Manifesto</h2>
-          <p className="text-neutral-300 md:text-lg max-w-3xl mx-auto">
+          <h2 className="hz-t-3xl hz-w-bold hz-mb-4 hz-fg">Our AI Engineering Manifesto</h2>
+          <p className="hz-container-narrow hz-fg-soft">
             Hanzo began as a spark—an intuition that AI was the next great leverage. Since then, 
             we've honed our craft: a fusion of relentless experimentation, bold creativity, and disciplined 
             engineering, forging principles that guide our quest for radical innovation.
           </p>
         </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="hz-grid hz-grid-2 hz-gap-6">
           {principles.map((principle, index) => (
             <motion.div
               key={principle.title}
@@ -107,13 +107,13 @@ const ZenManifesto: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-gradient-to-br from-gray-900/80 to-gray-900/40 backdrop-blur-sm border border-neutral-500/20 rounded-lg p-6"
+              className="hz-card hz-glass"
             >
-              <div className="flex items-center mb-3">
-                <div className="text-3xl text-neutral-400 font-semibold mr-3">{principle.japaneseSymbol}</div>
-                <h3 className="text-xl text-[var(--white)] font-bold">{principle.title}</h3>
+              <div className="hz-row hz-ai-center hz-mb-3">
+                <div className="hz-t-3xl hz-fg-muted hz-w-semibold hz-mr-3">{principle.japaneseSymbol}</div>
+                <h3 className="hz-t-xl hz-fg hz-w-bold">{principle.title}</h3>
               </div>
-              <p className="text-neutral-300">{principle.description}</p>
+              <p className="hz-fg-soft">{principle.description}</p>
             </motion.div>
           ))}
         </div>
@@ -123,11 +123,11 @@ const ZenManifesto: React.FC = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="mt-16 text-center"
+          className="hz-mt-7 hz-align-center"
         >
-          <div className="inline-block p-6 bg-[var(--black)]/30 backdrop-blur-sm border border-neutral-500/20 rounded-lg">
-            <h3 className="text-xl text-[var(--white)] font-bold mb-2">Crafted by Innovators, Proven by Scale</h3>
-            <p className="text-neutral-300">
+          <div className="hz-card hz-glass">
+            <h3 className="hz-t-xl hz-fg hz-w-bold hz-mb-2">Crafted by Innovators, Proven by Scale</h3>
+            <p className="hz-fg-soft">
               The Zen of Hanzo is our battle-tested ethos. Born from the crucible of high-stakes launches,
               explosive successes, and daring experiments. We are AI engineers, cypherpunk innovators, 
               and relentless optimists who believe technology is a lever to amplify human creativity and enterprise.

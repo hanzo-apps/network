@@ -4,19 +4,19 @@ import { Link } from "react-router-dom";
 
 const RegCFBanner = () => {
   return (
-    <div className="sticky top-0 z-50 bg-gradient-to-r from-neutral-800/90 to-neutral-800/90 backdrop-blur-sm py-2 px-4 text-center text-white border-b border-white/10">
-      <div className="max-w-6xl mx-auto flex items-center justify-center md:justify-between flex-wrap gap-2">
-        <p className="text-sm font-medium">
+    <div className="hz-sticky hz-top-0 hz-z-overlay hz-glass hz-py-2 hz-px-4 hz-align-center hz-fg hz-border-b">
+      <div className="hz-container-wide hz-row hz-ai-center hz-jc-center hz-wrap hz-gap-2">
+        <p className="hz-t-sm hz-w-medium">
           Invest in the Future of AI Collaboration—Join Our $5M Reg CF Campaign on Republic.com
         </p>
         <Link
           to="https://republic.com/hanzo" 
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center text-xs font-medium px-3 py-1 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+          className="hz-inline hz-ai-center hz-t-xs hz-w-medium hz-px-3 hz-py-1 hz-r-full hz-bg-quiet hz-transition hz-hoverable"
         >
           <span>Learn More / Invest</span>
-          <ArrowRight className="ml-1 h-3 w-3" />
+          <ArrowRight className="hz-sq-1 hz-ml-1" />
         </Link>
       </div>
     </div>

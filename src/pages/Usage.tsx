@@ -11,13 +11,13 @@ const Usage = () => {
   const [dateRange, setDateRange] = useState({ start: "Mar 7", end: "Mar 8" });
 
   return (
-    <div className="min-h-screen bg-[var(--black)] text-[var(--white)]">
+    <div className="hz-min-h-screen hz-bg hz-fg">
       <Navbar />
       
-      <main className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
+      <main className="hz-pt-6 hz-pb-6 hz-px-4">
+        <div className="hz-container-wide">
           <AnimatedSection>
-            <div className="flex justify-between items-center mb-8">
+            <div className="hz-row hz-jc-between hz-ai-center hz-mb-6">
               <AnimatedHeading>Usage</AnimatedHeading>
               <DateRangePicker 
                 dateRange={dateRange} 
@@ -35,13 +35,13 @@ const Usage = () => {
               creditsRequired="0.00"
             />
             
-            <div className="mt-12">
-              <h2 className="text-2xl font-bold mb-6">Usage by Project</h2>
+            <div className="hz-mt-7">
+              <h2 className="hz-t-2xl hz-w-bold hz-mb-5">Usage by Project</h2>
               <ProjectUsage />
             </div>
 
-            <div className="mt-12">
-              <h2 className="text-2xl font-bold mb-6">Resource Breakdown</h2>
+            <div className="hz-mt-7">
+              <h2 className="hz-t-2xl hz-w-bold hz-mb-5">Resource Breakdown</h2>
               <ResourceBreakdown />
             </div>
           </AnimatedSection>

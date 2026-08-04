@@ -11,11 +11,11 @@ const FeatureCard = ({ icon: Icon, title, description, delay }) => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay }}
       viewport={{ once: true }}
-      className="bg-neutral-800/20 border border-neutral-500/30 rounded-xl p-6"
+      className="hz-card"
     >
-      <Icon className="h-10 w-10 text-neutral-400 mb-4" />
-      <h3 className="text-xl font-bold mb-2">{title}</h3>
-      <p className="text-neutral-300">
+      <Icon className="hz-sq-6 hz-fg-muted hz-mb-4" />
+      <h3 className="hz-t-xl hz-w-bold hz-mb-2">{title}</h3>
+      <p className="hz-fg-soft">
         {description}
       </p>
     </motion.div>
@@ -63,18 +63,18 @@ const MachinesFeatures = () => {
   ];
 
   return (
-    <section className="py-20 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <ChromeText as="h2" className="text-3xl font-bold mb-4">
+    <section className="hz-py-7 hz-rel">
+      <div className="hz-container">
+        <div className="hz-align-center hz-mb-7">
+          <ChromeText as="h2" className="hz-t-3xl hz-w-bold hz-mb-4">
             Key Features & Capabilities
           </ChromeText>
-          <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
+          <p className="hz-container-narrow hz-t-xl hz-fg-soft">
             Purpose-built infrastructure for the most demanding AI and compute workloads
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="hz-grid hz-grid-3 hz-gap-6">
           {features.map((feature, index) => (
             <FeatureCard
               key={index}

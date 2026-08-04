@@ -13,12 +13,12 @@ const ScrollToTopButton = ({ scrolled }: ScrollToTopButtonProps) => {
     <motion.button
       initial={{ opacity: 0 }}
       animate={{ opacity: scrolled ? 1 : 0 }}
-      className={`fixed bottom-8 right-8 bg-zinc-800/80 backdrop-blur-md p-3 rounded-full border border-zinc-700/30 hover:bg-zinc-700/80 transition-all z-50 ${
-        !scrolled ? 'pointer-events-none' : ''
+      className={`hz-card hz-card-tight hz-fixed hz-glass hz-transition hz-z-overlay hz-card-interactive ${
+        !scrolled ? 'hz-no-pointer' : ''
       }`}
       onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
     >
-      <ArrowUp className="h-5 w-5 text-[var(--white)]" />
+      <ArrowUp className="hz-sq-3 hz-fg" />
     </motion.button>
   );
 };

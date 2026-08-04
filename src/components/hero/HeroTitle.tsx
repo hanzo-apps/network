@@ -55,16 +55,16 @@ const HeroTitle: React.FC<HeroTitleProps> = ({
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="mb-4 text-center"
+        className="hz-mb-4 hz-align-center"
       >
-        <div className="inline-block px-4 py-1.5 rounded-full bg-neutral-800/20 border border-neutral-500/20 text-neutral-300 text-sm font-medium mb-4">
+        <div className="hz-px-4 hz-py-2 hz-r-full hz-bg-raised hz-bordered hz-border-strong hz-fg-soft hz-t-sm hz-w-medium hz-mb-4">
           AI Engineering Platform
         </div>
       </motion.div>
       
       <motion.h1 
         ref={headingRef}
-        className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-sans tracking-tight font-medium text-[var(--white)] leading-[1.1] pb-4"
+        className="hz-t-5xl hz-tracking-tight hz-w-medium hz-fg hz-pb-4"
         initial="hidden" 
         animate="visible" 
         variants={titleVariants} 
@@ -73,12 +73,12 @@ const HeroTitle: React.FC<HeroTitleProps> = ({
           backgroundPosition: `${(mousePosition.x / (containerRef.current?.offsetWidth || 1)) * 100}% ${(mousePosition.y / (containerRef.current?.offsetHeight || 1)) * 100}%`,
         }}
       >
-        <motion.span className="inline-flex items-center chrome-text font-bold mb-4 overflow-visible">
+        <motion.span className="hz-inline hz-ai-center chrome-text hz-w-bold hz-mb-4">
           Accelerating AI
         </motion.span>
         
         <motion.span 
-          className="block text-[var(--white)] mt-6 pb-4 overflow-visible chrome-text font-bold" 
+          className="hz-fg hz-mt-5 hz-pb-4 chrome-text hz-w-bold" 
           initial="hidden" 
           animate={animationComplete ? "visible" : "hidden"} 
           variants={titleVariants} 

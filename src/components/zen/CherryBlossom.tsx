@@ -24,11 +24,11 @@ const CherryBlossom: React.FC<CherryBlossomProps> = ({
   }));
 
   return (
-    <div ref={containerRef} className={`absolute inset-0 overflow-hidden pointer-events-none ${className}`}>
+    <div ref={containerRef} className={`hz-abs hz-inset hz-clip hz-no-pointer ${className}`}>
       {petals.map((petal) => (
         <motion.div
           key={petal.id}
-          className="absolute"
+          className="hz-abs"
           style={{
             left: `${petal.x}%`,
             top: "-50px",
@@ -56,7 +56,7 @@ const CherryBlossom: React.FC<CherryBlossomProps> = ({
         >
           <svg 
             viewBox="0 0 100 100" 
-            className="w-full h-full"
+            className="hz-w-full hz-h-full"
             style={{ 
               filter: "drop-shadow(0 0 2px rgba(255, 255, 255, 0.3))" 
             }}

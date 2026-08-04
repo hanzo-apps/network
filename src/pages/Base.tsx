@@ -16,7 +16,7 @@ import Compliance from "@/components/base/Compliance";
 
 const Base = () => {
   return (
-    <div className="min-h-screen bg-[var(--black)] text-[var(--white)]">
+    <div className="hz-min-h-screen hz-bg hz-fg">
       <Helmet>
         <title>Hanzo Base - Open Source Backend for Modern Apps | Hanzo AI</title>
         <meta

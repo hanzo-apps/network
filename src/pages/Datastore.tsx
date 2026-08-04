@@ -9,7 +9,7 @@ import GetStartedSection from "@/pages/datastore/GetStartedSection";
 
 const Datastore = () => {
   return (
-    <div className="min-h-screen bg-[var(--black)] text-[var(--white)]">
+    <div className="hz-min-h-screen hz-bg hz-fg">
       <Navbar />
 
       <main>

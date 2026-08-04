@@ -5,16 +5,16 @@ import { Button } from "@/components/ui/button";
 
 const ChatHeader: React.FC = () => {
   return (
-    <div className="bg-gray-900/70 p-4 border-b border-gray-800 flex items-center">
-      <div className="bg-neutral-600 h-8 w-8 rounded-full flex items-center justify-center mr-3">
-        <Bot className="h-4 w-4 text-[var(--white)]" />
+    <div className="hz-bg-surface hz-p-4 hz-border-b hz-row hz-ai-center">
+      <div className="hz-sq-5 hz-bg-raised hz-r-full hz-row hz-ai-center hz-jc-center hz-mr-3">
+        <Bot className="hz-sq-2 hz-fg" />
       </div>
       <div>
-        <h3 className="font-medium">Hanzo Assistant</h3>
-        <p className="text-xs text-neutral-400">Powered by GPT-4o</p>
+        <h3 className="hz-w-medium">Hanzo Assistant</h3>
+        <p className="hz-t-xs hz-fg-muted">Powered by GPT-4o</p>
       </div>
-      <Button variant="ghost" size="icon" className="ml-auto text-neutral-400 hover:text-[var(--white)]">
-        <Settings className="h-5 w-5" />
+      <Button variant="ghost" size="icon" className="hz-ml-auto hz-fg-muted hz-link">
+        <Settings className="hz-sq-3" />
       </Button>
     </div>
   );

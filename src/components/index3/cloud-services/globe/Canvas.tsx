@@ -36,7 +36,7 @@ const Canvas: React.FC<CanvasProps> = ({ width, height }) => {
       ref={canvasRef} 
       width={width}
       height={height}
-      className="absolute inset-0 w-full h-full"
+      className="hz-abs hz-inset hz-w-full hz-h-full"
     />
   );
 };

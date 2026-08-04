@@ -11,16 +11,16 @@ interface CloudHeaderProps {
 
 const CloudHeader: React.FC<CloudHeaderProps> = ({ mousePosition, containerRef }) => {
   return (
-    <div className="flex flex-col md:flex-row justify-between items-start mb-16">
-      <div className="max-w-2xl">
+    <div className="hz-col-row hz-jc-between hz-ai-start hz-mb-7">
+      <div className="hz-mw-md">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-4"
+          className="hz-mb-4"
         >
-          <span className="inline-block px-4 py-1 rounded-full bg-[var(--black)] border border-white/10 text-[var(--white)] text-sm font-medium">
+          <span className="hz-px-4 hz-py-1 hz-r-full hz-bg hz-bordered hz-fg hz-t-sm hz-w-medium">
             Infinitely Scalable, Globally Distributed
           </span>
         </motion.div>
@@ -32,14 +32,14 @@ const CloudHeader: React.FC<CloudHeaderProps> = ({ mousePosition, containerRef }
         >
           <ChromeText 
             as="h2" 
-            className="text-3xl md:text-5xl font-bold mb-4 text-left"
+            className="hz-t-3xl hz-w-bold hz-mb-4 hz-align-left"
             style={{
               backgroundPosition: `${(mousePosition.x / (containerRef.current?.offsetWidth || 1)) * 100}% ${(mousePosition.y / (containerRef.current?.offsetHeight || 1)) * 100}%`,
             }}
           >
             AI Cloud
           </ChromeText>
-          <p className="text-xl text-neutral-300 mt-4">
+          <p className="hz-t-xl hz-fg-soft hz-mt-4">
             Global, infinitely scalable, sustainable compute infrastructure specifically optimized for AI applications
           </p>
         </motion.div>
@@ -50,9 +50,9 @@ const CloudHeader: React.FC<CloudHeaderProps> = ({ mousePosition, containerRef }
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="mt-8 md:mt-0"
+        className="hz-mt-6"
       >
-        <Button size="lg" variant="outline" className="text-[var(--white)] border-white/10 bg-[var(--black)] hover:bg-neutral-900 whitespace-nowrap">
+        <Button size="lg" variant="outline" className="hz-fg hz-bg hz-whitespace-nowrap hz-hoverable">
           <a href="/cloud">Explore Cloud</a>
         </Button>
       </motion.div>

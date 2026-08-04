@@ -15,7 +15,7 @@ import ChatWidget from "@/components/chat/ChatWidget";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-black text-white overflow-x-hidden">
+    <div className="hz-min-h-screen hz-bg hz-fg">
       <Helmet>
         <title>Hanzo - Frontier AI for Developers</title>
         <meta name="description" content="Build with next-generation AI models. Deploy anywhere with our open-source platform or scale instantly on our AI cloud infrastructure." />

@@ -5,12 +5,12 @@ import { Paintbrush, Code2, TestTube, FileCheck, Bug, Workflow } from "lucide-re
 
 const UseCases = () => {
   const useCases = [
-    { name: "Design & Research", icon: <Paintbrush className="h-6 w-6" /> },
-    { name: "Everyday Coding", icon: <Code2 className="h-6 w-6" /> },
-    { name: "Automated Testing", icon: <TestTube className="h-6 w-6" /> },
-    { name: "Automated Code Reviews", icon: <FileCheck className="h-6 w-6" /> },
-    { name: "Bug-fixing", icon: <Bug className="h-6 w-6" /> },
-    { name: "Self-healing CI/CD", icon: <Workflow className="h-6 w-6" /> }
+    { name: "Design & Research", icon: <Paintbrush className="hz-sq-4" /> },
+    { name: "Everyday Coding", icon: <Code2 className="hz-sq-4" /> },
+    { name: "Automated Testing", icon: <TestTube className="hz-sq-4" /> },
+    { name: "Automated Code Reviews", icon: <FileCheck className="hz-sq-4" /> },
+    { name: "Bug-fixing", icon: <Bug className="hz-sq-4" /> },
+    { name: "Self-healing CI/CD", icon: <Workflow className="hz-sq-4" /> }
   ];
 
   const container = {
@@ -29,28 +29,28 @@ const UseCases = () => {
   };
 
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-900 to-black">
-      <div className="max-w-7xl mx-auto">
+    <section className="hz-py-7 hz-px-4">
+      <div className="hz-container">
         <motion.div 
-          className="text-center mb-16"
+          className="hz-align-center hz-mb-7"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Use cases</h2>
-          <div className="max-w-3xl mx-auto">
-            <p className="text-2xl font-semibold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-neutral-400 to-neutral-200">
+          <h2 className="hz-t-3xl hz-w-bold hz-mb-5">Use cases</h2>
+          <div className="hz-container-narrow">
+            <p className="hz-t-2xl hz-w-semibold hz-mb-2 hz-chrome">
               The Ultimate Developer Experience, Powered by AI
             </p>
-            <p className="text-lg text-neutral-300">
+            <p className="hz-t-lg hz-fg-soft">
               Hanzo is redefining the developer experience with AI-powered assistance for design, research, coding, reviews, debugging, and CI/CD. Let AI handle the mundane tasks and unlock your full potential.
             </p>
           </div>
         </motion.div>
 
         <motion.div 
-          className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mb-16"
+          className="hz-grid hz-grid-3 hz-gap-4 hz-mb-7"
           variants={container}
           initial="hidden"
           whileInView="show"
@@ -59,45 +59,45 @@ const UseCases = () => {
           {useCases.map((useCase, index) => (
             <motion.div 
               key={index}
-              className="bg-gray-800/30 border border-gray-700/50 rounded-lg p-4 flex items-center gap-3 hover:bg-gray-800/50 transition-colors"
+              className="hz-card hz-row hz-ai-center hz-gap-3 hz-transition hz-card-interactive"
               variants={item}
             >
-              <div className="p-2 bg-neutral-800/30 rounded-lg text-neutral-300">
+              <div className="hz-p-2 hz-bg-raised hz-r-lg hz-fg-soft">
                 {useCase.icon}
               </div>
-              <span className="font-medium">{useCase.name}</span>
+              <span className="hz-w-medium">{useCase.name}</span>
             </motion.div>
           ))}
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12 my-16">
+        <div className="hz-grid hz-grid-2 hz-gap-7 hz-mt-7 hz-mb-7">
           <motion.div 
-            className="bg-gray-800/30 border border-gray-700/50 rounded-lg p-6"
+            className="hz-card"
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="text-xl font-semibold mb-4">Integrated AI Across the Software Development Lifecycle.</h3>
-            <p className="text-neutral-300">
+            <h3 className="hz-t-xl hz-w-semibold hz-mb-4">Integrated AI Across the Software Development Lifecycle.</h3>
+            <p className="hz-fg-soft">
               Reduce cycle times with the help of AI workflows throughout the entire software development lifecycle. Hanzo's AI Agents support teams at every stage from coding and testing, analyzing production errors and troubleshooting CI/CD pipelines.
             </p>
           </motion.div>
 
           <motion.div 
-            className="bg-gray-800/30 border border-gray-700/50 rounded-lg p-6"
+            className="hz-card"
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="text-xl font-semibold mb-4">One AI Platform for All Dev Tasks.</h3>
-            <p className="text-neutral-300 mb-6">
+            <h3 className="hz-t-xl hz-w-semibold hz-mb-4">One AI Platform for All Dev Tasks.</h3>
+            <p className="hz-fg-soft hz-mb-5">
               Included in one subscription are dozens of built-in AI agentic workflows, carefully planned to perform developer tasks for you. Full-stack engineer? Of course. Bug fixes? Sure. Adding tests to existing code? No problem. UX/UI Improvements? Included. Generating user docs? That too.
             </p>
-            <div className="text-right">
-              <a href="#learn-more" className="text-neutral-400 hover:text-neutral-300 inline-flex items-center">
-                Learn more <span className="ml-1">→</span>
+            <div className="hz-align-right">
+              <a href="#learn-more" className="hz-fg-muted hz-inline hz-ai-center hz-link">
+                Learn more <span className="hz-ml-1">→</span>
               </a>
             </div>
           </motion.div>

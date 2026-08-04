@@ -11,7 +11,7 @@ const TunnelSegments: React.FC = () => {
     tunnelSegments.push(
       <motion.div
         key={`tunnel-${i}`}
-        className="absolute bg-transparent"
+        className="hz-abs hz-bg-none"
         style={{
           width: `${size}%`,
           height: `${size}%`,

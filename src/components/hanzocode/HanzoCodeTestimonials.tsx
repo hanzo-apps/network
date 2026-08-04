@@ -5,43 +5,43 @@ import { Twitter } from "lucide-react";
 
 const HanzoCodeTestimonials = () => {
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-900 to-black">
-      <div className="max-w-7xl mx-auto">
+    <section className="hz-py-7 hz-px-4">
+      <div className="hz-container">
         <motion.div 
-          className="text-center mb-16"
+          className="hz-align-center hz-mb-7"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="hz-t-3xl hz-w-bold hz-mb-4">
             Loved by world-class devs
           </h2>
-          <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
+          <p className="hz-container-narrow hz-t-xl hz-fg-soft">
             Engineers all around the world reach for Hanzo Code by choice.
           </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+        <div className="hz-grid hz-grid-3 hz-gap-5 hz-mb-7">
           {/* Just showing one testimonial for example, but you can replicate this */}
           <motion.div 
-            className="bg-gray-800/30 border border-gray-700/50 rounded-lg p-6 hover:bg-gray-800/50 transition-colors"
+            className="hz-card hz-transition hz-card-interactive"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <div className="flex items-start gap-4 mb-4">
-              <div className="w-12 h-12 rounded-full bg-gray-700"></div>
+            <div className="hz-row hz-ai-start hz-gap-4 hz-mb-4">
+              <div className="hz-sq-7 hz-r-full hz-bg-raised"></div>
               <div>
-                <div className="font-medium">Sarah Chen</div>
-                <div className="text-neutral-400 flex items-center">
-                  <Twitter className="h-3.5 w-3.5 mr-1 text-neutral-400" />
+                <div className="hz-w-medium">Sarah Chen</div>
+                <div className="hz-fg-muted hz-row hz-ai-center">
+                  <Twitter className="hz-sq-2 hz-mr-1 hz-fg-muted" />
                   @sarahcodes
                 </div>
               </div>
             </div>
-            <p className="text-neutral-300">Hanzo Code has completely changed how I approach coding. The AI suggestions are spot-on and save me hours every day.</p>
+            <p className="hz-fg-soft">Hanzo Code has completely changed how I approach coding. The AI suggestions are spot-on and save me hours every day.</p>
           </motion.div>
         </div>
       </div>

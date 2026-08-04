@@ -5,21 +5,21 @@ import { Button } from "@/components/ui/button";
 
 const HanzoAppEnterprise = () => {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-950">
-      <div className="max-w-3xl mx-auto text-center">
+    <section className="hz-py-7 hz-px-4 hz-bg-surface">
+      <div className="hz-container-narrow hz-align-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl font-bold mb-4">Enterprise</h2>
-          <p className="text-xl text-neutral-300 mb-8">
+          <h2 className="hz-t-3xl hz-w-bold hz-mb-4">Enterprise</h2>
+          <p className="hz-t-xl hz-fg-soft hz-mb-6">
             Looking for specific use cases and support?
           </p>
           <Button 
             size="lg"
-            className="bg-neutral-600 hover:bg-neutral-700 text-[var(--white)] px-8"
+            className="hz-bg-raised hz-fg hz-px-6 hz-hoverable"
           >
             Let's Chat
           </Button>

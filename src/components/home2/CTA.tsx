@@ -6,44 +6,44 @@ import { ArrowRight, Github } from "lucide-react";
 
 const CTA = () => {
   return (
-    <section className="py-20 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-neutral-800/10 to-black"></div>
+    <section className="hz-py-7 hz-rel hz-clip">
+      <div className="hz-abs hz-inset"></div>
       
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="container mx-auto px-4 relative z-10"
+        className="hz-container hz-mx-auto hz-px-4 hz-rel hz-z-raised"
       >
-        <div className="max-w-4xl mx-auto bg-gradient-to-br from-gray-900 to-black border border-neutral-500/20 rounded-2xl p-10 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+        <div className="hz-container-narrow hz-card hz-align-center">
+          <h2 className="hz-t-3xl hz-w-bold hz-mb-5">
             Ready to Build the Future with AI?
           </h2>
-          <p className="text-xl text-neutral-300 mb-10 max-w-2xl mx-auto">
+          <p className="hz-container-narrow hz-mw-md hz-t-xl hz-fg-soft hz-mb-6">
             Join thousands of developers and start building powerful AI applications today.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="hz-col-row hz-gap-4 hz-jc-center">
             <Button 
               size="sm"
-              className="bg-gradient-to-r from-neutral-600 to-neutral-600 hover:from-neutral-700 hover:to-neutral-700 text-[var(--white)] rounded-full"
+              className="hz-fg hz-r-full"
             >
               Get Started Free
-              <ArrowRight className="ml-2 h-4 w-4" />
+              <ArrowRight className="hz-sq-2 hz-ml-2" />
             </Button>
             
             <Button 
               size="sm"
               variant="outline"
-              className="text-[var(--white)] border-gray-700 hover:bg-[var(--white)]/10 rounded-full"
+              className="hz-fg hz-r-full hz-hoverable"
             >
-              <Github className="mr-2 h-4 w-4" />
+              <Github className="hz-sq-2 hz-mr-2" />
               Star on GitHub
             </Button>
           </div>
           
-          <p className="text-neutral-400 mt-8">
+          <p className="hz-fg-muted hz-mt-6">
             No credit card required. Start with our free tier.
           </p>
         </div>

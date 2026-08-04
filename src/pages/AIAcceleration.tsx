@@ -8,21 +8,21 @@ import JapaneseWave from "@/components/zen/JapaneseWave";
 
 const AIAcceleration = () => {
   return (
-    <div className="min-h-screen bg-[var(--black)] text-[var(--white)]">
+    <div className="hz-min-h-screen hz-bg hz-fg">
       <Helmet>
         <title>AI/ACC - Accelerating AI for a Better Future | Hanzo</title>
         <meta name="description" content="The AI Acceleration Manifesto - How accelerating artificial intelligence development will solve humanity's greatest challenges." />
       </Helmet>
 
       {/* Background elements */}
-      <div className="fixed inset-0 -z-10">
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-black to-gray-900/20"></div>
+      <div className="hz-fixed hz-inset hz-z-behind">
+        <div className="hz-abs hz-top-0 hz-left-0 hz-w-full hz-h-full"></div>
         <JapaneseWave 
           color="#a3a3a3" 
           height={600} 
           opacity={0.02} 
           speed={45} 
-          className="absolute bottom-0"
+          className="hz-abs hz-bottom-0"
         />
         <JapaneseWave 
           color="#737373" 
@@ -30,41 +30,41 @@ const AIAcceleration = () => {
           delay={2} 
           opacity={0.015} 
           speed={50} 
-          className="absolute bottom-40"
+          className="hz-abs"
         />
       </div>
 
       <Navbar />
 
-      <main className="pt-20 pb-20">
+      <main className="hz-pt-6 hz-pb-6">
         {/* Hero Section */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <section className="hz-py-7 hz-px-4 hz-rel hz-clip">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
-            className="max-w-5xl mx-auto text-center relative z-10"
+            className="hz-container-wide hz-align-center hz-rel hz-z-raised"
           >
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              <span className="text-neutral-400">AI/ACC</span> Manifesto
+            <h1 className="hz-t-4xl hz-w-bold hz-mb-5">
+              <span className="hz-fg-muted">AI/ACC</span> Manifesto
             </h1>
-            <p className="text-xl md:text-2xl text-neutral-300 max-w-3xl mx-auto">
+            <p className="hz-container-narrow hz-t-xl hz-fg-soft">
               Accelerating AI to Transcend Human Limitations
             </p>
           </motion.div>
         </section>
 
         {/* Manifesto Introduction */}
-        <section className="py-12 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
+        <section className="hz-py-7 hz-px-4">
+          <div className="hz-container-narrow">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="bg-[var(--black)]/30 backdrop-blur-sm border border-neutral-500/20 rounded-lg p-8 mb-12"
+              className="hz-card hz-glass hz-mb-7"
             >
-              <p className="text-neutral-300 md:text-lg leading-relaxed">
+              <p className="hz-fg-soft hz-leading-relaxed">
                 We stand at the precipice of a technological revolution unparalleled in human history. 
                 The acceleration of artificial intelligence represents not merely another step in our 
                 technological evolution, but a fundamental paradigm shift that will redefine the very 
@@ -76,29 +76,29 @@ const AIAcceleration = () => {
         </section>
 
         {/* The Vision Section */}
-        <section className="py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black/50 to-neutral-800/10">
-          <div className="max-w-4xl mx-auto">
+        <section className="hz-py-7 hz-px-4">
+          <div className="hz-container-narrow">
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="text-center mb-12"
+              className="hz-align-center hz-mb-7"
             >
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">The Vision</h2>
-              <div className="h-1 w-20 bg-neutral-600 mx-auto"></div>
+              <h2 className="hz-t-3xl hz-w-bold hz-mb-4">The Vision</h2>
+              <div className="hz-bh-1 hz-bw-8 hz-bg-raised hz-mx-auto"></div>
             </motion.div>
 
-            <div className="space-y-8">
+            <div className="hz-stack-6">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
-                className="bg-[var(--black)]/40 backdrop-blur-sm border border-neutral-500/20 rounded-lg p-8"
+                className="hz-card hz-glass"
               >
-                <h3 className="text-xl md:text-2xl font-bold mb-4 text-neutral-300">Transcending Biological Constraints</h3>
-                <p className="text-neutral-300 leading-relaxed">
+                <h3 className="hz-t-xl hz-w-bold hz-mb-4 hz-fg-soft">Transcending Biological Constraints</h3>
+                <p className="hz-fg-soft hz-leading-relaxed">
                   For millennia, humanity has been bound by the limitations of our biology—our finite lifespans, 
                   susceptibility to disease, and cognitive constraints. Advanced AI systems will unlock unprecedented 
                   capabilities in medicine, genetic engineering, and neuroscience, extending human lifespans, 
@@ -113,10 +113,10 @@ const AIAcceleration = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="bg-[var(--black)]/40 backdrop-blur-sm border border-neutral-500/20 rounded-lg p-8"
+                className="hz-card hz-glass"
               >
-                <h3 className="text-xl md:text-2xl font-bold mb-4 text-neutral-300">Solving Existential Challenges</h3>
-                <p className="text-neutral-300 leading-relaxed">
+                <h3 className="hz-t-xl hz-w-bold hz-mb-4 hz-fg-soft">Solving Existential Challenges</h3>
+                <p className="hz-fg-soft hz-leading-relaxed">
                   Climate change, resource scarcity, and global inequality represent existential threats to our 
                   civilization. AI acceleration will deliver revolutionary solutions to these challenges—from 
                   carbon-neutral energy systems that operate at orders of magnitude greater efficiency than 
@@ -131,10 +131,10 @@ const AIAcceleration = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="bg-[var(--black)]/40 backdrop-blur-sm border border-neutral-500/20 rounded-lg p-8"
+                className="hz-card hz-glass"
               >
-                <h3 className="text-xl md:text-2xl font-bold mb-4 text-neutral-300">Universal Prosperity</h3>
-                <p className="text-neutral-300 leading-relaxed">
+                <h3 className="hz-t-xl hz-w-bold hz-mb-4 hz-fg-soft">Universal Prosperity</h3>
+                <p className="hz-fg-soft hz-leading-relaxed">
                   Advanced AI will democratize access to world-class education, healthcare, and economic 
                   opportunity. Geographical accidents of birth will no longer determine one's potential, as AI 
                   systems deliver personalized learning experiences and medical care to everyone on Earth. 
@@ -147,32 +147,32 @@ const AIAcceleration = () => {
         </section>
 
         {/* The Hanzo Method Section */}
-        <section className="py-12 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
+        <section className="hz-py-7 hz-px-4">
+          <div className="hz-container-narrow">
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="text-center mb-12"
+              className="hz-align-center hz-mb-7"
             >
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">The Hanzo Method</h2>
-              <div className="h-1 w-20 bg-neutral-600 mx-auto"></div>
-              <p className="mt-6 text-neutral-300 max-w-3xl mx-auto">
+              <h2 className="hz-t-3xl hz-w-bold hz-mb-4">The Hanzo Method</h2>
+              <div className="hz-bh-1 hz-bw-8 hz-bg-raised hz-mx-auto"></div>
+              <p className="hz-container-narrow hz-mt-5 hz-fg-soft">
                 The Sensei Way of Building Scalable, AI-Driven Businesses
               </p>
             </motion.div>
 
-            <div className="space-y-8">
+            <div className="hz-stack-6">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
-                className="bg-[var(--black)]/40 backdrop-blur-sm border border-neutral-500/20 rounded-lg p-8"
+                className="hz-card hz-glass"
               >
-                <h3 className="text-xl md:text-2xl font-bold mb-4 text-neutral-300">Scientific Iteration</h3>
-                <p className="text-neutral-300 leading-relaxed">
+                <h3 className="hz-t-xl hz-w-bold hz-mb-4 hz-fg-soft">Scientific Iteration</h3>
+                <p className="hz-fg-soft hz-leading-relaxed">
                   The foundation of the Hanzo Method is relentless, scientific iteration. Every hypothesis is 
                   tested, every assumption challenged, and every result meticulously measured. By applying 
                   empirical methods to business development, we eliminate the guesswork that plagues traditional 
@@ -187,10 +187,10 @@ const AIAcceleration = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="bg-[var(--black)]/40 backdrop-blur-sm border border-neutral-500/20 rounded-lg p-8"
+                className="hz-card hz-glass"
               >
-                <h3 className="text-xl md:text-2xl font-bold mb-4 text-neutral-300">Modular Architecture</h3>
-                <p className="text-neutral-300 leading-relaxed">
+                <h3 className="hz-t-xl hz-w-bold hz-mb-4 hz-fg-soft">Modular Architecture</h3>
+                <p className="hz-fg-soft hz-leading-relaxed">
                   The Hanzo Method advocates for extreme modularity in both technical architecture and business 
                   units. Each component is designed to function independently while integrating seamlessly with the 
                   whole—embodying our principle of orthogonality. This approach enables teams to move quickly and 
@@ -205,10 +205,10 @@ const AIAcceleration = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="bg-[var(--black)]/40 backdrop-blur-sm border border-neutral-500/20 rounded-lg p-8"
+                className="hz-card hz-glass"
               >
-                <h3 className="text-xl md:text-2xl font-bold mb-4 text-neutral-300">AI-First Design</h3>
-                <p className="text-neutral-300 leading-relaxed">
+                <h3 className="hz-t-xl hz-w-bold hz-mb-4 hz-fg-soft">AI-First Design</h3>
+                <p className="hz-fg-soft hz-leading-relaxed">
                   Where traditional businesses incorporate AI as an afterthought, the Hanzo Method places AI at the 
                   core of every process, product, and decision. This is not merely about automation, but about 
                   reimagining entire business functions through the lens of intelligent systems. Customer service 
@@ -224,10 +224,10 @@ const AIAcceleration = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.3 }}
-                className="bg-[var(--black)]/40 backdrop-blur-sm border border-neutral-500/20 rounded-lg p-8"
+                className="hz-card hz-glass"
               >
-                <h3 className="text-xl md:text-2xl font-bold mb-4 text-neutral-300">Planetary-Scale Design</h3>
-                <p className="text-neutral-300 leading-relaxed">
+                <h3 className="hz-t-xl hz-w-bold hz-mb-4 hz-fg-soft">Planetary-Scale Design</h3>
+                <p className="hz-fg-soft hz-leading-relaxed">
                   The Hanzo Method rejects the incremental approach to scaling. Instead, we design for global scale 
                   from day one, architecting systems that can serve billions of users without fundamental redesign. 
                   This approach eliminates the plateau points that traditionally halt growth and enables truly exponential 
@@ -241,10 +241,10 @@ const AIAcceleration = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.4 }}
-                className="bg-[var(--black)]/40 backdrop-blur-sm border border-neutral-500/20 rounded-lg p-8"
+                className="hz-card hz-glass"
               >
-                <h3 className="text-xl md:text-2xl font-bold mb-4 text-neutral-300">Recursive Improvement</h3>
-                <p className="text-neutral-300 leading-relaxed">
+                <h3 className="hz-t-xl hz-w-bold hz-mb-4 hz-fg-soft">Recursive Improvement</h3>
+                <p className="hz-fg-soft hz-leading-relaxed">
                   The ultimate manifestation of the Hanzo Method is recursive self-improvement. Each iteration of 
                   the business not only improves its outputs but enhances the very mechanisms of improvement. AI 
                   systems optimize AI systems; experimental frameworks refine experimental frameworks; learning 
@@ -258,27 +258,27 @@ const AIAcceleration = () => {
         </section>
 
         {/* Call to Action */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
+        <section className="hz-py-7 hz-px-4">
+          <div className="hz-container-narrow">
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="text-center"
+              className="hz-align-center"
             >
-              <div className="p-8 bg-gradient-to-br from-black/80 to-neutral-800/20 backdrop-blur-sm border border-neutral-500/20 rounded-lg">
-                <h3 className="text-2xl font-bold text-[var(--white)] mb-4">The Time for Acceleration is Now</h3>
-                <p className="text-neutral-300 md:text-lg leading-relaxed mb-8">
+              <div className="hz-card hz-glass">
+                <h3 className="hz-t-2xl hz-w-bold hz-fg hz-mb-4">The Time for Acceleration is Now</h3>
+                <p className="hz-fg-soft hz-leading-relaxed hz-mb-6">
                   The path forward is clear. We must accelerate AI development not because it is easy, but because it is 
                   necessary. The greatest risk is not that we move too quickly, but that we move too slowly to address 
                   the urgent challenges facing humanity. By embracing AI acceleration, we embrace our highest potential—a 
                   future where human creativity, fulfillment, and flourishing know no bounds.
                 </p>
-                <div className="flex justify-center">
+                <div className="hz-row hz-jc-center">
                   <a 
                     href="/platform" 
-                    className="px-8 py-3 bg-neutral-600 text-[var(--white)] rounded-md hover:bg-neutral-600 transition-colors"
+                    className="hz-px-6 hz-py-3 hz-bg-raised hz-fg hz-r-md hz-transition hz-hoverable"
                   >
                     Join the Acceleration
                   </a>

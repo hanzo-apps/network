@@ -5,19 +5,19 @@ import HexagramsGrid from "./HexagramsGrid";
 
 const HexagramsSection = () => {
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8" id="principles">
-      <div className="max-w-7xl mx-auto">
+    <section className="hz-py-7 hz-px-4" id="principles">
+      <div className="hz-container">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-8"
+          className="hz-align-center hz-mb-6"
         >
-          <h2 className="text-3xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-b from-white via-white/90 to-white/70">
+          <h2 className="hz-t-3xl hz-w-bold hz-mb-4 hz-chrome">
             Zen of Hanzo
           </h2>
-          <p className="text-lg text-neutral-400 max-w-3xl mx-auto">
+          <p className="hz-container-narrow hz-t-lg hz-fg-muted">
             Engineering principles for building next-generation AI systems
           </p>
         </motion.div>

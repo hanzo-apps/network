@@ -23,20 +23,20 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ title, description, icon: Ico
         boxShadow: "0 10px 30px -15px rgba(136, 58, 234, 0.5)",
         borderColor: "rgba(163, 163, 163, 0.5)" 
       }}
-      className="bg-gradient-to-br from-gray-900 to-black p-6 rounded-xl border border-gray-800 transition-all duration-300"
+      className="hz-card hz-transition"
     >
       <motion.div 
         initial={{ scale: 0.8, opacity: 0 }}
         whileInView={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.5, delay: index * 0.1 + 0.2 }}
         viewport={{ once: true }}
-        className={`w-12 h-12 rounded-lg flex items-center justify-center mb-4 ${bgColor}`}
+        className={`hz-sq-7 hz-r-lg hz-row hz-ai-center hz-jc-center hz-mb-4 ${bgColor}`}
       >
         <motion.div
           whileHover={{ rotate: 15, scale: 1.1 }}
           transition={{ type: "spring", stiffness: 300, damping: 10 }}
         >
-          <Icon className={`h-6 w-6 ${iconColor}`} />
+          <Icon className={`hz-sq-4 ${iconColor}`} />
         </motion.div>
       </motion.div>
       <motion.h3 
@@ -44,7 +44,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ title, description, icon: Ico
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
         viewport={{ once: true }}
-        className="text-xl font-bold mb-2 text-[var(--white)]"
+        className="hz-t-xl hz-w-bold hz-mb-2 hz-fg"
       >
         {title}
       </motion.h3>
@@ -53,7 +53,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ title, description, icon: Ico
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: index * 0.1 + 0.4 }}
         viewport={{ once: true }}
-        className="text-neutral-400"
+        className="hz-fg-muted"
       >
         {description}
       </motion.p>
@@ -63,10 +63,10 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ title, description, icon: Ico
 
 const FeaturesGrid: React.FC = () => {
   return (
-    <section className="py-20 px-4 md:px-8 bg-[var(--black)]/50 relative">
+    <section className="hz-py-7 hz-px-4 hz-bg-overlay hz-rel">
       {/* Animated background dots */}
       <motion.div 
-        className="absolute inset-0 opacity-20 z-0 pointer-events-none"
+        className="hz-abs hz-inset hz-dim-more hz-z-base hz-no-pointer"
         initial={{ backgroundPositionY: "0%" }}
         animate={{ backgroundPositionY: "100%" }}
         transition={{ duration: 40, repeat: Infinity, repeatType: "reverse" }}
@@ -76,13 +76,13 @@ const FeaturesGrid: React.FC = () => {
         }}
       />
       
-      <div className="max-w-6xl mx-auto relative z-10">
+      <div className="hz-container-wide hz-rel hz-z-raised">
         <motion.h2 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="text-3xl md:text-4xl font-bold text-center mb-4 text-[var(--white)]"
+          className="hz-t-3xl hz-w-bold hz-align-center hz-mb-4 hz-fg"
         >
           The Complete AI Engineering Platform
         </motion.h2>
@@ -92,10 +92,10 @@ const FeaturesGrid: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="w-24 h-1 bg-gradient-to-r from-neutral-500 to-neutral-300 rounded-full mx-auto mb-12"
+          className="hz-bw-8 hz-bh-1 hz-r-full hz-mx-auto hz-mb-7"
         />
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="hz-grid hz-grid-3 hz-gap-5">
           {features.map((feature, index) => (
             <FeatureCard
               key={feature.title}

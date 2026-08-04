@@ -101,7 +101,7 @@ const Trail: React.FC<TrailProps> = ({ index }) => {
 
   return (
     <div 
-      className="absolute rounded-full" 
+      className="hz-abs hz-r-full" 
       style={style}
     />
   );

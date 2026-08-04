@@ -6,29 +6,29 @@ import ChromeText from "@/components/ui/chrome-text";
 
 const CallToAction = () => {
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-[var(--black)] relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-r from-neutral-800/20 to-neutral-800/20 opacity-30"></div>
-      <div className="absolute -top-40 -right-40 w-80 h-80 bg-neutral-600/10 rounded-full blur-3xl"></div>
-      <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-neutral-600/10 rounded-full blur-3xl"></div>
+    <section className="hz-py-7 hz-px-4 hz-bg hz-rel hz-clip">
+      <div className="hz-abs hz-inset hz-dim-more"></div>
+      <div className="hz-sq-8 hz-abs hz-bg-raised hz-r-full hz-blur-bg"></div>
+      <div className="hz-sq-8 hz-abs hz-bg-raised hz-r-full hz-blur-bg"></div>
       
-      <div className="max-w-5xl mx-auto relative z-10">
+      <div className="hz-container-wide hz-rel hz-z-raised">
         <motion.div 
-          className="text-center"
+          className="hz-align-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
         >
-          <ChromeText as="h2" className="text-3xl md:text-5xl font-bold mb-6">
+          <ChromeText as="h2" className="hz-t-3xl hz-w-bold hz-mb-5">
             Start building on Hanzo Cloud
           </ChromeText>
-          <p className="text-xl text-neutral-300 max-w-3xl mx-auto mb-10">
+          <p className="hz-container-narrow hz-t-xl hz-fg-soft hz-mb-6">
             Join thousands of developers building and scaling applications on Hanzo's global infrastructure.
           </p>
           
           <Button 
             size="lg"
-            className="bg-gradient-to-r from-neutral-600 to-neutral-500 hover:from-neutral-500 hover:to-neutral-400 text-[var(--white)] px-8 py-6 rounded-lg text-lg font-medium shadow-lg hover:shadow-xl transition-all"
+            className="hz-fg hz-px-6 hz-py-5 hz-r-lg hz-t-lg hz-w-medium hz-shadow-lg hz-transition"
           >
             <a href="https://dashboard.hanzo.cloud">Get Started Free →</a>
           </Button>

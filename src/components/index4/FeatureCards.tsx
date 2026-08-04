@@ -13,16 +13,16 @@ type FeatureCardProps = {
 const FeatureCard = ({ icon, title, description }: FeatureCardProps) => {
   return (
     <ArchitecturalBox
-      className="backdrop-blur-lg bg-zinc-900/30 border border-zinc-800/50 rounded-xl p-6 hover:border-zinc-700/50 transition-all duration-300"
+      className="hz-card hz-glass hz-transition hz-card-interactive"
       showCorners={true}
       cornerColor="rgba(100, 100, 100, 0.2)"
       cornerSize={20}
     >
-      <div className="mb-4 p-2 bg-zinc-800/50 rounded-lg w-10 h-10 flex items-center justify-center">
+      <div className="hz-sq-6 hz-mb-4 hz-p-2 hz-bg-raised hz-r-lg hz-row hz-ai-center hz-jc-center">
         {icon}
       </div>
-      <h3 className="text-xl font-medium mb-2 text-[var(--white)]">{title}</h3>
-      <p className="text-zinc-400 text-sm leading-relaxed">
+      <h3 className="hz-t-xl hz-w-medium hz-mb-2 hz-fg">{title}</h3>
+      <p className="hz-fg-muted hz-t-sm hz-leading-relaxed">
         {description}
       </p>
     </ArchitecturalBox>
@@ -32,30 +32,30 @@ const FeatureCard = ({ icon, title, description }: FeatureCardProps) => {
 const FeatureCards = () => {
   const features = [
     {
-      icon: <Terminal className="h-5 w-5 text-zinc-300" />,
+      icon: <Terminal className="hz-sq-3 hz-fg-soft" />,
       title: "Developer Experience",
       description: "Intuitive CLI and dashboard designed for efficient workflow and rapid development."
     },
     {
-      icon: <Code className="h-5 w-5 text-zinc-300" />,
+      icon: <Code className="hz-sq-3 hz-fg-soft" />,
       title: "Instant Deployments",
       description: "From code to production in seconds with automatic builds and zero downtime updates."
     },
     {
-      icon: <Database className="h-5 w-5 text-zinc-300" />,
+      icon: <Database className="hz-sq-3 hz-fg-soft" />,
       title: "Global Infrastructure",
       description: "Scale effortlessly with our distributed network optimized for performance and reliability."
     }
   ];
 
   return (
-    <section className="max-w-6xl mx-auto mb-32 px-4">
+    <section className="hz-container-wide hz-mb-7">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.7 }}
-        className="grid grid-cols-1 md:grid-cols-3 gap-6"
+        className="hz-grid hz-grid-3 hz-gap-5"
       >
         {features.map((feature, index) => (
           <FeatureCard 

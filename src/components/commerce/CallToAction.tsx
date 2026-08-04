@@ -5,61 +5,61 @@ import { ArrowRight, ShoppingCart, Book, Code } from "lucide-react";
 
 const CallToAction = () => {
   return (
-    <section className="py-16 bg-gradient-to-b from-black to-gray-900/40">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center mb-10">
-          <h2 className="text-3xl font-bold mb-6">Ready to Transform Your E-commerce Experience?</h2>
-          <p className="text-lg text-neutral-300 mb-8">
+    <section className="hz-py-7">
+      <div className="hz-container hz-mx-auto hz-px-4">
+        <div className="hz-container-narrow hz-align-center hz-mb-6">
+          <h2 className="hz-t-3xl hz-w-bold hz-mb-5">Ready to Transform Your E-commerce Experience?</h2>
+          <p className="hz-t-lg hz-fg-soft hz-mb-6">
             Join thousands of businesses that trust Hanzo Commerce to power their online stores.
           </p>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6 flex flex-col items-center">
-              <ShoppingCart className="h-12 w-12 text-neutral-400 mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Start Selling</h3>
-              <p className="text-neutral-400 mb-4 text-center">Launch your store with our easy-to-use platform</p>
+          <div className="hz-grid hz-grid-3 hz-gap-5">
+            <div className="hz-card hz-col hz-ai-center">
+              <ShoppingCart className="hz-sq-7 hz-fg-muted hz-mb-4" />
+              <h3 className="hz-t-xl hz-w-semibold hz-mb-2">Start Selling</h3>
+              <p className="hz-fg-muted hz-mb-4 hz-align-center">Launch your store with our easy-to-use platform</p>
               <Button 
-                className="mt-auto bg-neutral-500 hover:bg-neutral-600 text-black"
+                className="hz-mt-auto hz-bg-raised hz-fg-inverse hz-hoverable"
                 onClick={() => window.open('https://console.hanzo.ai', '_blank')}
               >
-                Get Started <ArrowRight className="ml-2 h-4 w-4" />
+                Get Started <ArrowRight className="hz-sq-2 hz-ml-2" />
               </Button>
             </div>
             
-            <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6 flex flex-col items-center">
-              <Book className="h-12 w-12 text-neutral-400 mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Documentation</h3>
-              <p className="text-neutral-400 mb-4 text-center">Explore our guides and API references</p>
+            <div className="hz-card hz-col hz-ai-center">
+              <Book className="hz-sq-7 hz-fg-muted hz-mb-4" />
+              <h3 className="hz-t-xl hz-w-semibold hz-mb-2">Documentation</h3>
+              <p className="hz-fg-muted hz-mb-4 hz-align-center">Explore our guides and API references</p>
               <Button 
-                className="mt-auto bg-neutral-500 hover:bg-neutral-600 text-black"
+                className="hz-mt-auto hz-bg-raised hz-fg-inverse hz-hoverable"
                 onClick={() => window.open('https://docs.hanzo.ai/commerce', '_blank')}
               >
-                View Docs <ArrowRight className="ml-2 h-4 w-4" />
+                View Docs <ArrowRight className="hz-sq-2 hz-ml-2" />
               </Button>
             </div>
             
-            <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6 flex flex-col items-center">
-              <Code className="h-12 w-12 text-neutral-400 mb-4" />
-              <h3 className="text-xl font-semibold mb-2">For Developers</h3>
-              <p className="text-neutral-400 mb-4 text-center">Integrate our APIs into your applications</p>
+            <div className="hz-card hz-col hz-ai-center">
+              <Code className="hz-sq-7 hz-fg-muted hz-mb-4" />
+              <h3 className="hz-t-xl hz-w-semibold hz-mb-2">For Developers</h3>
+              <p className="hz-fg-muted hz-mb-4 hz-align-center">Integrate our APIs into your applications</p>
               <Button 
-                className="mt-auto bg-neutral-500 hover:bg-neutral-600 text-black"
+                className="hz-mt-auto hz-bg-raised hz-fg-inverse hz-hoverable"
                 onClick={() => window.open('https://docs.hanzo.ai/api', '_blank')}
               >
-                API Reference <ArrowRight className="ml-2 h-4 w-4" />
+                API Reference <ArrowRight className="hz-sq-2 hz-ml-2" />
               </Button>
             </div>
           </div>
         </div>
         
-        <div className="bg-neutral-500/10 border border-neutral-500/30 rounded-lg p-6 text-center max-w-3xl mx-auto">
-          <h3 className="text-xl font-semibold mb-3">Need a Custom Solution?</h3>
-          <p className="text-neutral-300 mb-6">
+        <div className="hz-container-narrow hz-card hz-align-center">
+          <h3 className="hz-t-xl hz-w-semibold hz-mb-3">Need a Custom Solution?</h3>
+          <p className="hz-fg-soft hz-mb-5">
             Our team of experts can help you design and implement a tailored e-commerce solution for your unique business needs.
           </p>
           <Button 
             variant="outline" 
-            className="border-neutral-500/50 text-neutral-400 hover:bg-neutral-500/10"
+            className="hz-border-strong hz-fg-muted hz-link"
             onClick={() => window.open('https://hanzo.ai/contact', '_blank')}
           >
             Contact Sales

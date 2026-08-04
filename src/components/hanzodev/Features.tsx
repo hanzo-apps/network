@@ -25,7 +25,6 @@ import {
   ExternalLink,
 } from "lucide-react";
 
-const BRAND_COLOR = "#ffffff";
 
 const RECENTLY_SHIPPED = [
   {
@@ -171,19 +170,19 @@ const ALL_FEATURES = [
 
 const Features = () => {
   return (
-    <section className="py-24 px-4 md:px-8 bg-gradient-to-b from-black to-neutral-900/50">
-      <div className="max-w-6xl mx-auto">
+    <section className="hz-py-7 hz-px-4">
+      <div className="hz-container-wide">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="hz-align-center hz-mb-7"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="hz-t-3xl hz-w-bold hz-fg hz-mb-4">
             Features
           </h2>
-          <p className="text-neutral-400 max-w-2xl mx-auto">
+          <p className="hz-container-narrow hz-mw-md hz-fg-muted">
             Everything you need for agentic development
           </p>
         </motion.div>
@@ -193,18 +192,17 @@ const Features = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-16"
+          className="hz-mb-7"
         >
-          <div className="flex items-center gap-3 mb-8">
+          <div className="hz-row hz-ai-center hz-gap-3 hz-mb-6">
             <div
-              className="px-3 py-1 rounded-full text-xs font-medium"
-              style={{ backgroundColor: `${BRAND_COLOR}20`, color: BRAND_COLOR }}
-            >
+              className="hz-px-3 hz-py-1 hz-r-full hz-t-xs hz-w-medium hz-bg-quiet hz-fg"
+              >
               Recently Shipped
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="hz-grid hz-grid-2 hz-gap-5">
             {RECENTLY_SHIPPED.map((feature, index) => {
               const Icon = feature.icon;
               return (
@@ -217,28 +215,27 @@ const Features = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="bg-neutral-900/80 border border-neutral-800 rounded-xl p-6 hover:border-white/50 transition-all group"
+                  className="hz-card hz-transition hz-card-interactive"
                 >
-                  <div className="flex items-start justify-between mb-4">
+                  <div className="hz-row hz-ai-start hz-jc-between hz-mb-4">
                     <div
-                      className="w-12 h-12 rounded-lg flex items-center justify-center"
-                      style={{ backgroundColor: `${BRAND_COLOR}20` }}
-                    >
-                      <Icon className="w-6 h-6" style={{ color: BRAND_COLOR }} />
+                      className="hz-sq-7 hz-r-lg hz-row hz-ai-center hz-jc-center hz-bg-quiet"
+                      >
+                      <Icon className="hz-sq-4 hz-fg" />
                     </div>
-                    <span className="text-xs font-medium px-2 py-1 rounded-full bg-neutral-500/20 text-neutral-400">
+                    <span className="hz-t-xs hz-w-medium hz-px-2 hz-py-1 hz-r-full hz-bg-raised hz-fg-muted">
                       New
                     </span>
                   </div>
-                  <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-white transition-colors">
+                  <h3 className="hz-t-lg hz-w-semibold hz-fg hz-mb-2 hz-transition hz-hoverable">
                     {feature.title}
                   </h3>
-                  <p className="text-sm text-neutral-400 mb-4">
+                  <p className="hz-t-sm hz-fg-muted hz-mb-4">
                     {feature.description}
                   </p>
-                  <span className="text-sm text-white flex items-center gap-1">
+                  <span className="hz-t-sm hz-fg hz-row hz-ai-center hz-gap-1">
                     View Documentation
-                    <ExternalLink className="w-3.5 h-3.5" />
+                    <ExternalLink className="hz-sq-2" />
                   </span>
                 </motion.a>
               );
@@ -247,7 +244,7 @@ const Features = () => {
         </motion.div>
 
         {/* All Features Grid */}
-        <div className="grid md:grid-cols-3 gap-4">
+        <div className="hz-grid hz-grid-3 hz-gap-4">
           {ALL_FEATURES.map((feature, index) => {
             const Icon = feature.icon;
             return (
@@ -257,15 +254,15 @@ const Features = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: (index % 6) * 0.05 }}
-                className="bg-neutral-900/50 border border-neutral-800 rounded-xl p-5 hover:border-neutral-700 transition-colors"
+                className="hz-card hz-transition hz-card-interactive"
               >
-                <div className="flex items-center gap-3 mb-3">
-                  <Icon className="w-5 h-5 text-neutral-400" />
-                  <h4 className="text-sm font-medium text-white">
+                <div className="hz-row hz-ai-center hz-gap-3 hz-mb-3">
+                  <Icon className="hz-sq-3 hz-fg-muted" />
+                  <h4 className="hz-t-sm hz-w-medium hz-fg">
                     {feature.title}
                   </h4>
                 </div>
-                <p className="text-xs text-neutral-500 leading-relaxed">
+                <p className="hz-t-xs hz-fg-muted hz-leading-relaxed">
                   {feature.description}
                 </p>
               </motion.div>
@@ -278,16 +275,16 @@ const Features = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mt-12"
+          className="hz-align-center hz-mt-7"
         >
           <a
             href="https://docs.hanzo.ai/roadmap"
             target="_blank"
             rel="noreferrer noopener"
-            className="inline-flex items-center gap-2 text-sm text-neutral-400 hover:text-white transition-colors"
+            className="hz-inline hz-ai-center hz-gap-2 hz-t-sm hz-fg-muted hz-transition hz-link"
           >
             See upcoming features
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="hz-sq-2" />
           </a>
         </motion.div>
       </div>

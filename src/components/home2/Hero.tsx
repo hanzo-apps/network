@@ -6,48 +6,48 @@ import { ArrowRight } from "lucide-react";
 
 const Hero = () => {
   return (
-    <section className="relative py-20 md:py-32 overflow-hidden">
+    <section className="hz-rel hz-py-7 hz-clip">
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-neutral-800/20 to-black"></div>
+      <div className="hz-abs hz-inset"></div>
       
       {/* Animated orbs */}
-      <div className="absolute -top-40 -right-40 w-80 h-80 bg-neutral-600/10 rounded-full blur-3xl"></div>
-      <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-neutral-600/10 rounded-full blur-3xl"></div>
+      <div className="hz-sq-8 hz-abs hz-bg-raised hz-r-full hz-blur-bg"></div>
+      <div className="hz-sq-8 hz-abs hz-bg-raised hz-r-full hz-blur-bg"></div>
       
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
+      <div className="hz-container hz-mx-auto hz-px-4 hz-rel hz-z-raised">
+        <div className="hz-container-narrow hz-align-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300">
+            <h1 className="hz-t-5xl hz-w-bold hz-mb-5 hz-chrome">
               The AI Engineering Platform
             </h1>
             
-            <p className="text-xl md:text-2xl text-neutral-300 mb-10">
+            <p className="hz-t-xl hz-fg-soft hz-mb-6">
               Build, deploy, and scale AI applications with unprecedented speed
             </p>
             
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <div className="hz-col-row hz-jc-center hz-gap-4">
               <Button 
                 size="lg" 
-                className="bg-gradient-to-r from-neutral-600 to-neutral-600 hover:from-neutral-700 hover:to-neutral-700 text-[var(--white)] px-8 py-6 text-lg rounded-full"
+                className="hz-fg hz-px-6 hz-py-5 hz-t-lg hz-r-full"
               >
                 Get Started Free
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <ArrowRight className="hz-sq-3 hz-ml-2" />
               </Button>
               
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="text-[var(--white)] border-gray-700 hover:bg-[var(--white)]/10 px-8 py-6 text-lg rounded-full"
+                className="hz-fg hz-px-6 hz-py-5 hz-t-lg hz-r-full hz-hoverable"
               >
                 See Demo
               </Button>
             </div>
             
-            <div className="mt-16 text-sm text-neutral-400 flex flex-wrap justify-center gap-x-8 gap-y-2">
+            <div className="hz-mt-7 hz-t-sm hz-fg-muted hz-row hz-wrap hz-jc-center hz-gap-6 hz-gap-2">
               <div>3.2B+ Downloads</div>
               <div>47k+ GitHub Stars</div>
               <div>900+ Contributors</div>

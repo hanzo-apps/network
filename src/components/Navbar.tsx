@@ -59,19 +59,19 @@ const Navbar = () => {
   return (
     <>
       <NavbarContainer isScrolled={isScrolled}>
-        <div className="flex items-center w-full">
+        <div className="hz-row hz-ai-center hz-w-full">
           {/* Left: Logo (right-click for explore menu) */}
-          <div className="flex-shrink-0">
+          <div className="hz-none">
             <Logo />
           </div>
 
           {/* Center: Navigation */}
-          <div className="flex-1 flex justify-center">
+          <div className="hz-grow hz-row hz-jc-center">
             <DesktopNav />
           </div>
 
           {/* Right: Auth Buttons */}
-          <div className="flex-shrink-0">
+          <div className="hz-none">
             <AuthButtons user={user} onOpenCommandPalette={handleOpenCommandPalette} />
           </div>
 

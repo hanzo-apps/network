@@ -41,42 +41,42 @@ const StarRating = ({ rating }) => {
   const stars = [];
 
   for (let i = 0; i < fullStars; i++) {
-    stars.push(<span key={`full-${i}`} className="text-neutral-400">★</span>);
+    stars.push(<span key={`full-${i}`} className="hz-fg-muted">★</span>);
   }
 
   if (halfStar) {
-    stars.push(<span key="half" className="text-neutral-400">★</span>);
+    stars.push(<span key="half" className="hz-fg-muted">★</span>);
   }
 
   const emptyStars = 5 - stars.length;
   for (let i = 0; i < emptyStars; i++) {
-    stars.push(<span key={`empty-${i}`} className="text-neutral-500">★</span>);
+    stars.push(<span key={`empty-${i}`} className="hz-fg-muted">★</span>);
   }
 
-  return <div className="flex">{stars}</div>;
+  return <div className="hz-row">{stars}</div>;
 };
 
 const Testimonials = () => {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/30 relative overflow-hidden">
-      <div className="absolute -top-40 -right-40 w-80 h-80 bg-neutral-600/10 rounded-full blur-3xl"></div>
-      <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-neutral-600/10 rounded-full blur-3xl"></div>
+    <section className="hz-py-7 hz-px-4 hz-bg-surface hz-rel hz-clip">
+      <div className="hz-sq-8 hz-abs hz-bg-raised hz-r-full hz-blur-bg"></div>
+      <div className="hz-sq-8 hz-abs hz-bg-raised hz-r-full hz-blur-bg"></div>
       
-      <div className="max-w-6xl mx-auto relative z-10">
+      <div className="hz-container-wide hz-rel hz-z-raised">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="hz-align-center hz-mb-7"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">What Our Users Are Saying</h2>
-          <p className="text-xl text-neutral-300">
+          <h2 className="hz-t-3xl hz-w-bold hz-mb-5">What Our Users Are Saying</h2>
+          <p className="hz-t-xl hz-fg-soft">
             Join the growing number of users who trust Hanzo Balancer.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="hz-grid hz-grid-3 hz-gap-6">
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={index}
@@ -84,13 +84,13 @@ const Testimonials = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-gray-800/30 p-6 rounded-lg border border-gray-700"
+              className="hz-card"
             >
-              <p className="text-lg mb-4">"{testimonial.quote}"</p>
+              <p className="hz-t-lg hz-mb-4">"{testimonial.quote}"</p>
               <StarRating rating={testimonial.rating} />
-              <div className="mt-4">
-                <p className="font-medium">{testimonial.author}</p>
-                <p className="text-neutral-400 text-sm">{testimonial.role}</p>
+              <div className="hz-mt-4">
+                <p className="hz-w-medium">{testimonial.author}</p>
+                <p className="hz-fg-muted hz-t-sm">{testimonial.role}</p>
               </div>
             </motion.div>
           ))}

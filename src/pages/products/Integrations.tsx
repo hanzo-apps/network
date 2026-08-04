@@ -74,42 +74,42 @@ export default function IntegrationsPage() {
   });
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="hz-min-h-screen hz-bg hz-fg">
       <Navbar />
-      <div className="pt-24 pb-16">
+      <div className="hz-pt-6 hz-pb-6">
         {/* Hero Section */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <Badge variant="outline" className="mb-4 border-neutral-500/50 text-neutral-400">
-              <Plug className="w-3 h-3 mr-1" />
+        <div className="hz-container">
+          <div className="hz-align-center hz-mb-7">
+            <Badge variant="outline" className="hz-mb-4 hz-border-strong hz-fg-muted">
+              <Plug className="hz-sq-1 hz-mr-1" />
               280+ Integrations
             </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold mb-4">
-              Connect to <span className="text-neutral-400">Everything</span>
+            <h1 className="hz-t-4xl hz-w-bold hz-mb-4">
+              Connect to <span className="hz-fg-muted">Everything</span>
             </h1>
-            <p className="text-xl text-neutral-400 max-w-3xl mx-auto">
+            <p className="hz-container-narrow hz-t-xl hz-fg-muted">
               Hanzo Auto comes with 280+ pre-built integrations to connect your favorite apps and services.
               All integrations are also available as MCP servers for use with Claude, Cursor, and other AI tools.
             </p>
           </div>
 
           {/* Search and Filter */}
-          <div className="flex flex-col md:flex-row gap-4 mb-8">
-            <div className="relative flex-1">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-neutral-500" />
+          <div className="hz-col-row hz-gap-4 hz-mb-6">
+            <div className="hz-rel hz-grow">
+              <Search className="hz-center-y hz-sq-2 hz-abs hz-fg-muted" />
               <Input
                 placeholder="Search integrations..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 bg-neutral-900 border-neutral-800"
+                className="hz-px-6 hz-bg-surface"
               />
             </div>
-            <div className="flex gap-2 flex-wrap">
+            <div className="hz-row hz-gap-2 hz-wrap">
               <Button
                 variant={selectedCategory === null ? "default" : "outline"}
                 size="sm"
                 onClick={() => setSelectedCategory(null)}
-                className={selectedCategory === null ? "bg-neutral-600 hover:bg-neutral-700" : ""}
+                className={selectedCategory === null ? "hz-bg-raised hz-hoverable" : ""}
               >
                 All
               </Button>
@@ -119,7 +119,7 @@ export default function IntegrationsPage() {
                   variant={selectedCategory === category ? "default" : "outline"}
                   size="sm"
                   onClick={() => setSelectedCategory(category)}
-                  className={selectedCategory === category ? "bg-neutral-600 hover:bg-neutral-700" : ""}
+                  className={selectedCategory === category ? "hz-bg-raised hz-hoverable" : ""}
                 >
                   {category}
                 </Button>
@@ -128,18 +128,18 @@ export default function IntegrationsPage() {
           </div>
 
           {/* Integrations Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+          <div className="hz-grid hz-grid-5 hz-gap-4">
             {filteredIntegrations.map((integration, index) => (
               <div
                 key={index}
-                className="p-4 rounded-xl bg-neutral-900/50 border border-neutral-800 hover:border-neutral-500/50 transition-colors group cursor-pointer"
+                className="hz-card hz-transition hz-pointer hz-card-interactive"
               >
-                <div className="text-3xl mb-2">{integration.logo}</div>
-                <h3 className="font-semibold text-white group-hover:text-neutral-400 transition-colors">
+                <div className="hz-t-3xl hz-mb-2">{integration.logo}</div>
+                <h3 className="hz-w-semibold hz-fg hz-transition hz-hoverable">
                   {integration.name}
                 </h3>
-                <p className="text-sm text-neutral-500">{integration.description}</p>
-                <Badge variant="outline" className="mt-2 text-xs">
+                <p className="hz-t-sm hz-fg-muted">{integration.description}</p>
+                <Badge variant="outline" className="hz-mt-2 hz-t-xs">
                   {integration.category}
                 </Badge>
               </div>
@@ -147,22 +147,22 @@ export default function IntegrationsPage() {
           </div>
 
           {/* CTA Section */}
-          <div className="mt-16 text-center p-8 rounded-2xl bg-gradient-to-b from-neutral-800/30 to-neutral-800/30 border border-neutral-500/20">
-            <h2 className="text-2xl font-bold mb-4">Need a custom integration?</h2>
-            <p className="text-neutral-400 mb-6">
+          <div className="hz-card hz-mt-7 hz-align-center">
+            <h2 className="hz-t-2xl hz-w-bold hz-mb-4">Need a custom integration?</h2>
+            <p className="hz-fg-muted hz-mb-5">
               All integrations are built with TypeScript and are open source.
               Create your own pieces or request new integrations.
             </p>
-            <div className="flex gap-4 justify-center">
+            <div className="hz-row hz-gap-4 hz-jc-center">
               <Button asChild>
                 <a href="https://github.com/hanzoai/auto" target="_blank" rel="noopener noreferrer">
-                  <Github className="w-4 h-4 mr-2" />
+                  <Github className="hz-sq-2 hz-mr-2" />
                   View on GitHub
                 </a>
               </Button>
               <Button variant="outline" asChild>
                 <a href="https://activepieces.com/pieces" target="_blank" rel="noopener noreferrer">
-                  <ExternalLink className="w-4 h-4 mr-2" />
+                  <ExternalLink className="hz-sq-2 hz-mr-2" />
                   Browse All Pieces
                 </a>
               </Button>

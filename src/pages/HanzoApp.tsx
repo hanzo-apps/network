@@ -10,7 +10,7 @@ import FooterCTA from "@/components/hanzoapp/FooterCTA";
 
 const HanzoApp = () => {
   return (
-    <div className="min-h-screen bg-[var(--black)] text-[var(--white)]">
+    <div className="hz-min-h-screen hz-bg hz-fg">
       <Helmet>
         <title>Hanzo App - Build Anywhere, Ship Everywhere | Hanzo AI</title>
         <meta

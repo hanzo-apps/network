@@ -15,7 +15,7 @@ import UnifiedCapabilities from "@/components/ai/UnifiedCapabilities";
 
 const AI = () => {
   return (
-    <div className="min-h-screen bg-[var(--black)] text-[var(--white)]">
+    <div className="hz-min-h-screen hz-bg hz-fg">
       <Navbar />
       <main>
         <HeroSection />

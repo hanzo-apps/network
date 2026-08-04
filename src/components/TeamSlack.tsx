@@ -20,14 +20,14 @@ const TeamSlack = () => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8 }}
-      className="max-w-6xl mx-auto mb-24 px-4"
+      className="hz-container-wide hz-mb-7"
     >
       <motion.h2 
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="text-3xl font-bold text-center mb-12"
+        className="hz-t-3xl hz-w-bold hz-align-center hz-mb-7"
       >
         Watch Our Team in Action
       </motion.h2>
@@ -36,22 +36,22 @@ const TeamSlack = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="rounded-xl border border-gray-800 bg-[var(--black)]/50 backdrop-blur-sm overflow-hidden"
+        className="hz-r-lg hz-bordered hz-bg-overlay hz-glass hz-clip"
       >
-        <div className="grid grid-cols-4">
+        <div className="hz-grid hz-grid-4">
           {/* Sidebar */}
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="col-span-1 border-r border-gray-800 p-4"
+            className="hz-border-r hz-p-4"
           >
-            <div className="flex items-center justify-between p-2 mb-4">
-              <h3 className="text-neutral-400 font-semibold">Hanzo Team</h3>
-              <ChevronDown className="w-4 h-4 text-neutral-400" />
+            <div className="hz-row hz-ai-center hz-jc-between hz-p-2 hz-mb-4">
+              <h3 className="hz-fg-muted hz-w-semibold">Hanzo Team</h3>
+              <ChevronDown className="hz-sq-2 hz-fg-muted" />
             </div>
-            <div className="space-y-2">
+            <div className="hz-stack-2">
               {channels.map((channel, idx) => (
                 <motion.div
                   key={channel}
@@ -60,10 +60,10 @@ const TeamSlack = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.3, delay: 0.5 + (idx * 0.1) }}
                   whileHover={{ x: 4 }}
-                  className="flex items-center gap-2 p-2 rounded hover:bg-[var(--white)]/5 cursor-pointer"
+                  className="hz-row hz-ai-center hz-gap-2 hz-p-2 hz-r-md hz-pointer hz-hoverable"
                 >
-                  <Hash className="w-4 h-4 text-neutral-400" />
-                  <span className="text-neutral-300 text-sm">{channel}</span>
+                  <Hash className="hz-sq-2 hz-fg-muted" />
+                  <span className="hz-fg-soft hz-t-sm">{channel}</span>
                 </motion.div>
               ))}
             </div>
@@ -75,19 +75,19 @@ const TeamSlack = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="col-span-3 p-4"
+            className="hz-span-full hz-p-4"
           >
             <motion.div 
               initial={{ opacity: 0, y: -10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: 0.6 }}
-              className="flex items-center gap-4 p-4 border-b border-gray-800 mb-4"
+              className="hz-row hz-ai-center hz-gap-4 hz-p-4 hz-border-b hz-mb-4"
             >
-              <Hash className="w-5 h-5 text-neutral-400" />
-              <span className="text-[var(--white)] font-medium">general</span>
+              <Hash className="hz-sq-3 hz-fg-muted" />
+              <span className="hz-fg hz-w-medium">general</span>
             </motion.div>
-            <div className="space-y-4">
+            <div className="hz-stack-4">
               {messages.map((msg, idx) => (
                 <motion.div
                   key={idx}
@@ -95,17 +95,17 @@ const TeamSlack = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: 0.7 + (idx * 0.2) }}
-                  className="flex items-start gap-3"
+                  className="hz-row hz-ai-start hz-gap-3"
                 >
-                  <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-neutral-500 to-neutral-300 flex items-center justify-center text-[var(--white)] text-sm">
+                  <div className="hz-sq-5 hz-r-lg hz-row hz-ai-center hz-jc-center hz-fg hz-t-sm">
                     {msg.user[0]}
                   </div>
                   <div>
-                    <div className="flex items-center gap-2">
-                      <span className="font-medium text-[var(--white)]">{msg.user}</span>
-                      <span className="text-xs text-neutral-400">{msg.time}</span>
+                    <div className="hz-row hz-ai-center hz-gap-2">
+                      <span className="hz-w-medium hz-fg">{msg.user}</span>
+                      <span className="hz-t-xs hz-fg-muted">{msg.time}</span>
                     </div>
-                    <p className="text-neutral-300">{msg.message}</p>
+                    <p className="hz-fg-soft">{msg.message}</p>
                   </div>
                 </motion.div>
               ))}

@@ -55,18 +55,18 @@ const PurchaseCreditsDialog = ({ open, onOpenChange }: PurchaseCreditsDialogProp
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[425px] bg-[var(--black)] border-gray-800">
+      <DialogContent className="hz-bg">
         <DialogHeader>
-          <DialogTitle className="text-xl">Purchase Credits</DialogTitle>
+          <DialogTitle className="hz-t-xl">Purchase Credits</DialogTitle>
           <DialogDescription>
             Add more credits to your account. Credits are used for resource usage.
           </DialogDescription>
         </DialogHeader>
 
-        <div className="space-y-6 py-4">
+        <div className="hz-stack-5 hz-py-4">
           <div>
-            <Label className="text-neutral-400 mb-2 block">Select an amount</Label>
-            <div className="grid grid-cols-2 gap-3">
+            <Label className="hz-fg-muted hz-mb-2">Select an amount</Label>
+            <div className="hz-grid hz-grid-2 hz-gap-3">
               {PREDEFINED_AMOUNTS.map((amount) => (
                 <Button
                   key={amount}
@@ -75,8 +75,8 @@ const PurchaseCreditsDialog = ({ open, onOpenChange }: PurchaseCreditsDialogProp
                   onClick={() => handleSelectAmount(amount)}
                   className={`${
                     selectedAmount === amount
-                      ? "bg-neutral-600 hover:bg-neutral-700 text-[var(--white)]"
-                      : "border-gray-700 text-[var(--white)]"
+                      ? "hz-bg-raised hz-fg hz-hoverable"
+                      : "hz-fg"
                   }`}
                 >
                   ${amount}
@@ -86,11 +86,11 @@ const PurchaseCreditsDialog = ({ open, onOpenChange }: PurchaseCreditsDialogProp
           </div>
 
           <div>
-            <Label htmlFor="custom-amount" className="text-neutral-400 mb-2 block">
+            <Label htmlFor="custom-amount" className="hz-fg-muted hz-mb-2">
               Or enter a custom amount
             </Label>
-            <div className="relative">
-              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-neutral-400">$</span>
+            <div className="hz-rel">
+              <span className="hz-center-y hz-abs hz-fg-muted">$</span>
               <Input
                 id="custom-amount"
                 placeholder="Enter amount"
@@ -99,18 +99,18 @@ const PurchaseCreditsDialog = ({ open, onOpenChange }: PurchaseCreditsDialogProp
                 step="1"
                 value={customAmount}
                 onChange={handleCustomAmountChange}
-                className="pl-8 bg-gray-900 border-gray-700 text-[var(--white)]"
+                className="hz-px-6 hz-bg-surface hz-fg"
               />
             </div>
           </div>
 
-          <div className="bg-gray-900/50 p-4 rounded-lg border border-gray-800">
-            <div className="flex justify-between text-sm mb-1">
-              <span className="text-neutral-400">Amount:</span>
+          <div className="hz-card">
+            <div className="hz-row hz-jc-between hz-t-sm hz-mb-1">
+              <span className="hz-fg-muted">Amount:</span>
               <span>${getEffectiveAmount().toFixed(2)}</span>
             </div>
-            <div className="flex justify-between text-sm font-medium">
-              <span className="text-neutral-400">Total:</span>
+            <div className="hz-row hz-jc-between hz-t-sm hz-w-medium">
+              <span className="hz-fg-muted">Total:</span>
               <span>${getEffectiveAmount().toFixed(2)}</span>
             </div>
           </div>
@@ -121,25 +121,25 @@ const PurchaseCreditsDialog = ({ open, onOpenChange }: PurchaseCreditsDialogProp
             type="button"
             variant="ghost"
             onClick={() => onOpenChange(false)}
-            className="text-neutral-400 hover:text-[var(--white)] hover:bg-gray-800"
+            className="hz-fg-muted hz-link"
             disabled={isProcessing}
           >
             Cancel
           </Button>
           <Button
             type="button"
-            className="bg-[var(--white)] hover:bg-gray-200 text-black"
+            className="hz-bg-inverse hz-fg-inverse hz-hoverable"
             onClick={handlePurchase}
             disabled={isProcessing || getEffectiveAmount() <= 0}
           >
             {isProcessing ? (
               <>
-                <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                <Loader2 className="hz-sq-2 hz-mr-2" />
                 Processing...
               </>
             ) : (
               <>
-                <CreditCard className="h-4 w-4 mr-2" />
+                <CreditCard className="hz-sq-2 hz-mr-2" />
                 Purchase Credits
               </>
             )}

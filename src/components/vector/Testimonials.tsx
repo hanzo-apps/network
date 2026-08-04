@@ -38,27 +38,27 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-[var(--black)] relative overflow-hidden">
-      <div className="absolute -top-40 -right-40 w-80 h-80 bg-neutral-500/10 rounded-full blur-3xl"></div>
-      <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-neutral-600/10 rounded-full blur-3xl"></div>
+    <section className="hz-py-7 hz-px-4 hz-bg hz-rel hz-clip">
+      <div className="hz-sq-8 hz-abs hz-bg-raised hz-r-full hz-blur-bg"></div>
+      <div className="hz-sq-8 hz-abs hz-bg-raised hz-r-full hz-blur-bg"></div>
       
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="hz-container hz-rel hz-z-raised">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="hz-align-center hz-mb-7"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-[var(--white)] mb-6">
+          <h2 className="hz-t-3xl hz-w-bold hz-fg hz-mb-5">
             Loved by GenAI Developers
           </h2>
-          <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
+          <p className="hz-container-narrow hz-t-xl hz-fg-soft">
             Hear what our users say about building with Hanzo Vector
           </p>
         </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+        <div className="hz-grid hz-grid-3 hz-gap-6 hz-mb-7">
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={index}
@@ -66,15 +66,15 @@ const Testimonials = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-gray-900/30 border border-gray-800 rounded-xl p-8 relative"
+              className="hz-card hz-rel"
             >
-              <div className="absolute -top-4 left-8 text-5xl text-neutral-400">"</div>
-              <p className="text-neutral-300 mb-8 relative z-10 pt-4">
+              <div className="hz-abs hz-t-5xl hz-fg-muted">"</div>
+              <p className="hz-fg-soft hz-mb-6 hz-rel hz-z-raised hz-pt-4">
                 {testimonial.quote}
               </p>
               <div>
-                <h4 className="text-[var(--white)] font-semibold">{testimonial.author}</h4>
-                <p className="text-neutral-400 text-sm">{testimonial.position}, {testimonial.company}</p>
+                <h4 className="hz-fg hz-w-semibold">{testimonial.author}</h4>
+                <p className="hz-fg-muted hz-t-sm">{testimonial.position}, {testimonial.company}</p>
               </div>
             </motion.div>
           ))}
@@ -85,13 +85,13 @@ const Testimonials = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center"
+          className="hz-align-center"
         >
-          <h3 className="text-2xl font-semibold text-[var(--white)] mb-8">
+          <h3 className="hz-t-2xl hz-w-semibold hz-fg hz-mb-6">
             Trusted for Production Workloads
           </h3>
           
-          <div className="flex flex-wrap justify-center gap-x-8 gap-y-6">
+          <div className="hz-row hz-wrap hz-jc-center hz-gap-6 hz-gap-5">
             {companyLogos.map((company, index) => (
               <motion.div
                 key={index}
@@ -99,7 +99,7 @@ const Testimonials = () => {
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.3, delay: index * 0.05 }}
-                className="text-neutral-500 font-medium text-lg"
+                className="hz-fg-muted hz-w-medium hz-t-lg"
               >
                 {company}
               </motion.div>

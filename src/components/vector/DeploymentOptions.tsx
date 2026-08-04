@@ -60,53 +60,34 @@ const DeploymentOptions = () => {
     }
   ];
 
-  const getColorClasses = (color: string, isHovered: boolean = false) => {
-    const colorMap: Record<string, { bg: string, text: string, border: string }> = {
-      blue: { 
-        bg: isHovered ? "bg-neutral-800/40" : "bg-neutral-800/20", 
-        text: "text-neutral-400", 
-        border: isHovered ? "border-neutral-500/50" : "border-neutral-800/50" 
-      },
-      indigo: { 
-        bg: isHovered ? "bg-neutral-800/40" : "bg-neutral-800/20", 
-        text: "text-neutral-400", 
-        border: isHovered ? "border-neutral-500/50" : "border-neutral-800/50" 
-      },
-      purple: { 
-        bg: isHovered ? "bg-neutral-800/40" : "bg-neutral-800/20", 
-        text: "text-neutral-400", 
-        border: isHovered ? "border-neutral-500/50" : "border-neutral-800/50" 
-      },
-      teal: { 
-        bg: isHovered ? "bg-neutral-800/40" : "bg-neutral-800/20", 
-        text: "text-neutral-400", 
-        border: isHovered ? "border-neutral-500/50" : "border-neutral-800/50" 
-      }
-    };
-
-    return colorMap[color] || colorMap.indigo;
-  };
+  /* Four hue names that all resolved to the same greyscale — @hanzo/design
+     ships no accent. What varies is emphasis, so that is all this returns. */
+  const getColorClasses = (_color: string, isHovered: boolean = false) => ({
+    bg: isHovered ? 'hz-bg-raised' : 'hz-bg-surface',
+    text: 'hz-fg-muted',
+    border: isHovered ? 'hz-border-strong' : '',
+  });
 
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gray-950 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+    <section className="hz-py-7 hz-px-4 hz-bg-surface hz-rel hz-clip">
+      <div className="hz-container hz-rel hz-z-raised">
+        <div className="hz-container-narrow hz-align-center hz-mb-7">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-[var(--white)] mb-6">
+            <h2 className="hz-t-3xl hz-w-bold hz-fg hz-mb-5">
               Deployment Options to Match Your Journey
             </h2>
-            <p className="text-xl text-neutral-300">
+            <p className="hz-t-xl hz-fg-soft">
               From local development to global-scale production, Hanzo Vector offers flexible deployment options to fit your needs.
             </p>
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="hz-grid hz-grid-4 hz-gap-6">
           {deploymentOptions.map((option, index) => {
             const { bg, text, border } = getColorClasses(option.color);
             return (
@@ -116,24 +97,24 @@ const DeploymentOptions = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`${bg} border ${border} rounded-xl p-6 flex flex-col h-full transition-all duration-300 hover:transform hover:translate-y-[-4px] hover:shadow-lg hover:shadow-neutral-900/20`}
+                className={`${bg} hz-bordered ${border} hz-r-lg hz-p-5 hz-col hz-h-full hz-transition`}
               >
-                <div className={`h-12 w-12 rounded-lg ${bg} flex items-center justify-center mb-4`}>
-                  <option.icon className={`h-6 w-6 ${text}`} />
+                <div className={`hz-sq-7 hz-r-lg ${bg} hz-row hz-ai-center hz-jc-center hz-mb-4`}>
+                  <option.icon className={`hz-sq-4 ${text}`} />
                 </div>
-                <h3 className="text-xl font-bold text-[var(--white)] mb-2">{option.title}</h3>
-                <p className="text-neutral-300 mb-6">{option.description}</p>
+                <h3 className="hz-t-xl hz-w-bold hz-fg hz-mb-2">{option.title}</h3>
+                <p className="hz-fg-soft hz-mb-5">{option.description}</p>
                 
-                <ul className="space-y-2 mb-8 flex-grow">
+                <ul className="hz-stack-2 hz-mb-6 hz-grow">
                   {option.features.map((feature, fIndex) => (
-                    <li key={fIndex} className="flex items-start">
-                      <span className={`mr-2 ${text}`}>•</span>
-                      <span className="text-neutral-400 text-sm">{feature}</span>
+                    <li key={fIndex} className="hz-row hz-ai-start">
+                      <span className={`hz-mr-2 ${text}`}>•</span>
+                      <span className="hz-fg-muted hz-t-sm">{feature}</span>
                     </li>
                   ))}
                 </ul>
                 
-                <Button variant="outline" className={`mt-auto ${text} border-gray-700 hover:bg-gray-800`}>
+                <Button variant="outline" className={`hz-mt-auto ${text} hz-hoverable`}>
                   {option.cta}
                 </Button>
               </motion.div>

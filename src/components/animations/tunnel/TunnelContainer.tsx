@@ -9,7 +9,7 @@ interface TunnelContainerProps {
 const TunnelContainer: React.FC<TunnelContainerProps> = ({ children }) => {
   return (
     <motion.div 
-      className="absolute inset-0 w-full h-full"
+      className="hz-abs hz-inset hz-w-full hz-h-full"
       style={{ 
         transformStyle: "preserve-3d",
         perspective: "1000px",

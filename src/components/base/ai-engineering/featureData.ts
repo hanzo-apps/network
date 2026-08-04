@@ -15,7 +15,7 @@ export interface AIFeature {
 
 export const featureData: AIFeature[] = [
   {
-    icon: React.createElement(Brain, { className: "h-6 w-6" }),
+    icon: React.createElement(Brain, { className: "hz-sq-4" }),
     title: "Model Integration",
     description: "Seamlessly integrate with OpenAI, Hugging Face, and other machine learning platforms. Deploy and serve custom ML models with built-in scaling and monitoring.",
     featurePoints: [
@@ -24,12 +24,12 @@ export const featureData: AIFeature[] = [
       { text: "Performance optimization for inference workloads" }
     ],
     delay: 0.1,
-    iconBgClass: "bg-neutral-800/30",
-    iconTextClass: "text-neutral-400",
-    bulletColor: "text-neutral-400"
+    iconBgClass: "hz-bg-surface",
+    iconTextClass: "hz-fg-muted",
+    bulletColor: "hz-fg-muted"
   },
   {
-    icon: React.createElement(Search, { className: "h-6 w-6" }),
+    icon: React.createElement(Search, { className: "hz-sq-4" }),
     title: "Vector Search",
     description: "High-performance vector database capabilities for semantic search, RAG applications, and similarity matching across billions of vectors.",
     featurePoints: [
@@ -38,12 +38,12 @@ export const featureData: AIFeature[] = [
       { text: "Hybrid search combining vector and traditional queries" }
     ],
     delay: 0.2,
-    iconBgClass: "bg-neutral-800/30",
-    iconTextClass: "text-neutral-400",
-    bulletColor: "text-neutral-400"
+    iconBgClass: "hz-bg-surface",
+    iconTextClass: "hz-fg-muted",
+    bulletColor: "hz-fg-muted"
   },
   {
-    icon: React.createElement(Database, { className: "h-6 w-6" }),
+    icon: React.createElement(Database, { className: "hz-sq-4" }),
     title: "Data Processing",
     description: "Specialized data processing pipelines for cleaning, transforming, and enriching training data for machine learning models.",
     featurePoints: [
@@ -52,12 +52,12 @@ export const featureData: AIFeature[] = [
       { text: "Scalable batch and stream processing" }
     ],
     delay: 0.3,
-    iconBgClass: "bg-neutral-800/30",
-    iconTextClass: "text-neutral-400",
-    bulletColor: "text-neutral-400"
+    iconBgClass: "hz-bg-surface",
+    iconTextClass: "hz-fg-muted",
+    bulletColor: "hz-fg-muted"
   },
   {
-    icon: React.createElement(Sparkles, { className: "h-6 w-6" }),
+    icon: React.createElement(Sparkles, { className: "hz-sq-4" }),
     title: "AI-Enhanced Features",
     description: "Ready-to-use AI capabilities that can be integrated into applications with minimal configuration.",
     featurePoints: [
@@ -66,8 +66,8 @@ export const featureData: AIFeature[] = [
       { text: "Real-time anomaly detection and predictive analytics" }
     ],
     delay: 0.4,
-    iconBgClass: "bg-neutral-800/30",
-    iconTextClass: "text-neutral-400",
-    bulletColor: "text-neutral-400"
+    iconBgClass: "hz-bg-surface",
+    iconTextClass: "hz-fg-muted",
+    bulletColor: "hz-fg-muted"
   }
 ];

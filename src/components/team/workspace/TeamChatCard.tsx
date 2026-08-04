@@ -11,56 +11,56 @@ const TeamChatCard = () => {
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: 0.1 }}
-      className="bg-gray-900/30 border border-neutral-800/20 rounded-xl overflow-hidden shadow-xl"
+      className="hz-bg-surface hz-bordered hz-r-lg hz-clip hz-shadow-lg"
     >
-      <div className="border-b border-gray-800 p-3 flex items-center">
-        <MessageSquare className="h-5 w-5 text-neutral-400 mr-2" />
-        <span className="font-medium">Team Chat</span>
-        <Badge variant="outline" className="ml-auto bg-neutral-800/30 border-neutral-500/30 text-neutral-300">
+      <div className="hz-border-b hz-p-3 hz-row hz-ai-center">
+        <MessageSquare className="hz-sq-3 hz-fg-muted hz-mr-2" />
+        <span className="hz-w-medium">Team Chat</span>
+        <Badge variant="outline" className="hz-ml-auto hz-bg-raised hz-border-strong hz-fg-soft">
           Slack-style
         </Badge>
       </div>
-      <div className="p-4">
-        <div className="bg-[var(--black)]/60 rounded-lg p-4">
-          <div className="mb-4">
-            <h3 className="font-medium text-[var(--white)]">#project-website</h3>
-            <div className="text-xs text-neutral-400">3 humans, 2 AI agents</div>
+      <div className="hz-p-4">
+        <div className="hz-bg-overlay hz-r-lg hz-p-4">
+          <div className="hz-mb-4">
+            <h3 className="hz-w-medium hz-fg">#project-website</h3>
+            <div className="hz-t-xs hz-fg-muted">3 humans, 2 AI agents</div>
           </div>
           
-          <div className="space-y-4">
-            <div className="flex">
-              <div className="w-8 h-8 rounded-full bg-gray-600 flex-shrink-0 flex items-center justify-center text-xs mr-3">JD</div>
+          <div className="hz-stack-4">
+            <div className="hz-row">
+              <div className="hz-sq-5 hz-r-full hz-bg-raised hz-none hz-row hz-ai-center hz-jc-center hz-t-xs hz-mr-3">JD</div>
               <div>
-                <div className="flex items-center">
-                  <span className="font-medium">John Doe</span>
-                  <span className="text-xs text-neutral-400 ml-2">10:45 AM</span>
+                <div className="hz-row hz-ai-center">
+                  <span className="hz-w-medium">John Doe</span>
+                  <span className="hz-t-xs hz-fg-muted hz-ml-2">10:45 AM</span>
                 </div>
-                <p className="text-sm text-neutral-300">Can someone help review the landing page design?</p>
+                <p className="hz-t-sm hz-fg-soft">Can someone help review the landing page design?</p>
               </div>
             </div>
             
-            <div className="flex">
-              <div className="w-8 h-8 rounded-full bg-neutral-600 flex-shrink-0 flex items-center justify-center text-xs mr-3">AI</div>
+            <div className="hz-row">
+              <div className="hz-sq-5 hz-r-full hz-bg-raised hz-none hz-row hz-ai-center hz-jc-center hz-t-xs hz-mr-3">AI</div>
               <div>
-                <div className="flex items-center">
-                  <span className="font-medium">DesignBot</span>
-                  <span className="text-xs text-neutral-400 ml-2">10:47 AM</span>
+                <div className="hz-row hz-ai-center">
+                  <span className="hz-w-medium">DesignBot</span>
+                  <span className="hz-t-xs hz-fg-muted hz-ml-2">10:47 AM</span>
                 </div>
-                <p className="text-sm text-neutral-300">I'll review it right away. I see a few opportunities to improve the visual hierarchy and call-to-action placement.</p>
+                <p className="hz-t-sm hz-fg-soft">I'll review it right away. I see a few opportunities to improve the visual hierarchy and call-to-action placement.</p>
               </div>
             </div>
             
-            <div className="flex">
-              <div className="w-8 h-8 rounded-full bg-neutral-600 flex-shrink-0 flex items-center justify-center text-xs mr-3">AI</div>
+            <div className="hz-row">
+              <div className="hz-sq-5 hz-r-full hz-bg-raised hz-none hz-row hz-ai-center hz-jc-center hz-t-xs hz-mr-3">AI</div>
               <div>
-                <div className="flex items-center">
-                  <span className="font-medium">DesignBot</span>
-                  <span className="text-xs text-neutral-400 ml-2">10:49 AM</span>
+                <div className="hz-row hz-ai-center">
+                  <span className="hz-w-medium">DesignBot</span>
+                  <span className="hz-t-xs hz-fg-muted hz-ml-2">10:49 AM</span>
                 </div>
-                <div className="bg-gray-800/70 p-2 rounded-md text-sm text-neutral-300 border border-gray-700/50">
+                <div className="hz-bg-raised hz-p-2 hz-r-md hz-t-sm hz-fg-soft hz-bordered">
                   <p>I've created some alternative layouts based on our brand guidelines. You can view them here:</p>
-                  <div className="bg-neutral-800/20 text-neutral-300 p-1 mt-1 rounded flex items-center text-xs">
-                    <FileText className="h-3 w-3 mr-1" />
+                  <div className="hz-bg-raised hz-fg-soft hz-p-1 hz-mt-1 hz-r-md hz-row hz-ai-center hz-t-xs">
+                    <FileText className="hz-sq-1 hz-mr-1" />
                     design-alternatives.figma
                   </div>
                 </div>

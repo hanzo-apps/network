@@ -67,18 +67,18 @@ const caseStudies = [{
 }];
 
 const Testimonials = () => {
-  return <section className="py-20 bg-[var(--black)]/50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-display text-[var(--white)]">Our Impact</h2>
-          <p className="mt-4 text-lg text-neutral-300">Transforming businesses through innovation.</p>
+  return <section className="hz-py-7 hz-bg-overlay">
+      <div className="hz-container">
+        <div className="hz-align-center hz-mb-7">
+          <h2 className="hz-t-3xl hz-display hz-fg">Our Impact</h2>
+          <p className="hz-mt-4 hz-t-lg hz-fg-soft">Transforming businesses through innovation.</p>
         </div>
 
         {/* Brand Logos Scroll Area */}
-        <div className="mb-16">
-          <h3 className="text-xl font-display text-[var(--white)] mb-6">Trusted By Industry Leaders</h3>
-          <ScrollArea className="w-full whitespace-nowrap rounded-lg">
-            <div className="flex space-x-8 p-4">
+        <div className="hz-mb-7">
+          <h3 className="hz-t-xl hz-display hz-fg hz-mb-5">Trusted By Industry Leaders</h3>
+          <ScrollArea className="hz-w-full hz-whitespace-nowrap hz-r-lg">
+            <div className="hz-row hz-inline-4 hz-p-4">
               {brandLogos.map((brand, index) => <motion.div key={index} initial={{
               opacity: 0,
               y: 20
@@ -90,53 +90,53 @@ const Testimonials = () => {
             }} transition={{
               duration: 0.5,
               delay: index * 0.1
-            }} className="flex-shrink-0">
-                  <img src={brand.logo} alt={brand.name} className="h-12 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity" />
+            }} className="hz-none">
+                  <img src={brand.logo} alt={brand.name} className="hz-bh-7 hz-w-auto hz-object-contain hz-dim hz-transition" />
                 </motion.div>)}
             </div>
           </ScrollArea>
         </div>
 
         {/* Case Studies */}
-        <div className="mb-16">
-          <div className="flex justify-between items-center mb-8">
-            <h3 className="text-xl font-display text-[var(--white)]">Featured Case Studies</h3>
-            <Button variant="ghost" className="text-[var(--white)]">
-              View All Case Studies <ArrowRight className="ml-2 h-4 w-4" />
+        <div className="hz-mb-7">
+          <div className="hz-row hz-jc-between hz-ai-center hz-mb-6">
+            <h3 className="hz-t-xl hz-display hz-fg">Featured Case Studies</h3>
+            <Button variant="ghost" className="hz-fg">
+              View All Case Studies <ArrowRight className="hz-sq-2 hz-ml-2" />
             </Button>
           </div>
           
           {/* Number milestone section - modified to use numbers and responsive layout */}
-          <div className="flex flex-col md:flex-row justify-between mb-8">
-            <div className="flex md:items-center md:space-x-6 mb-6 md:mb-0">
-              <div className="flex flex-col md:flex-row md:items-center">
-                <div className="flex items-center mb-4 md:mb-0">
-                  <div className="w-8 h-8 rounded-full bg-[var(--white)]/10 flex items-center justify-center text-[var(--white)] font-semibold mr-3">1</div>
-                  <h4 className="text-lg font-medium text-[var(--white)]">Analyze</h4>
+          <div className="hz-col-row hz-jc-between hz-mb-6">
+            <div className="hz-row hz-mb-5">
+              <div className="hz-col-row">
+                <div className="hz-row hz-ai-center hz-mb-4">
+                  <div className="hz-sq-5 hz-r-full hz-bg-surface hz-row hz-ai-center hz-jc-center hz-fg hz-w-semibold hz-mr-3">1</div>
+                  <h4 className="hz-t-lg hz-w-medium hz-fg">Analyze</h4>
                 </div>
               </div>
             </div>
             
-            <div className="flex md:items-center md:space-x-6 mb-6 md:mb-0">
-              <div className="flex flex-col md:flex-row md:items-center">
-                <div className="flex items-center mb-4 md:mb-0">
-                  <div className="w-8 h-8 rounded-full bg-[var(--white)]/10 flex items-center justify-center text-[var(--white)] font-semibold mr-3">2</div>
-                  <h4 className="text-lg font-medium text-[var(--white)]">Optimize</h4>
+            <div className="hz-row hz-mb-5">
+              <div className="hz-col-row">
+                <div className="hz-row hz-ai-center hz-mb-4">
+                  <div className="hz-sq-5 hz-r-full hz-bg-surface hz-row hz-ai-center hz-jc-center hz-fg hz-w-semibold hz-mr-3">2</div>
+                  <h4 className="hz-t-lg hz-w-medium hz-fg">Optimize</h4>
                 </div>
               </div>
             </div>
             
-            <div className="flex md:items-center md:space-x-6">
-              <div className="flex flex-col md:flex-row md:items-center">
-                <div className="flex items-center">
-                  <div className="w-8 h-8 rounded-full bg-[var(--white)]/10 flex items-center justify-center text-[var(--white)] font-semibold mr-3">3</div>
-                  <h4 className="text-lg font-medium text-[var(--white)]">Scale</h4>
+            <div className="hz-row">
+              <div className="hz-col-row">
+                <div className="hz-row hz-ai-center">
+                  <div className="hz-sq-5 hz-r-full hz-bg-surface hz-row hz-ai-center hz-jc-center hz-fg hz-w-semibold hz-mr-3">3</div>
+                  <h4 className="hz-t-lg hz-w-medium hz-fg">Scale</h4>
                 </div>
               </div>
             </div>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="hz-grid hz-grid-2 hz-gap-6">
             {caseStudies.map((study, index) => <motion.div key={index} initial={{
             opacity: 0,
             y: 20
@@ -148,21 +148,21 @@ const Testimonials = () => {
           }} transition={{
             duration: 0.5,
             delay: index * 0.1
-          }} className="bg-gray-900/50 backdrop-blur-sm rounded-xl overflow-hidden">
-                <div className="aspect-video w-full">
-                  <iframe src={study.videoUrl} className="w-full h-full" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+          }} className="hz-bg-surface hz-glass hz-r-lg hz-clip">
+                <div className="hz-w-full">
+                  <iframe src={study.videoUrl} className="hz-w-full hz-h-full" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                 </div>
-                <div className="p-6">
-                  <h4 className="text-[var(--white)] mb-2 text-3xl font-normal">{study.title}</h4>
-                  <p className="text-neutral-300 mb-4">{study.description}</p>
-                  <div className="grid grid-cols-3 gap-4 mb-4">
-                    {Object.entries(study.stats).map(([key, value], i) => <div key={i} className="text-center">
-                        <div className="text-2xl font-bold text-[var(--white)]">{value}</div>
-                        <div className="text-sm text-neutral-400">{key}</div>
+                <div className="hz-p-5">
+                  <h4 className="hz-fg hz-mb-2 hz-t-3xl hz-w-normal">{study.title}</h4>
+                  <p className="hz-fg-soft hz-mb-4">{study.description}</p>
+                  <div className="hz-grid hz-grid-3 hz-gap-4 hz-mb-4">
+                    {Object.entries(study.stats).map(([key, value], i) => <div key={i} className="hz-align-center">
+                        <div className="hz-t-2xl hz-w-bold hz-fg">{value}</div>
+                        <div className="hz-t-sm hz-fg-muted">{key}</div>
                       </div>)}
                   </div>
-                  <Button variant="outline" className="w-full" onClick={() => window.open(study.learnMoreUrl, '_blank')}>
-                    Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                  <Button variant="outline" className="hz-w-full" onClick={() => window.open(study.learnMoreUrl, '_blank')}>
+                    Learn More <ArrowRight className="hz-sq-2 hz-ml-2" />
                   </Button>
                 </div>
               </motion.div>)}
@@ -170,7 +170,7 @@ const Testimonials = () => {
         </div>
         
         {/* Testimonials */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="hz-grid hz-grid-3 hz-gap-6">
           {testimonials.map((testimonial, index) => <motion.div key={index} initial={{
           opacity: 0,
           y: 20
@@ -182,11 +182,11 @@ const Testimonials = () => {
         }} transition={{
           duration: 0.5,
           delay: index * 0.1
-        }} className="p-6 bg-gray-900/50 backdrop-blur-sm rounded-xl ring-1 ring-white/10">
-              <p className="text-neutral-300 italic">{testimonial.quote}</p>
-              <div className="mt-4">
-                <p className="text-[var(--white)] font-semibold">{testimonial.author}</p>
-                <p className="text-neutral-400">{testimonial.role}</p>
+        }} className="hz-p-5 hz-bg-surface hz-glass hz-r-lg hz-ring">
+              <p className="hz-fg-soft hz-italic">{testimonial.quote}</p>
+              <div className="hz-mt-4">
+                <p className="hz-fg hz-w-semibold">{testimonial.author}</p>
+                <p className="hz-fg-muted">{testimonial.role}</p>
               </div>
             </motion.div>)}
         </div>

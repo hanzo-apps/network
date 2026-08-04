@@ -6,27 +6,27 @@ import { FileText, ArrowRight } from "lucide-react";
 
 const CallToAction = () => {
   return (
-    <section className="py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-900/30 to-black relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-neutral-800/20 via-transparent to-transparent opacity-70"></div>
+    <section className="hz-py-7 hz-px-4 hz-rel hz-clip">
+      <div className="hz-abs hz-inset hz-dim"></div>
       
-      <div className="max-w-5xl mx-auto relative z-10">
+      <div className="hz-container-wide hz-rel hz-z-raised">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center"
+          className="hz-align-center"
         >
-          <h2 className="text-3xl md:text-5xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
+          <h2 className="hz-t-3xl hz-w-bold hz-mb-6 hz-chrome">
             Ready to see the difference clarity makes?
           </h2>
           
-          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12">
+          <div className="hz-col-row hz-gap-5 hz-jc-center hz-mb-7">
             <motion.div
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
-              <Button size="lg" className="text-lg px-8 py-6 bg-gradient-to-r from-neutral-600 to-neutral-600 hover:from-neutral-500 hover:to-neutral-500 border-none">
+              <Button size="lg" className="hz-t-lg hz-px-6 hz-py-5 hz-border-none">
                 Get Started
               </Button>
             </motion.div>
@@ -35,8 +35,8 @@ const CallToAction = () => {
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
-              <Button size="lg" variant="outline" className="text-lg px-8 py-6 border-gray-700">
-                <FileText className="mr-2 h-5 w-5" /> View Docs
+              <Button size="lg" variant="outline" className="hz-t-lg hz-px-6 hz-py-5">
+                <FileText className="hz-sq-3 hz-mr-2" /> View Docs
               </Button>
             </motion.div>
             
@@ -44,15 +44,15 @@ const CallToAction = () => {
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
-              <Button size="lg" variant="outline" className="text-lg px-8 py-6 border-gray-700">
-                <span className="flex items-center">
-                  Request a Demo <ArrowRight className="ml-2 h-5 w-5" />
+              <Button size="lg" variant="outline" className="hz-t-lg hz-px-6 hz-py-5">
+                <span className="hz-row hz-ai-center">
+                  Request a Demo <ArrowRight className="hz-sq-3 hz-ml-2" />
                 </span>
               </Button>
             </motion.div>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
+          <div className="hz-grid hz-grid-3 hz-container-narrow hz-gap-5">
             {[
               {
                 title: "Self-Hosted",
@@ -73,10 +73,10 @@ const CallToAction = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2 + (index * 0.1) }}
-                className="bg-gray-900/20 p-6 rounded-xl border border-gray-800"
+                className="hz-card"
               >
-                <h3 className="text-lg font-bold mb-2">{option.title}</h3>
-                <p className="text-neutral-400 text-sm">{option.description}</p>
+                <h3 className="hz-t-lg hz-w-bold hz-mb-2">{option.title}</h3>
+                <p className="hz-fg-muted hz-t-sm">{option.description}</p>
               </motion.div>
             ))}
           </div>
@@ -86,7 +86,7 @@ const CallToAction = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.5 }}
-            className="mt-12 text-center text-neutral-500 text-sm"
+            className="hz-mt-7 hz-align-center hz-fg-muted hz-t-sm"
           >
             Free 14-day trial, no credit card required.
           </motion.div>

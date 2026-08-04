@@ -36,34 +36,34 @@ const entryPoints = [
 
 const CuratedEntryPointsSection = () => {
   return (
-    <section className="py-24 px-4 md:px-8 bg-black relative overflow-hidden">
+    <section className="hz-py-7 hz-px-4 hz-bg hz-rel hz-clip">
       {/* Background grid */}
       <div
-        className="absolute inset-0 opacity-[0.02]"
+        className="hz-abs hz-inset hz-dim-more"
         style={{
           backgroundImage: `radial-gradient(circle at center, #ffffff 1px, transparent 1px)`,
           backgroundSize: "40px 40px",
         }}
       />
 
-      <div className="max-w-6xl mx-auto relative z-10">
+      <div className="hz-container-wide hz-rel hz-z-raised">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="hz-align-center hz-mb-7"
         >
-          <h2 className="text-3xl md:text-5xl font-medium text-white mb-4">
+          <h2 className="hz-t-3xl hz-w-medium hz-fg hz-mb-4">
             Start building
           </h2>
-          <p className="text-lg text-neutral-400">
+          <p className="hz-t-lg hz-fg-muted">
             Four paths into the platform.
           </p>
         </motion.div>
 
         {/* Entry Points Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="hz-grid hz-grid-4 hz-gap-4">
           {entryPoints.map((entry, index) => {
             const Icon = entry.icon;
             return (
@@ -74,9 +74,9 @@ const CuratedEntryPointsSection = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
               >
-                <Link to={entry.link} className="block h-full group">
+                <Link to={entry.link} className="hz-h-full">
                   <motion.div
-                    className="h-full p-6 rounded-xl border border-neutral-800 bg-neutral-900/50 hover:border-white/50 transition-all duration-300 relative overflow-hidden"
+                    className="hz-card hz-h-full hz-transition hz-rel hz-clip hz-card-interactive"
                     whileHover={{
                       y: -4,
                       boxShadow: "0 0 40px -10px rgba(255, 255, 255, 0.3)",
@@ -85,33 +85,33 @@ const CuratedEntryPointsSection = () => {
                   >
                     {/* Icon */}
                     <div
-                      className="w-12 h-12 rounded-lg flex items-center justify-center mb-4"
+                      className="hz-sq-7 hz-r-lg hz-row hz-ai-center hz-jc-center hz-mb-4"
                       style={{ backgroundColor: "rgba(255, 255, 255, 0.1)" }}
                     >
                       <Icon
-                        className="w-6 h-6"
+                        className="hz-sq-4"
                         style={{ color: "#ffffff" }}
                       />
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-lg font-semibold text-white mb-1 group-hover:text-white transition-colors">
+                    <h3 className="hz-t-lg hz-w-semibold hz-fg hz-mb-1 hz-transition hz-hoverable">
                       {entry.title}
                     </h3>
 
                     {/* Tagline */}
-                    <p className="text-xs font-medium text-neutral-500 mb-3">
+                    <p className="hz-t-xs hz-w-medium hz-fg-muted hz-mb-3">
                       {entry.tagline}
                     </p>
 
                     {/* Description */}
-                    <p className="text-sm text-neutral-400 leading-relaxed">
+                    <p className="hz-t-sm hz-fg-muted hz-leading-relaxed">
                       {entry.description}
                     </p>
 
                     {/* Hover accent line */}
                     <motion.div
-                      className="absolute bottom-0 left-0 h-[2px] rounded-full"
+                      className="hz-abs hz-bottom-0 hz-left-0 hz-r-full"
                       style={{ backgroundColor: "#ffffff" }}
                       initial={{ width: 0 }}
                       whileHover={{ width: "100%" }}
@@ -130,14 +130,14 @@ const CuratedEntryPointsSection = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="text-center mt-10"
+          className="hz-align-center hz-mt-6"
         >
           <Link
             to="/products"
-            className="inline-flex items-center gap-2 text-sm font-medium text-neutral-400 hover:text-white transition-colors"
+            className="hz-inline hz-ai-center hz-gap-2 hz-t-sm hz-w-medium hz-fg-muted hz-transition hz-link"
           >
             View all products
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="hz-sq-2 hz-transition" />
           </Link>
         </motion.div>
       </div>

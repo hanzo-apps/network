@@ -16,20 +16,20 @@ const AITunnelContent: React.FC<AITunnelContentProps> = ({
   showButtons
 }) => {
   return (
-    <div className="absolute inset-0 flex flex-col items-center justify-center text-center z-10 px-4 py-12">
+    <div className="hz-abs hz-inset hz-col hz-ai-center hz-jc-center hz-align-center hz-z-raised hz-px-4 hz-py-7">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="relative"
+        className="hz-rel"
       >
-        <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-[var(--white)] mb-6 leading-tight">
+        <h1 className="hz-t-3xl hz-w-bold hz-fg hz-mb-5 hz-leading-tight">
           {title}
         </h1>
         
         {/* Glowing underline */}
         <motion.div 
-          className="h-[2px] bg-gradient-to-r from-neutral-500/0 via-neutral-500 to-neutral-500/0 mx-auto"
+          className="hz-mx-auto"
           style={{ width: '60%' }}
           animate={{
             opacity: [0.5, 1, 0.5],
@@ -47,7 +47,7 @@ const AITunnelContent: React.FC<AITunnelContentProps> = ({
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.4 }}
-        className="text-lg md:text-xl text-neutral-300 mb-8 max-w-xl"
+        className="hz-t-lg hz-fg-soft hz-mb-6 hz-mw-md"
       >
         {subtitle}
       </motion.p>
@@ -57,12 +57,12 @@ const AITunnelContent: React.FC<AITunnelContentProps> = ({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="flex flex-col sm:flex-row gap-4"
+          className="hz-col-row hz-gap-4"
         >
           <Button 
             size="lg"
             radius="full"
-            className="text-lg px-8 bg-gradient-to-r from-neutral-600 to-neutral-500 hover:from-neutral-500 hover:to-neutral-400 border-none"
+            className="hz-t-lg hz-px-6 hz-border-none"
           >
             Start Building
           </Button>
@@ -70,10 +70,10 @@ const AITunnelContent: React.FC<AITunnelContentProps> = ({
             size="lg" 
             variant="outline" 
             radius="full"
-            className="text-lg px-8 text-[var(--white)] border-white/20 bg-[var(--white)]/5 hover:bg-[var(--white)]/10"
+            className="hz-t-lg hz-px-6 hz-fg hz-bg-surface hz-hoverable"
           >
-            <span className="mr-2">Read Docs</span>
-            <ArrowRight className="h-5 w-5" />
+            <span className="hz-mr-2">Read Docs</span>
+            <ArrowRight className="hz-sq-3" />
           </Button>
         </motion.div>
       )}

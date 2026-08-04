@@ -71,30 +71,30 @@ const TrustedBy = () => {
   return (
     <section 
       ref={containerRef} 
-      className="py-24 px-4 sm:px-6 lg:px-8 bg-[var(--black)]"
+      className="hz-py-7 hz-px-4 hz-bg"
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="hz-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-20"
+          className="hz-align-center hz-mb-7"
         >
           <h2 
-            className="text-3xl md:text-4xl font-medium mb-6 chrome-text"
+            className="hz-t-3xl hz-w-medium hz-mb-5 chrome-text"
             style={{
               backgroundPosition: `${(mousePosition.x / (containerRef.current?.offsetWidth || 1)) * 100}% ${(mousePosition.y / (containerRef.current?.offsetHeight || 1)) * 100}%`,
             }}
           >
             Trusted by the best in business
           </h2>
-          <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
+          <p className="hz-container-narrow hz-t-xl hz-fg-soft">
             Industry leaders across various sectors rely on Hanzo for their technological needs. Here's what they have to say.
           </p>
         </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="hz-grid hz-grid-3 hz-gap-6">
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={testimonial.company}
@@ -102,11 +102,11 @@ const TrustedBy = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-[var(--black)]/50 backdrop-blur-sm rounded-xl p-8 border border-neutral-800/20"
+              className="hz-card hz-glass"
             >
-              <div className="mb-4">
+              <div className="hz-mb-4">
                 <h3 
-                  className="text-xl font-medium chrome-text"
+                  className="hz-t-xl hz-w-medium chrome-text"
                   style={{
                     backgroundPosition: `${(mousePosition.x / (containerRef.current?.offsetWidth || 1)) * 100}% ${(mousePosition.y / (containerRef.current?.offsetHeight || 1)) * 100}%`,
                   }}
@@ -115,19 +115,19 @@ const TrustedBy = () => {
                 </h3>
               </div>
               
-              <p className="text-neutral-300 mb-6 leading-relaxed">"{testimonial.quote}"</p>
+              <p className="hz-fg-soft hz-mb-5 hz-leading-relaxed">"{testimonial.quote}"</p>
               
-              <div className="flex items-center">
-                <div className="mr-4">
+              <div className="hz-row hz-ai-center">
+                <div className="hz-mr-4">
                   <img
                     src={testimonial.avatar}
                     alt={testimonial.author}
-                    className="h-12 w-12 rounded-full object-cover bg-neutral-900"
+                    className="hz-sq-7 hz-r-full hz-object-cover hz-bg-surface"
                   />
                 </div>
                 <div>
-                  <h4 className="font-medium text-[var(--white)]">{testimonial.author}</h4>
-                  <p className="text-sm text-neutral-400">{testimonial.role}</p>
+                  <h4 className="hz-w-medium hz-fg">{testimonial.author}</h4>
+                  <p className="hz-t-sm hz-fg-muted">{testimonial.role}</p>
                 </div>
               </div>
             </motion.div>

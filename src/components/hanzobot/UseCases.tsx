@@ -28,22 +28,22 @@ const UseCases = () => {
   ];
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-950">
-      <div className="max-w-7xl mx-auto">
+    <section className="hz-py-7 hz-px-4 hz-bg-surface">
+      <div className="hz-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="hz-align-center hz-mb-7"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-[var(--white)] mb-4">Use Cases</h2>
-          <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
+          <h2 className="hz-t-3xl hz-w-bold hz-fg hz-mb-4">Use Cases</h2>
+          <p className="hz-container-narrow hz-t-xl hz-fg-soft">
             Hanzo Bot can be used to create a wide variety of autonomous agents
           </p>
         </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="hz-grid hz-grid-4 hz-gap-5">
           {useCases.map((useCase, index) => (
             <motion.div
               key={index}
@@ -51,16 +51,16 @@ const UseCases = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-gradient-to-br from-gray-900/50 to-gray-900/30 border border-gray-800 rounded-xl p-6 hover:border-neutral-500/30 transition-colors"
+              className="hz-card hz-transition hz-card-interactive"
             >
-              <div className="bg-neutral-600/10 p-3 rounded-lg inline-block mb-4">
-                <useCase.icon className="h-6 w-6 text-neutral-400" />
+              <div className="hz-bg-raised hz-p-3 hz-r-lg hz-mb-4">
+                <useCase.icon className="hz-sq-4 hz-fg-muted" />
               </div>
-              <h3 className="text-xl font-semibold text-[var(--white)] mb-4">{useCase.title}</h3>
-              <ul className="space-y-2">
+              <h3 className="hz-t-xl hz-w-semibold hz-fg hz-mb-4">{useCase.title}</h3>
+              <ul className="hz-stack-2">
                 {useCase.examples.map((example, i) => (
-                  <li key={i} className="text-neutral-400 flex items-center">
-                    <span className="w-2 h-2 bg-neutral-600 rounded-full mr-2"></span>
+                  <li key={i} className="hz-fg-muted hz-row hz-ai-center">
+                    <span className="hz-sq-1 hz-bg-raised hz-r-full hz-mr-2"></span>
                     {example}
                   </li>
                 ))}

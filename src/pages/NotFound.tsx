@@ -1,3 +1,4 @@
+import { BRAND } from '@/lib/brand';
 import React from "react";
 import { Helmet } from "react-helmet";
 import { motion } from "framer-motion";
@@ -6,11 +7,10 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Home, ArrowLeft, Search, FileQuestion } from "lucide-react";
 
-const BRAND_COLOR = "#ffffff";
 
 const NotFound = () => {
   return (
-    <div className="min-h-screen bg-[var(--black)] text-[var(--white)] flex flex-col">
+    <div className="hz-min-h-screen hz-bg hz-fg hz-col">
       <Helmet>
         <title>404 - Page Not Found | Hanzo AI</title>
         <meta name="description" content="The page you're looking for doesn't exist." />
@@ -18,34 +18,33 @@ const NotFound = () => {
 
       <Navbar />
 
-      <main className="flex-grow flex items-center justify-center px-4 py-24">
-        <div className="max-w-2xl mx-auto text-center relative">
+      <main className="hz-grow hz-row hz-ai-center hz-jc-center hz-px-4 hz-py-7">
+        <div className="hz-container-narrow hz-mw-md hz-align-center hz-rel">
           {/* Background glow */}
-          <div className="absolute inset-0 overflow-hidden z-0 pointer-events-none">
+          <div className="hz-abs hz-inset hz-clip hz-z-base hz-no-pointer">
             <div
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-10"
+              className="hz-center-xy hz-abs hz-r-full hz-dim-more"
               style={{
-                background: `radial-gradient(circle, ${BRAND_COLOR} 0%, transparent 70%)`,
+                background: `radial-gradient(circle, ${BRAND.fg} 0%, transparent 70%)`,
                 filter: "blur(100px)",
               }}
             />
           </div>
 
-          <div className="relative z-10">
+          <div className="hz-rel hz-z-raised">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
-              className="mb-8"
+              className="hz-mb-6"
             >
               <div
-                className="w-24 h-24 rounded-2xl mx-auto flex items-center justify-center mb-6"
-                style={{ backgroundColor: `${BRAND_COLOR}15` }}
-              >
-                <FileQuestion className="w-12 h-12" style={{ color: BRAND_COLOR }} />
+                className="hz-sq-8 hz-r-xl hz-mx-auto hz-row hz-ai-center hz-jc-center hz-mb-5 hz-bg-quiet"
+                >
+                <FileQuestion className="hz-sq-7 hz-fg" />
               </div>
 
-              <h1 className="text-8xl md:text-9xl font-bold mb-4 bg-gradient-to-b from-white to-neutral-600 bg-clip-text text-transparent">
+              <h1 className="hz-t-7xl hz-w-bold hz-mb-4 hz-chrome">
                 404
               </h1>
             </motion.div>
@@ -55,10 +54,10 @@ const NotFound = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
             >
-              <h2 className="text-2xl md:text-3xl font-semibold text-white mb-4">
+              <h2 className="hz-t-2xl hz-w-semibold hz-fg hz-mb-4">
                 Page not found
               </h2>
-              <p className="text-neutral-400 text-lg mb-10 max-w-md mx-auto">
+              <p className="hz-container-narrow hz-mw-sm hz-fg-muted hz-t-lg hz-mb-6">
                 The page you're looking for doesn't exist or has been moved to a new location.
               </p>
             </motion.div>
@@ -67,21 +66,20 @@ const NotFound = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="flex flex-col sm:flex-row items-center justify-center gap-4"
+              className="hz-col-row hz-ai-center hz-jc-center hz-gap-4"
             >
               <Link
                 to="/"
-                className="inline-flex items-center px-6 py-3 rounded-full font-medium transition-all hover:opacity-90 text-sm"
-                style={{ backgroundColor: BRAND_COLOR, color: "#000000" }}
-              >
-                <Home className="w-4 h-4 mr-2" />
+                className="hz-btn hz-btn-ghost hz-transition hz-bg-inverse"
+                >
+                <Home className="hz-sq-2 hz-mr-2" />
                 Go to Homepage
               </Link>
               <button
                 onClick={() => window.history.back()}
-                className="inline-flex items-center px-6 py-3 rounded-full font-medium transition-colors border border-neutral-700 bg-transparent hover:bg-neutral-900 text-sm text-white"
+                className="hz-btn hz-btn-ghost hz-transition hz-fg"
               >
-                <ArrowLeft className="w-4 h-4 mr-2" />
+                <ArrowLeft className="hz-sq-2 hz-mr-2" />
                 Go Back
               </button>
             </motion.div>
@@ -90,31 +88,31 @@ const NotFound = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="mt-12"
+              className="hz-mt-7"
             >
-              <p className="text-neutral-500 text-sm mb-4">Looking for something?</p>
-              <div className="flex flex-wrap justify-center gap-3">
+              <p className="hz-fg-muted hz-t-sm hz-mb-4">Looking for something?</p>
+              <div className="hz-row hz-wrap hz-jc-center hz-gap-3">
                 <Link
                   to="/products"
-                  className="px-4 py-2 rounded-lg bg-neutral-900 border border-neutral-800 text-sm text-neutral-300 hover:text-white hover:border-neutral-700 transition-colors"
+                  className="hz-px-4 hz-py-2 hz-r-lg hz-bg-surface hz-bordered hz-t-sm hz-fg-soft hz-transition hz-hoverable"
                 >
                   Products
                 </Link>
                 <Link
                   to="/docs"
-                  className="px-4 py-2 rounded-lg bg-neutral-900 border border-neutral-800 text-sm text-neutral-300 hover:text-white hover:border-neutral-700 transition-colors"
+                  className="hz-px-4 hz-py-2 hz-r-lg hz-bg-surface hz-bordered hz-t-sm hz-fg-soft hz-transition hz-hoverable"
                 >
                   Documentation
                 </Link>
                 <Link
                   to="/contact"
-                  className="px-4 py-2 rounded-lg bg-neutral-900 border border-neutral-800 text-sm text-neutral-300 hover:text-white hover:border-neutral-700 transition-colors"
+                  className="hz-px-4 hz-py-2 hz-r-lg hz-bg-surface hz-bordered hz-t-sm hz-fg-soft hz-transition hz-hoverable"
                 >
                   Contact
                 </Link>
                 <Link
                   to="/status"
-                  className="px-4 py-2 rounded-lg bg-neutral-900 border border-neutral-800 text-sm text-neutral-300 hover:text-white hover:border-neutral-700 transition-colors"
+                  className="hz-px-4 hz-py-2 hz-r-lg hz-bg-surface hz-bordered hz-t-sm hz-fg-soft hz-transition hz-hoverable"
                 >
                   Status
                 </Link>

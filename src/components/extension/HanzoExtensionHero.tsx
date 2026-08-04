@@ -7,46 +7,46 @@ import ChromeText from "@/components/ui/chrome-text";
 
 const HanzoExtensionHero = () => {
   return (
-    <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <section className="hz-pt-6 hz-pb-6 hz-px-4 hz-rel hz-clip">
       {/* Background elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-neutral-800/10 to-neutral-800/10 opacity-30"></div>
-      <div className="absolute -top-40 -right-40 w-80 h-80 bg-neutral-600/10 rounded-full blur-3xl"></div>
-      <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-neutral-600/10 rounded-full blur-3xl"></div>
+      <div className="hz-abs hz-inset hz-dim-more"></div>
+      <div className="hz-sq-8 hz-abs hz-bg-raised hz-r-full hz-blur-bg"></div>
+      <div className="hz-sq-8 hz-abs hz-bg-raised hz-r-full hz-blur-bg"></div>
       
-      <div className="max-w-5xl mx-auto relative z-10">
+      <div className="hz-container-wide hz-rel hz-z-raised">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center"
+          className="hz-align-center"
         >
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Hanzo <span className="text-neutral-400">Extension</span>
+          <h1 className="hz-t-4xl hz-w-bold hz-mb-5">
+            Hanzo <span className="hz-fg-muted">Extension</span>
           </h1>
-          <p className="text-xl md:text-2xl text-neutral-300 max-w-3xl mx-auto mb-12">
+          <p className="hz-container-narrow hz-t-xl hz-fg-soft hz-mb-7">
             Access Hanzo AI directly in your browser
             <br />for a seamless web experience
           </p>
           
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
+          <div className="hz-row hz-wrap hz-jc-center hz-gap-4 hz-mb-7">
             <Button 
               size="lg"
-              className="bg-gradient-to-r from-neutral-600 to-neutral-500 hover:from-neutral-500 hover:to-neutral-400 text-[var(--white)] px-8 py-6 rounded-lg text-lg font-medium"
+              className="hz-fg hz-px-6 hz-py-5 hz-r-lg hz-t-lg hz-w-medium"
             >
-              <a href="#browsers" className="flex items-center">
-                <Chrome className="mr-2 h-5 w-5" />
+              <a href="#browsers" className="hz-row hz-ai-center">
+                <Chrome className="hz-sq-3 hz-mr-2" />
                 Add to Chrome
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <ArrowRight className="hz-sq-3 hz-ml-2" />
               </a>
             </Button>
             
             <Button 
               size="lg"
               variant="outline"
-              className="border-neutral-600 text-[var(--white)] hover:bg-neutral-600/10 px-8 py-6 rounded-lg text-lg font-medium"
+              className="hz-border-strong hz-fg hz-px-6 hz-py-5 hz-r-lg hz-t-lg hz-w-medium hz-hoverable"
             >
-              <a href="#browsers" className="flex items-center">
-                <Globe className="mr-2 h-5 w-5" />
+              <a href="#browsers" className="hz-row hz-ai-center">
+                <Globe className="hz-sq-3 hz-mr-2" />
                 Get Firefox Add-on
               </a>
             </Button>
@@ -57,13 +57,13 @@ const HanzoExtensionHero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="relative w-full max-w-4xl mx-auto rounded-xl overflow-hidden shadow-2xl">
+            <div className="hz-container-narrow hz-rel hz-w-full hz-r-lg hz-clip hz-shadow-lg">
               <img 
                 src="/placeholder.svg" 
                 alt="Hanzo Extension Preview" 
-                className="w-full h-auto"
+                className="hz-w-full"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+              <div className="hz-abs hz-inset"></div>
             </div>
           </motion.div>
         </motion.div>

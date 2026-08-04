@@ -18,13 +18,13 @@ const UseCaseCard: React.FC<UseCaseCardProps> = ({ icon: Icon, title, descriptio
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: 0.1 * index }}
-      className="bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-xl p-6 hover:border-neutral-500/30 transition-colors"
+      className="hz-card hz-transition hz-card-interactive"
     >
-      <div className="bg-neutral-800/20 h-10 w-10 rounded-full flex items-center justify-center mb-4">
-        <Icon className="h-5 w-5 text-neutral-400" />
+      <div className="hz-sq-6 hz-bg-raised hz-r-full hz-row hz-ai-center hz-jc-center hz-mb-4">
+        <Icon className="hz-sq-3 hz-fg-muted" />
       </div>
-      <h3 className="text-lg font-semibold text-[var(--white)] mb-2">{title}</h3>
-      <p className="text-neutral-400 text-sm">{description}</p>
+      <h3 className="hz-t-lg hz-w-semibold hz-fg hz-mb-2">{title}</h3>
+      <p className="hz-fg-muted hz-t-sm">{description}</p>
     </motion.div>
   );
 };
@@ -64,28 +64,28 @@ const UseCases = () => {
   ];
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black to-neutral-950/10">
-      <div className="max-w-7xl mx-auto">
+    <section className="hz-py-7 hz-px-4">
+      <div className="hz-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="hz-align-center hz-mb-7"
         >
-          <div className="inline-flex items-center px-3 py-1 rounded-full bg-neutral-800/30 border border-neutral-500/30 mb-6">
-            <Heart className="h-4 w-4 text-neutral-400 mr-2" />
-            <span className="text-sm text-neutral-300">Popular Use Cases</span>
+          <div className="hz-inline hz-ai-center hz-px-3 hz-py-1 hz-r-full hz-bg-raised hz-bordered hz-border-strong hz-mb-5">
+            <Heart className="hz-sq-2 hz-fg-muted hz-mr-2" />
+            <span className="hz-t-sm hz-fg-soft">Popular Use Cases</span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-[var(--white)] mb-4">
+          <h2 className="hz-t-3xl hz-w-bold hz-fg hz-mb-4">
             Build Interactive Experiences
           </h2>
-          <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
+          <p className="hz-container-narrow hz-t-xl hz-fg-soft">
             Hanzo Realtime powers a wide range of applications that demand immediate data updates
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        <div className="hz-grid hz-grid-3 hz-gap-5 hz-mb-7">
           {useCases.map((useCase, index) => (
             <UseCaseCard
               key={index}
@@ -102,10 +102,10 @@ const UseCases = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.6 }}
-          className="text-center"
+          className="hz-align-center"
         >
-          <Button className="bg-neutral-600 hover:bg-neutral-700">
-            Explore All Use Cases <ArrowRight className="ml-2 h-4 w-4" />
+          <Button className="hz-bg-raised hz-hoverable">
+            Explore All Use Cases <ArrowRight className="hz-sq-2 hz-ml-2" />
           </Button>
         </motion.div>
       </div>

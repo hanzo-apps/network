@@ -6,11 +6,11 @@ import { featureData } from "./featureData";
 
 const AIEngineering = () => {
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-[var(--black)]">
-      <div className="max-w-7xl mx-auto">
+    <section className="hz-py-7 hz-px-4 hz-bg">
+      <div className="hz-container">
         <AIEngineeringHeader />
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="hz-grid hz-grid-2 hz-gap-7">
           {featureData.map((feature, index) => (
             <ExpandableFeatureCard
               key={index}

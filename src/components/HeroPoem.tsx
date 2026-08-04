@@ -7,15 +7,15 @@ const HeroPoem = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
-      className="text-center max-w-4xl mx-auto mb-16 space-y-6"
+      className="hz-container-narrow hz-align-center hz-mb-7 hz-stack-5"
     >
-      <h1 className="text-4xl sm:text-5xl md:text-6xl font-display tracking-tight text-[var(--white)] leading-tight relative z-50 text-center">
+      <h1 className="hz-t-4xl hz-display hz-tracking-tight hz-fg hz-leading-tight hz-rel hz-z-overlay hz-align-center">
         In the age of endless dreams,
-        <span className="block bg-gradient-to-r from-neutral-400 to-neutral-400 bg-clip-text text-transparent py-1 leading-relaxed">
+        <span className="hz-chrome hz-py-1 hz-leading-relaxed">
           Ideas take flight on digital wings
         </span>
       </h1>
-      <p className="text-xl sm:text-2xl text-neutral-400 font-light leading-relaxed text-center">
+      <p className="hz-t-xl hz-fg-muted hz-w-normal hz-leading-relaxed hz-align-center">
         Through circuits of light and streams of code,<br />
         Hanzo weaves your visions into reality untold.<br />
         With algorithms crafted and AI refined,<br />

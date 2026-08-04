@@ -8,18 +8,18 @@ import { featureData } from "@/components/base/ai-engineering/featureData";
 
 const AIEngineeringPlatform: React.FC = () => {
   return (
-    <section className="py-16 lg:py-24 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-neutral-400 to-neutral-400">
+    <section className="hz-py-7 hz-rel">
+      <div className="hz-container">
+        <div className="hz-align-center hz-mb-7">
+          <h2 className="hz-t-3xl hz-w-bold hz-mb-5 hz-chrome">
             AI Engineering Platform
           </h2>
-          <p className="text-lg text-neutral-300 max-w-3xl mx-auto">
+          <p className="hz-container-narrow hz-t-lg hz-fg-soft">
             Build, deploy, and scale AI applications with an integrated suite of tools designed for modern engineering teams.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+        <div className="hz-grid hz-grid-2 hz-gap-5 hz-mb-7">
           <div>
             <CloudInfrastructure />
           </div>
@@ -28,7 +28,7 @@ const AIEngineeringPlatform: React.FC = () => {
           </div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="hz-grid hz-grid-4 hz-gap-5">
           {featureData.map((feature, index) => (
             <FeatureCard
               key={feature.title}

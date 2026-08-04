@@ -27,11 +27,11 @@ const PaymentMethods = () => {
   const getCardIcon = (type: string) => {
     switch (type) {
       case 'visa':
-        return <div className="text-neutral-400 font-bold text-xs">VISA</div>;
+        return <div className="hz-fg-muted hz-w-bold hz-t-xs">VISA</div>;
       case 'mastercard':
-        return <div className="text-neutral-400 font-bold text-xs">MC</div>;
+        return <div className="hz-fg-muted hz-w-bold hz-t-xs">MC</div>;
       default:
-        return <CreditCard className="h-4 w-4 text-neutral-400" />;
+        return <CreditCard className="hz-sq-2 hz-fg-muted" />;
     }
   };
 
@@ -102,31 +102,31 @@ const PaymentMethods = () => {
   };
 
   return (
-    <div className="space-y-8">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center">
+    <div className="hz-stack-6">
+      <div className="hz-row hz-ai-center hz-jc-between">
+        <div className="hz-row hz-ai-center">
           <BillingTabsLink tabId="overview" variant="ghost">
-            <ArrowLeft className="h-4 w-4 mr-2" /> Back to Overview
+            <ArrowLeft className="hz-sq-2 hz-mr-2" /> Back to Overview
           </BillingTabsLink>
         </div>
         <Button onClick={handleAddCard}>
-          <Plus className="h-4 w-4 mr-2" />
+          <Plus className="hz-sq-2 hz-mr-2" />
           Add Payment Method
         </Button>
       </div>
       
       {/* Add new card form */}
       {showAddCard && (
-        <div className="bg-gray-900/50 border border-gray-800 rounded-lg p-6">
-          <div className="flex justify-between items-center mb-4">
-            <h3 className="text-lg font-medium">Add Payment Method</h3>
+        <div className="hz-card">
+          <div className="hz-row hz-jc-between hz-ai-center hz-mb-4">
+            <h3 className="hz-t-lg hz-w-medium">Add Payment Method</h3>
             <Button variant="ghost" size="sm" onClick={handleCloseAddCard}>
-              <X className="h-4 w-4" />
+              <X className="hz-sq-2" />
             </Button>
           </div>
           
-          <form onSubmit={handleSubmitCard} className="space-y-4">
-            <div className="space-y-2">
+          <form onSubmit={handleSubmitCard} className="hz-stack-4">
+            <div className="hz-stack-2">
               <Label htmlFor="cardName">Name on Card</Label>
               <Input
                 id="cardName"
@@ -134,11 +134,11 @@ const PaymentMethods = () => {
                 placeholder="John Doe"
                 value={newCard.cardName}
                 onChange={handleCardInputChange}
-                className="bg-gray-800 border-gray-700"
+                className="hz-bg-raised"
               />
             </div>
             
-            <div className="space-y-2">
+            <div className="hz-stack-2">
               <Label htmlFor="cardNumber">Card Number</Label>
               <Input
                 id="cardNumber"
@@ -146,12 +146,12 @@ const PaymentMethods = () => {
                 placeholder="4242 4242 4242 4242"
                 value={newCard.cardNumber}
                 onChange={handleCardInputChange}
-                className="bg-gray-800 border-gray-700"
+                className="hz-bg-raised"
               />
             </div>
             
-            <div className="grid grid-cols-3 gap-4">
-              <div className="space-y-2">
+            <div className="hz-grid hz-grid-3 hz-gap-4">
+              <div className="hz-stack-2">
                 <Label htmlFor="expMonth">Month</Label>
                 <Input
                   id="expMonth"
@@ -160,11 +160,11 @@ const PaymentMethods = () => {
                   maxLength={2}
                   value={newCard.expMonth}
                   onChange={handleCardInputChange}
-                  className="bg-gray-800 border-gray-700"
+                  className="hz-bg-raised"
                 />
               </div>
               
-              <div className="space-y-2">
+              <div className="hz-stack-2">
                 <Label htmlFor="expYear">Year</Label>
                 <Input
                   id="expYear"
@@ -173,11 +173,11 @@ const PaymentMethods = () => {
                   maxLength={2}
                   value={newCard.expYear}
                   onChange={handleCardInputChange}
-                  className="bg-gray-800 border-gray-700"
+                  className="hz-bg-raised"
                 />
               </div>
               
-              <div className="space-y-2">
+              <div className="hz-stack-2">
                 <Label htmlFor="cvc">CVC</Label>
                 <Input
                   id="cvc"
@@ -186,12 +186,12 @@ const PaymentMethods = () => {
                   maxLength={3}
                   value={newCard.cvc}
                   onChange={handleCardInputChange}
-                  className="bg-gray-800 border-gray-700"
+                  className="hz-bg-raised"
                 />
               </div>
             </div>
             
-            <Button type="submit" className="w-full mt-4">
+            <Button type="submit" className="hz-w-full hz-mt-4">
               Add Payment Method
             </Button>
           </form>
@@ -199,71 +199,71 @@ const PaymentMethods = () => {
       )}
       
       {/* Cards list */}
-      <div className="space-y-4">
+      <div className="hz-stack-4">
         {cards.map(card => (
           <div 
             key={card.id} 
-            className={`flex items-center justify-between p-4 rounded-lg border ${
+            className={`hz-row hz-ai-center hz-jc-between hz-p-4 hz-r-lg hz-bordered ${
               card.isDefault 
-                ? 'border-neutral-500 bg-neutral-800/10' 
-                : 'border-gray-800 bg-gray-900/30'
+                ? 'hz-border-strong hz-bg-raised' 
+                : 'hz-bg-surface'
             }`}
           >
-            <div className="flex items-center">
-              <div className="h-10 w-14 bg-gray-800 rounded flex items-center justify-center mr-4">
+            <div className="hz-row hz-ai-center">
+              <div className="hz-bh-6 hz-bw-7 hz-bg-raised hz-r-md hz-row hz-ai-center hz-jc-center hz-mr-4">
                 {getCardIcon(card.type)}
               </div>
               <div>
-                <div className="font-medium">
+                <div className="hz-w-medium">
                   {card.type.charAt(0).toUpperCase() + card.type.slice(1)} ending in {card.last4}
                   {card.isDefault && (
-                    <span className="ml-2 text-xs bg-neutral-800/50 text-neutral-300 px-2 py-0.5 rounded-full">
+                    <span className="hz-ml-2 hz-t-xs hz-bg-raised hz-fg-soft hz-px-2 hz-py-1 hz-r-full">
                       Default
                     </span>
                   )}
                 </div>
-                <div className="text-sm text-neutral-400">Expires {card.expMonth}/{card.expYear}</div>
+                <div className="hz-t-sm hz-fg-muted">Expires {card.expMonth}/{card.expYear}</div>
               </div>
             </div>
             
-            <div className="flex items-center space-x-2">
+            <div className="hz-row hz-ai-center hz-inline-2">
               {!card.isDefault && (
                 <Button 
                   variant="ghost" 
                   size="sm" 
                   onClick={() => setDefaultCard(card.id)}
                 >
-                  <CheckCircle className="h-4 w-4 mr-2" />
+                  <CheckCircle className="hz-sq-2 hz-mr-2" />
                   Set Default
                 </Button>
               )}
               <Button variant="ghost" size="sm">
-                <Edit className="h-4 w-4 mr-2" />
+                <Edit className="hz-sq-2 hz-mr-2" />
                 Edit
               </Button>
               <Button 
                 variant="ghost" 
                 size="sm" 
-                className="text-neutral-400 hover:text-neutral-300 hover:bg-neutral-800/20"
+                className="hz-fg-muted hz-link"
                 onClick={() => handleDeleteCard(card.id)}
               >
-                <Trash2 className="h-4 w-4" />
+                <Trash2 className="hz-sq-2" />
               </Button>
             </div>
           </div>
         ))}
       </div>
       
-      <div className="bg-gray-900/30 border border-gray-800 rounded-lg p-6">
-        <h3 className="text-lg font-medium mb-4">Billing Address</h3>
-        <div className="space-y-1 mb-4">
+      <div className="hz-card">
+        <h3 className="hz-t-lg hz-w-medium hz-mb-4">Billing Address</h3>
+        <div className="hz-stack-1 hz-mb-4">
           <div>Jane Doe</div>
           <div>123 Main St</div>
           <div>San Francisco, CA 94105</div>
           <div>United States</div>
         </div>
         <Button variant="outline" size="sm">
-          <Edit className="h-4 w-4 mr-2" />
+          <Edit className="hz-sq-2 hz-mr-2" />
           Edit Address
         </Button>
       </div>

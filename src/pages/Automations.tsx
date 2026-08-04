@@ -1,3 +1,4 @@
+import { BRAND } from '@/lib/brand';
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -27,7 +28,6 @@ import {
   ExternalLink,
 } from "lucide-react";
 
-const BRAND_COLOR = "#ffffff";
 
 // Integration categories
 const categories = [
@@ -158,55 +158,55 @@ const Automations = () => {
   const popularIntegrations = integrations.filter((i) => i.popular);
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="hz-min-h-screen hz-bg hz-fg">
       <Navbar />
       <main>
         {/* Hero Section */}
-        <section className="relative pt-32 pb-20 px-4 md:px-8 overflow-hidden">
+        <section className="hz-rel hz-pt-6 hz-pb-6 hz-px-4 hz-clip">
           {/* Background glow */}
-          <div className="absolute inset-0 overflow-hidden">
+          <div className="hz-abs hz-inset hz-clip">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 0.15 }}
               transition={{ duration: 1.5 }}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full"
+              className="hz-center-xy hz-abs hz-r-full"
               style={{
-                background: `radial-gradient(circle, ${BRAND_COLOR} 0%, transparent 70%)`,
+                background: `radial-gradient(circle, ${BRAND.fg} 0%, transparent 70%)`,
                 filter: "blur(100px)",
               }}
             />
           </div>
 
-          <div className="max-w-6xl mx-auto relative z-10">
+          <div className="hz-container-wide hz-rel hz-z-raised">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-center mb-12"
+              className="hz-align-center hz-mb-7"
             >
               <p
-                className="inline-flex text-xs font-medium rounded-full px-4 py-2 border mb-6"
-                style={{ color: BRAND_COLOR, borderColor: `${BRAND_COLOR}4d` }}
+                className="hz-inline hz-t-xs hz-w-medium hz-r-full hz-px-4 hz-py-2 hz-bordered hz-mb-5"
+                style={{ color: BRAND.fg, borderColor: `${BRAND.washStrong}` }}
               >
                 Integrations & Automation
               </p>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium mb-6">
-                <span className="text-white">Connect with</span>{" "}
-                <span style={{ color: BRAND_COLOR }}>500+ apps</span>
+              <h1 className="hz-t-4xl hz-w-medium hz-mb-5">
+                <span className="hz-fg">Connect with</span>{" "}
+                <span className="hz-fg" >500+ apps</span>
               </h1>
-              <p className="text-xl text-neutral-400 max-w-2xl mx-auto mb-8">
+              <p className="hz-container-narrow hz-mw-md hz-t-xl hz-fg-muted hz-mb-6">
                 Hanzo Automations connects your AI agents to the tools you use every day. Build powerful workflows without code.
               </p>
 
               {/* Search */}
-              <div className="relative max-w-md mx-auto">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-neutral-500" />
+              <div className="hz-container-narrow hz-mw-sm hz-rel">
+                <Search className="hz-center-y hz-sq-3 hz-abs hz-fg-muted" />
                 <input
                   type="text"
                   placeholder="Search integrations..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-12 pr-4 py-3 rounded-full bg-neutral-900 border border-neutral-800 text-white placeholder-neutral-500 focus:outline-none focus:border-white/50 transition-colors"
+                  className="hz-w-full hz-px-6 hz-px-4 hz-py-3 hz-r-full hz-bg-surface hz-bordered hz-fg hz-transition"
                 />
               </div>
             </motion.div>
@@ -216,21 +216,21 @@ const Automations = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="mb-16"
+              className="hz-mb-7"
             >
-              <h2 className="text-sm font-medium text-neutral-500 uppercase tracking-wider mb-4 text-center">
+              <h2 className="hz-t-sm hz-w-medium hz-fg-muted hz-upper hz-tracking-wide hz-mb-4 hz-align-center">
                 Popular Integrations
               </h2>
-              <div className="flex flex-wrap justify-center gap-3">
+              <div className="hz-row hz-wrap hz-jc-center hz-gap-3">
                 {popularIntegrations.slice(0, 12).map((integration) => (
                   <motion.a
                     key={integration.name}
                     href={`#${integration.name.toLowerCase().replace(/\s+/g, "-")}`}
                     whileHover={{ scale: 1.05 }}
-                    className="flex items-center gap-2 px-4 py-2 rounded-full bg-neutral-900 border border-neutral-800 hover:border-neutral-700 transition-colors"
+                    className="hz-btn hz-gap-2 hz-transition"
                   >
-                    <span className="text-lg">{integration.icon}</span>
-                    <span className="text-sm text-white">{integration.name}</span>
+                    <span className="hz-t-lg">{integration.icon}</span>
+                    <span className="hz-t-sm hz-fg">{integration.name}</span>
                   </motion.a>
                 ))}
               </div>
@@ -239,9 +239,9 @@ const Automations = () => {
         </section>
 
         {/* Category Filter */}
-        <section className="py-8 px-4 md:px-8 border-y border-neutral-800 bg-neutral-950 sticky top-16 z-20">
-          <div className="max-w-6xl mx-auto">
-            <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+        <section className="hz-py-6 hz-px-4 hz-bordered hz-bg-surface hz-sticky hz-z-raised">
+          <div className="hz-container-wide">
+            <div className="hz-row hz-gap-2 hz-scroll-x hz-pb-4">
               {categories.map((category) => {
                 const Icon = category.icon;
                 const isActive = activeCategory === category.id;
@@ -249,13 +249,13 @@ const Automations = () => {
                   <button
                     key={category.id}
                     onClick={() => setActiveCategory(category.id)}
-                    className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${
+                    className={`hz-btn hz-btn-ghost hz-gap-2 hz-transition ${
                       isActive
-                        ? "bg-white text-black"
-                        : "bg-neutral-900 text-neutral-400 hover:text-white hover:bg-neutral-800"
+                        ? "hz-bg-inverse hz-fg-inverse"
+                        : "hz-bg-surface hz-fg-muted hz-link"
                     }`}
                   >
-                    <Icon className="w-4 h-4" />
+                    <Icon className="hz-sq-2" />
                     {category.name}
                   </button>
                 );
@@ -265,78 +265,77 @@ const Automations = () => {
         </section>
 
         {/* Integrations Grid */}
-        <section className="py-16 px-4 md:px-8">
-          <div className="max-w-6xl mx-auto">
-            <div className="flex items-center justify-between mb-8">
-              <h2 className="text-2xl font-medium text-white">
+        <section className="hz-py-7 hz-px-4">
+          <div className="hz-container-wide">
+            <div className="hz-row hz-ai-center hz-jc-between hz-mb-6">
+              <h2 className="hz-t-2xl hz-w-medium hz-fg">
                 {activeCategory === "all"
                   ? "All Integrations"
                   : categories.find(c => c.id === activeCategory)?.name}
               </h2>
-              <span className="text-sm text-neutral-500">
+              <span className="hz-t-sm hz-fg-muted">
                 {filteredIntegrations.length} integrations
               </span>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+            <div className="hz-grid hz-grid-5 hz-gap-4">
               {filteredIntegrations.map((integration, index) => (
                 <motion.div
                   key={integration.name}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: index * 0.02 }}
-                  className="group p-4 rounded-xl border border-neutral-800 bg-neutral-900/50 hover:bg-neutral-900 hover:border-neutral-700 transition-all cursor-pointer"
+                  className="hz-card hz-transition hz-pointer hz-card-interactive"
                 >
                   <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-3"
+                    className="hz-sq-7 hz-r-lg hz-row hz-ai-center hz-jc-center hz-t-2xl hz-mb-3"
                     style={{ backgroundColor: integration.color + "20" }}
                   >
                     {integration.icon}
                   </div>
-                  <h3 className="text-sm font-medium text-white group-hover:text-white transition-colors">
+                  <h3 className="hz-t-sm hz-w-medium hz-fg hz-transition hz-hoverable">
                     {integration.name}
                   </h3>
                   {integration.popular && (
-                    <span className="text-[10px] text-white font-medium">Popular</span>
+                    <span className="hz-t-xs hz-fg hz-w-medium">Popular</span>
                   )}
                 </motion.div>
               ))}
             </div>
 
             {filteredIntegrations.length === 0 && (
-              <div className="text-center py-16">
-                <p className="text-neutral-500">No integrations found matching your search.</p>
+              <div className="hz-align-center hz-py-7">
+                <p className="hz-fg-muted">No integrations found matching your search.</p>
               </div>
             )}
           </div>
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 px-4 md:px-8 border-t border-neutral-800">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-medium text-white mb-4">
+        <section className="hz-py-7 hz-px-4 hz-border-t">
+          <div className="hz-container-narrow hz-align-center">
+            <h2 className="hz-t-3xl hz-w-medium hz-fg hz-mb-4">
               Don't see your app?
             </h2>
-            <p className="text-lg text-neutral-400 mb-8">
+            <p className="hz-t-lg hz-fg-muted hz-mb-6">
               We add new integrations every week. Request an integration or build your own with our SDK.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="hz-col-row hz-ai-center hz-jc-center hz-gap-4">
               <Link
                 to="/contact"
-                className="inline-flex items-center px-6 py-3 rounded-full font-medium transition-all hover:opacity-90 text-sm"
-                style={{ backgroundColor: BRAND_COLOR, color: "#000000" }}
-              >
+                className="hz-btn hz-btn-ghost hz-transition hz-bg-inverse"
+                >
                 Request Integration
-                <ArrowRight className="ml-2 h-4 w-4" />
+                <ArrowRight className="hz-sq-2 hz-ml-2" />
               </Link>
               <a
                 href="https://docs.hanzo.ai/automations/sdk"
                 target="_blank"
                 rel="noreferrer noopener"
-                className="inline-flex items-center px-6 py-3 rounded-full font-medium transition-colors border border-neutral-700 bg-transparent hover:bg-neutral-900 text-sm text-white"
+                className="hz-btn hz-btn-ghost hz-transition hz-fg"
               >
                 Build Custom Integration
-                <ExternalLink className="ml-2 h-4 w-4" />
+                <ExternalLink className="hz-sq-2 hz-ml-2" />
               </a>
             </div>
           </div>

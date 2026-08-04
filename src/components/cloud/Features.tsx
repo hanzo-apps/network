@@ -6,15 +6,15 @@ import { Button } from "@/components/ui/button";
 
 const Features = () => {
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black to-gray-900">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
+    <section className="hz-py-7 hz-px-4">
+      <div className="hz-container">
+        <div className="hz-align-center hz-mb-7">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-3xl md:text-4xl font-bold mb-6"
+            className="hz-t-3xl hz-w-bold hz-mb-5"
           >
             Enterprise-Grade Cloud Built for AI Engineers
           </motion.h2>
@@ -23,23 +23,23 @@ const Features = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-xl text-neutral-300 max-w-3xl mx-auto"
+            className="hz-container-narrow hz-t-xl hz-fg-soft"
           >
             The most flexible and powerful compute platform for AI workloads. Hanzo Machines are hardware-virtualized containers, running on proprietary AI-optimized hardware, that launch instantly and scale automatically with your needs.
           </motion.p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 mt-20">
+        <div className="hz-grid hz-grid-3 hz-gap-7 hz-mt-7">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="bg-gray-900/50 rounded-xl p-8 border border-gray-800 hover:border-neutral-500/30 transition-colors"
+            className="hz-card hz-transition hz-card-interactive"
           >
-            <Globe className="w-12 h-12 text-neutral-400 mb-6" />
-            <h3 className="text-xl font-bold mb-4">Global Reach</h3>
-            <p className="text-neutral-300">
+            <Globe className="hz-sq-7 hz-fg-muted hz-mb-5" />
+            <h3 className="hz-t-xl hz-w-bold hz-mb-4">Global Reach</h3>
+            <p className="hz-fg-soft">
               Deploy in 35 regions, from Sydney to São Paulo, for sub-100ms response times and native-app feel no matter where your users are.
             </p>
           </motion.div>
@@ -49,11 +49,11 @@ const Features = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="bg-gray-900/50 rounded-xl p-8 border border-gray-800 hover:border-neutral-500/30 transition-colors"
+            className="hz-card hz-transition hz-card-interactive"
           >
-            <Server className="w-12 h-12 text-neutral-400 mb-6" />
-            <h3 className="text-xl font-bold mb-4">Instant Scaling</h3>
-            <p className="text-neutral-300">
+            <Server className="hz-sq-7 hz-fg-muted hz-mb-5" />
+            <h3 className="hz-t-xl hz-w-bold hz-mb-4">Instant Scaling</h3>
+            <p className="hz-fg-soft">
               Hanzo Machines start fast enough to handle HTTP requests, run only when you need them, and scale into tens of thousands of instances.
             </p>
           </motion.div>
@@ -63,11 +63,11 @@ const Features = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="bg-gray-900/50 rounded-xl p-8 border border-gray-800 hover:border-neutral-500/30 transition-colors"
+            className="hz-card hz-transition hz-card-interactive"
           >
-            <Cpu className="w-12 h-12 text-neutral-400 mb-6" />
-            <h3 className="text-xl font-bold mb-4">GPU Acceleration</h3>
-            <p className="text-neutral-300">
+            <Cpu className="hz-sq-7 hz-fg-muted hz-mb-5" />
+            <h3 className="hz-t-xl hz-w-bold hz-mb-4">GPU Acceleration</h3>
+            <p className="hz-fg-soft">
               From LLMs to inferencing, hardware acceleration with the same developer experience as a simple CRUD app.
             </p>
           </motion.div>
@@ -77,11 +77,11 @@ const Features = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.6 }}
-            className="bg-gray-900/50 rounded-xl p-8 border border-gray-800 hover:border-neutral-500/30 transition-colors"
+            className="hz-card hz-transition hz-card-interactive"
           >
-            <Database className="w-12 h-12 text-neutral-400 mb-6" />
-            <h3 className="text-xl font-bold mb-4">AI-Native Storage</h3>
-            <p className="text-neutral-300">
+            <Database className="hz-sq-7 hz-fg-muted hz-mb-5" />
+            <h3 className="hz-t-xl hz-w-bold hz-mb-4">AI-Native Storage</h3>
+            <p className="hz-fg-soft">
               Vector databases, document stores, and relational databases optimized for AI workloads with automatic scaling.
             </p>
           </motion.div>
@@ -91,11 +91,11 @@ const Features = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.8 }}
-            className="bg-gray-900/50 rounded-xl p-8 border border-gray-800 hover:border-neutral-500/30 transition-colors"
+            className="hz-card hz-transition hz-card-interactive"
           >
-            <Bot className="w-12 h-12 text-neutral-400 mb-6" />
-            <h3 className="text-xl font-bold mb-4">Model Management</h3>
-            <p className="text-neutral-300">
+            <Bot className="hz-sq-7 hz-fg-muted hz-mb-5" />
+            <h3 className="hz-t-xl hz-w-bold hz-mb-4">Model Management</h3>
+            <p className="hz-fg-soft">
               Streamlined deployment and management of AI models with version control, A/B testing, and monitoring built-in.
             </p>
           </motion.div>
@@ -105,11 +105,11 @@ const Features = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 1.0 }}
-            className="bg-gray-900/50 rounded-xl p-8 border border-gray-800 hover:border-neutral-500/30 transition-colors"
+            className="hz-card hz-transition hz-card-interactive"
           >
-            <Lock className="w-12 h-12 text-neutral-400 mb-6" />
-            <h3 className="text-xl font-bold mb-4">Enterprise Security</h3>
-            <p className="text-neutral-300">
+            <Lock className="hz-sq-7 hz-fg-muted hz-mb-5" />
+            <h3 className="hz-t-xl hz-w-bold hz-mb-4">Enterprise Security</h3>
+            <p className="hz-fg-soft">
               SOC 2, GDPR, and HIPAA compliant infrastructure with private networking, encryption, and audit logging.
             </p>
           </motion.div>
@@ -120,13 +120,13 @@ const Features = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.6 }}
-          className="mt-16 bg-neutral-800/20 rounded-xl p-8 border border-neutral-800/30"
+          className="hz-card hz-mt-7"
         >
-          <div className="flex flex-col md:flex-row items-center">
-            <Cloud className="w-14 h-14 text-neutral-400 mb-6 md:mb-0 md:mr-8" />
+          <div className="hz-col-row hz-ai-center">
+            <Cloud className="hz-sq-7 hz-fg-muted hz-mb-5" />
             <div>
-              <h3 className="text-xl font-bold mb-3">Built for AI Engineering</h3>
-              <p className="text-neutral-300">
+              <h3 className="hz-t-xl hz-w-bold hz-mb-3">Built for AI Engineering</h3>
+              <p className="hz-fg-soft">
                 Specialized infrastructure for AI workloads, with optimizations for large language models, computer vision, and other AI tasks. From prototype to production with zero re-architecture.
               </p>
             </div>
@@ -138,30 +138,30 @@ const Features = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.8 }}
-          className="mt-16 text-center"
+          className="hz-mt-7 hz-align-center"
         >
-          <div className="max-w-3xl mx-auto bg-gradient-to-r from-gray-900 via-black to-gray-900 rounded-xl p-8 ring-1 ring-white/10 hover:ring-white/30 transition-all duration-300">
-            <h3 className="text-2xl font-bold mb-4">Enterprise Support</h3>
-            <p className="text-neutral-300 mb-8">
+          <div className="hz-container-narrow hz-r-lg hz-p-6 hz-ring hz-transition">
+            <h3 className="hz-t-2xl hz-w-bold hz-mb-4">Enterprise Support</h3>
+            <p className="hz-fg-soft hz-mb-6">
               Paid support packages include a team of actual engineers (not chatbots) who themselves ship code on our platform. Emergency support and guaranteed response times available.
             </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <div className="hz-col-row hz-jc-center hz-gap-4">
               <Button
-                className="bg-gradient-to-r from-neutral-600 to-neutral-500 hover:from-neutral-500 hover:to-neutral-400 text-[var(--white)]"
+                className="hz-fg"
               >
                 Contact Sales
               </Button>
               
               <Button
                 variant="outline"
-                className="bg-transparent text-[var(--white)] hover:bg-[var(--white)]/10 border border-white/30"
+                className="hz-bg-none hz-fg hz-bordered hz-hoverable"
               >
                 Try Free Tier
               </Button>
             </div>
             
-            <div className="mt-6 text-neutral-400 text-sm">
-              Looking for a free, self-hosted alternative? <a href="/platform" className="text-neutral-400 hover:underline">Check out Hanzo Platform</a>
+            <div className="hz-mt-5 hz-fg-muted hz-t-sm">
+              Looking for a free, self-hosted alternative? <a href="/platform" className="hz-fg-muted">Check out Hanzo Platform</a>
             </div>
           </div>
         </motion.div>

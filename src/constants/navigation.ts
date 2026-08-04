@@ -117,7 +117,20 @@ export const legacyProducts = [
   }
 ];
 
-export const solutions = [
+/** One entry under a solutions category. The href is the route — never derive it. */
+export interface SolutionItem {
+  name: string
+  href: string
+  description: string
+}
+
+export interface SolutionCategory {
+  title: string
+  href: string
+  items: SolutionItem[]
+}
+
+export const solutions: SolutionCategory[] = [
   {
     title: "Use Cases",
     href: "/solutions",

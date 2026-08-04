@@ -8,65 +8,65 @@ const OperativeDemo = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   
   return (
-    <section className="py-24 relative overflow-hidden" id="demo">
+    <section className="hz-py-7 hz-rel hz-clip" id="demo">
       {/* Background gradient */}
-      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-black to-gray-950"></div>
+      <div className="hz-abs hz-top-0 hz-left-0 hz-w-full hz-h-full"></div>
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+      <div className="hz-container hz-rel hz-z-raised">
+        <div className="hz-container-narrow hz-align-center hz-mb-7">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-[var(--white)] mb-6">
+            <h2 className="hz-t-3xl hz-w-bold hz-fg hz-mb-5">
               See Operative in Action
             </h2>
-            <p className="text-xl text-neutral-300">
+            <p className="hz-t-xl hz-fg-soft">
               Watch as Hanzo Operative uses multimodal AI to navigate interfaces, 
               complete tasks, and solve problems autonomously.
             </p>
           </motion.div>
         </div>
         
-        <div className="relative mx-auto w-full max-w-5xl aspect-video rounded-xl overflow-hidden border border-gray-800 shadow-2xl">
-          <div className="absolute inset-0 bg-gradient-to-tr from-gray-950 to-gray-900 flex items-center justify-center">
+        <div className="hz-container-wide hz-rel hz-w-full hz-r-lg hz-clip hz-bordered hz-shadow-lg">
+          <div className="hz-abs hz-inset hz-row hz-ai-center hz-jc-center">
             <img 
               src="https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7" 
               alt="Code on screen" 
-              className="w-full h-full object-cover opacity-30 mix-blend-overlay"
+              className="hz-w-full hz-h-full hz-object-cover hz-dim-more"
             />
             
-            <div className="absolute inset-0 flex flex-col items-center justify-center">
-              <h3 className="text-2xl md:text-3xl font-bold text-[var(--white)] mb-4">Demo Video</h3>
+            <div className="hz-abs hz-inset hz-col hz-ai-center hz-jc-center">
+              <h3 className="hz-t-2xl hz-w-bold hz-fg hz-mb-4">Demo Video</h3>
               <Button 
                 size="lg"
-                className="rounded-full bg-[var(--white)]/20 backdrop-blur-sm hover:bg-[var(--white)]/30 text-[var(--white)]"
+                className="hz-r-full hz-bg-surface hz-glass hz-fg hz-hoverable"
                 onClick={() => setIsPlaying(!isPlaying)}
               >
-                {isPlaying ? <Pause className="h-6 w-6" /> : <Play className="h-6 w-6 ml-1" />}
+                {isPlaying ? <Pause className="hz-sq-4" /> : <Play className="hz-sq-4 hz-ml-1" />}
               </Button>
               
-              <div className="absolute bottom-6 w-full max-w-sm flex items-center justify-center space-x-4">
-                <Button size="sm" variant="ghost" className="text-neutral-400 hover:text-[var(--white)]">
-                  <SkipBack className="h-5 w-5" />
+              <div className="hz-abs hz-w-full hz-mw-xs hz-row hz-ai-center hz-jc-center hz-inline-4">
+                <Button size="sm" variant="ghost" className="hz-fg-muted hz-link">
+                  <SkipBack className="hz-sq-3" />
                 </Button>
-                <div className="w-full bg-gray-700/30 h-1 rounded-full overflow-hidden">
-                  <div className="bg-neutral-600 h-full w-1/3 rounded-full"></div>
+                <div className="hz-w-full hz-bg-raised hz-bh-1 hz-r-full hz-clip">
+                  <div className="hz-bg-raised hz-h-full hz-r-full"></div>
                 </div>
-                <Button size="sm" variant="ghost" className="text-neutral-400 hover:text-[var(--white)]">
-                  <SkipForward className="h-5 w-5" />
+                <Button size="sm" variant="ghost" className="hz-fg-muted hz-link">
+                  <SkipForward className="hz-sq-3" />
                 </Button>
               </div>
             </div>
           </div>
         </div>
         
-        <div className="mt-12 text-center">
+        <div className="hz-mt-7 hz-align-center">
           <a 
             href="https://docs.hanzo.ai/operative/examples"
-            className="text-neutral-400 hover:text-neutral-300 transition-colors"
+            className="hz-fg-muted hz-transition hz-link"
           >
             View more examples →
           </a>

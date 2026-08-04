@@ -12,7 +12,7 @@ import CallToAction from "@/components/commerce/CallToAction";
 
 const Commerce = () => {
   return (
-    <div className="min-h-screen bg-[var(--black)] text-[var(--white)]">
+    <div className="hz-min-h-screen hz-bg hz-fg">
       <Navbar />
       <main>
         <HeroSection />

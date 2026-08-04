@@ -1,7 +1,7 @@
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-type ThemeRounding = 'sharp' | 'medium' | 'rounded' | 'pill';
+type ThemeRounding = 'sharp' | 'medium' | 'hz-r-md' | 'pill';
 type ThemeSpacing = 'compact' | 'comfortable' | 'spacious';
 type ThemeFontFamily = 'system' | 'monospace' | 'serif' | 'sans';
 type ThemeGlassOpacity = 'subtle' | 'medium' | 'heavy';
@@ -40,7 +40,7 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [mode, setMode] = useState<ThemeMode>('dark');
   const [systemIsDark, setSystemIsDark] = useState<boolean>(true);
-  const [rounding, setRounding] = useState<ThemeRounding>('rounded');
+  const [rounding, setRounding] = useState<ThemeRounding>('hz-r-md');
   const [spacing, setSpacing] = useState<ThemeSpacing>('comfortable');
   const [fontFamily, setFontFamily] = useState<ThemeFontFamily>('system');
   const [glassOpacity, setGlassOpacity] = useState<ThemeGlassOpacity>('medium');
@@ -117,57 +117,35 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     
   }, [rounding, spacing, fontFamily, glassOpacity, isDarkMode, typographySize, typographySpacing, typographyWeight]);
 
+  /* These getters name a ROLE from src/styles/system.css. They must never
+     return a framework utility string — nothing in this repo compiles one. */
   const getRoundingClass = (): string => {
     switch (rounding) {
-      case 'sharp': return 'rounded-none';
-      case 'medium': return 'rounded-md';
-      case 'rounded': return 'rounded-xl';
-      case 'pill': return 'rounded-full';
-      default: return 'rounded-xl';
+      case 'sharp': return 'hz-r-none';
+      case 'medium': return 'hz-r-md';
+      case 'hz-r-md': return 'hz-r-xl';
+      case 'pill': return 'hz-r-full';
+      default: return 'hz-r-xl';
     }
   };
 
   const getSpacingClass = (): string => {
     switch (spacing) {
-      case 'compact': return 'p-2 gap-2';
-      case 'comfortable': return 'p-4 gap-4';
-      case 'spacious': return 'p-6 gap-6';
-      default: return 'p-4 gap-4';
+      case 'compact': return 'hz-p-2 hz-gap-2';
+      case 'comfortable': return 'hz-p-4 hz-gap-4';
+      case 'spacious': return 'hz-p-6 hz-gap-6';
+      default: return 'hz-p-4 hz-gap-4';
     }
   };
 
   const getFontClass = (): string => {
     switch (fontFamily) {
-      case 'system': return 'font-sans';
-      case 'monospace': return 'font-mono';
-      case 'serif': return 'font-serif';
-      case 'sans': return 'font-sans';
-      default: return 'font-sans';
+      case 'monospace': return 'hz-mono';
+      default: return '';
     }
   };
 
-  const getGlassClass = (): string => {
-    const baseClasses = isDarkMode ? 'backdrop-blur' : 'backdrop-blur bg-[var(--white)]/75 border-white/20';
-    
-    switch (glassOpacity) {
-      case 'subtle': 
-        return isDarkMode 
-          ? 'bg-[var(--white)]/5 backdrop-blur-sm border-white/10' 
-          : 'bg-[var(--white)]/60 backdrop-blur-sm border-black/5';
-      case 'medium': 
-        return isDarkMode 
-          ? 'bg-[var(--white)]/10 backdrop-blur-md border-white/20' 
-          : 'bg-[var(--white)]/70 backdrop-blur-md border-black/10';
-      case 'heavy': 
-        return isDarkMode 
-          ? 'bg-[var(--white)]/20 backdrop-blur-lg border-white/30' 
-          : 'bg-[var(--white)]/80 backdrop-blur-lg border-black/15';
-      default: 
-        return isDarkMode 
-          ? 'bg-[var(--white)]/10 backdrop-blur-md border-white/20' 
-          : 'bg-[var(--white)]/70 backdrop-blur-md border-black/10';
-    }
-  };
+  const getGlassClass = (): string => 'hz-glass hz-bordered';
 
   const applyThemeClasses = (baseClasses: string): string => {
     return `${baseClasses} ${getRoundingClass()} ${getSpacingClass()} ${getFontClass()}`;

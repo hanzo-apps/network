@@ -9,11 +9,11 @@ import WorkspaceFooter from "./workspace/WorkspaceFooter";
 
 const WorkspaceIntegration = () => {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[var(--black)]">
-      <div className="max-w-7xl mx-auto">
+    <section className="hz-py-7 hz-px-4 hz-bg">
+      <div className="hz-container">
         <WorkspaceHeader />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+        <div className="hz-grid hz-grid-2 hz-gap-6 hz-mb-7">
           <ProjectManagementCard />
           <TeamChatCard />
           <VideoMeetingsCard />

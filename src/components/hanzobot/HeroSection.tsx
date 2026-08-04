@@ -7,60 +7,60 @@ import ChromeText from "@/components/ui/chrome-text";
 
 const HeroSection = () => {
   return (
-    <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 bg-[var(--black)] relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-neutral-900/10 to-black"></div>
-      <div className="absolute top-20 right-10 w-72 h-72 bg-neutral-500/10 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-20 left-10 w-72 h-72 bg-neutral-600/10 rounded-full blur-3xl"></div>
+    <section className="hz-pt-6 hz-pb-6 hz-px-4 hz-bg hz-rel hz-clip">
+      <div className="hz-abs hz-inset"></div>
+      <div className="hz-sq-8 hz-abs hz-bg-raised hz-r-full hz-blur-bg"></div>
+      <div className="hz-sq-8 hz-abs hz-bg-raised hz-r-full hz-blur-bg"></div>
       
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="hz-container hz-rel hz-z-raised">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center"
+          className="hz-align-center"
         >
-          <div className="inline-block px-4 py-1 mb-6 rounded-full bg-neutral-800/30 border border-neutral-500/50 text-neutral-300 text-sm font-medium">
+          <div className="hz-px-4 hz-py-1 hz-mb-5 hz-r-full hz-bg-raised hz-bordered hz-border-strong hz-fg-soft hz-t-sm hz-w-medium">
             Multi-Agent Simulation Framework
           </div>
           
-          <ChromeText as="h1" className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+          <ChromeText as="h1" className="hz-t-5xl hz-w-bold hz-mb-5 hz-leading-tight">
             Hanzo Bot
           </ChromeText>
           
-          <p className="text-xl text-neutral-300 max-w-3xl mx-auto mb-10">
+          <p className="hz-container-narrow hz-t-xl hz-fg-soft hz-mb-6">
             A powerful framework for creating, deploying, and managing autonomous AI agents.
             Build intelligent systems that can interact across multiple platforms while maintaining 
             consistent personalities and knowledge.
           </p>
           
-          <div className="flex flex-wrap justify-center gap-4 mb-8">
+          <div className="hz-row hz-wrap hz-jc-center hz-gap-4 hz-mb-6">
             <Button 
               size="lg"
-              className="bg-gradient-to-r from-neutral-600 to-neutral-600 hover:from-neutral-500 hover:to-neutral-500 text-[var(--white)] rounded-lg"
+              className="hz-fg hz-r-lg"
             >
               Get Started
-              <ArrowRight className="ml-2 h-5 w-5" />
+              <ArrowRight className="hz-sq-3 hz-ml-2" />
             </Button>
             
             <Button 
               variant="outline" 
               size="lg"
-              className="text-[var(--white)] border-white/20 bg-[var(--white)]/5 hover:bg-[var(--white)]/10"
+              className="hz-fg hz-bg-surface hz-hoverable"
             >
-              <Github className="mr-2 h-5 w-5" />
+              <Github className="hz-sq-3 hz-mr-2" />
               GitHub
-              <div className="ml-2 flex items-center">
-                <Star className="h-4 w-4 fill-neutral-400 text-neutral-400 mr-1" />
-                <span className="text-neutral-300 text-sm">Star</span>
+              <div className="hz-ml-2 hz-row hz-ai-center">
+                <Star className="hz-sq-2 hz-fg-muted hz-mr-1" />
+                <span className="hz-fg-soft hz-t-sm">Star</span>
               </div>
             </Button>
           </div>
           
-          <div className="text-neutral-500 text-sm">
+          <div className="hz-fg-muted hz-t-sm">
             As seen powering 
-            <a href="https://twitter.com/DegenSpartanAI" target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-neutral-300 mx-1">@DegenSpartanAI</a> 
+            <a href="https://twitter.com/DegenSpartanAI" target="_blank" rel="noopener noreferrer" className="hz-fg-muted hz-link">@DegenSpartanAI</a> 
             and 
-            <a href="https://twitter.com/aixvc_agent" target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-neutral-300 mx-1">@aixvc_agent</a>
+            <a href="https://twitter.com/aixvc_agent" target="_blank" rel="noopener noreferrer" className="hz-fg-muted hz-link">@aixvc_agent</a>
           </div>
         </motion.div>
       </div>

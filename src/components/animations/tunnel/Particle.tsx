@@ -23,7 +23,7 @@ const Particle: React.FC<ParticleProps> = ({
   return (
     <motion.div
       key={`particle-${index}`}
-      className="absolute rounded-full"
+      className="hz-abs hz-r-full"
       style={{
         width: `${size}px`,
         height: `${size}px`,

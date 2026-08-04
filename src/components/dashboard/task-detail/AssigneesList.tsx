@@ -16,34 +16,34 @@ interface AssigneesListProps {
 
 const AssigneesList: React.FC<AssigneesListProps> = ({ assignees = [], onRemove }) => {
   return (
-    <div className="mb-6">
-      <div className="flex justify-between mb-2">
-        <label className="block text-sm font-medium text-neutral-400">Assignees</label>
-        <Button size="sm" variant="ghost" className="text-neutral-400 hover:text-neutral-300 h-6 px-2">
-          <PlusCircle className="h-3.5 w-3.5 mr-1" />
+    <div className="hz-mb-5">
+      <div className="hz-row hz-jc-between hz-mb-2">
+        <label className="hz-t-sm hz-w-medium hz-fg-muted">Assignees</label>
+        <Button size="sm" variant="ghost" className="hz-fg-muted hz-bh-4 hz-px-2 hz-link">
+          <PlusCircle className="hz-sq-2 hz-mr-1" />
           Add
         </Button>
       </div>
-      <div className="flex flex-wrap gap-2">
+      <div className="hz-row hz-wrap hz-gap-2">
         {assignees.map(assignee => (
           <div 
             key={assignee.id}
-            className="flex items-center gap-2 bg-gray-800 px-2 py-1 rounded text-sm"
+            className="hz-row hz-ai-center hz-gap-2 hz-bg-raised hz-px-2 hz-py-1 hz-r-md hz-t-sm"
           >
-            <div className="w-5 h-5 rounded-full bg-neutral-800 flex items-center justify-center text-xs">
+            <div className="hz-sq-3 hz-r-full hz-bg-raised hz-row hz-ai-center hz-jc-center hz-t-xs">
               {assignee.name.charAt(0)}
             </div>
             <span>{assignee.name}</span>
             <button 
-              className="text-neutral-400 hover:text-[var(--white)]"
+              className="hz-fg-muted hz-link"
               onClick={() => onRemove && onRemove(assignee.id)}
             >
-              <X className="h-3 w-3" />
+              <X className="hz-sq-1" />
             </button>
           </div>
         ))}
         {!assignees.length && (
-          <div className="text-sm text-neutral-500">No assignees</div>
+          <div className="hz-t-sm hz-fg-muted">No assignees</div>
         )}
       </div>
     </div>

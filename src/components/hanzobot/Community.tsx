@@ -6,17 +6,17 @@ import { Github, MessageSquare } from "lucide-react";
 
 const Community = () => {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[var(--black)] relative">
-      <div className="max-w-7xl mx-auto relative z-10">
+    <section className="hz-py-7 hz-px-4 hz-bg hz-rel">
+      <div className="hz-container hz-rel hz-z-raised">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="hz-align-center hz-mb-7"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-[var(--white)] mb-4">Community and Support</h2>
-          <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
+          <h2 className="hz-t-3xl hz-w-bold hz-fg hz-mb-4">Community and Support</h2>
+          <p className="hz-container-narrow hz-t-xl hz-fg-soft">
             Join us in building the future of autonomous AI agents with Hanzo!
           </p>
         </motion.div>
@@ -26,49 +26,49 @@ const Community = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="bg-gradient-to-r from-neutral-800/20 to-neutral-900/20 border border-neutral-500/20 rounded-xl p-8 md:p-12"
+          className="hz-card"
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div className="hz-grid hz-grid-2 hz-gap-6 hz-ai-center">
             <div>
-              <h3 className="text-2xl font-bold text-[var(--white)] mb-4">Next Steps</h3>
-              <ul className="space-y-4">
-                <li className="flex items-start">
-                  <div className="bg-neutral-600/20 p-1 rounded text-neutral-400 mr-3 mt-0.5">
-                    <div className="w-4 h-4 flex items-center justify-center">1</div>
+              <h3 className="hz-t-2xl hz-w-bold hz-fg hz-mb-4">Next Steps</h3>
+              <ul className="hz-stack-4">
+                <li className="hz-row hz-ai-start">
+                  <div className="hz-bg-raised hz-p-1 hz-r-md hz-fg-muted hz-mr-3 hz-mt-1">
+                    <div className="hz-sq-2 hz-row hz-ai-center hz-jc-center">1</div>
                   </div>
                   <div>
-                    <span className="text-[var(--white)] font-medium">Create Your First Agent</span>
-                    <p className="text-neutral-400 text-sm mt-1">Follow our guide to build your first AI agent</p>
+                    <span className="hz-fg hz-w-medium">Create Your First Agent</span>
+                    <p className="hz-fg-muted hz-t-sm hz-mt-1">Follow our guide to build your first AI agent</p>
                   </div>
                 </li>
-                <li className="flex items-start">
-                  <div className="bg-neutral-600/20 p-1 rounded text-neutral-400 mr-3 mt-0.5">
-                    <div className="w-4 h-4 flex items-center justify-center">2</div>
+                <li className="hz-row hz-ai-start">
+                  <div className="hz-bg-raised hz-p-1 hz-r-md hz-fg-muted hz-mr-3 hz-mt-1">
+                    <div className="hz-sq-2 hz-row hz-ai-center hz-jc-center">2</div>
                   </div>
                   <div>
-                    <span className="text-[var(--white)] font-medium">Understand Core Concepts</span>
-                    <p className="text-neutral-400 text-sm mt-1">Learn about the key components of the Hanzo Bot framework</p>
+                    <span className="hz-fg hz-w-medium">Understand Core Concepts</span>
+                    <p className="hz-fg-muted hz-t-sm hz-mt-1">Learn about the key components of the Hanzo Bot framework</p>
                   </div>
                 </li>
-                <li className="flex items-start">
-                  <div className="bg-neutral-600/20 p-1 rounded text-neutral-400 mr-3 mt-0.5">
-                    <div className="w-4 h-4 flex items-center justify-center">3</div>
+                <li className="hz-row hz-ai-start">
+                  <div className="hz-bg-raised hz-p-1 hz-r-md hz-fg-muted hz-mr-3 hz-mt-1">
+                    <div className="hz-sq-2 hz-row hz-ai-center hz-jc-center">3</div>
                   </div>
                   <div>
-                    <span className="text-[var(--white)] font-medium">Explore Advanced Features</span>
-                    <p className="text-neutral-400 text-sm mt-1">Discover how to leverage the full potential of your agents</p>
+                    <span className="hz-fg hz-w-medium">Explore Advanced Features</span>
+                    <p className="hz-fg-muted hz-t-sm hz-mt-1">Discover how to leverage the full potential of your agents</p>
                   </div>
                 </li>
               </ul>
             </div>
             
-            <div className="space-y-6">
-              <div className="flex flex-col space-y-4">
+            <div className="hz-stack-5">
+              <div className="hz-col hz-stack-4">
                 <Button 
                   size="sm"
-                  className="bg-neutral-600 hover:bg-neutral-700 text-[var(--white)]"
+                  className="hz-bg-raised hz-fg hz-hoverable"
                 >
-                  <Github className="mr-2 h-5 w-5" />
+                  <Github className="hz-sq-3 hz-mr-2" />
                   <a href="https://github.com/hanzoai" target="_blank" rel="noopener noreferrer">
                     Open Source: Contribute on GitHub
                   </a>
@@ -77,18 +77,18 @@ const Community = () => {
                 <Button 
                   size="sm"
                   variant="outline"
-                  className="border-gray-700 text-neutral-300 hover:bg-gray-800"
+                  className="hz-fg-soft hz-hoverable"
                 >
-                  <MessageSquare className="mr-2 h-5 w-5" />
+                  <MessageSquare className="hz-sq-3 hz-mr-2" />
                   <a href="https://discord.gg/XthHQQj" target="_blank" rel="noopener noreferrer">
                     Join Discord Community
                   </a>
                 </Button>
               </div>
               
-              <div className="text-neutral-400 text-sm">
-                <p className="mb-2">Looking for examples?</p>
-                <a href="#" className="text-neutral-400 hover:text-neutral-300">
+              <div className="hz-fg-muted hz-t-sm">
+                <p className="hz-mb-2">Looking for examples?</p>
+                <a href="#" className="hz-fg-muted hz-link">
                   View ready-to-use character templates and implementations →
                 </a>
               </div>
@@ -96,7 +96,7 @@ const Community = () => {
           </div>
         </motion.div>
         
-        <div className="mt-12 text-center text-neutral-500 text-sm">
+        <div className="hz-mt-7 hz-align-center hz-fg-muted hz-t-sm">
           Last updated on Feb 20, 2025 by jin
         </div>
       </div>

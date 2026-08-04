@@ -5,20 +5,20 @@ import { BrainCog, Cloud, Server, Database, Monitor, Network, Activity } from "l
 
 const CloudInfrastructure = () => {
   return (
-    <div className="relative h-64 w-full rounded-xl bg-gradient-to-br from-black to-gray-900 overflow-hidden">
-      <div className="absolute inset-0" style={{
+    <div className="hz-rel hz-bh-8 hz-w-full hz-r-lg hz-clip">
+      <div className="hz-abs hz-inset" style={{
         backgroundImage: "radial-gradient(rgba(128, 90, 213, 0.07) 1px, transparent 1px)",
         backgroundSize: "20px 20px",
       }}></div>
       
-      <div className="absolute inset-0 flex items-center justify-center">
+      <div className="hz-abs hz-inset hz-row hz-ai-center hz-jc-center">
         <motion.div 
-          className="relative h-20 w-20 rounded-xl bg-gray-900/70 border border-neutral-500/30 flex items-center justify-center z-30"
+          className="hz-sq-8 hz-rel hz-r-lg hz-bg-surface hz-bordered hz-border-strong hz-row hz-ai-center hz-jc-center hz-z-header"
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ duration: 0.5 }}
         >
-          <BrainCog className="h-8 w-8 text-neutral-400" />
+          <BrainCog className="hz-sq-5 hz-fg-muted" />
         </motion.div>
         
         {[...Array(6)].map((_, i) => {
@@ -27,18 +27,18 @@ const CloudInfrastructure = () => {
           const x = Math.cos(angle) * distance;
           const y = Math.sin(angle) * distance;
           const icons = [
-            <Cloud key={0} className="h-5 w-5 text-neutral-400" />,
-            <Server key={1} className="h-5 w-5 text-neutral-400" />,
-            <Database key={2} className="h-5 w-5 text-neutral-400" />,
-            <Monitor key={3} className="h-5 w-5 text-neutral-400" />,
-            <Network key={4} className="h-5 w-5 text-neutral-400" />,
-            <Activity key={5} className="h-5 w-5 text-neutral-400" />
+            <Cloud key={0} className="hz-sq-3 hz-fg-muted" />,
+            <Server key={1} className="hz-sq-3 hz-fg-muted" />,
+            <Database key={2} className="hz-sq-3 hz-fg-muted" />,
+            <Monitor key={3} className="hz-sq-3 hz-fg-muted" />,
+            <Network key={4} className="hz-sq-3 hz-fg-muted" />,
+            <Activity key={5} className="hz-sq-3 hz-fg-muted" />
           ];
           
           return (
             <motion.div 
               key={i}
-              className="absolute h-12 w-12 rounded-lg bg-gray-900/70 border border-gray-700 flex items-center justify-center"
+              className="hz-sq-7 hz-abs hz-r-lg hz-bg-surface hz-bordered hz-row hz-ai-center hz-jc-center"
               initial={{ 
                 x: 0,
                 y: 0,
@@ -73,7 +73,7 @@ const CloudInfrastructure = () => {
           return (
             <motion.div
               key={`line-${i}`}
-              className="absolute h-0.5 bg-gradient-to-r from-neutral-500/60 to-neutral-500/10"
+              className="hz-abs hz-bh-1"
               style={{
                 width: 80,
                 transformOrigin: "left center",
@@ -105,7 +105,7 @@ const CloudInfrastructure = () => {
           return (
             <motion.div
               key={`particle-${i}`}
-              className="absolute h-1.5 w-1.5 rounded-full bg-neutral-400"
+              className="hz-sq-1 hz-abs hz-r-full hz-bg-raised"
               style={{
                 left: "50%",
                 top: "50%",

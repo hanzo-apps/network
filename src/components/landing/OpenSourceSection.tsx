@@ -40,12 +40,12 @@ const features = [
     description: "Every core component is open source and MIT/Apache 2.0 licensed",
   },
   {
-    icon: <Heart className="w-5 h-5" />,
+    icon: <Heart className="hz-sq-3" />,
     title: "Community Driven",
     description: "Built with and for the developer community",
   },
   {
-    icon: <Github className="w-5 h-5" />,
+    icon: <Github className="hz-sq-3" />,
     title: "Self-Hostable",
     description: "Run the entire platform on your own infrastructure",
   },
@@ -58,34 +58,34 @@ const OpenSourceSection = () => {
   const templates = repos["hanzo-apps"].slice(0, 3);
 
   return (
-    <section className="py-24 px-4 md:px-8 bg-black relative">
+    <section className="hz-py-7 hz-px-4 hz-bg hz-rel">
       {/* Subtle background pattern */}
-      <div className="absolute inset-0 opacity-[0.03]">
+      <div className="hz-abs hz-inset hz-dim-more">
         <div
-          className="absolute inset-0"
+          className="hz-abs hz-inset"
           style={{
             backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
           }}
         />
       </div>
 
-      <div className="max-w-6xl mx-auto relative z-10">
+      <div className="hz-container-wide hz-rel hz-z-raised">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="hz-align-center hz-mb-7"
         >
-          <div className="inline-flex items-center gap-2 text-xs font-medium rounded-full px-4 py-2 border mb-6"
+          <div className="hz-btn hz-btn-ghost hz-gap-2 hz-t-xs hz-mb-5"
                style={{ color: "#ffffff", borderColor: "rgba(255, 255, 255, 0.3)" }}>
-            <Github className="w-4 h-4" />
+            <Github className="hz-sq-2" />
             Open Source
           </div>
-          <h2 className="text-3xl md:text-5xl font-medium text-white mb-6">
+          <h2 className="hz-t-3xl hz-w-medium hz-fg hz-mb-5">
             Built in the open
           </h2>
-          <p className="text-lg text-neutral-400 max-w-2xl mx-auto">
+          <p className="hz-container-narrow hz-mw-md hz-t-lg hz-fg-muted">
             We believe the future of AI infrastructure should be open. View our code, contribute, or self-host the entire platform.
           </p>
         </motion.div>
@@ -96,7 +96,7 @@ const OpenSourceSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="flex flex-wrap justify-center gap-4 mb-12"
+          className="hz-row hz-wrap hz-jc-center hz-gap-4 hz-mb-7"
         >
           {githubOrgs.map((org) => (
             <a
@@ -104,14 +104,14 @@ const OpenSourceSection = () => {
               href={org.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 px-5 py-3 rounded-xl border border-neutral-800 bg-neutral-900/50 hover:bg-neutral-900 hover:border-neutral-700 transition-all group"
+              className="hz-btn hz-gap-3 hz-transition"
             >
-              <Github className="w-5 h-5 text-neutral-400" />
+              <Github className="hz-sq-3 hz-fg-muted" />
               <div>
-                <div className="text-sm font-medium text-white group-hover:text-white transition-colors">{org.label}</div>
-                <div className="text-xs text-neutral-500">{org.description}</div>
+                <div className="hz-t-sm hz-w-medium hz-fg hz-transition hz-hoverable">{org.label}</div>
+                <div className="hz-t-xs hz-fg-muted">{org.description}</div>
               </div>
-              <ExternalLink className="w-3.5 h-3.5 text-neutral-600 group-hover:text-neutral-400 transition-colors" />
+              <ExternalLink className="hz-sq-2 hz-fg-faint hz-transition hz-link" />
             </a>
           ))}
         </motion.div>
@@ -122,7 +122,7 @@ const OpenSourceSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16"
+          className="hz-grid hz-grid-3 hz-gap-5 hz-mb-7"
         >
           {features.map((feature, index) => (
             <motion.div
@@ -131,21 +131,21 @@ const OpenSourceSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: 0.2 + index * 0.1 }}
-              className="text-center p-6"
+              className="hz-align-center hz-p-5"
             >
-              <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center mx-auto mb-4 text-white font-bold">
+              <div className="hz-sq-7 hz-r-lg hz-bg-quiet hz-row hz-ai-center hz-jc-center hz-mx-auto hz-mb-4 hz-fg hz-w-bold">
                 {typeof feature.icon === "string" ? feature.icon : feature.icon}
               </div>
-              <h3 className="text-lg font-semibold text-white mb-2">{feature.title}</h3>
-              <p className="text-sm text-neutral-400">{feature.description}</p>
+              <h3 className="hz-t-lg hz-w-semibold hz-fg hz-mb-2">{feature.title}</h3>
+              <p className="hz-t-sm hz-fg-muted">{feature.description}</p>
             </motion.div>
           ))}
         </motion.div>
 
         {/* Featured Repos grid - 3x2 on desktop */}
-        <div className="mb-16">
-          <h3 className="text-xl font-medium text-white mb-6 text-center">Core Infrastructure</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="hz-mb-7">
+          <h3 className="hz-t-xl hz-w-medium hz-fg hz-mb-5 hz-align-center">Core Infrastructure</h3>
+          <div className="hz-grid hz-grid-3 hz-gap-4">
             {featuredRepos.map((repo, index) => (
               <motion.a
                 key={repo.name}
@@ -156,22 +156,22 @@ const OpenSourceSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.1 + (index % 3) * 0.1 }}
-                className={`group p-5 rounded-xl border bg-neutral-900/50 hover:bg-neutral-900 transition-all ${
+                className={`hz-card hz-transition hz-card-interactive ${
                   repo.featured
-                    ? "border-white/30 hover:border-white/50"
-                    : "border-neutral-800 hover:border-neutral-700"
+                    ? "hz-hoverable"
+                    : "hz-hoverable"
                 }`}
               >
-                <div className="flex items-start justify-between mb-3">
-                  <div className="flex items-center gap-2">
-                    <Github className="w-4 h-4 text-neutral-400" />
-                    <span className="font-mono text-sm text-white">hanzoai/{repo.name}</span>
+                <div className="hz-row hz-ai-start hz-jc-between hz-mb-3">
+                  <div className="hz-row hz-ai-center hz-gap-2">
+                    <Github className="hz-sq-2 hz-fg-muted" />
+                    <span className="hz-mono hz-t-sm hz-fg">hanzoai/{repo.name}</span>
                   </div>
-                  <ExternalLink className="w-3.5 h-3.5 text-neutral-600 group-hover:text-neutral-400 transition-colors" />
+                  <ExternalLink className="hz-sq-2 hz-fg-faint hz-transition hz-link" />
                 </div>
-                <p className="text-sm text-neutral-400 mb-3 line-clamp-2">{repo.description}</p>
-                <div className="flex items-center gap-3">
-                  <span className="text-[11px] px-1.5 py-0.5 rounded bg-neutral-800 text-neutral-500">{repo.language}</span>
+                <p className="hz-t-sm hz-fg-muted hz-mb-3 hz-clamp-2">{repo.description}</p>
+                <div className="hz-row hz-ai-center hz-gap-3">
+                  <span className="hz-t-xs hz-px-2 hz-py-1 hz-r-md hz-bg-raised hz-fg-muted">{repo.language}</span>
                 </div>
               </motion.a>
             ))}
@@ -179,20 +179,20 @@ const OpenSourceSection = () => {
         </div>
 
         {/* Templates Section */}
-        <div className="mb-16">
-          <div className="flex items-center justify-between mb-6">
-            <h3 className="text-xl font-medium text-white">Templates &amp; Starters</h3>
+        <div className="hz-mb-7">
+          <div className="hz-row hz-ai-center hz-jc-between hz-mb-5">
+            <h3 className="hz-t-xl hz-w-medium hz-fg">Templates &amp; Starters</h3>
             <a
               href="https://github.com/hanzo-apps"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-neutral-400 hover:text-white transition-colors flex items-center gap-1"
+              className="hz-t-sm hz-fg-muted hz-transition hz-row hz-ai-center hz-gap-1 hz-link"
             >
               View all templates
-              <ExternalLink className="w-3.5 h-3.5" />
+              <ExternalLink className="hz-sq-2" />
             </a>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="hz-grid hz-grid-3 hz-gap-4">
             {templates.map((template, index) => (
               <motion.div
                 key={template.name}
@@ -200,21 +200,21 @@ const OpenSourceSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.1 + index * 0.1 }}
-                className="group p-5 rounded-xl border border-neutral-800 bg-neutral-900/50 hover:bg-neutral-900 hover:border-neutral-700 transition-all"
+                className="hz-card hz-transition hz-card-interactive"
               >
-                <div className="flex items-start justify-between mb-3">
-                  <div className="flex items-center gap-2">
-                    <Rocket className="w-4 h-4 text-white" />
-                    <span className="font-mono text-sm text-white">{template.name}</span>
+                <div className="hz-row hz-ai-start hz-jc-between hz-mb-3">
+                  <div className="hz-row hz-ai-center hz-gap-2">
+                    <Rocket className="hz-sq-2 hz-fg" />
+                    <span className="hz-mono hz-t-sm hz-fg">{template.name}</span>
                   </div>
                 </div>
-                <p className="text-sm text-neutral-400 mb-4 line-clamp-2">{template.description}</p>
-                <div className="flex items-center gap-2">
+                <p className="hz-t-sm hz-fg-muted hz-mb-4 hz-clamp-2">{template.description}</p>
+                <div className="hz-row hz-ai-center hz-gap-2">
                   <a
                     href={`https://hanzo.app/new?template=${template.name}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 text-center px-3 py-2 rounded-lg bg-white hover:bg-white/80 text-black text-xs font-medium transition-colors"
+                    className="hz-grow hz-align-center hz-px-3 hz-py-2 hz-r-lg hz-bg-inverse hz-fg-inverse hz-t-xs hz-w-medium hz-transition hz-hoverable"
                   >
                     Launch in Hanzo
                   </a>
@@ -222,9 +222,9 @@ const OpenSourceSection = () => {
                     href={`https://github.com/hanzo-apps/${template.name}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-3 py-2 rounded-lg border border-neutral-700 hover:bg-neutral-800 text-neutral-400 text-xs transition-colors"
+                    className="hz-px-3 hz-py-2 hz-r-lg hz-bordered hz-fg-muted hz-t-xs hz-transition hz-link"
                   >
-                    <Github className="w-4 h-4" />
+                    <Github className="hz-sq-2" />
                   </a>
                 </div>
               </motion.div>
@@ -238,45 +238,45 @@ const OpenSourceSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="rounded-2xl border border-white/30 bg-gradient-to-br from-white/10 to-transparent p-8 mb-12"
+          className="hz-card hz-mb-7"
         >
-          <div className="grid lg:grid-cols-2 gap-8 items-center">
+          <div className="hz-grid hz-grid-2 hz-gap-6 hz-ai-center">
             <div>
-              <div className="inline-flex items-center gap-2 text-xs font-medium rounded-full px-4 py-2 border mb-4"
+              <div className="hz-btn hz-btn-ghost hz-gap-2 hz-t-xs hz-mb-4"
                    style={{ color: "#ffffff", borderColor: "rgba(255, 255, 255, 0.3)" }}>
-                <Network className="w-4 h-4" />
+                <Network className="hz-sq-2" />
                 Hanzo Network
               </div>
-              <h3 className="text-2xl md:text-3xl font-medium text-white mb-4">
+              <h3 className="hz-t-2xl hz-w-medium hz-fg hz-mb-4">
                 Decentralized AI compute
               </h3>
-              <p className="text-neutral-400 mb-6">
+              <p className="hz-fg-muted hz-mb-5">
                 Join the Hanzo Network to contribute GPU power for AI inference and training. Earn rewards while powering the next generation of AI applications.
               </p>
-              <div className="flex flex-wrap gap-3">
+              <div className="hz-row hz-wrap hz-gap-3">
                 <a
                   href="https://hanzo.network"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium bg-white text-black hover:opacity-90 transition-colors"
+                  className="hz-btn hz-btn-primary hz-gap-2 hz-fg-inverse hz-transition"
                 >
                   Learn more
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="hz-sq-2" />
                 </a>
                 <a
                   href="https://github.com/hanzoai/network"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium border border-neutral-700 text-white hover:bg-neutral-900 transition-colors"
+                  className="hz-btn hz-btn-ghost hz-gap-2 hz-fg hz-transition"
                 >
-                  <Github className="w-4 h-4" />
+                  <Github className="hz-sq-2" />
                   View source
                 </a>
               </div>
             </div>
-            <div className="flex items-center justify-center">
-              <div className="w-32 h-32 rounded-2xl bg-neutral-800/50 flex items-center justify-center">
-                <Network className="w-16 h-16 text-white" />
+            <div className="hz-row hz-ai-center hz-jc-center">
+              <div className="hz-sq-8 hz-r-xl hz-bg-raised hz-row hz-ai-center hz-jc-center">
+                <Network className="hz-sq-8 hz-fg" />
               </div>
             </div>
           </div>
@@ -288,19 +288,19 @@ const OpenSourceSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-center mb-12"
+          className="hz-align-center hz-mb-7"
         >
-          <p className="text-neutral-400 mb-4">
+          <p className="hz-fg-muted hz-mb-4">
             Read our research papers and technical specifications
           </p>
           <a
             href="https://zenlm.org"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-white hover:underline"
+            className="hz-inline hz-ai-center hz-gap-2 hz-fg"
           >
             zenlm.org - AI Research &amp; Philosophy
-            <ExternalLink className="w-4 h-4" />
+            <ExternalLink className="hz-sq-2" />
           </a>
         </motion.div>
 
@@ -310,24 +310,24 @@ const OpenSourceSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          className="hz-col-row hz-ai-center hz-jc-center hz-gap-4"
         >
           <Link
             to="/open-source"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-medium text-black bg-white hover:bg-white/80 transition-colors"
+            className="hz-btn hz-btn-primary hz-gap-2 hz-fg-inverse hz-transition"
           >
             Browse all projects
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="hz-sq-2" />
           </Link>
           <a
             href="https://github.com/hanzoai"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-medium text-white border border-neutral-700 hover:bg-neutral-900 transition-colors"
+            className="hz-btn hz-btn-ghost hz-gap-2 hz-fg hz-transition"
           >
-            <Github className="w-5 h-5" />
+            <Github className="hz-sq-3" />
             View on GitHub
-            <ExternalLink className="w-4 h-4" />
+            <ExternalLink className="hz-sq-2" />
           </a>
         </motion.div>
       </div>

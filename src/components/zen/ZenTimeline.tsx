@@ -43,10 +43,10 @@ const timelineEvents: TimelineEvent[] = [
 
 const ZenTimeline: React.FC = () => {
   return (
-    <div className="relative py-16">
-      <div className="absolute left-1/2 h-full w-0.5 bg-gradient-to-b from-neutral-500/0 via-neutral-500/50 to-neutral-500/0 transform -translate-x-1/2"></div>
+    <div className="hz-rel hz-py-7">
+      <div className="hz-center-x hz-abs hz-h-full hz-bw-1"></div>
       
-      <div className="max-w-5xl mx-auto">
+      <div className="hz-container-wide">
         {timelineEvents.map((event, index) => (
           <motion.div
             key={event.year}
@@ -54,15 +54,15 @@ const ZenTimeline: React.FC = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            className={`relative mb-16 flex ${index % 2 === 0 ? 'justify-end' : 'justify-start'}`}
+            className={`hz-rel hz-mb-7 hz-row ${index % 2 === 0 ? 'hz-jc-end' : 'hz-jc-start'}`}
           >
-            <div className="absolute left-1/2 top-5 w-5 h-5 rounded-full bg-neutral-600 transform -translate-x-1/2 z-10"></div>
+            <div className="hz-center-x hz-sq-3 hz-abs hz-r-full hz-bg-raised hz-z-raised"></div>
             
-            <div className={`w-5/12 ${index % 2 === 0 ? 'pr-12' : 'pl-12'}`}>
-              <div className="bg-[var(--black)]/30 backdrop-blur-sm border border-neutral-500/20 rounded-lg p-6">
-                <div className="text-neutral-400 font-bold mb-2">{event.year}</div>
-                <h3 className="text-xl text-[var(--white)] font-bold mb-2">{event.title}</h3>
-                <p className="text-neutral-300">{event.description}</p>
+            <div className={` ${index % 2 === 0 ? 'hz-px-6' : 'hz-px-6'}`}>
+              <div className="hz-card hz-glass">
+                <div className="hz-fg-muted hz-w-bold hz-mb-2">{event.year}</div>
+                <h3 className="hz-t-xl hz-fg hz-w-bold hz-mb-2">{event.title}</h3>
+                <p className="hz-fg-soft">{event.description}</p>
               </div>
             </div>
           </motion.div>

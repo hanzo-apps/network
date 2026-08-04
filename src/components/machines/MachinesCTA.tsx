@@ -4,19 +4,19 @@ import { Button } from "@/components/ui/button";
 
 const MachinesCTA = () => {
   return (
-    <section className="py-20">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-gradient-to-r from-neutral-800/20 to-neutral-900/20 rounded-2xl p-8 md:p-12 border border-neutral-500/30">
-          <div className="text-center">
-            <h2 className="text-3xl font-bold mb-4">Power Your AI Workloads</h2>
-            <p className="text-xl text-neutral-300 mb-8 max-w-3xl mx-auto">
+    <section className="hz-py-7">
+      <div className="hz-container-wide">
+        <div className="hz-card">
+          <div className="hz-align-center">
+            <h2 className="hz-t-3xl hz-w-bold hz-mb-4">Power Your AI Workloads</h2>
+            <p className="hz-container-narrow hz-t-xl hz-fg-soft hz-mb-6">
               Get started with Hanzo Machines today and experience high-performance AI infrastructure.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="bg-neutral-600 hover:bg-neutral-700 text-[var(--white)] px-8 py-6 text-lg">
+            <div className="hz-col-row hz-gap-4 hz-jc-center">
+              <Button className="hz-bg-raised hz-fg hz-px-6 hz-py-5 hz-t-lg hz-hoverable">
                 Sign Up Free
               </Button>
-              <Button variant="outline" className="border-neutral-500/30 text-[var(--white)] hover:bg-neutral-800/20 px-8 py-6 text-lg">
+              <Button variant="outline" className="hz-border-strong hz-fg hz-px-6 hz-py-5 hz-t-lg hz-hoverable">
                 Contact Sales
               </Button>
             </div>

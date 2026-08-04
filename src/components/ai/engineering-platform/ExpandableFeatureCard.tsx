@@ -40,28 +40,28 @@ const ExpandableFeatureCard: React.FC<ExpandableFeatureCardProps> = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay }}
-      className="bg-gray-900/20 border border-gray-800 rounded-2xl p-6 h-full"
+      className="hz-card hz-h-full"
     >
-      <div className="flex items-center justify-between mb-4">
-        <div className="flex items-center">
-          <div className={`w-12 h-12 rounded-xl ${iconBgClass} flex items-center justify-center mr-4`}>
+      <div className="hz-row hz-ai-center hz-jc-between hz-mb-4">
+        <div className="hz-row hz-ai-center">
+          <div className={`hz-sq-7 hz-r-lg ${iconBgClass} hz-row hz-ai-center hz-jc-center hz-mr-4`}>
             <div className={iconTextClass}>{icon}</div>
           </div>
-          <h3 className="text-xl font-bold">{title}</h3>
+          <h3 className="hz-t-xl hz-w-bold">{title}</h3>
         </div>
         <button 
           onClick={toggleExpand}
-          className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors ${isExpanded ? 'bg-neutral-600/30' : 'bg-gray-800/50 hover:bg-gray-700/50'}`}
+          className={`hz-sq-5 hz-r-full hz-row hz-ai-center hz-jc-center hz-transition ${isExpanded ? 'hz-bg-raised' : 'hz-bg-raised hz-hoverable'}`}
         >
           {isExpanded ? (
-            <Minus className="h-4 w-4 text-neutral-300" />
+            <Minus className="hz-sq-2 hz-fg-soft" />
           ) : (
-            <Plus className="h-4 w-4 text-neutral-300" />
+            <Plus className="hz-sq-2 hz-fg-soft" />
           )}
         </button>
       </div>
       
-      <p className="text-neutral-300 mb-4">{description}</p>
+      <p className="hz-fg-soft hz-mb-4">{description}</p>
       
       <AnimatePresence>
         {isExpanded && (
@@ -70,15 +70,15 @@ const ExpandableFeatureCard: React.FC<ExpandableFeatureCardProps> = ({
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="overflow-hidden"
+            className="hz-clip"
           >
-            <div className="pt-2 border-t border-gray-800">
-              <h4 className="font-medium text-[var(--white)] mb-3 mt-3">Key Features:</h4>
-              <ul className="space-y-2">
+            <div className="hz-pt-4 hz-border-t">
+              <h4 className="hz-w-medium hz-fg hz-mb-3 hz-mt-3">Key Features:</h4>
+              <ul className="hz-stack-2">
                 {featurePoints.map((point, index) => (
-                  <li key={index} className="flex items-start">
-                    <span className={`${bulletColor} mr-2 text-lg`}>•</span>
-                    <span className="text-sm text-neutral-300">{point.text}</span>
+                  <li key={index} className="hz-row hz-ai-start">
+                    <span className={`${bulletColor} hz-mr-2 hz-t-lg`}>•</span>
+                    <span className="hz-t-sm hz-fg-soft">{point.text}</span>
                   </li>
                 ))}
               </ul>

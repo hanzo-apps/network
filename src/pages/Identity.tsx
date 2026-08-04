@@ -9,61 +9,61 @@ import ChromeText from "@/components/ui/chrome-text";
 
 const Identity = () => {
   return (
-    <div className="min-h-screen bg-[var(--black)] text-[var(--white)]">
+    <div className="hz-min-h-screen hz-bg hz-fg">
       <Navbar />
       
       {/* Hero Section */}
-      <section className="py-20 lg:py-32 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/20 to-transparent"></div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <div className="bg-neutral-500/10 border border-neutral-500/20 rounded-full px-4 py-1 inline-block mb-4">
-              <span className="text-neutral-400 text-sm font-medium">Identity Management</span>
+      <section className="hz-py-7 hz-rel">
+        <div className="hz-abs hz-inset"></div>
+        <div className="hz-container hz-rel hz-z-raised">
+          <div className="hz-container-narrow hz-align-center hz-mb-7">
+            <div className="hz-bg-raised hz-bordered hz-border-strong hz-r-full hz-px-4 hz-py-1 hz-mb-4">
+              <span className="hz-fg-muted hz-t-sm hz-w-medium">Identity Management</span>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-neutral-400 to-neutral-400">
+            <h1 className="hz-t-4xl hz-w-bold hz-mb-5 hz-chrome">
               Hanzo Identity
             </h1>
-            <p className="text-xl text-neutral-300 mb-8">
+            <p className="hz-t-xl hz-fg-soft hz-mb-6">
               Secure, scalable identity and access management for your applications.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="bg-neutral-600 hover:bg-neutral-700 text-[var(--white)] px-8 py-6 text-lg">
+            <div className="hz-col-row hz-gap-4 hz-jc-center">
+              <Button className="hz-bg-raised hz-fg hz-px-6 hz-py-5 hz-t-lg hz-hoverable">
                 Get Started
               </Button>
-              <Button variant="outline" className="border-neutral-500/30 text-[var(--white)] hover:bg-neutral-900/20 px-8 py-6 text-lg">
+              <Button variant="outline" className="hz-border-strong hz-fg hz-px-6 hz-py-5 hz-t-lg hz-hoverable">
                 View Documentation
               </Button>
             </div>
           </div>
           
           {/* Hero Visual */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="md:col-span-1 bg-neutral-900/20 border border-neutral-500/20 rounded-xl p-6 flex flex-col items-center">
-              <div className="w-20 h-20 rounded-full bg-neutral-800/30 flex items-center justify-center mb-4">
-                <User className="h-10 w-10 text-neutral-300" />
+          <div className="hz-grid hz-grid-3 hz-gap-5">
+            <div className="hz-card hz-col hz-ai-center">
+              <div className="hz-sq-8 hz-r-full hz-bg-raised hz-row hz-ai-center hz-jc-center hz-mb-4">
+                <User className="hz-sq-6 hz-fg-soft" />
               </div>
-              <h3 className="text-lg font-bold mb-2">User Authentication</h3>
-              <p className="text-neutral-300 text-center">
+              <h3 className="hz-t-lg hz-w-bold hz-mb-2">User Authentication</h3>
+              <p className="hz-fg-soft hz-align-center">
                 Multi-factor authentication, social logins, and passwordless options
               </p>
             </div>
             
-            <div className="md:col-span-1 bg-neutral-900/20 border border-neutral-500/20 rounded-xl p-6 flex flex-col items-center">
-              <div className="w-20 h-20 rounded-full bg-neutral-800/30 flex items-center justify-center mb-4">
-                <Shield className="h-10 w-10 text-neutral-300" />
+            <div className="hz-card hz-col hz-ai-center">
+              <div className="hz-sq-8 hz-r-full hz-bg-raised hz-row hz-ai-center hz-jc-center hz-mb-4">
+                <Shield className="hz-sq-6 hz-fg-soft" />
               </div>
-              <h3 className="text-lg font-bold mb-2">Access Control</h3>
-              <p className="text-neutral-300 text-center">
+              <h3 className="hz-t-lg hz-w-bold hz-mb-2">Access Control</h3>
+              <p className="hz-fg-soft hz-align-center">
                 Role-based access control, custom claims, and fine-grained permissions
               </p>
             </div>
             
-            <div className="md:col-span-1 bg-neutral-900/20 border border-neutral-500/20 rounded-xl p-6 flex flex-col items-center">
-              <div className="w-20 h-20 rounded-full bg-neutral-800/30 flex items-center justify-center mb-4">
-                <Lock className="h-10 w-10 text-neutral-300" />
+            <div className="hz-card hz-col hz-ai-center">
+              <div className="hz-sq-8 hz-r-full hz-bg-raised hz-row hz-ai-center hz-jc-center hz-mb-4">
+                <Lock className="hz-sq-6 hz-fg-soft" />
               </div>
-              <h3 className="text-lg font-bold mb-2">Enterprise SSO</h3>
-              <p className="text-neutral-300 text-center">
+              <h3 className="hz-t-lg hz-w-bold hz-mb-2">Enterprise SSO</h3>
+              <p className="hz-fg-soft hz-align-center">
                 SAML, OIDC, and enterprise identity provider integrations
               </p>
             </div>
@@ -72,28 +72,28 @@ const Identity = () => {
       </section>
       
       {/* Features */}
-      <section className="py-20 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <ChromeText as="h2" className="text-3xl font-bold mb-4">
+      <section className="hz-py-7 hz-rel">
+        <div className="hz-container">
+          <div className="hz-align-center hz-mb-7">
+            <ChromeText as="h2" className="hz-t-3xl hz-w-bold hz-mb-4">
               Key Features & Capabilities
             </ChromeText>
-            <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
+            <p className="hz-container-narrow hz-t-xl hz-fg-soft">
               Complete identity management solutions for every authentication and authorization need
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="hz-grid hz-grid-3 hz-gap-6">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
-              className="bg-neutral-900/20 border border-neutral-500/30 rounded-xl p-6"
+              className="hz-card"
             >
-              <UserCheck className="h-10 w-10 text-neutral-400 mb-4" />
-              <h3 className="text-xl font-bold mb-2">Multi-factor Authentication</h3>
-              <p className="text-neutral-300">
+              <UserCheck className="hz-sq-6 hz-fg-muted hz-mb-4" />
+              <h3 className="hz-t-xl hz-w-bold hz-mb-2">Multi-factor Authentication</h3>
+              <p className="hz-fg-soft">
                 Secure access with SMS, email, authenticator apps, and biometric verification.
               </p>
             </motion.div>
@@ -103,11 +103,11 @@ const Identity = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
               viewport={{ once: true }}
-              className="bg-neutral-900/20 border border-neutral-500/30 rounded-xl p-6"
+              className="hz-card"
             >
-              <UserCog className="h-10 w-10 text-neutral-400 mb-4" />
-              <h3 className="text-xl font-bold mb-2">User Management</h3>
-              <p className="text-neutral-300">
+              <UserCog className="hz-sq-6 hz-fg-muted hz-mb-4" />
+              <h3 className="hz-t-xl hz-w-bold hz-mb-2">User Management</h3>
+              <p className="hz-fg-soft">
                 Comprehensive tools for user creation, profile management, and account recovery.
               </p>
             </motion.div>
@@ -117,11 +117,11 @@ const Identity = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: true }}
-              className="bg-neutral-900/20 border border-neutral-500/30 rounded-xl p-6"
+              className="hz-card"
             >
-              <Key className="h-10 w-10 text-neutral-400 mb-4" />
-              <h3 className="text-xl font-bold mb-2">Single Sign-On (SSO)</h3>
-              <p className="text-neutral-300">
+              <Key className="hz-sq-6 hz-fg-muted hz-mb-4" />
+              <h3 className="hz-t-xl hz-w-bold hz-mb-2">Single Sign-On (SSO)</h3>
+              <p className="hz-fg-soft">
                 Seamless authentication across multiple applications with SAML and OIDC support.
               </p>
             </motion.div>
@@ -131,11 +131,11 @@ const Identity = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
               viewport={{ once: true }}
-              className="bg-neutral-900/20 border border-neutral-500/30 rounded-xl p-6"
+              className="hz-card"
             >
-              <Shield className="h-10 w-10 text-neutral-400 mb-4" />
-              <h3 className="text-xl font-bold mb-2">Role-Based Access Control</h3>
-              <p className="text-neutral-300">
+              <Shield className="hz-sq-6 hz-fg-muted hz-mb-4" />
+              <h3 className="hz-t-xl hz-w-bold hz-mb-2">Role-Based Access Control</h3>
+              <p className="hz-fg-soft">
                 Define and manage permissions with customizable roles and user groups.
               </p>
             </motion.div>
@@ -145,11 +145,11 @@ const Identity = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
               viewport={{ once: true }}
-              className="bg-neutral-900/20 border border-neutral-500/30 rounded-xl p-6"
+              className="hz-card"
             >
-              <Fingerprint className="h-10 w-10 text-neutral-400 mb-4" />
-              <h3 className="text-xl font-bold mb-2">Passwordless Authentication</h3>
-              <p className="text-neutral-300">
+              <Fingerprint className="hz-sq-6 hz-fg-muted hz-mb-4" />
+              <h3 className="hz-t-xl hz-w-bold hz-mb-2">Passwordless Authentication</h3>
+              <p className="hz-fg-soft">
                 Secure login options without passwords using magic links, WebAuthn, and biometrics.
               </p>
             </motion.div>
@@ -159,11 +159,11 @@ const Identity = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.5 }}
               viewport={{ once: true }}
-              className="bg-neutral-900/20 border border-neutral-500/30 rounded-xl p-6"
+              className="hz-card"
             >
-              <History className="h-10 w-10 text-neutral-400 mb-4" />
-              <h3 className="text-xl font-bold mb-2">Audit & Compliance</h3>
-              <p className="text-neutral-300">
+              <History className="hz-sq-6 hz-fg-muted hz-mb-4" />
+              <h3 className="hz-t-xl hz-w-bold hz-mb-2">Audit & Compliance</h3>
+              <p className="hz-fg-soft">
                 Comprehensive logging and reporting for user activities and access attempts.
               </p>
             </motion.div>
@@ -172,97 +172,97 @@ const Identity = () => {
       </section>
       
       {/* Enterprise Section */}
-      <section className="py-20 bg-gradient-to-b from-black to-neutral-950/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <ChromeText as="h2" className="text-3xl font-bold mb-4">
+      <section className="hz-py-7">
+        <div className="hz-container">
+          <div className="hz-align-center hz-mb-7">
+            <ChromeText as="h2" className="hz-t-3xl hz-w-bold hz-mb-4">
               Enterprise-Ready Solutions
             </ChromeText>
-            <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
+            <p className="hz-container-narrow hz-t-xl hz-fg-soft">
               Secure identity management that meets the highest compliance standards
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-neutral-900/10 border border-neutral-500/20 rounded-xl p-8">
-              <h3 className="text-2xl font-bold mb-4">Compliance & Security</h3>
-              <p className="text-neutral-300 mb-4">
+          <div className="hz-grid hz-grid-2 hz-gap-6">
+            <div className="hz-card">
+              <h3 className="hz-t-2xl hz-w-bold hz-mb-4">Compliance & Security</h3>
+              <p className="hz-fg-soft hz-mb-4">
                 Meet regulatory requirements with built-in compliance features.
               </p>
-              <ul className="space-y-2 text-neutral-300">
-                <li className="flex items-start">
-                  <span className="text-neutral-400 mr-2">•</span>
+              <ul className="hz-stack-2 hz-fg-soft">
+                <li className="hz-row hz-ai-start">
+                  <span className="hz-fg-muted hz-mr-2">•</span>
                   <span>SOC 2, GDPR, HIPAA, and PCI DSS compliance</span>
                 </li>
-                <li className="flex items-start">
-                  <span className="text-neutral-400 mr-2">•</span>
+                <li className="hz-row hz-ai-start">
+                  <span className="hz-fg-muted hz-mr-2">•</span>
                   <span>Data residency controls and regional isolation</span>
                 </li>
-                <li className="flex items-start">
-                  <span className="text-neutral-400 mr-2">•</span>
+                <li className="hz-row hz-ai-start">
+                  <span className="hz-fg-muted hz-mr-2">•</span>
                   <span>Automated security assessments</span>
                 </li>
               </ul>
             </div>
             
-            <div className="bg-neutral-900/10 border border-neutral-500/20 rounded-xl p-8">
-              <h3 className="text-2xl font-bold mb-4">Enterprise Identity</h3>
-              <p className="text-neutral-300 mb-4">
+            <div className="hz-card">
+              <h3 className="hz-t-2xl hz-w-bold hz-mb-4">Enterprise Identity</h3>
+              <p className="hz-fg-soft hz-mb-4">
                 Seamlessly integrate with your existing identity infrastructure.
               </p>
-              <ul className="space-y-2 text-neutral-300">
-                <li className="flex items-start">
-                  <span className="text-neutral-400 mr-2">•</span>
+              <ul className="hz-stack-2 hz-fg-soft">
+                <li className="hz-row hz-ai-start">
+                  <span className="hz-fg-muted hz-mr-2">•</span>
                   <span>Active Directory and LDAP integration</span>
                 </li>
-                <li className="flex items-start">
-                  <span className="text-neutral-400 mr-2">•</span>
+                <li className="hz-row hz-ai-start">
+                  <span className="hz-fg-muted hz-mr-2">•</span>
                   <span>Enterprise SSO with major identity providers</span>
                 </li>
-                <li className="flex items-start">
-                  <span className="text-neutral-400 mr-2">•</span>
+                <li className="hz-row hz-ai-start">
+                  <span className="hz-fg-muted hz-mr-2">•</span>
                   <span>Custom branding and white-labeling</span>
                 </li>
               </ul>
             </div>
             
-            <div className="bg-neutral-900/10 border border-neutral-500/20 rounded-xl p-8">
-              <h3 className="text-2xl font-bold mb-4">Customer Identity</h3>
-              <p className="text-neutral-300 mb-4">
+            <div className="hz-card">
+              <h3 className="hz-t-2xl hz-w-bold hz-mb-4">Customer Identity</h3>
+              <p className="hz-fg-soft hz-mb-4">
                 Create seamless authentication experiences for your customers.
               </p>
-              <ul className="space-y-2 text-neutral-300">
-                <li className="flex items-start">
-                  <span className="text-neutral-400 mr-2">•</span>
+              <ul className="hz-stack-2 hz-fg-soft">
+                <li className="hz-row hz-ai-start">
+                  <span className="hz-fg-muted hz-mr-2">•</span>
                   <span>Social login integrations (Google, Facebook, Apple, etc.)</span>
                 </li>
-                <li className="flex items-start">
-                  <span className="text-neutral-400 mr-2">•</span>
+                <li className="hz-row hz-ai-start">
+                  <span className="hz-fg-muted hz-mr-2">•</span>
                   <span>Progressive profiling and user segmentation</span>
                 </li>
-                <li className="flex items-start">
-                  <span className="text-neutral-400 mr-2">•</span>
+                <li className="hz-row hz-ai-start">
+                  <span className="hz-fg-muted hz-mr-2">•</span>
                   <span>Consent management for privacy compliance</span>
                 </li>
               </ul>
             </div>
             
-            <div className="bg-neutral-900/10 border border-neutral-500/20 rounded-xl p-8">
-              <h3 className="text-2xl font-bold mb-4">Developer Experience</h3>
-              <p className="text-neutral-300 mb-4">
+            <div className="hz-card">
+              <h3 className="hz-t-2xl hz-w-bold hz-mb-4">Developer Experience</h3>
+              <p className="hz-fg-soft hz-mb-4">
                 Extensive SDKs and tools for seamless integration.
               </p>
-              <ul className="space-y-2 text-neutral-300">
-                <li className="flex items-start">
-                  <span className="text-neutral-400 mr-2">•</span>
+              <ul className="hz-stack-2 hz-fg-soft">
+                <li className="hz-row hz-ai-start">
+                  <span className="hz-fg-muted hz-mr-2">•</span>
                   <span>SDKs for all major languages and frameworks</span>
                 </li>
-                <li className="flex items-start">
-                  <span className="text-neutral-400 mr-2">•</span>
+                <li className="hz-row hz-ai-start">
+                  <span className="hz-fg-muted hz-mr-2">•</span>
                   <span>Comprehensive API documentation</span>
                 </li>
-                <li className="flex items-start">
-                  <span className="text-neutral-400 mr-2">•</span>
+                <li className="hz-row hz-ai-start">
+                  <span className="hz-fg-muted hz-mr-2">•</span>
                   <span>Pre-built UI components for auth flows</span>
                 </li>
               </ul>
@@ -272,19 +272,19 @@ const Identity = () => {
       </section>
       
       {/* CTA Section */}
-      <section className="py-20">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-r from-neutral-900/20 to-neutral-900/20 rounded-2xl p-8 md:p-12 border border-neutral-500/30">
-            <div className="text-center">
-              <h2 className="text-3xl font-bold mb-4">Secure Your Applications</h2>
-              <p className="text-xl text-neutral-300 mb-8 max-w-3xl mx-auto">
+      <section className="hz-py-7">
+        <div className="hz-container-wide">
+          <div className="hz-card">
+            <div className="hz-align-center">
+              <h2 className="hz-t-3xl hz-w-bold hz-mb-4">Secure Your Applications</h2>
+              <p className="hz-container-narrow hz-t-xl hz-fg-soft hz-mb-6">
                 Get started with Hanzo Identity today and implement secure authentication in minutes.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button className="bg-neutral-600 hover:bg-neutral-700 text-[var(--white)] px-8 py-6 text-lg">
+              <div className="hz-col-row hz-gap-4 hz-jc-center">
+                <Button className="hz-bg-raised hz-fg hz-px-6 hz-py-5 hz-t-lg hz-hoverable">
                   Sign Up Free
                 </Button>
-                <Button variant="outline" className="border-neutral-500/30 text-[var(--white)] hover:bg-neutral-900/20 px-8 py-6 text-lg">
+                <Button variant="outline" className="hz-border-strong hz-fg hz-px-6 hz-py-5 hz-t-lg hz-hoverable">
                   Read Documentation
                 </Button>
               </div>

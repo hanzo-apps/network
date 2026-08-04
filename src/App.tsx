@@ -15,6 +15,7 @@ import BillingPage from "./pages/Billing";
 import { BillingProvider } from "./contexts/BillingContext";
 import { AccountProvider } from "./contexts/AccountContext";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import { Gui } from "./components/ui/gui";
 import ScrollToTop from "./components/ScrollToTop";
 import PurchaseCredits from "./pages/PurchaseCredits";
 import BillingPlans from "./pages/BillingPlans";
@@ -233,8 +234,9 @@ const isAccountRoute = (pathname: string) => {
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <ThemeProvider>
+    <Gui>
+      <BrowserRouter>
+        <ThemeProvider>
         <ScrollToTop />
         <PageTransition>
           {isAccountRoute(window.location.pathname) ? (
@@ -246,9 +248,10 @@ const App = () => {
         {/* Global chat widget on all pages */}
         <GlobalChatWidget />
         {/* Easter egg - Konami code for secret menu */}
-        <KonamiCode />
-      </ThemeProvider>
-    </BrowserRouter>
+          <KonamiCode />
+        </ThemeProvider>
+      </BrowserRouter>
+    </Gui>
   );
 };
 

@@ -22,35 +22,35 @@ const ProjectCard = ({ project, onToggleExpand }: ProjectCardProps) => {
   return (
     <motion.div 
       variants={cardAnimation}
-      className="rounded-xl border border-gray-800 bg-gray-900/20 overflow-hidden"
+      className="hz-r-lg hz-bordered hz-bg-surface hz-clip"
     >
       <div 
-        className="p-4 flex items-center justify-between cursor-pointer hover:bg-gray-800/30"
+        className="hz-p-4 hz-row hz-ai-center hz-jc-between hz-pointer hz-hoverable"
         onClick={() => onToggleExpand(project.id)}
       >
-        <div className="flex items-center gap-4">
+        <div className="hz-row hz-ai-center hz-gap-4">
           {project.expanded ? (
-            <ChevronUp className="h-5 w-5 text-neutral-400" />
+            <ChevronUp className="hz-sq-3 hz-fg-muted" />
           ) : (
-            <ChevronDown className="h-5 w-5 text-neutral-400" />
+            <ChevronDown className="hz-sq-3 hz-fg-muted" />
           )}
-          <span className="font-medium">{project.name}</span>
+          <span className="hz-w-medium">{project.name}</span>
         </div>
-        <div className="flex items-center gap-8">
+        <div className="hz-row hz-ai-center hz-gap-6">
           <div>
-            <div className="text-sm text-neutral-400">Current Cost</div>
-            <div className="font-medium">{project.currentCost}</div>
+            <div className="hz-t-sm hz-fg-muted">Current Cost</div>
+            <div className="hz-w-medium">{project.currentCost}</div>
           </div>
           <div>
-            <div className="text-sm text-neutral-400">Estimated</div>
-            <div className="font-medium">{project.estimatedCost}</div>
+            <div className="hz-t-sm hz-fg-muted">Estimated</div>
+            <div className="hz-w-medium">{project.estimatedCost}</div>
           </div>
         </div>
       </div>
       
       {project.expanded && (
-        <div className="p-6 border-t border-gray-800">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div className="hz-p-5 hz-border-t">
+          <div className="hz-grid hz-grid-2 hz-gap-5 hz-mb-6">
             <ResourceUsageSection resources={project.resources} />
             <ProjectCostSection costs={project.costs} currentCost={project.currentCost} />
           </div>

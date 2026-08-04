@@ -19,11 +19,11 @@ interface ModelCategoryProps {
 
 const ModelCategory = ({ category, categoryIndex }: ModelCategoryProps) => {
   return (
-    <div key={categoryIndex} className="mb-20">
-      <h3 className="text-2xl font-bold text-[var(--white)] mb-4">{category.name}</h3>
-      <p className="text-neutral-300 mb-8">{category.description}</p>
+    <div key={categoryIndex} className="hz-mb-7">
+      <h3 className="hz-t-2xl hz-w-bold hz-fg hz-mb-4">{category.name}</h3>
+      <p className="hz-fg-soft hz-mb-6">{category.description}</p>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="hz-grid hz-grid-3 hz-gap-5">
         {category.models.map((model, modelIndex) => (
           <ModelCategoryCard 
             key={modelIndex} 

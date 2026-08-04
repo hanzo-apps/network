@@ -19,58 +19,58 @@ interface CloudServiceCardProps {
 const getColorClasses = (color: string = "purple", isHovered: boolean) => {
   const colorMap: Record<string, { bg: string, hoverBg: string, text: string, hoverText: string }> = {
     purple: { 
-      bg: "bg-neutral-800/30", 
-      hoverBg: "bg-neutral-600/30", 
-      text: "text-neutral-400", 
-      hoverText: "text-neutral-300" 
+      bg: "hz-bg-surface", 
+      hoverBg: "hz-bg-surface", 
+      text: "hz-fg-muted", 
+      hoverText: "hz-fg-muted" 
     },
     blue: { 
-      bg: "bg-neutral-800/30", 
-      hoverBg: "bg-neutral-600/30", 
-      text: "text-neutral-400", 
-      hoverText: "text-neutral-300" 
+      bg: "hz-bg-surface", 
+      hoverBg: "hz-bg-surface", 
+      text: "hz-fg-muted", 
+      hoverText: "hz-fg-muted" 
     },
     green: { 
-      bg: "bg-neutral-800/30", 
-      hoverBg: "bg-neutral-600/30", 
-      text: "text-neutral-400", 
-      hoverText: "text-neutral-300" 
+      bg: "hz-bg-surface", 
+      hoverBg: "hz-bg-surface", 
+      text: "hz-fg-muted", 
+      hoverText: "hz-fg-muted" 
     },
     teal: { 
-      bg: "bg-neutral-800/30", 
-      hoverBg: "bg-neutral-600/30", 
-      text: "text-neutral-400", 
-      hoverText: "text-neutral-300" 
+      bg: "hz-bg-surface", 
+      hoverBg: "hz-bg-surface", 
+      text: "hz-fg-muted", 
+      hoverText: "hz-fg-muted" 
     },
     amber: { 
-      bg: "bg-neutral-800/30", 
-      hoverBg: "bg-neutral-600/30", 
-      text: "text-neutral-400", 
-      hoverText: "text-neutral-300" 
+      bg: "hz-bg-surface", 
+      hoverBg: "hz-bg-surface", 
+      text: "hz-fg-muted", 
+      hoverText: "hz-fg-muted" 
     },
     indigo: { 
-      bg: "bg-neutral-800/30", 
-      hoverBg: "bg-neutral-600/30", 
-      text: "text-neutral-400", 
-      hoverText: "text-neutral-300" 
+      bg: "hz-bg-surface", 
+      hoverBg: "hz-bg-surface", 
+      text: "hz-fg-muted", 
+      hoverText: "hz-fg-muted" 
     },
     rose: { 
-      bg: "bg-neutral-900/30", 
-      hoverBg: "bg-neutral-600/30", 
-      text: "text-neutral-400", 
-      hoverText: "text-neutral-300" 
+      bg: "hz-bg-surface", 
+      hoverBg: "hz-bg-surface", 
+      text: "hz-fg-muted", 
+      hoverText: "hz-fg-muted" 
     },
     cyan: { 
-      bg: "bg-neutral-800/30", 
-      hoverBg: "bg-neutral-600/30", 
-      text: "text-neutral-400", 
-      hoverText: "text-neutral-300" 
+      bg: "hz-bg-surface", 
+      hoverBg: "hz-bg-surface", 
+      text: "hz-fg-muted", 
+      hoverText: "hz-fg-muted" 
     },
     gray: { 
-      bg: "bg-gray-900/30", 
-      hoverBg: "bg-gray-700/30", 
-      text: "text-neutral-400", 
-      hoverText: "text-neutral-300" 
+      bg: "hz-bg-surface", 
+      hoverBg: "hz-bg-surface", 
+      text: "hz-fg-muted", 
+      hoverText: "hz-fg-muted" 
     }
   };
 
@@ -97,19 +97,19 @@ const CloudServiceCard: React.FC<CloudServiceCardProps> = ({
   
   const CardContent = (
     <>
-      <div className={`h-12 w-12 rounded-lg flex items-center justify-center mb-4 transition-colors duration-300 ${bgClass}`}>
-        <Icon className={`h-6 w-6 transition-colors duration-300 ${textClass}`} />
+      <div className={`hz-sq-7 hz-r-lg hz-row hz-ai-center hz-jc-center hz-mb-4 hz-transition ${bgClass}`}>
+        <Icon className={`hz-sq-4 hz-transition ${textClass}`} />
       </div>
-      <ChromeText as="h3" className="text-xl font-bold mb-2">
+      <ChromeText as="h3" className="hz-t-xl hz-w-bold hz-mb-2">
         {title}
       </ChromeText>
-      <p className="text-neutral-300 mb-4 text-sm">
+      <p className="hz-fg-soft hz-mb-4 hz-t-sm">
         {description}
       </p>
-      <ul className="text-neutral-400 space-y-2 text-xs mt-auto hidden lg:block">
+      <ul className="hz-desktop-only hz-fg-muted hz-stack-2 hz-t-xs hz-mt-auto">
         {features.slice(0, 2).map((feature, index) => (
-          <li key={`${id}-feature-${index}`} className="flex items-start">
-            <span className="mr-2">•</span>
+          <li key={`${id}-feature-${index}`} className="hz-row hz-ai-start">
+            <span className="hz-mr-2">•</span>
             <span>{feature}</span>
           </li>
         ))}
@@ -117,7 +117,7 @@ const CloudServiceCard: React.FC<CloudServiceCardProps> = ({
     </>
   );
 
-  const containerClasses = "bg-gray-900/20 border border-gray-800 rounded-xl p-6 group hover:bg-gray-900/30 transition-colors h-full flex flex-col";
+  const containerClasses = "hz-bg-surface hz-bordered hz-r-xl hz-p-3 hz-transition hz-h-full hz-row hz-col";
 
   return (
     <motion.div

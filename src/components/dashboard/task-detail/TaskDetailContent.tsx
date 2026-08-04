@@ -25,15 +25,15 @@ const TaskDetailContent: React.FC<TaskDetailContentProps> = ({ task, onTaskChang
   };
 
   return (
-    <div className="grid grid-cols-3 gap-6">
-      <div className="col-span-2">
-        <div className="mb-6">
-          <label className="block text-sm font-medium text-neutral-400 mb-1">Description</label>
+    <div className="hz-grid hz-grid-3 hz-gap-5">
+      <div className="hz-span-2">
+        <div className="hz-mb-5">
+          <label className="hz-t-sm hz-w-medium hz-fg-muted hz-mb-1">Description</label>
           <Textarea 
             value={task.description || ""}
             onChange={handleDescriptionChange}
             placeholder="Add a description..."
-            className="min-h-32 bg-gray-900 border-gray-800"
+            className="hz-bg-surface"
           />
         </div>
 
@@ -54,7 +54,7 @@ const TaskDetailContent: React.FC<TaskDetailContentProps> = ({ task, onTaskChang
         />
       </div>
 
-      <div className="space-y-6">
+      <div className="hz-stack-5">
         <StatusSelector 
           status={task.status} 
           onChange={(value) => onTaskChange("status", value)} 
@@ -66,22 +66,22 @@ const TaskDetailContent: React.FC<TaskDetailContentProps> = ({ task, onTaskChang
         />
 
         <div>
-          <label className="block text-sm font-medium text-neutral-400 mb-1">Due Date</label>
+          <label className="hz-t-sm hz-w-medium hz-fg-muted hz-mb-1">Due Date</label>
           <Input 
             type="date"
             value={task.dueDate || ""}
             onChange={handleDateChange}
-            className="bg-gray-900 border-gray-800"
+            className="hz-bg-surface"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-neutral-400 mb-1">AI Agents</label>
+          <label className="hz-t-sm hz-w-medium hz-fg-muted hz-mb-1">AI Agents</label>
           <Button 
             variant="outline" 
-            className="w-full justify-start bg-gray-900 border-gray-800"
+            className="hz-w-full hz-jc-start hz-bg-surface"
           >
-            <Bot className="mr-2 h-4 w-4" />
+            <Bot className="hz-sq-2 hz-mr-2" />
             Assign Agent
           </Button>
         </div>

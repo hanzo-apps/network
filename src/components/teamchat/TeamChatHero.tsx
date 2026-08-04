@@ -5,18 +5,18 @@ import ChromeText from "@/components/ui/chrome-text";
 
 const TeamChatHero: React.FC = () => {
   return (
-    <div className="bg-gradient-to-r from-neutral-800/20 to-neutral-800/20 py-10 px-4">
-      <div className="max-w-7xl mx-auto">
+    <div className="hz-py-6 hz-px-4">
+      <div className="hz-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-center"
+          className="hz-align-center"
         >
-          <ChromeText as="h1" className="text-4xl font-bold mb-2">
+          <ChromeText as="h1" className="hz-t-4xl hz-w-bold hz-mb-2">
             Hanzo Chat
           </ChromeText>
-          <p className="text-neutral-300 max-w-2xl mx-auto">
+          <p className="hz-container-narrow hz-mw-md hz-fg-soft">
             Connect with state-of-the-art AI models through our intuitive chat interface.
             Get answers, generate content, and solve problems with natural language.
           </p>

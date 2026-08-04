@@ -6,25 +6,25 @@ import { Button } from '@/components/ui/button';
 
 const CallToAction = () => {
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black to-gray-950 relative overflow-hidden">
+    <section className="hz-py-7 hz-px-4 hz-rel hz-clip">
       {/* Background elements */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-0 w-2/3 h-1/2 bg-neutral-800/5 rounded-full blur-3xl transform -translate-x-1/4 -translate-y-1/4"></div>
-        <div className="absolute bottom-0 right-0 w-full h-1/2 bg-neutral-800/5 rounded-full blur-3xl transform translate-x-1/4 translate-y-1/4"></div>
+      <div className="hz-abs hz-top-0 hz-left-0 hz-w-full hz-h-full hz-clip hz-no-pointer">
+        <div className="hz-abs hz-top-0 hz-left-0 hz-bg-raised hz-r-full hz-blur-bg"></div>
+        <div className="hz-abs hz-bottom-0 hz-right-0 hz-w-full hz-bg-raised hz-r-full hz-blur-bg"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
-        <div className="flex flex-col items-center text-center max-w-4xl mx-auto mb-16">
+      <div className="hz-container hz-rel hz-z-raised">
+        <div className="hz-container-narrow hz-col hz-ai-center hz-align-center hz-mb-7">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-5xl font-bold text-[var(--white)] mb-6">
+            <h2 className="hz-t-3xl hz-w-bold hz-fg hz-mb-5">
               Start Building the Future of AI
             </h2>
-            <p className="text-xl text-neutral-300 mb-8">
+            <p className="hz-t-xl hz-fg-soft hz-mb-6">
               Join thousands of developers and companies who are building intelligent, 
               scalable applications with Hanzo's AI Engineering Platform
             </p>
@@ -35,13 +35,13 @@ const CallToAction = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex flex-col sm:flex-row gap-4"
+            className="hz-col-row hz-gap-4"
           >
-            <Button size="lg" className="bg-neutral-600 hover:bg-neutral-700">
+            <Button size="lg" className="hz-bg-raised hz-hoverable">
               Get Started Free
-              <ArrowRight className="ml-2 h-4 w-4" />
+              <ArrowRight className="hz-sq-2 hz-ml-2" />
             </Button>
-            <Button size="lg" variant="outline" className="text-[var(--white)]">
+            <Button size="lg" variant="outline" className="hz-fg">
               Schedule a Demo
             </Button>
           </motion.div>
@@ -52,47 +52,47 @@ const CallToAction = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          className="hz-grid hz-grid-3 hz-gap-6"
         >
-          <div className="bg-gray-900/30 border border-gray-800 rounded-xl p-8 hover:bg-gray-900/40 transition-colors">
-            <div className="h-12 w-12 rounded-lg bg-neutral-800/30 flex items-center justify-center mb-6">
-              <BookOpen className="h-6 w-6 text-neutral-400" />
+          <div className="hz-card hz-transition hz-card-interactive">
+            <div className="hz-sq-7 hz-r-lg hz-bg-raised hz-row hz-ai-center hz-jc-center hz-mb-5">
+              <BookOpen className="hz-sq-4 hz-fg-muted" />
             </div>
-            <h3 className="text-xl font-semibold text-[var(--white)] mb-3">Documentation</h3>
-            <p className="text-neutral-400 mb-6">
+            <h3 className="hz-t-xl hz-w-semibold hz-fg hz-mb-3">Documentation</h3>
+            <p className="hz-fg-muted hz-mb-5">
               Comprehensive guides, tutorials, and API references to help you build with Hanzo AI.
             </p>
-            <a href="#" className="flex items-center text-neutral-400 hover:text-neutral-300 group">
+            <a href="#" className="hz-row hz-ai-center hz-fg-muted hz-link">
               Explore Docs
-              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="hz-sq-2 hz-ml-2 hz-transition" />
             </a>
           </div>
 
-          <div className="bg-gray-900/30 border border-gray-800 rounded-xl p-8 hover:bg-gray-900/40 transition-colors">
-            <div className="h-12 w-12 rounded-lg bg-neutral-800/30 flex items-center justify-center mb-6">
-              <Code className="h-6 w-6 text-neutral-400" />
+          <div className="hz-card hz-transition hz-card-interactive">
+            <div className="hz-sq-7 hz-r-lg hz-bg-raised hz-row hz-ai-center hz-jc-center hz-mb-5">
+              <Code className="hz-sq-4 hz-fg-muted" />
             </div>
-            <h3 className="text-xl font-semibold text-[var(--white)] mb-3">Quickstart</h3>
-            <p className="text-neutral-400 mb-6">
+            <h3 className="hz-t-xl hz-w-semibold hz-fg hz-mb-3">Quickstart</h3>
+            <p className="hz-fg-muted hz-mb-5">
               Get up and running quickly with our step-by-step quickstart guides and example projects.
             </p>
-            <a href="#" className="flex items-center text-neutral-400 hover:text-neutral-300 group">
+            <a href="#" className="hz-row hz-ai-center hz-fg-muted hz-link">
               Try Quickstart
-              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="hz-sq-2 hz-ml-2 hz-transition" />
             </a>
           </div>
 
-          <div className="bg-gray-900/30 border border-gray-800 rounded-xl p-8 hover:bg-gray-900/40 transition-colors">
-            <div className="h-12 w-12 rounded-lg bg-neutral-800/30 flex items-center justify-center mb-6">
-              <MessageCircle className="h-6 w-6 text-neutral-400" />
+          <div className="hz-card hz-transition hz-card-interactive">
+            <div className="hz-sq-7 hz-r-lg hz-bg-raised hz-row hz-ai-center hz-jc-center hz-mb-5">
+              <MessageCircle className="hz-sq-4 hz-fg-muted" />
             </div>
-            <h3 className="text-xl font-semibold text-[var(--white)] mb-3">Community</h3>
-            <p className="text-neutral-400 mb-6">
+            <h3 className="hz-t-xl hz-w-semibold hz-fg hz-mb-3">Community</h3>
+            <p className="hz-fg-muted hz-mb-5">
               Join our growing community of AI engineers, get support, and share your experiences.
             </p>
-            <a href="#" className="flex items-center text-neutral-400 hover:text-neutral-300 group">
+            <a href="#" className="hz-row hz-ai-center hz-fg-muted hz-link">
               Join Community
-              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="hz-sq-2 hz-ml-2 hz-transition" />
             </a>
           </div>
         </motion.div>
@@ -102,18 +102,18 @@ const CallToAction = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-20 border border-gray-800 rounded-xl p-6 bg-gradient-to-r from-neutral-800/10 to-neutral-800/10"
+          className="hz-card hz-mt-7"
         >
-          <div className="flex flex-col md:flex-row items-center justify-between">
-            <div className="mb-6 md:mb-0">
-              <h3 className="text-2xl font-bold text-[var(--white)] mb-2">Ready to get started?</h3>
-              <p className="text-neutral-300">Sign up for free and start building with Hanzo AI today.</p>
+          <div className="hz-col-row hz-ai-center hz-jc-between">
+            <div className="hz-mb-5">
+              <h3 className="hz-t-2xl hz-w-bold hz-fg hz-mb-2">Ready to get started?</h3>
+              <p className="hz-fg-soft">Sign up for free and start building with Hanzo AI today.</p>
             </div>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="bg-neutral-600 hover:bg-neutral-700">
+            <div className="hz-col-row hz-gap-4">
+              <Button size="lg" className="hz-bg-raised hz-hoverable">
                 Create Free Account
               </Button>
-              <Button size="lg" variant="outline" className="text-[var(--white)]">
+              <Button size="lg" variant="outline" className="hz-fg">
                 Contact Sales
               </Button>
             </div>

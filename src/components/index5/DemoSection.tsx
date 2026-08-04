@@ -34,9 +34,9 @@ const DemoSection: React.FC = () => {
   };
   
   return (
-    <section className="py-24 px-4 relative">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
+    <section className="hz-py-7 hz-px-4 hz-rel">
+      <div className="hz-container-wide">
+        <div className="hz-align-center hz-mb-7">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -45,12 +45,12 @@ const DemoSection: React.FC = () => {
           >
             <ChromeText 
               as="h2" 
-              className="text-3xl md:text-5xl font-bold mb-6"
+              className="hz-t-3xl hz-w-bold hz-mb-5"
             >
               See it in Action
             </ChromeText>
             
-            <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
+            <p className="hz-container-narrow hz-t-xl hz-fg-soft">
               Watch how simple it is to build AI applications with Hanzo
             </p>
           </motion.div>
@@ -61,47 +61,47 @@ const DemoSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="relative"
+          className="hz-rel"
         >
-          <div className="bg-gray-900/50 rounded-xl border border-gray-800 p-4 backdrop-blur-sm">
-            <div className="bg-[var(--black)]/70 rounded-lg overflow-hidden shadow-xl">
-              <div className="flex items-center bg-gray-900 py-2 px-4 border-b border-gray-800">
-                <div className="flex space-x-2 mr-4">
-                  <div className="w-3 h-3 rounded-full bg-neutral-600"></div>
-                  <div className="w-3 h-3 rounded-full bg-neutral-500"></div>
-                  <div className="w-3 h-3 rounded-full bg-neutral-500"></div>
+          <div className="hz-card hz-glass">
+            <div className="hz-bg-overlay hz-r-lg hz-clip hz-shadow-lg">
+              <div className="hz-row hz-ai-center hz-bg-surface hz-py-2 hz-px-4 hz-border-b">
+                <div className="hz-row hz-inline-2 hz-mr-4">
+                  <div className="hz-sq-1 hz-r-full hz-bg-raised"></div>
+                  <div className="hz-sq-1 hz-r-full hz-bg-raised"></div>
+                  <div className="hz-sq-1 hz-r-full hz-bg-raised"></div>
                 </div>
-                <div className="text-neutral-400 text-sm font-mono">
+                <div className="hz-fg-muted hz-t-sm hz-mono">
                   hanzo-ai-terminal
                 </div>
-                <div className="ml-auto flex items-center space-x-3">
+                <div className="hz-ml-auto hz-row hz-ai-center hz-inline-3">
                   {!isPlaying ? (
                     <Button 
                       variant="ghost" 
                       size="sm" 
-                      className="text-sm gap-2 bg-gray-800 hover:bg-gray-700"
+                      className="hz-t-sm hz-gap-2 hz-bg-raised hz-hoverable"
                       onClick={playDemo}
                     >
-                      <Play className="h-4 w-4" /> Run Demo
+                      <Play className="hz-sq-2" /> Run Demo
                     </Button>
                   ) : (
                     <Button 
                       variant="ghost" 
                       size="sm" 
-                      className="text-sm gap-2 bg-gray-800 hover:bg-gray-700"
+                      className="hz-t-sm hz-gap-2 hz-bg-raised hz-hoverable"
                       disabled
                     >
-                      <RefreshCw className="h-4 w-4 animate-spin" /> Running...
+                      <RefreshCw className="hz-sq-2" /> Running...
                     </Button>
                   )}
                 </div>
               </div>
               
-              <div className="p-6 font-mono text-sm h-[300px] overflow-hidden">
-                <div className="flex items-start">
-                  <Terminal className="h-5 w-5 text-neutral-400 mr-2 mt-1 flex-shrink-0" />
-                  <div className="text-neutral-400">
-                    <span className="text-neutral-400">hanzo@ai</span>:<span className="text-neutral-400">~/projects/demo</span>$ <span className="text-[var(--white)]"> {isPlaying ? "node demo.js" : "node demo.js"}</span>
+              <div className="hz-p-5 hz-mono hz-t-sm hz-clip">
+                <div className="hz-row hz-ai-start">
+                  <Terminal className="hz-sq-3 hz-fg-muted hz-mr-2 hz-mt-1 hz-none" />
+                  <div className="hz-fg-muted">
+                    <span className="hz-fg-muted">hanzo@ai</span>:<span className="hz-fg-muted">~/projects/demo</span>$ <span className="hz-fg"> {isPlaying ? "node demo.js" : "node demo.js"}</span>
                   </div>
                 </div>
                 
@@ -109,10 +109,10 @@ const DemoSection: React.FC = () => {
                   <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    className="mt-4 border border-gray-800 rounded-md p-3 bg-gray-900/50"
+                    className="hz-card hz-card-tight hz-mt-4"
                   >
-                    <div className="text-neutral-300 mb-2">// Execute code</div>
-                    <div className="text-[var(--white)] whitespace-pre">{demoSteps[demoStep].code}</div>
+                    <div className="hz-fg-soft hz-mb-2">// Execute code</div>
+                    <div className="hz-fg">{demoSteps[demoStep].code}</div>
                   </motion.div>
                 )}
                 
@@ -121,12 +121,12 @@ const DemoSection: React.FC = () => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.5 }}
-                    className="mt-4"
+                    className="hz-mt-4"
                   >
-                    <div className="flex">
-                      <span className="text-neutral-500">// Output:</span>
+                    <div className="hz-row">
+                      <span className="hz-fg-muted">// Output:</span>
                     </div>
-                    <div className="mt-2 text-neutral-300 italic">
+                    <div className="hz-mt-2 hz-fg-soft hz-italic">
                       {demoSteps[demoStep].output}
                     </div>
                   </motion.div>
@@ -136,9 +136,9 @@ const DemoSection: React.FC = () => {
           </div>
           
           {/* Decorative glows */}
-          <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full">
-            <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-neutral-600/20 rounded-full blur-[100px]"></div>
-            <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-neutral-600/20 rounded-full blur-[100px]"></div>
+          <div className="hz-center-xy hz-abs hz-z-behind hz-w-full hz-h-full">
+            <div className="hz-sq-8 hz-abs hz-bg-raised hz-r-full hz-blur-bg"></div>
+            <div className="hz-sq-8 hz-abs hz-bg-raised hz-r-full hz-blur-bg"></div>
           </div>
         </motion.div>
       </div>

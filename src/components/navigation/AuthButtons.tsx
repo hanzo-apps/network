@@ -98,17 +98,17 @@ const AuthButtons = ({ user, onOpenCommandPalette }: AuthButtonsProps) => {
   }, [isDropdownOpen]);
 
   return (
-    <div className="hidden md:flex items-center space-x-3">
+    <div className="hz-desktop-only hz-row hz-ai-center hz-inline-3">
       {/* Search / Command palette trigger - unified widget */}
       <button
         onClick={onOpenCommandPalette}
-        className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-neutral-800/50 border border-neutral-700/50 text-neutral-400 hover:text-white hover:bg-neutral-800 hover:border-neutral-600 transition-all text-sm"
+        className="hz-btn hz-gap-2 hz-fg-muted hz-transition"
         aria-label="Search (⌘K)"
       >
-        <Search className="h-4 w-4" />
-        <span className="hidden lg:inline text-neutral-500 text-xs">Search...</span>
-        <kbd className="inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[10px] font-mono bg-neutral-900/80 border border-neutral-700/50 rounded text-neutral-500">
-          <span className="text-xs">⌘</span>K
+        <Search className="hz-sq-2" />
+        <span className="hz-desktop-only hz-fg-muted hz-t-xs">Search...</span>
+        <kbd className="hz-inline hz-ai-center hz-gap-1 hz-px-2 hz-py-1 hz-t-xs hz-mono hz-bg-surface hz-bordered hz-r-md hz-fg-muted">
+          <span className="hz-t-xs">⌘</span>K
         </kbd>
       </button>
 
@@ -117,7 +117,7 @@ const AuthButtons = ({ user, onOpenCommandPalette }: AuthButtonsProps) => {
         <Button
           variant="ghost"
           size="sm"
-          className="text-neutral-300 hover:text-white hover:bg-transparent text-sm font-medium h-9"
+          className="hz-fg-soft hz-t-sm hz-w-medium hz-bh-5 hz-hoverable"
         >
           Contact sales
         </Button>
@@ -125,16 +125,16 @@ const AuthButtons = ({ user, onOpenCommandPalette }: AuthButtonsProps) => {
 
       {/* Try Hanzo dropdown - hover activated */}
       <div
-        className="relative"
+        className="hz-rel"
         ref={dropdownRef}
         onMouseEnter={() => setIsDropdownOpen(true)}
         onMouseLeave={() => setIsDropdownOpen(false)}
       >
         <button
-          className="inline-flex items-center justify-center gap-2 bg-white text-black hover:bg-neutral-200 active:bg-neutral-300 rounded-full h-9 px-4 text-sm font-medium transition-all duration-200"
+          className="hz-btn hz-btn-primary hz-gap-2 hz-fg-inverse hz-transition"
         >
           Try Hanzo
-          <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} />
+          <ChevronDown className={`hz-sq-2 hz-transition ${isDropdownOpen ? '' : ''}`} />
         </button>
 
         <AnimatePresence>
@@ -144,27 +144,27 @@ const AuthButtons = ({ user, onOpenCommandPalette }: AuthButtonsProps) => {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 8, scale: 0.96 }}
               transition={{ duration: 0.15 }}
-              className="absolute right-0 mt-2 w-[420px] bg-neutral-900/95 backdrop-blur-xl border border-neutral-800 rounded-2xl shadow-2xl overflow-hidden z-[100]"
+              className="hz-abs hz-right-0 hz-mt-2 hz-bg-surface hz-glass hz-bordered hz-r-xl hz-shadow-lg hz-clip hz-z-overlay"
             >
               {/* Zen AI Models - Featured Section */}
-              <div className="p-4">
-                <div className="flex items-center justify-between mb-3">
-                  <div className="flex items-center gap-2">
-                    <Zap className="w-4 h-4 text-neutral-400" />
-                    <span className="text-xs font-semibold text-white uppercase tracking-wider">
+              <div className="hz-p-4">
+                <div className="hz-row hz-ai-center hz-jc-between hz-mb-3">
+                  <div className="hz-row hz-ai-center hz-gap-2">
+                    <Zap className="hz-sq-2 hz-fg-muted" />
+                    <span className="hz-t-xs hz-w-semibold hz-fg hz-upper hz-tracking-wide">
                       Zen AI Models
                     </span>
                   </div>
                   <Link
                     to="/zen"
                     onClick={() => setIsDropdownOpen(false)}
-                    className="text-xs text-neutral-400 hover:text-white transition-colors"
+                    className="hz-t-xs hz-fg-muted hz-transition hz-link"
                   >
                     View all →
                   </Link>
                 </div>
 
-                <div className="grid grid-cols-2 gap-2">
+                <div className="hz-grid hz-grid-2 hz-gap-2">
                   {zenModels.map((model) => {
                     const ModelIcon = model.icon;
                     return (
@@ -174,17 +174,17 @@ const AuthButtons = ({ user, onOpenCommandPalette }: AuthButtonsProps) => {
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={() => setIsDropdownOpen(false)}
-                        className="group flex items-start gap-3 p-3 rounded-xl bg-neutral-800/50 hover:bg-neutral-800 transition-colors"
+                        className="hz-row hz-ai-start hz-gap-3 hz-p-3 hz-r-lg hz-bg-raised hz-transition hz-hoverable"
                       >
-                        <div className="w-8 h-8 rounded-lg bg-neutral-700/50 flex items-center justify-center flex-shrink-0">
-                          <ModelIcon className="w-4 h-4 text-neutral-300 group-hover:text-white transition-colors" />
+                        <div className="hz-sq-5 hz-r-lg hz-bg-raised hz-row hz-ai-center hz-jc-center hz-none">
+                          <ModelIcon className="hz-sq-2 hz-fg-soft hz-transition hz-hoverable" />
                         </div>
-                        <div className="min-w-0">
-                          <div className="flex items-center gap-2">
-                            <span className="text-sm font-medium text-white">{model.name}</span>
-                            <span className="text-[10px] font-mono text-neutral-500">{model.params}</span>
+                        <div className="">
+                          <div className="hz-row hz-ai-center hz-gap-2">
+                            <span className="hz-t-sm hz-w-medium hz-fg">{model.name}</span>
+                            <span className="hz-t-xs hz-mono hz-fg-muted">{model.params}</span>
                           </div>
-                          <p className="text-xs text-neutral-400 truncate">{model.description}</p>
+                          <p className="hz-t-xs hz-fg-muted hz-truncate">{model.description}</p>
                         </div>
                       </a>
                     );
@@ -192,20 +192,20 @@ const AuthButtons = ({ user, onOpenCommandPalette }: AuthButtonsProps) => {
                 </div>
               </div>
 
-              <div className="border-t border-neutral-800" />
+              <div className="hz-border-t" />
 
               {/* Quick Access */}
-              <div className="py-2">
-                <div className="px-4 py-1.5">
-                  <span className="text-[10px] font-medium text-neutral-500 uppercase tracking-wider">
+              <div className="hz-py-2">
+                <div className="hz-px-4 hz-py-2">
+                  <span className="hz-t-xs hz-w-medium hz-fg-muted hz-upper hz-tracking-wide">
                     Quick Access
                   </span>
                 </div>
                 {quickAccess.map((item) => {
                   const content = (
-                    <div className="flex items-center justify-between w-full py-2 px-4 text-white hover:bg-neutral-800/50 transition-colors">
-                      <span className="text-sm">{item.label}</span>
-                      {item.external && <ExternalLink className="w-3.5 h-3.5 text-neutral-500" />}
+                    <div className="hz-row hz-ai-center hz-jc-between hz-w-full hz-py-2 hz-px-4 hz-fg hz-transition hz-hoverable">
+                      <span className="hz-t-sm">{item.label}</span>
+                      {item.external && <ExternalLink className="hz-sq-2 hz-fg-muted" />}
                     </div>
                   );
 
@@ -231,12 +231,12 @@ const AuthButtons = ({ user, onOpenCommandPalette }: AuthButtonsProps) => {
                 })}
               </div>
 
-              <div className="border-t border-neutral-800" />
+              <div className="hz-border-t" />
 
               {/* Login Section */}
-              <div className="py-2">
-                <div className="px-4 py-1.5">
-                  <span className="text-[10px] font-medium text-neutral-500 uppercase tracking-wider">
+              <div className="hz-py-2">
+                <div className="hz-px-4 hz-py-2">
+                  <span className="hz-t-xs hz-w-medium hz-fg-muted hz-upper hz-tracking-wide">
                     Log in
                   </span>
                 </div>
@@ -247,10 +247,10 @@ const AuthButtons = ({ user, onOpenCommandPalette }: AuthButtonsProps) => {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setIsDropdownOpen(false)}
-                    className="flex items-center justify-between w-full py-2 px-4 text-white hover:bg-neutral-800/50 transition-colors"
+                    className="hz-row hz-ai-center hz-jc-between hz-w-full hz-py-2 hz-px-4 hz-fg hz-transition hz-hoverable"
                   >
-                    <span className="text-sm">{item.label}</span>
-                    <ExternalLink className="w-3.5 h-3.5 text-neutral-500" />
+                    <span className="hz-t-sm">{item.label}</span>
+                    <ExternalLink className="hz-sq-2 hz-fg-muted" />
                   </a>
                 ))}
               </div>

@@ -14,7 +14,7 @@ const TrailGenerator: React.FC<TrailGeneratorProps> = ({ trailCount }) => {
   }
   
   return (
-    <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
+    <div className="hz-abs hz-inset hz-w-full hz-h-full hz-clip hz-no-pointer">
       {trails}
     </div>
   );

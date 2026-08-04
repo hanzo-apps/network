@@ -5,34 +5,34 @@ import { ShoppingCart } from "lucide-react";
 
 const HanzoAppUseCases = () => {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-950">
-      <div className="max-w-7xl mx-auto">
+    <section className="hz-py-7 hz-px-4 hz-bg-surface">
+      <div className="hz-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="hz-align-center hz-mb-7"
         >
-          <h2 className="text-3xl font-bold mb-4">Use Cases</h2>
-          <p className="text-xl text-neutral-300">
+          <h2 className="hz-t-3xl hz-w-bold hz-mb-4">Use Cases</h2>
+          <p className="hz-t-xl hz-fg-soft">
             One platform, endless possibilities. See some of the use cases
           </p>
         </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="hz-grid hz-grid-3 hz-gap-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="bg-gray-900/30 border border-gray-800 rounded-xl p-8 h-full"
+            className="hz-card hz-h-full"
           >
-            <div className="h-14 w-14 rounded-xl bg-neutral-800/30 flex items-center justify-center mb-6">
-              <ShoppingCart className="h-7 w-7 text-neutral-400" />
+            <div className="hz-sq-7 hz-r-lg hz-bg-raised hz-row hz-ai-center hz-jc-center hz-mb-5">
+              <ShoppingCart className="hz-sq-5 hz-fg-muted" />
             </div>
-            <h3 className="text-2xl font-semibold mb-4">ProductCatalog</h3>
-            <p className="text-neutral-300">
+            <h3 className="hz-t-2xl hz-w-semibold hz-mb-4">ProductCatalog</h3>
+            <p className="hz-fg-soft">
               Product catalog chatbot to answer any questions related to the products
             </p>
           </motion.div>

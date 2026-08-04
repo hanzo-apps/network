@@ -5,12 +5,12 @@ export const ResourcesMenu = () => {
   return (
     <NavMenu label="Resources">
       {(closeMenu) => (
-        <div className="w-full">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <div className="hz-w-full">
+          <div className="hz-grid hz-grid-3 hz-gap-5">
             {resourcesNav.map(category => (
               <div key={category.title}>
-                <h3 className="text-lg font-semibold text-white mb-4">{category.title}</h3>
-                <div className="space-y-4">
+                <h3 className="hz-t-lg hz-w-semibold hz-fg hz-mb-4">{category.title}</h3>
+                <div className="hz-stack-4">
                   {category.items.map(item => {
                     const Icon = item.icon;
 
@@ -20,14 +20,14 @@ export const ResourcesMenu = () => {
                         href={item.href}
                         target={item.href.startsWith('http') ? '_blank' : undefined}
                         rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                        className="flex items-start space-x-3 group"
+                        className="hz-row hz-ai-start hz-inline-3"
                         onClick={closeMenu}
                       >
-                        {Icon && <Icon className="h-5 w-5 min-w-5 text-neutral-400 group-hover:text-white mt-1" />}
-                        <div className="min-w-0">
-                          <div className="text-neutral-300 group-hover:text-white font-medium truncate">{item.title}</div>
+                        {Icon && <Icon className="hz-sq-3 hz-fg-muted hz-mt-1 hz-link" />}
+                        <div className="">
+                          <div className="hz-fg-soft hz-w-medium hz-truncate hz-hoverable">{item.title}</div>
                           {item.description && (
-                            <div className="text-sm text-neutral-500 truncate">{item.description}</div>
+                            <div className="hz-t-sm hz-fg-muted hz-truncate">{item.description}</div>
                           )}
                         </div>
                       </a>

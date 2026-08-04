@@ -10,11 +10,11 @@ const BackgroundEffects: React.FC<BackgroundEffectsProps> = ({ scanPoints }) => 
   return (
     <>
       {/* Background blur elements - subtle blue/cyan */}
-      <div className="absolute top-40 right-20 w-64 h-64 bg-neutral-800/5 rounded-full blur-3xl"></div>
-      <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-neutral-800/5 rounded-full blur-3xl"></div>
+      <div className="hz-sq-8 hz-abs hz-bg-raised hz-r-full hz-blur-bg"></div>
+      <div className="hz-sq-8 hz-abs hz-bg-raised hz-r-full hz-blur-bg"></div>
       
       {/* Grid pattern - very subtle */}
-      <div className="absolute inset-0 opacity-10" style={{
+      <div className="hz-abs hz-inset hz-dim-more" style={{
         backgroundImage: "radial-gradient(rgba(100, 150, 200, 0.1) 1px, transparent 1px)",
         backgroundSize: "30px 30px",
       }}></div>
@@ -23,7 +23,7 @@ const BackgroundEffects: React.FC<BackgroundEffectsProps> = ({ scanPoints }) => 
       {scanPoints.filter((_, idx) => idx % 3 === 0).map((point, idx) => (
         <motion.div
           key={`point-${idx}`}
-          className="absolute h-1.5 w-1.5 rounded-full bg-neutral-600/20"
+          className="hz-sq-1 hz-abs hz-r-full hz-bg-raised"
           style={{ 
             left: `${point.x}%`, 
             top: `${point.y}%` 

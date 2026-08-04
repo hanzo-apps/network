@@ -1,7 +1,8 @@
 
 import { HexagramLine } from '../svg/IChingHexagram';
 
-export interface IChing {
+/** One of the 64 hexagrams. The single description of the shape — components take it from here. */
+export interface Hexagram {
   id: number;
   name: string;
   chineseName: string;
@@ -17,7 +18,7 @@ const hexagramConfig = {
   yin: { type: 'broken' as const }   // broken line
 };
 
-export const ichingPrinciples: IChing[] = [
+export const ichingPrinciples: Hexagram[] = [
   // Traditional 64 hexagrams from I Ching
   {
     id: 1,

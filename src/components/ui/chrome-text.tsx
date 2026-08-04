@@ -41,18 +41,18 @@ const ChromeText = ({
   }, []);
 
   return (
-    <div className={cn("flex flex-col", preHeading ? "items-center" : "items-start")}>
+    <div className={cn("hz-col", preHeading ? "hz-ai-center" : "hz-ai-start")}>
       {preHeading && (
         <div className={cn(
-          "inline-block px-4 py-1 rounded-full bg-neutral-800/30 border border-neutral-500/50 text-neutral-300 text-sm font-medium mb-4 pre-heading-glow", 
+          "hz-px-4 hz-py-1 hz-r-full hz-bg-raised hz-bordered hz-border-strong hz-fg-soft hz-t-sm hz-w-medium hz-mb-4 pre-heading-glow", 
           preHeadingClassName
         )}>
           {preHeading}
         </div>
       )}
-      <div ref={textRef} className="inline-block">
+      <div ref={textRef} className="">
         <Component
-          className={cn("chrome-gradient leading-relaxed py-1", className)}
+          className={cn("chrome-gradient hz-leading-relaxed hz-py-1", className)}
           style={{
             backgroundPosition: `${(mousePosition.x / (textRef.current?.offsetWidth || 1)) * 100}% ${(mousePosition.y / (textRef.current?.offsetHeight || 1)) * 100}%`,
             ...style

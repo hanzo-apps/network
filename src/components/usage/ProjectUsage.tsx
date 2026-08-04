@@ -7,7 +7,7 @@ const ProjectUsage = () => {
   const { projects, toggleExpand } = useProjects();
 
   return (
-    <div className="space-y-4">
+    <div className="hz-stack-4">
       {projects.map((project) => (
         <ProjectCard 
           key={project.id} 

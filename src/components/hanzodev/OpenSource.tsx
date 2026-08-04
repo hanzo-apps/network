@@ -2,35 +2,33 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Github, ExternalLink, MessageCircle } from "lucide-react";
 
-const BRAND_COLOR = "#ffffff";
 
 const OpenSource = () => {
   return (
-    <section className="py-24 px-4 md:px-8 bg-black">
-      <div className="max-w-4xl mx-auto">
+    <section className="hz-py-7 hz-px-4 hz-bg">
+      <div className="hz-container-narrow">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-gradient-to-br from-neutral-900 to-neutral-800/50 rounded-xl p-8 md:p-12 border border-neutral-700 text-center"
+          className="hz-card hz-align-center"
         >
-          <div className="flex justify-center mb-6">
+          <div className="hz-row hz-jc-center hz-mb-5">
             <div
-              className="w-16 h-16 rounded-2xl flex items-center justify-center"
-              style={{ backgroundColor: `${BRAND_COLOR}20` }}
-            >
-              <Github className="w-8 h-8" style={{ color: BRAND_COLOR }} />
+              className="hz-sq-8 hz-r-xl hz-row hz-ai-center hz-jc-center hz-bg-quiet"
+              >
+              <Github className="hz-sq-5 hz-fg" />
             </div>
           </div>
 
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="hz-t-3xl hz-w-bold hz-fg hz-mb-4">
             Open Source
           </h2>
-          <p className="text-xl text-neutral-300 mb-6">
+          <p className="hz-t-xl hz-fg-soft hz-mb-5">
             Inspect, control, contribute
           </p>
 
-          <p className="text-neutral-400 mb-8 max-w-2xl mx-auto leading-relaxed">
+          <p className="hz-container-narrow hz-mw-md hz-fg-muted hz-mb-6 hz-leading-relaxed">
             The complete plugin is open-source and licensed under Apache-2.0.
             You can see, control, and modify how Hanzo works. Hanzo does not
             have an auto model, so you always know exactly what model is being
@@ -38,29 +36,28 @@ const OpenSource = () => {
             context window size on each request, along with the full prompts.
           </p>
 
-          <div className="flex flex-wrap justify-center gap-4 mb-8">
+          <div className="hz-row hz-wrap hz-jc-center hz-gap-4 hz-mb-6">
             <a
               href="https://github.com/hanzoai/hanzo-dev"
               target="_blank"
               rel="noreferrer noopener"
-              className="inline-flex items-center px-6 py-3 rounded-full font-medium transition-all hover:opacity-90 text-sm"
-              style={{ backgroundColor: BRAND_COLOR, color: "#000000" }}
-            >
-              <Github className="mr-2 h-4 w-4" />
+              className="hz-btn hz-btn-ghost hz-transition hz-bg-inverse"
+              >
+              <Github className="hz-sq-2 hz-mr-2" />
               Star on GitHub
             </a>
             <a
               href="https://discord.gg/hanzo"
               target="_blank"
               rel="noreferrer noopener"
-              className="inline-flex items-center px-6 py-3 rounded-full font-medium transition-colors border border-neutral-700 bg-transparent hover:bg-neutral-800 text-sm text-white"
+              className="hz-btn hz-btn-ghost hz-transition hz-fg"
             >
-              <MessageCircle className="mr-2 h-4 w-4" />
+              <MessageCircle className="hz-sq-2 hz-mr-2" />
               Join Discord
             </a>
           </div>
 
-          <p className="text-sm text-neutral-500">
+          <p className="hz-t-sm hz-fg-muted">
             Join our community on Discord and contribute to help shape Hanzo's
             future.
           </p>

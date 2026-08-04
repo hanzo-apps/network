@@ -6,74 +6,74 @@ import { Button } from "@/components/ui/button";
 
 const SenseiMethod = () => {
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <section className="hz-py-7 hz-px-4">
+      <div className="hz-container">
+        <div className="hz-grid hz-grid-2 hz-gap-7 hz-ai-center">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <span className="inline-block px-4 py-1 rounded-full bg-neutral-800/30 border border-neutral-500/30 text-neutral-300 text-sm font-medium mb-4">
+            <span className="hz-px-4 hz-py-1 hz-r-full hz-bg-raised hz-bordered hz-border-strong hz-fg-soft hz-t-sm hz-w-medium hz-mb-4">
               Principles in Practice
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            <h2 className="hz-t-3xl hz-w-bold hz-mb-5">
               The Sensei Method
             </h2>
-            <p className="text-xl text-neutral-300 mb-8">
+            <p className="hz-t-xl hz-fg-soft hz-mb-6">
               A practical framework for applying AI and data to achieve exponential growth for businesses.
               If the "Zen of Hanzo" is the theory, the Sensei Method is the practice.
             </p>
             
-            <div className="space-y-6 mb-8">
-              <div className="flex items-start">
-                <div className="p-2 bg-neutral-800/30 rounded-lg mr-4">
-                  <Target className="h-6 w-6 text-neutral-400" />
+            <div className="hz-stack-5 hz-mb-6">
+              <div className="hz-row hz-ai-start">
+                <div className="hz-p-2 hz-bg-raised hz-r-lg hz-mr-4">
+                  <Target className="hz-sq-4 hz-fg-muted" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold mb-1">Identify First-Principle Goals</h3>
-                  <p className="text-neutral-300">Drill down to the fundamental objectives that drive real value.</p>
+                  <h3 className="hz-t-xl hz-w-semibold hz-mb-1">Identify First-Principle Goals</h3>
+                  <p className="hz-fg-soft">Drill down to the fundamental objectives that drive real value.</p>
                 </div>
               </div>
               
-              <div className="flex items-start">
-                <div className="p-2 bg-neutral-800/30 rounded-lg mr-4">
-                  <Zap className="h-6 w-6 text-neutral-400" />
+              <div className="hz-row hz-ai-start">
+                <div className="hz-p-2 hz-bg-raised hz-r-lg hz-mr-4">
+                  <Zap className="hz-sq-4 hz-fg-muted" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold mb-1">Rapid Prototyping</h3>
-                  <p className="text-neutral-300">Build quickly, test assumptions, and iterate with purpose.</p>
+                  <h3 className="hz-t-xl hz-w-semibold hz-mb-1">Rapid Prototyping</h3>
+                  <p className="hz-fg-soft">Build quickly, test assumptions, and iterate with purpose.</p>
                 </div>
               </div>
               
-              <div className="flex items-start">
-                <div className="p-2 bg-neutral-800/30 rounded-lg mr-4">
-                  <BarChart3 className="h-6 w-6 text-neutral-400" />
+              <div className="hz-row hz-ai-start">
+                <div className="hz-p-2 hz-bg-raised hz-r-lg hz-mr-4">
+                  <BarChart3 className="hz-sq-4 hz-fg-muted" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold mb-1">Data-Driven Decisions</h3>
-                  <p className="text-neutral-300">Measure impact, analyze patterns, and let insights guide strategy.</p>
+                  <h3 className="hz-t-xl hz-w-semibold hz-mb-1">Data-Driven Decisions</h3>
+                  <p className="hz-fg-soft">Measure impact, analyze patterns, and let insights guide strategy.</p>
                 </div>
               </div>
               
-              <div className="flex items-start">
-                <div className="p-2 bg-neutral-800/30 rounded-lg mr-4">
-                  <Users className="h-6 w-6 text-neutral-400" />
+              <div className="hz-row hz-ai-start">
+                <div className="hz-p-2 hz-bg-raised hz-r-lg hz-mr-4">
+                  <Users className="hz-sq-4 hz-fg-muted" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold mb-1">Sensei Mentorship</h3>
-                  <p className="text-neutral-300">Work directly with expert "senseis" to implement and refine your approach.</p>
+                  <h3 className="hz-t-xl hz-w-semibold hz-mb-1">Sensei Mentorship</h3>
+                  <p className="hz-fg-soft">Work directly with expert "senseis" to implement and refine your approach.</p>
                 </div>
               </div>
             </div>
             
             <Button 
-              className="bg-gradient-to-r from-neutral-600 to-neutral-500 hover:from-neutral-500 hover:to-neutral-400 text-[var(--white)]"
+              className="hz-fg"
             >
-              <a href="https://sensei.group" target="_blank" rel="noopener noreferrer" className="flex items-center">
+              <a href="https://sensei.group" target="_blank" rel="noopener noreferrer" className="hz-row hz-ai-center">
                 Visit Sensei Group
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <ArrowRight className="hz-sq-3 hz-ml-2" />
               </a>
             </Button>
           </motion.div>
@@ -83,33 +83,33 @@ const SenseiMethod = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative"
+            className="hz-rel"
           >
-            <div className="bg-gradient-to-br from-neutral-500/20 to-neutral-500/20 rounded-2xl p-1">
-              <div className="bg-[var(--black)]/50 backdrop-blur-sm rounded-xl overflow-hidden">
+            <div className="hz-r-xl hz-p-1">
+              <div className="hz-bg-overlay hz-glass hz-r-lg hz-clip">
                 <img 
                   src="/placeholder.svg" 
                   alt="Sensei Method in action" 
-                  className="w-full h-auto rounded-t-xl"
+                  className="hz-w-full"
                 />
-                <div className="p-8">
-                  <h3 className="text-2xl font-bold mb-4">The Impact of Sensei</h3>
-                  <p className="text-neutral-300 mb-6">
+                <div className="hz-p-6">
+                  <h3 className="hz-t-2xl hz-w-bold hz-mb-4">The Impact of Sensei</h3>
+                  <p className="hz-fg-soft hz-mb-5">
                     Through the Sensei Method and Sensei Group, we've helped clients generate over $1 billion in revenue,
                     launch groundbreaking products, and build scalable businesses.
                   </p>
-                  <div className="flex flex-wrap gap-4">
-                    <div className="bg-neutral-800/30 px-4 py-2 rounded-lg">
-                      <span className="text-2xl font-bold text-neutral-300">$1B+</span>
-                      <p className="text-sm text-neutral-400">Client Revenue</p>
+                  <div className="hz-row hz-wrap hz-gap-4">
+                    <div className="hz-bg-raised hz-px-4 hz-py-2 hz-r-lg">
+                      <span className="hz-t-2xl hz-w-bold hz-fg-soft">$1B+</span>
+                      <p className="hz-t-sm hz-fg-muted">Client Revenue</p>
                     </div>
-                    <div className="bg-neutral-800/30 px-4 py-2 rounded-lg">
-                      <span className="text-2xl font-bold text-neutral-300">100+</span>
-                      <p className="text-sm text-neutral-400">Product Launches</p>
+                    <div className="hz-bg-raised hz-px-4 hz-py-2 hz-r-lg">
+                      <span className="hz-t-2xl hz-w-bold hz-fg-soft">100+</span>
+                      <p className="hz-t-sm hz-fg-muted">Product Launches</p>
                     </div>
-                    <div className="bg-neutral-800/30 px-4 py-2 rounded-lg">
-                      <span className="text-2xl font-bold text-neutral-300">10+</span>
-                      <p className="text-sm text-neutral-400">Years Experience</p>
+                    <div className="hz-bg-raised hz-px-4 hz-py-2 hz-r-lg">
+                      <span className="hz-t-2xl hz-w-bold hz-fg-soft">10+</span>
+                      <p className="hz-t-sm hz-fg-muted">Years Experience</p>
                     </div>
                   </div>
                 </div>

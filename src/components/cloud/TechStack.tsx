@@ -16,9 +16,9 @@ const techStacks = [
 
 const TechStack = () => {
   return (
-    <section id="learn-more" className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black to-gray-900">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex flex-wrap justify-center gap-8 mb-16">
+    <section id="learn-more" className="hz-py-7 hz-px-4">
+      <div className="hz-container">
+        <div className="hz-row hz-wrap hz-jc-center hz-gap-6 hz-mb-7">
           {techStacks.map((tech, index) => (
             <motion.div
               key={tech}
@@ -26,7 +26,7 @@ const TechStack = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: index * 0.1 }}
-              className="px-6 py-3 bg-gray-800/50 rounded-full border border-gray-700 hover:border-neutral-500/50 hover:bg-gray-800 transition-colors"
+              className="hz-px-5 hz-py-3 hz-bg-raised hz-r-full hz-bordered hz-transition hz-hoverable"
             >
               {tech}
             </motion.div>
@@ -38,12 +38,12 @@ const TechStack = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center"
+          className="hz-align-center"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+          <h2 className="hz-t-3xl hz-w-bold hz-mb-5">
             Developer-Focused Public Cloud
           </h2>
-          <p className="text-xl text-neutral-300 max-w-3xl mx-auto mb-10">
+          <p className="hz-container-narrow hz-t-xl hz-fg-soft hz-mb-6">
             Help us build the next public cloud. No, seriously. Is your product something devs can take advantage of to ship better apps? Work with us.
           </p>
           
@@ -52,7 +52,7 @@ const TechStack = () => {
             initial={{ opacity: 0.9 }}
             whileHover={{ opacity: 1, scale: 1.05 }}
             transition={{ duration: 0.2 }}
-            className="inline-block px-8 py-4 rounded-lg bg-[var(--white)] text-black font-medium hover:shadow-lg hover:shadow-white/20 transition-all"
+            className="hz-px-6 hz-py-4 hz-r-lg hz-bg-inverse hz-fg-inverse hz-w-medium hz-transition"
           >
             Build A Cloud For Developers
           </motion.a>

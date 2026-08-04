@@ -4,12 +4,12 @@ import { Leaf, Recycle, ThermometerSun } from "lucide-react";
 import ChromeText from "@/components/ui/chrome-text";
 import { Button } from "@/components/ui/button";
 const Karma = () => {
-  return <section className="py-32 px-4 sm:px-6 lg:px-8 bg-[var(--black)] relative overflow-hidden">
-      <div className="absolute top-20 right-20 w-64 h-64 bg-neutral-800/5 rounded-full blur-3xl"></div>
-      <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-neutral-800/5 rounded-full blur-3xl"></div>
+  return <section className="hz-py-7 hz-px-4 hz-bg hz-rel hz-clip">
+      <div className="hz-sq-8 hz-abs hz-bg-raised hz-r-full hz-blur-bg"></div>
+      <div className="hz-sq-8 hz-abs hz-bg-raised hz-r-full hz-blur-bg"></div>
       
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div className="hz-container">
+        <div className="hz-grid hz-grid-2 hz-gap-7 hz-ai-center">
           <div>
             <motion.div initial={{
             opacity: 0,
@@ -21,8 +21,8 @@ const Karma = () => {
             once: true
           }} transition={{
             duration: 0.5
-          }} className="mb-4">
-              <span className="inline-block px-4 py-1 rounded-full bg-neutral-800/30 border border-neutral-500/30 text-neutral-300 text-sm font-medium">
+          }} className="hz-mb-4">
+              <span className="hz-px-4 hz-py-1 hz-r-full hz-bg-raised hz-bordered hz-border-strong hz-fg-soft hz-t-sm hz-w-medium">
                 AI Engineering Platform
               </span>
             </motion.div>
@@ -38,10 +38,10 @@ const Karma = () => {
             duration: 0.5,
             delay: 0.1
           }}>
-              <ChromeText as="h2" className="text-3xl md:text-5xl font-bold mb-6">
+              <ChromeText as="h2" className="hz-t-3xl hz-w-bold hz-mb-5">
                 Sustainable AI for the Future
               </ChromeText>
-              <div className="text-xl text-neutral-300 mb-8 space-y-4">
+              <div className="hz-t-xl hz-fg-soft hz-mb-6 hz-stack-4">
                 <p>
                   At Hanzo, we believe AI should empower humanity while respecting our planet. Our commitment to sustainable AI development is reflected in every product we build.
                 </p>
@@ -51,7 +51,7 @@ const Karma = () => {
               </div>
             </motion.div>
             
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
+            <div className="hz-grid hz-grid-3 hz-gap-5 hz-mb-6">
               <motion.div initial={{
               opacity: 0,
               y: 20
@@ -63,12 +63,12 @@ const Karma = () => {
             }} transition={{
               duration: 0.4,
               delay: 0.1
-            }} className="flex flex-col items-center text-center p-4 rounded-lg bg-gray-900/20 border border-gray-800">
-                <div className="w-12 h-12 rounded-full bg-neutral-800/30 flex items-center justify-center mb-3">
-                  <Leaf className="h-6 w-6 text-neutral-400" />
+            }} className="hz-card hz-col hz-ai-center hz-align-center">
+                <div className="hz-sq-7 hz-r-full hz-bg-raised hz-row hz-ai-center hz-jc-center hz-mb-3">
+                  <Leaf className="hz-sq-4 hz-fg-muted" />
                 </div>
-                <h3 className="text-lg font-semibold mb-1">Carbon Neutral</h3>
-                <p className="text-neutral-400 text-sm">Offset all carbon emissions</p>
+                <h3 className="hz-t-lg hz-w-semibold hz-mb-1">Carbon Neutral</h3>
+                <p className="hz-fg-muted hz-t-sm">Offset all carbon emissions</p>
               </motion.div>
               
               <motion.div initial={{
@@ -82,12 +82,12 @@ const Karma = () => {
             }} transition={{
               duration: 0.4,
               delay: 0.2
-            }} className="flex flex-col items-center text-center p-4 rounded-lg bg-gray-900/20 border border-gray-800">
-                <div className="w-12 h-12 rounded-full bg-neutral-800/30 flex items-center justify-center mb-3">
-                  <ThermometerSun className="h-6 w-6 text-neutral-400" />
+            }} className="hz-card hz-col hz-ai-center hz-align-center">
+                <div className="hz-sq-7 hz-r-full hz-bg-raised hz-row hz-ai-center hz-jc-center hz-mb-3">
+                  <ThermometerSun className="hz-sq-4 hz-fg-muted" />
                 </div>
-                <h3 className="text-lg font-semibold mb-1">Energy Efficient</h3>
-                <p className="text-neutral-400 text-sm">90% lower energy usage</p>
+                <h3 className="hz-t-lg hz-w-semibold hz-mb-1">Energy Efficient</h3>
+                <p className="hz-fg-muted hz-t-sm">90% lower energy usage</p>
               </motion.div>
               
               <motion.div initial={{
@@ -101,12 +101,12 @@ const Karma = () => {
             }} transition={{
               duration: 0.4,
               delay: 0.3
-            }} className="flex flex-col items-center text-center p-4 rounded-lg bg-gray-900/20 border border-gray-800">
-                <div className="w-12 h-12 rounded-full bg-neutral-800/30 flex items-center justify-center mb-3">
-                  <Recycle className="h-6 w-6 text-neutral-400" />
+            }} className="hz-card hz-col hz-ai-center hz-align-center">
+                <div className="hz-sq-7 hz-r-full hz-bg-raised hz-row hz-ai-center hz-jc-center hz-mb-3">
+                  <Recycle className="hz-sq-4 hz-fg-muted" />
                 </div>
-                <h3 className="text-lg font-semibold mb-1">Renewable Focus</h3>
-                <p className="text-neutral-400 text-sm">100% renewable data centers</p>
+                <h3 className="hz-t-lg hz-w-semibold hz-mb-1">Renewable Focus</h3>
+                <p className="hz-fg-muted hz-t-sm">100% renewable data centers</p>
               </motion.div>
             </div>
             
@@ -121,11 +121,11 @@ const Karma = () => {
           }} transition={{
             duration: 0.5,
             delay: 0.4
-          }} className="flex flex-row gap-4">
-              <Button variant="outline" className="text-[var(--white)] border-white/20 bg-[var(--white)]/5 hover:bg-[var(--white)]/10">
+          }} className="hz-row hz-gap-4">
+              <Button variant="outline" className="hz-fg hz-bg-surface hz-hoverable">
                 <a href="/leadership">Our Leadership</a>
               </Button>
-              <Button variant="outline" className="text-[var(--white)] border-white/20 bg-[var(--white)]/5 hover:bg-[var(--white)]/10">
+              <Button variant="outline" className="hz-fg hz-bg-surface hz-hoverable">
                 <a href="/careers">Join Our Team</a>
               </Button>
             </motion.div>
@@ -141,20 +141,20 @@ const Karma = () => {
           once: true
         }} transition={{
           duration: 0.6
-        }} className="bg-gray-900/20 border border-gray-800 rounded-xl p-8">
-            <div className="flex items-start mb-6">
-              <div className="w-16 h-16 rounded-full bg-gray-800 mr-4"></div>
+        }} className="hz-card">
+            <div className="hz-row hz-ai-start hz-mb-5">
+              <div className="hz-sq-8 hz-r-full hz-bg-raised hz-mr-4"></div>
               <div>
-                <h3 className="text-xl font-bold mb-1">Zach Kelling</h3>
-                <p className="text-neutral-400">CTO, Hanzo AI</p>
+                <h3 className="hz-t-xl hz-w-bold hz-mb-1">Zach Kelling</h3>
+                <p className="hz-fg-muted">CTO, Hanzo AI</p>
               </div>
             </div>
             
-            <blockquote className="text-xl text-neutral-300 italic mb-6">
+            <blockquote className="hz-t-xl hz-fg-soft hz-italic hz-mb-5">
               "Our mission at Hanzo is to democratize access to Amazon-level AI infrastructure while maintaining an unwavering commitment to sustainability. We've achieved incredible growth by providing powerful AI tools that don't compromise our environmental values."
             </blockquote>
             
-            <blockquote className="text-xl text-neutral-300 italic">
+            <blockquote className="hz-t-xl hz-fg-soft hz-italic">
               "By optimizing our infrastructure and operations, we're proving that cutting-edge AI and environmental responsibility can go hand in hand. This isn't just good karma—it's good business."
             </blockquote>
           </motion.div>

@@ -24,13 +24,13 @@ const AIFeatureCard = ({ icon, title, description, delay, index }: AIFeatureCard
       initial="hidden"
       animate="hidden"
       transition={{ duration: 0.5, delay }}
-      className="bg-gradient-to-br from-gray-900/60 to-gray-900/40 rounded-xl p-8 border border-gray-800 hover:border-neutral-800/50 transition-colors group"
+      className="hz-card hz-transition hz-card-interactive"
     >
-      <div className="mb-5 transition-transform group-hover:scale-110 duration-300 transform-gpu">
+      <div className="hz-mb-4 hz-transition">
         {icon}
       </div>
-      <h3 className="text-xl font-bold mb-3">{title}</h3>
-      <p className="text-neutral-400">{description}</p>
+      <h3 className="hz-t-xl hz-w-bold hz-mb-3">{title}</h3>
+      <p className="hz-fg-muted">{description}</p>
     </motion.div>
   );
 };

@@ -64,7 +64,6 @@ import {
   ChevronRight,
 } from "lucide-react";
 
-const BRAND_COLOR = "#ffffff";
 
 interface Product {
   name: string;
@@ -252,26 +251,26 @@ const ProductCatalog = () => {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
   return (
-    <section className="py-24 px-4 md:px-8">
-      <div className="max-w-7xl mx-auto">
+    <section className="hz-py-7 hz-px-4">
+      <div className="hz-container">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="hz-align-center hz-mb-7"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="hz-t-3xl hz-w-bold hz-fg hz-mb-4">
             Complete Cloud Platform
           </h2>
-          <p className="text-neutral-400 max-w-2xl mx-auto">
+          <p className="hz-container-narrow hz-mw-md hz-fg-muted">
             Everything you need to build, deploy, and scale modern applications.
             90+ managed services, one unified platform.
           </p>
         </motion.div>
 
         {/* Category grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="hz-grid hz-grid-3 hz-gap-5">
           {CATEGORIES.map((category, index) => {
             const CategoryIcon = category.icon;
             const isExpanded = activeCategory === category.id;
@@ -283,10 +282,10 @@ const ProductCatalog = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
-                className={`bg-neutral-900/50 border rounded-xl overflow-hidden transition-all duration-300 ${
+                className={`hz-bg-surface hz-bordered hz-r-lg hz-clip hz-transition ${
                   isExpanded
-                    ? "border-neutral-700 ring-1 ring-neutral-700"
-                    : "border-neutral-800 hover:border-neutral-700"
+                    ? "hz-ring"
+                    : "hz-hoverable"
                 }`}
               >
                 {/* Category header */}
@@ -294,32 +293,32 @@ const ProductCatalog = () => {
                   onClick={() =>
                     setActiveCategory(isExpanded ? null : category.id)
                   }
-                  className="w-full p-6 text-left flex items-start gap-4"
+                  className="hz-w-full hz-p-5 hz-align-left hz-row hz-ai-start hz-gap-4"
                 >
                   <div
-                    className="w-12 h-12 rounded-lg flex items-center justify-center shrink-0"
+                    className="hz-sq-7 hz-r-lg hz-row hz-ai-center hz-jc-center hz-none"
                     style={{ backgroundColor: `${category.color}20` }}
                   >
                     <CategoryIcon
-                      className="w-6 h-6"
+                      className="hz-sq-4"
                       style={{ color: category.color }}
                     />
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center justify-between">
-                      <h3 className="text-lg font-semibold text-white">
+                  <div className="hz-grow">
+                    <div className="hz-row hz-ai-center hz-jc-between">
+                      <h3 className="hz-t-lg hz-w-semibold hz-fg">
                         {category.name}
                       </h3>
                       <ChevronRight
-                        className={`w-5 h-5 text-neutral-500 transition-transform ${
-                          isExpanded ? "rotate-90" : ""
+                        className={`hz-sq-3 hz-fg-muted hz-transition ${
+                          isExpanded ? "" : ""
                         }`}
                       />
                     </div>
-                    <p className="text-sm text-neutral-400 mt-1">
+                    <p className="hz-t-sm hz-fg-muted hz-mt-1">
                       {category.description}
                     </p>
-                    <div className="text-xs text-neutral-500 mt-2">
+                    <div className="hz-t-xs hz-fg-muted hz-mt-2">
                       {category.products.length} services
                     </div>
                   </div>
@@ -331,23 +330,23 @@ const ProductCatalog = () => {
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    className="border-t border-neutral-800"
+                    className="hz-border-t"
                   >
-                    <div className="p-4 grid grid-cols-3 gap-2">
+                    <div className="hz-grid hz-grid-3 hz-p-4 hz-gap-2">
                       {category.products.map((product) => {
                         const ProductIcon = product.icon;
                         const content = (
-                          <div className="p-3 rounded-lg bg-neutral-950/50 hover:bg-neutral-800/50 transition-colors text-center group">
+                          <div className="hz-p-3 hz-r-lg hz-bg-surface hz-transition hz-align-center hz-hoverable">
                             <ProductIcon
-                              className="w-5 h-5 mx-auto mb-2 text-neutral-400 group-hover:text-white transition-colors"
+                              className="hz-sq-3 hz-mx-auto hz-mb-2 hz-fg-muted hz-transition hz-link"
                               style={{
                                 color: product.href ? category.color : undefined,
                               }}
                             />
-                            <div className="text-xs font-medium text-white truncate">
+                            <div className="hz-t-xs hz-w-medium hz-fg hz-truncate">
                               {product.name}
                             </div>
-                            <div className="text-[10px] text-neutral-500 truncate">
+                            <div className="hz-t-xs hz-fg-muted hz-truncate">
                               {product.description}
                             </div>
                           </div>
@@ -374,28 +373,27 @@ const ProductCatalog = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-16 text-center"
+          className="hz-mt-7 hz-align-center"
         >
-          <p className="text-neutral-400 mb-6">
+          <p className="hz-fg-muted hz-mb-5">
             All services available via API, CLI, Console, and SDKs
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="hz-row hz-wrap hz-jc-center hz-gap-4">
             <Link
               to="/pricing"
-              className="inline-flex items-center px-6 py-3 rounded-full font-medium transition-all hover:opacity-90 text-sm"
-              style={{ backgroundColor: BRAND_COLOR, color: "#000" }}
-            >
+              className="hz-btn hz-btn-ghost hz-transition hz-bg-inverse"
+              >
               View Pricing
-              <ChevronRight className="ml-2 h-4 w-4" />
+              <ChevronRight className="hz-sq-2 hz-ml-2" />
             </Link>
             <a
               href="https://docs.hanzo.ai/cloud"
               target="_blank"
               rel="noreferrer noopener"
-              className="inline-flex items-center px-6 py-3 rounded-full font-medium transition-colors border border-neutral-700 bg-transparent hover:bg-neutral-900 text-sm text-white"
+              className="hz-btn hz-btn-ghost hz-transition hz-fg"
             >
               Read Documentation
-              <ChevronRight className="ml-2 h-4 w-4" />
+              <ChevronRight className="hz-sq-2 hz-ml-2" />
             </a>
           </div>
         </motion.div>

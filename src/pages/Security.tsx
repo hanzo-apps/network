@@ -1,3 +1,4 @@
+import { BRAND } from '@/lib/brand';
 import React from "react";
 import { Helmet } from "react-helmet";
 import { motion } from "framer-motion";
@@ -25,7 +26,6 @@ import {
   Bug,
 } from "lucide-react";
 
-const BRAND_COLOR = "#ffffff";
 
 const COMPLIANCE_BADGES = [
   { name: "SOC 2 Type II", description: "Annual audit completed" },
@@ -94,7 +94,7 @@ const REGIONS = [
 
 const Security = () => {
   return (
-    <div className="min-h-screen bg-[var(--black)] text-[var(--white)]">
+    <div className="hz-min-h-screen hz-bg hz-fg">
       <Helmet>
         <title>Security - Enterprise-Grade Protection | Hanzo AI</title>
         <meta
@@ -107,29 +107,28 @@ const Security = () => {
 
       <main>
         {/* Hero Section */}
-        <section className="relative pt-24 pb-20 px-4 md:px-8 lg:px-12 overflow-hidden">
+        <section className="hz-rel hz-pt-6 hz-pb-6 hz-px-4 hz-clip">
           {/* Background gradient */}
-          <div className="absolute inset-0 overflow-hidden z-0 pointer-events-none">
+          <div className="hz-abs hz-inset hz-clip hz-z-base hz-no-pointer">
             <div
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full opacity-15"
+              className="hz-center-xy hz-abs hz-r-full hz-dim-more"
               style={{
-                background: `radial-gradient(circle, ${BRAND_COLOR} 0%, transparent 70%)`,
+                background: `radial-gradient(circle, ${BRAND.fg} 0%, transparent 70%)`,
                 filter: "blur(100px)",
               }}
             />
           </div>
 
-          <div className="max-w-5xl mx-auto relative z-10">
-            <div className="text-center">
+          <div className="hz-container-wide hz-rel hz-z-raised">
+            <div className="hz-align-center">
               {/* Badge */}
               <motion.div
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4 }}
-                className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium mb-6"
-                style={{ backgroundColor: `${BRAND_COLOR}20`, color: BRAND_COLOR }}
-              >
-                <Shield className="w-3.5 h-3.5" />
+                className="hz-inline hz-ai-center hz-gap-2 hz-px-3 hz-py-1 hz-r-full hz-t-xs hz-w-medium hz-mb-5 hz-bg-quiet hz-fg"
+                >
+                <Shield className="hz-sq-2" />
                 SOC 2 Type II Certified
               </motion.div>
 
@@ -137,18 +136,18 @@ const Security = () => {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.05 }}
-                className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-medium tracking-tight leading-[1.1] mb-6"
+                className="hz-t-3xl hz-w-medium hz-tracking-tight hz-mb-5"
               >
-                <span className="text-white">Security without</span>
+                <span className="hz-fg">Security without</span>
                 <br />
-                <span className="text-neutral-400">compromise.</span>
+                <span className="hz-fg-muted">compromise.</span>
               </motion.h1>
 
               <motion.p
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.1 }}
-                className="text-base lg:text-lg text-neutral-400 leading-relaxed mb-10 max-w-3xl mx-auto"
+                className="hz-container-narrow hz-t-base hz-fg-muted hz-leading-relaxed hz-mb-6"
               >
                 Enterprise-grade security built into every layer. Your data is encrypted,
                 access is controlled, and compliance is maintained by default.
@@ -159,24 +158,23 @@ const Security = () => {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.15 }}
-                className="flex flex-wrap items-center justify-center gap-4 mb-12"
+                className="hz-row hz-wrap hz-ai-center hz-jc-center hz-gap-4 hz-mb-7"
               >
                 <Link
                   to="/contact"
-                  className="inline-flex items-center px-6 py-3 rounded-full font-medium transition-all hover:opacity-90 text-sm"
-                  style={{ backgroundColor: BRAND_COLOR, color: "#000000" }}
-                >
+                  className="hz-btn hz-btn-ghost hz-transition hz-bg-inverse"
+                  >
                   Talk to Security Team
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  <ArrowRight className="hz-sq-2 hz-ml-2" />
                 </Link>
                 <a
                   href="https://docs.hanzo.ai/security"
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="inline-flex items-center px-6 py-3 rounded-full font-medium transition-colors border border-neutral-700 bg-transparent hover:bg-neutral-900 text-sm text-white"
+                  className="hz-btn hz-btn-ghost hz-transition hz-fg"
                 >
                   Security Documentation
-                  <ExternalLink className="ml-2 h-4 w-4" />
+                  <ExternalLink className="hz-sq-2 hz-ml-2" />
                 </a>
               </motion.div>
 
@@ -185,15 +183,15 @@ const Security = () => {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.2 }}
-                className="flex flex-wrap justify-center gap-3"
+                className="hz-row hz-wrap hz-jc-center hz-gap-3"
               >
                 {COMPLIANCE_BADGES.map((badge) => (
                   <div
                     key={badge.name}
-                    className="flex items-center gap-2 px-4 py-2 rounded-lg bg-neutral-900 border border-neutral-800"
+                    className="hz-btn hz-gap-2"
                   >
-                    <CheckCircle className="w-4 h-4 text-neutral-400" />
-                    <span className="text-sm font-medium text-white">{badge.name}</span>
+                    <CheckCircle className="hz-sq-2 hz-fg-muted" />
+                    <span className="hz-t-sm hz-w-medium hz-fg">{badge.name}</span>
                   </div>
                 ))}
               </motion.div>
@@ -202,23 +200,23 @@ const Security = () => {
         </section>
 
         {/* Security Features Grid */}
-        <section className="py-24 px-4 md:px-8 bg-gradient-to-b from-black to-neutral-900/50">
-          <div className="max-w-6xl mx-auto">
+        <section className="hz-py-7 hz-px-4">
+          <div className="hz-container-wide">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center mb-16"
+              className="hz-align-center hz-mb-7"
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              <h2 className="hz-t-3xl hz-w-bold hz-fg hz-mb-4">
                 Defense in Depth
               </h2>
-              <p className="text-neutral-400 max-w-2xl mx-auto">
+              <p className="hz-container-narrow hz-mw-md hz-fg-muted">
                 Multiple layers of security controls protect your applications and data
               </p>
             </motion.div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="hz-grid hz-grid-3 hz-gap-5">
               {SECURITY_FEATURES.map((feature, index) => {
                 const Icon = feature.icon;
                 return (
@@ -228,18 +226,17 @@ const Security = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
-                    className="bg-neutral-900/80 border border-neutral-800 rounded-xl p-6 hover:border-neutral-700 transition-colors"
+                    className="hz-card hz-transition hz-card-interactive"
                   >
                     <div
-                      className="w-12 h-12 rounded-lg flex items-center justify-center mb-4"
-                      style={{ backgroundColor: `${BRAND_COLOR}20` }}
-                    >
-                      <Icon className="w-6 h-6" style={{ color: BRAND_COLOR }} />
+                      className="hz-sq-7 hz-r-lg hz-row hz-ai-center hz-jc-center hz-mb-4 hz-bg-quiet"
+                      >
+                      <Icon className="hz-sq-4 hz-fg" />
                     </div>
-                    <h3 className="text-lg font-semibold text-white mb-2">
+                    <h3 className="hz-t-lg hz-w-semibold hz-fg hz-mb-2">
                       {feature.title}
                     </h3>
-                    <p className="text-sm text-neutral-400">{feature.description}</p>
+                    <p className="hz-t-sm hz-fg-muted">{feature.description}</p>
                   </motion.div>
                 );
               })}
@@ -248,9 +245,9 @@ const Security = () => {
         </section>
 
         {/* Infrastructure Security */}
-        <section className="py-24 px-4 md:px-8">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-16 items-start">
+        <section className="hz-py-7 hz-px-4">
+          <div className="hz-container-wide">
+            <div className="hz-grid hz-grid-2 hz-gap-7 hz-ai-start">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -258,21 +255,20 @@ const Security = () => {
                 transition={{ duration: 0.5 }}
               >
                 <div
-                  className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium mb-6"
-                  style={{ backgroundColor: `${BRAND_COLOR}20`, color: BRAND_COLOR }}
-                >
+                  className="hz-inline hz-ai-center hz-gap-2 hz-px-3 hz-py-1 hz-r-full hz-t-xs hz-w-medium hz-mb-5 hz-bg-quiet hz-fg"
+                  >
                   Infrastructure
                 </div>
-                <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+                <h2 className="hz-t-3xl hz-w-bold hz-fg hz-mb-5">
                   Built on secure foundations
                 </h2>
-                <p className="text-neutral-400 mb-8">
+                <p className="hz-fg-muted hz-mb-6">
                   Our infrastructure runs on SOC 2 compliant data centers with 24/7 physical
                   security, redundant power, and isolated network architecture. Every component
                   is designed with security as the primary requirement.
                 </p>
 
-                <div className="space-y-4">
+                <div className="hz-stack-4">
                   {[
                     { icon: Server, text: "KVM hardware-isolated virtual machines" },
                     { icon: Eye, text: "24/7 security monitoring and alerting" },
@@ -281,9 +277,9 @@ const Security = () => {
                   ].map((item, index) => {
                     const Icon = item.icon;
                     return (
-                      <div key={index} className="flex items-center gap-3">
-                        <Icon className="w-5 h-5 text-neutral-500" />
-                        <span className="text-neutral-300">{item.text}</span>
+                      <div key={index} className="hz-row hz-ai-center hz-gap-3">
+                        <Icon className="hz-sq-3 hz-fg-muted" />
+                        <span className="hz-fg-soft">{item.text}</span>
                       </div>
                     );
                   })}
@@ -295,28 +291,28 @@ const Security = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="bg-gradient-to-br from-neutral-900 to-neutral-900/50 rounded-xl p-8 border border-neutral-800"
+                className="hz-card"
               >
-                <Globe className="w-10 h-10 text-neutral-400 mb-6" />
-                <h3 className="text-xl font-bold text-white mb-4">Global Data Regions</h3>
-                <p className="text-neutral-400 mb-6">
+                <Globe className="hz-sq-6 hz-fg-muted hz-mb-5" />
+                <h3 className="hz-t-xl hz-w-bold hz-fg hz-mb-4">Global Data Regions</h3>
+                <p className="hz-fg-muted hz-mb-5">
                   Deploy to specific geographic regions to meet data residency requirements
                   and minimize latency.
                 </p>
 
-                <div className="space-y-4">
+                <div className="hz-stack-4">
                   {REGIONS.map((region) => (
                     <div
                       key={region.region}
-                      className="bg-neutral-800/50 rounded-lg p-4 border border-neutral-700"
+                      className="hz-card"
                     >
-                      <div className="flex items-center justify-between mb-1">
-                        <span className="font-medium text-white">{region.name}</span>
-                        <span className="text-xs text-neutral-500 font-mono">
+                      <div className="hz-row hz-ai-center hz-jc-between hz-mb-1">
+                        <span className="hz-w-medium hz-fg">{region.name}</span>
+                        <span className="hz-t-xs hz-fg-muted hz-mono">
                           {region.region}
                         </span>
                       </div>
-                      <span className="text-sm text-neutral-400">{region.code}</span>
+                      <span className="hz-t-sm hz-fg-muted">{region.code}</span>
                     </div>
                   ))}
                 </div>
@@ -326,42 +322,41 @@ const Security = () => {
         </section>
 
         {/* Enterprise Security */}
-        <section className="py-24 px-4 md:px-8 bg-gradient-to-b from-neutral-900/50 to-black">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <section className="hz-py-7 hz-px-4">
+          <div className="hz-container-wide">
+            <div className="hz-grid hz-grid-2 hz-gap-7 hz-ai-center">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="order-2 lg:order-1"
+                className=""
               >
-                <div className="bg-gradient-to-br from-white/10 to-transparent rounded-xl p-8 border border-white/20">
-                  <Shield className="w-10 h-10 mb-6" style={{ color: BRAND_COLOR }} />
-                  <h3 className="text-xl font-bold text-white mb-4">
+                <div className="hz-card">
+                  <Shield className="hz-sq-6 hz-mb-5 hz-fg" />
+                  <h3 className="hz-t-xl hz-w-bold hz-fg hz-mb-4">
                     Enterprise Security Program
                   </h3>
-                  <p className="text-neutral-400 mb-6">
+                  <p className="hz-fg-muted hz-mb-5">
                     For organizations with advanced security requirements, our Enterprise plan
                     includes dedicated security support and custom configurations.
                   </p>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div className="hz-grid hz-grid-2 hz-gap-3">
                     {ENTERPRISE_FEATURES.map((feature) => (
-                      <div key={feature} className="flex items-start gap-2">
-                        <CheckCircle className="w-4 h-4 text-neutral-400 mt-0.5 flex-shrink-0" />
-                        <span className="text-sm text-neutral-300">{feature}</span>
+                      <div key={feature} className="hz-row hz-ai-start hz-gap-2">
+                        <CheckCircle className="hz-sq-2 hz-fg-muted hz-mt-1 hz-none" />
+                        <span className="hz-t-sm hz-fg-soft">{feature}</span>
                       </div>
                     ))}
                   </div>
 
                   <Link
                     to="/contact"
-                    className="inline-flex items-center mt-8 text-sm font-medium transition-colors"
-                    style={{ color: BRAND_COLOR }}
-                  >
+                    className="hz-inline hz-ai-center hz-mt-6 hz-t-sm hz-w-medium hz-transition hz-fg"
+                    >
                     Contact Sales
-                    <ArrowRight className="ml-2 h-4 w-4" />
+                    <ArrowRight className="hz-sq-2 hz-ml-2" />
                   </Link>
                 </div>
               </motion.div>
@@ -371,22 +366,21 @@ const Security = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
-                className="order-1 lg:order-2"
+                className="hz-order-first"
               >
                 <div
-                  className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium mb-6"
-                  style={{ backgroundColor: `${BRAND_COLOR}20`, color: BRAND_COLOR }}
-                >
+                  className="hz-inline hz-ai-center hz-gap-2 hz-px-3 hz-py-1 hz-r-full hz-t-xs hz-w-medium hz-mb-5 hz-bg-quiet hz-fg"
+                  >
                   Enterprise
                 </div>
-                <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+                <h2 className="hz-t-3xl hz-w-bold hz-fg hz-mb-5">
                   Security for the most demanding organizations
                 </h2>
-                <p className="text-neutral-400 mb-6">
+                <p className="hz-fg-muted hz-mb-5">
                   Whether you're in healthcare, finance, or government, Hanzo meets the
                   security and compliance requirements of regulated industries.
                 </p>
-                <p className="text-neutral-400">
+                <p className="hz-fg-muted">
                   Our security team works directly with enterprise customers to understand
                   their unique requirements and implement appropriate controls.
                 </p>
@@ -396,34 +390,34 @@ const Security = () => {
         </section>
 
         {/* Vulnerability Disclosure */}
-        <section className="py-24 px-4 md:px-8">
-          <div className="max-w-4xl mx-auto">
+        <section className="hz-py-7 hz-px-4">
+          <div className="hz-container-narrow">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="bg-gradient-to-br from-neutral-900/20 to-transparent rounded-xl p-8 border border-neutral-500/20"
+              className="hz-card"
             >
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-lg bg-neutral-500/20 flex items-center justify-center flex-shrink-0">
-                  <Bug className="w-6 h-6 text-neutral-400" />
+              <div className="hz-row hz-ai-start hz-gap-4">
+                <div className="hz-sq-7 hz-r-lg hz-bg-raised hz-row hz-ai-center hz-jc-center hz-none">
+                  <Bug className="hz-sq-4 hz-fg-muted" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-white mb-2">
+                  <h3 className="hz-t-xl hz-w-bold hz-fg hz-mb-2">
                     Responsible Disclosure
                   </h3>
-                  <p className="text-neutral-400 mb-4">
+                  <p className="hz-fg-muted hz-mb-4">
                     We take security vulnerabilities seriously and appreciate the work of
                     security researchers. If you discover a vulnerability, please report it
                     responsibly.
                   </p>
                   <a
                     href="mailto:security@hanzo.ai"
-                    className="inline-flex items-center text-sm font-medium text-neutral-400 hover:text-neutral-400 transition-colors"
+                    className="hz-inline hz-ai-center hz-t-sm hz-w-medium hz-fg-muted hz-transition hz-link"
                   >
                     security@hanzo.ai
-                    <ExternalLink className="ml-2 h-4 w-4" />
+                    <ExternalLink className="hz-sq-2 hz-ml-2" />
                   </a>
                 </div>
               </div>
@@ -432,16 +426,16 @@ const Security = () => {
         </section>
 
         {/* CTA Section */}
-        <section className="py-24 px-4 md:px-8 bg-gradient-to-b from-neutral-900/30 to-black relative overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/10 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-white/5 rounded-full blur-3xl pointer-events-none" />
+        <section className="hz-py-7 hz-px-4 hz-rel hz-clip">
+          <div className="hz-sq-8 hz-abs hz-bg-quiet hz-r-full hz-blur-bg hz-no-pointer" />
+          <div className="hz-sq-8 hz-abs hz-bg-quiet hz-r-full hz-blur-bg hz-no-pointer" />
 
-          <div className="max-w-4xl mx-auto text-center relative z-10">
+          <div className="hz-container-narrow hz-align-center hz-rel hz-z-raised">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-3xl md:text-5xl font-bold text-white mb-4"
+              className="hz-t-3xl hz-w-bold hz-fg hz-mb-4"
             >
               Ready to secure your AI infrastructure?
             </motion.h2>
@@ -451,7 +445,7 @@ const Security = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-lg text-neutral-400 mb-10 max-w-2xl mx-auto"
+              className="hz-container-narrow hz-mw-md hz-t-lg hz-fg-muted hz-mb-6"
             >
               Start building with enterprise-grade security today. Our team is ready to help
               you meet your compliance requirements.
@@ -462,19 +456,18 @@ const Security = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="flex flex-wrap items-center justify-center gap-4"
+              className="hz-row hz-wrap hz-ai-center hz-jc-center hz-gap-4"
             >
               <Link
                 to="/signup"
-                className="inline-flex items-center px-8 py-4 rounded-full font-medium transition-all hover:opacity-90 text-base"
-                style={{ backgroundColor: BRAND_COLOR, color: "#000000" }}
-              >
+                className="hz-btn hz-btn-ghost hz-btn-lg hz-transition hz-bg-inverse"
+                >
                 Get Started Free
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <ArrowRight className="hz-sq-3 hz-ml-2" />
               </Link>
               <Link
                 to="/contact"
-                className="inline-flex items-center px-8 py-4 rounded-full font-medium transition-colors border border-neutral-700 bg-transparent hover:bg-neutral-900 text-base text-white"
+                className="hz-btn hz-btn-ghost hz-btn-lg hz-transition hz-fg"
               >
                 Schedule Security Review
               </Link>
@@ -485,13 +478,13 @@ const Security = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="mt-8"
+              className="hz-mt-6"
             >
               <a
                 href="https://docs.hanzo.ai/security"
                 target="_blank"
                 rel="noreferrer noopener"
-                className="text-sm text-neutral-500 hover:text-white transition-colors"
+                className="hz-t-sm hz-fg-muted hz-transition hz-link"
               >
                 Read the security documentation
               </a>

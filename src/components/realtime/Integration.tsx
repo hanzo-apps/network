@@ -15,71 +15,71 @@ interface PresenceEvent {
 
 const Integration = () => {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
+    <section className="hz-py-7 hz-px-4">
+      <div className="hz-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-12"
+          className="hz-align-center hz-mb-7"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-[var(--white)] mb-4">
+          <h2 className="hz-t-3xl hz-w-bold hz-fg hz-mb-4">
             Simple Integration
           </h2>
-          <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
+          <p className="hz-container-narrow hz-t-xl hz-fg-soft">
             Add real-time capabilities to your application with just a few lines of code
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+        <div className="hz-grid hz-grid-2 hz-gap-6 hz-ai-center">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <h3 className="text-2xl font-semibold text-[var(--white)] mb-4">Easy to Implement</h3>
-            <p className="text-neutral-300 mb-6">
+            <h3 className="hz-t-2xl hz-w-semibold hz-fg hz-mb-4">Easy to Implement</h3>
+            <p className="hz-fg-soft hz-mb-5">
               Hanzo Realtime provides a clean, intuitive API that makes it simple to add 
               real-time functionality to any application. With support for multiple platforms 
               and frameworks, you can get started in minutes.
             </p>
             
-            <div className="space-y-4 mb-8">
-              <div className="flex items-start">
-                <div className="h-6 w-6 rounded-full bg-neutral-800/30 flex items-center justify-center mr-3 mt-0.5">
-                  <span className="text-neutral-400 text-sm font-bold">1</span>
+            <div className="hz-stack-4 hz-mb-6">
+              <div className="hz-row hz-ai-start">
+                <div className="hz-sq-4 hz-r-full hz-bg-raised hz-row hz-ai-center hz-jc-center hz-mr-3 hz-mt-1">
+                  <span className="hz-fg-muted hz-t-sm hz-w-bold">1</span>
                 </div>
                 <div>
-                  <h4 className="text-[var(--white)] font-medium mb-1">Initialize the client</h4>
-                  <p className="text-neutral-400 text-sm">Connect to the Hanzo Realtime service with your API key</p>
+                  <h4 className="hz-fg hz-w-medium hz-mb-1">Initialize the client</h4>
+                  <p className="hz-fg-muted hz-t-sm">Connect to the Hanzo Realtime service with your API key</p>
                 </div>
               </div>
               
-              <div className="flex items-start">
-                <div className="h-6 w-6 rounded-full bg-neutral-800/30 flex items-center justify-center mr-3 mt-0.5">
-                  <span className="text-neutral-400 text-sm font-bold">2</span>
+              <div className="hz-row hz-ai-start">
+                <div className="hz-sq-4 hz-r-full hz-bg-raised hz-row hz-ai-center hz-jc-center hz-mr-3 hz-mt-1">
+                  <span className="hz-fg-muted hz-t-sm hz-w-bold">2</span>
                 </div>
                 <div>
-                  <h4 className="text-[var(--white)] font-medium mb-1">Subscribe to channels</h4>
-                  <p className="text-neutral-400 text-sm">Listen for updates on specific channels or topics</p>
+                  <h4 className="hz-fg hz-w-medium hz-mb-1">Subscribe to channels</h4>
+                  <p className="hz-fg-muted hz-t-sm">Listen for updates on specific channels or topics</p>
                 </div>
               </div>
               
-              <div className="flex items-start">
-                <div className="h-6 w-6 rounded-full bg-neutral-800/30 flex items-center justify-center mr-3 mt-0.5">
-                  <span className="text-neutral-400 text-sm font-bold">3</span>
+              <div className="hz-row hz-ai-start">
+                <div className="hz-sq-4 hz-r-full hz-bg-raised hz-row hz-ai-center hz-jc-center hz-mr-3 hz-mt-1">
+                  <span className="hz-fg-muted hz-t-sm hz-w-bold">3</span>
                 </div>
                 <div>
-                  <h4 className="text-[var(--white)] font-medium mb-1">Publish messages</h4>
-                  <p className="text-neutral-400 text-sm">Send updates to all connected clients instantly</p>
+                  <h4 className="hz-fg hz-w-medium hz-mb-1">Publish messages</h4>
+                  <p className="hz-fg-muted hz-t-sm">Send updates to all connected clients instantly</p>
                 </div>
               </div>
             </div>
             
-            <Button className="bg-neutral-600 hover:bg-neutral-700">
-              View Documentation <ArrowRight className="ml-2 h-4 w-4" />
+            <Button className="hz-bg-raised hz-hoverable">
+              View Documentation <ArrowRight className="hz-sq-2 hz-ml-2" />
             </Button>
           </motion.div>
           
@@ -88,48 +88,48 @@ const Integration = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="bg-[var(--black)] rounded-xl border border-gray-800 p-6"
+            className="hz-card"
           >
-            <div className="flex items-center mb-4">
-              <Code className="h-5 w-5 text-neutral-400 mr-2" />
-              <span className="text-neutral-300">JavaScript Example</span>
+            <div className="hz-row hz-ai-center hz-mb-4">
+              <Code className="hz-sq-3 hz-fg-muted hz-mr-2" />
+              <span className="hz-fg-soft">JavaScript Example</span>
             </div>
             
-            <div className="bg-gray-900 rounded-lg p-4 font-mono text-sm overflow-auto max-h-[400px]">
-              <div className="text-neutral-400">// Initialize the Hanzo Realtime client</div>
-              <div className="text-neutral-300">import {`{ Realtime }`} from '@hanzo/cloud';</div>
-              <div className="text-neutral-300 mb-4">const realtime = new Realtime('YOUR_API_KEY');</div>
+            <div className="hz-bg-surface hz-r-lg hz-p-4 hz-mono hz-t-sm hz-scroll-y">
+              <div className="hz-fg-muted">// Initialize the Hanzo Realtime client</div>
+              <div className="hz-fg-soft">import {`{ Realtime }`} from '@hanzo/cloud';</div>
+              <div className="hz-fg-soft hz-mb-4">const realtime = new Realtime('YOUR_API_KEY');</div>
               
-              <div className="text-neutral-400">// Subscribe to a channel</div>
-              <div className="text-neutral-300">const channel = await realtime.subscribe('chat-room', {`{`}</div>
-              <div className="text-neutral-300 pl-4">onMessage: (message) {`=>`} {`{`}</div>
-              <div className="text-neutral-300 pl-8">console.log('New message received:', message);</div>
-              <div className="text-neutral-300 pl-8">// Update your UI with the message</div>
-              <div className="text-neutral-300 pl-8">appendMessageToChat(message);</div>
-              <div className="text-neutral-300 pl-4">{`}`},</div>
-              <div className="text-neutral-300 pl-4">onPresence: (event: PresenceEvent) {`=>`} {`{`}</div>
-              <div className="text-neutral-300 pl-8">if (event.action === 'join') {`{`}</div>
-              <div className="text-neutral-300 pl-12">{`console.log(\`\${event.userData.name} joined the chat\`);`}</div>
-              <div className="text-neutral-300 pl-8">{`}`} else {`{`}</div>
-              <div className="text-neutral-300 pl-12">{`console.log(\`\${event.userData.name} left the chat\`);`}</div>
-              <div className="text-neutral-300 pl-8">{`}`}</div>
-              <div className="text-neutral-300 pl-4">{`}`}</div>
-              <div className="text-neutral-300">{`}`});</div>
-              <div className="text-neutral-300 mb-4"></div>
+              <div className="hz-fg-muted">// Subscribe to a channel</div>
+              <div className="hz-fg-soft">const channel = await realtime.subscribe('chat-room', {`{`}</div>
+              <div className="hz-fg-soft hz-px-4">onMessage: (message) {`=>`} {`{`}</div>
+              <div className="hz-fg-soft hz-px-6">console.log('New message received:', message);</div>
+              <div className="hz-fg-soft hz-px-6">// Update your UI with the message</div>
+              <div className="hz-fg-soft hz-px-6">appendMessageToChat(message);</div>
+              <div className="hz-fg-soft hz-px-4">{`}`},</div>
+              <div className="hz-fg-soft hz-px-4">onPresence: (event: PresenceEvent) {`=>`} {`{`}</div>
+              <div className="hz-fg-soft hz-px-6">if (event.action === 'join') {`{`}</div>
+              <div className="hz-fg-soft hz-px-6">{`console.log(\`\${event.userData.name} joined the chat\`);`}</div>
+              <div className="hz-fg-soft hz-px-6">{`}`} else {`{`}</div>
+              <div className="hz-fg-soft hz-px-6">{`console.log(\`\${event.userData.name} left the chat\`);`}</div>
+              <div className="hz-fg-soft hz-px-6">{`}`}</div>
+              <div className="hz-fg-soft hz-px-4">{`}`}</div>
+              <div className="hz-fg-soft">{`}`});</div>
+              <div className="hz-fg-soft hz-mb-4"></div>
               
-              <div className="text-neutral-400">// Publish a message to the channel</div>
-              <div className="text-neutral-300">await realtime.publish('chat-room', {`{`}</div>
-              <div className="text-neutral-300 pl-4">user: {`{`}</div>
-              <div className="text-neutral-300 pl-8">id: 'user-123',</div>
-              <div className="text-neutral-300 pl-8">name: 'Alice'</div>
-              <div className="text-neutral-300 pl-4">{`}`},</div>
-              <div className="text-neutral-300 pl-4">text: 'Hello, world!',</div>
-              <div className="text-neutral-300 pl-4">timestamp: new Date().toISOString()</div>
-              <div className="text-neutral-300">{`}`});</div>
-              <div className="text-neutral-300 mb-4"></div>
+              <div className="hz-fg-muted">// Publish a message to the channel</div>
+              <div className="hz-fg-soft">await realtime.publish('chat-room', {`{`}</div>
+              <div className="hz-fg-soft hz-px-4">user: {`{`}</div>
+              <div className="hz-fg-soft hz-px-6">id: 'user-123',</div>
+              <div className="hz-fg-soft hz-px-6">name: 'Alice'</div>
+              <div className="hz-fg-soft hz-px-4">{`}`},</div>
+              <div className="hz-fg-soft hz-px-4">text: 'Hello, world!',</div>
+              <div className="hz-fg-soft hz-px-4">timestamp: new Date().toISOString()</div>
+              <div className="hz-fg-soft">{`}`});</div>
+              <div className="hz-fg-soft hz-mb-4"></div>
               
-              <div className="text-neutral-400">// Clean up when done</div>
-              <div className="text-neutral-300">await channel.unsubscribe();</div>
+              <div className="hz-fg-muted">// Clean up when done</div>
+              <div className="hz-fg-soft">await channel.unsubscribe();</div>
             </div>
           </motion.div>
         </div>

@@ -21,7 +21,7 @@ interface FeatureProps {
 const Feature = ({ icon, title, description }: FeatureProps) => (
   <motion.div
     variants={featureCardVariant}
-    className="bg-gray-900/40 border border-gray-800 rounded-xl p-6 hover:border-neutral-500/30 transition-colors"
+    className="hz-card hz-transition hz-card-interactive"
     whileHover={{ 
       y: -5, 
       boxShadow: "0 10px 25px -5px rgba(79, 70, 229, 0.1)",
@@ -29,13 +29,13 @@ const Feature = ({ icon, title, description }: FeatureProps) => (
     }}
     transition={{ duration: 0.2 }}
   >
-    <div className="h-12 w-12 bg-neutral-800/50 rounded-lg flex items-center justify-center mb-4">
+    <div className="hz-sq-7 hz-bg-raised hz-r-lg hz-row hz-ai-center hz-jc-center hz-mb-4">
       {icon}
     </div>
-    <ChromeText as="h3" className="text-xl font-bold mb-2">
+    <ChromeText as="h3" className="hz-t-xl hz-w-bold hz-mb-2">
       {title}
     </ChromeText>
-    <p className="text-neutral-400">
+    <p className="hz-fg-muted">
       {description}
     </p>
   </motion.div>
@@ -44,50 +44,50 @@ const Feature = ({ icon, title, description }: FeatureProps) => (
 const Features = () => {
   const features = [
     {
-      icon: <Database className="h-6 w-6 text-neutral-400" />,
+      icon: <Database className="hz-sq-4 hz-fg-muted" />,
       title: "Vector Storage",
       description: "Store and index millions of vector embeddings with automatic sharding and high-throughput capabilities."
     },
     {
-      icon: <Search className="h-6 w-6 text-neutral-400" />,
+      icon: <Search className="hz-sq-4 hz-fg-muted" />,
       title: "Similarity Search",
       description: "Ultra-fast nearest neighbor search using HNSW, IVF, and other algorithms for maximum performance."
     },
     {
-      icon: <Zap className="h-6 w-6 text-neutral-400" />,
+      icon: <Zap className="hz-sq-4 hz-fg-muted" />,
       title: "Real-time Indexing",
       description: "Index new vectors instantly with zero downtime and minimal performance impact on queries."
     },
     {
-      icon: <Shield className="h-6 w-6 text-neutral-400" />,
+      icon: <Shield className="hz-sq-4 hz-fg-muted" />,
       title: "Secure Access",
       description: "Role-based access control, end-to-end encryption, and audit logging for enterprise-grade security."
     },
     {
-      icon: <Code className="h-6 w-6 text-neutral-400" />,
+      icon: <Code className="hz-sq-4 hz-fg-muted" />,
       title: "API & SDKs",
       description: "Well-documented REST API and client libraries for Python, JavaScript, Go, and more."
     },
     {
-      icon: <BarChart className="h-6 w-6 text-neutral-400" />,
+      icon: <BarChart className="hz-sq-4 hz-fg-muted" />,
       title: "Analytics",
       description: "Monitor performance metrics, query patterns, and usage statistics through a built-in dashboard."
     }
   ];
 
   return (
-    <AnimatedSection className="py-24 px-4 sm:px-6 lg:px-8 bg-[var(--black)]">
-      <div className="max-w-7xl mx-auto">
-        <AnimatedHeading className="text-center mb-16">
-          <ChromeText as="h2" className="text-3xl md:text-5xl font-bold mb-4">
+    <AnimatedSection className="hz-py-7 hz-px-4 hz-bg">
+      <div className="hz-container">
+        <AnimatedHeading className="hz-align-center hz-mb-7">
+          <ChromeText as="h2" className="hz-t-3xl hz-w-bold hz-mb-4">
             Powerful Features
           </ChromeText>
-          <p className="text-xl text-neutral-400 max-w-3xl mx-auto">
+          <p className="hz-container-narrow hz-t-xl hz-fg-muted">
             Everything you need for building AI-powered vector search applications
           </p>
         </AnimatedHeading>
         
-        <AnimatedStaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" delayFactor={0.05}>
+        <AnimatedStaggerContainer className="hz-grid hz-grid-3 hz-gap-6" delayFactor={0.05}>
           {features.map((feature, index) => (
             <Feature
               key={index}

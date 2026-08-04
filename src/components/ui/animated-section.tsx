@@ -39,7 +39,7 @@ const AnimatedSection = ({
       viewport={{ once, amount: viewportAmount }}
       variants={sectionAnimation}
       transition={{ delay }}
-      className={cn("relative", className)}
+      className={cn("hz-rel", className)}
       {...motionProps}
       {...props}
     >

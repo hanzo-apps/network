@@ -13,7 +13,6 @@ import {
   Laptop,
 } from "lucide-react";
 
-const BRAND_COLOR = "#ffffff";
 
 const AUTONOMY_LEVELS = [
   {
@@ -40,19 +39,19 @@ const AUTONOMY_LEVELS = [
 
 const HowItWorks = () => {
   return (
-    <section className="py-24 px-4 md:px-8 bg-gradient-to-b from-black to-neutral-900/50">
-      <div className="max-w-6xl mx-auto">
+    <section className="hz-py-7 hz-px-4">
+      <div className="hz-container-wide">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-20"
+          className="hz-align-center hz-mb-7"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="hz-t-3xl hz-w-bold hz-fg hz-mb-4">
             How It Works
           </h2>
-          <p className="text-neutral-400 max-w-2xl mx-auto">
+          <p className="hz-container-narrow hz-mw-md hz-fg-muted">
             From task to production-ready pull request, with evidence at every step.
           </p>
         </motion.div>
@@ -62,50 +61,49 @@ const HowItWorks = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-20"
+          className="hz-mb-7"
         >
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="hz-grid hz-grid-2 hz-gap-7 hz-ai-center">
             <div>
               <div
-                className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium mb-4"
-                style={{ backgroundColor: `${BRAND_COLOR}20`, color: BRAND_COLOR }}
-              >
-                <GitPullRequest className="w-3.5 h-3.5" />
+                className="hz-inline hz-ai-center hz-gap-2 hz-px-3 hz-py-1 hz-r-full hz-t-xs hz-w-medium hz-mb-4 hz-bg-quiet hz-fg"
+                >
+                <GitPullRequest className="hz-sq-2" />
                 Step 1
               </div>
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+              <h3 className="hz-t-2xl hz-w-bold hz-fg hz-mb-4">
                 Give it a task. Get back a PR.
               </h3>
-              <p className="text-neutral-400 leading-relaxed">
+              <p className="hz-fg-muted hz-leading-relaxed">
                 Hanzo Dev reads your repository structure, produces a coherent plan, edits multiple files,
                 runs suites, benchmarks impact and generates a reviewable pull request—complete with diff
                 and test evidence. Long-running work happens in isolated sandboxes.
               </p>
             </div>
-            <div className="bg-neutral-900/80 border border-neutral-800 rounded-xl p-6">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="flex gap-1.5">
-                  <div className="w-3 h-3 rounded-full bg-neutral-600/80" />
-                  <div className="w-3 h-3 rounded-full bg-neutral-500/80" />
-                  <div className="w-3 h-3 rounded-full bg-neutral-500/80" />
+            <div className="hz-card">
+              <div className="hz-row hz-ai-center hz-gap-3 hz-mb-4">
+                <div className="hz-row hz-gap-2">
+                  <div className="hz-sq-1 hz-r-full hz-bg-raised" />
+                  <div className="hz-sq-1 hz-r-full hz-bg-raised" />
+                  <div className="hz-sq-1 hz-r-full hz-bg-raised" />
                 </div>
-                <span className="text-xs text-neutral-500 font-mono">hanzo dev</span>
+                <span className="hz-t-xs hz-fg-muted hz-mono">hanzo dev</span>
               </div>
-              <div className="space-y-3 font-mono text-sm">
-                <div className="text-neutral-500">$ hanzo dev "Add rate limiting to API"</div>
-                <div className="text-neutral-400">Reading repository structure...</div>
-                <div className="text-neutral-400">Creating implementation plan...</div>
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-neutral-500" />
-                  <span className="text-neutral-400">Modified 4 files</span>
+              <div className="hz-stack-3 hz-mono hz-t-sm">
+                <div className="hz-fg-muted">$ hanzo dev "Add rate limiting to API"</div>
+                <div className="hz-fg-muted">Reading repository structure...</div>
+                <div className="hz-fg-muted">Creating implementation plan...</div>
+                <div className="hz-row hz-ai-center hz-gap-2">
+                  <div className="hz-sq-1 hz-r-full hz-bg-raised" />
+                  <span className="hz-fg-muted">Modified 4 files</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-neutral-500" />
-                  <span className="text-neutral-400">Tests: 23/23 passing</span>
+                <div className="hz-row hz-ai-center hz-gap-2">
+                  <div className="hz-sq-1 hz-r-full hz-bg-raised" />
+                  <span className="hz-fg-muted">Tests: 23/23 passing</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-neutral-500" />
-                  <span className="text-neutral-400">PR #127 created with evidence</span>
+                <div className="hz-row hz-ai-center hz-gap-2">
+                  <div className="hz-sq-1 hz-r-full hz-bg-raised" />
+                  <span className="hz-fg-muted">PR #127 created with evidence</span>
                 </div>
               </div>
             </div>
@@ -117,44 +115,42 @@ const HowItWorks = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-20"
+          className="hz-mb-7"
         >
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            <div className="lg:order-2">
+          <div className="hz-grid hz-grid-2 hz-gap-7 hz-ai-start">
+            <div className="">
               <div
-                className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium mb-4"
-                style={{ backgroundColor: `${BRAND_COLOR}20`, color: BRAND_COLOR }}
-              >
-                <Sliders className="w-3.5 h-3.5" />
+                className="hz-inline hz-ai-center hz-gap-2 hz-px-3 hz-py-1 hz-r-full hz-t-xs hz-w-medium hz-mb-4 hz-bg-quiet hz-fg"
+                >
+                <Sliders className="hz-sq-2" />
                 Step 2
               </div>
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+              <h3 className="hz-t-2xl hz-w-bold hz-fg hz-mb-4">
                 Autonomy you can dial. Evidence you can trust.
               </h3>
-              <p className="text-neutral-400 leading-relaxed mb-6">
+              <p className="hz-fg-muted hz-leading-relaxed hz-mb-5">
                 Choose exactly how much autonomy to grant. Every level produces
                 artifacts you can inspect, approve, or roll back.
               </p>
-              <p className="text-sm text-neutral-500 italic">
+              <p className="hz-t-sm hz-fg-muted hz-italic">
                 "Agents don't get admin; they get policies."
               </p>
             </div>
-            <div className="lg:order-1 bg-neutral-900/80 border border-neutral-800 rounded-xl p-6">
-              <div className="space-y-4">
+            <div className="hz-card">
+              <div className="hz-stack-4">
                 {AUTONOMY_LEVELS.map((item, index) => (
                   <div
                     key={item.level}
-                    className="flex items-start gap-4 p-3 rounded-lg bg-neutral-950/50 border border-neutral-800"
+                    className="hz-card hz-card-tight hz-row hz-ai-start hz-gap-4"
                   >
                     <div
-                      className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 text-sm font-mono"
-                      style={{ backgroundColor: `${BRAND_COLOR}20`, color: BRAND_COLOR }}
-                    >
+                      className="hz-sq-5 hz-r-lg hz-row hz-ai-center hz-jc-center hz-none hz-t-sm hz-mono hz-bg-quiet hz-fg"
+                      >
                       {index + 1}
                     </div>
                     <div>
-                      <div className="font-medium text-white text-sm">{item.level}</div>
-                      <div className="text-xs text-neutral-500">{item.description}</div>
+                      <div className="hz-w-medium hz-fg hz-t-sm">{item.level}</div>
+                      <div className="hz-t-xs hz-fg-muted">{item.description}</div>
                     </div>
                   </div>
                 ))}
@@ -168,46 +164,44 @@ const HowItWorks = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-20"
+          className="hz-mb-7"
         >
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="hz-grid hz-grid-2 hz-gap-7 hz-ai-center">
             <div>
               <div
-                className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium mb-4"
-                style={{ backgroundColor: `${BRAND_COLOR}20`, color: BRAND_COLOR }}
-              >
-                <Users className="w-3.5 h-3.5" />
+                className="hz-inline hz-ai-center hz-gap-2 hz-px-3 hz-py-1 hz-r-full hz-t-xs hz-w-medium hz-mb-4 hz-bg-quiet hz-fg"
+                >
+                <Users className="hz-sq-2" />
                 Step 3
               </div>
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+              <h3 className="hz-t-2xl hz-w-bold hz-fg hz-mb-4">
                 Parallel agents. One best result.
               </h3>
-              <p className="text-neutral-400 leading-relaxed">
+              <p className="hz-fg-muted hz-leading-relaxed">
                 Dispatch the same task to several agents at once. Hanzo Dev ranks outputs by diff quality
                 and test results, so you ship the strongest patch—not the first attempt.
               </p>
             </div>
-            <div className="bg-neutral-900/80 border border-neutral-800 rounded-xl p-6">
-              <div className="grid grid-cols-2 gap-4">
+            <div className="hz-card">
+              <div className="hz-grid hz-grid-2 hz-gap-4">
                 {["Hanzo", "Claude Code", "Codex", "Gemini"].map((agent, i) => (
                   <div
                     key={agent}
-                    className={`p-4 rounded-lg border ${
+                    className={`hz-p-4 hz-r-lg hz-bordered ${
                       i === 0
-                        ? "border-white/50 bg-white/10"
-                        : "border-neutral-800 bg-neutral-950/50"
+                        ? "hz-bg-quiet"
+                        : "hz-bg-surface"
                     }`}
                   >
-                    <div className="text-sm font-medium text-white mb-2">{agent}</div>
-                    <div className="space-y-1 text-xs text-neutral-500">
+                    <div className="hz-t-sm hz-w-medium hz-fg hz-mb-2">{agent}</div>
+                    <div className="hz-stack-1 hz-t-xs hz-fg-muted">
                       <div>Diff: {i === 0 ? "+42/-18" : i === 1 ? "+67/-31" : i === 2 ? "+89/-45" : "+55/-22"}</div>
                       <div>Tests: {i === 0 ? "23/23" : i === 1 ? "21/23" : i === 2 ? "19/23" : "22/23"}</div>
                     </div>
                     {i === 0 && (
                       <div
-                        className="mt-2 text-xs font-medium px-2 py-1 rounded-full inline-block"
-                        style={{ backgroundColor: BRAND_COLOR, color: "#000" }}
-                      >
+                        className="hz-mt-2 hz-t-xs hz-w-medium hz-px-2 hz-py-1 hz-r-full hz-bg-inverse"
+                        >
                         Best result
                       </div>
                     )}
@@ -224,24 +218,23 @@ const HowItWorks = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="lg:order-2">
+          <div className="hz-grid hz-grid-2 hz-gap-7 hz-ai-center">
+            <div className="">
               <div
-                className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium mb-4"
-                style={{ backgroundColor: `${BRAND_COLOR}20`, color: BRAND_COLOR }}
-              >
-                <Monitor className="w-3.5 h-3.5" />
+                className="hz-inline hz-ai-center hz-gap-2 hz-px-3 hz-py-1 hz-r-full hz-t-xs hz-w-medium hz-mb-4 hz-bg-quiet hz-fg"
+                >
+                <Monitor className="hz-sq-2" />
                 Step 4
               </div>
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+              <h3 className="hz-t-2xl hz-w-bold hz-fg hz-mb-4">
                 Works where you work.
               </h3>
-              <p className="text-neutral-400 leading-relaxed">
+              <p className="hz-fg-muted hz-leading-relaxed">
                 IDE extensions for VS Code and JetBrains, a CLI for terminals and CI/CD pipelines,
                 and remote sandboxes for heavy builds. Everything stays reviewable and reproducible.
               </p>
             </div>
-            <div className="lg:order-1 flex flex-wrap gap-4">
+            <div className="hz-row hz-wrap hz-gap-4">
               {[
                 { icon: Laptop, label: "VS Code" },
                 { icon: Laptop, label: "JetBrains" },
@@ -252,10 +245,10 @@ const HowItWorks = () => {
                 return (
                   <div
                     key={item.label}
-                    className="flex items-center gap-3 px-4 py-3 rounded-lg bg-neutral-900/80 border border-neutral-800"
+                    className="hz-btn hz-gap-3"
                   >
-                    <Icon className="w-5 h-5 text-neutral-400" />
-                    <span className="text-sm text-white">{item.label}</span>
+                    <Icon className="hz-sq-3 hz-fg-muted" />
+                    <span className="hz-t-sm hz-fg">{item.label}</span>
                   </div>
                 );
               })}

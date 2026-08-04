@@ -15,9 +15,9 @@ export default function ProductPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="hz-min-h-screen hz-bg hz-fg">
       <Navbar />
-      <div className="pt-16">
+      <div className="hz-pt-6">
         <ProductPageTemplate product={product} />
       </div>
       <Footer />

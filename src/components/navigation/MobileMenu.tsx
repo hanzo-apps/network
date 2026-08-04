@@ -154,15 +154,15 @@ export const MobileMenu = ({ isOpen, onToggle, onOpenSearch }: MobileMenuProps) 
 
   return (
     <>
-      <div className="md:hidden flex items-center gap-2">
+      <div className="hz-mobile-only hz-row hz-ai-center hz-gap-2">
         {/* Search button */}
         <Button
           variant="ghost"
           size="icon"
           onClick={onOpenSearch}
-          className="text-neutral-400 hover:text-white"
+          className="hz-fg-muted hz-link"
         >
-          <Search className="h-5 w-5" />
+          <Search className="hz-sq-3" />
         </Button>
 
         {/* Menu toggle */}
@@ -170,41 +170,41 @@ export const MobileMenu = ({ isOpen, onToggle, onOpenSearch }: MobileMenuProps) 
           variant="ghost"
           size="icon"
           onClick={onToggle}
-          className="text-white"
+          className="hz-fg"
         >
-          {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          {isOpen ? <X className="hz-sq-4" /> : <Menu className="hz-sq-4" />}
         </Button>
       </div>
 
       {isOpen && (
-        <div className="fixed inset-0 z-50 md:hidden">
-          <div className="fixed inset-0 bg-black/95 backdrop-blur-md" onClick={onToggle} />
+        <div className="hz-mobile-only hz-fixed hz-inset hz-z-overlay">
+          <div className="hz-fixed hz-inset hz-bg-surface hz-glass" onClick={onToggle} />
 
-          <div className="fixed inset-0 w-full bg-black pt-[var(--header-height)] h-screen overflow-y-auto">
+          <div className="hz-fixed hz-inset hz-w-full hz-bg hz-h-screen hz-scroll-y">
             {/* Search / Command palette widget at top */}
-            <div className="px-4 pt-4 pb-2">
+            <div className="hz-px-4 hz-pt-4 hz-pb-4">
               <button
                 onClick={() => {
                   onToggle();
                   onOpenSearch?.();
                 }}
-                className="w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-neutral-900 border border-neutral-800 text-neutral-400 hover:text-white hover:bg-neutral-800 hover:border-neutral-700 transition-all"
+                className="hz-btn hz-btn-block hz-gap-3 hz-fg-muted hz-transition"
               >
-                <Search className="h-5 w-5" />
-                <span className="flex-1 text-left text-sm">Search docs, products, pages...</span>
-                <kbd className="inline-flex items-center gap-0.5 px-2 py-1 text-[11px] font-mono bg-neutral-800 border border-neutral-700 rounded text-neutral-500">
-                  <span className="text-xs">⌘</span>K
+                <Search className="hz-sq-3" />
+                <span className="hz-grow hz-align-left hz-t-sm">Search docs, products, pages...</span>
+                <kbd className="hz-inline hz-ai-center hz-gap-1 hz-px-2 hz-py-1 hz-t-xs hz-mono hz-bg-raised hz-bordered hz-r-md hz-fg-muted">
+                  <span className="hz-t-xs">⌘</span>K
                 </kbd>
               </button>
             </div>
 
-            <div className="px-4 py-4 space-y-1">
+            <div className="hz-px-4 hz-py-4 hz-stack-1">
               {mobileNav.map((item) => (
-                <div key={item.title} className="border-b border-neutral-800/50 pb-2 mb-2">
+                <div key={item.title} className="hz-border-b hz-pb-4 hz-mb-2">
                   {item.href ? (
                     <Link
                       to={item.href}
-                      className="block px-3 py-2.5 text-base font-medium text-neutral-300 hover:text-white hover:bg-neutral-800/50 rounded-lg transition-colors"
+                      className="hz-px-3 hz-py-2 hz-t-base hz-w-medium hz-fg-soft hz-r-lg hz-transition hz-hoverable"
                       onClick={handleLinkClick}
                     >
                       {item.title}
@@ -212,24 +212,24 @@ export const MobileMenu = ({ isOpen, onToggle, onOpenSearch }: MobileMenuProps) 
                   ) : (
                     <>
                       <button
-                        className="w-full flex justify-between items-center px-3 py-2.5 text-base font-medium text-neutral-300 hover:text-white hover:bg-neutral-800/50 rounded-lg transition-colors"
+                        className="hz-btn hz-btn-ghost hz-btn-block hz-jc-between hz-fg-soft hz-transition"
                         onClick={() => toggleSection(item.title)}
                       >
                         {item.title}
                         <ChevronRight className={cn(
-                          "h-4 w-4 transition-transform duration-200",
-                          expandedSections[item.title] && "rotate-90"
+                          "hz-sq-2 hz-transition",
+                          expandedSections[item.title] && ""
                         )} />
                       </button>
 
                       {expandedSections[item.title] && item.sections && (
-                        <div className="mt-2 ml-2 space-y-4 bg-neutral-900/50 rounded-lg p-3">
+                        <div className="hz-mt-2 hz-ml-2 hz-stack-4 hz-bg-surface hz-r-lg hz-p-3">
                           {item.sections.map((section) => (
                             <div key={section.title}>
-                              <div className="px-2 py-1 text-xs font-medium text-neutral-500 uppercase tracking-wider">
+                              <div className="hz-px-2 hz-py-1 hz-t-xs hz-w-medium hz-fg-muted hz-upper hz-tracking-wide">
                                 {section.title}
                               </div>
-                              <div className="space-y-0.5 mt-1">
+                              <div className="hz-stack-1 hz-mt-1">
                                 {section.items.map((subItem) => (
                                   subItem.external ? (
                                     <a
@@ -237,7 +237,7 @@ export const MobileMenu = ({ isOpen, onToggle, onOpenSearch }: MobileMenuProps) 
                                       href={subItem.href}
                                       target="_blank"
                                       rel="noopener noreferrer"
-                                      className="block px-2 py-1.5 text-sm text-neutral-400 hover:text-white hover:bg-neutral-800/50 rounded transition-colors"
+                                      className="hz-px-2 hz-py-2 hz-t-sm hz-fg-muted hz-r-md hz-transition hz-link"
                                       onClick={handleLinkClick}
                                     >
                                       {subItem.title}
@@ -246,7 +246,7 @@ export const MobileMenu = ({ isOpen, onToggle, onOpenSearch }: MobileMenuProps) 
                                     <Link
                                       key={subItem.title}
                                       to={subItem.href}
-                                      className="block px-2 py-1.5 text-sm text-neutral-400 hover:text-white hover:bg-neutral-800/50 rounded transition-colors"
+                                      className="hz-px-2 hz-py-2 hz-t-sm hz-fg-muted hz-r-md hz-transition hz-link"
                                       onClick={handleLinkClick}
                                     >
                                       {subItem.title}
@@ -265,15 +265,15 @@ export const MobileMenu = ({ isOpen, onToggle, onOpenSearch }: MobileMenuProps) 
             </div>
 
             {/* Bottom buttons */}
-            <div className="px-4 py-4 space-y-3 border-t border-neutral-800">
+            <div className="hz-px-4 hz-py-4 hz-stack-3 hz-border-t">
               <Link to="/contact" onClick={handleLinkClick}>
-                <Button variant="ghost" className="w-full text-neutral-300 hover:text-white hover:bg-neutral-800/50 justify-center">
+                <Button variant="ghost" className="hz-w-full hz-fg-soft hz-jc-center hz-hoverable">
                   Contact sales
                 </Button>
               </Link>
               <a
                 href="https://cloud.hanzo.ai"
-                className="block w-full bg-white text-black hover:bg-neutral-200 active:bg-neutral-300 rounded-full h-10 flex items-center justify-center text-sm font-medium transition-all duration-200"
+                className="hz-w-full hz-bg-inverse hz-fg-inverse hz-r-full hz-bh-6 hz-row hz-ai-center hz-jc-center hz-t-sm hz-w-medium hz-transition hz-hoverable"
               >
                 Try Hanzo
               </a>

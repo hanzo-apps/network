@@ -28,23 +28,23 @@ const GlobeContainer: React.FC = () => {
   return (
     <motion.div
       ref={containerRef}
-      className="relative w-full h-[500px] bg-[var(--black)] rounded-lg overflow-hidden mt-8 mb-12 border border-neutral-800/20"
+      className="hz-rel hz-w-full hz-bg hz-r-lg hz-clip hz-mt-6 hz-mb-7 hz-bordered"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
     >
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-neutral-800/10 to-neutral-900/10 opacity-50"></div>
+      <div className="hz-abs hz-inset hz-dim-more"></div>
       
       {dimensions.width > 0 && dimensions.height > 0 && (
         <GlobeThreeJs width={dimensions.width} height={dimensions.height} />
       )}
       
-      <div className="absolute inset-0 flex items-center justify-center text-center p-4 pointer-events-none">
-        <div className="mt-8 bg-[var(--black)]/30 backdrop-blur-sm rounded-xl p-4 border border-neutral-800/20">
-          <h3 className="text-2xl font-semibold text-[var(--white)] mb-2">Global Network</h3>
-          <p className="text-neutral-300 text-sm max-w-md mx-auto">
+      <div className="hz-abs hz-inset hz-row hz-ai-center hz-jc-center hz-align-center hz-p-4 hz-no-pointer">
+        <div className="hz-card hz-mt-6 hz-glass">
+          <h3 className="hz-t-2xl hz-w-semibold hz-fg hz-mb-2">Global Network</h3>
+          <p className="hz-container-narrow hz-mw-sm hz-fg-soft hz-t-sm">
             Deploy to 35+ regions around the world with 99.99% uptime SLA and automatic failover.
           </p>
         </div>

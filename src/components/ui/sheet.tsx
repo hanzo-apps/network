@@ -1,131 +1,71 @@
-import * as SheetPrimitive from "@radix-ui/react-dialog"
-import { cva, type VariantProps } from "class-variance-authority"
-import { X } from "lucide-react"
-import * as React from "react"
+import * as React from 'react'
+import { Dialog as GuiDialog } from '@hanzo/gui'
+import { X } from 'lucide-react'
+import { cn } from '@/lib/utils'
 
-import { cn } from "@/lib/utils"
+/**
+ * A sheet is a dialog anchored to an edge. Same primitive, one extra class —
+ * there is no second overlay implementation on this site.
+ */
+const SIDE = {
+  top: 'hz-top-0 hz-left-0 hz-right-0',
+  bottom: 'hz-bottom-0 hz-left-0 hz-right-0',
+  left: 'hz-top-0 hz-bottom-0 hz-left-0 hz-mw-sm hz-h-full',
+  right: 'hz-top-0 hz-bottom-0 hz-right-0 hz-mw-sm hz-h-full',
+} as const
 
-const Sheet = SheetPrimitive.Root
-
-const SheetTrigger = SheetPrimitive.Trigger
-
-const SheetClose = SheetPrimitive.Close
-
-const SheetPortal = SheetPrimitive.Portal
+const Sheet = GuiDialog
+const SheetTrigger = GuiDialog.Trigger
+const SheetClose = GuiDialog.Close
+const SheetPortal = GuiDialog.Portal
 
 const SheetOverlay = React.forwardRef<
-  React.ElementRef<typeof SheetPrimitive.Overlay>,
-  React.ComponentPropsWithoutRef<typeof SheetPrimitive.Overlay>
+  React.ElementRef<typeof GuiDialog.Overlay>,
+  React.ComponentPropsWithoutRef<typeof GuiDialog.Overlay> & { className?: string }
 >(({ className, ...props }, ref) => (
-  <SheetPrimitive.Overlay
-    className={cn(
-      "fixed inset-0 z-50 bg-[var(--black)]/80  data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
-      className
-    )}
-    {...props}
-    ref={ref}
-  />
+  <GuiDialog.Overlay ref={ref} unstyled className={cn('hz-fixed hz-inset hz-z-overlay hz-bg-scrim', className)} {...props} />
 ))
-SheetOverlay.displayName = SheetPrimitive.Overlay.displayName
-
-const sheetVariants = cva(
-  "fixed z-50 gap-4 bg-[var(--background)] p-6 shadow-lg transition ease-in-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:duration-500",
-  {
-    variants: {
-      side: {
-        top: "inset-x-0 top-0 border-b data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top",
-        bottom:
-          "inset-x-0 bottom-0 border-t data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom",
-        left: "inset-y-0 left-0 h-full w-3/4 border-r data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left sm:max-w-sm",
-        right:
-          "inset-y-0 right-0 h-full w-3/4  border-l data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right sm:max-w-sm",
-      },
-    },
-    defaultVariants: {
-      side: "right",
-    },
-  }
-)
-
-interface SheetContentProps
-  extends React.ComponentPropsWithoutRef<typeof SheetPrimitive.Content>,
-  VariantProps<typeof sheetVariants> { }
+SheetOverlay.displayName = 'SheetOverlay'
 
 const SheetContent = React.forwardRef<
-  React.ElementRef<typeof SheetPrimitive.Content>,
-  SheetContentProps
->(({ side = "right", className, children, ...props }, ref) => (
-  <SheetPortal>
+  React.ElementRef<typeof GuiDialog.Content>,
+  React.ComponentPropsWithoutRef<typeof GuiDialog.Content> & { className?: string; side?: keyof typeof SIDE }
+>(({ className, children, side = 'right', ...props }, ref) => (
+  <GuiDialog.Portal>
     <SheetOverlay />
-    <SheetPrimitive.Content
+    <GuiDialog.Content
       ref={ref}
-      className={cn(sheetVariants({ side }), className)}
+      unstyled
+      className={cn('hz-fixed hz-z-overlay hz-col hz-gap-4 hz-card hz-r-none hz-bg-raised hz-shadow-lg hz-scroll-y', SIDE[side], className)}
       {...props}
     >
       {children}
-      <SheetPrimitive.Close className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary">
-        <X className="h-4 w-4" />
-        <span className="sr-only">Close</span>
-      </SheetPrimitive.Close>
-    </SheetPrimitive.Content>
-  </SheetPortal>
+      <GuiDialog.Close asChild>
+        <button aria-label="Close" className="hz-abs hz-top-0 hz-right-0 hz-mt-3 hz-mr-3 hz-btn hz-btn-ghost hz-btn-icon">
+          <X className="hz-sq-2" />
+        </button>
+      </GuiDialog.Close>
+    </GuiDialog.Content>
+  </GuiDialog.Portal>
 ))
-SheetContent.displayName = SheetPrimitive.Content.displayName
+SheetContent.displayName = 'SheetContent'
 
-const SheetHeader = ({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) => (
-  <div
-    className={cn(
-      "flex flex-col space-y-2 text-center sm:text-left",
-      className
-    )}
-    {...props}
-  />
+const SheetHeader = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
+  <div className={cn('hz-col hz-gap-2', className)} {...props} />
 )
-SheetHeader.displayName = "SheetHeader"
-
-const SheetFooter = ({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) => (
-  <div
-    className={cn(
-      "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
-      className
-    )}
-    {...props}
-  />
+const SheetFooter = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
+  <div className={cn('hz-col-row hz-gap-2 hz-jc-end', className)} {...props} />
 )
-SheetFooter.displayName = "SheetFooter"
-
-const SheetTitle = React.forwardRef<
-  React.ElementRef<typeof SheetPrimitive.Title>,
-  React.ComponentPropsWithoutRef<typeof SheetPrimitive.Title>
->(({ className, ...props }, ref) => (
-  <SheetPrimitive.Title
-    ref={ref}
-    className={cn("text-lg font-semibold text-[var(--foreground)]", className)}
-    {...props}
-  />
-))
-SheetTitle.displayName = SheetPrimitive.Title.displayName
-
-const SheetDescription = React.forwardRef<
-  React.ElementRef<typeof SheetPrimitive.Description>,
-  React.ComponentPropsWithoutRef<typeof SheetPrimitive.Description>
->(({ className, ...props }, ref) => (
-  <SheetPrimitive.Description
-    ref={ref}
-    className={cn("text-sm text-muted-foreground", className)}
-    {...props}
-  />
-))
-SheetDescription.displayName = SheetPrimitive.Description.displayName
+const SheetTitle = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<HTMLHeadingElement>>(
+  ({ className, ...props }, ref) => <h2 ref={ref} className={cn('hz-t-xl hz-w-semibold', className)} {...props} />,
+)
+SheetTitle.displayName = 'SheetTitle'
+const SheetDescription = React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<HTMLParagraphElement>>(
+  ({ className, ...props }, ref) => <p ref={ref} className={cn('hz-t-sm hz-fg-muted', className)} {...props} />,
+)
+SheetDescription.displayName = 'SheetDescription'
 
 export {
-  Sheet, SheetClose,
-  SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetOverlay, SheetPortal, SheetTitle, SheetTrigger
+  Sheet, SheetPortal, SheetOverlay, SheetTrigger, SheetClose,
+  SheetContent, SheetHeader, SheetFooter, SheetTitle, SheetDescription,
 }
-

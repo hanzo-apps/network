@@ -5,27 +5,27 @@ import { CreditCard, Calendar, Send, CreditCard as CardIcon, Coins } from "lucid
 
 const suiteItems = [
   {
-    icon: <CreditCard className="h-6 w-6 text-neutral-400" />,
+    icon: <CreditCard className="hz-sq-4 hz-fg-muted" />,
     title: "Online Payments",
     description: "Flexible integration with any website, optimized checkouts, and local payment methods."
   },
   {
-    icon: <Calendar className="h-6 w-6 text-neutral-400" />,
+    icon: <Calendar className="hz-sq-4 hz-fg-muted" />,
     title: "Subscriptions & Billing",
     description: "Automated subscription management, recurring billing, and multilingual invoicing."
   },
   {
-    icon: <Send className="h-6 w-6 text-neutral-400" />,
+    icon: <Send className="hz-sq-4 hz-fg-muted" />,
     title: "Embedded Finance (Connect)",
     description: "Integrate end-to-end payment experiences for marketplaces and platforms, including streamlined payouts."
   },
   {
-    icon: <CardIcon className="h-6 w-6 text-neutral-400" />,
+    icon: <CardIcon className="hz-sq-4 hz-fg-muted" />,
     title: "Issuing",
     description: "Create and manage physical and virtual cards for your teams or customers."
   },
   {
-    icon: <Coins className="h-6 w-6 text-neutral-400" />,
+    icon: <Coins className="hz-sq-4 hz-fg-muted" />,
     title: "Capital",
     description: "Access financing options to fuel your growth."
   }
@@ -33,17 +33,17 @@ const suiteItems = [
 
 const PaymentsSuite = () => {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[var(--black)]">
-      <div className="max-w-6xl mx-auto">
+    <section className="hz-py-7 hz-px-4 hz-bg">
+      <div className="hz-container-wide">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="hz-align-center hz-mb-7"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Comprehensive Payments Infrastructure</h2>
-          <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
+          <h2 className="hz-t-3xl hz-w-bold hz-mb-5">Comprehensive Payments Infrastructure</h2>
+          <p className="hz-container-narrow hz-t-xl hz-fg-soft">
             Hanzo Payments provides the essential tools needed to process payments and optimize your financial operations, 
             fully integrated into your Hanzo workflow.
           </p>
@@ -54,10 +54,10 @@ const PaymentsSuite = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-16"
+          className="hz-mb-7"
         >
-          <h3 className="text-2xl font-bold mb-8 text-center">Unified Payments Suite</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <h3 className="hz-t-2xl hz-w-bold hz-mb-6 hz-align-center">Unified Payments Suite</h3>
+          <div className="hz-grid hz-grid-3 hz-gap-5">
             {suiteItems.map((item, index) => (
               <motion.div
                 key={index}
@@ -65,13 +65,13 @@ const PaymentsSuite = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-gray-900/30 border border-gray-800 p-6 rounded-lg"
+                className="hz-card"
               >
-                <div className="bg-gray-800/50 p-3 rounded-full w-fit mb-4">
+                <div className="hz-bg-raised hz-p-3 hz-r-full hz-w-fit hz-mb-4">
                   {item.icon}
                 </div>
-                <h4 className="text-xl font-semibold mb-3">{item.title}</h4>
-                <p className="text-neutral-400">{item.description}</p>
+                <h4 className="hz-t-xl hz-w-semibold hz-mb-3">{item.title}</h4>
+                <p className="hz-fg-muted">{item.description}</p>
               </motion.div>
             ))}
           </div>
@@ -82,40 +82,40 @@ const PaymentsSuite = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="relative bg-gradient-to-br from-gray-900/50 to-neutral-800/20 border border-gray-800 rounded-xl p-8 overflow-hidden"
+          className="hz-card hz-rel hz-clip"
         >
-          <div className="absolute inset-0 bg-grid-white/5 [mask-image:linear-gradient(to_bottom,transparent,black)]"></div>
-          <div className="relative z-10 flex flex-col md:flex-row gap-8 items-center">
-            <div className="md:w-2/3">
-              <h3 className="text-2xl font-bold mb-4">Optimized for Growth</h3>
-              <ul className="space-y-3">
-                <li className="flex items-start gap-2">
-                  <span className="text-neutral-400">•</span>
+          <div className="hz-abs hz-inset hz-bg-surface"></div>
+          <div className="hz-col-row hz-rel hz-z-raised hz-gap-6 hz-ai-center">
+            <div className="">
+              <h3 className="hz-t-2xl hz-w-bold hz-mb-4">Optimized for Growth</h3>
+              <ul className="hz-stack-3">
+                <li className="hz-row hz-ai-start hz-gap-2">
+                  <span className="hz-fg-muted">•</span>
                   <span>Real-time analytics and detailed financial reporting.</span>
                 </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-neutral-400">•</span>
+                <li className="hz-row hz-ai-start hz-gap-2">
+                  <span className="hz-fg-muted">•</span>
                   <span>Forecast and predict revenues with built-in AI-driven analytics.</span>
                 </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-neutral-400">•</span>
+                <li className="hz-row hz-ai-start hz-gap-2">
+                  <span className="hz-fg-muted">•</span>
                   <span>Transparent pricing with no hidden fees.</span>
                 </li>
               </ul>
             </div>
-            <div className="md:w-1/3 bg-gray-900/70 border border-gray-700 rounded-lg p-5">
-              <div className="text-center">
-                <h4 className="text-lg font-semibold mb-3">Payment Growth</h4>
-                <div className="flex items-end justify-center space-x-2 h-32 mb-4">
+            <div className="hz-card">
+              <div className="hz-align-center">
+                <h4 className="hz-t-lg hz-w-semibold hz-mb-3">Payment Growth</h4>
+                <div className="hz-row hz-ai-end hz-jc-center hz-inline-2 hz-bh-8 hz-mb-4">
                   {[20, 35, 28, 45, 60, 75, 90].map((height, i) => (
                     <div 
                       key={i} 
-                      className="bg-gradient-to-t from-neutral-600 to-neutral-500 rounded-t w-6"
+                      className="hz-r-md hz-bw-4"
                       style={{height: `${height}%`}}
                     ></div>
                   ))}
                 </div>
-                <div className="text-sm text-neutral-400">Last 7 days</div>
+                <div className="hz-t-sm hz-fg-muted">Last 7 days</div>
               </div>
             </div>
           </div>

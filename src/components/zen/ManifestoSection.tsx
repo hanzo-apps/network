@@ -7,8 +7,8 @@ import { manifestoDescription } from "./data/manifestoText";
 
 const ManifestoSection = () => {
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black/50 to-neutral-800/10">
-      <div className="max-w-7xl mx-auto">
+    <section className="hz-py-7 hz-px-4">
+      <div className="hz-container">
         <SectionHeader 
           title="Our Manifesto" 
           description={manifestoDescription}

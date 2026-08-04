@@ -26,18 +26,18 @@ const HanzoDev = () => {
   }, []);
 
   return (
-    <section ref={containerRef} className="py-24 px-4 sm:px-6 lg:px-8 bg-[var(--black)] relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-r from-neutral-800/20 to-neutral-800/20 opacity-30"></div>
-      <div className="max-w-5xl mx-auto relative z-10">
+    <section ref={containerRef} className="hz-py-7 hz-px-4 hz-bg hz-rel hz-clip">
+      <div className="hz-abs hz-inset hz-dim-more"></div>
+      <div className="hz-container-wide hz-rel hz-z-raised">
         <motion.div 
-          className="text-center"
+          className="hz-align-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
         >
           <h2 
-            className="text-3xl md:text-5xl font-bold mb-6 text-gradient-steel"
+            className="hz-t-3xl hz-w-bold hz-mb-5 hz-fg-soft"
             style={{
               backgroundPosition: `${(mousePosition.x / (containerRef.current?.offsetWidth || 1)) * 100}% ${(mousePosition.y / (containerRef.current?.offsetHeight || 1)) * 100}%`,
             }}
@@ -45,15 +45,15 @@ const HanzoDev = () => {
             For Developers
           </h2>
           
-          <p className="text-xl text-neutral-300 mb-10 max-w-2xl mx-auto">
+          <p className="hz-container-narrow hz-mw-md hz-t-xl hz-fg-soft hz-mb-6">
             Install Hanzo Dev directly in your terminal and supercharge your development workflow.
           </p>
           
-          <div className="flex justify-center mb-10">
-            <div className="bg-gray-900 border border-gray-800 rounded-lg px-6 py-4 flex items-center">
-              <Terminal className="h-5 w-5 text-neutral-400 mr-3" />
-              <code className="text-neutral-300 font-mono">pip install hanzo-dev</code>
-              <Button variant="ghost" size="sm" className="ml-4 text-neutral-400 hover:text-[var(--white)]">
+          <div className="hz-row hz-jc-center hz-mb-6">
+            <div className="hz-btn hz-btn-lg">
+              <Terminal className="hz-sq-3 hz-fg-muted hz-mr-3" />
+              <code className="hz-fg-soft hz-mono">pip install hanzo-dev</code>
+              <Button variant="ghost" size="sm" className="hz-ml-4 hz-fg-muted hz-link">
                 Copy
               </Button>
             </div>
@@ -61,7 +61,7 @@ const HanzoDev = () => {
           
           <Button 
             size="lg"
-            className="bg-gradient-to-r from-neutral-600 to-neutral-500 hover:from-neutral-500 hover:to-neutral-400 text-[var(--white)] px-8 py-6 rounded-lg text-lg font-medium shadow-lg hover:shadow-xl transition-all"
+            className="hz-fg hz-px-6 hz-py-5 hz-r-lg hz-t-lg hz-w-medium hz-shadow-lg hz-transition"
           >
             <a href="/hanzodev">Learn More About Hanzo Dev</a>
           </Button>

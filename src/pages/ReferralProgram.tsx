@@ -35,7 +35,7 @@ const ReferralProgram = () => {
 
   return (
     <AccountLayout>
-      <div className="space-y-8">
+      <div className="hz-stack-6">
         {/* Header */}
         <ReferralHeader />
         
