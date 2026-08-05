@@ -153,7 +153,7 @@
         <a href="https://github.com/hanzoai/dev">GitHub</a>
         <a href="https://docs.hanzo.ai">Docs</a>
         <a href="https://hanzo.ai">Website</a>
-        <a href="https://discord.gg/hanzo">Discord</a>
+        <a href="https://discord.gg/CJCyAsm9Vr">Discord</a>
       </div>
 
       <div class="footer">

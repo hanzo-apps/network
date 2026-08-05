@@ -491,7 +491,7 @@ const NetworkLanding = () => {
             <a href="https://hanzo.ai" className="hover:text-white/60 transition-colors">hanzo.ai</a>
             <a href="https://hanzo.ai/privacy" className="hover:text-white/60 transition-colors">Privacy</a>
             <a href="https://hanzo.ai/terms" className="hover:text-white/60 transition-colors">Terms</a>
-            <a href="https://discord.gg/hanzo" target="_blank" rel="noopener noreferrer" className="hover:text-white/60 transition-colors">Discord</a>
+            <a href="https://discord.gg/CJCyAsm9Vr" target="_blank" rel="noopener noreferrer" className="hover:text-white/60 transition-colors">Discord</a>
             <a href="https://github.com/hanzoai/network" target="_blank" rel="noopener noreferrer" className="hover:text-white/60 transition-colors">GitHub</a>
           </div>
         </div>

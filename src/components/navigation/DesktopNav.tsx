@@ -111,7 +111,7 @@ const LearnContent = ({ closeMenu }: { closeMenu: () => void }) => (
       <h3 className="text-neutral-500 text-xs font-medium mb-3 uppercase tracking-wider">Community</h3>
       <ul className="space-y-2">
         <li><a href="https://github.com/hanzoai" target="_blank" rel="noopener noreferrer" className="text-sm text-neutral-300 hover:text-white transition-colors">GitHub</a></li>
-        <li><a href="https://discord.gg/hanzo" target="_blank" rel="noopener noreferrer" className="text-sm text-neutral-300 hover:text-white transition-colors">Discord</a></li>
+        <li><a href="https://discord.gg/CJCyAsm9Vr" target="_blank" rel="noopener noreferrer" className="text-sm text-neutral-300 hover:text-white transition-colors">Discord</a></li>
         <li><Link to="/blog" onClick={closeMenu} className="text-sm text-neutral-300 hover:text-white transition-colors">Blog</Link></li>
       </ul>
     </div>
