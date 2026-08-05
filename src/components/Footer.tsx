@@ -207,7 +207,7 @@ const Footer = () => {
             {/* Logo */}
             <Link to="/" className="hz-row hz-ai-center hz-inline-2">
               <img
-                src="/img/28d53ec4-328f-4812-862b-b9a760bbabae.png"
+                src="/logo.svg"
                 alt="Hanzo"
                 className="hz-sq-5"
               />

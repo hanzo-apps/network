@@ -145,7 +145,7 @@ path this migration retires.
 
 Reconcile BEFORE anyone pins a tag in the CR: **the live bytes are not built from
 `main`.** The served `index.html` links `/favicon.svg`, `/favicon.ico` and
-`/logo.svg`; `main`'s still links `img/28d53ec4-….png`. Those exact
+`/logo.svg`; `main`'s still links `the scaffold placeholder PNG`. Those exact
 lines come from `origin/fix/broken-links` (`0efe650`, the real @hanzo/brand
 blocky-H). Building an image from `main` as it stands would regress branding, so
 land that branch first. CF Pages is not rebuilding `main` on push — `main` has
