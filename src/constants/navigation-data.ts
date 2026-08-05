@@ -249,7 +249,7 @@ export const resourcesNav: NavSection[] = [
   {
     title: "Community",
     items: [
-      { title: "Discord", href: "https://discord.gg/hanzo", description: "Join our Discord", icon: MessageSquare },
+      { title: "Discord", href: "https://discord.gg/CJCyAsm9Vr", description: "Join our Discord", icon: MessageSquare },
       { title: "GitHub", href: "https://github.com/hanzoai", description: "Open-source projects", icon: Code },
       { title: "Support", href: "/support", description: "Get help", icon: Users }
     ]

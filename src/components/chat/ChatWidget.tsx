@@ -50,7 +50,7 @@ Templates (launch instantly at hanzo.app):
 Links:
 - Docs: docs.hanzo.ai
 - GitHub: github.com/hanzoai
-- Discord: discord.gg/hanzo
+- Discord: discord.gg/CJCyAsm9Vr
 - Research: zenlm.org
 - Network: hanzo.network
 - Full Chat: hanzo.chat
@@ -114,7 +114,7 @@ const ChatWidget = () => {
           ...prev,
           {
             role: "assistant",
-            content: "I'm having trouble connecting right now. You can visit [docs.hanzo.ai](https://docs.hanzo.ai) for documentation or join our [Discord](https://discord.gg/hanzo) for help!",
+            content: "I'm having trouble connecting right now. You can visit [docs.hanzo.ai](https://docs.hanzo.ai) for documentation or join our [Discord](https://discord.gg/CJCyAsm9Vr) for help!",
           },
         ]);
       }

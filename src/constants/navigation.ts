@@ -183,7 +183,7 @@ export const resources = [
     items: [
       {
         name: "Discord",
-        url: "https://discord.gg/hanzo",
+        url: "https://discord.gg/CJCyAsm9Vr",
         description: "Join our developer community"
       },
       {

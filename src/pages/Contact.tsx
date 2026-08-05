@@ -139,7 +139,7 @@ const Contact = () => {
                 </p>
                 
                 <div className="space-y-4">
-                  <a href="https://discord.gg/XthHQQj" className="flex items-center px-4 py-3 bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors">
+                  <a href="https://discord.gg/CJCyAsm9Vr" className="flex items-center px-4 py-3 bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors">
                     <MessageSquare className="h-5 w-5 text-neutral-400 mr-3" />
                     <span>Join our Discord Community</span>
                   </a>
