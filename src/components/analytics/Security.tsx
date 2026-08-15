@@ -7,7 +7,7 @@ const certifications = [
   { name: "SOC 2 Type II controls", details: "Encryption in transit and at rest, role-based access control, and audit logging." },
   { name: "GDPR compliance", details: "Fully compliant with European data protection regulations." },
   { name: "CCPA compliance", details: "Fully compliant with California consumer privacy requirements." },
-  { name: "Certification scoped per engagement", details: "Formal certification — SOC 2 Type II, ISO 27001, HIPAA with a BAA — is scoped per enterprise engagement. Tell us what your procurement needs." }
+  { name: "Certification scoped per engagement", details: "We do not hold SOC 2 Type II, ISO 27001 or HIPAA certification today. Formal certification is scoped per enterprise engagement. Tell us what your procurement needs." }
 ];
 
 const SecurityFeatures = [
