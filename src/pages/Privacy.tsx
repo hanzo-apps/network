@@ -97,7 +97,7 @@ const Privacy = () => {
                 transition={{ duration: 0.4, delay: 0.15 }}
                 className="flex flex-wrap justify-center gap-3 mb-8"
               >
-                {["GDPR", "CCPA", "SOC 2", "HIPAA"].map((badge) => (
+                {["GDPR", "CCPA", "SOC 2 Type II controls", "Certification scoped per engagement"].map((badge) => (
                   <div
                     key={badge}
                     className="flex items-center gap-2 px-4 py-2 rounded-lg bg-neutral-900 border border-neutral-800"

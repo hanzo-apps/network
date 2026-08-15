@@ -25,11 +25,11 @@ const Compliance = () => {
               <div className="mt-4 flex flex-wrap gap-4">
                 <div className="flex items-center bg-neutral-800/20 border border-neutral-800/50 rounded-md px-3 py-1">
                   <Lock className="h-4 w-4 text-neutral-400 mr-2" />
-                  <span className="text-neutral-300 text-sm">SOC2 Type 2 Certified</span>
+                  <span className="text-neutral-300 text-sm">SOC 2 Type II controls</span>
                 </div>
                 <div className="flex items-center bg-neutral-800/20 border border-neutral-800/50 rounded-md px-3 py-1">
                   <Lock className="h-4 w-4 text-neutral-400 mr-2" />
-                  <span className="text-neutral-300 text-sm">HIPAA Compliant</span>
+                  <span className="text-neutral-300 text-sm">Certification scoped per engagement</span>
                 </div>
               </div>
             </div>

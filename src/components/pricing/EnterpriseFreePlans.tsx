@@ -13,7 +13,7 @@ const EnterpriseFreePlans = () => {
       "Everything in the Team plan",
       "Expanded context window",
       "Highest limits on messaging & features",
-      "Enhanced security (CSA, SOC 2, GDPR, CCPA)",
+      "Enhanced security (SOC 2 Type II controls, GDPR, CCPA)",
       "User management via SCIM and SSO",
       "Domain verification, user analytics",
       "Custom data retention policies",

@@ -28,12 +28,10 @@ import {
 const BRAND_COLOR = "#ffffff";
 
 const COMPLIANCE_BADGES = [
-  { name: "SOC 2 Type II", description: "Annual audit completed" },
+  { name: "SOC 2 Type II controls", description: "Encryption, RBAC, audit logging" },
   { name: "GDPR", description: "EU data protection" },
   { name: "CCPA", description: "California privacy" },
-  { name: "HIPAA", description: "Healthcare ready" },
-  { name: "ISO 27001", description: "Information security" },
-  { name: "PCI DSS", description: "Payment security" },
+  { name: "Certification scoped per engagement", description: "SOC 2 Type II, ISO 27001, HIPAA with a BAA" },
 ];
 
 const SECURITY_FEATURES = [
@@ -99,7 +97,7 @@ const Security = () => {
         <title>Security - Enterprise-Grade Protection | Hanzo AI</title>
         <meta
           name="description"
-          content="SOC 2, HIPAA, GDPR compliant. Enterprise-grade security with end-to-end encryption, MFA, and comprehensive access controls. Your data is protected."
+          content="SOC 2 Type II controls, GDPR compliant. Enterprise-grade security with end-to-end encryption, MFA, and comprehensive access controls. Your data is protected."
         />
       </Helmet>
 
@@ -130,7 +128,7 @@ const Security = () => {
                 style={{ backgroundColor: `${BRAND_COLOR}20`, color: BRAND_COLOR }}
               >
                 <Shield className="w-3.5 h-3.5" />
-                SOC 2 Type II Certified
+                SOC 2 Type II controls
               </motion.div>
 
               <motion.h1
@@ -267,16 +265,16 @@ const Security = () => {
                   Built on secure foundations
                 </h2>
                 <p className="text-neutral-400 mb-8">
-                  Our infrastructure runs on SOC 2 compliant data centers with 24/7 physical
-                  security, redundant power, and isolated network architecture. Every component
-                  is designed with security as the primary requirement.
+                  Our infrastructure runs in data centers with 24/7 physical security, redundant
+                  power, and isolated network architecture. Every component is designed with
+                  security as the primary requirement.
                 </p>
 
                 <div className="space-y-4">
                   {[
                     { icon: Server, text: "KVM hardware-isolated virtual machines" },
                     { icon: Eye, text: "24/7 security monitoring and alerting" },
-                    { icon: Clock, text: "99.99% uptime SLA with automatic failover" },
+                    { icon: Clock, text: "Multi-region redundancy with automated failover" },
                     { icon: FileCheck, text: "Automated security patching and updates" },
                   ].map((item, index) => {
                     const Icon = item.icon;
@@ -383,12 +381,12 @@ const Security = () => {
                   Security for the most demanding organizations
                 </h2>
                 <p className="text-neutral-400 mb-6">
-                  Whether you're in healthcare, finance, or government, Hanzo meets the
+                  Whether you're in healthcare, finance, or government, Hanzo is built for the
                   security and compliance requirements of regulated industries.
                 </p>
                 <p className="text-neutral-400">
-                  Our security team works directly with enterprise customers to understand
-                  their unique requirements and implement appropriate controls.
+                  Formal certification — SOC 2 Type II, ISO 27001, HIPAA with a BAA — is scoped
+                  per enterprise engagement. Tell us what your procurement needs.
                 </p>
               </motion.div>
             </div>

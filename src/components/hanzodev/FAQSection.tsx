@@ -28,7 +28,7 @@ const faqs = [
   },
   {
     question: "How does Hanzo AI ensure code privacy?",
-    answer: "Your code never leaves your environment. Hanzo Dev runs locally with end-to-end encryption. For enterprise deployments, we offer complete data isolation and SOC 2 compliance.",
+    answer: "Your code never leaves your environment. Hanzo Dev runs locally with end-to-end encryption. For enterprise deployments, we offer complete data isolation and controls aligned to the SOC 2 Type II control set — encryption in transit and at rest, role-based access control, and audit logging. Formal certification is scoped per engagement.",
   },
 ];
 

@@ -179,12 +179,11 @@ const SolutionIndustries: React.FC = () => {
         ],
         caseStudy: {
           title: "AI-Powered Patient Care Platform",
-          description: "We developed a secure, HIPAA-compliant platform that uses AI to analyze patient data and provide real-time clinical decision support, improving outcomes and reducing costs.",
+          description: "We developed a secure platform that uses AI to analyze patient data and provide real-time clinical decision support, improving outcomes and reducing costs.",
           results: [
             "22% improvement in clinical outcomes",
             "35% reduction in readmission rates",
-            "40% time savings for clinical staff",
-            "100% HIPAA compliance maintained"
+            "40% time savings for clinical staff"
           ]
         }
       },

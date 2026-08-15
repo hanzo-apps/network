@@ -144,8 +144,8 @@ export const solutions = [
     title: "Industries",
     href: "/solutions/industries",
     items: [
-      { name: "Healthcare", href: "/solutions/industries/healthcare", description: "HIPAA-compliant AI" },
-      { name: "Finance", href: "/solutions/industries/finance", description: "SOC 2 compliant infrastructure" },
+      { name: "Healthcare", href: "/solutions/industries/healthcare", description: "Certification scoped per engagement" },
+      { name: "Finance", href: "/solutions/industries/finance", description: "SOC 2 Type II controls" },
       { name: "Retail", href: "/solutions/industries/retail", description: "Personalization and recommendations" },
       { name: "Enterprise", href: "/solutions/industries/enterprise", description: "Private cloud deployment" }
     ]

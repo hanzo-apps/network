@@ -86,8 +86,8 @@ const TrustedBy = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="p-4"
           >
-            <div className="text-3xl font-bold text-neutral-400 mb-2">99.99%</div>
-            <div className="text-neutral-400">Uptime SLA</div>
+            <div className="text-3xl font-bold text-neutral-400 mb-2">Multi-Region</div>
+            <div className="text-neutral-400">Redundancy with Automated Failover</div>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 10 }}

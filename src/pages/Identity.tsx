@@ -192,7 +192,7 @@ const Identity = () => {
               <ul className="space-y-2 text-neutral-300">
                 <li className="flex items-start">
                   <span className="text-neutral-400 mr-2">•</span>
-                  <span>SOC 2, GDPR, HIPAA, and PCI DSS compliance</span>
+                  <span>SOC 2 Type II controls, GDPR compliance, certification scoped per engagement</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-neutral-400 mr-2">•</span>
