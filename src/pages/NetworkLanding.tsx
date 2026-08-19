@@ -51,9 +51,9 @@ function GridCanvas() {
 
 const FEATURES = [
   {
-    icon: Lock,
-    title: "Verifiable Compute",
-    description: "NVIDIA TEE (Trusted Execution Environment) ensures every training run is cryptographically verifiable. Know exactly what ran on what hardware.",
+    icon: Cpu,
+    title: "CPU-Verifiable Proof of AI",
+    description: "Exact-integer execution transcripts let ordinary CPU validators challenge GPU-scale work without replaying the full workload. TEEs remain optional for confidential jobs.",
   },
   {
     icon: Network,
@@ -72,13 +72,13 @@ const FEATURES = [
   },
   {
     icon: Users,
-    title: "Open Provider Marketplace",
-    description: "Contribute idle GPU capacity and earn. Set your own pricing, availability windows, and hardware tiers.",
+    title: "Mine AI from Real Work",
+    description: "Attach proofs to AI workloads you already run, keep the customer fee, and earn declining AI mining rewards when A-Chain finalizes the work.",
   },
   {
     icon: Shield,
-    title: "On-Chain Model Registry",
-    description: "Model weights, training lineage, and evaluation results recorded on Lux L1. Immutable provenance for every Zen model.",
+    title: "Post-Quantum Omnichain Root",
+    description: "A-Chain is the only Proof of AI authority. The Plonky3-derived P3Q rollup settles its receipt on Z-Chain; Lux finality makes it portable to any supported destination.",
   },
 ];
 
@@ -100,7 +100,7 @@ const ECOSYSTEM = [
   {
     name: "Lux Network",
     href: "https://lux.network",
-    description: "L1 blockchain settlement layer. All Hanzo Network compute transactions settle on Lux — sub-second finality, post-quantum security.",
+    description: "The post-quantum base layer beneath Hanzo Proof of AI. P3Q settles A-Chain receipt transitions on Z-Chain; Quasar finalizes the A/Z root for any destination.",
     tag: "L1 Blockchain",
     color: "border-purple-500/30",
   },
@@ -117,7 +117,7 @@ const USE_CASES = [
   {
     icon: Brain,
     title: "Train Frontier Models",
-    description: "Distributed training across hundreds of GPUs. TEE attestation for every gradient update. Used to train Zen models on-chain.",
+    description: "Distributed training across hundreds of GPUs with committed integer traces, proof-bearing checkpoints, and optional confidential-compute attestation.",
     stat: "1.04T params on-chain",
   },
   {
@@ -141,10 +141,10 @@ const USE_CASES = [
 ];
 
 const HOW_IT_WORKS = [
-  { step: "01", title: "Submit Workload", desc: "Define compute requirements — GPU type, memory, region, duration. Sign with your Lux wallet." },
-  { step: "02", title: "Network Routing", desc: "Smart contracts match your workload to available providers. Pricing set by open market supply and demand." },
-  { step: "03", title: "TEE Execution", desc: "Your workload runs inside a Trusted Execution Environment. Hardware attestation generated at runtime." },
-  { step: "04", title: "On-Chain Settlement", desc: "Results and proofs recorded on Lux L1. Payment released to provider. Immutable audit trail." },
+  { step: "01", title: "Admit Useful Work", desc: "A customer or network service commits the model, input, deliverable, proof policy, reward, and payout destination on A-Chain before execution." },
+  { step: "02", title: "Execute and Commit", desc: "A CPU or GPU provider performs the real workload and commits its exact-integer output, transcript, and verifiable metering." },
+  { step: "03", title: "CPU-Validate", desc: "Validators replay small jobs or use post-commitment challenges and cheaper matrix checks. Confidential jobs may add TEE evidence." },
+  { step: "04", title: "Settle Omnichain", desc: "A-Chain PoAI consensus consumes the global nullifier. P3Q rolls the finalized receipt into Z-Chain; Lux PQ finality carries it to the bound destination for exactly-once payout." },
 ];
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
@@ -211,7 +211,7 @@ const NetworkLanding = () => {
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/60 text-xs font-medium mb-8">
               <div className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-              Mainnet Beta · Powered by Lux L1
+              Proof of AI · A-Chain Work · Z-Chain P3Q Settlement
             </div>
           </motion.div>
 
@@ -224,12 +224,12 @@ const NetworkLanding = () => {
 
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }}
             className="text-lg md:text-xl text-white/50 max-w-2xl mx-auto mb-4 leading-relaxed">
-            Verifiable compute for AI training and inference.
-            Like Solana — but purpose-built for AI workloads.
+            Real AI work becomes mineable AI.
+            Providers earn from useful workloads they already run.
           </motion.p>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.12 }}
             className="text-sm text-white/30 max-w-xl mx-auto mb-10">
-            NVIDIA TEE attestation · On-chain model registry · Open GPU marketplace · Lux L1 settlement
+            CPU-verifiable execution · 2T hard cap · 1T proof-earned · PQ omnichain settlement
           </motion.p>
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.15 }}
@@ -250,6 +250,35 @@ const NetworkLanding = () => {
 
         {/* Bottom fade */}
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent pointer-events-none" />
+      </section>
+
+      {/* AI Coin and Proof of AI */}
+      <section className="py-20 px-6 border-t border-white/5">
+        <div className="max-w-5xl mx-auto">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
+            <div className="text-xs font-semibold uppercase tracking-[0.15em] text-white/40 mb-4">Proof of AI</div>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-5">Compute once. Earn twice.</h2>
+            <p className="text-white/50 max-w-3xl mx-auto leading-relaxed">
+              Cloud providers keep their normal workload revenue and may also earn declining AI mining rewards by proving that a pre-admitted, useful workload was actually completed. A-Chain is the sole mining authority; P3Q settles its receipts on Z-Chain; Lux is the post-quantum root that makes them portable across chains.
+            </p>
+          </motion.div>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+            {[
+              { value: "2T AI", label: "Hard maximum supply" },
+              { value: "1T AI", label: "Permanent DAO allocation" },
+              { value: "1T AI", label: "PoAI mining + validators" },
+              { value: "Any chain", label: "Receipt-bound payout" },
+            ].map(item => (
+              <div key={item.label} className="p-5 rounded-2xl border border-white/8 bg-white/[0.025] text-center">
+                <div className="text-2xl md:text-3xl font-bold text-white mb-2">{item.value}</div>
+                <div className="text-xs text-white/40 leading-relaxed">{item.label}</div>
+              </div>
+            ))}
+          </div>
+          <p className="text-sm text-white/40 max-w-3xl mx-auto text-center leading-relaxed">
+            The proof-earned pool follows Bitcoin-style halving eras: up to 500B AI, then 250B, 125B, and so on. Raw GPU-hours, self-generated jobs, copied outputs, and signatures without execution evidence cannot mint AI.
+          </p>
+        </div>
       </section>
 
       {/* Stats */}
@@ -355,7 +384,7 @@ const NetworkLanding = () => {
             <div className="text-xs font-semibold uppercase tracking-[0.15em] text-white/40 mb-4">Ecosystem</div>
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">The whole stack.</h2>
             <p className="text-white/40 text-lg max-w-xl mx-auto">
-              Hanzo Network is the compute layer. Lux settles it. Zen models run on it. Zoo researches with it.
+              Hanzo Network is the compute market. A-Chain validates useful work. Z-Chain settles P3Q proofs. Lux finalizes it. Zen models run on it. Zoo researches with it.
             </p>
           </motion.div>
           <div className="grid md:grid-cols-2 gap-4">
@@ -433,13 +462,12 @@ const NetworkLanding = () => {
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
               className="p-8 rounded-2xl border border-white/10 bg-white/[0.025]">
               <div className="text-xs font-semibold uppercase tracking-[0.12em] text-white/40 mb-4">For GPU Providers</div>
-              <h3 className="text-3xl font-bold text-white mb-3">Earn from it.</h3>
+              <h3 className="text-3xl font-bold text-white mb-3">Mine AI from it.</h3>
               <p className="text-white/50 text-sm leading-relaxed mb-6">
-                Contribute idle GPU capacity to the network. Set your own pricing, availability, and hardware tiers.
-                Get paid instantly on Lux L1 for every compute second.
+                Connect existing cloud workloads or contribute idle CPU/GPU capacity. Keep customer revenue and earn AI when A-Chain PoAI consensus finalizes proof that the useful work was done.
               </p>
               <ul className="space-y-2 mb-8">
-                {["Set your own prices", "Instant Lux L1 settlement", "No lock-in contracts", "Hardware verification included"].map(f => (
+                {["Customer fees plus AI rewards", "CPU-verifiable work proofs", "Bitcoin-style declining emission", "Payout into any supported chain"].map(f => (
                   <li key={f} className="flex items-center gap-2 text-sm text-white/60">
                     <CheckCircle className="w-4 h-4 text-green-400/70 flex-shrink-0" />
                     {f}
@@ -464,7 +492,7 @@ const NetworkLanding = () => {
               AI infrastructure<br />reimagined.
             </h2>
             <p className="text-white/40 text-lg mb-10 max-w-xl mx-auto">
-              Verifiable. Decentralized. Open. The compute layer the AI era deserves.
+              Useful work. CPU-verifiable proofs. Post-quantum omnichain settlement. Mine AI by running AI.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <a href="https://cloud.hanzo.ai/signup" target="_blank" rel="noopener noreferrer"
