@@ -1,9 +1,10 @@
-import { type ClassValue, clsx } from 'clsx'
-
 /**
- * Join class names. Plain `clsx` — there is no utility framework left to
- * de-conflict, so the class-merging pass this used to run is gone with it.
+ * `cn` comes from @hanzo/ui, which is the one class-name composer in this
+ * estate. It used to be reimplemented here over clsx — a second answer to a
+ * question the component library already answers, and one more dependency to
+ * keep in step.
+ *
+ * Re-exported rather than removed so the 37 files importing `@/lib/utils` do
+ * not each grow an import of their own.
  */
-export function cn(...inputs: ClassValue[]) {
-  return clsx(inputs)
-}
+export { cn, type ClassValue } from '@hanzo/ui'
