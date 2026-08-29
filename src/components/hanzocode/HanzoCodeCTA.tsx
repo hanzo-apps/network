@@ -2,7 +2,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Download, ExternalLink, Github } from "lucide-react";
+import { Download, ExternalLink } from 'lucide-react'
+import { Github } from '@hanzo/ui/brands';
 
 const HanzoCodeCTA = () => {
   return (

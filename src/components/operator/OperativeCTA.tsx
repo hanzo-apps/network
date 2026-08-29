@@ -1,7 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Github, Twitter, ExternalLink } from "lucide-react";
+import { ExternalLink } from 'lucide-react'
+import { Github, Twitter } from '@hanzo/ui/brands';
 
 const OperativeCTA = () => {
   return (

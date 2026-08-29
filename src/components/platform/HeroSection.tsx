@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import ChromeText from "@/components/ui/chrome-text";
-import { Github, Terminal, Download } from "lucide-react";
+import { Terminal, Download } from 'lucide-react'
+import { Github } from '@hanzo/ui/brands';
 
 const HeroSection = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });

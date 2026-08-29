@@ -1,7 +1,8 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Github, CalendarDays, FileEdit, Trello, MessageSquare, Code } from "lucide-react";
+import { CalendarDays, FileEdit, MessageSquare, Code } from 'lucide-react'
+import { Github, Trello } from '@hanzo/ui/brands';
 
 const IntegrationCard = ({ icon, title, description }: { icon: React.ReactNode, title: string, description: string }) => (
   <div className="hz-card hz-row hz-ai-start hz-inline-4">

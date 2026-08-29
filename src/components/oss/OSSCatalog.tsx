@@ -1,20 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import {
-  Search,
-  Grid3X3,
-  List,
-  ChevronDown,
-  X,
-  Filter,
-  ExternalLink,
-  BookOpen,
-  Github,
-  GraduationCap,
-  Rocket,
-  Package,
-  Check,
-} from 'lucide-react';
+import { Search, Grid3X3, List, ChevronDown, Filter, ExternalLink, BookOpen, GraduationCap, Rocket, Package, Check } from 'lucide-react'
+import { X, Github } from '@hanzo/ui/brands';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import {

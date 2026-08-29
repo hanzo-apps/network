@@ -10,7 +10,8 @@ import CallToAction from "@/components/platform/CallToAction";
 import ZenBackground from "@/components/zen/ZenBackground";
 import ZenQuoteSection from "@/components/zen/ZenQuoteSection";
 import { motion } from "framer-motion";
-import { Github, Cloud, Server, Lock, Code2, Network, Terminal, ArrowRight } from "lucide-react";
+import { Cloud, Server, Lock, Code2, Network, Terminal, ArrowRight } from 'lucide-react'
+import { Github } from '@hanzo/ui/brands';
 import { Link } from "react-router-dom";
 
 

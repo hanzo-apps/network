@@ -1,7 +1,8 @@
 
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Github, Star, Download, Users } from "lucide-react";
+import { Star, Download, Users } from 'lucide-react'
+import { Github } from '@hanzo/ui/brands';
 import { Button } from "@/components/ui/button";
 
 const statsItems = [

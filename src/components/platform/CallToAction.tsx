@@ -3,7 +3,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import ChromeText from "@/components/ui/chrome-text";
-import { Github, ArrowRight } from "lucide-react";
+import { ArrowRight } from 'lucide-react'
+import { Github } from '@hanzo/ui/brands';
 
 const CallToAction = () => {
   return (

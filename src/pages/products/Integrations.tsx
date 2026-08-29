@@ -4,7 +4,8 @@ import Footer from "@/components/Footer";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Search, ExternalLink, Github, Plug } from "lucide-react";
+import { Search, ExternalLink, Plug } from 'lucide-react'
+import { Github } from '@hanzo/ui/brands';
 
 // Sample integrations data - in production, this would come from an API
 const integrationCategories = [

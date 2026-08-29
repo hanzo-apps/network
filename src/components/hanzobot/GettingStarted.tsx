@@ -1,7 +1,8 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Terminal, Github, CheckCircle } from "lucide-react";
+import { Terminal, CheckCircle } from 'lucide-react'
+import { Github } from '@hanzo/ui/brands';
 import { Button } from "@/components/ui/button";
 
 const GettingStarted = () => {

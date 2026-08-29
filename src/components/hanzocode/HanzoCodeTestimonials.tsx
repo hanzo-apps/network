@@ -1,7 +1,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Twitter } from "lucide-react";
+import { Twitter } from '@hanzo/ui/brands';
 
 const HanzoCodeTestimonials = () => {
   return (
