@@ -6,14 +6,6 @@ import { Button } from "@/components/ui/button";
 
 const timelineEvents = [
   {
-    year: "2014-2016",
-    title: "Origins: Verus Media & Crowdstart",
-    description: "Zach Kelling founded Verus Media and launched Crowdstart, a platform to harness crowd-driven data and AI to help businesses grow.",
-    icon: <Rocket className="text-neutral-400" />,
-    highlight: "Record-breaking product launches and significant crowdfunding success.",
-    link: { text: "Learn about our platform", url: "/platform" }
-  },
-  {
     year: "2016",
     title: "Reimagining as Hanzo",
     description: "The company formally incorporated as Hanzo AI, Inc., focusing on AI-powered marketing and development platforms.",
