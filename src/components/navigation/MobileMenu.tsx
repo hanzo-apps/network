@@ -42,7 +42,6 @@ const mobileNav = [
         title: "Company",
         items: [
           { title: "Team", href: "/team" },
-          { title: "Leadership", href: "/leadership" },
           { title: "Philosophy", href: "/philosophy" },
           { title: "Zen Models", href: "/zen" },
           { title: "Open Source", href: "/open-source" },

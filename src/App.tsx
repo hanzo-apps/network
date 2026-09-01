@@ -77,7 +77,6 @@ import Edge from "./pages/Edge";
 import Realtime from "./pages/Realtime";
 import Automations from "./pages/Automations";
 import NotFound from "./pages/NotFound";
-import Leadership from "./pages/Leadership";
 import Team from "./pages/Team";
 
 // New product taxonomy pages
@@ -140,7 +139,6 @@ const MarketingRoutes = () => {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignUpPage />} />
       <Route path="/status" element={<StatusPage />} />
-      <Route path="/leadership" element={<Leadership />} />
       <Route path="/referrals" element={<Referrals />} />
       <Route path="/open-source" element={<OpenSource />} />
       <Route path="/team" element={<Team />} />
