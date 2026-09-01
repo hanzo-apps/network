@@ -84,8 +84,8 @@ export default {
         },
       },
       fontFamily: {
-        sans: ["Inter", "sans-serif"],
-        display: ["Inter", "sans-serif"],
+        sans: ["Zen", "sans-serif"],
+        display: ["Zen", "sans-serif"],
         mono: ["JetBrains Mono", "monospace"],
         serif: ["Georgia", "serif"],
       },
