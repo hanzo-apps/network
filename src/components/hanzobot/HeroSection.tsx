@@ -2,7 +2,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Github, Star, ArrowRight } from "lucide-react";
+import { Star, ArrowRight } from 'lucide-react'
+import { Github } from '@hanzo/ui/brands';
 import ChromeText from "@/components/ui/chrome-text";
 
 const HeroSection = () => {

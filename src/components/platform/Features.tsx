@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Github, Terminal, Cloud, Database, RefreshCw, Globe, Server, Code2, Lock, Box, Network } from "lucide-react";
+import { ArrowRight, Terminal, Cloud, Database, RefreshCw, Globe, Server, Code2, Lock, Box, Network } from 'lucide-react'
+import { Github } from '@hanzo/ui/brands';
 import { Button } from "@/components/ui/button";
 
 const features = [

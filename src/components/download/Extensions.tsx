@@ -1,7 +1,8 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Chrome, Code } from "lucide-react";
+import { Code } from 'lucide-react'
+import { Chrome } from '@hanzo/ui/brands';
 import { Button } from "@/components/ui/button";
 
 const Extensions = () => {

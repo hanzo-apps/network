@@ -1,19 +1,8 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
-import {
-  ArrowRight,
-  Download,
-  Globe,
-  Monitor,
-  Cpu,
-  Shield,
-  Check,
-  Copy,
-  ExternalLink,
-  Apple,
-  Chrome,
-} from "lucide-react";
+import { ArrowRight, Download, Globe, Monitor, Cpu, Shield, Check, Copy, ExternalLink, Apple } from 'lucide-react'
+import { Chrome } from '@hanzo/ui/brands';
 
 const BRAND_COLOR = "#ffffff";
 

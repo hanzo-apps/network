@@ -2,7 +2,8 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Github, Star, GitFork, Heart, ArrowRight, ExternalLink, Code, Users } from "lucide-react";
+import { Star, GitFork, Heart, ArrowRight, ExternalLink, Code, Users } from 'lucide-react'
+import { Github } from '@hanzo/ui/brands';
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import OSSCatalog from "@/components/oss/OSSCatalog";

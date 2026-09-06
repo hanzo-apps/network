@@ -1,7 +1,8 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Github, Globe, Zap, ShieldCheck, Compass, Database, Cpu, Cloud } from "lucide-react";
+import { Globe, Zap, ShieldCheck, Compass, Database, Cpu, Cloud } from 'lucide-react'
+import { Github } from '@hanzo/ui/brands';
 
 const OperativeFeatures = () => {
   const features = [

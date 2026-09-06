@@ -1,7 +1,8 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Github, Users, Code } from "lucide-react";
+import { Users, Code } from 'lucide-react'
+import { Github } from '@hanzo/ui/brands';
 import { Button } from "@/components/ui/button";
 
 const CommunitySection = () => {

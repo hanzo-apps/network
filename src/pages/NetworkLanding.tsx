@@ -1,10 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import {
-  ArrowRight, Cpu, Globe, Shield, Zap, Network, Users,
-  Code2, Brain, Lock, BarChart3, ExternalLink, Github, CheckCircle,
-} from "lucide-react";
+import { ArrowRight, Cpu, Globe, Shield, Zap, Network, Users, Code2, Brain, Lock, BarChart3, ExternalLink, CheckCircle } from 'lucide-react'
+import { Github } from '@hanzo/ui/brands';
 
 // ─── Grid background canvas ──────────────────────────────────────────────────
 function GridCanvas() {

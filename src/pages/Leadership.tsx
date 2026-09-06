@@ -5,7 +5,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Briefcase, Database, BookOpen, Linkedin, Github, Twitter } from "lucide-react";
+import { Briefcase, Database, BookOpen } from 'lucide-react'
+import { Linkedin, Github, Twitter } from '@hanzo/ui/brands';
 import ChromeText from "@/components/ui/chrome-text";
 import { Toaster } from "@/components/ui/toaster";
 

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { ExternalLink, Github, MessageCircle, Users, BookOpen } from "lucide-react";
+import { ExternalLink, MessageCircle, Users, BookOpen } from 'lucide-react'
+import { Github } from '@hanzo/ui/brands';
 
 interface CommunityLink {
   type: "discord" | "github" | "docs" | "discussions" | "twitter" | "slack";

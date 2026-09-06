@@ -1,7 +1,8 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Chrome, Compass, LayoutGrid, Globe } from "lucide-react";
+import { Compass, LayoutGrid, Globe } from 'lucide-react'
+import { Chrome } from '@hanzo/ui/brands';
 import { Button } from "@/components/ui/button";
 
 const BrowserCard = ({ icon: Icon, title, description, buttonText }) => {

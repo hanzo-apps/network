@@ -1,7 +1,8 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Github, CalendarDays, FileEdit, Trello, MessageSquare, Code } from "lucide-react";
+import { CalendarDays, FileEdit, MessageSquare, Code } from 'lucide-react'
+import { Github, Trello } from '@hanzo/ui/brands';
 
 const IntegrationCard = ({ icon, title, description }: { icon: React.ReactNode, title: string, description: string }) => (
   <div className="flex items-start space-x-4 p-6 rounded-xl border border-gray-800 bg-gray-900/50">

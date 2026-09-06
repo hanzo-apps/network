@@ -4,27 +4,8 @@ import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
-import {
-  ArrowRight,
-  Code2,
-  Eye,
-  Box,
-  Video,
-  Music,
-  Zap,
-  ExternalLink,
-  Check,
-  Github,
-  ChevronDown,
-  Brain,
-  Layers,
-  Database,
-  Shield,
-  Globe,
-  BookOpen,
-  Terminal,
-  Download,
-} from "lucide-react";
+import { ArrowRight, Code2, Eye, Box, Video, Music, Zap, ExternalLink, Check, ChevronDown, Brain, Layers, Database, Shield, Globe, BookOpen, Terminal, Download } from 'lucide-react'
+import { Github } from '@hanzo/ui/brands';
 
 // Zen Coder lineup from zenlm.org
 const ZEN_CODER_MODELS = [

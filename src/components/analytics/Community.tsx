@@ -1,7 +1,8 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { motion, useAnimation } from "framer-motion";
-import { Github, ExternalLink, Users, BookOpen } from "lucide-react";
+import { ExternalLink, Users, BookOpen } from 'lucide-react'
+import { Github } from '@hanzo/ui/brands';
 import { Button } from "@/components/ui/button";
 
 const statsItems = [
