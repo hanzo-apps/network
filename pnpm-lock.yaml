@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@hanzo/design':
-        specifier: 0.3.3
-        version: 0.3.3
+        specifier: 0.4.6
+        version: 0.4.6
       '@hanzo/gui':
         specifier: 8.0.1
         version: 8.0.1(react-dom@19.2.8(react@19.2.8))(react-native@0.86.2(@babel/core@7.29.7)(@react-native/metro-config@0.86.2(@babel/core@7.29.7))(@types/react@19.2.17)(react@19.2.8))(react@19.2.8)
@@ -18,8 +18,8 @@ importers:
         specifier: 1.0.14
         version: 1.0.14(react@19.2.8)
       '@hanzo/ui':
-        specifier: 8.0.39
-        version: 8.0.39(gw2xrxg7vweayq7bsxdpjqrgiu)
+        specifier: 8.0.41
+        version: 8.0.41(4d0d22530b09157ec6ccb99ac2c97ea2)
       '@hanzogui/config':
         specifier: 8.0.1
         version: 8.0.1(@emotion/is-prop-valid@1.2.2)(react-dom@19.2.8(react@19.2.8))(react-native-reanimated@4.5.3(react-native-worklets@0.11.3(@babel/core@7.29.7)(@react-native/metro-config@0.86.2(@babel/core@7.29.7))(react-native@0.86.2(@babel/core@7.29.7)(@react-native/metro-config@0.86.2(@babel/core@7.29.7))(@types/react@19.2.17)(react@19.2.8))(react@19.2.8))(react-native@0.86.2(@babel/core@7.29.7)(@react-native/metro-config@0.86.2(@babel/core@7.29.7))(@types/react@19.2.17)(react@19.2.8))(react@19.2.8))(react@19.2.8)
@@ -652,8 +652,8 @@ packages:
       '@hanzo/gui': '>=7.2.2'
       react: '>=19'
 
-  '@hanzo/design@0.3.3':
-    resolution: {integrity: sha512-/8sJ7rU1ngGGljv/nsn55GqQd4HvvJIBvtiXRoh5UyRfn4fCS3FTuBjff7gYQfcL6g/Wpvdk24ArfZm8tojbWA==}
+  '@hanzo/design@0.4.6':
+    resolution: {integrity: sha512-kRjnGKsGqMfGTg2kMUv+pPRDryarYk85rMOoblIqshFIZJp48pCKYcdv1DmfxbNyKm+7CqvqD1NjY3HhNPUQ/A==}
     hasBin: true
 
   '@hanzo/event@0.3.4':
@@ -699,8 +699,8 @@ packages:
   '@hanzo/tokens@1.0.0':
     resolution: {integrity: sha512-My8shZPFXATfl81XdaN8QVqFgFxD82rzZOXkna7tMNC9I9Bof+qG8Chc48GO5pWMJvc6YpApRSqbvLY1vG68Dw==}
 
-  '@hanzo/ui@8.0.39':
-    resolution: {integrity: sha512-nGK9Y6W5FWD9DL/E7P71AuSLjki+A1JAy+cnkcCy6SGIHn8sOAFQPA+vJaqAj6Vtfcy0+Uh+VmG9PniHLwZT0g==}
+  '@hanzo/ui@8.0.41':
+    resolution: {integrity: sha512-0nmSH7eqRMm3B/4KvmgwgCKpNo1H93NT1MaEAOPHZ7GOG25+gYasx4phUGvsub5U8KECrck48Ew2Wx4yvjJELA==}
     peerDependencies:
       '@hanzo/canvas': '>=0.1.0'
       '@hanzo/cd': '>=0.1.0'
@@ -3782,7 +3782,7 @@ snapshots:
       '@hanzo/gui': 8.0.1(react-dom@19.2.8(react@19.2.8))(react-native@0.86.2(@babel/core@7.29.7)(@react-native/metro-config@0.86.2(@babel/core@7.29.7))(@types/react@19.2.17)(react@19.2.8))(react@19.2.8)
       react: 19.2.8
 
-  '@hanzo/design@0.3.3': {}
+  '@hanzo/design@0.4.6': {}
 
   '@hanzo/event@0.3.4(react@19.2.8)':
     optionalDependencies:
@@ -3875,7 +3875,7 @@ snapshots:
 
   '@hanzo/tokens@1.0.0': {}
 
-  '@hanzo/ui@8.0.39(gw2xrxg7vweayq7bsxdpjqrgiu)':
+  '@hanzo/ui@8.0.41(4d0d22530b09157ec6ccb99ac2c97ea2)':
     dependencies:
       '@hanzo/data': 1.2.2(@hanzo/gui@8.0.1(react-dom@19.2.8(react@19.2.8))(react-native@0.86.2(@babel/core@7.29.7)(@react-native/metro-config@0.86.2(@babel/core@7.29.7))(@types/react@19.2.17)(react@19.2.8))(react@19.2.8))(react@19.2.8)
       '@hanzo/gui': 8.0.1(react-dom@19.2.8(react@19.2.8))(react-native@0.86.2(@babel/core@7.29.7)(@react-native/metro-config@0.86.2(@babel/core@7.29.7))(@types/react@19.2.17)(react@19.2.8))(react@19.2.8)

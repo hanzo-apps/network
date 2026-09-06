@@ -3,7 +3,8 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Mail, MapPin, Phone, MessageSquare, Send, Github, Linkedin, Twitter, Facebook, Instagram } from "lucide-react";
+import { Mail, MapPin, Phone, MessageSquare, Send } from 'lucide-react'
+import { Github, Linkedin, Twitter, Facebook, Instagram } from '@hanzo/ui/brands';
 import { Button } from "@/components/ui/button";
 
 const Contact = () => {

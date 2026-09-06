@@ -1,7 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Github, ExternalLink, Heart, ArrowRight, Rocket, Network } from "lucide-react";
+import { ExternalLink, Heart, ArrowRight, Rocket, Network } from 'lucide-react'
+import { Github } from '@hanzo/ui/brands';
 
 // GitHub organizations
 const githubOrgs = [

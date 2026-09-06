@@ -2,17 +2,8 @@ import { BRAND } from '@/lib/brand';
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
-import {
-  ArrowRight,
-  Github,
-  Terminal,
-  Server,
-  Database,
-  Lock,
-  Zap,
-  Check,
-  Copy,
-} from "lucide-react";
+import { ArrowRight, Terminal, Server, Database, Lock, Zap, Check, Copy } from 'lucide-react'
+import { Github } from '@hanzo/ui/brands';
 
 
 const FEATURES = [

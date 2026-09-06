@@ -1,9 +1,7 @@
 
 import { motion } from "framer-motion";
-import { 
-  MessageSquare, Workflow, Code, Cpu, Database, Search, 
-  Server, Terminal, FileCode, Github, Zap, Lock, Globe 
-} from "lucide-react";
+import { MessageSquare, Workflow, Code, Cpu, Database, Search, Server, Terminal, FileCode, Zap, Lock, Globe } from 'lucide-react'
+import { Github } from '@hanzo/ui/brands';
 import { Button } from "./ui/button";
 import { useState } from "react";
 

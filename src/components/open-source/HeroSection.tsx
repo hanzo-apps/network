@@ -2,7 +2,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Github, Star, GitBranch } from "lucide-react";
+import { Star, GitBranch } from 'lucide-react'
+import { Github } from '@hanzo/ui/brands';
 
 const HeroSection = () => {
   return (

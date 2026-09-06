@@ -1,6 +1,7 @@
 
 import React from "react";
-import { Cloud, Database, Github, Server, HardDrive, Boxes, Box, Network, Link2 } from "lucide-react";
+import { Cloud, Database, Server, HardDrive, Boxes, Box, Network, Link2 } from 'lucide-react'
+import { Github } from '@hanzo/ui/brands';
 
 export const iconMap: Record<string, React.ComponentType<any>> = {
   "cloud": Cloud,
