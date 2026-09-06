@@ -12,7 +12,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       <input
         type={type}
         className={cn(
-          "hz-row hz-bh-6 hz-w-full hz-r-md hz-bordered hz-bg hz-px-3 hz-py-2 hz-t-sm",
+          "hz-row hz-bh-6 hz-w-full hz-r-md hz-bordered hz-bg hz-px-3 hz-py-2 hz-t-base",
           className
         )}
         ref={ref}

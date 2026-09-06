@@ -62,7 +62,7 @@ const Security = () => {
               <p className="hz-fg-soft hz-mb-6">
                 Our security team works around the clock to ensure your applications and data are protected. We employ industry-leading practices and regularly undergo independent security audits.
               </p>
-              <Button variant="outline" className="hz-bg-none hz-fg hz-bordered hz-hoverable">
+              <Button asChild variant="outline" className="hz-bg-none hz-fg hz-bordered hz-hoverable">
                 <a href="https://hanzo.ai/security">Security Details</a>
               </Button>
             </div>

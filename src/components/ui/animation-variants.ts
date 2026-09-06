@@ -1,6 +1,9 @@
 
 import { Variants } from "framer-motion";
 
+/** A cubic bezier is four numbers, and the animator wants the arity. */
+type Bezier = [number, number, number, number];
+
 // Animation timing presets (in seconds)
 export const timing = {
   fast: 0.3,
@@ -9,7 +12,7 @@ export const timing = {
 };
 
 // Animation curves
-export const curves = {
+export const curves: Record<string, Bezier> = {
   snappy: [0.2, 0.8, 0.2, 1],
   bouncy: [0.22, 1.28, 0, 1],
   smooth: [0.4, 0, 0.2, 1],
@@ -23,7 +26,7 @@ export const createAnimationVariant = (
     duration?: number;
     delay?: number;
     staggerChildren?: number;
-    curve?: number[];
+    curve?: Bezier;
     distance?: number;
     blur?: number;
   }

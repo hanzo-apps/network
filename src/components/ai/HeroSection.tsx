@@ -92,7 +92,7 @@ const HeroSection = () => {
               />
               <Button
                 type="submit"
-                className="hz-btn hz-btn-ghost hz-abs hz-gap-2 hz-bg-inverse"
+                className="hz-btn hz-btn-ghost hz-abs hz-right-0 hz-center-y hz-mr-2 hz-gap-2 hz-bg-inverse"
                 >
                 Ask Hanzo
                 <ArrowUp className="hz-sq-2" />
@@ -128,7 +128,7 @@ const HeroSection = () => {
       <AnimatePresence>
         {showMacOSPromo && (
           <motion.div
-            initial={{ opacity: 0, y: 20, scale: 0.95 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.3, delay: 1 }}

@@ -26,7 +26,7 @@ const CallToAction = () => {
             Join thousands of developers building and scaling applications on Hanzo's global infrastructure.
           </p>
           
-          <Button 
+          <Button asChild 
             size="lg"
             className="hz-fg hz-px-6 hz-py-5 hz-r-lg hz-t-lg hz-w-medium hz-shadow-lg hz-transition"
           >

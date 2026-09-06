@@ -245,7 +245,7 @@ const Careers = () => {
                   <p className="hz-t-sm hz-fg-muted">Meet the team and discuss next steps</p>
                 </div>
               </div>
-              <Button 
+              <Button asChild 
                 className=""
               >
                 <a href="#open-positions">Browse Open Positions</a>

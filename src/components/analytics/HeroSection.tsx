@@ -58,10 +58,10 @@ const HeroSection = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="hz-col-row hz-gap-4 hz-jc-center hz-mt-6"
         >
-          <Button size="lg" className="hz-t-lg hz-px-6 hz-border-none">
+          <Button asChild size="lg" className="hz-t-lg hz-px-6 hz-border-none">
             <a href="#start-free-trial">Start Free Trial</a>
           </Button>
-          <Button size="lg" variant="outline" className="hz-t-lg hz-px-6">
+          <Button asChild size="lg" variant="outline" className="hz-t-lg hz-px-6">
             <a href="#request-demo" className="hz-row hz-ai-center">
               Request Demo <ArrowRight className="hz-sq-3 hz-ml-2" />
             </a>

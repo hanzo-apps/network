@@ -2,7 +2,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Chrome, Globe } from "lucide-react";
+import { ArrowRight, Globe } from 'lucide-react'
+import { Chrome } from '@hanzo/ui/brands';
 import ChromeText from "@/components/ui/chrome-text";
 
 const HanzoExtensionHero = () => {
@@ -29,7 +30,7 @@ const HanzoExtensionHero = () => {
           </p>
           
           <div className="hz-row hz-wrap hz-jc-center hz-gap-4 hz-mb-7">
-            <Button 
+            <Button asChild 
               size="lg"
               className="hz-fg hz-px-6 hz-py-5 hz-r-lg hz-t-lg hz-w-medium"
             >
@@ -40,7 +41,7 @@ const HanzoExtensionHero = () => {
               </a>
             </Button>
             
-            <Button 
+            <Button asChild 
               size="lg"
               variant="outline"
               className="hz-border-strong hz-fg hz-px-6 hz-py-5 hz-r-lg hz-t-lg hz-w-medium hz-hoverable"

@@ -1,7 +1,8 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Github, Users, Code } from "lucide-react";
+import { Users, Code } from 'lucide-react'
+import { Github } from '@hanzo/ui/brands';
 import { Button } from "@/components/ui/button";
 
 const CommunitySection = () => {
@@ -38,7 +39,7 @@ const CommunitySection = () => {
             <p className="hz-fg-soft hz-mb-5">
               Join 12,000+ developers discussing Hanzo projects and AI development.
             </p>
-            <Button className="hz-w-full hz-bg-raised hz-hoverable" size="sm">
+            <Button asChild className="hz-w-full hz-bg-raised hz-hoverable" size="sm">
               <a href="https://discord.gg/XthHQQj" target="_blank" rel="noopener noreferrer">Join Discord</a>
             </Button>
           </motion.div>
@@ -57,7 +58,7 @@ const CommunitySection = () => {
             <p className="hz-fg-soft hz-mb-5">
               Ask questions, share ideas, and collaborate on code with our maintainers.
             </p>
-            <Button className="hz-w-full hz-bg-raised hz-hoverable" size="sm">
+            <Button asChild className="hz-w-full hz-bg-raised hz-hoverable" size="sm">
               <a href="https://github.com/hanzoai/platform/discussions" target="_blank" rel="noopener noreferrer">Go to Discussions</a>
             </Button>
           </motion.div>
@@ -76,7 +77,7 @@ const CommunitySection = () => {
             <p className="hz-fg-soft hz-mb-5">
               Help us improve Hanzo by contributing code, documentation, or ideas.
             </p>
-            <Button className="hz-w-full hz-bg-raised hz-hoverable" size="sm">
+            <Button asChild className="hz-w-full hz-bg-raised hz-hoverable" size="sm">
               <a href="https://github.com/hanzoai/platform/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">Contributor Guide</a>
             </Button>
           </motion.div>

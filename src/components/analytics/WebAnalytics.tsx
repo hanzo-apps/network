@@ -1,6 +1,6 @@
 
 import React, { useEffect, useRef, useState } from "react";
-import { motion, useAnimation } from "framer-motion";
+import { motion, useAnimation, Variants } from "framer-motion";
 import { LineChart, Users, Filter, Layers, Activity } from "lucide-react";
 
 const features = [
@@ -58,7 +58,7 @@ const WebAnalytics = () => {
     };
   }, [controls, animationTriggered]);
 
-  const lineVariants = {
+  const lineVariants: Variants = {
     initial: {
       pathLength: 0
     },
@@ -71,7 +71,7 @@ const WebAnalytics = () => {
     }
   };
 
-  const dataPointVariants = {
+  const dataPointVariants: Variants = {
     initial: {
       opacity: 0,
       scale: 0

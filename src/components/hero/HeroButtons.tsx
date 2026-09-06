@@ -20,7 +20,7 @@ const HeroButtons: React.FC<HeroButtonsProps> = ({ titleAnimationComplete }) => 
         transitionDelay: "0.35s"
       }}
     >
-      <Button 
+      <Button asChild 
         size="sm" 
         variant="outline" 
         radius="full"
@@ -31,7 +31,7 @@ const HeroButtons: React.FC<HeroButtonsProps> = ({ titleAnimationComplete }) => 
           Our models
         </a>
       </Button>
-      <Button 
+      <Button asChild 
         size="sm" 
         radius="full"
         className="hz-bg-inverse hz-fg-inverse hz-bordered hz-border-strong hz-transition hz-bh-6 hz-hoverable"

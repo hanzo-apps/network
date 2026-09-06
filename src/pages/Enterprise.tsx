@@ -56,13 +56,13 @@ const Enterprise = () => {
             </p>
             
             <div className="hz-col-row hz-gap-4 hz-jc-center">
-              <Button size="lg" className="hz-bg-inverse hz-fg-inverse hz-px-6 hz-py-3 hz-hoverable">
+              <Button asChild size="lg" className="hz-bg-inverse hz-fg-inverse hz-px-6 hz-py-3 hz-hoverable">
                 <a href="/contact" className="hz-row hz-ai-center">
                   <Phone className="hz-sq-3 hz-mr-2" />
                   Contact Sales
                 </a>
               </Button>
-              <Button size="lg" variant="outline" className="hz-fg hz-px-6 hz-py-3 hz-hoverable">
+              <Button asChild size="lg" variant="outline" className="hz-fg hz-px-6 hz-py-3 hz-hoverable">
                 <a href="/pricing">View Pricing</a>
               </Button>
             </div>
@@ -129,12 +129,12 @@ const Enterprise = () => {
                 that meets your organization's unique needs.
               </p>
               <div className="hz-col-row hz-gap-4 hz-jc-center">
-                <Button size="lg" className="hz-bg-inverse hz-fg-inverse hz-px-6 hz-py-3 hz-hoverable">
+                <Button asChild size="lg" className="hz-bg-inverse hz-fg-inverse hz-px-6 hz-py-3 hz-hoverable">
                   <a href="mailto:enterprise@hanzo.ai" className="hz-row hz-ai-center">
                     Schedule Demo
                   </a>
                 </Button>
-                <Button size="lg" variant="outline" className="hz-fg hz-px-6 hz-py-3 hz-hoverable">
+                <Button asChild size="lg" variant="outline" className="hz-fg hz-px-6 hz-py-3 hz-hoverable">
                   <a href="/contact">Contact Us</a>
                 </Button>
               </div>

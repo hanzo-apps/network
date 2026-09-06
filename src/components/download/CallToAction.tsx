@@ -2,7 +2,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowDown, Apple, Chrome, Terminal } from "lucide-react";
+import { ArrowDown, Apple, Terminal } from 'lucide-react'
+import { Chrome } from '@hanzo/ui/brands';
 
 const CallToAction = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });

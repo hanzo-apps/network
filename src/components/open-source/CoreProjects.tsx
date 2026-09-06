@@ -1,7 +1,8 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Github, Star, GitBranch, Terminal, Server, Bot } from "lucide-react";
+import { Star, GitBranch, Terminal, Server, Bot } from 'lucide-react'
+import { Github } from '@hanzo/ui/brands';
 import { Button } from "@/components/ui/button";
 
 const CoreProjects = () => {
@@ -59,7 +60,7 @@ const CoreProjects = () => {
               </div>
             </div>
             <div className="hz-row hz-inline-3">
-              <Button 
+              <Button asChild 
                 className="hz-grow hz-bg-raised hz-hoverable"
                 size="sm"
               >
@@ -67,7 +68,7 @@ const CoreProjects = () => {
                   <Github className="hz-sq-2 hz-mr-2" /> Repository
                 </a>
               </Button>
-              <Button 
+              <Button asChild 
                 className="hz-grow"
                 variant="outline"
                 size="sm"
@@ -114,7 +115,7 @@ const CoreProjects = () => {
               </div>
             </div>
             <div className="hz-row hz-inline-3">
-              <Button 
+              <Button asChild 
                 className="hz-grow hz-bg-raised hz-hoverable"
                 size="sm"
               >
@@ -122,7 +123,7 @@ const CoreProjects = () => {
                   <Github className="hz-sq-2 hz-mr-2" /> Repository
                 </a>
               </Button>
-              <Button 
+              <Button asChild 
                 className="hz-grow"
                 variant="outline"
                 size="sm"

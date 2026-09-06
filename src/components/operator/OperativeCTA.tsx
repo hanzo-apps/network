@@ -1,7 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Github, Twitter, ExternalLink } from "lucide-react";
+import { ExternalLink } from 'lucide-react'
+import { Github, Twitter } from '@hanzo/ui/brands';
 
 const OperativeCTA = () => {
   return (
@@ -28,13 +29,13 @@ const OperativeCTA = () => {
             </p>
             
             <div className="hz-col-row hz-jc-center">
-              <Button size="sm" className="hz-t-lg hz-px-4 hz-py-2">
+              <Button asChild size="sm" className="hz-t-lg hz-px-4 hz-py-2">
                 <a href="https://github.com/hanzoai/operative" className="hz-row hz-ai-center hz-gap-2">
                   <Github className="hz-sq-3" />
                   Star on GitHub
                 </a>
               </Button>
-              <Button size="sm" variant="outline" className="hz-t-lg hz-px-4 hz-py-2 hz-fg hz-bg-surface hz-hoverable">
+              <Button asChild size="sm" variant="outline" className="hz-t-lg hz-px-4 hz-py-2 hz-fg hz-bg-surface hz-hoverable">
                 <a href="https://discord.gg/XthHQQj" className="hz-row hz-ai-center hz-gap-2">
                   Join Discord Community
                 </a>

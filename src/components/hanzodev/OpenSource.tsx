@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Github, ExternalLink, MessageCircle } from "lucide-react";
+import { ExternalLink, MessageCircle } from 'lucide-react'
+import { Github } from '@hanzo/ui/brands';
 
 
 const OpenSource = () => {

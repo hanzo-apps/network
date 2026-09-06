@@ -26,7 +26,7 @@ const CallToAction = () => {
             Join the revolution of AI-driven development. Hanzo gives your team the tools, platform, and support needed to innovate fearlessly, deploy instantly, and scale infinitely.
           </p>
           
-          <Button 
+          <Button asChild 
             size="lg"
             className="hz-bg-inverse hz-fg-inverse hz-px-6 hz-py-5 hz-r-lg hz-t-lg hz-w-medium hz-shadow-lg hz-transition hz-hoverable"
           >

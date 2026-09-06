@@ -81,7 +81,7 @@ const TimelineEvent = ({ event, index }) => {
           <div className="hz-card hz-mb-5">
             <p className="hz-fg-soft hz-italic">"{event.highlight}"</p>
           </div>
-          <Button variant="outline" className="hz-border-strong hz-fg hz-hoverable">
+          <Button asChild variant="outline" className="hz-border-strong hz-fg hz-hoverable">
             <a href={event.link.url}>{event.link.text}</a>
           </Button>
         </div>

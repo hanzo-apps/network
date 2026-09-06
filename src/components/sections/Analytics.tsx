@@ -1,10 +1,10 @@
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { BarChart, LineChart, PieChart, Activity, Users, Globe, Zap, Brain, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Analytics = () => {
   // Container animation variants
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: {
       opacity: 0
     },
@@ -18,7 +18,7 @@ const Analytics = () => {
   };
 
   // Item animation variants
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: {
       opacity: 0,
       y: 30
@@ -35,7 +35,7 @@ const Analytics = () => {
   };
 
   // Hover animation variants
-  const hoverVariants = {
+  const hoverVariants: Variants = {
     hover: {
       scale: 1.03,
       boxShadow: "0 10px 30px -5px rgba(0, 0, 0, 0.3)",
@@ -56,7 +56,7 @@ const Analytics = () => {
   };
 
   // User Insights section animation variants
-  const userInsightsVariants = {
+  const userInsightsVariants: Variants = {
     hidden: {
       opacity: 0
     },
@@ -68,7 +68,7 @@ const Analytics = () => {
       }
     }
   };
-  const userInsightItemVariants = {
+  const userInsightItemVariants: Variants = {
     hidden: {
       opacity: 0,
       y: 20,
@@ -87,7 +87,7 @@ const Analytics = () => {
   };
 
   // AI Analytics section animation variants
-  const aiAnalyticsVariants = {
+  const aiAnalyticsVariants: Variants = {
     hidden: {
       opacity: 0
     },
@@ -99,7 +99,7 @@ const Analytics = () => {
       }
     }
   };
-  const aiAnalyticsItemVariants = {
+  const aiAnalyticsItemVariants: Variants = {
     hidden: {
       opacity: 0,
       x: -15,
@@ -118,7 +118,7 @@ const Analytics = () => {
   };
 
   // Animation variants for the milestone progress
-  const milestoneLineVariants = {
+  const milestoneLineVariants: Variants = {
     hidden: {
       width: 0
     },
@@ -131,7 +131,7 @@ const Analytics = () => {
       }
     })
   };
-  const milestoneCircleVariants = {
+  const milestoneCircleVariants: Variants = {
     hidden: {
       scale: 0.8,
       opacity: 0.5,

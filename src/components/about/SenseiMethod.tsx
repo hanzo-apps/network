@@ -68,7 +68,7 @@ const SenseiMethod = () => {
               </div>
             </div>
             
-            <Button 
+            <Button asChild 
               className="hz-fg"
             >
               <a href="https://sensei.group" target="_blank" rel="noopener noreferrer" className="hz-row hz-ai-center">

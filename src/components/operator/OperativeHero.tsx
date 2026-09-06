@@ -33,10 +33,10 @@ const OperativeHero = () => {
             </p>
 
             <div className="hz-col-row hz-mt-6 hz-gap-4 hz-jc-center">
-              <Button size="lg" className="hz-t-lg hz-px-6">
+              <Button asChild size="lg" className="hz-t-lg hz-px-6">
                 <a href="#get-started">Get Started</a>
               </Button>
-              <Button size="lg" variant="outline" className="hz-t-lg hz-px-6 hz-fg hz-bg-surface hz-hoverable">
+              <Button asChild size="lg" variant="outline" className="hz-t-lg hz-px-6 hz-fg hz-bg-surface hz-hoverable">
                 <a href="https://docs.hanzo.ai/operative" className="hz-row hz-ai-center hz-gap-2">
                   <Terminal className="hz-sq-3" />
                   View Docs

@@ -218,6 +218,8 @@
 .hz-bw-6 { width: 2.5rem; }  .hz-bh-6 { height: 2.5rem; }
 .hz-bw-7 { width: 3rem; }    .hz-bh-7 { height: 3rem; }
 .hz-bw-8 { width: 4rem; }    .hz-bh-8 { min-height: 4rem; }
+/* A filter rail / sidebar column. Wide enough for a label and its count. */
+.hz-bw-rail { width: 16rem; flex: none; }
 .hz-h-header { min-height: var(--header-height); }
 
 /* Square boxes — icons, avatars, marks. Icons never carry a bare pixel size. */
@@ -410,7 +412,9 @@
 .hz-btn-primary {
   background: var(--primary);
   color: var(--primary-foreground);
-  border-color: var(--primary);
+  /* The fill IS the button. A border the same colour as the fill paints
+     nothing — transparent says so instead of tripping border scanners. */
+  border-color: transparent;
 }
 .hz-btn-primary:hover { opacity: .88; background: var(--primary); }
 .hz-btn-ghost { border-color: transparent; }
@@ -438,11 +442,10 @@
   transition: color var(--duration-fast, 150ms) var(--ease-out, ease);
 }
 .hz-link:hover { color: var(--foreground); }
-/* Any link or button that is a real tap target gets the 44px box on touch. */
-@media (pointer: coarse) {
-  .hz-tap { display: inline-flex; align-items: center; min-height: 44px; }
-}
-.hz-tap { display: inline-flex; align-items: center; min-height: 44px; }
+/* Any link or button that is a real tap target gets the 44px box — both
+   axes, every pointer; a mouse user's fine motor day is not a reason to
+   shrink the box. */
+.hz-tap { display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; }
 
 .hz-input {
   width: 100%;
@@ -457,6 +460,10 @@
 }
 .hz-input::placeholder { color: var(--text-tertiary); }
 .hz-input:focus-visible { outline: 2px solid var(--ring); outline-offset: 1px; }
+
+/* iOS zooms the page on focusing any control under 16px. No control renders
+   smaller than the base size, anywhere, at any width. */
+input, textarea, select { font-size: max(var(--text-base, 1rem), 1rem); }
 
 /* ── behaviour ────────────────────────────────────────────────────────── */
 

@@ -122,10 +122,10 @@ const Karma = () => {
             duration: 0.5,
             delay: 0.4
           }} className="hz-row hz-gap-4">
-              <Button variant="outline" className="hz-fg hz-bg-surface hz-hoverable">
+              <Button asChild variant="outline" className="hz-fg hz-bg-surface hz-hoverable">
                 <a href="/leadership">Our Leadership</a>
               </Button>
-              <Button variant="outline" className="hz-fg hz-bg-surface hz-hoverable">
+              <Button asChild variant="outline" className="hz-fg hz-bg-surface hz-hoverable">
                 <a href="/careers">Join Our Team</a>
               </Button>
             </motion.div>

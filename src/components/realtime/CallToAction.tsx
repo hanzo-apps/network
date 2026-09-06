@@ -53,7 +53,7 @@ const CallToAction = () => {
           >
             Start Building <ArrowRight className="hz-sq-3 hz-ml-2" />
           </Button>
-          <Button 
+          <Button asChild 
             size="lg" 
             variant="outline" 
             className="hz-fg hz-px-6 hz-py-5 hz-t-lg hz-w-full hz-hoverable"

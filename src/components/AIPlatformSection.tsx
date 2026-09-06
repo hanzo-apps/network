@@ -92,7 +92,7 @@ const AIPlatformSection = () => {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="hz-align-center"
         >
-          <Button
+          <Button asChild
             size="lg"
             className="hz-r-full"
           >

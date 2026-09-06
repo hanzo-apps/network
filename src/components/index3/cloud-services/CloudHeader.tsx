@@ -52,7 +52,7 @@ const CloudHeader: React.FC<CloudHeaderProps> = ({ mousePosition, containerRef }
         transition={{ duration: 0.5, delay: 0.2 }}
         className="hz-mt-6"
       >
-        <Button size="lg" variant="outline" className="hz-fg hz-bg hz-whitespace-nowrap hz-hoverable">
+        <Button asChild size="lg" variant="outline" className="hz-fg hz-bg hz-whitespace-nowrap hz-hoverable">
           <a href="/cloud">Explore Cloud</a>
         </Button>
       </motion.div>

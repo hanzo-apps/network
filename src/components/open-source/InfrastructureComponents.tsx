@@ -1,7 +1,8 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Github, Star, GitBranch, GitMerge, Database, Brain, Zap } from "lucide-react";
+import { Star, GitBranch, GitMerge, Database, Brain, Zap } from 'lucide-react'
+import { Github } from '@hanzo/ui/brands';
 import { Button } from "@/components/ui/button";
 
 const InfrastructureComponents = () => {
@@ -53,7 +54,7 @@ const InfrastructureComponents = () => {
                 <span>Rust</span>
               </div>
             </div>
-            <Button 
+            <Button asChild 
               size="sm" 
               className="hz-w-full hz-bg-raised hz-hoverable"
             >
@@ -92,7 +93,7 @@ const InfrastructureComponents = () => {
                 <span>C++/Python</span>
               </div>
             </div>
-            <Button 
+            <Button asChild 
               size="sm" 
               className="hz-w-full hz-bg-raised hz-hoverable"
             >
@@ -131,7 +132,7 @@ const InfrastructureComponents = () => {
                 <span>Go</span>
               </div>
             </div>
-            <Button 
+            <Button asChild 
               size="sm" 
               className="hz-w-full hz-bg-raised hz-hoverable"
             >

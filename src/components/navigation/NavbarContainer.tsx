@@ -13,7 +13,7 @@ const NavbarContainer = ({ children, isScrolled }: NavbarContainerProps) => {
   return (
     <nav
       className={cn(
-        "hz-fixed hz-w-full hz-z-overlay hz-transition",
+        "hz-sticky hz-w-full hz-z-overlay hz-transition",
         isScrolled ? "hz-glass hz-shadow" : "hz-glass",
         getGlassClass()
       )}

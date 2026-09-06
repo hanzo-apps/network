@@ -44,7 +44,7 @@ const PlatformHeader: React.FC = () => {
         transition={{ duration: 0.5, delay: 0.2 }}
         className="hz-mt-6"
       >
-        <Button size="lg" variant="outline" className="hz-fg">
+        <Button asChild size="lg" variant="outline" className="hz-fg">
           <a href="/solutions">Explore Solutions</a>
         </Button>
       </motion.div>

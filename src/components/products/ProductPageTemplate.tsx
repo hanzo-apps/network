@@ -5,59 +5,8 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Link } from "react-router-dom";
-import {
-  Github,
-  BookOpen,
-  Terminal,
-  Copy,
-  Check,
-  ExternalLink,
-  ArrowRight,
-  Sparkles,
-  Zap,
-  Database,
-  Cpu,
-  Clock,
-  Brain,
-  Activity,
-  Layers,
-  LayoutGrid,
-  Key,
-  Search,
-  HardDrive,
-  FileJson,
-  BarChart3,
-  Boxes,
-  Shield,
-  ListTodo,
-  ListOrdered,
-  Radio,
-  BookOpen as Notebook,
-  GitBranch,
-  Dumbbell,
-  SlidersHorizontal,
-  Rocket,
-  Archive,
-  CheckCircle,
-  LineChart,
-  ScrollText,
-  Route,
-  PieChart,
-  Network,
-  UserCheck,
-  KeyRound,
-  ShoppingCart,
-  MessageSquare,
-  Workflow,
-  LayoutDashboard,
-  Cloud,
-  Globe,
-  Bot,
-  Monitor,
-  Image,
-  Music,
-  Video
-} from "lucide-react";
+import { BookOpen, Terminal, Copy, Check, ExternalLink, ArrowRight, Sparkles, Zap, Database, Cpu, Clock, Brain, Activity, Layers, LayoutGrid, Key, Search, HardDrive, FileJson, BarChart3, Boxes, Shield, ListTodo, ListOrdered, Radio, BookOpen as Notebook, GitBranch, Dumbbell, SlidersHorizontal, Rocket, Archive, CheckCircle, LineChart, ScrollText, Route, PieChart, Network, UserCheck, KeyRound, ShoppingCart, MessageSquare, Workflow, LayoutDashboard, Cloud, Globe, Bot, Monitor, Image, Music, Video } from 'lucide-react'
+import { Github } from '@hanzo/ui/brands';
 import type { Product, ProductCategory } from "@/data/product-taxonomy";
 import { getProductsByCategory } from "@/data/product-taxonomy";
 import { GridLines, BlueprintLine, ArchitecturalBox } from "@/components/ui/architectural-elements";

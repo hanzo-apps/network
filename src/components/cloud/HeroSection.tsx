@@ -39,11 +39,11 @@ const HeroSection = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="hz-col-row hz-gap-4 hz-jc-center hz-mt-6"
         >
-          <Button size="lg" className="hz-t-lg hz-px-6 hz-border-none">
+          <Button asChild size="lg" className="hz-t-lg hz-px-6 hz-border-none">
             <a href="https://dashboard.hanzo.cloud">Deploy Now</a>
           </Button>
           
-          <Button 
+          <Button asChild 
             variant="outline"
             size="lg" 
             className="hz-t-lg hz-px-6 hz-fg hz-border-strong hz-hoverable"

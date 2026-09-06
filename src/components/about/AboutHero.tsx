@@ -32,7 +32,7 @@ const AboutHero = () => {
           </p>
           
           <div className="hz-row hz-wrap hz-jc-center hz-gap-4 hz-mb-7">
-            <Button 
+            <Button asChild 
               size="lg"
               className="hz-fg hz-px-6 hz-py-5 hz-r-lg hz-t-lg hz-w-medium"
             >
@@ -42,7 +42,7 @@ const AboutHero = () => {
               </a>
             </Button>
             
-            <Button 
+            <Button asChild 
               size="lg"
               variant="outline"
               className="hz-border-strong hz-fg hz-px-6 hz-py-5 hz-r-lg hz-t-lg hz-w-medium hz-hoverable"

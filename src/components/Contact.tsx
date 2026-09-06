@@ -3,7 +3,8 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Mail, MapPin, Phone, MessageSquare, Send, Github, Linkedin, Twitter, Facebook, Instagram } from "lucide-react";
+import { Mail, MapPin, Phone, MessageSquare, Send } from 'lucide-react'
+import { Github, Linkedin, Twitter, Facebook, Instagram } from '@hanzo/ui/brands';
 import { Button } from "@/components/ui/button";
 
 const Contact = () => {
@@ -180,7 +181,7 @@ const Contact = () => {
             <p className="hz-fg-soft hz-mb-4">
               Can't find what you're looking for? Check our comprehensive FAQ section.
             </p>
-            <Button variant="outline" className="hz-border-strong hz-fg hz-hoverable" size="sm">
+            <Button asChild variant="outline" className="hz-border-strong hz-fg hz-hoverable" size="sm">
               <a href="/pricing#faq">View FAQ</a>
             </Button>
           </div>

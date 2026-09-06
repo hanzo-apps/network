@@ -87,7 +87,7 @@ const CRM = () => {
           transition={{ duration: 0.5, delay: 0.6 }}
           className="hz-mt-7 hz-align-center"
         >
-          <Button
+          <Button asChild
             size="lg"
             className="hz-bg-inverse hz-fg-inverse hz-hoverable"
           >

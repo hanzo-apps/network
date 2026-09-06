@@ -1,7 +1,8 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Github, Twitter, MessagesSquare, Facebook, Linkedin, Instagram } from "lucide-react";
+import { MessagesSquare } from 'lucide-react'
+import { Github, Twitter, Facebook, Linkedin, Instagram } from '@hanzo/ui/brands';
 
 const Community = () => {
   return (

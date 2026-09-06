@@ -17,7 +17,7 @@
   border-radius: var(--radius-xl);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  box-shadow: var(--elevation-2, 0 4px 24px rgb(0 0 0 / .4));
+  box-shadow: var(--shadow-lg);
 }
 .glass-button {
   background: var(--white-05);
@@ -245,3 +245,10 @@ img, svg, video, canvas, iframe { max-width: 100%; }
 
 /* The app shell fills the viewport; the router paints inside it. */
 #root { width: 100%; min-height: 100vh; min-height: 100dvh; }
+
+/* The landing page's own header nav: one row on desktop, its own full-width
+   wrapped row on a phone — every link stays reachable at 390px. */
+.landing-nav { display: flex; align-items: center; flex-wrap: wrap; column-gap: var(--space-4); }
+@media (max-width: 767px) {
+  .landing-nav { order: 3; flex-basis: 100%; justify-content: center; }
+}

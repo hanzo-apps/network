@@ -1,9 +1,7 @@
 
 import { motion } from "framer-motion";
-import { 
-  MessageSquare, Workflow, Code, Cpu, Database, Search, 
-  Server, Terminal, FileCode, Github, Zap, Lock, Globe 
-} from "lucide-react";
+import { MessageSquare, Workflow, Code, Cpu, Database, Search, Server, Terminal, FileCode, Zap, Lock, Globe } from 'lucide-react'
+import { Github } from '@hanzo/ui/brands';
 import { Button } from "./ui/button";
 import { useState } from "react";
 
@@ -275,7 +273,7 @@ const Products = () => {
                 ))}
               </ul>
               <div className="hz-row hz-inline-3">
-                <Button 
+                <Button asChild 
                   className="hz-grow"
                   variant="outline"
                   size="sm"
@@ -284,7 +282,7 @@ const Products = () => {
                     Learn More
                   </a>
                 </Button>
-                <Button 
+                <Button asChild 
                   className="hz-grow hz-bg-raised hz-hoverable"
                   size="sm"
                 >

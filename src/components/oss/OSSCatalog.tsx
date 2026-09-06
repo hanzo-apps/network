@@ -1,20 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import {
-  Search,
-  Grid3X3,
-  List,
-  ChevronDown,
-  X,
-  Filter,
-  ExternalLink,
-  BookOpen,
-  Github,
-  GraduationCap,
-  Rocket,
-  Package,
-  Check,
-} from 'lucide-react';
+import { Search, Grid3X3, List, ChevronDown, X, Filter, ExternalLink, BookOpen, GraduationCap, Rocket, Package, Check } from 'lucide-react'
+import { Github } from '@hanzo/ui/brands';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import {
@@ -710,7 +697,7 @@ const OSSCatalog: React.FC = () => {
         {/* Main Content */}
         <div className="hz-row hz-gap-6">
           {/* Facet Rail - Desktop */}
-          <aside className="hz-desktop-only hz-bw-8 hz-none">
+          <aside className="hz-desktop-only hz-bw-rail">
             <div className="hz-card hz-sticky">
               <div className="hz-row hz-ai-center hz-jc-between hz-mb-4">
                 <h3 className="hz-w-medium hz-fg">Filters</h3>

@@ -1,10 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import {
-  ArrowRight, Cpu, Globe, Shield, Zap, Network, Users,
-  Code2, Brain, Lock, BarChart3, ExternalLink, Github, CheckCircle,
-} from "lucide-react";
+import { ArrowRight, Cpu, Globe, Shield, Zap, Network, Users, Code2, Brain, Lock, BarChart3, ExternalLink, CheckCircle } from 'lucide-react'
+import { Github } from '@hanzo/ui/brands';
 
 // ─── Grid background canvas ──────────────────────────────────────────────────
 function GridCanvas() {
@@ -173,26 +171,26 @@ const NetworkLanding = () => {
     <div className="hz-min-h-screen hz-bg hz-fg">
 
       {/* Nav */}
-      <header className="hz-fixed hz-top-0 hz-left-0 hz-right-0 hz-z-overlay hz-border-b hz-bg-surface hz-glass">
-        <div className="hz-container-wide hz-py-4 hz-row hz-ai-center hz-jc-between">
-          <a href="https://hanzo.ai" className="hz-row hz-ai-center hz-gap-2 hz-t-sm hz-w-semibold hz-transition">
+      <header className="hz-sticky hz-z-overlay hz-border-b hz-bg-surface hz-glass">
+        <div className="hz-container-wide hz-py-2 hz-row hz-ai-center hz-jc-between">
+          <a href="https://hanzo.ai" className="hz-tap hz-gap-2 hz-t-sm hz-w-semibold hz-transition">
             <Network className="hz-sq-2" />
             <span>hanzo</span>
             <span className="hz-fg-soft">/ network</span>
           </a>
-          <nav className="hz-desktop-only hz-row hz-ai-center hz-gap-5 hz-t-sm hz-fg-soft">
-            <a href="#how-it-works" className="hz-transition hz-hoverable">How it works</a>
-            <a href="#ecosystem" className="hz-transition hz-hoverable">Ecosystem</a>
-            <Link to="/pricing" className="hz-transition hz-hoverable">Pricing</Link>
-            <a href="https://docs.hanzo.ai" target="_blank" rel="noopener noreferrer" className="hz-transition hz-hoverable">Docs</a>
+          <nav className="landing-nav hz-t-sm hz-fg-soft">
+            <a href="#how-it-works" className="hz-tap hz-transition hz-hoverable">How it works</a>
+            <a href="#ecosystem" className="hz-tap hz-transition hz-hoverable">Ecosystem</a>
+            <Link to="/pricing" className="hz-tap hz-transition hz-hoverable">Pricing</Link>
+            <a href="https://docs.hanzo.ai" target="_blank" rel="noopener noreferrer" className="hz-tap hz-transition hz-hoverable">Docs</a>
           </nav>
           <div className="hz-row hz-ai-center hz-gap-3">
-            <a href="https://github.com/hanzoai/network" target="_blank" rel="noopener noreferrer"
-              className="hz-desktop-only hz-row hz-ai-center hz-gap-2 hz-t-sm hz-fg-soft hz-transition hz-hoverable">
+            <a href="https://github.com/hanzoai/network" target="_blank" rel="noopener noreferrer" aria-label="GitHub"
+              className="hz-desktop-only hz-tap hz-jc-center hz-fg-soft hz-transition hz-hoverable">
               <Github className="hz-sq-2" />
             </a>
             <a href="https://cloud.hanzo.ai/signup" target="_blank" rel="noopener noreferrer"
-              className="hz-px-4 hz-py-2 hz-r-full hz-t-sm hz-w-medium hz-bg-inverse hz-fg-inverse hz-transition hz-hoverable">
+              className="hz-tap hz-px-4 hz-r-full hz-t-sm hz-w-medium hz-bg-inverse hz-fg-inverse hz-transition hz-hoverable">
               Get Started
             </a>
           </div>
@@ -488,11 +486,11 @@ const NetworkLanding = () => {
             <span>© 2025 Hanzo AI, Inc. Techstars &apos;17.</span>
           </div>
           <div className="hz-row hz-ai-center hz-gap-4">
-            <a href="https://hanzo.ai" className="hz-transition hz-hoverable">hanzo.ai</a>
-            <a href="https://hanzo.ai/privacy" className="hz-transition hz-hoverable">Privacy</a>
-            <a href="https://hanzo.ai/terms" className="hz-transition hz-hoverable">Terms</a>
-            <a href="https://discord.gg/hanzo" target="_blank" rel="noopener noreferrer" className="hz-transition hz-hoverable">Discord</a>
-            <a href="https://github.com/hanzoai/network" target="_blank" rel="noopener noreferrer" className="hz-transition hz-hoverable">GitHub</a>
+            <a href="https://hanzo.ai" className="hz-tap hz-transition hz-hoverable">hanzo.ai</a>
+            <a href="https://hanzo.ai/privacy" className="hz-tap hz-transition hz-hoverable">Privacy</a>
+            <a href="https://hanzo.ai/terms" className="hz-tap hz-transition hz-hoverable">Terms</a>
+            <a href="https://discord.gg/hanzo" target="_blank" rel="noopener noreferrer" className="hz-tap hz-transition hz-hoverable">Discord</a>
+            <a href="https://github.com/hanzoai/network" target="_blank" rel="noopener noreferrer" className="hz-tap hz-transition hz-hoverable">GitHub</a>
           </div>
         </div>
       </footer>

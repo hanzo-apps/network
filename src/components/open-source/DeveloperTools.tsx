@@ -1,7 +1,8 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Github, Star, GitBranch, GitMerge, Code, Users, Terminal } from "lucide-react";
+import { Star, GitBranch, GitMerge, Code, Users, Terminal } from 'lucide-react'
+import { Github } from '@hanzo/ui/brands';
 import { Button } from "@/components/ui/button";
 
 const DeveloperTools = () => {
@@ -53,7 +54,7 @@ const DeveloperTools = () => {
                 <span>TypeScript</span>
               </div>
             </div>
-            <Button 
+            <Button asChild 
               size="sm" 
               className="hz-w-full hz-bg-raised hz-hoverable"
             >
@@ -92,7 +93,7 @@ const DeveloperTools = () => {
                 <span>TypeScript</span>
               </div>
             </div>
-            <Button 
+            <Button asChild 
               size="sm" 
               className="hz-w-full hz-bg-raised hz-hoverable"
             >
@@ -131,7 +132,7 @@ const DeveloperTools = () => {
                 <span>JavaScript</span>
               </div>
             </div>
-            <Button 
+            <Button asChild 
               size="sm" 
               className="hz-w-full hz-bg-raised hz-hoverable"
             >
@@ -143,7 +144,7 @@ const DeveloperTools = () => {
         </div>
 
         <div className="hz-align-center hz-mt-7">
-          <Button size="lg" variant="outline" className="hz-border-strong hz-fg hz-hoverable">
+          <Button asChild size="lg" variant="outline" className="hz-border-strong hz-fg hz-hoverable">
             <a href="https://github.com/hanzoai" target="_blank" rel="noopener noreferrer" className="hz-row hz-ai-center">
               <Github className="hz-sq-3 hz-mr-2" /> View All Projects
             </a>
