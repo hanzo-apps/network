@@ -4,7 +4,6 @@ import { Helmet } from "react-helmet";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import HeroSection from "@/components/base/HeroSection";
-import TrustedBy from "@/components/base/TrustedBy";
 import CoreFeatures from "@/components/base/CoreFeatures";
 import Templates from "@/components/base/Templates";
 import DeveloperExperience from "@/components/base/DeveloperExperience";
@@ -27,7 +26,6 @@ const Base = () => {
       <Navbar />
       <main>
         <HeroSection />
-        <TrustedBy />
         <CoreFeatures />
         <Templates />
         <DeveloperExperience />

@@ -1,7 +1,6 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
-import { componentTagger } from "component-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -9,11 +8,7 @@ export default defineConfig({
     host: true, // use 0.0.0.0 instead of ::
     port: 8080,
   },
-  plugins: [
-    react(),
-    // Only include componentTagger in development mode
-    process.env.NODE_ENV === 'development' && componentTagger(),
-  ].filter(Boolean),
+  plugins: [react()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

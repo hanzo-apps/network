@@ -6,7 +6,6 @@ import Footer from "@/components/Footer";
 import Hero from "@/components/home2/Hero";
 import Features from "@/components/home2/Features";
 import CTA from "@/components/home2/CTA";
-import Testimonials from "@/components/home2/Testimonials";
 import { Toaster } from "@/components/ui/toaster";
 
 const Home2 = () => {
@@ -21,7 +20,6 @@ const Home2 = () => {
       <main>
         <Hero />
         <Features />
-        <Testimonials />
         <CTA />
       </main>
       <Footer />
