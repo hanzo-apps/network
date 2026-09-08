@@ -16,7 +16,7 @@ const blogPosts = [
     title: "Introducing Hanzo AI v3: The next generation of AI development",
     excerpt: "Today we're excited to announce the release of Hanzo AI v3, our most powerful and flexible AI development platform yet.",
     date: "May 15, 2024",
-    author: "Zach Kelling",
+    author: "Hanzo AI",
     category: "Product",
     tags: ["AI", "Release", "Development"],
     imageUrl: "/img/28d53ec4-328f-4812-862b-b9a760bbabae.png"

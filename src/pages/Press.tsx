@@ -355,40 +355,6 @@ const Press = () => {
             </div>
           </motion.section>
 
-          {/* Executive Team */}
-          <motion.section
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-          >
-            <h2 className="text-2xl font-bold mb-8 flex items-center gap-3">
-              <Users className={`w-6 h-6 ${isDarkMode ? "text-neutral-400" : "text-neutral-500"}`} />
-              Leadership
-            </h2>
-            <div className={`p-8 rounded-2xl border text-center ${
-              isDarkMode
-                ? "bg-neutral-900/50 border-neutral-800"
-                : "bg-neutral-50 border-neutral-200"
-            }`}>
-              <p className={`mb-6 ${isDarkMode ? "text-neutral-400" : "text-neutral-500"}`}>
-                For executive bios and headshots, please visit our team page or contact our press team.
-              </p>
-              <div className="flex flex-wrap gap-4 justify-center">
-                <Link to="/team">
-                  <Button variant="outline" className="gap-2">
-                    <Users className="w-4 h-4" />
-                    View Team
-                  </Button>
-                </Link>
-                <a href="mailto:press@hanzo.ai">
-                  <Button className="gap-2" style={{ backgroundColor: BRAND_COLOR }}>
-                    <Mail className="w-4 h-4" />
-                    Request Executive Bios
-                  </Button>
-                </a>
-              </div>
-            </div>
-          </motion.section>
         </div>
       </main>
 

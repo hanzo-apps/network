@@ -8,7 +8,9 @@ export default defineConfig({
     host: true, // use 0.0.0.0 instead of ::
     port: 8080,
   },
-  plugins: [react()],
+  plugins: [
+    react(),
+  ].filter(Boolean),
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

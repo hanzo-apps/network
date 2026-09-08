@@ -22,7 +22,7 @@ const OrganizationProfile = () => {
     website: "https://hanzo.industries",
     teamSize: "43 members",
     plans: "Pro Plan ($49/month)",
-    security: "SOC 2 Compliant, GDPR Ready"
+    security: "SOC 2 Type II controls, GDPR Ready"
   };
 
   // Mock team members data

@@ -25,7 +25,6 @@ const MeetHanzoContent = ({ closeMenu }: { closeMenu: () => void }) => (
       </div>
       <ul className="space-y-2">
         <li><Link to="/philosophy" onClick={closeMenu} className="text-sm text-neutral-300 hover:text-white transition-colors">Philosophy</Link></li>
-        <li><Link to="/leadership" onClick={closeMenu} className="text-sm text-neutral-300 hover:text-white transition-colors">Leadership</Link></li>
         <li><Link to="/brand" onClick={closeMenu} className="text-sm text-neutral-300 hover:text-white transition-colors">Brand</Link></li>
         <li><Link to="/press" onClick={closeMenu} className="text-sm text-neutral-300 hover:text-white transition-colors">Press</Link></li>
       </ul>

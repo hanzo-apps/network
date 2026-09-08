@@ -45,7 +45,7 @@ const CAPABILITIES = [
       "Archive nodes for historical data access",
       "WebSocket subscriptions for real-time events",
       "Rate limiting and load balancing built-in",
-      "99.9% uptime SLA with global distribution",
+      "Multi-region redundancy with automated failover and global distribution",
     ],
   },
   {

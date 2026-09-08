@@ -10,7 +10,7 @@ const Enterprise = () => {
     {
       icon: <Shield className="h-8 w-8 text-neutral-400" />,
       title: "Enterprise Security",
-      description: "SOC 2, GDPR, CCPA compliance with advanced encryption and audit logging"
+      description: "SOC 2 Type II controls with GDPR and CCPA compliance, advanced encryption, and audit logging"
     },
     {
       icon: <Users className="h-8 w-8 text-neutral-400" />,
@@ -20,7 +20,7 @@ const Enterprise = () => {
     {
       icon: <Globe className="h-8 w-8 text-neutral-400" />,
       title: "Global Infrastructure",
-      description: "Multi-region deployment with 99.99% uptime SLA and dedicated support"
+      description: "Multi-region deployment with automated failover and dedicated support"
     },
     {
       icon: <Zap className="h-8 w-8 text-neutral-400" />,

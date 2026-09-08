@@ -118,7 +118,7 @@ const Scaling = () => {
             <Cpu className="h-8 w-8 text-neutral-400 mr-4" />
             <div>
               <h4 className="text-[var(--white)] font-medium">High Availability</h4>
-              <p className="text-neutral-400 text-sm">99.99% uptime SLA guarantee</p>
+              <p className="text-neutral-400 text-sm">Multi-region redundancy with automated failover</p>
             </div>
           </div>
           

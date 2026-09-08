@@ -100,7 +100,7 @@ const DeploymentOptions = () => {
                 <span className="text-neutral-400">✓</span> Zero-config deployments
               </li>
               <li className="flex items-center gap-2">
-                <span className="text-neutral-400">✓</span> 99.99% SLA
+                <span className="text-neutral-400">✓</span> Multi-region failover
               </li>
             </ul>
             <Link

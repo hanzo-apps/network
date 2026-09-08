@@ -4,11 +4,10 @@ import { motion } from "framer-motion";
 import { Shield, CheckCircle } from "lucide-react";
 
 const securityFeatures = [
-  "SOC 2 Type II", 
-  "ISO 27001 certified", 
-  "GDPR compliant", 
-  "HIPAA compliant", 
-  "End-to-end encryption", 
+  "SOC 2 Type II controls",
+  "Certification scoped per engagement",
+  "GDPR compliant",
+  "End-to-end encryption",
   "Secure data residency options", 
   "Role-based access control", 
   "Audit logs"
@@ -73,9 +72,9 @@ const Security = () => {
                 </div>
                 
                 <div className="bg-gray-900/50 rounded-lg p-4">
-                  <div className="mb-3 text-sm text-neutral-400">Security Certifications</div>
+                  <div className="mb-3 text-sm text-neutral-400">Control Frameworks</div>
                   <div className="grid grid-cols-2 gap-3">
-                    {["SOC 2", "ISO 27001", "GDPR", "HIPAA"].map((cert, idx) => (
+                    {["SOC 2 Type II", "ISO 27001", "GDPR", "CCPA"].map((cert, idx) => (
                       <div key={idx} className="bg-gray-800/50 p-2 rounded flex items-center">
                         <CheckCircle className="h-4 w-4 text-neutral-400 mr-2" />
                         <span className="text-sm">{cert}</span>

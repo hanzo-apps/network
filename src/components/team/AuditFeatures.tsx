@@ -118,7 +118,7 @@ const AuditFeatures = () => {
             <ul className="space-y-2">
               <li className="flex items-start">
                 <CheckCircle className="h-5 w-5 text-neutral-400 mr-2 mt-0.5 flex-shrink-0" />
-                <span className="text-neutral-300">SOC 2, HIPAA, GDPR, and CCPA compliant</span>
+                <span className="text-neutral-300">SOC 2 Type II controls, GDPR and CCPA compliant</span>
               </li>
               <li className="flex items-start">
                 <CheckCircle className="h-5 w-5 text-neutral-400 mr-2 mt-0.5 flex-shrink-0" />
@@ -142,11 +142,11 @@ const AuditFeatures = () => {
           <div className="flex justify-center gap-8 flex-wrap">
             <div className="flex items-center">
               <Lock className="h-6 w-6 text-neutral-400 mr-2" />
-              <span className="text-neutral-300">SOC 2 Type II</span>
+              <span className="text-neutral-300">SOC 2 Type II controls</span>
             </div>
             <div className="flex items-center">
               <Lock className="h-6 w-6 text-neutral-400 mr-2" />
-              <span className="text-neutral-300">HIPAA</span>
+              <span className="text-neutral-300">Certification scoped per engagement</span>
             </div>
             <div className="flex items-center">
               <Lock className="h-6 w-6 text-neutral-400 mr-2" />
@@ -158,11 +158,11 @@ const AuditFeatures = () => {
             </div>
             <div className="flex items-center">
               <Lock className="h-6 w-6 text-neutral-400 mr-2" />
-              <span className="text-neutral-300">ISO 27001</span>
+              <span className="text-neutral-300">Role-based access control</span>
             </div>
             <div className="flex items-center">
               <Bookmark className="h-6 w-6 text-neutral-400 mr-2" />
-              <span className="text-neutral-300">99.9% Uptime SLA</span>
+              <span className="text-neutral-300">Multi-region redundancy with automated failover</span>
             </div>
           </div>
         </motion.div>
