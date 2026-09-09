@@ -13,6 +13,6 @@ RUN pnpm build
 # hanzoai/static defaults to -port 3000 -root /public. -spa is required: this is a
 # 98-route BrowserRouter with its own `path="*"` NotFound, so an unknown path must
 # reach index.html for the router to resolve it. Without it every deep link 404s.
-FROM ghcr.io/hanzoai/static:v0.5.1
+FROM ghcr.io/hanzoai/static:0.5.15
 COPY --from=build /src/dist /public
 ENTRYPOINT ["/static", "-spa"]
