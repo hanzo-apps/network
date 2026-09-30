@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Search, ChevronDown, ExternalLink, Brain, Video, Music, Box, Cpu, Sparkles, Zap } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { motion, AnimatePresence } from "framer-motion";
+import { Try, useLogin } from "@/components/Try";
 
 interface AuthButtonsProps {
   user: any | null;
@@ -54,16 +55,12 @@ const quickAccess = [
   { label: "Pricing", href: "/pricing", external: false },
 ];
 
-// Login items
-const loginItems = [
-  { label: "hanzo.chat", href: "https://hanzo.chat", external: true },
-  { label: "Console login", href: "https://cloud.hanzo.ai", external: true },
-];
 
 const AuthButtons = ({ user, onOpenCommandPalette }: AuthButtonsProps) => {
   const { isDarkMode } = useTheme();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const login = useLogin();
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -130,12 +127,9 @@ const AuthButtons = ({ user, onOpenCommandPalette }: AuthButtonsProps) => {
         onMouseEnter={() => setIsDropdownOpen(true)}
         onMouseLeave={() => setIsDropdownOpen(false)}
       >
-        <button
-          className="inline-flex items-center justify-center gap-2 bg-white text-black hover:bg-neutral-200 active:bg-neutral-300 rounded-full h-9 px-4 text-sm font-medium transition-all duration-200"
-        >
-          Try Hanzo
+        <Try className="inline-flex items-center justify-center gap-2 bg-white text-black hover:bg-neutral-200 active:bg-neutral-300 rounded-full h-9 px-4 text-sm font-medium transition-all duration-200">
           <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} />
-        </button>
+        </Try>
 
         <AnimatePresence>
           {isDropdownOpen && (
@@ -240,19 +234,14 @@ const AuthButtons = ({ user, onOpenCommandPalette }: AuthButtonsProps) => {
                     Log in
                   </span>
                 </div>
-                {loginItems.map((item) => (
-                  <a
-                    key={item.label}
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => setIsDropdownOpen(false)}
-                    className="flex items-center justify-between w-full py-2 px-4 text-white hover:bg-neutral-800/50 transition-colors"
-                  >
-                    <span className="text-sm">{item.label}</span>
-                    <ExternalLink className="w-3.5 h-3.5 text-neutral-500" />
-                  </a>
-                ))}
+                <a
+                  href={login}
+                  onClick={() => setIsDropdownOpen(false)}
+                  className="flex items-center justify-between w-full py-2 px-4 text-white hover:bg-neutral-800/50 transition-colors"
+                >
+                  <span className="text-sm">hanzo.ai</span>
+                  <ExternalLink className="w-3.5 h-3.5 text-neutral-500" />
+                </a>
               </div>
             </motion.div>
           )}

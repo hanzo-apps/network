@@ -1,4 +1,7 @@
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Measure } from "./components/Measure";
+import { Consent } from "./components/Consent";
+import { Away } from "./components/Try";
 import GlobalChatWidget from "./components/GlobalChatWidget";
 import PageTransition from "./components/PageTransition";
 import KonamiCode from "./components/KonamiCode";
@@ -6,26 +9,9 @@ import Index from "./pages/Index";
 import Home2 from "./pages/Home2";
 import NetworkLanding from "./pages/NetworkLanding";
 import Pricing from "./pages/Pricing";
-import AccountLayout from "./components/account/AccountLayout";
-import Account from "./pages/Account";
-import Organization from "./pages/Organization";
-import LoginPage from "./pages/LoginPage";
-import SignUpPage from "./pages/SignUpPage";
-import BillingPage from "./pages/Billing";
-import { BillingProvider } from "./contexts/BillingContext";
-import { AccountProvider } from "./contexts/AccountContext";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import ScrollToTop from "./components/ScrollToTop";
-import PurchaseCredits from "./pages/PurchaseCredits";
-import BillingPlans from "./pages/BillingPlans";
-import UserProfile from "./pages/UserProfile";
-import OrganizationProfile from "./pages/OrganizationProfile";
-import ReferralProgram from "./pages/ReferralProgram";
-import Usage from "./pages/Usage";
-import AccountSettings from "./pages/AccountSettings";
-import Invoices from "./pages/Invoices";
 import StatusPage from "./pages/Status";
-import Dashboard from "./pages/Dashboard";
 import Referrals from "./pages/Referrals";
 import OpenSource from "./pages/OpenSource";
 import Solutions from "./pages/Solutions";
@@ -102,32 +88,6 @@ import TeamDes from "./pages/TeamDes";
 import TeamMark from "./pages/TeamMark";
 import TeamCal from "./pages/TeamCal";
 
-const AccountRoutes = () => {
-  return (
-    <AccountProvider>
-      <BillingProvider>
-        <Routes>
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/user-profile" element={<UserProfile />} />
-          <Route path="/organization-profile" element={<OrganizationProfile />} />
-          
-          <Route path="/account" element={<AccountLayout />}>
-            <Route index element={<Account />} />
-            <Route path="organization" element={<Organization />} />
-            <Route path="billing" element={<BillingPage />} />
-            <Route path="purchase-credits" element={<PurchaseCredits />} />
-            <Route path="billing-plans" element={<BillingPlans />} />
-            <Route path="referrals" element={<ReferralProgram />} />
-            <Route path="usage" element={<Usage />} />
-            <Route path="settings" element={<AccountSettings />} />
-            <Route path="invoices" element={<Invoices />} />
-          </Route>
-        </Routes>
-      </BillingProvider>
-    </AccountProvider>
-  );
-};
-
 const MarketingRoutes = () => {
   return (
     <Routes>
@@ -136,8 +96,13 @@ const MarketingRoutes = () => {
       <Route path="/index" element={<Index />} />
       <Route path="/original" element={<Index />} />
       <Route path="/pricing" element={<Pricing />} />
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/signup" element={<SignUpPage />} />
+      {/* hanzo.ai signs people in, and owns every account page. */}
+      <Route path="/login" element={<Away />} />
+      <Route path="/signup" element={<Away />} />
+      <Route path="/account/*" element={<Away />} />
+      <Route path="/dashboard" element={<Away />} />
+      <Route path="/user-profile" element={<Away />} />
+      <Route path="/organization-profile" element={<Away />} />
       <Route path="/status" element={<StatusPage />} />
       <Route path="/referrals" element={<Referrals />} />
       <Route path="/open-source" element={<OpenSource />} />
@@ -222,30 +187,22 @@ const MarketingRoutes = () => {
   );
 };
 
-const isAccountRoute = (pathname: string) => {
-  return pathname.startsWith('/account') || 
-    pathname === '/dashboard' || 
-    pathname === '/user-profile' || 
-    pathname === '/organization-profile';
-};
-
 const App = () => {
   return (
     <BrowserRouter>
-      <ThemeProvider>
-        <ScrollToTop />
-        <PageTransition>
-          {isAccountRoute(window.location.pathname) ? (
-            <AccountRoutes />
-          ) : (
+      <Measure>
+        <ThemeProvider>
+          <ScrollToTop />
+          <PageTransition>
             <MarketingRoutes />
-          )}
-        </PageTransition>
-        {/* Global chat widget on all pages */}
-        <GlobalChatWidget />
-        {/* Easter egg - Konami code for secret menu */}
-        <KonamiCode />
-      </ThemeProvider>
+          </PageTransition>
+          {/* Global chat widget on all pages */}
+          <GlobalChatWidget />
+          {/* Easter egg - Konami code for secret menu */}
+          <KonamiCode />
+          <Consent />
+        </ThemeProvider>
+      </Measure>
     </BrowserRouter>
   );
 };

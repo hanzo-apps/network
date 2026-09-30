@@ -24,6 +24,7 @@ import {
   FileText,
   Bug,
 } from "lucide-react";
+import { Try } from "@/components/Try";
 
 const BRAND_COLOR = "#ffffff";
 
@@ -462,14 +463,12 @@ const Security = () => {
               transition={{ delay: 0.2 }}
               className="flex flex-wrap items-center justify-center gap-4"
             >
-              <Link
-                to="/signup"
+              <Try
                 className="inline-flex items-center px-8 py-4 rounded-full font-medium transition-all hover:opacity-90 text-base"
                 style={{ backgroundColor: BRAND_COLOR, color: "#000000" }}
               >
-                Get Started Free
                 <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
+              </Try>
               <Link
                 to="/contact"
                 className="inline-flex items-center px-8 py-4 rounded-full font-medium transition-colors border border-neutral-700 bg-transparent hover:bg-neutral-900 text-base text-white"

@@ -10,6 +10,7 @@ import ChromeText from "@/components/ui/chrome-text";
 import { GridLines } from "@/components/ui/architectural-elements";
 import { Link } from "react-router-dom";
 import { useToast } from "@/components/ui/use-toast";
+import { Try } from "@/components/Try";
 
 const Referrals = () => {
   const [copied, setCopied] = useState(false);
@@ -211,8 +212,8 @@ const Referrals = () => {
               Sign up for a Hanzo account today, get your referral link, and start sharing with friends to earn rewards.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-neutral-600 hover:bg-neutral-700 px-8">
-                <Link to="/signup">Create Account</Link>
+              <Button asChild size="lg" className="bg-neutral-600 hover:bg-neutral-700 px-8">
+                <Try />
               </Button>
               <Button size="lg" variant="outline" className="border-gray-700 hover:bg-gray-800 px-8">
                 <Link to="/pricing">View Pricing</Link>

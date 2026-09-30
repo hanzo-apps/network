@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@hanzo/event':
+        specifier: ^0.3.48
+        version: 0.3.48(react@18.3.1)
       '@hookform/resolvers':
         specifier: ^3.9.0
         version: 3.10.0(react-hook-form@7.55.0(react@18.3.1))
@@ -460,6 +463,17 @@ packages:
 
   '@floating-ui/utils@0.2.9':
     resolution: {integrity: sha512-MDWhGtE+eHw5JW7lq4qhc5yRLS11ERl1c7Z6Xd0a58DozHES6EnNNwUWbMiG4J9Cgj053Bhk8zvlhFYKVhULwg==}
+
+  '@hanzo/event@0.3.48':
+    resolution: {integrity: sha512-8Mthr53Qwjrww2AS8jM0F+kSSaclU1ddXe7QNjwb554pWqDhZ8OFmPuhmXqBJUJ5MXK8LbJwxp2RVwQWkiKJ/w==}
+    peerDependencies:
+      react: '>=19.2.8'
+    peerDependenciesMeta:
+      react:
+        optional: true
+
+  '@hanzo/events@0.3.1':
+    resolution: {integrity: sha512-eGK1MTi5tW/luXhddLwrcyK8fq+GE41u/80oIjEKzxHGCfUs8LATiDAGCZ3dYM4D5sxiUS7x8BG2hGuD2gnIUA==}
 
   '@hookform/resolvers@3.10.0':
     resolution: {integrity: sha512-79Dv+3mDF7i+2ajj7SkypSKHhl1cbln1OGavqrsF7p6mbUv11xpqpacPsGDCTRvCSjEEIez2ef1NveSVL3b0Ag==}
@@ -1308,7 +1322,6 @@ packages:
   '@tailwindcss/oxide-darwin-arm64@4.1.4':
     resolution: {integrity: sha512-JGRj0SYFuDuAGilWFBlshcexev2hOKfNkoX+0QTksKYq2zgF9VY/vVMq9m8IObYnLna0Xlg+ytCi2FN2rOL0Sg==}
     engines: {node: '>= 10'}
-    cpu: [arm64]
     os: [darwin]
 
   '@tailwindcss/oxide-darwin-x64@4.1.4':
@@ -2862,6 +2875,14 @@ snapshots:
       react-dom: 18.3.1(react@18.3.1)
 
   '@floating-ui/utils@0.2.9': {}
+
+  '@hanzo/event@0.3.48(react@18.3.1)':
+    dependencies:
+      '@hanzo/events': 0.3.1
+    optionalDependencies:
+      react: 18.3.1
+
+  '@hanzo/events@0.3.1': {}
 
   '@hookform/resolvers@3.10.0(react-hook-form@7.55.0(react@18.3.1))':
     dependencies:

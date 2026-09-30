@@ -3,6 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import ChromeText from "@/components/ui/chrome-text";
+import { Try } from "@/components/Try";
 
 const CallToAction = () => {
   return (
@@ -26,11 +27,12 @@ const CallToAction = () => {
             Join thousands of developers building and scaling applications on Hanzo's global infrastructure.
           </p>
           
-          <Button 
+          <Button
+            asChild
             size="lg"
             className="bg-gradient-to-r from-neutral-600 to-neutral-500 hover:from-neutral-500 hover:to-neutral-400 text-[var(--white)] px-8 py-6 rounded-lg text-lg font-medium shadow-lg hover:shadow-xl transition-all"
           >
-            <a href="https://dashboard.hanzo.cloud">Get Started Free →</a>
+            <Try />
           </Button>
         </motion.div>
       </div>

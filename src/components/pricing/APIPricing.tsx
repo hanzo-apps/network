@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
+import { Try } from "@/components/Try";
 
 const APIPricing = () => {
   const hanzoModels = [
@@ -88,14 +89,11 @@ const APIPricing = () => {
         </div>
         
         <div className="ml-6">
-          <Button 
+          <Button
+            asChild
             className="bg-[var(--white)] text-black border border-gray-300 hover:bg-transparent hover:text-[var(--white)] hover:border-[var(--white)] transition-all duration-300"
-            onClick={() => {
-              // Link to cloud signup or checkout
-              window.open('https://cloud.hanzo.ai/signup', '_blank');
-            }}
           >
-            Start Using {model.name}
+            <Try />
           </Button>
         </div>
       </div>

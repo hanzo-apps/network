@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Link } from "react-router-dom";
 import {
   ArrowRight,
   Database,
@@ -13,6 +12,7 @@ import {
   Copy,
   ExternalLink,
 } from "lucide-react";
+import { Try } from "@/components/Try";
 
 const BRAND_COLOR = "#ffffff";
 
@@ -197,14 +197,12 @@ const HeroSection = () => {
               transition={{ duration: 0.4, delay: 0.15 }}
               className="flex flex-wrap items-center gap-4 mb-6"
             >
-              <Link
-                to="/signup"
+              <Try
                 className="inline-flex items-center px-6 py-3 rounded-full font-medium transition-all hover:opacity-90 text-sm"
                 style={{ backgroundColor: BRAND_COLOR, color: "#000000" }}
               >
-                Start building
                 <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
+              </Try>
               <a
                 href="https://docs.hanzo.ai/base"
                 target="_blank"

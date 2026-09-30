@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { Try } from "@/components/Try";
 import {
   ArrowRight, Cpu, Globe, Shield, Zap, Network, Users,
   Code2, Brain, Lock, BarChart3, ExternalLink, Github, CheckCircle,
@@ -191,10 +192,7 @@ const NetworkLanding = () => {
               className="hidden sm:flex items-center gap-1.5 text-sm text-white/60 hover:text-white transition-colors">
               <Github className="w-4 h-4" />
             </a>
-            <a href="https://cloud.hanzo.ai/signup" target="_blank" rel="noopener noreferrer"
-              className="px-4 py-1.5 rounded-full text-sm font-medium bg-white text-black hover:bg-white/90 transition-all">
-              Get Started
-            </a>
+            <Try className="px-4 py-1.5 rounded-full text-sm font-medium bg-white text-black hover:bg-white/90 transition-all" />
           </div>
         </div>
       </header>
@@ -234,10 +232,9 @@ const NetworkLanding = () => {
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.15 }}
             className="flex flex-wrap items-center justify-center gap-4">
-            <a href="https://cloud.hanzo.ai/signup" target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold bg-white text-black hover:bg-white/90 transition-all text-sm">
-              Start Building <ArrowRight className="w-4 h-4" />
-            </a>
+            <Try className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold bg-white text-black hover:bg-white/90 transition-all text-sm">
+              <ArrowRight className="w-4 h-4" />
+            </Try>
             <a href="https://docs.hanzo.ai" target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-medium border border-white/15 text-white/80 hover:bg-white/5 hover:text-white transition-all text-sm">
               Read the Docs
@@ -452,10 +449,9 @@ const NetworkLanding = () => {
                   </li>
                 ))}
               </ul>
-              <a href="https://cloud.hanzo.ai/signup" target="_blank" rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold bg-white text-black hover:bg-white/90 text-sm transition-all">
-                Get API Key <ArrowRight className="w-4 h-4" />
-              </a>
+              <Try className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold bg-white text-black hover:bg-white/90 text-sm transition-all">
+                <ArrowRight className="w-4 h-4" />
+              </Try>
             </motion.div>
 
             {/* Provide */}
@@ -495,10 +491,9 @@ const NetworkLanding = () => {
               Useful work. CPU-verifiable proofs. Post-quantum omnichain settlement. Mine AI by running AI.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <a href="https://cloud.hanzo.ai/signup" target="_blank" rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold bg-white text-black hover:bg-white/90 text-sm transition-all">
-                Start Building Free <ArrowRight className="w-4 h-4" />
-              </a>
+              <Try className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold bg-white text-black hover:bg-white/90 text-sm transition-all">
+                <ArrowRight className="w-4 h-4" />
+              </Try>
               <a href="https://github.com/hanzoai/network" target="_blank" rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold border border-white/15 text-white/80 hover:bg-white/5 hover:text-white text-sm transition-all">
                 <Github className="w-4 h-4" /> Open Source
