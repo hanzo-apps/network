@@ -26,7 +26,7 @@ const BRAND_COLOR = "#ffffff";
 // Company facts
 const companyFacts = [
   { label: "Founded", value: "2016" },
-  { label: "Headquarters", value: "Los Angeles, CA" },
+  { label: "Headquarters", value: "San Francisco, CA" },
   { label: "Employees", value: "50+" },
   { label: "Customers", value: "10,000+" },
 ];
@@ -154,7 +154,7 @@ const Press = () => {
                 <h2 className="text-2xl font-bold">About Hanzo Industries Inc</h2>
               </div>
               <p className={`text-lg mb-8 leading-relaxed ${isDarkMode ? "text-neutral-300" : "text-neutral-600"}`}>
-                Hanzo Industries Inc is an AI technology company building the infrastructure for the next generation of intelligent applications. Founded in 2016 and headquartered in Los Angeles, Hanzo provides enterprise-grade AI platforms, developer tools, and cloud services to companies worldwide. Our mission is to make AI accessible, safe, and beneficial for everyone.
+                Hanzo Industries Inc is an AI technology company building the infrastructure for the next generation of intelligent applications. Founded in 2016 and headquartered in San Francisco, Hanzo provides enterprise-grade AI platforms, developer tools, and cloud services to companies worldwide. Our mission is to make AI accessible, safe, and beneficial for everyone.
               </p>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                 {companyFacts.map((fact) => (
@@ -210,7 +210,7 @@ const Press = () => {
                   <h3 className="font-semibold mb-4">Headquarters</h3>
                   <div className={`space-y-1 ${isDarkMode ? "text-neutral-400" : "text-neutral-500"}`}>
                     <p className="font-medium">Hanzo Industries Inc</p>
-                    <p>Los Angeles, California</p>
+                    <p>San Francisco, California</p>
                     <p>United States</p>
                   </div>
                 </div>
