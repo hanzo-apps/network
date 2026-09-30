@@ -66,22 +66,20 @@ with analytics.batch():
     for event in events:
         analytics.track(event.name, event.properties, event.user_id)`,
   
-  api: `# Using curl to send events to Hanzo Analytics API
+  api: `# Using curl to send events to Hanzo Analytics (one ingest: api.hanzo.ai/v1/event)
 
-curl -X POST https://api.hanzo.analytics/v1/track \\
+curl -X POST "https://api.hanzo.ai/v1/event?ingest_key=pk-YOUR_KEY" \\
   -H "Content-Type: application/json" \\
-  -H "Authorization: Bearer YOUR_API_KEY" \\
   -d '{
-    "projectId": "YOUR_PROJECT_ID",
-    "event": "page_view",
-    "properties": {
+    "batch": [{
+      "messageId": "0199a0f1-5c3e-7d2a-9b1e-2f4c6a8e0b13",
+      "type": "event",
+      "event": "page_view",
+      "timestamp": "2026-07-22T15:42:12.123Z",
+      "anonymousId": "anon_456",
       "url": "https://yourapp.com/pricing",
-      "referrer": "https://google.com",
-      "title": "Pricing | Your App"
-    },
-    "userId": "user_123",
-    "anonymousId": "anon_456",
-    "timestamp": "2023-07-22T15:42:12.123Z"
+      "referrer": "https://google.com"
+    }]
   }'`
 };
 

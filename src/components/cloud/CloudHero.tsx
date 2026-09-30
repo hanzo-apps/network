@@ -49,9 +49,9 @@ hanzo ai deploy ./model \\
   --replicas 3
 
 # Inference endpoints
-curl https://api.hanzo.cloud/v1/predict \\
+curl https://api.hanzo.ai/v1/chat/completions \\
   -H "Authorization: Bearer $TOKEN" \\
-  -d '{"input": "Hello world"}'
+  -d '{"model": "zen", "messages": [{"role": "user", "content": "Hello world"}]}'
 
 # Fine-tuning jobs
 hanzo ai train --base llama-3 --data ./dataset`,
