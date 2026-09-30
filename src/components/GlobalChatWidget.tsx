@@ -177,15 +177,12 @@ const GlobalChatWidget = () => {
     setIsLoading(true);
 
     try {
-      // Call Hanzo AI API with selected Zen model
-      const response = await fetch("https://api.hanzo.ai/v1/chat/completions", {
+      // The public lane: a visitor with no account gets a few free answers a day
+      // from api.hanzo.ai, keyed by address. It takes no key and picks the model.
+      const response = await fetch("https://api.hanzo.ai/v1/chat/public", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": "Bearer hz_widget_public",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          model: selectedModel.id,
           messages: [
             {
               role: "system",
@@ -209,11 +206,12 @@ const GlobalChatWidget = () => {
         };
         setMessages((prev) => [...prev, assistantMessage]);
       } else {
-        // Fallback for API errors
+        // The lane says why it refused (a spent daily allowance names sign-in).
+        const said = await response.json().then((d) => d?.error?.message).catch(() => undefined);
         const assistantMessage: Message = {
           id: (Date.now() + 1).toString(),
           role: "assistant",
-          content: `I'm having trouble connecting to the AI service right now. You can explore our documentation at [docs.hanzo.ai](https://docs.hanzo.ai), try the full chat at [hanzo.chat](https://hanzo.chat), or contact our team at [/contact](/contact).`,
+          content: said ?? `I'm having trouble connecting to the AI service right now. You can explore our documentation at [docs.hanzo.ai](https://docs.hanzo.ai), try the full chat at [hanzo.chat](https://hanzo.chat), or contact our team at [/contact](/contact).`,
           timestamp: new Date(),
         };
         setMessages((prev) => [...prev, assistantMessage]);

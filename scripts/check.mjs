@@ -21,6 +21,8 @@ for (const tag of ['googletagmanager.com', 'connect.facebook.net', 'G-VT443SNVG7
 }
 if (/https?:\/\/(?:[a-z0-9-]+\.)*hanzo\.id\b/.test(html + js)) fail.push('the export links to hanzo.id; sign-in is https://hanzo.ai/login')
 if (!js.includes('https://hanzo.ai/login')) fail.push('the export never names https://hanzo.ai/login')
+if (/Bearer\s+hz_|fetch\(["'`]https:\/\/api\.hanzo\.ai\/v1\/chat\/completions/.test(js)) fail.push('the chat widget calls completions with a made-up bearer; a visitor with no account asks /v1/chat/public, keyless')
+if (!js.includes('https://api.hanzo.ai/v1/chat/public')) fail.push('the export never names https://api.hanzo.ai/v1/chat/public')
 
 const keys = [...new Set(js.match(/pk-[A-Za-z0-9_-]{20,}/g) ?? [])]
 if (!keys.length) fail.push('no pk- ingest key in the bundle: every anonymous event would be refused')

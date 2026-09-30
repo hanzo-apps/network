@@ -82,16 +82,12 @@ const ChatWidget = () => {
     setIsLoading(true);
 
     try {
-      // Call Hanzo AI API
-      const response = await fetch("https://api.hanzo.ai/v1/chat/completions", {
+      // The public lane: a visitor with no account gets a few free answers a day
+      // from api.hanzo.ai, keyed by address. It takes no key and picks the model.
+      const response = await fetch("https://api.hanzo.ai/v1/chat/public", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          // Use public key for widget - rate limited
-          "Authorization": "Bearer hz_widget_public",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          model: "claude-sonnet-4-20250514",
           messages: [
             { role: "system", content: HANZO_CONTEXT },
             ...messages.map((m) => ({ role: m.role, content: m.content })),
@@ -109,12 +105,13 @@ const ChatWidget = () => {
         };
         setMessages((prev) => [...prev, assistantMessage]);
       } else {
-        // Fallback response
+        // The lane says why it refused (a spent daily allowance names sign-in).
+        const said = await response.json().then((d) => d?.error?.message).catch(() => undefined);
         setMessages((prev) => [
           ...prev,
           {
             role: "assistant",
-            content: "I'm having trouble connecting right now. You can visit [docs.hanzo.ai](https://docs.hanzo.ai) for documentation or join our [Discord](https://discord.gg/CJCyAsm9Vr) for help!",
+            content: said ?? "I'm having trouble connecting right now. You can visit [docs.hanzo.ai](https://docs.hanzo.ai) for documentation or join our [Discord](https://discord.gg/CJCyAsm9Vr) for help!",
           },
         ]);
       }
