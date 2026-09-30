@@ -1,9 +1,20 @@
-# Hanzo CI/CD for hanzo-apps/network: .github/workflows/cicd.yml imports hanzoai/ci,
-# which reads this file. The build door builds each image, one BuildKit Job
-# per platform.
-images:
-  - name: hanzo-network
-    context: .
-    dockerfile: Dockerfile
-    repo: ghcr.io/hanzoai/hanzo-network
-    platforms: [linux/amd64]
+# Read by hanzoai/ci, which .github/workflows/cicd.yml calls.
+#
+# hanzo.network is a static export with no pod: the ingress serves
+# s3://hanzo-sites/hanzo/network (universe infra/aws/routes/sites.yaml,
+# hanzo-network-static), and `site:` publishes dist/ to that prefix through the
+# Sites plane. hanzo-apps seals to KMS org hanzo, so slug `network` is that
+# prefix. A push to main publishes.
+test:
+  - name: build
+    run: |
+      corepack enable
+      pnpm install --frozen-lockfile
+      pnpm build
+      node scripts/check.mjs
+
+site:
+  slug: network
+  dir: dist
+  build: corepack enable && pnpm install --frozen-lockfile && pnpm build && node scripts/check.mjs
+  on: [main]

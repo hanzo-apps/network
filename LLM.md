@@ -31,6 +31,7 @@ src/
 pnpm install
 pnpm dev            # Vite dev server
 pnpm build          # Production build to dist/
+node scripts/check.mjs  # the gate CI runs over dist/
 pnpm preview
 pnpm lint
 ```
@@ -49,46 +50,34 @@ The homepage highlights:
 ## Serving chain
 
 ```
-push to main
-  -> .github/workflows/sync.yml     carries refs to git.hanzo.ai (nothing else)
-  -> .hanzo/workflows/deploy.yml    runs natively on the forge
-       docker build .               Dockerfile: pnpm build
-                                    -> FROM ghcr.io/hanzoai/static:v0.5.1
-       docker push                  ghcr.io/hanzoai/hanzo-network:<short-sha>
-  -> hanzoai/universe               infra/k8s/operator/crs/hanzo-network.yaml
-       spec.image.tag: <short-sha>  set by a human, never by the build
-  -> hanzoai/ingress                hanzo.network -> Service hanzo-network:80 -> :3000
+push to main (hanzo-apps/network, GitHub is home)
+  -> .github/workflows/cicd.yml   hanzoai/ci build.yml@v2, reads hanzo.yml
+       test:  pnpm build + scripts/check.mjs over dist/
+       site:  slug `network`, dir dist -> Sites plane (api.hanzo.ai/v1/projects)
+  -> s3://hanzo-sites/hanzo/network   org hanzo (hanzo-apps maps to it) + slug
+  -> hanzoai/ingress staticFiles      universe infra/aws/routes/sites.yaml,
+                                      hanzo-network-static, spaMode (deep links
+                                      reach index.html for the router)
 ```
 
-`hanzoai/static` is a Go binary on scratch, run with `-spa` because this is a
-98-route `BrowserRouter`: without the fallback every deep link 404s instead of
-reaching `index.html` for the router (and for the app's own `path="*"`
-NotFound). `HANZO_STATIC_CSP` in the CR allows `fonts.googleapis.com` /
-`fonts.gstatic.com` for the Inter stylesheet `index.html` links, and
-`api.hanzo.ai` in `connect-src` for the pricing fetch and the chat widgets.
+No image and no pod. Cloudflare proxies hanzo.network to the AWS balancer.
 
-## Not live from here yet
+## Sign-in, CTAs, measurement
 
-hanzo.network is served today by the Cloudflare Pages project `hanzo-network`
-(`hanzo-network.pages.dev` is byte-identical to the live host), built through CF's
-Git integration — outside every workflow file in this repo. That is the deploy
-path this migration retires.
-
-Reconcile BEFORE anyone pins a tag in the CR: **the live bytes are not built from
-`main`.** The served `index.html` links `/favicon.svg`, `/favicon.ico` and
-`/logo.svg`; `main`'s still links `img/28d53ec4-….png`. Those exact
-lines come from `origin/fix/broken-links` (`0efe650`, the real @hanzo/brand
-blocky-H). Building an image from `main` as it stands would regress branding, so
-land that branch first. CF Pages is not rebuilding `main` on push — `main` has
-been pushed repeatedly since 2026-06-23 and the live bytes never changed — which
-is also why pushing this migration cannot disturb the live site.
-
-Promotion order: publish an image -> set `spec.image.tag` in
-`crs/hanzo-network.yaml` -> add `- hanzo-network.yaml` to
-`crs/kustomization.yaml` -> confirm the pod is Running and a deep link returns
-200 -> only then repoint hanzo.network DNS off CF Pages. The CR is committed
-INERT (empty tag, absent from `kustomization.yaml`); promoting an App with no
-image tag takes the host down instead of leaving it alone.
+- Sign-in is hanzo.ai's page: `LOGIN` in `src/components/Try.tsx`
+  (`https://hanzo.ai/login`, which goes on to pay). `/login`, `/signup`,
+  `/account/*`, `/dashboard`, `/user-profile` and `/organization-profile`
+  render `Away`, which replaces the location with it. Nothing links to hanzo.id.
+- Every call to action is `<Try>`: it reads "Try Hanzo" and carries the
+  visitor's anonymous id to hanzo.ai (@hanzo/event `link`) while Analytics is
+  allowed.
+- Measurement is @hanzo/event, mounted by `Measure` in `src/components/Measure.tsx`:
+  the stream to api.hanzo.ai/v1/event (one pageview per route) and the tag
+  manager, which loads GA4 and the Meta Pixel from the host's tag set
+  (`/v1/project/tags?host=hanzo.network`) after consent. No platform id lives
+  in this repo; `scripts/check.mjs` fails a build whose index.html names one.
+  `Consent` asks visitors in opt-in regions.
+- API calls go to api.hanzo.ai/v1 only.
 
 ## Notes
 
