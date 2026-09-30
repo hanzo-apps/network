@@ -24,4 +24,8 @@ concurrency:
 jobs:
   cicd:
     uses: hanzoai/ci/.github/workflows/build.yml@v2
-    secrets: inherit
+    # `inherit` passes nothing to a reusable in another org, so the KMS pair,
+    # which the site lane spends on its deploy token, is named.
+    secrets:
+      KMS_CLIENT_ID: ${{ secrets.KMS_CLIENT_ID }}
+      KMS_CLIENT_SECRET: ${{ secrets.KMS_CLIENT_SECRET }}
