@@ -1,0 +1,31 @@
+name: probe
+# Times the docs.hanzo.ai export (hanzo-docs/docs) cold, then warm from Turbopack's
+# own filesystem cache after a one-page edit, on a 32-core node; deleted after.
+on:
+  push:
+    branches: [probe-docs2]
+permissions:
+  contents: read
+jobs:
+  docs:
+    runs-on: xl-linux-amd64
+    timeout-minutes: 90
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: cold then warm
+        run: |
+          set -uo pipefail
+          t() { local s=$EPOCHREALTIME; "$@"; local r=$?; awk -v a="$s" -v b="$EPOCHREALTIME" -v n="$*" 'BEGIN{printf "TIME %8.1fs  %s\n", b-a, n}'; return $r; }
+          echo "nproc=$(nproc) mem=$(awk '/MemTotal/{print int($2/1048576)}' /proc/meminfo)G"
+          git clone -q --depth 1 --recurse-submodules --shallow-submodules https://github.com/hanzo-docs/docs.git d && cd d
+          corepack enable
+          t pnpm install --frozen-lockfile --reporter=silent
+          t pnpm turbo run build --filter='docs^...' --output-logs=errors-only
+          b() { NEXT_EXPORT=1 HANZO_DOCS_SYNC=0 NEXT_TELEMETRY_DISABLED=1 NEXT_BUILD_CPUS=24 TURBO_TASKS_AVAILABLE_PARALLELISM=16 \
+                NODE_OPTIONS=--max-old-space-size=8192 pnpm --filter docs build 2>&1 | grep -E 'Compiled|Generating static pages using|Finished writing|Collecting|Finalizing|cache|Error|error' | grep -v '(.*/.*)\s*$' ; }
+          t b
+          du -sh apps/docs/.next/cache 2>/dev/null
+          f=$(find apps/docs/content/docs -name '*.mdx' | head -1); echo "edit $f"; printf '\nProbe edit.\n' >> "$f"
+          t b
