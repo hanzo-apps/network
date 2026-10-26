@@ -80,10 +80,13 @@ No image and no pod. Cloudflare proxies hanzo.network to the AWS balancer.
   in this repo; `scripts/check.mjs` fails a build whose index.html names one.
   The stream is first party and runs for every visitor; `Consent` (this site's
   Tailwind copy of @hanzo/ui/consent: bar, Manage preferences sheet, Accept all,
-  × for essential only) words and draws what @hanzo/ui's says and draws: theme
-  tokens for every colour and state, 12px buttons in a 16px card, 13px type. Its
-  copy counts GA4's and the Pixel's page views as necessary; their other events
-  and ad personalization are the three switches.
+  × for essential only) words and draws what @hanzo/ui's says and draws, by the
+  rule cloud serves (@hanzo/event `consentPolicy().mode`): eu the bar and opt-in
+  sheet, us_privacy no bar and an opt-out sheet saved as each switch moves, global
+  a notice whose × records it seen. "Your Privacy Choices" (California's icon) is
+  in the footer and, on a page whose footer has none (the landing), fixed to the
+  foot of the window. Theme tokens for every colour and state, 12px buttons in a
+  16px card, 13px type.
 - API calls go to api.hanzo.ai/v1 only.
 
 ## Notes

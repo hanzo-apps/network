@@ -12,6 +12,7 @@ import {
   Monitor,
 } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
+import { PrivacyChoicesIcon } from "./Consent";
 
 const BRAND_COLOR = "#ffffff";
 
@@ -292,6 +293,11 @@ const Footer = () => {
               <div className="text-neutral-600 text-xs">
                 © 2016-{new Date().getFullYear()} HANZO.AI
               </div>
+              {/* The cookie sheet (components/Consent.tsx answers #choices), on every page with this footer. */}
+              <a href="#choices" className="inline-flex items-center gap-1.5 text-neutral-500 text-xs hover:text-neutral-400 transition-colors">
+                <PrivacyChoicesIcon height={12} />
+                Your Privacy Choices
+              </a>
             </div>
 
             {/* Social links */}
