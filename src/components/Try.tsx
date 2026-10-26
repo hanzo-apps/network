@@ -1,18 +1,16 @@
 import { forwardRef, useEffect, type AnchorHTMLAttributes } from "react";
-import { useAnalytics, useConsent } from "@hanzo/event/react";
+import { useAnalytics } from "@hanzo/event/react";
 
 /** hanzo.ai's sign-in page. It signs the visitor in, then sends them on to pay. */
 export const LOGIN = "https://hanzo.ai/login";
 
 /**
  * LOGIN, carrying the visitor's anonymous id and first touch (@hanzo/event
- * `link`) while Analytics is allowed, so hanzo.ai continues the same journey.
+ * `link`), so hanzo.ai continues the same journey. That is the first-party
+ * stream, which runs for every visitor.
  */
 export function useLogin(search = ""): string {
-  const stream = useAnalytics();
-  const { analytics } = useConsent();
-  const url = LOGIN + search;
-  return analytics ? stream.link(url) : url;
+  return useAnalytics().link(LOGIN + search);
 }
 
 /** The call to action: "Try Hanzo", to hanzo.ai's sign-in. */

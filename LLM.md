@@ -78,7 +78,9 @@ No image and no pod. Cloudflare proxies hanzo.network to the AWS balancer.
   before @hanzo/event 0.3.58 the tag request carried none and got no tags, and
   the stream was filed under hanzo.ai's project. No platform id lives
   in this repo; `scripts/check.mjs` fails a build whose index.html names one.
-  `Consent` asks visitors in opt-in regions.
+  The stream is first party and runs for every visitor; `Consent` (this site's
+  Tailwind copy of @hanzo/ui/consent: bar, Manage preferences sheet, Accept all,
+  × for essential only) gates GA4 and the Pixel.
 - API calls go to api.hanzo.ai/v1 only.
 
 ## Notes

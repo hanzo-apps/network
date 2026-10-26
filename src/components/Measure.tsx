@@ -1,7 +1,7 @@
 import { useEffect, type ReactNode } from "react";
 import { useLocation } from "react-router-dom";
 import { startTags } from "@hanzo/event";
-import { AnalyticsProvider, useConsent, usePageview } from "@hanzo/event/react";
+import { AnalyticsProvider, usePageview } from "@hanzo/event/react";
 
 /**
  * Measurement is @hanzo/event, all of it: the stream to api.hanzo.ai/v1/event,
@@ -26,13 +26,12 @@ function Pageviews() {
   return null;
 }
 
+/** The stream is first party and runs for every visitor; consent gates the third
+ *  parties alone (startTags), and `Consent` is the banner that asks. */
 export function Measure({ children }: { children: ReactNode }) {
-  const { analytics } = useConsent();
   useEffect(() => startTags({ key: KEY, domains: DOMAINS }), []);
   return (
-    <AnalyticsProvider
-      config={{ product: "hanzo-network", host: "https://api.hanzo.ai", ingestKey: KEY, enabled: analytics }}
-    >
+    <AnalyticsProvider config={{ product: "hanzo-network", host: "https://api.hanzo.ai", ingestKey: KEY }}>
       <Pageviews />
       {children}
     </AnalyticsProvider>
