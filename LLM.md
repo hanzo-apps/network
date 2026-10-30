@@ -74,7 +74,8 @@ No image and no pod. Cloudflare proxies hanzo.network to the AWS balancer.
 - Measurement is @hanzo/event, mounted by `Measure` in `src/components/Measure.tsx`:
   the stream to api.hanzo.ai/v1/event (one pageview per route) and the tag
   manager, which loads GA4 and the Meta Pixel from project `network`'s tag set
-  (`/v1/project/tags?key=pk-YJ2e…`) after consent. Both name that project's key;
+  (`/v1/project/tags?key=pk-YJ2e…`) as cloud's rule allows (@hanzo/event 0.3.66:
+  Global Privacy Control loads neither). Both name that project's key;
   before @hanzo/event 0.3.58 the tag request carried none and got no tags, and
   the stream was filed under hanzo.ai's project. No platform id lives
   in this repo; `scripts/check.mjs` fails a build whose index.html names one.

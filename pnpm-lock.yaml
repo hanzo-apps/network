@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@hanzo/event':
-        specifier: 0.3.62
-        version: 0.3.62(react@18.3.1)
+        specifier: 0.3.66
+        version: 0.3.66(react@18.3.1)
       '@hookform/resolvers':
         specifier: ^3.9.0
         version: 3.10.0(react-hook-form@7.55.0(react@18.3.1))
@@ -464,16 +464,16 @@ packages:
   '@floating-ui/utils@0.2.9':
     resolution: {integrity: sha512-MDWhGtE+eHw5JW7lq4qhc5yRLS11ERl1c7Z6Xd0a58DozHES6EnNNwUWbMiG4J9Cgj053Bhk8zvlhFYKVhULwg==}
 
-  '@hanzo/event@0.3.62':
-    resolution: {integrity: sha512-tCgtQuF8AZgGFyKHS05tYtWXE0mLxpayFNR2JITqS1S09bkQa2ZqeDWCJyuuBPPzW8aLCQ6aiVMQlRWpjVdSVQ==}
+  '@hanzo/event@0.3.66':
+    resolution: {integrity: sha512-trBYhxs103HDBgR3lV4Jp9cwWizcsd7s4GX7hdKmiR9cIXtTsKipu/E93+rZrAYJ7BHSpRqXnHL7KomNwvrrEA==}
     peerDependencies:
       react: '>=19.2.8'
     peerDependenciesMeta:
       react:
         optional: true
 
-  '@hanzo/events@0.3.1':
-    resolution: {integrity: sha512-eGK1MTi5tW/luXhddLwrcyK8fq+GE41u/80oIjEKzxHGCfUs8LATiDAGCZ3dYM4D5sxiUS7x8BG2hGuD2gnIUA==}
+  '@hanzo/events@0.3.2':
+    resolution: {integrity: sha512-2MIY5Yw6tCrJyz2DR6wlsTq9H7ibL/671yXvnmYWIXFNLWKxrBwhZyQRJ/S6NiR8gIdYGQ3zO01tv1jYiQ+95g==}
 
   '@hookform/resolvers@3.10.0':
     resolution: {integrity: sha512-79Dv+3mDF7i+2ajj7SkypSKHhl1cbln1OGavqrsF7p6mbUv11xpqpacPsGDCTRvCSjEEIez2ef1NveSVL3b0Ag==}
@@ -2879,13 +2879,13 @@ snapshots:
 
   '@floating-ui/utils@0.2.9': {}
 
-  '@hanzo/event@0.3.62(react@18.3.1)':
+  '@hanzo/event@0.3.66(react@18.3.1)':
     dependencies:
-      '@hanzo/events': 0.3.1
+      '@hanzo/events': 0.3.2
     optionalDependencies:
       react: 18.3.1
 
-  '@hanzo/events@0.3.1': {}
+  '@hanzo/events@0.3.2': {}
 
   '@hookform/resolvers@3.10.0(react-hook-form@7.55.0(react@18.3.1))':
     dependencies:
