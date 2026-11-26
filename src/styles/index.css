@@ -66,6 +66,8 @@
    follow the pointer. Touch screens get the resting glass only. */
 @layer components {
   .glass {
+    --x: 50%; /* the pointer, set by card.tsx */
+    --y: 0%;
     position: relative;
     isolation: isolate;
     overflow: hidden;
@@ -88,11 +90,11 @@
   }
   .glass::before {
     z-index: -1;
-    background: radial-gradient(420px circle at var(--x, 50%) var(--y, 0%), var(--white-08), transparent 45%);
+    background: radial-gradient(420px circle at var(--x) var(--y), var(--white-08), transparent 45%);
   }
   .glass::after {
     padding: 1px;
-    background: radial-gradient(260px circle at var(--x, 50%) var(--y, 0%), var(--white-40), transparent 60%);
+    background: radial-gradient(260px circle at var(--x) var(--y), var(--white-40), transparent 60%);
     -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
