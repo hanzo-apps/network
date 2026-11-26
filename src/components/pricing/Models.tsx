@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { buttonClass } from '@/components/ui/button'
 import Card from '@/components/ui/card'
 import { context, price, topLabs, type Model } from '@/lib/catalog'
 
@@ -8,12 +9,12 @@ export function FeaturedCard({ m }: { m: Model }) {
       <Card className="h-full p-6">
         <h3 className="text-xl font-semibold">{m.name}</h3>
         <p className="text-sm text-muted-foreground">{m.lab}</p>
-        <p className="mt-6 text-4xl font-semibold tabular-nums md:text-5xl">{price(m.input)}</p>
+        <p className="mt-6 text-4xl font-semibold tabular-nums md:text-5xl">{price(m.input, m.free)}</p>
         <p className="text-sm text-muted-foreground">per 1M input tokens</p>
         <dl className="mt-6 flex gap-8 border-t border-border pt-4 text-sm">
           <div>
             <dt className="text-muted-foreground">Output</dt>
-            <dd className="font-medium tabular-nums">{price(m.output)}</dd>
+            <dd className="font-medium tabular-nums">{price(m.output, m.free)}</dd>
           </div>
           <div>
             <dt className="text-muted-foreground">Context</dt>
@@ -84,10 +85,10 @@ export function AllModels({ models }: { models: Model[] }) {
               </div>
               <p className="text-sm text-muted-foreground">{m.lab}</p>
               <p className="col-span-2 text-sm tabular-nums md:hidden">
-                {price(m.input)} in · {price(m.output)} out · {context(m.context)}
+                {price(m.input, m.free)} in · {price(m.output, m.free)} out · {context(m.context)}
               </p>
-              <p className="hidden tabular-nums md:block">{price(m.input)}</p>
-              <p className="hidden tabular-nums md:block">{price(m.output)}</p>
+              <p className="hidden tabular-nums md:block">{price(m.input, m.free)}</p>
+              <p className="hidden tabular-nums md:block">{price(m.output, m.free)}</p>
               <p className="hidden tabular-nums md:block">{context(m.context)}</p>
             </li>
           ))}
@@ -112,7 +113,7 @@ export function AllModels({ models }: { models: Model[] }) {
         <button
           type="button"
           onClick={() => setAll(true)}
-          className="mt-6 inline-flex h-11 items-center rounded-full border border-border-strong px-6 text-base font-medium text-foreground hover:bg-[var(--white-08)]"
+          className={`${buttonClass('secondary')} mt-6`}
         >
           Show all {hits.length}
         </button>

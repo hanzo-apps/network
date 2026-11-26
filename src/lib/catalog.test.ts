@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { FEATURED, context, fetchModels, freeModel, price, sortModels, toModel, topLabs } from './catalog'
+import { FEATURED, context, featured, fetchModels, freeModel, perToken, price, sortModels, toModel, topLabs } from './catalog'
 
 const raw = (o: object = {}) => ({
   id: 'anthropic/claude-opus-5.5',
@@ -19,6 +19,8 @@ describe('toModel', () => {
       input: 4.4521,
       output: 22.2605,
       context: 1000000,
+      free: false,
+      variable: false,
     })
   })
   it.each([
@@ -44,6 +46,8 @@ describe('toModel', () => {
     ['moonshotai', 'Moonshot'],
     ['z-ai', 'Z.ai'],
     ['cohere', 'Cohere'],
+    ['black-forest-labs', 'Black Forest Labs'],
+    ['stability-ai', 'Stability Ai'],
   ])('maps lab %s', (owned_by, lab) => {
     expect(toModel(raw({ owned_by })).lab).toBe(lab)
   })
@@ -53,15 +57,54 @@ describe('toModel', () => {
   })
 })
 
+const video = {
+  id: 'fal/flux-3-video',
+  name: 'FLUX 3 Video',
+  owned_by: 'black-forest-labs',
+  pricing: { input_per_million: 0, output_per_million: 0, variable: true, rates: { duration_seconds: '0.189' } },
+  free: false,
+}
+const unpriced = { id: 'hanzo/kai', name: 'Kai', owned_by: 'hanzo', free: false }
+const zen = { id: 'hanzo/zen', name: 'Zen', owned_by: 'hanzo', free: true, pricing: { input_per_million: 0, output_per_million: 0 } }
+
+describe('variable and unpriced models', () => {
+  it('keeps free and variable from the API', () => {
+    expect(toModel(video)).toMatchObject({ free: false, variable: true })
+    expect(toModel(unpriced)).toMatchObject({ free: false, variable: true })
+    expect(toModel(zen)).toMatchObject({ free: true, variable: false })
+  })
+  it('never shows Free for a paid model, and lists only per-token models', () => {
+    const models = [video, unpriced, zen, raw()].map(toModel)
+    const v = models[0]
+    expect(price(v.input, v.free)).not.toBe('Free')
+    expect(perToken(models).map((m) => m.id)).toEqual(['hanzo/zen', 'anthropic/claude-opus-5.5'])
+  })
+  it('freeModel needs free === true', () => {
+    expect(freeModel([toModel({ ...zen, free: false })])).toBeUndefined()
+    expect(freeModel([toModel(zen)])?.id).toBe('hanzo/zen')
+  })
+})
+
+describe('featured', () => {
+  const m = (id: string) => toModel(raw({ id, name: id }))
+  it('follows FEATURED order and skips missing ids', () => {
+    const list = [m('openai/gpt-5.4'), m('zen6-max'), m('unrelated')]
+    expect(featured(list).map((x) => x.id)).toEqual(['zen6-max', 'openai/gpt-5.4'])
+  })
+})
+
 describe('price', () => {
   it.each([
-    [0, 'Free'],
     [4.4521, '$4.45'],
     [22.2605, '$22.26'],
     [0.1113025, '$0.11'],
     [0.004, '<$0.01'],
     [0.005, '$0.01'],
   ])('%s -> %s', (n, s) => expect(price(n)).toBe(s))
+  it('says Free only when told free', () => {
+    expect(price(0, true)).toBe('Free')
+    expect(price(0)).not.toBe('Free')
+  })
 })
 
 describe('context', () => {
@@ -94,7 +137,7 @@ describe('fetchModels', () => {
 it('features Zen6 first', () => expect(FEATURED[0]).toBe('zen6'))
 
 describe('sortModels', () => {
-  const m = (id: string, name: string, lab: string) => ({ id, name, lab, input: 1, output: 1, context: 1 })
+  const m = (id: string, name: string, lab: string) => ({ id, name, lab, input: 1, output: 1, context: 1, free: false, variable: false })
   it('puts Hanzo first, then labs A-Z, then names A-Z, without mutating', () => {
     const list = [
       m('a', 'Nova', 'Amazon'),
@@ -111,7 +154,7 @@ describe('sortModels', () => {
 })
 
 describe('freeModel', () => {
-  const m = (id: string, input: number, output: number) => ({ id, name: id, lab: 'Hanzo', input, output, context: 1 })
+  const m = (id: string, input: number, output: number) => ({ id, name: id, lab: 'Hanzo', input, output, context: 1, free: input === 0 && output === 0, variable: false })
   it('returns hanzo/zen when it is free', () => {
     const zen = m('hanzo/zen', 0, 0)
     expect(freeModel([m('zen6', 0.6, 2.4), zen])).toBe(zen)
@@ -126,7 +169,7 @@ describe('freeModel', () => {
 })
 
 describe('topLabs', () => {
-  const m = (lab: string) => ({ id: Math.random() + lab, name: lab, lab, input: 1, output: 1, context: 1 })
+  const m = (lab: string) => ({ id: Math.random() + lab, name: lab, lab, input: 1, output: 1, context: 1, free: false, variable: false })
   it('ranks labs by model count, Hanzo first when present, ignoring blank labs', () => {
     const list = [m('A'), m('A'), m('A'), m('B'), m('B'), m('Hanzo'), m(''), m('C')]
     expect(topLabs(list, 3)).toEqual(['Hanzo', 'A', 'B'])

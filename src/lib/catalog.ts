@@ -1,11 +1,13 @@
-export type Model = { id: string; name: string; lab: string; input: number; output: number; context: number }
+/** `variable` is true when the model is not priced per token (per second, per image, or no price at all). */
+export type Model = { id: string; name: string; lab: string; input: number; output: number; context: number; free: boolean; variable: boolean }
 
 type Raw = {
   id: string
   name?: string | null
   owned_by?: string | null
   context_window?: number
-  pricing?: { input_per_million?: number; output_per_million?: number }
+  free?: boolean
+  pricing?: { input_per_million?: number; output_per_million?: number; variable?: boolean }
 }
 
 export const MODELS_URL = 'https://api.hanzo.ai/v1/models'
@@ -39,18 +41,14 @@ const LABS: Record<string, string> = {
   'z-ai': 'Z.ai',
 }
 
-const title = (id: string) =>
-  id
-    .split('/')
-    .pop()!
-    .split('-')
-    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-    .join(' ')
+const cap = (w: string) => w.charAt(0).toUpperCase() + w.slice(1)
+const words = (s: string) => s.split('-').map(cap).join(' ')
+const title = (id: string) => words(id.split('/').pop()!)
 
 function labOf(id: string, owner?: string | null) {
   const key = owner || (id.includes('/') ? id.split('/')[0] : '')
   if (!key) return id.startsWith('zen') ? 'Hanzo' : ''
-  return LABS[key] ?? (key.startsWith('zen') ? 'Hanzo' : key.charAt(0).toUpperCase() + key.slice(1))
+  return LABS[key] ?? (key.startsWith('zen') ? 'Hanzo' : words(key))
 }
 
 export const toModel = (r: Raw): Model => ({
@@ -60,6 +58,11 @@ export const toModel = (r: Raw): Model => ({
   input: r.pricing?.input_per_million ?? 0,
   output: r.pricing?.output_per_million ?? 0,
   context: r.context_window ?? 0,
+  free: r.free === true,
+  variable:
+    r.pricing?.variable === true ||
+    typeof r.pricing?.input_per_million !== 'number' ||
+    typeof r.pricing?.output_per_million !== 'number',
 })
 
 export async function fetchModels(signal?: AbortSignal): Promise<Model[]> {
@@ -70,8 +73,8 @@ export async function fetchModels(signal?: AbortSignal): Promise<Model[]> {
   return body.data.filter((r) => !r.id.endsWith(':batch')).map(toModel)
 }
 
-export function price(n: number) {
-  if (n === 0) return 'Free'
+export function price(n: number, free = false) {
+  if (free) return 'Free'
   return n < 0.005 ? '<$0.01' : '$' + n.toFixed(2)
 }
 
@@ -89,8 +92,8 @@ export const sortModels = (list: Model[]) =>
       a.name.localeCompare(b.name),
   )
 
-/** The one rule behind every "free" claim: hanzo/zen exists in the live catalog at input 0 and output 0. */
-export const freeModel = (models: Model[]) => models.find((m) => m.id === 'hanzo/zen' && m.input === 0 && m.output === 0)
+/** The one rule behind every "free" claim: hanzo/zen is in the live catalog with free: true at input 0 and output 0. */
+export const freeModel = (models: Model[]) => models.find((m) => m.id === 'hanzo/zen' && m.free && m.input === 0 && m.output === 0)
 
 /** The n labs with the most models (A-Z on ties), Hanzo first when present. */
 export function topLabs(models: Model[], n: number) {
@@ -100,3 +103,10 @@ export function topLabs(models: Model[], n: number) {
   const top = ranked.slice(0, n)
   return count.has('Hanzo') ? ['Hanzo', ...top.filter((l) => l !== 'Hanzo')].slice(0, n) : top
 }
+
+/** Models billed per token; the rest are per second or per image. */
+export const perToken = (models: Model[]) => models.filter((m) => !m.variable)
+
+/** The FEATURED models present in the catalog, in FEATURED order. */
+export const featured = (models: Model[]) =>
+  FEATURED.map((id) => models.find((m) => m.id === id)).filter((m): m is Model => !!m)

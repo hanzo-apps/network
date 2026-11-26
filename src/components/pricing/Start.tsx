@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react'
 import Card from '@/components/ui/card'
 import { buttonClass } from '@/components/ui/button'
+import Glow from '@/components/pricing/Glow'
 
 const CODE = `curl https://api.hanzo.ai/v1/chat/completions \\
   -H "Authorization: Bearer $HANZO_API_KEY" \\
@@ -25,22 +26,25 @@ function Copy() {
     setTimeout(() => setDone(false), 2000)
   }
   return (
-    <div className="relative mt-4">
+    <div className="mt-4 overflow-hidden rounded-lg border border-border bg-[var(--white-03)]">
+      <div className="flex items-center justify-between border-b border-border px-4 py-2">
+        <span className="font-mono text-xs text-muted-foreground">curl</span>
+        <button
+          type="button"
+          onClick={copy}
+          className="h-8 rounded-full border border-border-strong px-3 text-xs font-medium text-foreground hover:bg-[var(--white-08)]"
+        >
+          {done ? 'Copied' : 'Copy'}
+        </button>
+      </div>
       <pre
         ref={pre}
         tabIndex={0}
         aria-label="curl command"
-        className="overflow-x-auto rounded-lg border border-border bg-[var(--white-03)] p-4 pr-20 font-mono text-sm leading-relaxed text-foreground"
+        className="overflow-x-auto p-4 font-mono text-sm leading-relaxed text-foreground"
       >
         {CODE}
       </pre>
-      <button
-        type="button"
-        onClick={copy}
-        className="absolute right-2 top-2 h-8 rounded-full border border-border-strong bg-background px-3 text-xs font-medium text-foreground hover:bg-[var(--white-08)]"
-      >
-        {done ? 'Copied' : 'Copy'}
-      </button>
     </div>
   )
 }
@@ -49,11 +53,7 @@ export default function Start() {
   return (
     <>
       <div className="relative mt-10">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 -inset-y-16 -z-10"
-          style={{ background: 'radial-gradient(ellipse at 50% 30%, var(--white-06), transparent 60%)' }}
-        />
+        <Glow />
         <ol className="grid gap-4 lg:grid-cols-[1fr_1.6fr_1fr]">
           <li>
             <Card className="h-full p-6">

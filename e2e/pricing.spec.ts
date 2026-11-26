@@ -88,3 +88,34 @@ test('at phone width nothing scrolls sideways', async ({ page }) => {
   const over = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)
   expect(over).toBeLessThanOrEqual(0)
 })
+
+test('Copy never sits on top of the command, and the code scrolls inside its own box', async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 812 })
+  await serveModels(page)
+  await page.goto('/pricing')
+  const copy = (await page.getByRole('button', { name: 'Copy' }).boundingBox())!
+  const code = (await page.getByLabel('curl command').boundingBox())!
+  expect(copy.y + copy.height).toBeLessThanOrEqual(code.y)
+  const over = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)
+  expect(over).toBeLessThanOrEqual(0)
+})
+
+test('when the clipboard is blocked, Copy selects the command so it can be copied by hand', async ({ page }) => {
+  await serveModels(page)
+  await page.goto('/pricing')
+  await page.evaluate(() => {
+    Object.defineProperty(navigator, 'clipboard', { value: { writeText: () => Promise.reject(new Error('blocked')) } })
+  })
+  await page.getByRole('button', { name: 'Copy' }).click()
+  await expect.poll(() => page.evaluate(() => getSelection()!.toString())).toContain('api.hanzo.ai')
+})
+
+test('paid per-second models are never listed or called Free', async ({ page }) => {
+  await serveModels(page)
+  await page.goto('/pricing')
+  await expect(page.getByText('Claude Opus 5.5').first()).toBeVisible()
+  await expect(page.getByText('FLUX 3 Video')).toHaveCount(0)
+  await expect(page.getByText('Kai', { exact: true })).toHaveCount(0)
+  await expect(page.getByText('2 image, audio and video models are priced per second or per image; see docs.hanzo.ai.')).toBeVisible()
+  await expect(page.getByRole('link', { name: 'docs.hanzo.ai' })).toHaveAttribute('href', 'https://docs.hanzo.ai')
+})

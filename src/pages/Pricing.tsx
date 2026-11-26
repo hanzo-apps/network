@@ -2,13 +2,12 @@ import { useCallback, useEffect, useState } from 'react'
 import { buttonClass } from '@/components/ui/button'
 import Card from '@/components/ui/card'
 import { AllModels, FeaturedCard } from '@/components/pricing/Models'
+import Glow from '@/components/pricing/Glow'
 import Start from '@/components/pricing/Start'
-import { FEATURED, fetchModels, freeModel, sortModels, type Model } from '@/lib/catalog'
+import { container, Eyebrow, H2 } from '@/components/home/Section'
+import { featured, fetchModels, freeModel, perToken, sortModels, type Model } from '@/lib/catalog'
 
-const wrap = 'mx-auto w-full max-w-[1200px] px-4 md:px-8'
-const section = `${wrap} mt-24 md:mt-32`
-const eyebrow = 'text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground'
-const h2 = 'mt-3 text-4xl font-semibold tracking-[-0.02em] md:text-5xl'
+const section = `${container} mt-24 md:mt-32`
 
 type State = { models: Model[] } | { error: true } | null
 
@@ -24,22 +23,14 @@ const Stat = ({ big, small }: { big: string; small: string }) => (
 const Group = ({ label, models, cols }: { label: string; models: Model[]; cols: string }) =>
   models.length > 0 && (
     <div className="mt-12">
-      <p className={eyebrow}>{label}</p>
-      <ul className={`mt-4 grid gap-4 sm:grid-cols-2 ${cols}`}>
+      <Eyebrow>{label}</Eyebrow>
+      <ul className={`grid gap-4 sm:grid-cols-2 ${cols}`}>
         {models.map((m) => (
           <FeaturedCard key={m.id} m={m} />
         ))}
       </ul>
     </div>
   )
-
-const Glow = () => (
-  <div
-    aria-hidden="true"
-    className="pointer-events-none absolute inset-x-0 -inset-y-16 -z-10"
-    style={{ background: 'radial-gradient(ellipse at 50% 30%, var(--white-06), transparent 60%)' }}
-  />
-)
 
 export default function Pricing() {
   const [state, setState] = useState<State>(null)
@@ -58,19 +49,19 @@ export default function Pricing() {
     setAttempt((n) => n + 1)
   }, [])
 
-  const models = state && 'models' in state ? state.models : null
-  const featured = models
-    ? FEATURED.map((id) => models.find((m) => m.id === id)).filter((m): m is Model => !!m)
-    : []
-  const zen = featured.filter((m) => m.lab === 'Hanzo')
-  const others = featured.filter((m) => m.lab !== 'Hanzo')
+  const all = state && 'models' in state ? state.models : null
+  const models = all ? perToken(all) : null
+  const variable = all && models ? all.length - models.length : 0
+  const top = models ? featured(models) : []
+  const zen = top.filter((m) => m.lab === 'Hanzo')
+  const others = top.filter((m) => m.lab !== 'Hanzo')
   const free = models ? freeModel(models) : undefined
 
   return (
     <div className="pb-[72px] pt-[72px] md:pb-32 md:pt-32">
-      <header className={wrap}>
-        <p className={eyebrow}>Pricing</p>
-        <h1 className="mt-4 text-6xl font-semibold leading-[1.02] tracking-[-0.03em] md:text-7xl">
+      <header className={container}>
+        <Eyebrow>Pricing</Eyebrow>
+        <h1 className=" text-6xl font-semibold leading-[1.02] tracking-[-0.03em] md:text-7xl">
           {free ? 'Start free. Pay per token.' : 'Pay per token.'}
         </h1>
         <p className="mt-6 max-w-[60ch] text-xl leading-relaxed text-muted-foreground">
@@ -85,8 +76,8 @@ export default function Pricing() {
       </header>
 
       <section className={section} id="start">
-        <p className={eyebrow}>Get started</p>
-        <h2 className={h2}>Your first call in a minute.</h2>
+        <Eyebrow>Get started</Eyebrow>
+        <H2>Your first call in a minute.</H2>
         <Start />
       </section>
 
@@ -106,7 +97,7 @@ export default function Pricing() {
           <section className={section} aria-label="Loading prices">
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               {Array.from({ length: 6 }, (_, i) => (
-                <div key={i} className="h-56 animate-pulse rounded-lg border border-border bg-[var(--white-03)]" />
+                <Card key={i} aria-hidden="true" className="h-56 animate-pulse" />
               ))}
             </div>
           </section>
@@ -116,16 +107,25 @@ export default function Pricing() {
           <>
             <section className={`${section} relative`} id="models">
               <Glow />
-              <h2 className={h2}>Featured models</h2>
+              <H2>Featured models</H2>
               <Group label="Hanzo Zen6" models={zen} cols="lg:grid-cols-4" />
               <Group label="From other labs" models={others} cols="lg:grid-cols-3" />
             </section>
             <section className={section}>
-              <h2 className={h2}>All models</h2>
+              <H2>All models</H2>
               <p className="mb-8 mt-3 text-sm text-muted-foreground">
                 Prices per 1M tokens. Batch-rate versions are also available through the API.
               </p>
               <AllModels models={sortModels(models)} />
+              {variable > 0 && (
+                <p className="mt-6 text-sm text-muted-foreground">
+                  {variable} image, audio and video models are priced per second or per image; see{' '}
+                  <a href="https://docs.hanzo.ai" className="text-foreground underline underline-offset-4">
+                    docs.hanzo.ai
+                  </a>
+                  .
+                </p>
+              )}
             </section>
           </>
         )}
@@ -143,10 +143,20 @@ export default function Pricing() {
           </Card>
           <Card className="p-6">
             <h2 className="text-2xl font-semibold">Have GPUs or CPUs?</h2>
-            <p className="mt-2 text-muted-foreground">Earn by running jobs on the network.</p>
-            <a href="/#provide" className={`${buttonClass('secondary')} mt-6`}>
-              Provide compute
-            </a>
+            <p className="mt-2 text-muted-foreground">
+              Providers keep the customer fee and, once Proof of AI switches on, earn AI rewards for verified work.
+            </p>
+            <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
+              <a href="/#provide" className={buttonClass('secondary')}>
+                How providers earn
+              </a>
+              <a
+                href="https://github.com/hanzoai/hanzo.network/blob/main/docs/proof-of-ai.md"
+                className="text-foreground underline underline-offset-4"
+              >
+                Read the spec
+              </a>
+            </div>
           </Card>
         </div>
       </section>
