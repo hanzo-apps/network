@@ -34,6 +34,20 @@ test('an empty question opens nothing', async ({ page }) => {
   expect(opened).toBe(false)
 })
 
+test('a question of only spaces opens nothing', async ({ page, context }) => {
+  const sent: string[] = []
+  await context.route('https://hanzo.chat/**', (route) => {
+    sent.push(route.request().url())
+    return route.abort()
+  })
+  await page.goto('/')
+  await page.getByRole('button', { name: 'Open chat' }).click()
+  await page.getByRole('textbox', { name: 'Message' }).fill('   ')
+  await page.getByRole('button', { name: /Ask in Hanzo Chat/ }).click()
+  await page.waitForTimeout(500)
+  expect(sent).toEqual([])
+})
+
 test('Escape closes the chat and returns focus; the close button is touch-sized; the pulse stops', async ({ page }) => {
   await page.goto('/')
   const opener = page.getByRole('button', { name: 'Open chat' })

@@ -40,6 +40,8 @@ export default function GlobalChatWidget() {
               ref={input}
               name="q"
               required
+              pattern=".*\S.*"
+              title="Type a question; spaces alone are not one."
               aria-label="Message"
               placeholder="Ask anything about Hanzo Network"
               className="h-11 min-w-0 rounded-full border border-border-strong bg-background px-4 text-sm text-foreground"
