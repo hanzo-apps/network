@@ -1,7 +1,157 @@
 @import 'tailwindcss';
+/* One source for colour, radius, type and spacing: Hanzo's tokens (dark by default). Zen comes
+   from @hanzo/font, imported in main.tsx so Vite can resolve its font files. Nothing below
+   restates a value either package already states. */
+@import '@hanzo/tokens/css';
 
-/* Main CSS file that imports all other CSS files */
-@import "./base.css";
-@import "./typography.css";
-@import "./themes.css";
-@import "./utilities.css";
+/* Tailwind's utilities read Hanzo's tokens, so `bg-card`, `text-muted-foreground`,
+   `text-8xl` and `rounded-lg` are Hanzo's values, never Tailwind's defaults. */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-error: var(--state-error-text);
+
+  --text-xs: var(--font-size-xs);
+  --text-sm: var(--font-size-sm);
+  --text-base: var(--font-size-base);
+  --text-lg: var(--font-size-lg);
+  --text-xl: var(--font-size-xl);
+  --text-2xl: var(--font-size-2xl);
+  --text-3xl: var(--font-size-3xl);
+  --text-4xl: var(--font-size-4xl);
+  --text-5xl: var(--font-size-5xl);
+  --text-6xl: var(--font-size-6xl);
+  --text-7xl: var(--font-size-7xl);
+  --text-8xl: var(--font-size-8xl);
+  --text-9xl: var(--font-size-9xl);
+
+  /* Zen's own optical weights (hanzoai/ui DESIGN.md §1), not the 400/500/600 ladder. */
+  --font-weight-light: 220;
+  --font-weight-normal: 497;
+  --font-weight-medium: 606;
+  --font-weight-semibold: 680;
+  --font-weight-bold: 760;
+}
+
+/* True black on dark devices, like hanzo.ai; light keeps the tokens' own canvas. */
+:root:not(.light) { --background: var(--pure-black); }
+
+/* Light mode flips the hero art (poster and video, one place): the black sky becomes the page's
+   light canvas and the white network becomes dark line work. */
+.light .hero-art { filter: invert(1) brightness(0.97); }
+
+@layer base {
+  * { border-color: var(--border); }
+  html { background: var(--background); }
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    font-weight: 497;
+    -webkit-font-smoothing: antialiased;
+  }
+  :focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+}
+
+/* Glass (src/components/ui/card.tsx): monochrome, lit from above, and a soft light plus a bright rim
+   follow the pointer. Touch screens get the resting glass only. */
+@layer components {
+  .glass {
+    --x: 50%; /* the pointer, set by card.tsx */
+    --y: 0%;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    border-radius: var(--radius-xl);
+    border: 1px solid color-mix(in oklab, var(--foreground) 10%, transparent);
+    background: linear-gradient(180deg, color-mix(in oklab, var(--foreground) 5%, transparent), color-mix(in oklab, var(--foreground) 3%, transparent) 45%);
+    backdrop-filter: blur(16px) saturate(120%);
+    box-shadow: inset 0 1px 0 color-mix(in oklab, var(--foreground) 8%, transparent), 0 20px 40px -24px rgb(0 0 0 / 0.8);
+    transition: border-color 200ms, transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .glass::before,
+  .glass::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 200ms;
+  }
+  .glass::before {
+    z-index: -1;
+    background: radial-gradient(420px circle at var(--x) var(--y), color-mix(in oklab, var(--foreground) 8%, transparent), transparent 45%);
+  }
+  .glass::after {
+    padding: 1px;
+    background: radial-gradient(260px circle at var(--x) var(--y), color-mix(in oklab, var(--foreground) 40%, transparent), transparent 60%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+  @media (hover: hover) {
+    .glass:hover { border-color: color-mix(in oklab, var(--foreground) 16%, transparent); transform: translateY(-2px); }
+    .glass:hover::before,
+    .glass:hover::after { opacity: 1; }
+  }
+}
+
+/* Light glass: a translucent white card with a dark hairline; the spotlight above turns dark. */
+.light .glass {
+  background: linear-gradient(180deg, color-mix(in oklab, var(--white) 85%, transparent), color-mix(in oklab, var(--white) 55%, transparent));
+  box-shadow: inset 0 1px 0 var(--white), 0 20px 40px -24px rgb(0 0 0 / 0.2);
+}
+
+/* A visitor who asks for less motion gets none: every animation and transition ends at once. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* A chat message settles in: opacity and a small lift, once. */
+@keyframes chat-in {
+  from { transform: translateY(6px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.chat-in { animation: chat-in 500ms cubic-bezier(0.16, 1, 0.3, 1) 1 both; }
+
+/* How it works: one ring of light leaves a step's icon when the job reaches it. Plays once. */
+@keyframes step-ring {
+  from { transform: scale(1); opacity: 0.6; }
+  to { transform: scale(2.4); opacity: 0; }
+}
+.step-ring { animation: step-ring 700ms cubic-bezier(0.16, 1, 0.3, 1) 1 both; }
+
+/* The flywheel: one dot circles the ring every 12 s. Only for visitors who have not asked for less motion. */
+@keyframes flywheel-orbit {
+  to { transform: rotate(360deg); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .flywheel-dot { transform-box: view-box; transform-origin: 160px 160px; animation: flywheel-orbit 12s linear infinite; }
+}
+
+/* One offset for every in-page anchor: the sticky nav is 57px. */
+html {
+  scroll-padding-top: 4rem;
+}

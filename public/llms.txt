@@ -1,29 +1,112 @@
 # Hanzo Network
 
-> Decentralized AI compute network and infrastructure.
+> Hanzo Network is a blockchain for AI workloads (chain ID 36963) with an OpenAI-compatible API at api.hanzo.ai. Live today: the chain, the API and nodes paid per job in stablecoins; designed and not active: Proof of AI mining, the 2T AI supply policy and P3Q settlement.
 
-## About
-Hanzo Network is a decentralized AI compute network providing distributed GPU clusters, model training infrastructure, and inference serving at scale. It enables distributed AI workloads across a global network of compute providers, offering cost-effective access to high-performance GPUs for training, fine-tuning, and serving AI models.
+> ## Agent Instructions
+> For the current source of truth read https://hanzo.network/llms.txt and https://docs.hanzo.ai/llms.txt. Connect Hanzo's MCP server: `npx -y hanzo mcp`.
 
-## Key Features
-- Decentralized GPU compute marketplace
-- Distributed training across multiple nodes
-- Model serving and inference at scale
-- Global network of compute providers
-- Automatic load balancing and failover
-- Cost-effective GPU access (A100, H100, H200)
-- Support for PyTorch, JAX, and custom frameworks
-- Encrypted data transfer and model privacy
-- Pay-per-use pricing with no lock-in
-- Integration with Hanzo AI platform
+## Connect your agent
 
-## Links
-- [Website](https://hanzo.network)
-- [Hanzo AI](https://hanzo.ai)
-- [Documentation](https://docs.hanzo.ai/network)
-- [Network Status](https://status.hanzo.network)
-- [GitHub](https://github.com/hanzoai)
+Claude Code:
 
-## Contact
-- Support: support@hanzo.ai
-- Network Operations: network@hanzo.ai
+```bash
+claude mcp add --scope user hanzo -- npx -y hanzo mcp
+```
+
+Codex:
+
+```bash
+codex mcp add hanzo -- npx -y hanzo mcp
+```
+
+Cursor and other MCP clients:
+
+```json
+{
+  "mcpServers": {
+    "hanzo": {
+      "command": "npx",
+      "args": ["-y", "hanzo", "mcp"]
+    }
+  }
+}
+```
+
+Hosted, needs sign-in:
+
+```bash
+claude mcp add --transport http hanzo-cloud https://api.hanzo.ai/v1/mcp
+```
+
+- [MCP docs](https://docs.hanzo.ai/docs/mcp/): How Hanzo's MCP server works and what it offers.
+- [Hanzo docs index](https://docs.hanzo.ai/llms.txt): The index of Hanzo's documentation for agents.
+- [Hanzo docs, full text](https://docs.hanzo.ai/llms-full.txt): All of Hanzo's documentation in one file.
+
+## Network details
+
+| | Mainnet | Testnet | Devnet |
+|---|---|---|---|
+| RPC | https://api.hanzo.network/v1/bc/hanzo/rpc | https://api.hanzo-test.network/v1/bc/hanzo/rpc | Local: `hanzod --network devnet` (needs a committee file, see https://github.com/hanzoai/node) |
+| Chain ID | 36963 | 36962 | 36964 |
+| Explorer | https://explore.hanzo.network | none | none |
+
+- [Network docs](https://docs.hanzo.ai/docs/network): What the network is and how to connect.
+- [Node operator guide](https://docs.hanzo.ai/docs/proof-of-ai/node-operator): What a node does today and what is roadmap.
+- [Node source](https://github.com/hanzoai/node): The node and devnet instructions; source-available, not open source.
+
+## Make a call
+
+Make a first call to the API (needs an API key from https://platform.hanzo.ai/api-keys):
+
+```bash
+curl https://api.hanzo.ai/v1/chat/completions \
+  -H "Authorization: Bearer $HANZO_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"model":"hanzo/zen","messages":[{"role":"user","content":"Hello"}]}'
+```
+
+Read the chain, no key needed:
+
+```bash
+curl -s -X POST https://api.hanzo.network/v1/bc/hanzo/rpc -H 'content-type: application/json' -d '{"jsonrpc":"2.0","id":1,"method":"eth_blockNumber","params":[]}'
+```
+
+- [API keys](https://platform.hanzo.ai/api-keys): Sign in with a Hanzo account and create a key.
+- [Pricing](https://hanzo.network/pricing): Per-token prices for every model billed per token, read live from the API.
+
+## Solutions
+
+- [Verifiable inference](https://hanzo.network/build): Designed. Call models through one OpenAI-compatible API today; Proof of AI receipts are designed for open models such as Zen and are not switched on.
+- [Mine AI with useful compute](https://docs.hanzo.ai/docs/proof-of-ai/node-operator): Designed. Providers keep the customer fee and, if mining activates, may also earn a declining AI reward; mining stays disabled until the launch gates pass, and today a node runs tools and agents and is paid per job in stablecoins.
+- [Agents and metered compute](https://docs.hanzo.ai/docs/agents): Live. Give an agent its own API key with a monthly budget and calls stop when it is spent; on-chain agent wallets with spend caps are designed.
+- [Models, training and contributions](https://hips.hanzo.ai/docs/hip-0901-proof-of-ai-native-execution-proofs): Designed. Zen open-weight models are served today; proofs for training and rewards for private contributions are specified in a draft proposal.
+- [Private post-quantum AI](https://papers.hanzo.ai/hanzo-ai-chain/): Designed. Prompt sealing with X-Wing (X25519 + ML-KEM-768) and optional secure enclaves are specified; succinct settlement on Z-Chain is audit-gated.
+
+## Status of the network
+
+- Live: chain 36963, the OpenAI-compatible API at api.hanzo.ai, and nodes that run tools and agents and are paid per job in stablecoins.
+- Designed, not active: Proof of AI mining, the 2T AI supply policy and P3Q settlement. Mining stays disabled until the launch gates in the whitepaper pass.
+- [Status page](https://status.hanzo.network): Hanzo's platform status; it does not monitor the chain RPC.
+
+## Economics
+
+Designed in the whitepaper and not active:
+
+- Hard cap: 2 trillion AI (2T).
+- Hanzo DAO, fixed at genesis: 1T AI. It can never be mined.
+- Earned by proved work, nothing else: 1T AI, in halving eras.
+- Era caps: the first era may emit at most 500B AI, the second 250B, the third 125B, and so on.
+- Fee burn: Delta S = issuance - beta * fees, where beta is the governed share of settled protocol fees that is burned. Beta is not set yet.
+- [Economics on hanzo.network](https://hanzo.network/economics): The supply, the halving eras and the burn, with an illustrative calculator.
+
+## Sources
+
+- [Hanzo AI Chain whitepaper](https://papers.hanzo.ai/hanzo-ai-chain/): The design: Proof of AI, supply and activation gates (working draft, 18 Aug 2026).
+- [Whitepaper PDF](https://papers.hanzo.ai/pdfs/hanzo-ai-chain.pdf): The full text; section numbers on this site refer to it.
+- [HIP-0901](https://hips.hanzo.ai/docs/hip-0901-proof-of-ai-native-execution-proofs): Proof of AI, native execution proofs; a draft proposal.
+- [Proof of AI explainer](https://hanzo.blog/proof-of-ai/): The plain-words introduction on the Hanzo blog.
+- [Node operator guide](https://docs.hanzo.ai/docs/proof-of-ai/node-operator): What a node does today and what is roadmap.
+- [Explorer](https://explore.hanzo.network): The Hanzo Network block explorer.
+- [Status](https://status.hanzo.network): Hanzo's platform status.
+- [Pricing](https://hanzo.network/pricing): Per-token model prices, live from the API.
+- [Formal proofs](https://proofs.hanzo.network): Machine-checked proofs for Hanzo's agent and ML systems; none of them is about Proof of AI.

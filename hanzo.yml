@@ -8,10 +8,18 @@
 test:
   - name: build
     run: |
+      set -e
       corepack enable
       pnpm install --frozen-lockfile
+      pnpm typecheck
+      pnpm lint
+      pnpm test
       pnpm build
       node scripts/check.mjs
+      # e2e: the runner has no sudo, so no --with-deps; Chromium goes under $HOME, which the job can write
+      export PLAYWRIGHT_BROWSERS_PATH="$HOME/.cache/ms-playwright"
+      pnpm exec playwright install chromium
+      pnpm exec playwright test --grep-invert @network
 
 site:
   slug: network

@@ -1,0 +1,46 @@
+import Card from '@/components/ui/card'
+import Tag, { type Status } from '@/components/ui/tag'
+import { WHITEPAPER_PDF } from '@/lib/links'
+import Reveal from './Reveal'
+import Section, { Eyebrow, H2 } from './Section'
+import { textLink } from '@/components/ui/button'
+
+const PHASES: { tag: Status; title: string; text: string }[] = [
+  { tag: 'In progress', title: 'Arithmetic and wire freeze', text: 'Freeze the field, formats and challenge rules. The integer core, Go and Rust vectors and Solidity fixtures exist.' },
+  { tag: 'Designed', title: 'Exact replay and shadow proofs', text: 'Small jobs are replayed exactly. Shadow evidence has no mint authority.' },
+  { tag: 'Designed', title: 'Optimistic Proof of AI', text: 'Activates only after seven gates, including CPU and GPU byte agreement and caught fabrications.' },
+  { tag: 'Designed', title: 'Cloud-provider pilot', text: 'One existing cloud scheduler and one independent provider run the same job adapter.' },
+  { tag: 'Designed', title: 'Succinct-proof settlement', text: 'P3Q replaces the optimistic path on Z-Chain only after audits complete.' },
+]
+
+export default function Phases() {
+  return (
+    <Section id="phases" glow>
+      <Reveal>
+        <Eyebrow>Activation</Eyebrow>
+        <H2>Mining is gated in phases.</H2>
+        <p className="mt-4 max-w-[60ch] text-xl leading-relaxed text-muted-foreground">Mining stays disabled until these gates pass. No dates are promised.</p>
+      </Reveal>
+      <ol className="mt-12 grid gap-4 md:mt-16 md:grid-cols-2 lg:grid-cols-5">
+        {PHASES.map((p, i) => (
+          <li key={p.title}>
+            <Reveal index={i} className="h-full">
+              <Card className="flex h-full flex-col items-start p-6 lg:p-5 xl:p-6">
+                <div className="flex w-full flex-wrap items-center justify-between gap-2">
+                  <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground">Phase {i}</p>
+                  <Tag is={p.tag} />
+                </div>
+                <h3 className="mt-5 text-balance text-xl font-semibold tracking-[-0.01em]">{p.title}</h3>
+                <p className="mt-3 text-base leading-relaxed text-muted-foreground">{p.text}</p>
+              </Card>
+            </Reveal>
+          </li>
+        ))}
+      </ol>
+      <Reveal className="mt-10 md:mt-12">
+        <p className="max-w-[70ch] text-balance text-lg leading-relaxed text-muted-foreground">Then governance fixes the supply parameters: activation height, halving interval and fee-burn fraction.</p>
+        <a href={WHITEPAPER_PDF} className={`${textLink} mt-2`}>Whitepaper, section 10</a>
+      </Reveal>
+    </Section>
+  )
+}
