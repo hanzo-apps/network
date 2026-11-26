@@ -1,10 +1,11 @@
+import { HANZO, LUX, ZEN, ZOO } from '@/lib/links'
 import { container, Eyebrow } from './Section'
 
 const PARTS = [
-  { name: 'Hanzo AI', href: 'https://hanzo.ai', domain: 'hanzo.ai' },
-  { name: 'Zen models', href: 'https://hanzo.ai/zen', domain: 'hanzo.ai/zen' },
-  { name: 'Lux Network', href: 'https://lux.network', domain: 'lux.network' },
-  { name: 'Zoo Labs', href: 'https://zoo.ngo', domain: 'zoo.ngo' },
+  { name: 'Hanzo AI', href: HANZO, domain: 'hanzo.ai' },
+  { name: 'Zen models', href: ZEN, domain: 'hanzo.ai/zen' },
+  { name: 'Lux Network', href: LUX, domain: 'lux.network' },
+  { name: 'Zoo Labs', href: ZOO, domain: 'zoo.ngo' },
 ]
 
 export default function Stack() {

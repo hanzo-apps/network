@@ -1,4 +1,4 @@
-import { RPC_MAINNET } from '../../lib/links'
+import { API_CHAT, API_MCP, RPC_MAINNET } from '../../lib/links'
 
 /** The commands the Build page prints. public/llms.txt must carry every one (src/lib/networks.test.ts). */
 export const COMMANDS = [
@@ -15,13 +15,13 @@ export const COMMANDS = [
   }
 }`,
   },
-  { label: 'Hosted, needs sign-in', text: 'claude mcp add --transport http hanzo-cloud https://api.hanzo.ai/v1/mcp' },
+  { label: 'Hosted, needs sign-in', text: `claude mcp add --transport http hanzo-cloud ${API_MCP}` },
 ] as const
 
 export const DEVNET_COMMAND = 'hanzod --network devnet'
 
 /** The first call, shown on /pricing and /build. */
-export const CURL_QUICKSTART = `curl https://api.hanzo.ai/v1/chat/completions \\
+export const CURL_QUICKSTART = `curl ${API_CHAT} \\
   -H "Authorization: Bearer $HANZO_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{"model":"hanzo/zen","messages":[{"role":"user","content":"Hello"}]}'`

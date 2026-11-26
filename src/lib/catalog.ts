@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { MODELS_URL } from './links'
 
 /** `variable` is true when the model is not priced per token (per second, per image, or no price at all). */
 export type Model = { id: string; name: string; lab: string; input: number; output: number; context: number; free: boolean; variable: boolean }
@@ -12,7 +13,6 @@ type Raw = {
   pricing?: { input_per_million?: number; output_per_million?: number; variable?: boolean }
 }
 
-export const MODELS_URL = 'https://api.hanzo.ai/v1/models'
 
 export const FEATURED = [
   'zen6',

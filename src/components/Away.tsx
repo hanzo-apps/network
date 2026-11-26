@@ -1,8 +1,6 @@
 import { useEffect } from "react";
 import { useAnalytics } from "@hanzo/event/react";
-
-/** hanzo.ai's sign-in page. It signs the visitor in, then sends them on to pay. */
-const LOGIN = "https://hanzo.ai/login";
+import { LOGIN } from "../lib/links";
 
 /**
  * This site's sign-in, sign-up and account addresses: hanzo.ai signs people in.

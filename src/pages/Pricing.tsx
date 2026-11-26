@@ -5,7 +5,7 @@ import { AllModels, FeaturedCard } from '@/components/pricing/Models'
 import Glow from '@/components/pricing/Glow'
 import Start from '@/components/pricing/Start'
 import { container, Eyebrow, H2 } from '@/components/home/Section'
-import { NODE_GUIDE, PLANS } from '@/lib/links'
+import { DOCS, NODE_GUIDE, PLANS, POAI_SPEC } from '@/lib/links'
 import { FEATURED, countModels, featured, isZenFeatured, loadModels, freeModel, group, perToken, sortModels, type Model } from '@/lib/catalog'
 
 const section = `${container} mt-24 md:mt-32`
@@ -127,7 +127,7 @@ export default function Pricing() {
               {variable > 0 && (
                 <p className="mt-6 text-sm text-muted-foreground">
                   {variable} more models are priced per second, per image, or are not billed per token; see{' '}
-                  <a href="https://docs.hanzo.ai" className="text-foreground underline underline-offset-4">
+                  <a href={DOCS} className="text-foreground underline underline-offset-4">
                     docs.hanzo.ai
                   </a>
                   .
@@ -144,7 +144,7 @@ export default function Pricing() {
           <Card className="p-6">
             <h2 className="text-2xl font-semibold">Need a plan for you or your team?</h2>
             <p className="mt-2 text-muted-foreground">Hanzo's monthly plans live on hanzo.ai.</p>
-            <a href="https://hanzo.ai/pricing" className={`${buttonClass('secondary')} mt-6`}>
+            <a href={PLANS} className={`${buttonClass('secondary')} mt-6`}>
               Compare plans
             </a>
           </Card>
@@ -158,7 +158,7 @@ export default function Pricing() {
                 Run a node
               </a>
               <a
-                href="https://github.com/hanzoai/hanzo.network/blob/main/docs/proof-of-ai.md"
+                href={POAI_SPEC}
                 className="text-foreground underline underline-offset-4"
               >
                 Read the spec

@@ -1,16 +1,17 @@
 import { Link } from 'react-router-dom'
+import { DISCORD, DOCS, HANZO, NODE_REPO, PRIVACY, TERMS } from '@/lib/links'
 import { PrivacyChoicesIcon } from './Consent'
 
 const LINKS = [
-  { label: 'hanzo.ai', href: 'https://hanzo.ai' },
+  { label: 'hanzo.ai', href: HANZO },
   { label: 'Build', href: '/build' },
   { label: 'Economics', href: '/economics' },
   { label: 'Pricing', href: '/pricing' },
-  { label: 'Docs', href: 'https://docs.hanzo.ai' },
-  { label: 'GitHub', href: 'https://github.com/hanzoai/node' },
-  { label: 'Discord', href: 'https://discord.gg/CJCyAsm9Vr' },
-  { label: 'Privacy', href: 'https://hanzo.ai/privacy' },
-  { label: 'Terms', href: 'https://hanzo.ai/terms' },
+  { label: 'Docs', href: DOCS },
+  { label: 'GitHub', href: NODE_REPO },
+  { label: 'Discord', href: DISCORD },
+  { label: 'Privacy', href: PRIVACY },
+  { label: 'Terms', href: TERMS },
 ]
 
 export default function Footer() {
