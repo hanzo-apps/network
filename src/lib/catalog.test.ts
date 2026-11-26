@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { FEATURED, context, featured, fetchModels, freeModel, perToken, price, sortModels, toModel, topLabs } from './catalog'
+import { FEATURED, context, featured, fetchModels, freeModel, group, perToken, price, sortModels, toModel, topLabs } from './catalog'
 
 const raw = (o: object = {}) => ({
   id: 'anthropic/claude-opus-5.5',
@@ -181,5 +181,21 @@ describe('topLabs', () => {
   })
   it('breaks ties A-Z and omits Hanzo when absent', () => {
     expect(topLabs([m('Z'), m('Y'), m('X')], 2)).toEqual(['X', 'Y'])
+  })
+})
+
+describe('group', () => {
+  const enso = (id: string, o: object = {}) => ({ id, name: 'Enso', lab: 'Hanzo', input: 1, output: 2, context: 128000, free: false, variable: false, ...o })
+  it('merges identical aliases into one row with every id', () => {
+    const rows = group([enso('enso'), enso('hanzo/enso'), enso('zenlm/enso')])
+    expect(rows).toHaveLength(1)
+    expect(rows[0].ids).toEqual(['enso', 'hanzo/enso', 'zenlm/enso'])
+    expect(rows[0].name).toBe('Enso')
+  })
+  it('keeps a differently priced or sized Enso apart', () => {
+    expect(group([enso('a'), enso('b', { output: 3 }), enso('c', { context: 8000 }), enso('d', { lab: 'Other' })])).toHaveLength(4)
+  })
+  it('keeps the order of first appearance', () => {
+    expect(group([enso('a'), enso('x', { name: 'Kai' }), enso('b')]).map((r) => r.ids)).toEqual([['a', 'b'], ['x']])
   })
 })

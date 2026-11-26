@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import { buttonClass } from '@/components/ui/button'
 import Card from '@/components/ui/card'
-import { context, price, topLabs, type Model } from '@/lib/catalog'
+import { context, price, topLabs, type Model, type Row } from '@/lib/catalog'
 
 export function FeaturedCard({ m }: { m: Model }) {
   return (
@@ -28,14 +28,14 @@ export function FeaturedCard({ m }: { m: Model }) {
 
 const LIMIT = 12
 const cols = 'md:grid-cols-[minmax(0,1fr)_7rem_6rem_6rem_5rem]'
-export function AllModels({ models }: { models: Model[] }) {
+export function AllModels({ models }: { models: Row[] }) {
   const [q, setQ] = useState('')
   const [lab, setLab] = useState('All')
   const [all, setAll] = useState(false)
   const labs = useMemo(() => topLabs(models, 6), [models])
   const needle = q.trim().toLowerCase()
   const hits = models.filter(
-    (m) => (lab === 'All' || m.lab === lab) && `${m.name} ${m.id} ${m.lab}`.toLowerCase().includes(needle),
+    (m) => (lab === 'All' || m.lab === lab) && `${m.name} ${m.ids.join(' ')} ${m.lab}`.toLowerCase().includes(needle),
   )
   const shown = all ? hits : hits.slice(0, LIMIT)
 
@@ -73,12 +73,12 @@ export function AllModels({ models }: { models: Model[] }) {
         <ul>
           {shown.map((m) => (
             <li
-              key={m.id}
+              key={m.ids[0]}
               className={`grid grid-cols-[1fr_auto] items-baseline gap-x-4 gap-y-1 border-b border-border py-3 last:border-b-0 ${cols}`}
             >
               <div className="min-w-0">
                 <p className="break-words font-medium">{m.name}</p>
-                <p className="hidden break-all font-mono text-xs text-muted-foreground md:block">{m.id}</p>
+                <p className="truncate font-mono text-xs text-muted-foreground" title={m.ids.join(', ')}>{m.ids.join(', ')}</p>
               </div>
               <p className="text-sm text-muted-foreground">{m.lab}</p>
               <p className="col-span-2 text-sm tabular-nums md:hidden">

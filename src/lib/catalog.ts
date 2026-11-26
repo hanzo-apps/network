@@ -110,3 +110,16 @@ export const perToken = (models: Model[]) => models.filter((m) => !m.variable)
 /** The FEATURED models present in the catalog, in FEATURED order. */
 export const featured = (models: Model[]) =>
   FEATURED.map((id) => models.find((m) => m.id === id)).filter((m): m is Model => !!m)
+
+/** One row per distinct model: ids that share name, lab, prices and context are aliases of the same model. */
+export type Row = Model & { ids: string[] }
+export function group(models: Model[]): Row[] {
+  const rows = new Map<string, Row>()
+  for (const m of models) {
+    const key = JSON.stringify([m.name, m.lab, m.input, m.output, m.context, m.free])
+    const row = rows.get(key)
+    if (row) row.ids.push(m.id)
+    else rows.set(key, { ...m, ids: [m.id] })
+  }
+  return [...rows.values()]
+}
