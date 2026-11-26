@@ -45,9 +45,9 @@ pnpm exec playwright test --grep @network          # live-internet link check (o
 
 Tests: vitest for `src/lib` and CSS variables (`test/`); Playwright for axe (WCAG 2.2 AA), phone width, the font shipping, redirects, the heartbeat, the still hero, and privacy (`e2e/privacy.spec.ts`: Your Privacy Choices in the footer, the opt-in bar, no hanzo.id link, sign-in to hanzo.ai/login). The home specs mock the chain, so CI never depends on it.
 
-The chat widget is a plain form hand-off: `<form action="https://hanzo.chat/" method="get" target="_blank">` with a `q` field. It calls no API and holds no state.
+The chat widget answers in place. `src/lib/chat.ts` `ask(messages, signal)` POSTs `{messages}` to `https://api.hanzo.ai/v1/chat/public` (keyless, `credentials: 'omit'`, no Authorization) and returns only `choices[0].message.content`; it throws on non-200 or an empty answer and never reads `reasoning_content`. The widget keeps the conversation in component state (gone on reload), sends the last 10 messages, shows "Thinking…" in a polite status region, times out at 30 s, and on failure says so with Retry and a hanzo.chat link; a 429 says to wait a minute. "Open in Hanzo Chat" (`https://hanzo.chat/?q=<last question>`) is always in the dialog. Tests: `src/lib/chat.test.ts`, `e2e/chat.spec.ts` (endpoint mocked with `page.route`).
 
-`node scripts/check.mjs` is the gate CI runs over `dist/` (no tag in index.html, no hanzo.id, the ingest key resolves). It also asserts the export names `https://api.hanzo.ai/v1/chat/public`; the plain-form widget calls no API, so that one assertion fails until it is decided whether the widget asks the public chat lane or the assertion goes.
+`node scripts/check.mjs` is the gate CI runs over `dist/` (no tag in index.html, no hanzo.id, the ingest key resolves). It also asserts the export names `https://api.hanzo.ai/v1/chat/public`, which the widget does.
 
 `hanzoai/node` is source-available (Hanzo Ecosystem License), not open source; the site never says open source about it.
 

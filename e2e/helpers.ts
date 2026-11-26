@@ -2,7 +2,7 @@ import type { Page } from '@playwright/test'
 import AxeBuilder from '@axe-core/playwright'
 
 export const MODELS_URL = 'https://api.hanzo.ai/v1/models'
-export const CHAT_URL = 'https://api.hanzo.ai/v1/chat/completions'
+export const CHAT_URL = 'https://api.hanzo.ai/v1/chat/public'
 export const RPC_URL = 'https://api.hanzo.network/v1/chain/hanzo'
 
 export const serveModels = (page: Page) =>
