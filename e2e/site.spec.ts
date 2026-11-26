@@ -46,7 +46,7 @@ for (const path of PAGES) {
   })
 }
 
-for (const path of ['/team', '/zen', '/contact', '/blockchain', '/dashboard']) {
+for (const path of ['/team', '/zen', '/contact', '/dashboard']) {
   test(`${path} redirects to hanzo.ai`, async ({ page }) => {
     // Our job ends at the hand-off: hanzo.ai may send on (e.g. /dashboard → /signup when signed out).
     const handoff = page.waitForRequest((r) => r.isNavigationRequest() && r.url().startsWith('https://hanzo.ai/'))
@@ -70,6 +70,24 @@ test('an unknown path hands off to hanzo.ai without drawing our page frame', asy
   await handoff
   expect(drawn, 'page frame drawn before the jump').toBe(false)
 })
+
+// The chain paths hanzo.ai never had stay with the chain: status and explorer go to their own sites, the old chain pages to our home.
+for (const [path, to] of [['/status', 'https://status.hanzo.network/'], ['/explorer', 'https://explore.hanzo.network/']] as const) {
+  test(`${path} goes to ${to}, not to hanzo.ai`, async ({ page }) => {
+    await page.route(`${to}**`, (route) => route.fulfill({ body: 'there', contentType: 'text/html' }))
+    const handoff = page.waitForRequest((r) => r.isNavigationRequest() && r.url().startsWith(to))
+    await page.goto(path)
+    await handoff
+  })
+}
+
+for (const path of ['/blockchain', '/blockchain/anything/at/all', '/web3']) {
+  test(`${path} lands on this site's home`, async ({ page }) => {
+    await page.goto(path)
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText('The blockchain for global intelligence.')
+    expect(new URL(page.url()).pathname).toBe('/')
+  })
+}
 
 test('footer year is current', async ({ page }) => {
   await page.goto('/')
@@ -218,3 +236,13 @@ test('no page logs a console error or throws, with the network mocked', async ({
   }
   expect(problems).toEqual([])
 })
+
+for (const path of ['/pricing', '/build']) {
+  test(`${path}: Get an API key carries the visitor's id, as the /login hand-off does`, async ({ page }) => {
+    await page.goto(path)
+    const href = await page.getByRole('link', { name: 'Get an API key' }).last().getAttribute('href')
+    const url = new URL(href!)
+    expect(`${url.origin}${url.pathname}`).toBe('https://platform.hanzo.ai/api-keys')
+    expect(url.searchParams.get('hz_aid')).toBeTruthy()
+  })
+}

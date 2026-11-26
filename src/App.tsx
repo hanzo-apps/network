@@ -6,20 +6,23 @@ import { Measure } from "./components/Measure";
 import ScrollToTop from "./components/ScrollToTop";
 import Shell from "./components/Shell";
 import { Away } from "./components/Away";
+import { EXPLORER, HANZO, STATUS } from "./lib/links";
 import Build from "./pages/Build";
 import Early from "./pages/Early";
 import Economics from "./pages/Economics";
 import NetworkLanding from "./pages/NetworkLanding";
 import Pricing from "./pages/Pricing";
 
-// hanzo.network is two pages. Every other path was a copy of hanzo.ai, so it
+// hanzo.network is five pages. Every other path was a copy of hanzo.ai, so it
 // goes to the one real page there, path and query intact.
+const Leave = ({ to }: { to: string }) => {
+  useEffect(() => window.location.replace(to), [to]);
+  return null;
+};
+
 const ToHanzo = () => {
   const { pathname, search, hash } = useLocation();
-  useEffect(() => {
-    window.location.replace(`https://hanzo.ai${pathname}${search}${hash}`);
-  }, [pathname, search, hash]);
-  return null;
+  return <Leave to={`${HANZO}${pathname}${search}${hash}`} />;
 };
 
 const App = () => (
@@ -40,6 +43,12 @@ const App = () => (
         ))}
         {/* Old copies of this site's own home page; hanzo.ai has no /original (route audit, 26 Nov). */}
         {["/index", "/home2", "/original"].map((path) => (
+          <Route key={path} path={path} element={<Navigate to="/" replace />} />
+        ))}
+        {/* The chain's own pages stay with the chain; its old landing pages come home. */}
+        <Route path="/status" element={<Leave to={STATUS} />} />
+        <Route path="/explorer" element={<Leave to={EXPLORER} />} />
+        {["/blockchain", "/blockchain/*", "/web3"].map((path) => (
           <Route key={path} path={path} element={<Navigate to="/" replace />} />
         ))}
         <Route path="*" element={<ToHanzo />} />
