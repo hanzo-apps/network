@@ -8,8 +8,12 @@ const files = (dir: string): string[] =>
     return statSync(p).isDirectory() ? files(p) : /\.(ts|tsx)$/.test(p) ? [p] : []
   })
 
-// Consent and Measure are the privacy and measurement code this site copies from @hanzo/ui and @hanzo/event; they keep their own addresses.
+// Consent.tsx and Measure.tsx must stay byte-identical to upstream hanzo-apps/network main so future upstream changes merge cleanly, so they keep their own addresses and are not edited here.
 const KEPT = ['src/components/Consent.tsx', 'src/components/Measure.tsx', 'src/lib/links.ts']
+
+test('the allow-list is exactly Consent.tsx, Measure.tsx and links.ts', () => {
+  expect([...KEPT].sort()).toEqual(['src/components/Consent.tsx', 'src/components/Measure.tsx', 'src/lib/links.ts'])
+})
 
 test('every outbound address is written once, in src/lib/links.ts', () => {
   const stray = files('src')

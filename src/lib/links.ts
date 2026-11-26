@@ -19,7 +19,6 @@ export const WHITEPAPER = 'https://papers.hanzo.ai/hanzo-ai-chain/'
 /** The page above shows only the abstract; section references point here. */
 export const WHITEPAPER_PDF = 'https://papers.hanzo.ai/pdfs/hanzo-ai-chain.pdf'
 export const POAI_BLOG = 'https://hanzo.blog/proof-of-ai/'
-export const HIPS = 'https://hips.hanzo.ai'
 export const HIP_0901 = 'https://hips.hanzo.ai/docs/hip-0901-proof-of-ai-native-execution-proofs'
 export const HIP_1000 = 'https://hips.hanzo.ai/docs/hip-1000-author-royalty'
 export const HIP_1334 = 'https://hips.hanzo.ai/docs/hip-1334-research-unified-runtime'
@@ -41,7 +40,7 @@ export const HANZO_CHAT = 'https://hanzo.chat'
 /** This site, for the one place an absolute address is needed: the chat's system message. */
 export const SITE = 'https://hanzo.network'
 
-export const API = 'https://api.hanzo.ai'
+const API = 'https://api.hanzo.ai'
 export const API_MCP = `${API}/v1/mcp`
 export const API_CHAT = `${API}/v1/chat/completions`
 export const CHAT_LANE = 'https://api.hanzo.ai/v1/chat/public'
