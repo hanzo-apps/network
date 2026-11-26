@@ -50,7 +50,9 @@ export default function How() {
     const ro = new ResizeObserver(place)
     ro.observe(t)
     return () => ro.disconnect()
-  })
+    // place only reads refs and stable motion values; re-observe when reduced motion flips.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [still])
 
   return (
     <Section id="how" glow>
@@ -58,7 +60,7 @@ export default function How() {
         <Eyebrow>How it works</Eyebrow>
         <H2>Four steps from job to payout.</H2>
       </Reveal>
-      <ol ref={list} className="relative mt-12 grid gap-4 pl-6 md:mt-16 md:grid-cols-4 md:gap-6 md:pl-0 md:pt-8">
+      <div className="relative mt-12 md:mt-16">
         <div ref={track} aria-hidden className="absolute bottom-0 left-0 top-0 w-px bg-foreground/10 md:bottom-auto md:right-0 md:h-px md:w-auto">
           <motion.div
             className="h-full w-full origin-top-left bg-foreground/60"
@@ -71,6 +73,7 @@ export default function How() {
             />
           )}
         </div>
+        <ol ref={list} className="grid gap-4 pl-6 md:grid-cols-4 md:gap-6 md:pl-0 md:pt-8">
         {STEPS.map(({ name, term, Icon, text }, i) => {
           const on = i < active
           return (
@@ -87,7 +90,8 @@ export default function How() {
             </li>
           )
         })}
-      </ol>
+        </ol>
+      </div>
     </Section>
   )
 }
