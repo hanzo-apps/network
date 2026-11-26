@@ -25,7 +25,6 @@
   --color-border-strong: var(--border-strong);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-online: var(--state-online);
   --color-error: var(--state-error-text);
 
   --text-xs: var(--font-size-xs);

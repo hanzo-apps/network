@@ -11,7 +11,7 @@ function Heartbeat() {
   if (height === null) {
     return <p className="text-sm text-muted-foreground">Network status unavailable</p>
   }
-  const dot = 'block h-2 w-2 rounded-full bg-online'
+  const dot = 'block h-2 w-2 rounded-full bg-foreground'
   return (
     <p className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm tabular-nums">
       {still ? (
@@ -36,11 +36,8 @@ export default function Hero() {
     <section className="relative flex min-h-[88svh] items-center overflow-hidden py-[72px] md:py-32">
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.14]"
-        style={{
-          background:
-            'radial-gradient(60% 50% at 25% 20%, var(--art-tide), transparent), radial-gradient(50% 45% at 80% 70%, var(--art-ember), transparent)',
-        }}
+        className="pointer-events-none absolute inset-0"
+        style={{ background: 'radial-gradient(60% 50% at 50% 85%, var(--white-08), transparent)' }}
       />
       <HeroArt />
       <div className={`${container} relative text-center`}>

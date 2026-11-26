@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { HanzoLogo } from '@hanzo/logo'
 import { buttonClass } from '@/components/ui/button'
 
 const LINKS = [
@@ -34,8 +35,9 @@ export default function Nav() {
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background/80 backdrop-blur">
       <div className="mx-auto flex h-14 w-full max-w-[1200px] items-center justify-between px-4 md:px-8">
-        <Link to="/" className="rounded-sm text-lg font-semibold tracking-[-0.01em]">
-          hanzo <span className="font-normal text-muted-foreground">/ network</span>
+        <Link to="/" aria-label="Hanzo Network home" className="flex items-center gap-2.5 rounded-sm text-lg font-semibold tracking-[-0.01em] text-foreground">
+          <HanzoLogo variant="current" size={20} />
+          Hanzo Network
         </Link>
         <nav aria-label="Main" className="hidden items-center gap-8 sm:flex">{links(item)}</nav>
         <div className="hidden sm:block">
