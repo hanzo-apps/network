@@ -272,13 +272,18 @@ test('the header fits at every width: a menu button below 768px, the links from 
   for (const width of [640, 700, 768, 900, 1024]) {
     await page.setViewportSize({ width, height: 800 })
     await page.goto('/')
+    await page.evaluate(() => document.fonts.ready)
     const header = page.locator('header')
+    const main = header.getByRole('navigation', { name: 'Main' })
+    const menu = header.getByRole('button', { name: 'Open menu' })
     const home = (await header.getByRole('link', { name: 'Hanzo Network home' }).boundingBox())!
     expect(home.height, `the name stays on one line at ${width}`).toBeLessThan(40)
     if (width < 768) {
-      await expect(header.getByRole('button', { name: 'Open menu' }), `menu button at ${width}`).toBeVisible()
+      await expect(menu, `menu button at ${width}`).toBeVisible()
+      await expect(main, `no row of links at ${width}`).toBeHidden()
     } else {
-      const links = header.getByRole('navigation', { name: 'Main' }).getByRole('link')
+      await expect(menu, `no menu button at ${width}`).toBeHidden()
+      const links = main.getByRole('link')
       const first = (await links.first().boundingBox())!
       const last = (await links.last().boundingBox())!
       const invite = (await header.getByRole('link', { name: 'Early access' }).boundingBox())!
