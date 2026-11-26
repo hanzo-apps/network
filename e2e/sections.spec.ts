@@ -389,7 +389,7 @@ test.describe('Latest', () => {
   test('does not say Proof of AI is formally proved', async ({ page }) => {
     await page.goto('/')
     const s = section(page, 'latest')
-    await expect(s.getByRole('link', { name: /Formal proofs/ })).not.toContainText(/Proof of AI|PoAI/)
+    await expect(s.getByRole('link', { name: /Formal proofs/ })).toContainText('None is about Proof of AI.')
     await expect(s).not.toContainText(/formally proved|proved formally/i)
   })
 })
