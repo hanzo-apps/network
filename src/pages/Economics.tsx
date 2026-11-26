@@ -7,7 +7,7 @@ import Section, { container, Disc, Eyebrow, H2 } from '@/components/home/Section
 import { buttonClass, textLink } from '@/components/ui/button'
 import Card from '@/components/ui/card'
 import Tag from '@/components/ui/tag'
-import { WHITEPAPER, WHITEPAPER_PDF } from '@/lib/links'
+import { MARKET_PAPER, WHITEPAPER, WHITEPAPER_PDF } from '@/lib/links'
 
 // tsgo reads a bare JSX string as 'needs several children' for a union prop; a typed constant is the one way round it.
 
@@ -39,7 +39,7 @@ export default function Economics() {
           <span className="shrink-0">
             <Tag is="Designed" />
           </span>
-          <p className="text-base text-foreground">Not active. Mining and this supply policy stay disabled until governance fixes the parameters and the launch gates pass.</p>
+          <p className="text-base text-foreground">AI is already the native coin of chain 36963. The supply cap and mining policy on this page are designed and not active: mining stays disabled until governance fixes the parameters and the launch gates pass.</p>
           <a href={WHITEPAPER_PDF} className={`${textLink} shrink-0 sm:ml-auto`}>
             Whitepaper, sections 3 and 10
           </a>
@@ -110,6 +110,28 @@ export default function Economics() {
             <Card className="flex h-full flex-col justify-center p-6 md:p-8">
               <p data-formula className="font-mono text-lg text-foreground sm:text-3xl lg:text-4xl">ΔS = issuance − β × fees</p>
               <p className="mt-4 text-sm text-muted-foreground">β is set by governance. It is not set yet.</p>
+            </Card>
+          </Reveal>
+        </div>
+      </Section>
+
+      <Section id="market">
+        <div className="grid gap-12 lg:grid-cols-[5fr_7fr] lg:gap-16">
+          <div>
+            <Eyebrow>Market</Eyebrow>
+            <H2>A market that prices compute.</H2>
+            <p className="mt-6">
+              <Tag is="Designed" />
+            </p>
+            <p className="mt-4 max-w-[60ch] text-xl leading-relaxed text-muted-foreground">
+              Compute pricing is designed around a market maker that conserves one quantity as supply and demand move. It is a design; no market contract is deployed.
+            </p>
+          </div>
+          <Reveal>
+            <Card className="flex h-full flex-col justify-center p-6 md:p-8">
+              <p data-formula className="font-mono text-lg text-foreground sm:text-3xl lg:text-4xl">H(Ψ,Θ) = Ψ·Θ = κ</p>
+              <p className="mt-4 text-sm text-muted-foreground">Ψ and Θ are the two sides of the pool; κ stays constant.</p>
+              <a href={MARKET_PAPER} className={`${textLink} mt-2 self-start`}>Hamiltonian market maker, Hanzo papers</a>
             </Card>
           </Reveal>
         </div>
