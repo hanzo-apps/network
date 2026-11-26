@@ -112,3 +112,14 @@ test('home is calm under reduced motion', async ({ page }) => {
   expect(running).toBe(0)
   await expect(page.locator('video')).toHaveCount(0)
 })
+
+test('the hero picture stays still under the mouse (James, 26 Nov)', async ({ page }) => {
+  await page.goto('/')
+  const art = page.locator('.hero-art')
+  const before = await art.evaluate((el) => getComputedStyle(el).transform)
+  await page.mouse.move(10, 10)
+  await page.mouse.move(1200, 700, { steps: 8 })
+  await page.waitForTimeout(800)
+  expect(await art.evaluate((el) => getComputedStyle(el).transform)).toBe(before)
+  expect(before).toBe('none')
+})
