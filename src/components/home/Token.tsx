@@ -33,6 +33,7 @@ export default function Token() {
         <Reveal>
           <Eyebrow>The AI token · Proposed</Eyebrow>
           <H2>Compute once. Earn twice.</H2>
+          <p className="mt-4 text-xl text-foreground">Providers keep the customer fee and, once Proof of AI is live, also earn AI.</p>
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
             Proposed in the Proof of AI design: a 2 trillion cap, half for the Hanzo DAO and half for miners and validators, paid in halving eras.{' '}
             <a href="https://github.com/hanzoai/hanzo.network/blob/main/docs/proof-of-ai.md" className="rounded-sm underline underline-offset-4 hover:text-foreground">Read the spec</a>
