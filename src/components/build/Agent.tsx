@@ -1,9 +1,8 @@
-import Section, { Eyebrow, H2 } from '@/components/home/Section'
+import Section, { Eyebrow, H2 } from '@/components/ui/section'
+import { textLink } from '@/components/ui/button'
 import Code from '@/components/ui/code'
 import { DOCS_LLMS, DOCS_LLMS_FULL, DOCS_MCP } from '@/lib/links'
 import { COMMANDS } from './commands'
-
-const link = 'inline-flex min-h-11 items-center text-foreground underline underline-offset-4'
 
 export default function Agent() {
   return (
@@ -20,10 +19,10 @@ export default function Agent() {
         ))}
       </div>
       <p className="mt-6 flex flex-wrap gap-x-6 gap-y-1">
-        <a href="/llms.txt" className={link}>hanzo.network/llms.txt</a>
-        <a href={DOCS_LLMS} className={link}>docs.hanzo.ai/llms.txt</a>
-        <a href={DOCS_LLMS_FULL} className={link}>docs.hanzo.ai/llms-full.txt</a>
-        <a href={DOCS_MCP} className={link}>MCP docs</a>
+        <a href="/llms.txt" className={textLink}>hanzo.network/llms.txt</a>
+        <a href={DOCS_LLMS} className={textLink}>docs.hanzo.ai/llms.txt</a>
+        <a href={DOCS_LLMS_FULL} className={textLink}>docs.hanzo.ai/llms-full.txt</a>
+        <a href={DOCS_MCP} className={textLink}>MCP docs</a>
       </p>
     </Section>
   )

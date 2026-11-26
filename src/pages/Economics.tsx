@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom'
 import Compare from '@/components/Compare'
 import Calculator from '@/components/economics/Calculator'
 import Chart from '@/components/economics/Chart'
-import Reveal from '@/components/home/Reveal'
-import Section, { container, Disc, Eyebrow, H2 } from '@/components/home/Section'
+import Reveal from '@/components/ui/reveal'
+import Section, { container, Disc, Eyebrow, H1, H2 } from '@/components/ui/section'
 import { buttonClass, textLink } from '@/components/ui/button'
 import Card from '@/components/ui/card'
 import Tag from '@/components/ui/tag'
@@ -39,7 +39,7 @@ export default function Economics() {
     <div>
       <header className={`${container} pb-[72px] pt-[72px] md:pb-32 md:pt-32`}>
         <Eyebrow>Economics</Eyebrow>
-        <h1 className="text-6xl font-[560] leading-[1.0] tracking-[-0.045em] md:text-7xl">A hard cap of two trillion AI.</h1>
+        <H1>A hard cap of two trillion AI.</H1>
         <div data-notice className="mt-8 flex flex-col gap-3 rounded-xl border border-border-strong p-4 sm:flex-row sm:items-center sm:gap-4 md:p-5">
           <span className="shrink-0">
             <Tag is="Designed" />

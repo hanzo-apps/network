@@ -1,7 +1,7 @@
 import Tag from '@/components/ui/tag'
 import { PILLARS } from '@/lib/pillars'
-import Reveal from './Reveal'
-import Section, { Disc, Eyebrow, H2 } from './Section'
+import Reveal from '@/components/ui/reveal'
+import Section, { Disc, Eyebrow, H2 } from '@/components/ui/section'
 import { textLink } from '@/components/ui/button'
 
 // Six nodes on a ring, numbered clockwise from the top. Arrows run along the ring between neighbours.

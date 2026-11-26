@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { buttonClass } from '@/components/ui/button'
+import Live from '@/components/ui/live'
 
 /** A Copy button. Says "Copied" on the button and in a polite live region; falls back to selecting `select` when the clipboard is blocked. */
 export function CopyButton({ text, name, select }: { text: string; name: string; select?: () => void }) {
@@ -28,7 +29,7 @@ export function CopyButton({ text, name, select }: { text: string; name: string;
           </>
         )}
       </button>
-      <span aria-live="polite" className="sr-only">{done ? 'Copied' : ''}</span>
+      <Live>{done ? 'Copied' : ''}</Live>
     </>
   )
 }

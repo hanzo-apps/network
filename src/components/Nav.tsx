@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { HanzoLogo } from '@hanzo/logo'
-import { buttonClass } from '@/components/ui/button'
+import { buttonClass, navLink } from '@/components/ui/button'
 import { DOCS } from '@/lib/links'
 
 const LINKS = [
@@ -11,8 +11,6 @@ const LINKS = [
   { label: 'Pricing', to: '/pricing' },
   { label: 'Docs', href: DOCS },
 ]
-
-const item = 'rounded-sm text-sm text-muted-foreground transition-colors duration-150 hover:text-foreground'
 
 export default function Nav() {
   const [open, setOpen] = useState(false)
@@ -46,7 +44,7 @@ export default function Nav() {
           <HanzoLogo variant="current" size={20} />
           Hanzo Network
         </Link>
-        <nav aria-label="Main" className="hidden items-center gap-8 sm:flex">{links(item)}</nav>
+        <nav aria-label="Main" className="hidden items-center gap-8 sm:flex">{links(navLink)}</nav>
         <div className="hidden sm:block">
           <Link to="/early" className={buttonClass('small')}>
             Early access

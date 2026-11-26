@@ -1,3 +1,5 @@
+import { textLink } from '@/components/ui/button'
+import { Label } from '@/components/ui/section'
 import Tag from '@/components/ui/tag'
 import { RELATED_WORK, WHITEPAPER_PDF } from '@/lib/links'
 
@@ -6,8 +8,6 @@ const ROWS = [
   ['Signed GPU attestors add a new authority to trust.', 'Any ordinary CPU can check the work.'],
   ['Validator votes are judgment. They can earn fees.', 'A vote alone can never mint. The math decides.'],
 ] as const
-
-const link = 'inline-flex min-h-11 items-center rounded-sm text-foreground underline underline-offset-4 hover:text-muted-foreground'
 
 const HEADS = ['Other approaches', 'Proof of AI'] as const
 
@@ -19,7 +19,7 @@ export default function Compare() {
       <h3 className="mt-4 text-3xl font-semibold tracking-[-0.01em]">Why proof beats votes.</h3>
       <p className="mt-2 flex flex-wrap items-center gap-x-3 text-sm text-muted-foreground">
         Compared with validator-voted networks such as Bittensor.
-        <a href={RELATED_WORK} className={link}>
+        <a href={RELATED_WORK} className={textLink}>
           Related work, Hanzo consensus paper
         </a>
       </p>
@@ -28,9 +28,9 @@ export default function Compare() {
         <thead className="max-md:sr-only">
           <tr>
             {HEADS.map((h, i) => (
-              <th key={h} scope="col" className={`w-1/2 border-b border-border-strong pb-3 font-mono text-xs font-normal uppercase tracking-[0.18em] ${i ? 'pl-6 text-foreground' : 'pr-6 text-muted-foreground'}`}>
+              <Label key={h} as="th" tone={i ? 'strong' : 'muted'} scope="col" className={`w-1/2 border-b border-border-strong pb-3 ${i ? 'pl-6' : 'pr-6'}`}>
                 {h}
-              </th>
+              </Label>
             ))}
           </tr>
         </thead>
@@ -51,7 +51,7 @@ export default function Compare() {
         </tbody>
       </table>
       <p className="mt-5 text-sm">
-        <a href={WHITEPAPER_PDF} className={link}>
+        <a href={WHITEPAPER_PDF} className={textLink}>
           Source: whitepaper sections 1, 2.6 and 3.4
         </a>
       </p>

@@ -1,8 +1,9 @@
 import Card from '@/components/ui/card'
-import Tag, { type Status } from '@/components/ui/tag'
+import Tag from '@/components/ui/tag'
+import type { Status } from '@/lib/status'
 import { GO_VERIFIER, WHITEPAPER_PDF } from '@/lib/links'
-import Reveal from './Reveal'
-import Section, { Eyebrow, H2 } from './Section'
+import Reveal from '@/components/ui/reveal'
+import Section, { Eyebrow, H2, Label } from '@/components/ui/section'
 import { textLink } from '@/components/ui/button'
 
 const PHASES: { tag: Status; title: string; text: string; link?: { name: string; href: string } }[] = [
@@ -27,7 +28,7 @@ export default function Phases() {
             <Reveal index={i} className="h-full">
               <Card className="flex h-full flex-col items-start p-6 lg:p-5 xl:p-6">
                 <div className="flex w-full flex-wrap items-center justify-between gap-2">
-                  <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground">Phase {i}</p>
+                  <Label>Phase {i}</Label>
                   <Tag is={p.tag} />
                 </div>
                 <h3 className="mt-5 text-balance text-xl font-semibold tracking-[-0.01em]">{p.title}</h3>

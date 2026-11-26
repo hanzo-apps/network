@@ -1,5 +1,5 @@
 import { HANZO, LUX, ZEN, ZOO } from '@/lib/links'
-import { container, Eyebrow } from './Section'
+import { container, Eyebrow } from '@/components/ui/section'
 
 const PARTS = [
   { name: 'Hanzo AI', href: HANZO, domain: 'hanzo.ai' },

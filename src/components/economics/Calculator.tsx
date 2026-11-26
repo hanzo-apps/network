@@ -1,7 +1,8 @@
 import { useEffect, useId, useState } from 'react'
 import Card from '@/components/ui/card'
 import Tag from '@/components/ui/tag'
-import { H2 } from '@/components/home/Section'
+import Live from '@/components/ui/live'
+import { H2, Label } from '@/components/ui/section'
 import { ERA_YEARS, POOL, allowance, eraCap, netChange, position, signed, whole } from '@/lib/supply'
 
 /** A whole number in a range, held two ways: the slider's value, and the text being typed (which may be wrong for a moment). */
@@ -57,9 +58,9 @@ function Control({ label, hint, unit, min, max, field, spoken }: { label: string
             onBlur={field.settle}
             className={box}
           />
-          <span aria-hidden className="w-16 font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground">
+          <Label as="span" aria-hidden className="w-16">
             {unit}
-          </span>
+          </Label>
         </span>
       </div>
       <input
@@ -140,7 +141,7 @@ export default function Calculator() {
             <Output label="If issued evenly, net supply change that year">{net}</Output>
           </dl>
         </div>
-        <p aria-live="polite" className="sr-only">{said}</p>
+        <Live>{said}</Live>
         <p className="mt-8 text-sm text-muted-foreground">Node earnings cannot be estimated yet: reward weights are not set (whitepaper, section 3.3).</p>
       </Card>
     </>

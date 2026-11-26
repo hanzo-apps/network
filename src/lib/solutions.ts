@@ -1,4 +1,4 @@
-import type { Status } from '@/components/ui/tag'
+import type { Status } from './status'
 import { DOCS_AGENTS, HIP_0901, NODE_GUIDE, WHITEPAPER } from './links'
 
 export type Solution = { tag: Status; title: string; text: string; link: string; to: string }

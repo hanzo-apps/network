@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import Tag from '@/components/ui/tag'
 import { useChain } from '@/lib/chain'
 import { useCounts } from '@/lib/catalog'
+import { Label } from '@/components/ui/section'
 import { count } from '@/lib/format'
 import { STATUS } from '@/lib/links'
 import { NETWORKS } from '@/lib/networks'
@@ -14,7 +15,7 @@ const link = 'inline-flex min-h-11 flex-wrap items-center gap-x-2 rounded-sm und
 /** One label and one value. The value box is always 44px tall, so an empty one (still loading) is the same size as a full one. */
 const Cell = ({ label, children }: { label: string; children?: ReactNode }) => (
   <div className="min-w-0 border-border px-4 py-3 text-left [&:nth-child(n+3)]:border-t max-lg:[&:nth-child(even)]:border-l lg:[&:nth-child(n+3)]:border-t-0 lg:[&:not(:first-child)]:border-l">
-    <dt className="font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground">{label}</dt>
+    <Label as="dt">{label}</Label>
     <dd className="flex min-h-11 items-center gap-2 break-words text-sm tabular-nums">{children}</dd>
   </div>
 )

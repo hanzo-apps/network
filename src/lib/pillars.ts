@@ -1,4 +1,4 @@
-import type { Status } from '@/components/ui/tag'
+import type { Status } from './status'
 import { DOCS_AGENTS, EXPLORER, HIP_0901, HIP_1334, NODE_GUIDE, WORK } from './links'
 import { NETWORKS } from './networks'
 

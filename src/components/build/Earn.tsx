@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom'
-import Section, { Eyebrow, H2 } from '@/components/home/Section'
-import Reveal from '@/components/home/Reveal'
+import Section, { Eyebrow, H2 } from '@/components/ui/section'
+import Reveal from '@/components/ui/reveal'
+import { inlineLink, textLink } from '@/components/ui/button'
 import Card from '@/components/ui/card'
-import Tag, { type Status } from '@/components/ui/tag'
+import Tag from '@/components/ui/tag'
+import type { Status } from '@/lib/status'
 import { DOCS_OSS_PAYOUTS, DOCS_REFERRALS, HIP_1000 } from '@/lib/links'
 
 // Each sentence was checked against the page it links to on 26 Nov 2026.
@@ -45,7 +47,7 @@ export default function Earn() {
                 <Tag is={c.tag} />
                 <h3 className="mt-4 text-xl font-semibold">{c.title}</h3>
                 <p className="mt-2 text-muted-foreground">{c.text}</p>
-                <a href={c.href} className="mt-6 inline-flex min-h-11 items-center text-foreground underline underline-offset-4">
+                <a href={c.href} className={`${textLink} mt-6`}>
                   {c.link}
                 </a>
               </Card>
@@ -55,7 +57,7 @@ export default function Earn() {
       </ul>
       <p className="mt-10 max-w-[60ch] text-muted-foreground">
         Rewards in AI for builders are not designed yet. Mining rewards are for proved compute.{' '}
-        <Link to="/#phases" className="text-foreground underline underline-offset-4">
+        <Link to="/#phases" className={inlineLink}>
           Activation phases
         </Link>
       </p>

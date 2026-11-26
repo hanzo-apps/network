@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs'
 import { describe, expect, it } from 'vitest'
-import { COMMANDS, CHAIN_CURL, CURL_QUICKSTART, DEVNET_COMMAND, VALIDATOR_COMMAND } from '../components/build/commands'
+import { COMMANDS, CHAIN_CURL, DEVNET_COMMAND, VALIDATOR_COMMAND } from '../components/build/commands'
+import { CURL_QUICKSTART } from './quickstart'
 import { NETWORKS } from './networks'
 import { MARKET_PAPER, POAI_PDF, RELATED_WORK, RPC_MAINNET, RPC_TESTNET } from './links'
 import { solutions } from './solutions'
