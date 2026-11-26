@@ -4,6 +4,8 @@
 // Exactness: the pool is 5^12 * 2^12, so every era cap and every era-boundary
 // allowance is an exact float for the eras the page shows (k <= 25).
 
+import { count } from './format'
+
 /** Earned by proved work, nothing else. */
 export const POOL = 1e12
 /** The Hanzo DAO share, fixed at genesis. It can never be mined. */
@@ -16,7 +18,7 @@ export const ERA_YEARS = 4
 const era = (k: number) => {
   if (!Number.isInteger(k) || k < 0) throw new RangeError(`era must be a whole number, 0 or more: ${k}`)
 }
-const count = (n: number, name: string) => {
+const nonNegative = (n: number, name: string) => {
   if (!Number.isFinite(n) || n < 0) throw new RangeError(`${name} must be a finite number, 0 or more: ${n}`)
 }
 
@@ -35,8 +37,8 @@ export function allowance(k: number, f: number): number {
 
 /** Whitepaper eq. 3: change in net supply when a governed share beta of settled fees is burned. */
 export function netChange(issuance: number, beta: number, fees: number): number {
-  count(issuance, 'issuance')
-  count(fees, 'fees')
+  nonNegative(issuance, 'issuance')
+  nonNegative(fees, 'fees')
   if (!(beta >= 0 && beta <= 1)) throw new RangeError(`beta must be in [0, 1]: ${beta}`)
   return issuance - beta * fees
 }
@@ -47,13 +49,11 @@ export function position(years: number): { k: number; f: number } {
   return { k: Math.floor(years / ERA_YEARS), f: (years % ERA_YEARS) / ERA_YEARS }
 }
 
-const group = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0, useGrouping: true })
-
 /** A whole number of AI with thousands separators. Rounds only the float noise away: every figure here is a whole number. */
 export function whole(n: number): string {
   if (!Number.isFinite(n)) throw new RangeError(`not a number: ${n}`)
   const r = Math.round(n)
-  return group.format(r === 0 ? 0 : r)
+  return count(r === 0 ? 0 : r)
 }
 
 /** As `whole`, always with a sign: + or a true minus. */
