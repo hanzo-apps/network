@@ -6,32 +6,35 @@ import Glow from '@/components/pricing/Glow'
 import Start from '@/components/pricing/Start'
 import { container, Eyebrow, H2 } from '@/components/home/Section'
 import { NODE_GUIDE } from '@/lib/links'
-import { featured, fetchModels, freeModel, group, perToken, sortModels, type Model } from '@/lib/catalog'
+import { FEATURED, featured, fetchModels, freeModel, group, perToken, sortModels, type Model } from '@/lib/catalog'
 
 const section = `${container} mt-24 scroll-mt-16 md:mt-32`
 
 type State = { models: Model[] } | { error: true } | null
 
-const Stat = ({ big, small }: { big: string; small: string }) => (
-  <li>
-    <Card className="h-full px-5 py-4">
-      <p className="text-2xl font-semibold tabular-nums">{big}</p>
-      <p className="text-sm text-muted-foreground">{small}</p>
+const blank = '\u00a0'
+
+/** One stat card. Without `big` it is a same-size placeholder: pulsing while loading, `still` when there is nothing to claim. */
+const Stat = ({ big, small, still = false }: { big?: string; small?: string; still?: boolean }) => (
+  <li aria-hidden={big ? undefined : true} className={still ? 'invisible' : undefined}>
+    <Card className={`h-full px-5 py-4 ${big || still ? '' : 'animate-pulse'}`}>
+      <p className="text-2xl font-semibold tabular-nums">{big ?? blank}</p>
+      <p className="text-sm text-muted-foreground">{small ?? blank}</p>
     </Card>
   </li>
 )
 
-const Group = ({ label, models, cols }: { label: string; models: Model[]; cols: string }) =>
-  models.length > 0 && (
+const Group = ({ label, models, count, cols }: { label: string; models?: Model[]; count: number; cols: string }) =>
+  (!models || models.length > 0) && (
     <div className="mt-12">
       <Eyebrow>{label}</Eyebrow>
       <ul className={`grid gap-4 sm:grid-cols-2 ${cols}`}>
-        {models.map((m) => (
-          <FeaturedCard key={m.id} m={m} />
-        ))}
+        {models ? models.map((m) => <FeaturedCard key={m.id} m={m} />) : Array.from({ length: count }, (_, i) => <FeaturedCard key={i} />)}
       </ul>
     </div>
   )
+
+const ZEN = FEATURED.filter((id) => !id.includes('/')).length
 
 export default function Pricing() {
   const [state, setState] = useState<State>(null)
@@ -63,16 +66,20 @@ export default function Pricing() {
     <div className="pb-[72px] pt-[72px] md:pb-32 md:pt-32">
       <header className={container}>
         <Eyebrow>Pricing</Eyebrow>
-        <h1 className="text-6xl font-[560] leading-[1.0] tracking-[-0.045em] md:text-7xl">
-          {free ? 'Start free. Pay per token.' : 'Pay per token.'}
-        </h1>
+        <div className="mb-6 h-8" aria-hidden={free ? undefined : true}>
+          {free && (
+            <span className="inline-flex h-8 items-center rounded-full border border-border px-3 font-mono text-xs uppercase tracking-[0.12em] text-muted-foreground">
+              Zen is free to call · $0
+            </span>
+          )}
+        </div>
+        <h1 className="text-6xl font-[560] leading-[1.0] tracking-[-0.045em] md:text-7xl">Pay per token.</h1>
         <p className="mt-6 max-w-[60ch] text-xl leading-relaxed text-muted-foreground">
-          {free ? "Call Hanzo's Zen model for free, then pay" : 'Pay'} only for the tokens you use on any
-          {rows ? ` of ${rows.length} models` : ' model'}, at today's prices from api.hanzo.ai.
+          Pay only for the tokens you use. Every price comes live from api.hanzo.ai.
         </p>
-        <ul className="mt-8 grid max-w-2xl gap-4 sm:grid-cols-3">
-          {rows && <Stat big={String(rows.length)} small="models, live" />}
-          {free && <Stat big="$0" small="to call Zen" />}
+        <ul className="mt-8 grid max-w-md grid-cols-2 gap-4">
+          {rows ? <Stat big={String(rows.length)} small="models, live" /> : <Stat still={!!state} />}
+          {free ? <Stat big="$0" small="to call Zen" /> : <Stat still={!!state} />}
         </ul>
       </header>
 
@@ -94,24 +101,17 @@ export default function Pricing() {
           </section>
         )}
 
-        {state === null && (
-          <section className={section} aria-label="Loading prices">
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-              {Array.from({ length: 6 }, (_, i) => (
-                <Card key={i} aria-hidden="true" className="h-56 animate-pulse" />
-              ))}
-            </div>
+        {!(state && 'error' in state) && (
+          <section className={`${section} relative`} id="models">
+            <Glow />
+            <H2>Featured models</H2>
+            <Group label="Hanzo Zen6" models={models ? zen : undefined} count={ZEN} cols="lg:grid-cols-4" />
+            <Group label="From other labs" models={models ? others : undefined} count={FEATURED.length - ZEN} cols="lg:grid-cols-3" />
           </section>
         )}
 
         {models && (
           <>
-            <section className={`${section} relative`} id="models">
-              <Glow />
-              <H2>Featured models</H2>
-              <Group label="Hanzo Zen6" models={zen} cols="lg:grid-cols-4" />
-              <Group label="From other labs" models={others} cols="lg:grid-cols-3" />
-            </section>
             <section className={section}>
               <H2>All models</H2>
               <p className="mb-8 mt-3 text-sm text-muted-foreground">

@@ -3,22 +3,24 @@ import { buttonClass } from '@/components/ui/button'
 import Card from '@/components/ui/card'
 import { context, price, topLabs, type Model, type Row } from '@/lib/catalog'
 
-export function FeaturedCard({ m }: { m: Model }) {
+/** A model's price card. Without `m` it is the same card with blank text: the loading placeholder, identical in size. */
+export function FeaturedCard({ m }: { m?: Model }) {
+  const blank = '\u00a0'
   return (
-    <li>
-      <Card className="h-full p-6">
-        <h3 className="text-xl font-semibold">{m.name}</h3>
-        <p className="text-sm text-muted-foreground">{m.lab}</p>
-        <p className="mt-6 text-4xl font-semibold tabular-nums md:text-5xl">{price(m.input, m.free)}</p>
+    <li aria-hidden={m ? undefined : true}>
+      <Card className={`h-full p-6 ${m ? '' : 'animate-pulse'}`}>
+        <h3 className="text-xl font-semibold">{m ? m.name : blank}</h3>
+        <p className="text-sm text-muted-foreground">{m ? m.lab : blank}</p>
+        <p className="mt-6 text-4xl font-semibold tabular-nums md:text-5xl">{m ? price(m.input, m.free) : blank}</p>
         <p className="text-sm text-muted-foreground">per 1M input tokens</p>
         <dl className="mt-6 flex gap-8 border-t border-border pt-4 text-sm">
           <div>
             <dt className="text-muted-foreground">Output</dt>
-            <dd className="font-medium tabular-nums">{price(m.output, m.free)}</dd>
+            <dd className="font-medium tabular-nums">{m ? price(m.output, m.free) : blank}</dd>
           </div>
           <div>
             <dt className="text-muted-foreground">Context</dt>
-            <dd className="font-medium tabular-nums">{context(m.context)}</dd>
+            <dd className="font-medium tabular-nums">{m ? context(m.context) : blank}</dd>
           </div>
         </dl>
       </Card>

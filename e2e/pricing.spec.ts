@@ -35,10 +35,11 @@ const CURL = `curl https://api.hanzo.ai/v1/chat/completions \\
   -H "Content-Type: application/json" \\
   -d '{"model":"hanzo/zen","messages":[{"role":"user","content":"Hello"}]}'`
 
-test('a free Zen puts "free" in the headline and a $0 card', async ({ page }) => {
+test('a free Zen shows the "free" pill and a $0 card; the headline stays true without data', async ({ page }) => {
   await serveModels(page)
   await page.goto('/pricing')
-  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Start free. Pay per token.')
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Pay per token.')
+  await expect(page.getByText('Zen is free to call · $0')).toBeVisible()
   await expect(page.getByText('to call Zen')).toBeVisible()
   await expect(page.getByText('$0', { exact: true })).toBeVisible()
 })
@@ -52,6 +53,7 @@ test('without a free Zen the page claims nothing free', async ({ page }) => {
   await expect(page.getByText('Claude Opus 5.5').first()).toBeVisible()
   await expect(page.getByText('$0', { exact: true })).toHaveCount(0)
   await expect(page.getByText('to call Zen')).toHaveCount(0)
+  await expect(page.getByText('Zen is free to call')).toHaveCount(0)
 })
 
 test('get started works without the catalog and never claims free', async ({ page }) => {
@@ -60,6 +62,7 @@ test('get started works without the catalog and never claims free', async ({ pag
   await expect(page.locator('#start').getByRole('link', { name: 'Get an API key' })).toHaveAttribute('href', 'https://platform.hanzo.ai/api-keys')
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Pay per token.')
   await expect(page.getByText('to call Zen')).toHaveCount(0)
+  await expect(page.getByText('Zen is free to call')).toHaveCount(0)
 })
 
 test('Copy puts the curl command on the clipboard', async ({ page, context }) => {
@@ -159,5 +162,26 @@ for (const [width, height] of [[1440, 900], [375, 812]]) {
     await expect(heading).toBeVisible()
     const nav = (await page.locator('header').first().boundingBox())!
     await expect.poll(async () => (await heading.boundingBox())!.y).toBeGreaterThanOrEqual(nav.y + nav.height)
+  })
+}
+
+for (const [width, height] of [[375, 812], [1440, 900]]) {
+  test(`the layout does not move when the catalog arrives at ${width}`, async ({ page }) => {
+    await page.setViewportSize({ width, height })
+    await page.addInitScript(() => {
+      const w = window as unknown as { cls: number }
+      w.cls = 0
+      new PerformanceObserver((list) => {
+        for (const e of list.getEntries() as unknown as { value: number; hadRecentInput: boolean }[]) if (!e.hadRecentInput) w.cls += e.value
+      }).observe({ type: 'layout-shift', buffered: true })
+    })
+    await page.route(MODELS_URL, async (route) => {
+      await new Promise((r) => setTimeout(r, 600))
+      await route.fulfill({ path: 'e2e/fixtures/models.json', contentType: 'application/json' })
+    })
+    await page.goto('/pricing')
+    await expect(page.getByText('Claude Opus 5.5').first()).toBeVisible()
+    await page.waitForTimeout(1500)
+    expect(await page.evaluate(() => (window as unknown as { cls: number }).cls)).toBeLessThan(0.05)
   })
 }
