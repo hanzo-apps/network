@@ -1,9 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
 import { FileCheck2, Cpu, ShieldCheck, Landmark } from 'lucide-react'
 import { motion, useMotionValue, useMotionValueEvent, useReducedMotion, useScroll } from 'motion/react'
+import Compare from '@/components/Compare'
 import Card from '@/components/ui/card'
+import { WHITEPAPER_PDF } from '@/lib/links'
 import Reveal from './Reveal'
 import Section, { Disc, Eyebrow, H2 } from './Section'
+import { textLink } from './Solutions'
+
+const math = 'whitespace-nowrap font-mono text-[0.9em] text-foreground'
 
 const STEPS = [
   { name: 'Admit', term: 'A-Chain', Icon: FileCheck2, text: 'The job and its reward are fixed before it runs.' },
@@ -58,7 +63,7 @@ export default function How() {
     <Section id="how" glow>
       <Reveal>
         <Eyebrow>How it works</Eyebrow>
-        <H2>Four steps from job to payout.</H2>
+        <H2>How Proof of AI works.</H2>
         <p className="mt-4 max-w-[60ch] text-xl leading-relaxed text-muted-foreground">How Proof of AI is designed to work. Rewards switch on after its audits.</p>
       </Reveal>
       <div className="relative mt-12 md:mt-16">
@@ -93,6 +98,21 @@ export default function How() {
         })}
         </ol>
       </div>
+      <Reveal className="mt-6 md:mt-8">
+        <Card className="grid gap-10 p-6 md:p-10 lg:grid-cols-2 lg:gap-16">
+          <div>
+            <h3 className="text-3xl font-semibold tracking-[-0.01em]">Check the math, not the machine.</h3>
+            <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+              Most of a model's work is matrix multiplication, <span className={math}>C = A·B</span>. Redoing it costs cubic work. Checking it does not. After the provider commits <span className={math}>C</span>, the chain
+              draws a random vector <span className={math}>r</span>, and an ordinary CPU checks <span className={math}>A(Br) = Cr</span> in quadratic work. A wrong product slips through with probability at most{' '}
+              <span className={math}>1/p</span> per vector, where <span className={math}>p = 2<sup className="text-[0.7em]">61</sup> − 1</span>.
+            </p>
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">This proves each opened product. It does not by itself prove a whole model; sampling covers the rest.</p>
+            <a href={WHITEPAPER_PDF} className={`${textLink} mt-2`}>Whitepaper, sections 5.3 and 9.2</a>
+          </div>
+          <Compare />
+        </Card>
+      </Reveal>
     </Section>
   )
 }

@@ -1,7 +1,13 @@
 import { motion, useReducedMotion } from 'motion/react'
+import { Link } from 'react-router-dom'
 import Card from '@/components/ui/card'
+import Tag, { type Status } from '@/components/ui/tag'
+import { WHITEPAPER_PDF } from '@/lib/links'
 import Reveal from './Reveal'
 import Section, { Eyebrow, H2 } from './Section'
+import { textLink } from './Solutions'
+
+const designed: Status = 'Designed'
 
 const FIGURES = [
   { value: '2T AI', label: 'Maximum supply' },
@@ -31,13 +37,16 @@ export default function Token() {
     <Section glow>
       <div className="grid gap-12 lg:grid-cols-[5fr_7fr] lg:gap-16">
         <Reveal>
-          <Eyebrow>The AI token · Proposed</Eyebrow>
+          <Eyebrow>The AI token<span className="ml-3 align-middle"><Tag>{designed}</Tag></span></Eyebrow>
           <H2>Compute once. Earn twice.</H2>
           <p className="mt-4 text-xl text-foreground">Providers keep the customer fee and, once Proof of AI is live, also earn AI.</p>
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            Proposed in the Proof of AI design: a 2 trillion cap, half for the Hanzo DAO and half for miners and validators, paid in halving eras.{' '}
-            <a href="https://github.com/hanzoai/hanzo.network/blob/main/docs/proof-of-ai.md" className="rounded-sm underline underline-offset-4 hover:text-foreground">Read the spec</a>
+            Designed in the whitepaper: a 2 trillion cap, half fixed with the Hanzo DAO and half earned by proved work in halving eras. Not active yet.
           </p>
+          <div className="mt-4 flex flex-wrap gap-x-8">
+            <Link to="/economics" className={textLink}>See the economics</Link>
+            <a href={WHITEPAPER_PDF} className={textLink}>Whitepaper, section 3</a>
+          </div>
         </Reveal>
         <div className="grid content-start gap-4 sm:grid-cols-3">
           {FIGURES.map((f, i) => (
