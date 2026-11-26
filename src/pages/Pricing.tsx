@@ -5,7 +5,7 @@ import { AllModels, FeaturedCard } from '@/components/pricing/Models'
 import Glow from '@/components/pricing/Glow'
 import Start from '@/components/pricing/Start'
 import { container, Eyebrow, H2 } from '@/components/home/Section'
-import { NODE_GUIDE } from '@/lib/links'
+import { NODE_GUIDE, PLANS } from '@/lib/links'
 import { FEATURED, featured, isZenFeatured, fetchModels, freeModel, group, perToken, sortModels, type Model } from '@/lib/catalog'
 
 const section = `${container} mt-24 md:mt-32`
@@ -76,6 +76,12 @@ export default function Pricing() {
           {rows ? <Stat big={String(rows.length)} small="models, live" /> : <Stat still={!!state} />}
           {free ? <Stat big="$0" small="to call Zen" /> : <Stat still={!!state} />}
         </ul>
+        <p className="mt-4 text-sm text-muted-foreground">
+          Monthly plans, Pro $15 and Max $95, are on{' '}
+          <a href={PLANS} className="text-foreground underline underline-offset-4">
+            hanzo.ai/pricing
+          </a>
+        </p>
       </header>
 
       <section className={section} id="start">
