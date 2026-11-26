@@ -3,12 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hanzo Network — Mine AI with Useful Compute</title>
-    <meta name="description" content="Run real AI workloads, prove them through CPU-verifiable A-Chain Proof of AI consensus, settle through the P3Q rollup on Lux Z-Chain, and earn AI with post-quantum finality." />
-    <meta name="author" content="Hanzo Network" />
+    <title>Hanzo Network — The Blockchain for Global Intelligence</title>
+    <meta
+      name="description"
+      content="The blockchain for global intelligence. High-utility nodes running cloud, AI, and chain in one binary; sovereign per-model chains; CPU-verifiable Proof of AI; self-upgrading research; and decentralized agentic commerce on Lux post-quantum finality."
+    />
+    <meta name="author" content="Hanzo Industries, Inc." />
+    <meta property="og:title" content="Hanzo Network — The Blockchain for Global Intelligence" />
+    <meta
+      property="og:description"
+      content="Run real AI workloads, verify them on ordinary CPUs with Proof of AI, and settle with post-quantum finality."
+    />
     <meta property="og:image" content="/og-image.png" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem("hanzo-network-theme");
+          var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+          var dark = saved === "dark" ? true : saved === "light" ? false : prefersDark;
+          document.documentElement.classList.toggle("dark", dark);
+          document.documentElement.classList.toggle("light", !dark);
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

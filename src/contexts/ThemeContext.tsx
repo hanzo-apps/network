@@ -38,8 +38,26 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [mode, setMode] = useState<ThemeMode>('dark');
-  const [systemIsDark, setSystemIsDark] = useState<boolean>(true);
+  const [mode, setModeState] = useState<ThemeMode>(() => {
+    try {
+      const saved = localStorage.getItem("hanzo-network-theme");
+      if (saved === "light" || saved === "dark" || saved === "system") return saved;
+    } catch {
+      // ignore storage failures
+    }
+    return "system";
+  });
+  const setMode = (next: ThemeMode) => {
+    setModeState(next);
+    try {
+      localStorage.setItem("hanzo-network-theme", next);
+    } catch {
+      // ignore storage failures
+    }
+  };
+  const [systemIsDark, setSystemIsDark] = useState<boolean>(() =>
+    typeof window !== "undefined" ? window.matchMedia("(prefers-color-scheme: dark)").matches : true
+  );
   const [rounding, setRounding] = useState<ThemeRounding>('rounded');
   const [spacing, setSpacing] = useState<ThemeSpacing>('comfortable');
   const [fontFamily, setFontFamily] = useState<ThemeFontFamily>('system');

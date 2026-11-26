@@ -2,6 +2,8 @@
 //   - the page carries no tag of its own: GA4 and the Pixel come from the host's
 //     tag set through @hanzo/event, never from index.html;
 //   - nothing sends a visitor to hanzo.id: sign-in is hanzo.ai's page;
+//   - chat hands off cleanly to hanzo.app/chat (never a fake bearer token);
+//   - no Hanzo Red (#d81c33 / #fd4444) or forbidden subnet wording in shipped assets;
 //   - the ingest key in the bundle resolves at api.hanzo.ai/v1/event, or every
 //     event it carries is refused.
 import fs from 'node:fs'
@@ -9,9 +11,13 @@ import path from 'node:path'
 
 const dist = 'dist'
 const html = fs.readFileSync(path.join(dist, 'index.html'), 'utf8')
-const js = fs
-  .readdirSync(path.join(dist, 'assets'))
+const assetFiles = fs.readdirSync(path.join(dist, 'assets'))
+const js = assetFiles
   .filter((f) => f.endsWith('.js'))
+  .map((f) => fs.readFileSync(path.join(dist, 'assets', f), 'utf8'))
+  .join('\n')
+const css = assetFiles
+  .filter((f) => f.endsWith('.css'))
   .map((f) => fs.readFileSync(path.join(dist, 'assets', f), 'utf8'))
   .join('\n')
 
@@ -21,8 +27,9 @@ for (const tag of ['googletagmanager.com', 'connect.facebook.net', 'G-VT443SNVG7
 }
 if (/https?:\/\/(?:[a-z0-9-]+\.)*hanzo\.id\b/.test(html + js)) fail.push('the export links to hanzo.id; sign-in is https://hanzo.ai/login')
 if (!js.includes('https://hanzo.ai/login')) fail.push('the export never names https://hanzo.ai/login')
-if (/Bearer\s+hz_|fetch\(["'`]https:\/\/api\.hanzo\.ai\/v1\/chat\/completions/.test(js)) fail.push('the chat widget calls completions with a made-up bearer; a visitor with no account asks /v1/chat/public, keyless')
-if (!js.includes('https://api.hanzo.ai/v1/chat/public')) fail.push('the export never names https://api.hanzo.ai/v1/chat/public')
+if (/Bearer\s+hz_/.test(js)) fail.push('the bundle contains a made-up hz_ bearer token')
+if (!js.includes('https://hanzo.app/chat')) fail.push('the bottom-right launcher never hands off to https://hanzo.app/chat')
+if (/#d81c33|#fd4444/i.test(html + css + js)) fail.push('the export contains retired Hanzo Red (#d81c33 / #fd4444)')
 
 const keys = [...new Set(js.match(/pk-[A-Za-z0-9_-]{20,}/g) ?? [])]
 if (!keys.length) fail.push('no pk- ingest key in the bundle: every anonymous event would be refused')
