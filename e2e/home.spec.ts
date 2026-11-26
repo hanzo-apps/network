@@ -112,3 +112,17 @@ test('the hero picture stays still under the mouse (James, 26 Nov)', async ({ pa
   expect(await art.evaluate((el) => getComputedStyle(el).transform)).toBe(before)
   expect(before).toBe('none')
 })
+
+// The globe's horizon is 60% down its 16:9 picture; the hero's last line of text must sit on clear sky above it (James, 26 Nov).
+for (const [w, h] of [[1280, 720], [1366, 768], [1440, 900], [1920, 1080], [375, 812]]) {
+  test(`hero text clears the globe's rim at ${w}x${h}`, async ({ page }) => {
+    await page.setViewportSize({ width: w, height: h })
+    await page.goto('/')
+    const gap = await page.evaluate(() => {
+      const art = document.querySelector('.hero-art')!.getBoundingClientRect()
+      const strip = document.querySelector('main section ul')!.getBoundingClientRect()
+      return art.top + 0.6 * art.height - strip.bottom
+    })
+    expect(gap).toBeGreaterThanOrEqual(16)
+  })
+}

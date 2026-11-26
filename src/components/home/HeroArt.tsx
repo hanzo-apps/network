@@ -21,7 +21,11 @@ export default function HeroArt() {
 
   return (
     <div ref={stage} aria-hidden className="pointer-events-none absolute inset-0">
-      <div className="hero-art absolute inset-x-0 top-[24%] h-full md:top-[22%]">
+      {/* The picture keeps its own 16:9 shape and its horizon (60% down) sits 28px under the words above, at every screen size. */}
+      <div
+        className="hero-art absolute aspect-video w-[var(--w)] [--w:220vw] md:[--w:100vw]"
+        style={{ left: 'calc(50% - var(--w) / 2)', top: 'calc(28px - 0.3375 * var(--w))' }}
+      >
       {posterOk && (
         <img
           src={POSTER}
@@ -46,8 +50,7 @@ export default function HeroArt() {
         />
       )}
       </div>
-      <div className="absolute inset-0" style={{ background: 'radial-gradient(closest-side at 50% 45%, color-mix(in srgb, var(--background) 75%, transparent), transparent)' }} />
-      <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-b from-transparent to-background" />
+      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-background" />
     </div>
   )
 }

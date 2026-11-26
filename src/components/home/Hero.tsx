@@ -37,15 +37,14 @@ function Heartbeat() {
 export default function Hero() {
   const still = useReducedMotion()
   return (
-    <section className="relative flex min-h-[88svh] items-center overflow-hidden py-[72px] md:py-32">
+    <section className="relative flex min-h-[100svh] flex-col overflow-hidden pt-[12svh] md:pt-[13svh]">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0"
         style={{ background: 'radial-gradient(60% 50% at 50% 85%, color-mix(in oklab, var(--foreground) 8%, transparent), transparent)' }}
       />
-      <HeroArt />
       <motion.div
-        className={`${container} relative text-center`}
+        className={`${container} relative z-10 text-center`}
         initial={still ? false : { y: 12, filter: 'blur(6px)' }}
         animate={{ y: 0, filter: 'blur(0px)' }}
         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
@@ -77,6 +76,9 @@ export default function Hero() {
           ))}
         </ul>
       </motion.div>
+      <div className="relative min-h-[32svh] flex-1">
+        <HeroArt />
+      </div>
     </section>
   )
 }
