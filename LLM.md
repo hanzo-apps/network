@@ -1,6 +1,6 @@
 # hanzo.network
 
-The site for Hanzo Network: the blockchain for global intelligence (hanzo.network). Five routes: `/`, `/build`, `/economics`, `/pricing`, `/early`.
+The site for Hanzo Network: the blockchain for global intelligence (hanzo.network). Six routes: `/`, `/build`, `/economics`, `/ecosystem`, `/pricing`, `/early`.
 
 ## Stack
 
@@ -13,24 +13,29 @@ The site for Hanzo Network: the blockchain for global intelligence (hanzo.networ
 
 ```
 src/
-  App.tsx                    the five routes inside Shell (nav, footer, browser title); the chain's old paths; `*` hands off to hanzo.ai
-  pages/NetworkLanding.tsx   `/`         hero + live telemetry, solutions, the six-part loop, how Proof of AI checks, gated phases, token, sources, closing
+  App.tsx                    the six routes inside Shell (nav, footer, browser title); the chain's old paths; `*` hands off to hanzo.ai
+  pages/Home.tsx             `/`         hero + live telemetry, solutions, the six-part loop (lib/pillars.ts), how Proof of AI checks, gated phases, token, sources, closing
   pages/Build.tsx            `/build`     connect an agent, network details (with the native currency), run a validator, a first call, what builders can earn
   pages/Economics.tsx        `/economics` the 2T cap, halving eras (a bar list under 640px), fee burn, a Designed market section, rules, an illustrative calculator
+  pages/Ecosystem.tsx        `/ecosystem` what exists around the network: three groups of cards from lib/ecosystem.ts
   pages/Pricing.tsx          `/pricing`   live model catalog from api.hanzo.ai/v1/models
   pages/Early.tsx            `/early`     early access is invite-only; no form, no code box (see below)
-  components/home/           home sections; Section.tsx holds container, Eyebrow, H2, Disc
+  components/home/           home sections
   components/build/          /build sections; components/economics/ the chart and calculator
-  components/pricing/        /pricing sections: Models (the table), Start (the keys link), Glow
-  components/ui/             button (buttonClass, textLink), card, tag, code (copyable block)
+  components/pricing/        /pricing sections: Models (the table)
+  components/ui/             button (buttonClass, inlineLink, textLink, navLink), card, tag, code (copyable block), section (container, Section, Eyebrow, H1, H2, Label, Disc), reveal, glow, live (the polite status region), start (the three-step first call)
   components/Compare.tsx     the proof-versus-votes table, shared by home and /economics
-  components/Shell.tsx       the frame every route shares (Nav, Footer, ScrollToTop); sets the browser title (one map)
+  components/Shell.tsx       the frame every route shares (Nav, Footer, Scroll); sets the browser title (one map)
   components/Measure.tsx     @hanzo/event: the first-party stream and the tag manager, one pageview per route
   components/Consent.tsx     the cookie bar and sheet, and "Your Privacy Choices" (the footer links to #choices)
   components/Away.tsx        /login and /signup: replaces the location with LOGIN (from links.ts) carrying the visitor's id
-  components/GlobalChatWidget.tsx   the chat dialog
+  components/Chat.tsx        the chat dialog
   lib/links.ts               every outbound URL, once (LOGIN, the chat lane and the models URL stay whole strings: scripts/check.mjs looks for them in the build)
   lib/solutions.ts           the five home solutions, once (also held to public/llms.txt by a test)
+  lib/pillars.ts             the six pillars, once (held to public/llms.txt by a test; the words are the CTO's spec: sovereign per-model chains, never "subnet")
+  lib/ecosystem.ts           the /ecosystem entries, once, tagged by what each page showed; the home strip picks four; held to public/llms.txt by a test
+  lib/status.ts              the three status words (a type; no component imports)
+  lib/quickstart.ts          the first-call curl shown on /pricing and /build
   lib/request.ts             request(url, init, ms): the one way a network call is made; a deadline, the caller's cancel, no cookies, a typed RequestError (timeout, aborted, status, network)
   lib/format.ts              count(n) and decimals(n, max): the one number formatter (en-US)
   lib/catalog.ts             the model catalog: loadModels() fetches once per page (10 s deadline), countModels() is the one count
@@ -47,7 +52,7 @@ docs/proof-of-ai.md          the Proof of AI spec: designed, not live
 - `links.ts` is the only place a URL is written; pages import the constant. `src/lib/links.test.ts` fails on any `https://` literal in `src/` outside `links.ts`, tests and two files (`Consent.tsx` and `Measure.tsx` keep their own: they must stay byte-identical to the upstream hanzo-apps/network copies they mirror, so upstream changes merge cleanly; that allow-list is exactly those two plus `links.ts`).
 - Never link `github.com/luxfi/*`: that organisation is hidden on GitHub and 404s for visitors. Link Lux code at `https://git.hanzo.ai/luxfi/*` or `https://github.com/luxdao/*`; the same test fails on `github.com/luxfi` anywhere in `src/` or `public/` (including `llms.txt`).
 - `solutions.ts` holds the five home solutions once; the cards draw them and a test holds `public/llms.txt` to the same titles, statuses and addresses.
-- "Get an API key" goes through `useAnalytics().link()` in `Start.tsx`, so the visitor's id travels, as it does for `/login`.
+- "Get an API key" goes through `useAnalytics().link()` in `ui/start.tsx`, so the visitor's id travels, as it does for `/login`.
 - `Code` (`components/ui/code.tsx`) is the one copyable block; Pricing and /build both use it. `commands.ts` holds /build's commands, and `public/llms.txt` must contain every one (a unit test checks).
 - `Compare` is the one proof-versus-votes table.
 - `request.ts` is the one place a network call is made (chain, models, chat); each caller names its own deadline and the timeout never lives in a component.
@@ -55,6 +60,7 @@ docs/proof-of-ai.md          the Proof of AI spec: designed, not live
 - `networks.ts` is the one list of chains, with each chain's native currency (mainnet "AI"; none for testnet and devnet, which no source names); /build and `llms.txt` agree with it (a unit test checks).
 - The validator command (`hanzo chain up testnet`) is `VALIDATOR_COMMAND` in `commands.ts`; `hanzo fabric` is a deprecated alias and is never printed.
 - Numbers become text in `format.ts` (`count`, `decimals`, `significant`) and `supply.ts` (`short`, `shortAI`); components do not retype chain ids or supply figures.
+- One style per thing: `H1` and `H2` (the home `H1` has a `big` size), `Label` (small mono uppercase), `Glow`, `Live` (every polite announcement), `textLink` (a link on its own line; it composes `inlineLink`, a link inside a sentence), `navLink` (Nav and Footer). Do not retype them.
 - Page heads and the first section of each page have no entrance animation (`e2e/site.spec.ts`), so the heading paints in the first frame.
 - `chat.ts` is the one place the chat endpoint is called.
 - `catalog.ts`: Home's telemetry and Pricing both call `loadModels()` (one request) and `countModels()` (one number).
@@ -84,7 +90,7 @@ pnpm dev
 pnpm build
 pnpm typecheck && pnpm lint && pnpm test
 pnpm exec playwright test --grep-invert @network   # e2e on the production build
-pnpm links                                          # live-internet link check (on demand; covers all five routes)
+pnpm links                                          # live-internet link check (on demand; covers all six routes)
 ```
 
 Tests: vitest for `src/lib` and CSS variables (`test/`); Playwright (`e2e/`: home, sections, build, economics, early, pricing, chat, site, privacy) for axe (WCAG 2.2 AA), phone width, the font shipping, redirects, the live telemetry strip, the still hero, the page titles, no console errors, and privacy (`e2e/privacy.spec.ts`: Your Privacy Choices in the footer, the opt-in bar, no hanzo.id link, sign-in to hanzo.ai/login). The home specs mock the chain, so CI never depends on it.
@@ -110,14 +116,22 @@ Checked on 26 Nov 2026 against Hanzo's repos and the public `hanzoai/papers` rep
 | Chain ids 36963, 36962, 36964 | `README.md` of `hanzoai/node` and each RPC's `eth_chainId` |
 | `hanzo chain up <network>`, `status`, `down` | `hanzo chain --help` and `hanzo chain up --help` (the CLI) |
 | hanzod is one Rust daemon per machine; the post-quantum handshake and ML-DSA validator identities | `hanzoai/node` (public): `daemon/src/main.rs` lines 4 to 10 ("the single unified Hanzo daemon per machine", "One Rust binary for": the Dev runtime, local inference, the opt-in blockchain validator) and `bot` and `team` subsystems built in `main.rs` (lines 189 and 190); `README.md` line 8 ("post-quantum handshake") and line 47 ("ML-DSA-65 identity") |
+| The six pillars and their tags: Live for "Maximum utility per node" (the node operator guide and `hanzoai/node`), Designed for "Multi-intelligence consensus" (HIP-0901, a draft), In progress for agentic commerce (docs.hanzo.ai/docs/agents) and for research (HIP-1334, a draft partly built), Designed for the DAO work board (work.hanzo.network says no bounties are live) | each page named; checked 26 Nov 2026 |
+| "Sovereign per-model chains" is Designed | No public page describes per-model chains. The source is the CTO's redesign handoff spec (`docs/redesign-handoff-spec.md`, branch `feat/network-v2` of hanzo-apps/network). HIP-0024 (https://hips.hanzo.ai/docs/hip-0024-hanzo-sovereign-l1-chain-architecture/) describes only the live chain as a sovereign L1 with its own validator set, so the pillar links the explorer for that half |
+| Phase 0: a Go verifier for the matrix checks, 22 tests | `luxfi/crypto`, `poi/`, on the Hanzo forge (https://git.hanzo.ai/luxfi/crypto/src/branch/main/poi): 22 `func Test` counted from a shallow clone on 26 Nov 2026. No claim of a Rust or Solidity implementation |
+| /ecosystem entries and tags | Each link loaded and read on 26 Nov 2026. hanzo.vote was opened in a browser: it shows a dashboard that says no address is on record for the Governor (so In progress). work.hanzo.network's board is up; the site's own earlier check found no Hanzo bounties (so Designed). Lux Network and Zoo Labs are tagged Live as sites only; nothing the Lux site says about its chains is repeated as fact. `github.com/luxdao/contracts` is a public repo whose README describes the Lux Governor Protocol, a Safe Zodiac module |
 | Author royalty: prove control of a repository; a ledger; payouts settled by hand | HIP-1000, https://hips.hanzo.ai/docs/hip-1000-author-royalty. The public page gives no percentage, so the site gives none |
 
 Left off the site on purpose:
 
 - `hanzo fabric` is a deprecated alias of `hanzo chain`. The site prints `hanzo chain` only, and a test forbids "fabric".
 - Hosted MCP tool counts differ by source (115, 127, 128), so the site prints no count.
-- Per-model chains, named hardware tiers, an invite points programme and Phase 1 "early miners" have no source and stay off the site.
+- Named hardware tiers, an invite points programme and Phase 1 "early miners" have no source and stay off the site.
 - The token sale (`hanzo-inc/token`) is legal-gated and must not be mentioned.
+
+## Analytics version
+
+`@hanzo/event` stays at 0.3.66. 0.3.73 (checked 26 Nov 2026) no longer calls Google consent mode (`gtag("consent", ...)`) or the Meta pixel's `consent` revoke and grant that 0.3.66 makes, so the bump changes consent behaviour; `Consent.tsx` and `Measure.tsx` stay byte-identical to upstream and are not changed for it. Revisit when Hanzo says where consent signalling moved.
 
 ## Serving chain
 
@@ -133,7 +147,7 @@ push to main (hanzo-apps/network, GitHub is home)
 ```
 
 No image and no pod. Cloudflare proxies hanzo.network to the AWS balancer. The
-`@network` link check (all five routes) runs on demand (`pnpm links`), not in CI.
+`@network` link check (all six routes) runs on demand (`pnpm links`), not in CI.
 
 ## Sign-in and measurement
 

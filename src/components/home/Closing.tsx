@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
 import { buttonClass } from '@/components/ui/button'
 import Card from '@/components/ui/card'
-import Reveal from './Reveal'
-import Section, { H2 } from './Section'
+import Reveal from '@/components/ui/reveal'
+import Section, { H2 } from '@/components/ui/section'
 
 export default function Closing() {
   return (

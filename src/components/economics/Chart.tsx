@@ -1,3 +1,4 @@
+import { Label } from '@/components/ui/section'
 import { decimals, significant } from '@/lib/format'
 import { eraCap } from '@/lib/supply'
 
@@ -32,7 +33,7 @@ const NAME = `Bar chart. The most each era may emit, in billions of AI: ${inBill
 export default function Chart() {
   return (
     <figure>
-      <figcaption className="mb-4 font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground">Most each era may emit, billions of AI</figcaption>
+      <Label as="figcaption" className="mb-4">Most each era may emit, billions of AI</Label>
       <svg
         viewBox={`0 0 ${W} ${H}`}
         role="img"

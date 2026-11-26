@@ -8,7 +8,7 @@ import Solutions from '@/components/home/Solutions'
 import Stack from '@/components/home/Stack'
 import Token from '@/components/home/Token'
 
-export default function NetworkLanding() {
+export default function Home() {
   return (
     <>
       <Hero />

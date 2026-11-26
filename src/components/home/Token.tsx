@@ -4,8 +4,8 @@ import Card from '@/components/ui/card'
 import Tag from '@/components/ui/tag'
 import { WHITEPAPER_PDF } from '@/lib/links'
 import { CAP, DAO, POOL, shortAI } from '@/lib/supply'
-import Reveal from './Reveal'
-import Section, { Eyebrow, H2 } from './Section'
+import Reveal from '@/components/ui/reveal'
+import Section, { Eyebrow, H2 } from '@/components/ui/section'
 import { textLink } from '@/components/ui/button'
 
 

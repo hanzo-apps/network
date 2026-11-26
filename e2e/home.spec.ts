@@ -72,13 +72,13 @@ for (const scheme of ['light', 'dark'] as const) {
   })
 }
 
-test('the nav: Solutions, Build, Economics, Pricing, Docs, in that order, and the invite button', async ({ page }) => {
+test('the nav: Solutions, Build, Economics, Ecosystem, Pricing, Docs, in that order, and the invite button', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 })
   await page.goto('/')
   const nav = page.getByRole('navigation', { name: 'Main' })
-  await expect(nav.getByRole('link')).toHaveText(['Solutions', 'Build', 'Economics', 'Pricing', 'Docs'])
+  await expect(nav.getByRole('link')).toHaveText(['Solutions', 'Build', 'Economics', 'Ecosystem', 'Pricing', 'Docs'])
   const hrefs = await nav.getByRole('link').evaluateAll((as) => as.map((a) => a.getAttribute('href')))
-  expect(hrefs).toEqual(['/#solutions', '/build', '/economics', '/pricing', 'https://docs.hanzo.ai'])
+  expect(hrefs).toEqual(['/#solutions', '/build', '/economics', '/ecosystem', '/pricing', 'https://docs.hanzo.ai'])
   await expect(page.locator('header, footer').getByText(/How it works|Providers/)).toHaveCount(0)
   const invite = page.locator('header').getByRole('link', { name: 'Early access' })
   await expect(invite).toHaveAttribute('href', '/early')
@@ -98,7 +98,7 @@ test('phone menu: Escape closes it and returns focus to the toggle; the links ar
   const toggle = page.getByRole('button', { name: 'Open menu' })
   await toggle.click()
   const menu = page.getByRole('navigation', { name: 'Menu' })
-  await expect(menu.getByRole('link')).toHaveText(['Solutions', 'Build', 'Economics', 'Pricing', 'Docs', 'Early access'])
+  await expect(menu.getByRole('link')).toHaveText(['Solutions', 'Build', 'Economics', 'Ecosystem', 'Pricing', 'Docs', 'Early access'])
   await expect(menu.getByRole('link').last()).toHaveAttribute('href', '/early')
   for (const link of await menu.getByRole('link').all()) expect((await link.boundingBox())!.height).toBeGreaterThanOrEqual(44)
   await page.keyboard.press('Escape')

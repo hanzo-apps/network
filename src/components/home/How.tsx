@@ -4,8 +4,8 @@ import { motion, useMotionValue, useMotionValueEvent, useReducedMotion, useScrol
 import Compare from '@/components/Compare'
 import Card from '@/components/ui/card'
 import { POAI_PDF, WHITEPAPER_PDF } from '@/lib/links'
-import Reveal from './Reveal'
-import Section, { Disc, Eyebrow, H2 } from './Section'
+import Reveal from '@/components/ui/reveal'
+import Section, { Disc, Eyebrow, H2, Label } from '@/components/ui/section'
 import { textLink } from '@/components/ui/button'
 
 const math = 'whitespace-nowrap font-mono text-[0.9em] text-foreground'
@@ -89,7 +89,7 @@ export default function How() {
                   <Icon size={18} />
                   {on && !still && <span className="step-ring pointer-events-none absolute inset-0 rounded-full border border-foreground/40" />}
                 </Disc>
-                <p className="mt-5"><span className="rounded-full border border-border px-2 py-0.5 font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground">{term}</span></p>
+                <p className="mt-5"><Label as="span" className="rounded-full border border-border px-2 py-0.5">{term}</Label></p>
                 <h3 className={`mt-1 text-2xl font-semibold transition-colors duration-500 ${on ? 'text-foreground' : 'text-muted-foreground'}`}>{name}</h3>
                 <p className="mt-2 text-base leading-relaxed text-muted-foreground">{text}</p>
               </Card>

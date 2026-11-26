@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs'
 import { describe, expect, it } from 'vitest'
-import { COMMANDS, CHAIN_CURL, CURL_QUICKSTART, DEVNET_COMMAND, VALIDATOR_COMMAND } from '../components/build/commands'
+import { COMMANDS, CHAIN_CURL, DEVNET_COMMAND, VALIDATOR_COMMAND } from '../components/build/commands'
+import { CURL_QUICKSTART } from './quickstart'
 import { NETWORKS } from './networks'
 import { MARKET_PAPER, POAI_PDF, RELATED_WORK, RPC_MAINNET, RPC_TESTNET } from './links'
 import { solutions } from './solutions'
@@ -67,7 +68,7 @@ describe('commands', () => {
 describe('public/llms.txt', () => {
   it('has the shape of docs.base.org/llms.txt', () => {
     expect(llms.startsWith('# Hanzo Network\n')).toBe(true)
-    for (const h of ['## Agent Instructions', '## Connect your agent', '## Network details', '## How Proof of AI checks', '## Solutions', '## Status of the network', '## Economics', '## Sources']) {
+    for (const h of ['## Agent Instructions', '## Connect your agent', '## Network details', '## How Proof of AI checks', '## Solutions', '## Status of the network', '## Economics', '## Ecosystem', '## Sources']) {
       expect(llms).toContain(h)
     }
   })

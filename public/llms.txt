@@ -89,6 +89,15 @@ Designed, not active. About 95% of a model's forward pass is matrix multiplicati
 
 The Proof of AI paper and the related-work section are under Sources.
 
+## The six parts
+
+- [Maximum utility per node](https://docs.hanzo.ai/docs/proof-of-ai/node-operator): Live. hanzod is one Rust daemon per machine: local inference, Dev, Bot and Team backends and an optional validator. Today a node runs tools and agents and is paid per job in stablecoins.
+- [Multi-intelligence consensus](https://hips.hanzo.ai/docs/hip-0901-proof-of-ai-native-execution-proofs): Designed. Different models on bonded nodes settle policy votes and parameter medians on chain. A vote alone can never mint.
+- [Sovereign per-model chains](https://explore.hanzo.network): Designed. A chain per model family or domain on Lux, with its own validators. Today there is one live chain, ID 36963, with a post-quantum handshake and ML-DSA validator identities.
+- [Decentralized agentic commerce](https://docs.hanzo.ai/docs/agents): In progress. Agents sign up with a wallet, hold a budgeted key and pay per call today. Fee burn, on-chain spend caps and a compute market are designed.
+- [Self-upgrading autonomous research](https://hips.hanzo.ai/docs/hip-1334-research-unified-runtime): In progress. Hanzo's research runtime records datasets, runs, evaluations and claims. Promotion only by beating gates frozen in advance is designed. A draft spec, partly built, not yet tied to the chain.
+- [DAO goal-setting and human de-work](https://work.hanzo.network): Designed. A DAO work board for goals and bounties. No Hanzo bounties are live yet.
+
 ## Solutions
 
 - [Verifiable inference](https://hanzo.network/build): Designed. Call models through one OpenAI-compatible API today; Proof of AI receipts are designed for open models such as Zen and are not switched on.
@@ -100,8 +109,7 @@ The Proof of AI paper and the related-work section are under Sources.
 ## Status of the network
 
 - Live: chain 36963, the OpenAI-compatible API at api.hanzo.ai, and nodes that run tools and agents and are paid per job in stablecoins.
-- hanzod is one Rust daemon per machine: local inference, Dev, Bot and Team backends and an optional validator. Today a node runs tools and agents and is paid per job in stablecoins.
-- Blocks are produced on chain 36963 today, with a post-quantum handshake and ML-DSA validator identities. Post-quantum finality is designed and audit-gated.
+- Post-quantum finality is designed and audit-gated.
 - Designed, not active: Proof of AI mining, the 2T AI supply policy and P3Q settlement. Mining stays disabled until the launch gates in the whitepaper pass.
 - [Status page](https://status.hanzo.network): Hanzo's platform status; it does not monitor the chain RPC.
 
@@ -119,6 +127,25 @@ Designed in the whitepaper and not active:
 - Market (Designed): compute pricing is designed around a market maker that conserves one quantity as supply and demand move: H(Psi,Theta) = Psi*Theta = kappa, where Psi and Theta are the two sides of the pool and kappa stays constant. It is a design; no market contract is deployed. The source is under Sources.
 - [Economics on hanzo.network](https://hanzo.network/economics): The supply, the halving eras and the burn, with an illustrative calculator.
 
+## Ecosystem
+
+What exists around the network. Each entry was loaded and read on 26 Nov 2026; the status word is what the page showed.
+
+- [Hanzo AI](https://hanzo.ai): Live. Frontier and open models and agents on one cloud. Train on your data and run on infrastructure you control.
+- [Zen models](https://hanzo.ai/zen): Live. Open-weight foundation models for agentic coding, served on Hanzo Cloud.
+- [Docs](https://docs.hanzo.ai): Live. Guides and references for the cloud, the API, MCP and the network.
+- [Hanzo Works](https://hanzo.works): Live. A browser extension, Hanzo Team, a bot for your team chat and 20 business apps on one login. Not part of the chain.
+- [Chain explorer](https://explore.hanzo.network): Live. Search blocks, transactions and addresses on the Hanzo chain.
+- [Platform status](https://status.hanzo.network): Live. Health of Hanzo's platform. It does not monitor the chain RPC.
+- [Work board](https://work.hanzo.network): Designed. A DAO work board for goals and bounties. The board is up; no Hanzo bounties are live yet.
+- [Hanzo Vote](https://hanzo.vote): In progress. A governance dashboard. It says no Governor address is on record yet.
+- [Lux Network](https://lux.network): Live. Lux's own site. It describes a multi-chain, post-quantum blockchain.
+- [Lux DAO contracts](https://github.com/luxdao/contracts): Live. Published code: the Lux Governor Protocol, a Safe module for composable DAO governance.
+- [Go verifier](https://git.hanzo.ai/luxfi/crypto/src/branch/main/poi): Live. Published code: the Go verifier for the matrix checks, with 22 tests.
+- [HIPs](https://hips.hanzo.ai): Live. Hanzo Improvement Proposals: the standards for Hanzo's infrastructure.
+- [Papers](https://papers.hanzo.ai): Live. Technical papers on AI and post-quantum cryptography, including the AI Chain whitepaper.
+- [Zoo Labs](https://zoo.ngo): Live. A non-profit that publishes open AI models and conservation research.
+
 ## Sources
 
 - [Hanzo AI Chain whitepaper](https://papers.hanzo.ai/hanzo-ai-chain/): The design: Proof of AI, supply and activation gates (working draft, 18 Aug 2026).
@@ -127,6 +154,7 @@ Designed in the whitepaper and not active:
 - [Proof of AI paper](https://papers.hanzo.ai/pdfs/hanzo-proof-of-ai.pdf): The design and its soundness bounds.
 - [Related work](https://github.com/hanzoai/papers/blob/main/hanzo-consensus-ai/sections/09-related-work.tex): How Hanzo's design contrasts with validator-voted networks.
 - [Market maker design](https://github.com/hanzoai/papers/blob/main/sections/hmm.tex): Draft.
+- [Go verifier](https://git.hanzo.ai/luxfi/crypto/src/branch/main/poi): The published Go verifier for the matrix checks, with 22 tests (activation phase 0).
 - [Proof of AI explainer](https://hanzo.blog/proof-of-ai/): The plain-words introduction on the Hanzo blog.
 - [Node operator guide](https://docs.hanzo.ai/docs/proof-of-ai/node-operator): What a node does today and what is roadmap.
 - [Explorer](https://explore.hanzo.network): The Hanzo Network block explorer.

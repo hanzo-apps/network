@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { buttonClass } from '@/components/ui/button'
+import { buttonClass, inlineLink } from '@/components/ui/button'
 import Card from '@/components/ui/card'
 import { context, price, topLabs, type Model, type Row } from '@/lib/catalog'
 
@@ -101,7 +101,7 @@ export function AllModels({ models }: { models: Row[] }) {
                 setQ('')
                 setLab('All')
               }}
-              className="mt-3 text-foreground underline underline-offset-4"
+              className={`${inlineLink} mt-3`}
             >
               Clear
             </button>
