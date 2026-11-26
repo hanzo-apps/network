@@ -4,7 +4,7 @@ import { useInView, useReducedMotion } from 'motion/react'
 const POSTER = '/hero/poster.webp'
 
 /** The hero stage's picture: a still poster, and a short loop that fades in over it once the poster is in and it can play. */
-export default function HeroArt({ paused }: { paused: boolean }) {
+export default function HeroArt() {
   const still = useReducedMotion()
   const [posterOk, setPosterOk] = useState(true)
   const [posterLoaded, setPosterLoaded] = useState(false)
@@ -15,9 +15,9 @@ export default function HeroArt({ paused }: { paused: boolean }) {
   useEffect(() => {
     const v = video.current
     if (!v) return
-    if (onScreen && !paused) v.play().catch(() => {})
+    if (onScreen) v.play().catch(() => {})
     else v.pause()
-  }, [onScreen, paused, posterLoaded])
+  }, [onScreen, posterLoaded])
 
   return (
     <div ref={stage} aria-hidden className="pointer-events-none absolute inset-0">

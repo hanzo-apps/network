@@ -1,5 +1,3 @@
-import { useState } from 'react'
-import { Pause, Play } from 'lucide-react'
 import { motion, useReducedMotion } from 'motion/react'
 import { buttonClass } from '@/components/ui/button'
 import { useChain } from '@/lib/chain'
@@ -7,7 +5,6 @@ import { Eyebrow, container } from './Section'
 import HeroArt from './HeroArt'
 
 const STRIP = ['OpenAI-compatible API', 'Zen and leading models', 'Live chain', 'Open-source node']
-const KEY = 'hero-paused'
 
 function Heartbeat() {
   const chain = useChain()
@@ -38,29 +35,9 @@ function Heartbeat() {
   )
 }
 
-function usePaused() {
-  const [paused, set] = useState(() => {
-    try {
-      return localStorage.getItem(KEY) === '1'
-    } catch {
-      return false
-    }
-  })
-  const toggle = () => {
-    set(!paused)
-    try {
-      localStorage.setItem(KEY, paused ? '0' : '1')
-    } catch {
-      /* the choice just does not persist */
-    }
-  }
-  return [paused, toggle] as const
-}
 
 export default function Hero() {
   const still = useReducedMotion()
-  const [paused, toggle] = usePaused()
-  const Icon = paused ? Play : Pause
   return (
     <section className="relative flex min-h-[88svh] items-center overflow-hidden py-[72px] md:py-32">
       <div
@@ -68,7 +45,7 @@ export default function Hero() {
         className="pointer-events-none absolute inset-0"
         style={{ background: 'radial-gradient(60% 50% at 50% 85%, color-mix(in oklab, var(--foreground) 8%, transparent), transparent)' }}
       />
-      <HeroArt paused={paused} />
+      <HeroArt />
       <motion.div
         className={`${container} relative text-center`}
         initial={still ? false : { opacity: 0, y: 12, filter: 'blur(6px)' }}
@@ -102,17 +79,6 @@ export default function Hero() {
           ))}
         </ul>
       </motion.div>
-      {!still && (
-        <button
-          type="button"
-          onClick={toggle}
-          aria-pressed={paused}
-          aria-label={paused ? 'Play background video' : 'Pause background video'}
-          className="absolute bottom-4 left-4 inline-flex h-11 w-11 items-center justify-center rounded-full border border-foreground/10 bg-foreground/5 text-muted-foreground backdrop-blur transition-colors hover:text-foreground md:bottom-6 md:left-6"
-        >
-          <Icon size={16} aria-hidden />
-        </button>
-      )}
     </section>
   )
 }

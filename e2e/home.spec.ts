@@ -87,19 +87,6 @@ test('when the chain is down, the chip says so', async ({ page }) => {
   await expect(page.getByText('Network status unavailable')).toBeVisible()
 })
 
-test('the background video can be paused, and the choice is remembered', async ({ page }) => {
-  await page.goto('/')
-  const pause = page.getByRole('button', { name: 'Pause background video' })
-  await expect(pause).toHaveAttribute('aria-pressed', 'false')
-  const box = await pause.boundingBox()
-  expect(box?.width).toBeGreaterThanOrEqual(44)
-  expect(box?.height).toBeGreaterThanOrEqual(44)
-  await pause.click()
-  await expect(page.getByRole('button', { name: 'Play background video' })).toHaveAttribute('aria-pressed', 'true')
-  await expect.poll(() => page.evaluate(() => [...document.querySelectorAll('video')].every((v) => v.paused))).toBe(true)
-  await page.reload()
-  await expect(page.getByRole('button', { name: 'Play background video' })).toHaveAttribute('aria-pressed', 'true')
-})
 
 test('home is calm under reduced motion', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' })
