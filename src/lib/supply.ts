@@ -61,3 +61,14 @@ export function signed(n: number): string {
   const text = whole(n)
   return text.startsWith('-') ? `−${text.slice(1)}` : `+${text}`
 }
+
+/** A round supply figure in short form: 2e12 is "2T", 500e9 is "500B", 62.5e9 is "62.5B". Below a billion it is the whole number. */
+export function short(n: number): string {
+  if (!Number.isFinite(n) || n < 0) throw new RangeError(`not a supply figure: ${n}`)
+  if (n >= 1e12) return `${+(n / 1e12).toFixed(5)}T`
+  if (n >= 1e9) return `${+(n / 1e9).toFixed(5)}B`
+  return whole(n)
+}
+
+/** As `short`, with the unit: 2e12 is "2T AI". */
+export const shortAI = (n: number): string => `${short(n)} AI`

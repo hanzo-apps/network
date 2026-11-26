@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest'
-import { CAP, DAO, ERA_YEARS, POOL, allowance, eraCap, netChange, position, signed, whole } from './supply'
+import { CAP, DAO, ERA_YEARS, POOL, allowance, eraCap, netChange, position, short, shortAI, signed, whole } from './supply'
 
 describe('constants', () => {
   test('two trillion in all: half the DAO, half the pool', () => {
@@ -140,5 +140,26 @@ describe('display', () => {
   test('rejects non-finite values', () => {
     expect(() => whole(NaN)).toThrow(RangeError)
     expect(() => signed(Infinity)).toThrow(RangeError)
+  })
+})
+
+describe('short and shortAI', () => {
+  test('the figures the pages print, exactly', () => {
+    expect(shortAI(CAP)).toBe('2T AI')
+    expect(shortAI(DAO)).toBe('1T AI')
+    expect(shortAI(POOL)).toBe('1T AI')
+    expect(short(eraCap(0))).toBe('500B')
+    expect(short(eraCap(1))).toBe('250B')
+    expect(short(eraCap(2))).toBe('125B')
+  })
+  test('fractions and small figures', () => {
+    expect(short(eraCap(3))).toBe('62.5B')
+    expect(short(eraCap(7))).toBe('3.90625B')
+    expect(short(0)).toBe('0')
+    expect(shortAI(0)).toBe('0 AI')
+    expect(short(1234567)).toBe('1,234,567')
+  })
+  test('rejects what is not a supply figure', () => {
+    for (const n of [-1, NaN, Infinity]) expect(() => short(n)).toThrow(RangeError)
   })
 })
