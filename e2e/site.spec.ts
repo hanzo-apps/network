@@ -55,3 +55,10 @@ test('footer year is current', async ({ page }) => {
   const stale = [...footer.matchAll(/©\s*(20\d\d)/g)].map((m) => m[1]).filter((y) => y !== year)
   expect(stale).toEqual([])
 })
+
+test('the Zen font ships and is used', async ({ page }) => {
+  await page.goto('/')
+  await page.evaluate(() => document.fonts.ready)
+  expect(await page.evaluate(() => document.fonts.check('16px Zen'))).toBe(true)
+  expect(await page.evaluate(() => getComputedStyle(document.body).fontFamily)).toMatch(/^"?Zen/)
+})

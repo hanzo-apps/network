@@ -1,13 +1,13 @@
 @import 'tailwindcss';
-/* One source for colour, radius, type and spacing: Hanzo's tokens (dark by default), then
-   Zen from @hanzo/font. Nothing below restates a value either package already states. */
+/* One source for colour, radius, type and spacing: Hanzo's tokens (dark by default). Zen comes
+   from @hanzo/font, imported in main.tsx so Vite can resolve its font files. Nothing below
+   restates a value either package already states. */
 @import '@hanzo/tokens/css';
-@import '@hanzo/font/css';
 
 /* Tailwind's utilities read Hanzo's tokens, so `bg-card`, `text-muted-foreground`,
    `text-8xl` and `rounded-lg` are Hanzo's values, never Tailwind's defaults. */
 @theme inline {
-  --color-background: var(--background);
+  --color-background: var(--pure-black);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
@@ -51,9 +51,9 @@
 
 @layer base {
   * { border-color: var(--border); }
-  html { background: var(--background); }
+  html { background: var(--pure-black); }
   body {
-    background: var(--background);
+    background: var(--pure-black);
     color: var(--foreground);
     font-family: var(--font-sans);
     font-weight: 497;
@@ -71,7 +71,7 @@
     position: relative;
     isolation: isolate;
     overflow: hidden;
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-xl);
     border: 1px solid var(--white-10);
     background: linear-gradient(180deg, var(--white-05), var(--white-03) 45%, var(--white-03));
     backdrop-filter: blur(16px) saturate(120%);

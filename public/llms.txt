@@ -1,17 +1,17 @@
 # Hanzo Network
 
-> AI compute, proved and paid. Developers run AI on the network; anyone with GPUs or CPUs earns by doing that work; every job is proved before anyone is paid (Proof of AI).
+> Provable AI compute. Live today: the Hanzo chain and an OpenAI-compatible API at api.hanzo.ai. Designed, not yet live: Proof of AI, which will pay providers only for work that is verified. Spec: https://github.com/hanzoai/hanzo.network/blob/main/docs/proof-of-ai.md
 
 ## For developers
-An OpenAI-compatible API at api.hanzo.ai serves Hanzo's Zen models and leading models from other labs. Every job is provable. Get an API key at https://platform.hanzo.ai/api-keys.
+An OpenAI-compatible API at api.hanzo.ai serves Hanzo's Zen models and leading models from other labs. Live today. Get an API key at https://platform.hanzo.ai/api-keys.
 
 ## For compute providers
-Keep the customer fee and earn AI rewards when your work is proved. Proofs are CPU-verifiable. Payout goes to any supported chain. Run a node (https://github.com/hanzoai/node) or apply at https://hanzo.ai/contact.
+Keep your customer fee. Proof of AI rewards are designed but not live: once it passes its audits, verified work will earn AI rewards, checkable by any CPU, paid on the chain you choose. Run a node (https://github.com/hanzoai/node) or apply at https://hanzo.ai/contact.
 
-## How a job runs
+## How a job will run under Proof of AI (designed, not yet live)
 1. Admit: the job and its reward are fixed on A-Chain before it runs.
 2. Execute: a provider runs it and commits the exact output.
-3. Validate: ordinary CPUs check the work; TEEs are optional for private jobs.
+3. Validate: ordinary CPUs check the work; private jobs can add a secure enclave.
 4. Settle: the receipt is rolled up on Z-Chain and paid on any chain via Lux.
 
 ## Links

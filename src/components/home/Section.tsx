@@ -19,7 +19,7 @@ export default function Section({ id, children, className = '', glow = false }: 
 }
 
 export const Eyebrow = ({ children }: { children: ReactNode }) => (
-  <p className="mb-4 text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">{children}</p>
+  <p className="mb-4 font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground">{children}</p>
 )
 
 export const H2 = ({ children }: { children: ReactNode }) => (

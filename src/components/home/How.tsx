@@ -8,7 +8,7 @@ import Section, { Disc, Eyebrow, H2 } from './Section'
 const STEPS = [
   { name: 'Admit', term: 'A-Chain', Icon: FileCheck2, text: 'The job and its reward are fixed before it runs.' },
   { name: 'Execute', term: 'Provider', Icon: Cpu, text: 'A provider runs the job and commits the exact output.' },
-  { name: 'Validate', term: 'CPU-verifiable', Icon: ShieldCheck, text: 'Ordinary CPUs check the work cheaply. TEEs are optional for private jobs.' },
+  { name: 'Validate', term: 'CPU-verifiable', Icon: ShieldCheck, text: 'Ordinary CPUs check the work cheaply. Private jobs can add a secure enclave.' },
   { name: 'Settle', term: 'Z-Chain and Lux', Icon: Landmark, text: 'The receipt is rolled up on Z-Chain and paid on any chain via Lux.' },
 ]
 
@@ -80,7 +80,7 @@ export default function How() {
                   <Icon size={18} />
                   {on && !still && <span className="step-ring pointer-events-none absolute inset-0 rounded-full border border-[var(--white-40)]" />}
                 </Disc>
-                <p className="mt-5 text-xs text-muted-foreground">{term}</p>
+                <p className="mt-5"><span className="rounded-full border border-border px-2 py-0.5 font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground">{term}</span></p>
                 <h3 className={`mt-1 text-2xl font-semibold transition-colors duration-500 ${on ? 'text-foreground' : 'text-muted-foreground'}`}>{name}</h3>
                 <p className="mt-2 text-base leading-relaxed text-muted-foreground">{text}</p>
               </Card>

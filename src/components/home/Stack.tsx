@@ -4,10 +4,10 @@ import Reveal from './Reveal'
 import Section, { Disc, Eyebrow, H2 } from './Section'
 
 const PARTS = [
-  { name: 'Hanzo AI', Icon: Layers, role: 'Platform', text: 'The API, models and tools developers build with.', href: 'https://hanzo.ai' },
-  { name: 'Zen models', Icon: Brain, role: 'Models', text: 'Hanzo’s own open-weight models.', href: 'https://hanzo.ai/zen' },
-  { name: 'Lux Network', Icon: Link2, role: 'Settlement', text: 'The chain that carries each proved receipt to the chain you want paid on.', href: 'https://lux.network' },
-  { name: 'Zoo Labs', Icon: FlaskConical, role: 'Research', text: 'Open research in decentralized AI and science, run on the network.', href: 'https://zoo.ngo' },
+  { name: 'Hanzo AI', Icon: Layers, role: 'Platform', text: 'The API, models and tools developers build with.', href: 'https://hanzo.ai', domain: 'hanzo.ai' },
+  { name: 'Zen models', Icon: Brain, role: 'Models', text: 'Hanzo’s own open-weight models.', href: 'https://hanzo.ai/zen', domain: 'hanzo.ai/zen' },
+  { name: 'Lux Network', Icon: Link2, role: 'Settlement', text: 'The chain that carries each proved receipt to the chain you want paid on.', href: 'https://lux.network', domain: 'lux.network' },
+  { name: 'Zoo Labs', Icon: FlaskConical, role: 'Research', text: 'Open research in decentralized AI and science, run on the network.', href: 'https://zoo.ngo', domain: 'zoo.ngo' },
 ]
 
 export default function Stack() {
@@ -31,6 +31,7 @@ export default function Stack() {
                 </div>
                 <p className="mt-6 text-sm text-muted-foreground">{p.role}</p>
                 <h3 className="mt-1 text-2xl font-semibold">{p.name}</h3>
+                <p className="mt-1 font-mono text-xs text-muted-foreground">{p.domain}</p>
                 <p className="mt-3 text-base leading-relaxed text-muted-foreground">{p.text}</p>
               </a>
             </Card>

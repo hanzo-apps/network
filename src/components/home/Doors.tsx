@@ -23,9 +23,9 @@ export default function Doors() {
           <p className="text-sm text-muted-foreground">For developers</p>
           <h3 className="mt-2 text-3xl font-semibold tracking-[-0.01em]">Run AI on it</h3>
           <ul className={list}>
-            <li>An OpenAI-compatible API at api.hanzo.ai.</li>
-            <li>Hanzo's own Zen models, and leading models from other labs.</li>
-            <li>Every job is provable.</li>
+            <li>OpenAI-compatible API at api.hanzo.ai.</li>
+            <li>Hanzo's own Zen models and leading models from other labs.</li>
+            <li>Live today.</li>
           </ul>
           <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
             <a href="https://platform.hanzo.ai/api-keys" className={buttonClass('secondary')}>
@@ -43,10 +43,14 @@ export default function Doors() {
           <p className="text-sm text-muted-foreground">For providers</p>
           <h3 className="mt-2 text-3xl font-semibold tracking-[-0.01em]">Earn from it</h3>
           <ul className={list}>
-            <li>Keep the customer fee, and earn AI rewards when your work is proved.</li>
-            <li>Proofs any CPU can verify.</li>
-            <li>Payout to any supported chain.</li>
+            <li>Keep your customer fee, and earn AI rewards for verified work once Proof of AI switches on.</li>
+            <li>Designed so any CPU can check the work.</li>
+            <li>Payout to the chain you choose.</li>
           </ul>
+          <p className="mt-4 text-sm text-muted-foreground">
+            Rewards switch on after Proof of AI passes its audits.{' '}
+            <a href="https://github.com/hanzoai/hanzo.network/blob/main/docs/proof-of-ai.md" className="rounded-sm underline underline-offset-4 hover:text-foreground">Read the spec</a>
+          </p>
           <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
             <a href="https://github.com/hanzoai/node" className={buttonClass('secondary')}>
               Run a node
