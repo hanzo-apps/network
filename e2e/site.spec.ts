@@ -106,3 +106,11 @@ for (const path of ['/original', '/index', '/home2']) {
     expect(new URL(page.url()).pathname).toBe('/')
   })
 }
+
+test('share tags are absolute so link previews work off-site', async ({ page }) => {
+  await page.goto('/')
+  const meta = (k: string) => page.locator(`head meta[property="${k}"], head meta[name="${k}"]`).getAttribute('content')
+  expect(await meta('og:image')).toBe('https://hanzo.network/og-image.png')
+  expect(await meta('twitter:image')).toBe('https://hanzo.network/og-image.png')
+  expect(await meta('og:url')).toBe('https://hanzo.network/')
+})
