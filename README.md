@@ -10,7 +10,7 @@ The site for Hanzo Network: the blockchain for global intelligence. Five routes:
 | `/pricing` | Live per-token model prices from api.hanzo.ai |
 | `/early` | Early access is invite-only; no form, no code box yet |
 
-Every other path hands off to hanzo.ai (the old chain paths stay here: `/status`, `/explorer`, `/blockchain`, `/web3`).
+Every other path hands off to hanzo.ai (except `/status` and `/explorer`, which redirect to status.hanzo.network and explore.hanzo.network, and `/blockchain` and `/web3`, which go to this site's home).
 
 Live: https://hanzo.network. Every status on the site is Live, In progress or Designed. Proof of AI is designed, not live: see `docs/proof-of-ai.md`. `LLM.md` has the structure, the shared pieces and the honesty rule.
 

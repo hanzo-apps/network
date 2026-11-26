@@ -12,12 +12,12 @@ The site for Hanzo Network: the blockchain for global intelligence (hanzo.networ
 
 ```
 src/
-  App.tsx                    the five routes inside Shell (nav, footer, browser title); `*` hands off to hanzo.ai
+  App.tsx                    the five routes inside Shell (nav, footer, browser title); the chain's old paths; `*` hands off to hanzo.ai
   pages/NetworkLanding.tsx   `/`         hero + live telemetry, solutions, the six-part loop, how Proof of AI checks, gated phases, token, sources, closing
-  pages/Build.tsx            `/build`     connect an agent, network details, a first call, what builders earn today
+  pages/Build.tsx            `/build`     connect an agent, network details, a first call, what builders can earn
   pages/Economics.tsx        `/economics` the 2T cap, halving eras, fee burn, rules, an illustrative calculator
   pages/Pricing.tsx          `/pricing`   live model catalog from api.hanzo.ai/v1/models
-  pages/Early.tsx            `/early`     invites are opening soon; no form, no code box (see below)
+  pages/Early.tsx            `/early`     early access is invite-only; no form, no code box (see below)
   components/home/           home sections; Section.tsx holds container, Eyebrow, H2, Disc
   components/build/          /build sections; components/economics/ the chart and calculator
   components/ui/             button (buttonClass, textLink), card, tag, code (copyable block)
@@ -25,9 +25,10 @@ src/
   components/Shell.tsx       the frame every route shares; sets the browser title (one map)
   components/Measure.tsx     @hanzo/event: the first-party stream and the tag manager, one pageview per route
   components/Consent.tsx     the cookie bar and sheet, and "Your Privacy Choices" (the footer links to #choices)
-  components/Away.tsx        /login and /signup: replaces the location with hanzo.ai/login
+  components/Away.tsx        /login and /signup: replaces the location with LOGIN (from links.ts) carrying the visitor's id
   components/GlobalChatWidget.tsx   the chat dialog
-  lib/links.ts               every outbound URL, once
+  lib/links.ts               every outbound URL, once (LOGIN, the chat lane and the models URL stay whole strings: scripts/check.mjs looks for them in the build)
+  lib/solutions.ts           the five home solutions, once (also held to public/llms.txt by a test)
   lib/catalog.ts             the model catalog: loadModels() fetches once per page, countModels() is the one count
   lib/chain.ts               block height from the chain RPC (loading, live, down)
   lib/networks.ts            Mainnet, Testnet, Devnet: RPC and chain id
@@ -39,7 +40,7 @@ docs/proof-of-ai.md          the Proof of AI spec: designed, not live
 ## Shared pieces
 
 - `Tag` (`<Tag is="Designed" />`) is the only status marker. Its one prop is `Live`, `In progress` or `Designed`.
-- `links.ts` is the only place a URL is written; pages import the constant. `src/lib/links.test.ts` fails on any other `https://` literal in `src/` (Consent and Measure keep their own).
+- `links.ts` is the only place a URL is written; pages import the constant. `src/lib/links.test.ts` fails on any other `https://` literal in `src/` (`Consent.tsx` and `Measure.tsx` keep their own: they must stay byte-identical to upstream hanzo-apps/network main so upstream changes merge cleanly, and the test asserts the allow-list is exactly those two plus `links.ts`).
 - `solutions.ts` holds the five home solutions once; the cards draw them and a test holds `public/llms.txt` to the same titles, statuses and addresses.
 - "Get an API key" goes through `useAnalytics().link()` in `Start.tsx`, so the visitor's id travels, as it does for `/login`.
 - `Code` (`components/ui/code.tsx`) is the one copyable block; Pricing and /build both use it. `commands.ts` holds /build's commands, and `public/llms.txt` must contain every one (a unit test checks).
@@ -60,11 +61,11 @@ On 26 Nov 2026 `npx -y hanzo mcp` (npm `hanzo` 9.0.3) answered MCP `initialize` 
 
 ## `/early`
 
-Invites are not being issued, so `/early` has no input, no form and no code box. A code box arrives only when `/v1/network/invite/verify` exists; until then the page links to Discord and X, and the nav button reads "Get an invite" and goes to `/early`.
+Invites are not being issued, so `/early` has no input, no form and no code box. A code box arrives only when `/v1/network/invite/verify` exists; until then the page links to Discord and X, and the nav, hero and closing buttons read "Early access" and go to `/early`.
 
 ## Redirects
 
-`/login` and `/signup` render `Away` (`Away.tsx`), which replaces the location with `https://hanzo.ai/login` carrying the visitor's anonymous id. `/index`, `/home2` and `/original` (old copies of this site's home page) stay on this site and go to `/`. Every other path hands off to `https://hanzo.ai<path>` from the client (`ToHanzo` in `App.tsx`), rendered outside the page frame so nothing flashes. They are client-side because hanzoai/static serves the SPA fallback (`-spa`) for every path. A real server 301 belongs in the static server or the ingress config if Hanzo wants one.
+`/login` and `/signup` render `Away` (`Away.tsx`), which replaces the location with LOGIN (`https://hanzo.ai/login`) carrying the visitor's anonymous id. `/index`, `/home2` and `/original` (old copies of this site's home page) stay on this site and go to `/`. The chain's own paths stay with the chain: `/status` goes to status.hanzo.network, `/explorer` to explore.hanzo.network, and `/blockchain`, `/blockchain/*` and `/web3` go to this site's `/`. Every other path hands off to `https://hanzo.ai<path>` from the client (`ToHanzo` in `App.tsx`), rendered outside the page frame so nothing flashes. They are client-side because hanzoai/static serves the SPA fallback (`-spa`) for every path. A real server 301 belongs in the static server or the ingress config if Hanzo wants one.
 
 ## Commands
 
@@ -74,10 +75,10 @@ pnpm dev
 pnpm build
 pnpm typecheck && pnpm lint && pnpm test
 pnpm exec playwright test --grep-invert @network   # e2e on the production build
-pnpm exec playwright test --grep @network          # live-internet link check (own CI step)
+pnpm exec playwright test --grep @network          # live-internet link check (on demand; covers all five routes)
 ```
 
-Tests: vitest for `src/lib` and CSS variables (`test/`); Playwright (`e2e/`: home, sections, build, economics, early, pricing, chat, site, privacy) for axe (WCAG 2.2 AA), phone width, the font shipping, redirects, the heartbeat, the still hero, and privacy (`e2e/privacy.spec.ts`: Your Privacy Choices in the footer, the opt-in bar, no hanzo.id link, sign-in to hanzo.ai/login). The home specs mock the chain, so CI never depends on it.
+Tests: vitest for `src/lib` and CSS variables (`test/`); Playwright (`e2e/`: home, sections, build, economics, early, pricing, chat, site, privacy) for axe (WCAG 2.2 AA), phone width, the font shipping, redirects, the live telemetry strip, the still hero, the page titles, no console errors, and privacy (`e2e/privacy.spec.ts`: Your Privacy Choices in the footer, the opt-in bar, no hanzo.id link, sign-in to hanzo.ai/login). The home specs mock the chain, so CI never depends on it.
 
 The chat widget answers in place. `src/lib/chat.ts` `ask(messages, signal)` POSTs `{messages}` to `https://api.hanzo.ai/v1/chat/public` (keyless, `credentials: 'omit'`, no Authorization) and returns only `choices[0].message.content`; it throws on non-200 or an empty answer and never reads `reasoning_content`. Every request opens with a fixed system message (`SYSTEM` in `chat.ts`: what is live, what is designed, never a price or a date for the AI token) and sets `max_tokens`; the message is never shown or counted in the 10. The widget keeps the conversation in component state (gone on reload), sends the last 10 messages, shows "Thinking…" in a polite status region, times out at 30 s, and on failure says so with Retry and a hanzo.chat link; a 429 says to wait a minute. "Open in Hanzo Chat" (`https://hanzo.chat/?q=<last question>`) is always in the dialog. Tests: `src/lib/chat.test.ts`, `e2e/chat.spec.ts` (endpoint mocked with `page.route`).
 
@@ -92,7 +93,7 @@ James's hero choices (26 Nov): no pause button; the hero picture does not react 
 ```
 push to main (hanzo-apps/network, GitHub is home)
   -> .github/workflows/cicd.yml   hanzoai/ci build.yml@v2, reads hanzo.yml
-       test:  build + scripts/check.mjs, then typecheck, lint, unit, e2e (Playwright, not @network)
+       test:  one step: install, typecheck, lint, unit, build, scripts/check.mjs, Playwright (not @network)
        site:  slug `network`, dir dist -> Sites plane (api.hanzo.ai/v1/projects)
   -> s3://hanzo-sites/hanzo/network   org hanzo (hanzo-apps maps to it) + slug
   -> hanzoai/ingress staticFiles      universe infra/aws/routes/sites.yaml,
@@ -101,11 +102,11 @@ push to main (hanzo-apps/network, GitHub is home)
 ```
 
 No image and no pod. Cloudflare proxies hanzo.network to the AWS balancer. The
-`@network` link check runs on demand (`pnpm exec playwright test --grep @network`), not in CI.
+`@network` link check (all five routes) runs on demand (`pnpm exec playwright test --grep @network`), not in CI.
 
 ## Sign-in and measurement
 
-- Sign-in is hanzo.ai's page: `LOGIN` in `src/components/Away.tsx` (`https://hanzo.ai/login`).
+- Sign-in is hanzo.ai's page: `LOGIN` in `src/lib/links.ts` (`https://hanzo.ai/login`).
   `Away` carries the visitor's anonymous id there (`useAnalytics().link`). Nothing links
   to hanzo.id; `check.mjs` and `e2e/privacy.spec.ts` fail a build that does.
 - Measurement is @hanzo/event, mounted by `Measure` in `src/components/Measure.tsx`:
