@@ -2,6 +2,9 @@ import { readFileSync } from 'node:fs'
 import { expect, test } from '@playwright/test'
 import { MODELS_URL, axeViolations, failModels, serveModels } from './helpers'
 
+// The address the Pricing page must send visitors to, typed here on purpose: the page's own constant would prove nothing.
+const PLANS = 'https://hanzo.ai/pricing'
+
 for (const colorScheme of ['light', 'dark'] as const) {
   test(`pricing is readable everywhere in ${colorScheme} (axe, WCAG 2.2 AA)`, async ({ page }) => {
     await page.emulateMedia({ colorScheme })
@@ -239,4 +242,12 @@ test('pricing says AI rewards, not GPU rewards (CPUs are paid too)', async ({ pa
   await expect(page.getByText(/AI rewards stay off until the launch gates pass/)).toBeVisible()
   await expect(page.getByRole('link', { name: 'Read the whitepaper' })).toHaveAttribute('href', 'https://papers.hanzo.ai/hanzo-ai-chain/')
   await expect(page.getByText(/GPU rewards/)).toHaveCount(0)
+})
+
+test('the pricing page points to the monthly plans on hanzo.ai', async ({ page }) => {
+  await serveModels(page)
+  await page.goto('/pricing')
+  const line = page.locator('header p', { hasText: 'Monthly plans, Pro $15 and Max $95, are on' })
+  await expect(line).toBeVisible()
+  await expect(line.getByRole('link', { name: 'hanzo.ai/pricing' })).toHaveAttribute('href', PLANS)
 })
