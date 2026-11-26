@@ -238,7 +238,7 @@ test.describe('How', () => {
     await page.goto('/')
     const s = section(page, 'how')
     await expect(s.getByRole('heading', { level: 3, name: 'Check the math, not the machine.' })).toBeVisible()
-    const card = s.locator('div').filter({ has: s.getByRole('heading', { level: 3, name: 'Check the math, not the machine.' }) }).last()
+    const card = s.locator('div').filter({ has: page.getByRole('heading', { level: 3, name: 'Check the math, not the machine.' }) }).last()
     await expect(card).toContainText("About 95% of a model's forward pass is matrix multiplication, C = A·B. Redoing it costs cubic work. Checking it does not. After the provider commits C, the chain draws a random vector r, and an ordinary CPU checks A(Br) = Cr in quadratic work. A wrong product slips through with probability at most 1/p per vector, where p = 2⁶¹ − 1; two vectors bring that to at most 2⁻¹²². The committed trace frontier is about 768 bytes.")
     for (const m of ['C = A·B', 'A(Br) = Cr', '1/p', 'p = 2⁶¹ − 1', '2⁻¹²²']) await expect(s.locator('span.font-mono', { hasText: m }).first()).toBeVisible()
     await expect(s.getByText('This proves each opened product. It does not by itself prove a whole model; sampling covers the rest.')).toBeVisible()

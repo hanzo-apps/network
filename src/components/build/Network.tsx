@@ -12,6 +12,7 @@ import { NETWORKS } from '@/lib/networks'
 import { DEVNET_COMMAND, VALIDATOR_COMMAND } from './commands'
 
 const link = 'text-foreground underline underline-offset-4'
+const cmd = 'font-mono text-[0.9em] text-foreground'
 const mono = 'font-mono text-sm break-all'
 
 /** One network's cell. Under 768px each cell stacks and names its network; from 768px the header row does that. */
@@ -124,8 +125,8 @@ export default function Network() {
           <Tag is="In progress" />
           <h3 className="mt-4 text-3xl font-semibold tracking-[-0.01em]">Run a validator.</h3>
           <p className="mt-4 max-w-[60ch] text-lg leading-relaxed text-muted-foreground">
-            Opts this machine in: hanzod fetches, verifies and starts the chain as a child process. Works with mainnet, testnet or devnet; <code className="font-mono text-[0.9em] text-foreground">hanzo chain status</code> shows where it stands and{' '}
-            <code className="font-mono text-[0.9em] text-foreground">hanzo chain down</code> opts out. Mining rewards stay off until the launch gates pass.
+            Opts this machine in: hanzod fetches, verifies and starts the chain as a child process. Works with mainnet, testnet or devnet; <code className={cmd}>hanzo chain status</code> shows where it stands and{' '}
+            <code className={cmd}>hanzo chain down</code> opts out. Mining rewards stay off until the launch gates pass.
           </p>
           <a href={NODE_REPO} className={`${link} inline-flex min-h-11 items-center`}>Node on GitHub</a>
         </div>

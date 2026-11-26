@@ -100,7 +100,7 @@ Checked on 26 Nov 2026 against Hanzo's repos and the public `hanzoai/papers` rep
 | Mainnet's coin is AI | the explorer config (`NETWORK_CURRENCY_SYMBOL: "AI"`, 18 decimals). No source states a symbol for testnet or devnet, so the table shows none |
 | Chain ids 36963, 36962, 36964 | `README.md` of `hanzoai/node` and each RPC's `eth_chainId` |
 | `hanzo chain up <network>`, `status`, `down` | `hanzo chain --help` and `hanzo chain up --help` (the CLI) |
-| hanzod is one Rust daemon per machine; the post-quantum handshake and ML-DSA validator identities | a source check of Hanzo's private repos, which cannot be linked; the pillar links to the node operator guide, and `hanzoai/node` is the public repo |
+| hanzod is one Rust daemon per machine; the post-quantum handshake and ML-DSA validator identities | `hanzoai/node` (public): `daemon/src/main.rs` lines 4 to 10 ("the single unified Hanzo daemon per machine", "One Rust binary for": the Dev runtime, local inference, the opt-in blockchain validator) and `bot` and `team` subsystems built in `main.rs` (lines 189 and 190); `README.md` line 8 ("post-quantum handshake") and line 47 ("ML-DSA-65 identity") |
 | Author royalty: prove control of a repository; a ledger; payouts settled by hand | HIP-1000, https://hips.hanzo.ai/docs/hip-1000-author-royalty. The public page gives no percentage, so the site gives none |
 
 Left off the site on purpose:

@@ -7,6 +7,8 @@ const ROWS = [
   ['Validator votes are judgment. They can earn fees.', 'A vote alone can never mint. The math decides.'],
 ] as const
 
+const link = 'inline-flex min-h-11 items-center rounded-sm text-foreground underline underline-offset-4 hover:text-muted-foreground'
+
 const HEADS = ['Other approaches', 'Proof of AI'] as const
 
 /** Proof of AI against the other ways to reward AI work. One table, shared by the home page and /economics. */
@@ -17,7 +19,7 @@ export default function Compare() {
       <h3 className="mt-4 text-3xl font-semibold tracking-[-0.01em]">Why proof beats votes.</h3>
       <p className="mt-2 flex flex-wrap items-center gap-x-3 text-sm text-muted-foreground">
         Compared with validator-voted networks such as Bittensor.
-        <a href={RELATED_WORK} className="inline-flex min-h-11 items-center rounded-sm text-foreground underline underline-offset-4 hover:text-muted-foreground">
+        <a href={RELATED_WORK} className={link}>
           Related work, Hanzo consensus paper
         </a>
       </p>
@@ -49,7 +51,7 @@ export default function Compare() {
         </tbody>
       </table>
       <p className="mt-5 text-sm">
-        <a href={WHITEPAPER_PDF} className="inline-flex min-h-11 items-center rounded-sm text-foreground underline underline-offset-4 hover:text-muted-foreground">
+        <a href={WHITEPAPER_PDF} className={link}>
           Source: whitepaper sections 1, 2.6 and 3.4
         </a>
       </p>
