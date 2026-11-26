@@ -98,11 +98,21 @@ export default function Economics() {
       </Section>
 
       <Section id="burn">
-        <Eyebrow>Burn</Eyebrow>
-        <H2>Fees are burned.</H2>
-        <p className="mt-6 max-w-[60ch] text-xl leading-relaxed text-muted-foreground">
-          A governed share β of settled protocol fees is burned: ΔS = issuance − β × fees. β is not set yet. As issuance halves, a steady burn can make supply fall.
-        </p>
+        <div className="grid gap-12 lg:grid-cols-[5fr_7fr] lg:gap-16">
+          <div>
+            <Eyebrow>Burn</Eyebrow>
+            <H2>Fees are burned.</H2>
+            <p className="mt-6 max-w-[60ch] text-xl leading-relaxed text-muted-foreground">
+              A governed share β of settled protocol fees is burned: ΔS = issuance − β × fees. β is not set yet. As issuance halves, a steady burn can make supply fall.
+            </p>
+          </div>
+          <Reveal>
+            <Card className="flex h-full flex-col justify-center p-6 md:p-8">
+              <p data-formula className="font-mono text-2xl text-foreground sm:text-3xl lg:text-4xl">ΔS = issuance − β × fees</p>
+              <p className="mt-4 text-sm text-muted-foreground">β is set by governance. It is not set yet.</p>
+            </Card>
+          </Reveal>
+        </div>
       </Section>
 
       <Section id="rules">

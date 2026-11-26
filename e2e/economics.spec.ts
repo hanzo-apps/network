@@ -89,6 +89,22 @@ test('halving text, formula and burn text are the settled sentences', async ({ p
   await expect(b).toContainText('A governed share β of settled protocol fees is burned: ΔS = issuance − β × fees. β is not set yet. As issuance halves, a steady burn can make supply fall.')
 })
 
+test('the burn section has the halving rhythm: words on the left, the formula in a card on the right', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 })
+  await open(page)
+  const b = page.locator('#burn')
+  const card = b.locator('[data-formula]')
+  await expect(card).toHaveText('ΔS = issuance − β × fees')
+  await expect(b).toContainText('β is set by governance. It is not set yet.')
+  const h2 = (await b.getByRole('heading', { level: 2 }).boundingBox())!
+  const f = (await card.boundingBox())!
+  expect(f.x).toBeGreaterThan(h2.x + 400)
+  expect(Math.abs(f.y + f.height / 2 - (h2.y + 100))).toBeLessThan(300)
+  expect(await card.evaluate((e) => parseFloat(getComputedStyle(e).fontSize))).toBeGreaterThanOrEqual(32)
+  await page.setViewportSize({ width: 375, height: 812 })
+  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(375)
+})
+
 test('the chart has a name, eight labelled bars and the same data as a table', async ({ page }) => {
   await open(page)
   const chart = page.locator('#halving').getByRole('img', { name: /bar chart/i })
