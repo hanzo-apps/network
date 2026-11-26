@@ -1,5 +1,5 @@
 // The AI supply policy, as designed in the Hanzo AI Chain whitepaper (section 3).
-// Designed, not active. Every figure is in whole AI. Pure functions, no dependencies.
+// Designed, not active. Every figure is in whole AI. Pure functions; the only import is the number formatter.
 //
 // Exactness: the pool is 5^12 * 2^12, so every era cap and every era-boundary
 // allowance is an exact float for the eras the page shows (k <= 25).
