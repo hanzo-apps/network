@@ -1,12 +1,12 @@
 import Card from '@/components/ui/card'
 import Tag, { type Status } from '@/components/ui/tag'
-import { WHITEPAPER_PDF } from '@/lib/links'
+import { GO_VERIFIER, WHITEPAPER_PDF } from '@/lib/links'
 import Reveal from './Reveal'
 import Section, { Eyebrow, H2 } from './Section'
 import { textLink } from '@/components/ui/button'
 
-const PHASES: { tag: Status; title: string; text: string }[] = [
-  { tag: 'In progress', title: 'Arithmetic and wire freeze', text: 'Freeze the field, formats and challenge rules. The integer core, Go and Rust vectors and Solidity fixtures exist.' },
+const PHASES: { tag: Status; title: string; text: string; link?: { name: string; href: string } }[] = [
+  { tag: 'In progress', title: 'Arithmetic and wire freeze', text: 'Freeze the field, formats and challenge rules. A Go verifier for the matrix checks is published, with 22 tests.', link: { name: 'Go verifier', href: GO_VERIFIER } },
   { tag: 'Designed', title: 'Exact replay and shadow proofs', text: 'Small jobs are replayed exactly. Shadow evidence has no mint authority.' },
   { tag: 'Designed', title: 'Optimistic Proof of AI', text: 'Activates only after seven gates, including CPU and GPU byte agreement and caught fabrications.' },
   { tag: 'Designed', title: 'Cloud-provider pilot', text: 'One existing cloud scheduler and one independent provider run the same job adapter.' },
@@ -32,6 +32,7 @@ export default function Phases() {
                 </div>
                 <h3 className="mt-5 text-balance text-xl font-semibold tracking-[-0.01em]">{p.title}</h3>
                 <p className="mt-3 text-base leading-relaxed text-muted-foreground">{p.text}</p>
+                {p.link && <a href={p.link.href} className={`${textLink} mt-2`}>{p.link.name}</a>}
               </Card>
             </Reveal>
           </li>

@@ -135,6 +135,7 @@ Designed in the whitepaper and not active:
 - [Proof of AI paper](https://papers.hanzo.ai/pdfs/hanzo-proof-of-ai.pdf): The design and its soundness bounds.
 - [Related work](https://github.com/hanzoai/papers/blob/main/hanzo-consensus-ai/sections/09-related-work.tex): How Hanzo's design contrasts with validator-voted networks.
 - [Market maker design](https://github.com/hanzoai/papers/blob/main/sections/hmm.tex): Draft.
+- [Go verifier](https://git.hanzo.ai/luxfi/crypto/src/branch/main/poi): The published Go verifier for the matrix checks, with 22 tests (activation phase 0).
 - [Proof of AI explainer](https://hanzo.blog/proof-of-ai/): The plain-words introduction on the Hanzo blog.
 - [Node operator guide](https://docs.hanzo.ai/docs/proof-of-ai/node-operator): What a node does today and what is roadmap.
 - [Explorer](https://explore.hanzo.network): The Hanzo Network block explorer.

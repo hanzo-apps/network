@@ -19,6 +19,8 @@ export const WHITEPAPER = 'https://papers.hanzo.ai/hanzo-ai-chain/'
 /** The page above shows only the abstract; section references point here. */
 export const WHITEPAPER_PDF = 'https://papers.hanzo.ai/pdfs/hanzo-ai-chain.pdf'
 /** The Proof of AI paper: the design and its soundness bounds. */
+/** The Go verifier for the matrix checks (luxfi/crypto, poi): 22 `func Test` read on 26 Nov 2026. */
+export const GO_VERIFIER = 'https://git.hanzo.ai/luxfi/crypto/src/branch/main/poi'
 export const POAI_PDF = 'https://papers.hanzo.ai/pdfs/hanzo-proof-of-ai.pdf'
 /** Related work in the Hanzo consensus paper: how the design contrasts with validator-voted networks. */
 export const RELATED_WORK = 'https://github.com/hanzoai/papers/blob/main/hanzo-consensus-ai/sections/09-related-work.tex'

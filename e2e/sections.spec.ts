@@ -4,7 +4,7 @@ import AxeBuilder from '@axe-core/playwright'
 import { failModels, serveChain, serveModels } from './helpers'
 import { group, perToken, toModel } from '../src/lib/catalog'
 import {
-  DOCS_AGENTS, EXPLORER, HIP_0901, HIP_1334, NODE_GUIDE, POAI_BLOG, POAI_PDF, PROOFS, RELATED_WORK, WHITEPAPER, WHITEPAPER_PDF, WORK,
+  DOCS_AGENTS, EXPLORER, GO_VERIFIER, HIP_0901, HIP_1334, NODE_GUIDE, POAI_BLOG, POAI_PDF, PROOFS, RELATED_WORK, WHITEPAPER, WHITEPAPER_PDF, WORK,
 } from '../src/lib/links'
 
 // Everything here belongs to the home page sections below the hero: Solutions, Pillars, How (+ Compare),
@@ -337,6 +337,14 @@ test.describe('Phases', () => {
     await expect(s.getByText('Then governance fixes the supply parameters: activation height, halving interval and fee-burn fraction.')).toBeVisible()
     await link(s, 'Whitepaper, section 10', WHITEPAPER_PDF)
     await expect(s).not.toContainText(/\b20\d\d\b/) // no dates
+  })
+
+  test('phase 0 says what is published: a Go verifier with 22 tests, linked, and no claim of other languages', async ({ page }) => {
+    await page.goto('/')
+    const card = item(section(page, 'phases'), 'Arithmetic and wire freeze')
+    await expect(card).toContainText('Freeze the field, formats and challenge rules. A Go verifier for the matrix checks is published, with 22 tests.')
+    await link(card, 'Go verifier', GO_VERIFIER)
+    await expect(card).not.toContainText(/Rust|Solidity/)
   })
 
   test('five columns on desktop with even heights, one column on a phone', async ({ page }) => {
