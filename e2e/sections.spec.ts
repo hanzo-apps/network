@@ -112,12 +112,12 @@ test.describe('Solutions', () => {
 
 // ---------------------------------------------------------------- Pillars
 const PILLARS = [
-  { tag: 'Live', title: 'Nodes that do paid work', link: 'Node operator guide', href: NODE_GUIDE },
-  { tag: 'Designed', title: 'Many models, one verdict', link: 'HIP-0901', href: HIP_0901 },
-  { tag: 'Live', title: 'A live chain, ID 36963', link: 'Explorer', href: EXPLORER },
-  { tag: 'In progress', title: 'Agents that pay their way', link: 'Agent docs', href: DOCS_AGENTS },
-  { tag: 'In progress', title: 'Research with a record', link: 'HIP-1334', href: HIP_1334 },
-  { tag: 'Designed', title: 'People and agents on one work board', link: 'Work board', href: WORK },
+  { tag: 'Live', title: 'Maximum utility per node', link: 'Node operator guide', href: NODE_GUIDE },
+  { tag: 'Designed', title: 'Multi-intelligence consensus', link: 'HIP-0901', href: HIP_0901 },
+  { tag: 'Designed', title: 'Sovereign per-model chains', link: 'Explorer', href: EXPLORER },
+  { tag: 'In progress', title: 'Decentralized agentic commerce', link: 'Agent docs', href: DOCS_AGENTS },
+  { tag: 'In progress', title: 'Self-upgrading autonomous research', link: 'HIP-1334', href: HIP_1334 },
+  { tag: 'Designed', title: 'DAO goal-setting and human de-work', link: 'Work board', href: WORK },
 ]
 
 test.describe('Pillars', () => {
@@ -152,13 +152,26 @@ test.describe('Pillars', () => {
     await expect(svg.locator('a, button, [tabindex]')).toHaveCount(0)
   })
 
-  test('the chain and research rows say only what is true today', async ({ page }) => {
+  test('each row says one honest sentence', async ({ page }) => {
     await page.goto('/')
     const rows = section(page, 'network').getByRole('list').locator('> li')
-    await expect(rows.nth(0)).toContainText('hanzod is one Rust daemon per machine: local inference, Dev, Bot and Team backends and an optional validator. Today a node runs tools and agents and is paid per job in stablecoins.')
-    await expect(rows.nth(2)).toContainText('Blocks are produced on chain 36963 today, with a post-quantum handshake and ML-DSA validator identities. Post-quantum finality is designed and audit-gated.')
-    await expect(rows.nth(5)).toContainText('A DAO work board for goals and bounties. No Hanzo bounties are live yet.')
-    await expect(rows.nth(4)).toContainText("Hanzo's research runtime for datasets, runs, evaluations and claims. A draft spec, partly built, and not yet tied to the chain.")
+    const says = [
+      'hanzod is one Rust daemon per machine: local inference, Dev, Bot and Team backends and an optional validator. Today a node runs tools and agents and is paid per job in stablecoins.',
+      'Different models on bonded nodes settle policy votes and parameter medians on chain. A vote alone can never mint.',
+      'A chain per model family or domain on Lux, with its own validators. Today there is one live chain, ID 36963, with a post-quantum handshake and ML-DSA validator identities.',
+      'Agents sign up with a wallet, hold a budgeted key and pay per call today. Fee burn, on-chain spend caps and a compute market are designed.',
+      "Hanzo's research runtime records datasets, runs, evaluations and claims. Promotion only by beating gates frozen in advance is designed. A draft spec, partly built, not yet tied to the chain.",
+      'A DAO work board for goals and bounties. No Hanzo bounties are live yet.',
+    ]
+    for (const [i, text] of says.entries()) await expect(rows.nth(i)).toContainText(text)
+  })
+
+  test('the vocabulary: sovereign per-model chains, never "subnet"', async ({ page }) => {
+    await page.goto('/')
+    const text = await page.locator('main').innerText()
+    expect(text).toMatch(/sovereign/i)
+    expect(text).toMatch(/per-model chains/i)
+    expect(text).not.toMatch(/subnet/i)
   })
 
   test('one dot travels the ring every 12 seconds with motion on', async ({ page }) => {

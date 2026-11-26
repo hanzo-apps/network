@@ -89,6 +89,15 @@ Designed, not active. About 95% of a model's forward pass is matrix multiplicati
 
 The Proof of AI paper and the related-work section are under Sources.
 
+## The six parts
+
+- [Maximum utility per node](https://docs.hanzo.ai/docs/proof-of-ai/node-operator): Live. hanzod is one Rust daemon per machine: local inference, Dev, Bot and Team backends and an optional validator. Today a node runs tools and agents and is paid per job in stablecoins.
+- [Multi-intelligence consensus](https://hips.hanzo.ai/docs/hip-0901-proof-of-ai-native-execution-proofs): Designed. Different models on bonded nodes settle policy votes and parameter medians on chain. A vote alone can never mint.
+- [Sovereign per-model chains](https://explore.hanzo.network): Designed. A chain per model family or domain on Lux, with its own validators. Today there is one live chain, ID 36963, with a post-quantum handshake and ML-DSA validator identities.
+- [Decentralized agentic commerce](https://docs.hanzo.ai/docs/agents): In progress. Agents sign up with a wallet, hold a budgeted key and pay per call today. Fee burn, on-chain spend caps and a compute market are designed.
+- [Self-upgrading autonomous research](https://hips.hanzo.ai/docs/hip-1334-research-unified-runtime): In progress. Hanzo's research runtime records datasets, runs, evaluations and claims. Promotion only by beating gates frozen in advance is designed. A draft spec, partly built, not yet tied to the chain.
+- [DAO goal-setting and human de-work](https://work.hanzo.network): Designed. A DAO work board for goals and bounties. No Hanzo bounties are live yet.
+
 ## Solutions
 
 - [Verifiable inference](https://hanzo.network/build): Designed. Call models through one OpenAI-compatible API today; Proof of AI receipts are designed for open models such as Zen and are not switched on.
@@ -100,8 +109,7 @@ The Proof of AI paper and the related-work section are under Sources.
 ## Status of the network
 
 - Live: chain 36963, the OpenAI-compatible API at api.hanzo.ai, and nodes that run tools and agents and are paid per job in stablecoins.
-- hanzod is one Rust daemon per machine: local inference, Dev, Bot and Team backends and an optional validator. Today a node runs tools and agents and is paid per job in stablecoins.
-- Blocks are produced on chain 36963 today, with a post-quantum handshake and ML-DSA validator identities. Post-quantum finality is designed and audit-gated.
+- Post-quantum finality is designed and audit-gated.
 - Designed, not active: Proof of AI mining, the 2T AI supply policy and P3Q settlement. Mining stays disabled until the launch gates in the whitepaper pass.
 - [Status page](https://status.hanzo.network): Hanzo's platform status; it does not monitor the chain RPC.
 
