@@ -125,7 +125,7 @@ test('share tags are absolute so link previews work off-site', async ({ page }) 
 test('title and description say what the network is, in the page, the share tags and the twitter tags', async ({ page }) => {
   await page.goto('/')
   const title = 'Hanzo Network: the blockchain for global intelligence'
-  const description = 'Run AI workloads through one API today. Proof of AI is designed to verify them on ordinary CPUs and settle with post-quantum finality.'
+  const description = 'Run real AI workloads through one API today. Proof of AI is designed to verify open-model work on ordinary CPUs and settle it with post-quantum finality.'
   const meta = (k: string) => page.locator(`head meta[property="${k}"], head meta[name="${k}"]`).getAttribute('content')
   await expect(page).toHaveTitle(title)
   expect(await meta('description')).toBe(description)
@@ -145,7 +145,7 @@ test('the footer links Build, Economics and Pricing, and keeps the privacy choic
 })
 
 // Routes the other builders write: each must draw a page with one h1 inside the shared frame.
-for (const [path, h1] of [['/build', 'Start building.'], ['/economics', 'A hard cap of two trillion AI.'], ['/early', 'Invites are opening soon.']] as const) {
+for (const [path, h1] of [['/build', 'Start building.'], ['/economics', 'A hard cap of two trillion AI.'], ['/early', 'Early access is invite-only.']] as const) {
   test(`${path} is a page of this site with the h1 "${h1}"`, async ({ page }) => {
     await page.goto(path)
     await expect(page.getByRole('heading', { level: 1 })).toHaveText(h1)

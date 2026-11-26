@@ -24,11 +24,11 @@ export default function Hero() {
           The blockchain for global intelligence.
         </h1>
         <p className="mx-auto mt-6 max-w-[60ch] text-balance text-xl leading-relaxed text-muted-foreground">
-          Run real AI workloads through one API today. Proof of AI is designed to verify them on ordinary CPUs and settle with post-quantum finality.
+          Run real AI workloads through one API today. Proof of AI is designed to verify open-model work on ordinary CPUs and settle it with post-quantum finality.
         </p>
         <div className="mt-10 flex flex-wrap justify-center gap-4">
           <Link to="/early" className={buttonClass('primary')}>
-            Get an invite
+            Early access
           </Link>
           <Link to="/build" className={buttonClass('secondary')}>
             Start building

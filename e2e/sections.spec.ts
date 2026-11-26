@@ -48,7 +48,7 @@ const tags = (root: Locator) => root.locator('span.h-6.rounded-full')
 
 // ---------------------------------------------------------------- Solutions
 const SOLUTIONS = [
-  { tag: 'In progress', title: 'Verifiable inference', link: 'Start building', href: '/build' },
+  { tag: 'Designed', title: 'Verifiable inference', link: 'Start building', href: '/build' },
   { tag: 'Designed', title: 'Mine AI with useful compute', link: 'Node operator guide', href: NODE_GUIDE },
   { tag: 'Live', title: 'Agents and metered compute', link: 'Agent docs', href: DOCS_AGENTS },
   { tag: 'Designed', title: 'Models, training and contributions', link: 'Read HIP-0901', href: HIP_0901 },
@@ -76,7 +76,7 @@ test.describe('Solutions', () => {
     await page.goto('/')
     const card = item(section(page, 'solutions'), 'Verifiable inference')
     await expect(card).toContainText(`Call ${fixtureCount()} models through one OpenAI-compatible API today.`)
-    await expect(card).toContainText('Proof of AI receipts for each call are designed and not yet switched on.')
+    await expect(card).toContainText('Proof of AI receipts are designed for open models such as Zen and are not switched on.')
     await expect(card).not.toContainText('hundreds of models')
   })
 
@@ -114,7 +114,7 @@ test.describe('Solutions', () => {
 const PILLARS = [
   { tag: 'Live', title: 'Nodes that do paid work', link: 'Node operator guide', href: NODE_GUIDE },
   { tag: 'Designed', title: 'Many models, one verdict', link: 'HIP-0901', href: HIP_0901 },
-  { tag: 'Live', title: 'A sovereign chain on Lux', link: 'Explorer', href: EXPLORER },
+  { tag: 'Live', title: 'A live chain, ID 36963', link: 'Explorer', href: EXPLORER },
   { tag: 'In progress', title: 'Agents that pay their way', link: 'Agent docs', href: DOCS_AGENTS },
   { tag: 'In progress', title: 'Research with a record', link: 'HIP-1334', href: HIP_1334 },
   { tag: 'Designed', title: 'People and agents on one work board', link: 'Work board', href: WORK },
@@ -150,6 +150,13 @@ test.describe('Pillars', () => {
     const html = await svg.evaluate((e) => e.outerHTML)
     expect(html).not.toMatch(/#[0-9a-f]{3,8}\b|rgb\(|hsl\(/i)
     await expect(svg.locator('a, button, [tabindex]')).toHaveCount(0)
+  })
+
+  test('the chain and research rows say only what is true today', async ({ page }) => {
+    await page.goto('/')
+    const rows = section(page, 'network').getByRole('list').locator('> li')
+    await expect(rows.nth(2)).toContainText('Blocks are produced on chain 36963 today. Running as the Lux A-Chain with post-quantum finality is designed.')
+    await expect(rows.nth(4)).toContainText("Hanzo's research runtime for datasets, runs, evaluations and claims. A draft spec, partly built, and not yet tied to the chain.")
   })
 
   test('one dot travels the ring every 12 seconds with motion on', async ({ page }) => {
@@ -219,6 +226,7 @@ test.describe('How', () => {
     const s = section(page, 'how')
     await expect(s.getByRole('heading', { level: 2 })).toHaveText('How Proof of AI works.')
     await expect(s.getByText('How Proof of AI is designed to work.', { exact: false })).toBeVisible()
+    await expect(s.getByText('Rewards stay off until the launch gates pass.', { exact: false })).toBeVisible()
     const steps = s.locator('ol > li')
     await expect(steps).toHaveCount(4)
     await expect(steps.locator('h3')).toHaveText(['Admit', 'Execute', 'Validate', 'Settle'])
@@ -344,6 +352,9 @@ test.describe('Token', () => {
     await expect(s).not.toContainText('Proposed')
     await expect(s.getByText('2T AI', { exact: true })).toBeVisible()
     await expect(s.getByText('1T AI', { exact: true })).toHaveCount(2)
+    await expect(s.getByText('Providers keep the customer fee and, once mining activates, may also earn AI.')).toBeVisible()
+    await expect(s.getByText('Reserved for the Hanzo DAO', { exact: true })).toBeVisible()
+    await expect(s).not.toContainText('Held by')
     await expect(s.getByText('Designed in the whitepaper: a 2 trillion cap, half fixed with the Hanzo DAO and half earned by proved work in halving eras. Not active yet.')).toBeVisible()
     await link(s, 'See the economics', '/economics')
     await link(s, 'Whitepaper, section 3', WHITEPAPER_PDF)
@@ -356,7 +367,7 @@ const LATEST = [
   { title: 'Hanzo AI Chain whitepaper', line: 'The design: Proof of AI, supply, activation gates.', meta: 'Working draft · 18 Aug 2026', href: WHITEPAPER },
   { title: 'Proof of AI explainer', line: 'The plain-words introduction on the Hanzo blog.', meta: '26 Jun 2026', href: POAI_BLOG },
   { title: 'HIP-0901', line: 'Proof of AI: native execution proofs. Draft proposal.', meta: 'Draft', href: HIP_0901 },
-  { title: 'Formal proofs', line: "Machine-checked proofs for Hanzo's agent and ML systems.", meta: '8 proofs', href: PROOFS },
+  { title: 'Formal proofs', line: "Machine-checked proofs for Hanzo's agent and ML systems.", meta: 'Lean and Coq', href: PROOFS },
 ]
 
 test.describe('Latest', () => {
@@ -389,7 +400,7 @@ test.describe('Closing', () => {
     await page.goto('/')
     const s = page.locator('main > section').last()
     await expect(s.getByRole('heading', { level: 2 })).toHaveText('Build on the network.')
-    const invite = s.getByRole('link', { name: 'Get an invite', exact: true })
+    const invite = s.getByRole('link', { name: 'Early access', exact: true })
     const build = s.getByRole('link', { name: 'Start building', exact: true })
     await expect(invite).toHaveAttribute('href', '/early')
     await expect(build).toHaveAttribute('href', '/build')

@@ -48,7 +48,6 @@ claude mcp add --transport http hanzo-cloud https://api.hanzo.ai/v1/mcp
 |---|---|---|---|
 | RPC | https://api.hanzo.network/v1/bc/hanzo/rpc | https://api.hanzo-test.network/v1/bc/hanzo/rpc | Local: `hanzod --network devnet` (needs a committee file, see https://github.com/hanzoai/node) |
 | Chain ID | 36963 | 36962 | 36964 |
-| Currency | AI | AI | AI |
 | Explorer | https://explore.hanzo.network | none | none |
 
 - [Network docs](https://docs.hanzo.ai/docs/network): What the network is and how to connect.
@@ -77,8 +76,8 @@ curl -s -X POST https://api.hanzo.network/v1/bc/hanzo/rpc -H 'content-type: appl
 
 ## Solutions
 
-- [Verifiable inference](https://hanzo.network/build): In progress. Call models through one OpenAI-compatible API today; Proof of AI receipts for each call are designed and not yet switched on.
-- [Mine AI with useful compute](https://docs.hanzo.ai/docs/proof-of-ai/node-operator): Designed. Keep the customer fee and, once mining activates, earn a declining AI reward; mining stays disabled until the launch gates pass, and today a node runs tools and agents and is paid per job in stablecoins.
+- [Verifiable inference](https://hanzo.network/build): Designed. Call models through one OpenAI-compatible API today; Proof of AI receipts are designed for open models such as Zen and are not switched on.
+- [Mine AI with useful compute](https://docs.hanzo.ai/docs/proof-of-ai/node-operator): Designed. Keep the customer fee and, once mining activates, may earn a declining AI reward; mining stays disabled until the launch gates pass, and today a node runs tools and agents and is paid per job in stablecoins.
 - [Agents and metered compute](https://docs.hanzo.ai/docs/agents): Live. Give an agent its own API key with a monthly budget and calls stop when it is spent; on-chain agent wallets with spend caps are designed.
 - [Models, training and contributions](https://hips.hanzo.ai/docs/hip-0901-proof-of-ai-native-execution-proofs): Designed. Zen open-weight models are served today; proofs for training and rewards for private contributions are specified in a draft proposal.
 - [Private post-quantum AI](https://papers.hanzo.ai/hanzo-ai-chain/): Designed. Prompt sealing with X-Wing (X25519 + ML-KEM-768) and optional secure enclaves are specified; succinct settlement on Z-Chain is audit-gated.

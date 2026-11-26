@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest'
 import { COMMANDS, CHAIN_CURL, CURL_QUICKSTART, DEVNET_COMMAND } from '../components/build/commands'
 import { NETWORKS } from './networks'
 import { RPC_MAINNET, RPC_TESTNET } from './links'
+import { solutions } from './solutions'
 
 const llms = readFileSync('public/llms.txt', 'utf8')
 
@@ -73,6 +74,16 @@ describe('public/llms.txt', () => {
     expect([...llms].filter((c) => c !== '\n' && (c < ' ' || c > '~'))).toEqual([])
     expect(llms).not.toMatch(/fabric/)
     expect(llms).not.toContain('docs.hanzo.ai/mcp')
+  })
+
+  it('lists every solution the home cards show, with the same title, status word and address', () => {
+    const lines = llms.split('## Solutions')[1].split('\n## ')[0].split('\n').filter((l) => l.startsWith('- ['))
+    const all = solutions('N')
+    expect(lines).toHaveLength(all.length)
+    for (const [i, c] of all.entries()) {
+      const url = c.to.startsWith('/') ? `https://hanzo.network${c.to}` : c.to
+      expect(lines[i]).toContain(`[${c.title}](${url}): ${c.tag}.`)
+    }
   })
 
   it('lists every source as "- [Title](url): sentence." and every link resolves to a constant in links.ts', () => {

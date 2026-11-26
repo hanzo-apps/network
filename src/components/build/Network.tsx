@@ -66,7 +66,7 @@ export default function Network() {
       <Reveal className="mt-10">
         <Card className="p-0">
           <table role="table" className="block w-full text-left md:table">
-            <caption className="sr-only">Hanzo networks: RPC, chain ID, currency, latest block, explorer and docs</caption>
+            <caption className="sr-only">Hanzo networks: RPC, chain ID, latest block, explorer and docs</caption>
             <thead role="rowgroup" className="sr-only md:not-sr-only md:table-header-group">
               <tr role="row">
                 <th role="columnheader" scope="col" className="px-5 py-4"><span className="sr-only">Detail</span></th>
@@ -90,8 +90,7 @@ export default function Network() {
                 ]}
               />
               <Row label="Chain ID" cells={NETWORKS.map((n) => <span key={n.name} className="tabular-nums">{n.chainId}</span>)} />
-              <Row label="Currency" cells={NETWORKS.map((n) => <span key={n.name}>{n.currency}</span>)} />
-              <Row label="Latest block" cells={[<Block key="m" rpc={main.rpc} />, <Block key="t" rpc={test.rpc} />, <span key="d">local</span>]} />
+                <Row label="Latest block" cells={[<Block key="m" rpc={main.rpc} />, <Block key="t" rpc={test.rpc} />, <span key="d">local</span>]} />
               <Row
                 label="Explorer"
                 cells={[

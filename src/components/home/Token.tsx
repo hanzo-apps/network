@@ -10,7 +10,7 @@ import { textLink } from '@/components/ui/button'
 
 const FIGURES = [
   { value: '2T AI', label: 'Maximum supply' },
-  { value: '1T AI', label: 'Held by the Hanzo DAO' },
+  { value: '1T AI', label: 'Reserved for the Hanzo DAO' },
   { value: '1T AI', label: 'For miners and validators' },
 ]
 
@@ -38,7 +38,7 @@ export default function Token() {
         <Reveal>
           <Eyebrow>The AI token<span className="ml-3 align-middle"><Tag is="Designed" /></span></Eyebrow>
           <H2>Compute once. Earn twice.</H2>
-          <p className="mt-4 text-xl text-foreground">Providers keep the customer fee and, once Proof of AI is live, also earn AI.</p>
+          <p className="mt-4 text-xl text-foreground">Providers keep the customer fee and, once mining activates, may also earn AI.</p>
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
             Designed in the whitepaper: a 2 trillion cap, half fixed with the Hanzo DAO and half earned by proved work in halving eras. Not active yet.
           </p>

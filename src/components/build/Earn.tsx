@@ -15,7 +15,7 @@ const CARDS: { tag: Status; title: string; text: string; href: string; link: str
     link: 'Read the docs',
   },
   {
-    tag: 'Live',
+    tag: 'In progress',
     title: 'Author royalty',
     text: 'Prove you control a repository and earn a royalty when others deploy projects built from it.',
     href: HIP_1000,

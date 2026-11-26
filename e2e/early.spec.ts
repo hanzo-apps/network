@@ -48,8 +48,8 @@ test('early is readable with reduced motion (axe)', async ({ page }) => {
 
 test('the heading and the plain promise: invite-only, codes not issued yet', async ({ page }) => {
   await open(page)
-  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Invites are opening soon.')
-  await expect(page.locator('main')).toContainText('Early access to the network will be invite-only. Codes are not being issued yet.')
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Early access is invite-only.')
+  await expect(page.locator('main')).toContainText('Codes are not being issued yet.')
 })
 
 test('where invites will appear: Discord and X, with their addresses', async ({ page }) => {
@@ -67,7 +67,7 @@ test('what you can do today: build, or run a node', async ({ page }) => {
   await expect(page.getByRole('heading', { level: 2, name: 'What you can do today.' })).toBeVisible()
   const main = page.locator('main')
   await expect(main.getByRole('link', { name: 'Start building' })).toHaveAttribute('href', '/build')
-  await expect(main).toContainText('Enroll a node, run tools and agents, get paid per job.')
+  await expect(main).toContainText('Enroll a node, run tools and agents, get paid per job. Enrolling needs a registration code.')
   await expect(main.getByRole('link', { name: 'Run a node' })).toHaveAttribute('href', NODE_GUIDE)
 })
 
@@ -89,7 +89,7 @@ test('no sale, offer, staking, points, leaderboard, balance, email capture or da
   const body = await page.locator('body').innerText()
   expect(body).not.toMatch(/sale|presale|investment|yield|APY|Bittensor/i)
   const main = await page.locator('main').innerText()
-  expect(main).not.toMatch(/stak(e|ing)|token sale|points|leaderboard|balance|price|return|offer|airdrop|reward|email|waitlist|sign.?up|enter invite code|countdown/i)
+  expect(main).not.toMatch(/stak(e|ing)|token sale|points|leaderboard|balance|price|return|offer|airdrop|reward|email|waitlist|sign.?up|enter invite code|countdown|soon/i)
   expect(main).not.toMatch(/20\d\d/)
   expect(main).not.toMatch(/\d+\s*(days?|hours?|weeks?)/i)
 })

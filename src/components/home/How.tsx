@@ -64,7 +64,7 @@ export default function How() {
       <Reveal>
         <Eyebrow>How it works</Eyebrow>
         <H2>How Proof of AI works.</H2>
-        <p className="mt-4 max-w-[60ch] text-xl leading-relaxed text-muted-foreground">How Proof of AI is designed to work. Rewards switch on after its audits.</p>
+        <p className="mt-4 max-w-[60ch] text-xl leading-relaxed text-muted-foreground">How Proof of AI is designed to work. Rewards stay off until the launch gates pass.</p>
       </Reveal>
       <div className="relative mt-12 md:mt-16">
         <div ref={track} aria-hidden className="absolute bottom-0 left-0 top-0 w-px bg-foreground/10 md:bottom-auto md:right-0 md:h-px md:w-auto">

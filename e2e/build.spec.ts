@@ -104,7 +104,7 @@ test('network table: values, links and copy', async ({ page, context }) => {
   await expect(row(page, 'RPC')).toContainText('Local: hanzod --network devnet')
   await expect(row(page, 'RPC').getByRole('link', { name: 'needs a committee file, see the node README' })).toHaveAttribute('href', 'https://github.com/hanzoai/node')
   await expect(row(page, 'Chain ID').getByRole('cell')).toHaveText(['36963', '36962', '36964'], { useInnerText: true })
-  await expect(row(page, 'Currency').getByRole('cell')).toHaveText(['AI', 'AI', 'AI'], { useInnerText: true })
+  await expect(net.getByRole('rowheader', { name: 'Currency' })).toHaveCount(0)
   await expect(row(page, 'Explorer').getByRole('link', { name: 'explore.hanzo.network' })).toHaveAttribute('href', 'https://explore.hanzo.network')
   await expect(row(page, 'Explorer').getByRole('cell').nth(1)).toContainText('—')
   await expect(row(page, 'Explorer').getByRole('cell').nth(2)).toContainText('—')
@@ -186,7 +186,7 @@ test('the three earn cards, their tags and links', async ({ page }) => {
   await expect(cards).toHaveCount(3)
   const expected = [
     ['In progress', 'Open-source payouts', 'https://docs.hanzo.ai/docs/proof-of-ai/oss-payouts'],
-    ['Live', 'Author royalty', 'https://hips.hanzo.ai/docs/hip-1000-author-royalty'],
+    ['In progress', 'Author royalty', 'https://hips.hanzo.ai/docs/hip-1000-author-royalty'],
     ['Live', 'Referrals', 'https://docs.hanzo.ai/docs/referrals'],
   ]
   for (const [i, [tag, title, href]] of expected.entries()) {

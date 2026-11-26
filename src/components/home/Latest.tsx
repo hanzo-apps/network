@@ -7,7 +7,7 @@ const ROWS = [
   { title: 'Hanzo AI Chain whitepaper', text: 'The design: Proof of AI, supply, activation gates.', meta: 'Working draft · 18 Aug 2026', href: WHITEPAPER },
   { title: 'Proof of AI explainer', text: 'The plain-words introduction on the Hanzo blog.', meta: '26 Jun 2026', href: POAI_BLOG },
   { title: 'HIP-0901', text: 'Proof of AI: native execution proofs. Draft proposal.', meta: 'Draft', href: HIP_0901 },
-  { title: 'Formal proofs', text: "Machine-checked proofs for Hanzo's agent and ML systems.", meta: '8 proofs', href: PROOFS },
+  { title: 'Formal proofs', text: "Machine-checked proofs for Hanzo's agent and ML systems.", meta: 'Lean and Coq', href: PROOFS },
 ]
 
 export default function Latest() {

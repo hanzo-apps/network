@@ -49,7 +49,7 @@ export default function Nav() {
         <nav aria-label="Main" className="hidden items-center gap-8 sm:flex">{links(item)}</nav>
         <div className="hidden sm:block">
           <Link to="/early" className={buttonClass('small')}>
-            Get an invite
+            Early access
           </Link>
         </div>
         <div className="sm:hidden">
@@ -72,7 +72,7 @@ export default function Nav() {
         <nav id="menu" aria-label="Menu" className="flex flex-col border-t border-border px-4 pb-4 sm:hidden">
           {links('flex h-12 items-center text-base text-foreground')}
           <Link to="/early" className={`${buttonClass('primary')} mt-2`}>
-            Get an invite
+            Early access
           </Link>
         </nav>
       )}
