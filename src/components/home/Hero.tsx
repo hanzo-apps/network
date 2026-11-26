@@ -2,7 +2,6 @@ import { motion, useReducedMotion } from 'motion/react'
 import { buttonClass } from '@/components/ui/button'
 import { useBlockHeight } from '@/lib/chain'
 import { container } from './Section'
-
 import HeroArt from './HeroArt'
 
 function Heartbeat() {
@@ -32,6 +31,7 @@ function Heartbeat() {
 }
 
 export default function Hero() {
+  const still = useReducedMotion()
   return (
     <section className="relative flex min-h-[88svh] items-center overflow-hidden py-[72px] md:py-32">
       <div
@@ -40,7 +40,12 @@ export default function Hero() {
         style={{ background: 'radial-gradient(60% 50% at 50% 85%, var(--white-08), transparent)' }}
       />
       <HeroArt />
-      <div className={`${container} relative text-center`}>
+      <motion.div
+        className={`${container} relative text-center`}
+        initial={still ? false : { opacity: 0, y: 12, filter: 'blur(6px)' }}
+        animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+      >
         <p className="mb-6 text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">Proof of AI</p>
         <h1 className="mx-auto max-w-[18ch] text-balance text-6xl font-semibold leading-[1.02] tracking-[-0.03em] md:text-8xl">
           AI compute, proved and paid.
@@ -59,7 +64,7 @@ export default function Hero() {
         <div className="mt-10 flex min-h-10 justify-center">
           <Heartbeat />
         </div>
-      </div>
+      </motion.div>
     </section>
   )
 }

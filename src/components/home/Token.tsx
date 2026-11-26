@@ -1,3 +1,5 @@
+import { motion, useReducedMotion } from 'motion/react'
+import Card from '@/components/ui/card'
 import Reveal from './Reveal'
 import Section, { Eyebrow, H2 } from './Section'
 
@@ -8,9 +10,26 @@ const FIGURES = [
   { value: 'Any chain', label: 'Receipt-bound payout' },
 ]
 
+function Figure({ value, index }: { value: string; index: number }) {
+  const still = useReducedMotion()
+  const cls = 'text-5xl font-semibold tabular-nums text-foreground'
+  if (still) return <p className={cls}>{value}</p>
+  return (
+    <motion.p
+      className={cls}
+      initial={{ opacity: 0, y: 6, filter: 'blur(6px)' }}
+      whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+      viewport={{ once: true, margin: '-80px' }}
+      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: index * 0.08 }}
+    >
+      {value}
+    </motion.p>
+  )
+}
+
 export default function Token() {
   return (
-    <Section>
+    <Section glow>
       <div className="grid gap-12 lg:grid-cols-[5fr_7fr] lg:gap-16">
         <Reveal>
           <Eyebrow>The AI token</Eyebrow>
@@ -24,9 +43,11 @@ export default function Token() {
         </Reveal>
         <div className="grid content-start gap-4 sm:grid-cols-2">
           {FIGURES.map((f, i) => (
-            <Reveal key={f.label} index={i + 1} className="rounded-lg border border-border bg-card p-6 transition-colors duration-150 hover:border-border-strong md:p-8">
-              <p className="text-5xl font-semibold tabular-nums text-foreground">{f.value}</p>
-              <p className="mt-2 text-sm text-muted-foreground">{f.label}</p>
+            <Reveal key={f.label} index={i + 1} className="h-full">
+              <Card className="h-full p-6 md:p-8">
+                <Figure value={f.value} index={i} />
+                <p className="mt-2 text-sm text-muted-foreground">{f.label}</p>
+              </Card>
             </Reveal>
           ))}
         </div>

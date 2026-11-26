@@ -1,21 +1,25 @@
+import { Code2, Server } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { buttonClass } from '@/components/ui/button'
+import Card from '@/components/ui/card'
 import Reveal from './Reveal'
-import Section, { Eyebrow, H2 } from './Section'
+import Section, { Disc, Eyebrow, H2 } from './Section'
 
-const card = 'rounded-lg border border-border bg-card p-6 transition-colors duration-150 hover:border-border-strong md:p-8'
+const card = 'h-full p-6 md:p-8'
 const list = 'mt-6 space-y-2 text-base leading-relaxed text-muted-foreground'
 const text = 'rounded-sm text-base font-medium text-foreground underline underline-offset-4 hover:text-muted-foreground'
 
 export default function Doors() {
   return (
-    <Section>
+    <Section glow>
       <Reveal>
         <Eyebrow>Two ways in</Eyebrow>
         <H2>Use the network. Or power it.</H2>
       </Reveal>
       <div className="mt-12 grid gap-4 md:mt-16 md:grid-cols-2 md:gap-6">
-        <Reveal className={card}>
+        <Reveal className="h-full">
+          <Card className={card}>
+          <Disc className="mb-6 bg-[var(--white-05)] text-foreground"><Code2 size={18} /></Disc>
           <p className="text-sm text-muted-foreground">For developers</p>
           <h3 className="mt-2 text-3xl font-semibold tracking-[-0.01em]">Run AI on it</h3>
           <ul className={list}>
@@ -31,8 +35,11 @@ export default function Doors() {
               See pricing
             </Link>
           </div>
+          </Card>
         </Reveal>
-        <Reveal index={1} id="provide" className={`${card} scroll-mt-20`}>
+        <Reveal index={1} id="provide" className="h-full scroll-mt-20">
+          <Card className={card}>
+          <Disc className="mb-6 bg-[var(--white-05)] text-foreground"><Server size={18} /></Disc>
           <p className="text-sm text-muted-foreground">For providers</p>
           <h3 className="mt-2 text-3xl font-semibold tracking-[-0.01em]">Earn from it</h3>
           <ul className={list}>
@@ -48,6 +55,7 @@ export default function Doors() {
               Apply to provide compute
             </a>
           </div>
+          </Card>
         </Reveal>
       </div>
     </Section>
