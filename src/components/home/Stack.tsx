@@ -1,43 +1,24 @@
-import { ArrowUpRight, Brain, FlaskConical, Layers, Link2 } from 'lucide-react'
-import Card from '@/components/ui/card'
-import Reveal from './Reveal'
-import Section, { Disc, Eyebrow, H2 } from './Section'
-
 const PARTS = [
-  { name: 'Hanzo AI', Icon: Layers, role: 'Platform', text: 'The API, models and tools developers build with.', href: 'https://hanzo.ai', domain: 'hanzo.ai' },
-  { name: 'Zen models', Icon: Brain, role: 'Models', text: 'Hanzo’s own open-weight models.', href: 'https://hanzo.ai/zen', domain: 'hanzo.ai/zen' },
-  { name: 'Lux Network', Icon: Link2, role: 'Settlement', text: 'The chain that carries each proved receipt to the chain you want paid on.', href: 'https://lux.network', domain: 'lux.network' },
-  { name: 'Zoo Labs', Icon: FlaskConical, role: 'Research', text: 'Building open research in decentralized AI and science on the network.', href: 'https://zoo.ngo', domain: 'zoo.ngo' },
+  { name: 'Hanzo AI', href: 'https://hanzo.ai', domain: 'hanzo.ai' },
+  { name: 'Zen models', href: 'https://hanzo.ai/zen', domain: 'hanzo.ai/zen' },
+  { name: 'Lux Network', href: 'https://lux.network', domain: 'lux.network' },
+  { name: 'Zoo Labs', href: 'https://zoo.ngo', domain: 'zoo.ngo' },
 ]
 
 export default function Stack() {
   return (
-    <Section glow>
-      <Reveal>
-        <Eyebrow>The stack</Eyebrow>
-        <H2>Four parts, one network.</H2>
-      </Reveal>
-      <div className="mt-12 grid gap-4 md:mt-16 md:grid-cols-2">
-        {PARTS.map((p, i) => (
-          <Reveal key={p.name} index={i} className="h-full">
-            <Card className="h-full">
-              <a
-                href={p.href}
-                className="group block h-full rounded-lg p-6 outline-offset-[-3px] md:p-8"
-              >
-                <div className="flex items-start justify-between">
-                  <Disc className="bg-foreground/5 text-foreground"><p.Icon size={18} /></Disc>
-                  <ArrowUpRight aria-hidden size={20} className="text-muted-foreground transition-transform duration-300 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground" />
-                </div>
-                <p className="mt-6 text-sm text-muted-foreground">{p.role}</p>
-                <h3 className="mt-1 text-2xl font-semibold">{p.name}</h3>
-                <p className="mt-1 font-mono text-xs text-muted-foreground">{p.domain}</p>
-                <p className="mt-3 text-base leading-relaxed text-muted-foreground">{p.text}</p>
-              </a>
-            </Card>
-          </Reveal>
+    <div className="mx-auto w-full max-w-[1200px] px-4 pb-16 md:px-8 md:pb-20">
+      <p className="font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">Part of the Hanzo stack</p>
+      <ul className="mt-4 flex flex-wrap gap-x-8 gap-y-3">
+        {PARTS.map((p) => (
+          <li key={p.name}>
+            <a href={p.href} className="inline-flex min-h-11 items-center gap-2 rounded-sm text-foreground hover:text-muted-foreground">
+              <span className="font-medium">{p.name}</span>
+              <span className="font-mono text-xs text-muted-foreground">{p.domain}</span>
+            </a>
+          </li>
         ))}
-      </div>
-    </Section>
+      </ul>
+    </div>
   )
 }

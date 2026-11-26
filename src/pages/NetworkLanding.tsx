@@ -12,8 +12,8 @@ export default function NetworkLanding() {
       <How />
       <Doors />
       <Token />
-      <Stack />
       <Closing />
+      <Stack />
     </>
   )
 }
