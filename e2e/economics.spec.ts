@@ -156,6 +156,44 @@ test('the chart has a name, eight labelled bars and the same data as a table', a
   for (let k = 1; k < 8; k++) expect(heights[k]).toBeCloseTo(heights[k - 1] / 2, 1)
 })
 
+test('at 375 the era caps are a bar list whose value labels never touch or leave the card; at 1440 the vertical chart stays', async ({ page }) => {
+  const short = (k: number) => new Intl.NumberFormat('en-US', { maximumSignificantDigits: 3 }).format(eraCap(k) / 1e9)
+  await open(page, { width: 375, height: 812 })
+  const fig = page.locator('#halving figure')
+  await fig.scrollIntoViewIfNeeded()
+  await expect(fig.locator('svg')).toBeHidden()
+  const list = fig.getByRole('img', { name: /bar chart/i })
+  await expect(list).toBeVisible()
+  const values = fig.locator('[data-value]')
+  await expect(values).toHaveText(Array.from({ length: 8 }, (_, k) => short(k)))
+  await expect(values.nth(0)).toHaveText('500')
+  await expect(values.nth(6)).toHaveText('7.81')
+  await expect(values.nth(7)).toHaveText('3.91')
+  await expect(fig.locator('ol li')).toHaveCount(8)
+  await expect(fig.locator('ol li > span:first-child')).toHaveText(Array.from({ length: 8 }, (_, k) => `Era ${k + 1}`))
+  const card = (await page.locator('#halving figure').locator('xpath=..').boundingBox())!
+  const boxes = await Promise.all(Array.from({ length: 8 }, (_, i) => values.nth(i).boundingBox().then((b) => b!)))
+  for (const b of boxes) {
+    expect(b.x).toBeGreaterThanOrEqual(card.x)
+    expect(b.x + b.width).toBeLessThanOrEqual(card.x + card.width)
+  }
+  for (let i = 0; i < 8; i++) for (let j = i + 1; j < 8; j++) {
+    const a = boxes[i], b = boxes[j]
+    expect(a.x < b.x + b.width && b.x < a.x + a.width && a.y < b.y + b.height && b.y < a.y + a.height, `labels ${i} and ${j} intersect`).toBe(false)
+  }
+  // bar length is proportional to the cap, and the full-precision table is still there for screen readers
+  const widths = await fig.locator('[data-row-bar]').evaluateAll((els) => els.map((e) => e.getBoundingClientRect().width))
+  expect(widths[1]).toBeCloseTo(widths[0] / 2, 0)
+  expect(widths[3]).toBeCloseTo(widths[0] / 8, 0)
+  await expect(page.locator('#halving table tbody tr')).toHaveCount(8)
+  await expect(page.locator('#halving table tbody tr').nth(7).locator('td')).toHaveText('3.90625')
+
+  await page.setViewportSize({ width: 1440, height: 900 })
+  await expect(fig.locator('svg')).toBeVisible()
+  await expect(fig.locator('rect[data-bar]')).toHaveCount(8)
+  await expect(values.first()).toBeHidden()
+})
+
 test('six rules, in order, with their source', async ({ page }) => {
   await open(page)
   const r = page.locator('#rules')
