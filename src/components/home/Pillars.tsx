@@ -30,19 +30,10 @@ const arc = (i: number) => {
   return `M ${p(a0)} A ${R} ${R} 0 0 1 ${p(a1)}`
 }
 
-// Motion only for visitors who have not asked for less: the dot is not even animated otherwise.
-const ORBIT = `
-@media (prefers-reduced-motion: no-preference) {
-  .flywheel-dot { transform-box: view-box; transform-origin: ${C}px ${C}px; animation: flywheel-orbit 12s linear infinite; }
-}
-@keyframes flywheel-orbit { to { transform: rotate(360deg); } }
-`
-
 /** The loop: six numbered parts and the order they feed each other. Decoration; the list beside it says everything. */
 function Flywheel() {
   return (
-    <svg aria-hidden focusable="false" viewBox="0 0 320 320" className="mx-auto h-auto w-full max-w-[460px] text-foreground">
-      <style>{ORBIT}</style>
+    <svg aria-hidden focusable="false" viewBox="0 0 320 320" className="mx-auto h-auto w-full max-w-[420px] text-foreground">
       <defs>
         <marker id="flywheel-head" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
           <path d="M1.5 1.5 L8 5 L1.5 8.5" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />

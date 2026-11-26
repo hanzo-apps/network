@@ -172,6 +172,32 @@ test.describe('Pillars', () => {
     expect(await svg.evaluate((e) => e.getAnimations({ subtree: true }).filter((a) => a.playState === 'running').length)).toBe(0)
   })
 
+  test('at 1440 the flywheel fills its column and stays in view, below the nav, while the six rows scroll', async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 900 })
+    await page.goto('/')
+    const s = section(page, 'network')
+    const svg = s.locator('svg')
+    const rows = s.locator('ol > li')
+    await rows.first().scrollIntoViewIfNeeded()
+    await page.waitForTimeout(600)
+    const box0 = (await svg.boundingBox())!
+    expect(box0.width).toBeGreaterThanOrEqual(400)
+    expect(box0.width).toBeLessThanOrEqual(421)
+    // Scroll until the last row is the thing on screen: the ring is still beside it.
+    await rows.last().scrollIntoViewIfNeeded()
+    await page.waitForTimeout(600)
+    const box = (await svg.boundingBox())!
+    expect(box.y).toBeGreaterThanOrEqual(56)
+    expect(box.y + box.height).toBeLessThanOrEqual(900)
+  })
+
+  test('at 375 the flywheel sits above the list and is not sticky', async ({ page }) => {
+    await page.setViewportSize({ width: 375, height: 812 })
+    await page.goto('/')
+    const wrap = section(page, 'network').locator('svg').locator('xpath=..')
+    expect(await wrap.evaluate((e) => getComputedStyle(e).position)).toBe('static')
+  })
+
   test('the flywheel never follows the pointer', async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 900 })
     await page.goto('/')
