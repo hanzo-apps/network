@@ -38,14 +38,14 @@ export default function Doors() {
           </div>
           </Card>
         </Reveal>
-        <Reveal index={1} id="provide" className="h-full scroll-mt-20">
+        <Reveal index={1} id="provide" className="h-full">
           <Card className={card}>
           <Disc className="mb-6 bg-foreground/5 text-foreground"><Server size={18} /></Disc>
           <p className="text-sm text-muted-foreground">For providers</p>
           <h3 className="mt-2 text-3xl font-semibold tracking-[-0.01em]">Earn from it</h3>
           <ul className={list}>
             <li>Run a node today: offer tools and agents, and get paid per job.</li>
-            <li>GPU rewards follow once Proof of AI passes its audits.</li>
+            <li>AI rewards follow once Proof of AI passes its audits.</li>
             <li>Designed so any CPU can check the work.</li>
           </ul>
           <p className="mt-4 text-sm text-muted-foreground">
