@@ -1,3 +1,5 @@
+import { container, Eyebrow } from './Section'
+
 const PARTS = [
   { name: 'Hanzo AI', href: 'https://hanzo.ai', domain: 'hanzo.ai' },
   { name: 'Zen models', href: 'https://hanzo.ai/zen', domain: 'hanzo.ai/zen' },
@@ -7,9 +9,9 @@ const PARTS = [
 
 export default function Stack() {
   return (
-    <div className="mx-auto w-full max-w-[1200px] px-4 pb-16 md:px-8 md:pb-20">
-      <p className="font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">Part of the Hanzo stack</p>
-      <ul className="mt-4 flex flex-wrap gap-x-8 gap-y-3">
+    <div className={`${container} pb-16 md:pb-20`}>
+      <Eyebrow>The Hanzo ecosystem</Eyebrow>
+      <ul className="flex flex-wrap gap-x-8 gap-y-3">
         {PARTS.map((p) => (
           <li key={p.name}>
             <a href={p.href} className="inline-flex min-h-11 items-center gap-2 rounded-sm text-foreground hover:text-muted-foreground">
