@@ -20,6 +20,9 @@ export const COMMANDS = [
 
 export const DEVNET_COMMAND = 'hanzod --network devnet'
 
+/** Opts this machine in to a chain (`hanzo fabric` is a deprecated alias of `hanzo chain`; never print it). */
+export const VALIDATOR_COMMAND = 'hanzo chain up testnet'
+
 /** The first call, shown on /pricing and /build. */
 export const CURL_QUICKSTART = `curl ${API_CHAT} \\
   -H "Authorization: Bearer $HANZO_API_KEY" \\
