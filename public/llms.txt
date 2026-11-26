@@ -1,29 +1,110 @@
+> ## Documentation Index
+> Fetch the complete Hanzo documentation index at: https://docs.hanzo.ai/llms.txt
+> Full snapshot: https://docs.hanzo.ai/llms-full.txt
+> Use this file to discover network endpoints, specs, and MCP tools before exploring further.
+
+> ## Agent Instructions
+> For the current source of truth, read https://docs.hanzo.ai/llms.txt and connect the Hanzo Docs MCP server at https://docs.hanzo.ai/mcp (or run the portable local Hanzo MCP server via `npx -y hanzo mcp`).
+
 # Hanzo Network
 
-> Decentralized AI compute network and infrastructure.
+> The blockchain for global intelligence: high-utility nodes running full cloud + AI + chain in one binary, sovereign per-model chains, multi-intelligence consensus via CPU-verifiable Proof of AI, continuously self-upgrading autonomous research, decentralized agentic commerce, and DAO + human collaboration.
 
-## About
-Hanzo Network is a decentralized AI compute network providing distributed GPU clusters, model training infrastructure, and inference serving at scale. It enables distributed AI workloads across a global network of compute providers, offering cost-effective access to high-performance GPUs for training, fine-tuning, and serving AI models.
+Built by Hanzo Industries (Techstars '17), anchored on Lux post-quantum finality, and open to builders and operators everywhere.
 
-## Key Features
-- Decentralized GPU compute marketplace
-- Distributed training across multiple nodes
-- Model serving and inference at scale
-- Global network of compute providers
-- Automatic load balancing and failover
-- Cost-effective GPU access (A100, H100, H200)
-- Support for PyTorch, JAX, and custom frameworks
-- Encrypted data transfer and model privacy
-- Pay-per-use pricing with no lock-in
-- Integration with Hanzo AI platform
+## Quickstart
 
-## Links
+1. Connect your agent to Hanzo Docs MCP:
+   - Any coding agent: paste `Install Hanzo Docs MCP: https://docs.hanzo.ai/mcp` into chat.
+   - Hanzo Dev / CLI: `npx -y hanzo mcp` (canonical 19-tool local MCP server).
+   - Claude Code: `claude mcp add --transport http hanzo-docs https://docs.hanzo.ai/mcp`
+   - Codex: `codex mcp add hanzo-docs --url https://docs.hanzo.ai/mcp`
+   - Cursor / generic MCP clients (`mcp.json`):
+
+     ```json
+     {
+       "mcpServers": {
+         "hanzo-docs": {
+           "url": "https://docs.hanzo.ai/mcp"
+         }
+       }
+     }
+     ```
+
+   - No MCP support: read `https://hanzo.network/llms.txt` or `https://docs.hanzo.ai/llms.txt`.
+
+2. Call 550+ live models on one OpenAI-compatible endpoint (`https://api.hanzo.ai/v1`):
+
+   ```bash
+   curl https://api.hanzo.ai/v1/chat/completions \
+     -H "Authorization: Bearer $HANZO_API_KEY" \
+     -H "Content-Type: application/json" \
+     -d '{"model":"hanzo/zen","messages":[{"role":"user","content":"Hello"}]}'
+   ```
+
+3. Run a high-utility Hanzo node (`hanzod`):
+
+   ```bash
+   hanzo fabric up
+   ```
+
+   One Rust binary unifies k3s/cloud workloads, native inference/training (`hanzo-engine` + PoAI prover core), Dev/Bot/Team runtimes, reactive tasks, `/v1/research`, and chain validation. Early access mining, staking, token sale, and leaderboard require an invite code at `https://hanzo.network/early`.
+
+## Build a Solution
+
+- **Run Verifiable Inference** (`https://hanzo.network/pricing`): Call 550+ live models (including Zen open-weight models) over `https://api.hanzo.ai/v1` with deterministic Proof of Inference (PoI) receipts.
+- **Mine AI with Real Compute** (`https://docs.hanzo.ai/docs/proof-of-ai/node-operator`): "Compute Once, Earn Twice" — attach PoAI to customer-funded workloads on CPU, GPU, Apple Silicon, or existing cloud schedulers. Keep 100% of customer fees and earn declining `AI` rewards once PoAI activates.
+- **Launch Sovereign Per-Model / Domain Chains** (`https://hanzo.ai/blockchain/chains`): Deploy dedicated sovereign chains per model or intelligence with independent validators, frozen research gates, and post-quantum finality on Lux.
+- **Reach Multi-Intelligence Consensus** (`https://hips.hanzo.ai`): Diverse models on bonded nodes settle categorical policy (`AIGovernor`) and continuous parameters (`AIParams` Byzantine-robust median) leaderlessly on-chain.
+- **Run Self-Upgrading Autonomous Research** (`https://docs.hanzo.ai/docs/network`): Continuous `/v1/research` pipelines (HIP-1334 / HIP-1400) where every result carries lineage, every claim carries evaluation, and promotions require beating prospectively frozen gates.
+- **Build Decentralized Agentic Commerce** (`https://hanzo.network/build`): Agent wallets, cryptographic spend policies (`AIPolicy`), Hamiltonian Market Maker (HMM) compute pricing, and on-chain settlement.
+- **Private Post-Quantum AI** (`https://hanzo.blog/proof-of-ai/`): X-Wing (`X25519 + ML-KEM-768`) prompt sealing, optional TEEs for confidentiality, ML-DSA / SLH-DSA quorums, and P3Q STARK/FRI settlement on Lux Z-Chain.
+- **Collaborate via DAO & Human De-Work** (`https://work.hanzo.network`): Set domain goals, frozen evaluation gates, datasets, and research bounties on the live Hanzo DAO Work Board.
+
+## Network Details
+
+| | Hanzo Mainnet | Hanzo Testnet | Hanzo Devnet |
+| - | - | - | - |
+| RPC endpoint | `https://api.hanzo.network/v1/bc/hanzo/rpc` | `https://api.hanzo-test.network/v1/bc/hanzo/rpc` | Local (`hanzod --network devnet`) |
+| Chain ID | `36963` | `36962` | `36964` |
+| Native coin | `AI` | `AI` | `AI` |
+| Block explorer | https://explore.hanzo.network | — | Local |
+| Status | https://status.hanzo.network | https://status.hanzo.network | Local |
+
+## Monetary Policy (Canonical Whitepaper §3 & §10.6)
+
+- **Hard maximum nominal supply:** `2,000,000,000,000 AI` (2 trillion).
+- **Permanent Hanzo DAO treasury:** `1,000,000,000,000 AI` (non-mineable; constitutional treasury for research, public infrastructure, liquidity, ecosystem, and genesis distribution).
+- **Proof-earned PoAI miner & validator pool:** `1,000,000,000,000 AI` (zero discretionary mint path; Bitcoin-shaped halvings: 500B Era 1, 250B Era 2, 125B Era 3, converging to 1T).
+- **Destination-chain inflation:** `0 AI` (A-Chain is the sole mining authority; omnichain payouts consume a global work nullifier exactly once).
+- **Fee burn:** A governed fraction `β` of settled protocol fees is permanently burned (`ΔS = PoAI issuance − β·settled fees`).
+- **Activation boundary:** PoAI mining rewards, P3Q succinct settlement authority, and monetary activation remain fail-closed until audits and governance activation gates pass (see whitepaper §10).
+
+## Protocol Activation Phases
+
+- **Phase 0 — Arithmetic & Wire Freeze** (shipped): Exact int8 Freivalds over `F_{2^61-1}` with byte-parity tests across Rust (`hanzo-engine/src/poi.rs`), Go (`luxfi/crypto/poi`), and Solidity (`luxfi/standard/contracts/ai/`).
+- **Phase 1 — Exact Replay & Shadow Proofs** (in progress): Small-job exact replay and shadow-proof telemetry on invite-only early operators.
+- **Phase 2 — Optimistic PoAI Activation** (audit-gated): Challenge-based verification, global nullifier enforcement, and Z-Chain checkpointing.
+- **Phase 3 — Existing-Cloud Provider Pilot** (audit-gated): Hyperscaler + independent cloud scheduler adapter verification.
+- **Phase 4 — P3Q Succinct Settlement Rollup** (audit-gated): Pairing-free STARK/FRI batch proofs replacing optimistic challenges on Z-Chain.
+
+## Authoritative Links
+
 - [Website](https://hanzo.network)
-- [Hanzo AI](https://hanzo.ai)
-- [Documentation](https://docs.hanzo.ai/network)
+- [Early Access / Invite Gate](https://hanzo.network/early)
+- [Live Model Pricing](https://hanzo.network/pricing)
+- [Hanzo AI Chain (AIVM) Whitepaper](https://papers.hanzo.ai/hanzo-ai-chain/)
+- [All Research Papers](https://papers.hanzo.ai)
+- [Proof of AI Deep Dive](https://hanzo.blog/proof-of-ai/)
+- [Proof of AI Documentation](https://docs.hanzo.ai/docs/proof-of-ai)
+- [Node Operator Guide](https://docs.hanzo.ai/docs/proof-of-ai/node-operator)
+- [Network Documentation](https://docs.hanzo.ai/docs/network)
+- [HIP Specifications (HIP-0901, HIP-0024, HIP-0008, HIP-0096, HIP-1334, HIP-1400)](https://hips.hanzo.ai)
+- [Machine-Checked Formal Proofs](https://proofs.hanzo.network)
+- [Hanzo DAO Work Board (De-Work)](https://work.hanzo.network)
+- [Live Block Explorer](https://explore.hanzo.network)
+- [Chain Architecture](https://hanzo.ai/blockchain/chains)
 - [Network Status](https://status.hanzo.network)
+- [Hanzo AI Platform](https://hanzo.ai)
 - [GitHub](https://github.com/hanzoai)
-
-## Contact
-- Support: support@hanzo.ai
-- Network Operations: network@hanzo.ai
+- [Discord](https://discord.gg/CJCyAsm9Vr)
