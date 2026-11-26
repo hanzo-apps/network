@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { FEATURED, isHanzo, context, featured, fetchModels, freeModel, group, perToken, price, sortModels, toModel, topLabs } from './catalog'
+import { FEATURED, isZenFeatured, context, featured, fetchModels, freeModel, group, perToken, price, sortModels, toModel, topLabs } from './catalog'
 
 const raw = (o: object = {}) => ({
   id: 'anthropic/claude-opus-5.5',
@@ -205,14 +205,14 @@ describe('group', () => {
   })
 })
 
-describe('isHanzo', () => {
+describe('isZenFeatured', () => {
   it('is true for bare zen ids and false for other labs', () => {
-    expect(isHanzo('zen6')).toBe(true)
-    expect(isHanzo('zen6-max')).toBe(true)
-    expect(isHanzo('anthropic/claude-opus-5.5')).toBe(false)
+    expect(isZenFeatured('zen6')).toBe(true)
+    expect(isZenFeatured('zen6-max')).toBe(true)
+    expect(isZenFeatured('anthropic/claude-opus-5.5')).toBe(false)
   })
   it('splits FEATURED into 4 Zen and 6 others', () => {
-    expect(FEATURED.filter(isHanzo)).toHaveLength(4)
-    expect(FEATURED.filter((id) => !isHanzo(id))).toHaveLength(6)
+    expect(FEATURED.filter(isZenFeatured)).toHaveLength(4)
+    expect(FEATURED.filter((id) => !isZenFeatured(id))).toHaveLength(6)
   })
 })

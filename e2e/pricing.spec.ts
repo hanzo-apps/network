@@ -39,8 +39,8 @@ test('a free Zen shows as the $0 stat card only; the headline stays true without
   await serveModels(page)
   await page.goto('/pricing')
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Pay per token.')
+  await expect(page.getByText('to call Zen')).toBeVisible() // data is in, so the absence below is real
   await expect(page.getByText('Zen is free to call')).toHaveCount(0)
-  await expect(page.getByText('to call Zen')).toBeVisible()
   await expect(page.getByText('$0', { exact: true })).toHaveCount(1)
 })
 
@@ -226,6 +226,8 @@ test('loading is announced while the catalog is delayed, and cleared after', asy
   })
   await page.goto('/pricing')
   const status = page.getByRole('status')
+  // Screen readers hold back announcements inside a busy region, so the line sits outside it (review, 26 Nov).
+  expect(await status.evaluate((el) => el.closest('[aria-busy]') === null)).toBe(true)
   await expect(status).toHaveText("Loading today's prices from api.hanzo.ai…")
   release()
   await expect(page.getByText('Claude Opus 5.5').first()).toBeVisible()

@@ -6,7 +6,7 @@ import Glow from '@/components/pricing/Glow'
 import Start from '@/components/pricing/Start'
 import { container, Eyebrow, H2 } from '@/components/home/Section'
 import { NODE_GUIDE } from '@/lib/links'
-import { FEATURED, featured, isHanzo, fetchModels, freeModel, group, perToken, sortModels, type Model } from '@/lib/catalog'
+import { FEATURED, featured, isZenFeatured, fetchModels, freeModel, group, perToken, sortModels, type Model } from '@/lib/catalog'
 
 const section = `${container} mt-24 md:mt-32`
 
@@ -34,10 +34,12 @@ const Group = ({ label, models, count, cols }: { label: string; models?: Model[]
     </div>
   )
 
-const ZEN = FEATURED.filter(isHanzo).length
+const ZEN = FEATURED.filter(isZenFeatured).length
 
 export default function Pricing() {
   const [state, setState] = useState<State>(null)
+  const [announce, setAnnounce] = useState('')
+  useEffect(() => setAnnounce(state === null ? "Loading today's prices from api.hanzo.ai…" : ''), [state])
   const [attempt, setAttempt] = useState(0)
 
   useEffect(() => {
@@ -57,8 +59,8 @@ export default function Pricing() {
   const models = all ? perToken(all) : null
   const variable = all && models ? all.length - models.length : 0
   const top = models ? featured(models) : []
-  const zen = top.filter((m) => isHanzo(m.id))
-  const others = top.filter((m) => !isHanzo(m.id))
+  const zen = top.filter((m) => isZenFeatured(m.id))
+  const others = top.filter((m) => !isZenFeatured(m.id))
   const rows = models ? group(sortModels(models)) : null
   const free = models ? freeModel(models) : undefined
 
@@ -82,10 +84,9 @@ export default function Pricing() {
         <Start />
       </section>
 
+      {/* Outside the busy region and empty on first paint, so screen readers announce the change. */}
+      <p role="status" className="sr-only">{announce}</p>
       <div aria-busy={state === null}>
-        <p role="status" className="sr-only">
-          {state === null ? "Loading today's prices from api.hanzo.ai…" : ''}
-        </p>
         {state && 'error' in state && (
           <section className={section}>
             <Card role="alert" className="p-6">
