@@ -1,14 +1,26 @@
 import { useCallback, useEffect, useState } from 'react'
 import { buttonClass } from '@/components/ui/button'
 import { AllModels, FeaturedCard } from '@/components/pricing/Models'
-import { FEATURED, fetchModels, type Model } from '@/lib/catalog'
+import { FEATURED, fetchModels, sortModels, type Model } from '@/lib/catalog'
 
 const wrap = 'mx-auto w-full max-w-[1200px] px-4 md:px-8'
-const section = `${wrap} py-[72px] md:py-32`
+const section = `${wrap} mt-16 md:mt-24`
 const eyebrow = 'text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground'
 const h2 = 'text-4xl font-semibold tracking-[-0.02em] md:text-5xl'
 
 type State = { models: Model[] } | { error: true } | null
+
+const Group = ({ label, models, cols }: { label: string; models: Model[]; cols: string }) =>
+  models.length > 0 && (
+    <div className="mt-12">
+      <p className={eyebrow}>{label}</p>
+      <ul className={`mt-4 grid gap-4 sm:grid-cols-2 ${cols}`}>
+        {models.map((m) => (
+          <FeaturedCard key={m.id} m={m} />
+        ))}
+      </ul>
+    </div>
+  )
 
 export default function Pricing() {
   const [state, setState] = useState<State>(null)
@@ -31,10 +43,12 @@ export default function Pricing() {
   const featured = models
     ? FEATURED.map((id) => models.find((m) => m.id === id)).filter((m): m is Model => !!m)
     : []
+  const zen = featured.filter((m) => m.lab === 'Hanzo')
+  const others = featured.filter((m) => m.lab !== 'Hanzo')
 
   return (
     <>
-      <header className={`${wrap} pb-0 pt-[72px] md:pt-32`}>
+      <header className={`${wrap} pt-[72px] md:pt-32`}>
         <p className={eyebrow}>Pricing</p>
         <h1 className="mt-4 text-6xl font-semibold leading-[1.02] tracking-[-0.03em] md:text-7xl">Pay per token.</h1>
         <p className="mt-6 max-w-[60ch] text-xl leading-relaxed text-muted-foreground">
@@ -68,18 +82,15 @@ export default function Pricing() {
           <>
             <section className={section}>
               <h2 className={h2}>Featured models</h2>
-              <ul className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                {featured.map((m) => (
-                  <FeaturedCard key={m.id} m={m} />
-                ))}
-              </ul>
+              <Group label="Hanzo Zen6" models={zen} cols="lg:grid-cols-4" />
+              <Group label="From other labs" models={others} cols="lg:grid-cols-3" />
             </section>
-            <section className={`${section} pt-0 md:pt-0`}>
+            <section className={section}>
               <h2 className={h2}>All models</h2>
               <p className="mb-8 mt-3 text-sm text-muted-foreground">
                 Batch-rate versions of these models are also available through the API.
               </p>
-              <AllModels models={models} />
+              <AllModels models={sortModels(models)} />
             </section>
           </>
         )}
@@ -95,7 +106,7 @@ export default function Pricing() {
         </a>
       </section>
 
-      <p className={`${wrap} pb-[72px] text-muted-foreground md:pb-32`}>
+      <p className={`${wrap} mt-16 pb-[72px] text-muted-foreground md:pb-32`}>
         Looking for Hanzo plans for people and teams?{' '}
         <a href="https://hanzo.ai/pricing" className="text-foreground underline underline-offset-4">
           See hanzo.ai/pricing

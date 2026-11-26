@@ -41,9 +41,10 @@ export function AllModels({ models }: { models: Model[] }) {
       <input
         id="model-search"
         type="search"
+        placeholder="Search by name or lab, e.g. Claude, Zen6"
         value={q}
         onChange={(e) => setQ(e.target.value)}
-        className="mt-2 h-11 w-full max-w-md rounded-lg border border-border-strong bg-card px-4 text-base text-foreground"
+        className="mt-2 h-11 w-full max-w-md rounded-lg border border-border-strong bg-background px-4 text-base text-foreground placeholder:text-muted-foreground"
       />
       <div
         aria-hidden="true"
@@ -62,7 +63,9 @@ export function AllModels({ models }: { models: Model[] }) {
           >
             <div className="col-span-3 min-w-0 md:col-span-1">
               <p className="break-words font-medium">{m.name}</p>
-              <p className="text-sm text-muted-foreground">{m.lab}</p>
+              <p className="break-all text-sm text-muted-foreground">
+                {m.lab} · {m.id}
+              </p>
             </div>
             <Cell label="Input / 1M" value={price(m.input)} />
             <Cell label="Output / 1M" value={price(m.output)} />

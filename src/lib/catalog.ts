@@ -79,3 +79,12 @@ export function context(n: number) {
   if (!n) return '—'
   return n >= 1e6 ? +(n / 1e6).toFixed(1) + 'M' : Math.round(n / 1e3) + 'K'
 }
+
+/** Hanzo first, then labs A-Z, then names A-Z. */
+export const sortModels = (list: Model[]) =>
+  [...list].sort(
+    (a, b) =>
+      Number(b.lab === 'Hanzo') - Number(a.lab === 'Hanzo') ||
+      a.lab.localeCompare(b.lab) ||
+      a.name.localeCompare(b.name),
+  )

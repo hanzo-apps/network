@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { FEATURED, context, fetchModels, price, toModel } from './catalog'
+import { FEATURED, context, fetchModels, price, sortModels, toModel } from './catalog'
 
 const raw = (o: object = {}) => ({
   id: 'anthropic/claude-opus-5.5',
@@ -92,3 +92,20 @@ describe('fetchModels', () => {
 })
 
 it('features Zen6 first', () => expect(FEATURED[0]).toBe('zen6'))
+
+describe('sortModels', () => {
+  const m = (id: string, name: string, lab: string) => ({ id, name, lab, input: 1, output: 1, context: 1 })
+  it('puts Hanzo first, then labs A-Z, then names A-Z, without mutating', () => {
+    const list = [
+      m('a', 'Nova', 'Amazon'),
+      m('b', 'Claude Opus', 'Anthropic'),
+      m('c', 'Zen6 Max', 'Hanzo'),
+      m('d', 'Aion', 'Aion-labs'),
+      m('e', 'Claude Haiku', 'Anthropic'),
+      m('f', 'Zen6', 'Hanzo'),
+    ]
+    const copy = [...list]
+    expect(sortModels(list).map((x) => x.name)).toEqual(['Zen6', 'Zen6 Max', 'Aion', 'Nova', 'Claude Haiku', 'Claude Opus'])
+    expect(list).toEqual(copy)
+  })
+})
