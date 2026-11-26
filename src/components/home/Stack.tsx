@@ -7,7 +7,7 @@ const PARTS = [
   { name: 'Hanzo AI', Icon: Layers, role: 'Platform', text: 'The API, models and tools developers build with.', href: 'https://hanzo.ai', domain: 'hanzo.ai' },
   { name: 'Zen models', Icon: Brain, role: 'Models', text: 'Hanzo’s own open-weight models.', href: 'https://hanzo.ai/zen', domain: 'hanzo.ai/zen' },
   { name: 'Lux Network', Icon: Link2, role: 'Settlement', text: 'The chain that carries each proved receipt to the chain you want paid on.', href: 'https://lux.network', domain: 'lux.network' },
-  { name: 'Zoo Labs', Icon: FlaskConical, role: 'Research', text: 'Open research in decentralized AI and science, run on the network.', href: 'https://zoo.ngo', domain: 'zoo.ngo' },
+  { name: 'Zoo Labs', Icon: FlaskConical, role: 'Research', text: 'Building open research in decentralized AI and science on the network.', href: 'https://zoo.ngo', domain: 'zoo.ngo' },
 ]
 
 export default function Stack() {

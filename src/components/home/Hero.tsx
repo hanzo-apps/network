@@ -4,7 +4,7 @@ import { useChain } from '@/lib/chain'
 import { Eyebrow, container } from './Section'
 import HeroArt from './HeroArt'
 
-const STRIP = ['OpenAI-compatible API', 'Zen and leading models', 'Live chain', 'Open-source node']
+const STRIP = ['OpenAI-compatible API', 'Zen and leading models', 'Live chain', 'Node code on GitHub']
 
 function Heartbeat() {
   const chain = useChain()

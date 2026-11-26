@@ -126,3 +126,11 @@ for (const [w, h] of [[1280, 720], [1366, 768], [1440, 900], [1920, 1080], [375,
     expect(gap).toBeGreaterThanOrEqual(16)
   })
 }
+
+// Claims audit, 26 Nov: hanzoai/node is under the "Hanzo Ecosystem License … All rights reserved" (not open source);
+// Zoo is building on the network, not proven to run on it today.
+test('home makes no claim the sources do not back', async ({ page }) => {
+  await page.goto('/')
+  await expect(page.getByText(/open[- ]source/i)).toHaveCount(0)
+  await expect(page.getByText(/run on the network/i)).toHaveCount(0)
+})

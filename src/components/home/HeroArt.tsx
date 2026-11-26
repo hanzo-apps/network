@@ -30,7 +30,7 @@ export default function HeroArt() {
         <img
           src={POSTER}
           alt=""
-          fetchPriority="high"
+          {...{ fetchpriority: 'high' }} // React 18 only passes the lowercase attribute
           onLoad={() => setPosterLoaded(true)}
           onError={() => setPosterOk(false)}
           className="absolute inset-0 h-full w-full object-cover"

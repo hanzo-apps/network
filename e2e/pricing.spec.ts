@@ -122,3 +122,11 @@ test('paid per-second models are never listed or called Free', async ({ page }) 
   await expect(page.getByText('2 more models are priced per second, per image, or are not billed per token; see docs.hanzo.ai.')).toBeVisible()
   await expect(page.getByRole('link', { name: 'docs.hanzo.ai' })).toHaveAttribute('href', 'https://docs.hanzo.ai')
 })
+
+// Claims audit, 26 Nov: no source says there is no minimum; 27 of the listed models are not chat models.
+test('pricing makes no claim the sources do not back', async ({ page }) => {
+  await page.goto('/pricing')
+  await expect(page.getByText(/no minimum/i)).toHaveCount(0)
+  await expect(page.getByText(/use any model below/i)).toHaveCount(0)
+  await expect(page.getByText(/any chat model below/i)).toBeVisible()
+})

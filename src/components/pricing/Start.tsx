@@ -71,7 +71,7 @@ export default function Start() {
               <h3 className="mt-4 text-xl font-semibold">Make your first call</h3>
               <Copy />
               <p className="mt-3 text-sm text-muted-foreground">
-                OpenAI-compatible. Swap the model name to use any model below.
+                OpenAI-compatible. Swap the model name to use any chat model below.
               </p>
             </Card>
           </li>
@@ -80,7 +80,7 @@ export default function Start() {
               <p className={num}>03</p>
               <h3 className="mt-4 text-xl font-semibold">Pay for what you use</h3>
               <p className="mt-2 text-muted-foreground">
-                No minimum. Each request is billed per token at the prices below.
+                Each request is billed per token at the prices below.
               </p>
               <a href="#models" className="mt-6 inline-block text-foreground underline underline-offset-4">
                 See all prices
