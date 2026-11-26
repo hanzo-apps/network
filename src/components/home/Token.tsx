@@ -1,5 +1,5 @@
 import { motion, useReducedMotion } from 'motion/react'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 import Card from '@/components/ui/card'
 import Tag from '@/components/ui/tag'
 import { WHITEPAPER_PDF } from '@/lib/links'

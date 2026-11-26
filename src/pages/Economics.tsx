@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 import Compare from '@/components/Compare'
 import Calculator from '@/components/economics/Calculator'
 import Chart from '@/components/economics/Chart'

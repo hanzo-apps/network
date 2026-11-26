@@ -4,7 +4,7 @@ The site for Hanzo Network: the blockchain for global intelligence (hanzo.networ
 
 ## Stack
 
-- React 18 + TypeScript (strict, no unused locals or parameters; typechecked with the native compiler `tsgo`), Vite 5 (SWC), React Router v6
+- React 18 + TypeScript (strict, no unused locals or parameters; typechecked with the native compiler `tsgo`), Vite 5 (SWC), React Router v7 (imported from `react-router`)
 - Every dependency in `package.json` is pinned to an exact version; the lockfile resolves the same one
 - Tailwind CSS 4 reading `@hanzo/tokens`; Zen and Zen Mono from `@hanzo/font` (imported in `src/main.tsx`); the mark from `@hanzo/logo`
 - `motion` for animation; pure monochrome, no accent colour

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 import { buttonClass } from '@/components/ui/button'
 import Card from '@/components/ui/card'
 import Reveal from '@/components/ui/reveal'

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 import Section, { container, Eyebrow, H1, H2 } from '@/components/ui/section'
 import Reveal from '@/components/ui/reveal'
 import { buttonClass, textLink } from '@/components/ui/button'
