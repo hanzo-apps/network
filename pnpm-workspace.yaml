@@ -2,4 +2,7 @@ allowBuilds:
   esbuild: true
   "@swc/core": true
 overrides:
-  tinypool: 2.1.2
+  # vitest 3.2.x asks for tinypool ^1.1.1, and tinypool's two critical advisories
+  # (GHSA-5gmw, GHSA-85c8) are fixed only from 2.1.1 and 2.1.2. Test-time only: nothing in
+  # src imports it. Remove when vitest 4 lands (it needs Vite 6 and has no tinypool).
+  "vitest>tinypool": 2.1.2

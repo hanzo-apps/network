@@ -90,6 +90,7 @@ test('the nav link Solutions lands on the Solutions section', async ({ page }) =
   await page.goto('/pricing')
   await page.getByRole('navigation', { name: 'Main' }).getByRole('link', { name: 'Solutions' }).click()
   await expect(page).toHaveURL(/\/#solutions$/)
+  await expect(page.locator('#solutions')).toBeInViewport()
 })
 
 test('phone menu: Escape closes it and returns focus to the toggle; the links are the same and the last is the invite', async ({ page }) => {
