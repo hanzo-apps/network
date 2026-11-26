@@ -246,3 +246,22 @@ for (const path of ['/pricing', '/build']) {
     expect(url.searchParams.get('hz_aid')).toBeTruthy()
   })
 }
+
+// A page head must paint in the first frame: LCP on a throttled phone waited on a fade-in (26 Nov 2026).
+for (const path of ['/build', '/economics', '/early', '/pricing']) {
+  test(`the head of ${path} has no entrance animation`, async ({ page }) => {
+    await page.setViewportSize({ width: 375, height: 812 })
+    await page.goto(path)
+    await page.locator('h1').waitFor()
+    // Every element the first screen shows, and every ancestor of it, is fully opaque the moment it exists.
+    const faint = await page.evaluate(() => {
+      const first = [document.querySelector('h1'), document.querySelector('h1 + p'), document.querySelector('main section h2')].filter(Boolean) as Element[]
+      return first.flatMap((el) => {
+        const bad: string[] = []
+        for (let e: Element | null = el; e; e = e.parentElement) if (Number(getComputedStyle(e).opacity) < 1) bad.push(`${el.tagName} inside ${e.tagName}.${e.className}`)
+        return bad
+      })
+    })
+    expect(faint).toEqual([])
+  })
+}
