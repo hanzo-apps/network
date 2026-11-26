@@ -4,7 +4,8 @@ The site for Hanzo Network: the blockchain for global intelligence (hanzo.networ
 
 ## Stack
 
-- React 18 + TypeScript, Vite 5 (SWC), React Router v6
+- React 18 + TypeScript (strict, no unused locals or parameters; typechecked with the native compiler `tsgo`), Vite 5 (SWC), React Router v6
+- Every dependency in `package.json` is pinned to an exact version; the lockfile resolves the same one
 - Tailwind CSS 4 reading `@hanzo/tokens`; Zen and Zen Mono from `@hanzo/font` (imported in `src/main.tsx`); the mark from `@hanzo/logo`
 - `motion` for animation; pure monochrome, no accent colour
 
@@ -20,32 +21,36 @@ src/
   pages/Early.tsx            `/early`     early access is invite-only; no form, no code box (see below)
   components/home/           home sections; Section.tsx holds container, Eyebrow, H2, Disc
   components/build/          /build sections; components/economics/ the chart and calculator
+  components/pricing/        /pricing sections: Models (the table), Start (the keys link), Glow
   components/ui/             button (buttonClass, textLink), card, tag, code (copyable block)
   components/Compare.tsx     the proof-versus-votes table, shared by home and /economics
-  components/Shell.tsx       the frame every route shares; sets the browser title (one map)
+  components/Shell.tsx       the frame every route shares (Nav, Footer, ScrollToTop); sets the browser title (one map)
   components/Measure.tsx     @hanzo/event: the first-party stream and the tag manager, one pageview per route
   components/Consent.tsx     the cookie bar and sheet, and "Your Privacy Choices" (the footer links to #choices)
   components/Away.tsx        /login and /signup: replaces the location with LOGIN (from links.ts) carrying the visitor's id
   components/GlobalChatWidget.tsx   the chat dialog
   lib/links.ts               every outbound URL, once (LOGIN, the chat lane and the models URL stay whole strings: scripts/check.mjs looks for them in the build)
   lib/solutions.ts           the five home solutions, once (also held to public/llms.txt by a test)
-  lib/catalog.ts             the model catalog: loadModels() fetches once per page, countModels() is the one count
-  lib/chain.ts               block height from the chain RPC (loading, live, down)
+  lib/request.ts             request(url, init, ms): the one way a network call is made; a deadline, the caller's cancel, no cookies, a typed RequestError (timeout, aborted, status, network)
+  lib/format.ts              count(n) and decimals(n, max): the one number formatter (en-US)
+  lib/catalog.ts             the model catalog: loadModels() fetches once per page (10 s deadline), countModels() is the one count
+  lib/chain.ts               block height from the chain RPC (loading, live, down; 5 s deadline)
   lib/networks.ts            Mainnet, Testnet, Devnet: RPC and chain id
-  lib/supply.ts              the whitepaper's supply formulas (eras, allowance, net change)
-  lib/chat.ts                ask(): the public chat lane
+  lib/supply.ts              the whitepaper's supply formulas (eras, allowance, net change) and the short forms 2T AI, 500B
+  lib/chat.ts                ask(): the public chat lane (30 s deadline)
 docs/proof-of-ai.md          the Proof of AI spec: designed, not live
 ```
 
 ## Shared pieces
 
 - `Tag` (`<Tag is="Designed" />`) is the only status marker. Its one prop is `Live`, `In progress` or `Designed`.
-- `links.ts` is the only place a URL is written; pages import the constant. `src/lib/links.test.ts` fails on any other `https://` literal in `src/` (`Consent.tsx` and `Measure.tsx` keep their own: they must stay byte-identical to upstream hanzo-apps/network main so upstream changes merge cleanly, and the test asserts the allow-list is exactly those two plus `links.ts`).
+- `links.ts` is the only place a URL is written; pages import the constant. `src/lib/links.test.ts` fails on any `https://` literal in `src/` outside `links.ts`, tests and two files (`Consent.tsx` and `Measure.tsx` keep their own: they must stay byte-identical to the upstream hanzo-apps/network copies they mirror, so upstream changes merge cleanly; that allow-list is exactly those two plus `links.ts`).
 - `solutions.ts` holds the five home solutions once; the cards draw them and a test holds `public/llms.txt` to the same titles, statuses and addresses.
 - "Get an API key" goes through `useAnalytics().link()` in `Start.tsx`, so the visitor's id travels, as it does for `/login`.
 - `Code` (`components/ui/code.tsx`) is the one copyable block; Pricing and /build both use it. `commands.ts` holds /build's commands, and `public/llms.txt` must contain every one (a unit test checks).
 - `Compare` is the one proof-versus-votes table.
-- `supply.ts` is the one place the supply formulas live; the calculator and chart call it.
+- `request.ts` is the one place a network call is made (chain, models, chat); each caller names its own deadline and the timeout never lives in a component.
+- `format.ts` is the one number formatter; `supply.ts` is the one place the supply formulas and their short forms live; the calculator and chart call them.
 - `networks.ts` is the one list of chains; /build and `llms.txt` agree with it (a unit test checks).
 - `chat.ts` is the one place the chat endpoint is called.
 - `catalog.ts`: Home's telemetry and Pricing both call `loadModels()` (one request) and `countModels()` (one number).
@@ -53,7 +58,7 @@ docs/proof-of-ai.md          the Proof of AI spec: designed, not live
 
 ## The honesty rule
 
-Every status on the site is `Live`, `In progress` or `Designed`; no other word (not "Beta", "Soon", "Proposed"). Every figure is either read live (block height, model counts) or taken from the whitepaper and sourced. Live today: the Hanzo chain (block height) and the OpenAI-compatible API at api.hanzo.ai (pricing, chat). Designed, not live: Proof of AI rewards and the AI token (see the spec). A designed thing is never written as live. The calculator is labelled illustrative. No prices, returns, dates or invented numbers.
+Every status on the site is `Live`, `In progress` or `Designed`; no other word (not "Beta", "Soon", "Proposed"). Every figure is either read live (block height, model counts) or taken from the whitepaper and sourced. Live today: the Hanzo chain (block height) and the OpenAI-compatible API at api.hanzo.ai (pricing, chat). Designed, not live: Proof of AI rewards and the AI token (see the spec). A designed thing is never written as live. The calculator is labelled illustrative. No prices are hard-coded except the two plan prices the CTO asked for (Pro $15 and Max $95 on /pricing), which link to their source, hanzo.ai/pricing. No returns, dates or invented numbers.
 
 ## `/build` proof
 
@@ -75,12 +80,12 @@ pnpm dev
 pnpm build
 pnpm typecheck && pnpm lint && pnpm test
 pnpm exec playwright test --grep-invert @network   # e2e on the production build
-pnpm exec playwright test --grep @network          # live-internet link check (on demand; covers all five routes)
+pnpm links                                          # live-internet link check (on demand; covers all five routes)
 ```
 
 Tests: vitest for `src/lib` and CSS variables (`test/`); Playwright (`e2e/`: home, sections, build, economics, early, pricing, chat, site, privacy) for axe (WCAG 2.2 AA), phone width, the font shipping, redirects, the live telemetry strip, the still hero, the page titles, no console errors, and privacy (`e2e/privacy.spec.ts`: Your Privacy Choices in the footer, the opt-in bar, no hanzo.id link, sign-in to hanzo.ai/login). The home specs mock the chain, so CI never depends on it.
 
-The chat widget answers in place. `src/lib/chat.ts` `ask(messages, signal)` POSTs `{messages}` to `https://api.hanzo.ai/v1/chat/public` (keyless, `credentials: 'omit'`, no Authorization) and returns only `choices[0].message.content`; it throws on non-200 or an empty answer and never reads `reasoning_content`. Every request opens with a fixed system message (`SYSTEM` in `chat.ts`: what is live, what is designed, never a price or a date for the AI token) and sets `max_tokens`; the message is never shown or counted in the 10. The widget keeps the conversation in component state (gone on reload), sends the last 10 messages, shows "Thinking…" in a polite status region, times out at 30 s, and on failure says so with Retry and a hanzo.chat link; a 429 says to wait a minute. "Open in Hanzo Chat" (`https://hanzo.chat/?q=<last question>`) is always in the dialog. Tests: `src/lib/chat.test.ts`, `e2e/chat.spec.ts` (endpoint mocked with `page.route`).
+The chat widget answers in place. `src/lib/chat.ts` `ask(messages, signal)` POSTs `{messages}` to `https://api.hanzo.ai/v1/chat/public` (keyless, `credentials: 'omit'`, no Authorization) and returns only `choices[0].message.content`; it throws a `RequestError` on non-200, a timeout or a cancel, throws on an empty answer, and never reads `reasoning_content`. Every request opens with a fixed system message (`SYSTEM` in `chat.ts`: what is live, what is designed, never a price or a date for the AI token) and sets `max_tokens`; the message is never shown or counted in the 10. The widget keeps the conversation in component state (gone on reload), sends the last 10 messages, shows "Thinking…" in a polite status region, and on failure (a 30 s timeout is one, set in `chat.ts` through `request.ts`) says so with Retry and a hanzo.chat link; a 429 says to wait a minute. "Open in Hanzo Chat" (`https://hanzo.chat/?q=<last question>`) is always in the dialog. Tests: `src/lib/chat.test.ts`, `e2e/chat.spec.ts` (endpoint mocked with `page.route`).
 
 `node scripts/check.mjs` is the gate CI runs over `dist/` (no tag in index.html, no hanzo.id, the ingest key resolves). It also asserts the export names `https://api.hanzo.ai/v1/chat/public`, which the widget does.
 
@@ -93,7 +98,7 @@ James's hero choices (26 Nov): no pause button; the hero picture does not react 
 ```
 push to main (hanzo-apps/network, GitHub is home)
   -> .github/workflows/cicd.yml   hanzoai/ci build.yml@v2, reads hanzo.yml
-       test:  one step: install, typecheck, lint, unit, build, scripts/check.mjs, Playwright (not @network)
+       test:  one step: frozen install, typecheck, lint, unit, build, scripts/check.mjs, Playwright (not @network)
        site:  slug `network`, dir dist -> Sites plane (api.hanzo.ai/v1/projects)
   -> s3://hanzo-sites/hanzo/network   org hanzo (hanzo-apps maps to it) + slug
   -> hanzoai/ingress staticFiles      universe infra/aws/routes/sites.yaml,
@@ -102,7 +107,7 @@ push to main (hanzo-apps/network, GitHub is home)
 ```
 
 No image and no pod. Cloudflare proxies hanzo.network to the AWS balancer. The
-`@network` link check (all five routes) runs on demand (`pnpm exec playwright test --grep @network`), not in CI.
+`@network` link check (all five routes) runs on demand (`pnpm links`), not in CI.
 
 ## Sign-in and measurement
 
