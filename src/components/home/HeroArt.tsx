@@ -21,7 +21,7 @@ export default function HeroArt({ paused }: { paused: boolean }) {
 
   return (
     <div ref={stage} aria-hidden className="pointer-events-none absolute inset-0">
-      <div className="hero-art absolute inset-0">
+      <div className="hero-art absolute inset-x-0 top-[24%] h-full md:top-[14%]">
       {posterOk && (
         <img
           src={POSTER}

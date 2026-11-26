@@ -108,7 +108,7 @@ export default function Hero() {
           onClick={toggle}
           aria-pressed={paused}
           aria-label={paused ? 'Play background video' : 'Pause background video'}
-          className="absolute bottom-4 right-4 inline-flex h-11 w-11 items-center justify-center rounded-full border border-foreground/10 bg-foreground/5 text-muted-foreground backdrop-blur transition-colors hover:text-foreground md:bottom-6 md:right-6"
+          className="absolute bottom-4 left-4 inline-flex h-11 w-11 items-center justify-center rounded-full border border-foreground/10 bg-foreground/5 text-muted-foreground backdrop-blur transition-colors hover:text-foreground md:bottom-6 md:left-6"
         >
           <Icon size={16} aria-hidden />
         </button>
