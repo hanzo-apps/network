@@ -6,7 +6,7 @@
 An OpenAI-compatible API at api.hanzo.ai serves Hanzo's Zen models and leading models from other labs. Live today. Get an API key at https://platform.hanzo.ai/api-keys.
 
 ## For compute providers
-Keep your customer fee. Proof of AI rewards are designed but not live: once it passes its audits, verified work will earn AI rewards, checkable by any CPU, paid on the chain you choose. Run a node (https://github.com/hanzoai/node) or apply at https://hanzo.ai/contact.
+Run a node today: offer tools and agents, and get paid per job (https://docs.hanzo.ai/docs/proof-of-ai/node-operator). GPU rewards are designed but not live: they follow once Proof of AI passes its audits. Running a GPU fleet? https://hanzo.ai/contact
 
 ## How a job will run under Proof of AI (designed, not yet live)
 1. Admit: the job and its reward are fixed on A-Chain before it runs.
