@@ -32,7 +32,7 @@ function Copy() {
         <button
           type="button"
           onClick={copy}
-          className="h-8 rounded-full border border-border-strong px-3 text-xs font-medium text-foreground hover:bg-foreground/10"
+          className={buttonClass('tiny')}
         >
           {done ? 'Copied' : 'Copy'}
         </button>
