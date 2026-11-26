@@ -63,7 +63,7 @@ test('home has one primary action and a compute path', async ({ page }) => {
 test('home claims only what is live', async ({ page }) => {
   await page.goto('/')
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Provable AI compute.')
-  await expect(page.getByText('GPU rewards follow once Proof of AI passes its audits.')).toBeVisible()
+  await expect(page.getByText('AI rewards follow once Proof of AI passes its audits.')).toBeVisible()
   await expect(page.getByText(/proved and paid|Every job is provable/)).toHaveCount(0)
 })
 
@@ -134,13 +134,15 @@ test('home makes no claim the sources do not back', async ({ page }) => {
   await expect(page.getByText(/open[- ]source/i)).toHaveCount(0)
   await expect(page.getByText(/run on the network/i)).toHaveCount(0)
   await expect(page.getByText(/any chain/i)).toHaveCount(0) // the old 'Any chain' token card and present-tense payout claims
+  await expect(page.getByText(/paid only for work/i)).toHaveCount(0)
+  await expect(page.getByText(/any model through one API/i)).toHaveCount(0)
   await expect(page.getByText('How Proof of AI is designed to work.', { exact: false })).toBeVisible()
 })
 
 test('the hero says one thing: no eyebrow, no strip, a live chain chip', async ({ page }) => {
   await page.goto('/')
   const hero = page.locator('main section').first()
-  await expect(hero.getByText('Run any model through one API today. Providers will be paid only for work that is proved.')).toBeVisible()
+  await expect(hero.getByText('Run Zen and leading models through one API today. Proof of AI is designed to reward providers only for work that is proved.')).toBeVisible()
   await expect(hero.getByText('Proof of AI', { exact: true })).toHaveCount(0)
   await expect(hero.locator('ul')).toHaveCount(0)
   await expect(hero.locator('p').filter({ hasText: 'Hanzo chain' })).toHaveText(/Live\s*·\s*Hanzo chain · block 1,052,729/)
@@ -191,3 +193,27 @@ test('the stack is one quiet row of links, not four cards', async ({ page }) => 
   await expect(page.getByRole('link', { name: /Lux Network/ })).toHaveAttribute('href', 'https://lux.network')
   await expect(page.getByRole('link', { name: /Zoo Labs/ })).toHaveAttribute('href', 'https://zoo.ngo')
 })
+
+test('the Token section explains "Earn twice" and keeps the spec link', async ({ page }) => {
+  await page.goto('/')
+  await expect(page.getByText('Providers keep the customer fee and, once Proof of AI is live, also earn AI.')).toBeVisible()
+  await expect(page.getByRole('link', { name: 'Read the spec' }).first()).toBeVisible()
+})
+
+test('the stack strip is named "The Hanzo ecosystem"', async ({ page }) => {
+  await page.goto('/')
+  await expect(page.getByText('The Hanzo ecosystem', { exact: true })).toBeVisible()
+  await expect(page.getByText('Part of the Hanzo stack')).toHaveCount(0)
+})
+
+// The nav is 57px; one scroll-padding on <html> must clear it for every anchor.
+for (const hash of ['how', 'provide']) {
+  test(`#${hash} lands its content below the sticky nav`, async ({ page }) => {
+    await page.goto('/')
+    await page.evaluate((h) => { location.hash = h }, hash)
+    const target = page.locator('#' + hash)
+    const nav = (await page.locator('header').first().boundingBox())!
+    await expect.poll(async () => (await target.boundingBox())!.y).toBeGreaterThanOrEqual(nav.y + nav.height - 1)
+    expect(await page.evaluate(() => getComputedStyle(document.documentElement).scrollPaddingTop)).toBe('64px')
+  })
+}
