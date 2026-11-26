@@ -16,27 +16,35 @@ export async function blockHeight(signal?: AbortSignal): Promise<number> {
   return Number.parseInt(result, 16)
 }
 
-/** The latest block, polled every 6 s while the tab is visible. null until known or when the chain is unreachable. */
-export function useBlockHeight(): number | null {
-  const [height, setHeight] = useState<number | null>(null)
-  useEffect(() => {
-    let ctl: AbortController | undefined
-    const poll = () => {
-      if (document.visibilityState !== 'visible') return
-      ctl?.abort()
-      ctl = new AbortController()
-      blockHeight(ctl.signal).then(setHeight, () => {
-        if (!ctl?.signal.aborted) setHeight(null)
-      })
-    }
-    poll()
-    const id = setInterval(poll, 6000)
-    document.addEventListener('visibilitychange', poll)
-    return () => {
-      clearInterval(id)
-      document.removeEventListener('visibilitychange', poll)
-      ctl?.abort()
-    }
-  }, [])
-  return height
+export type ChainState = { status: 'loading' } | { status: 'live'; height: number } | { status: 'down' }
+
+/** Polls the chain every 6 s while the tab is visible and reports each answer. Returns the stop function. */
+export function watchChain(report: (s: ChainState) => void): () => void {
+  let ctl: AbortController | undefined
+  const poll = () => {
+    if (document.visibilityState !== 'visible') return
+    ctl?.abort()
+    const c = (ctl = new AbortController())
+    blockHeight(c.signal).then(
+      (height) => report({ status: 'live', height }),
+      () => {
+        if (!c.signal.aborted) report({ status: 'down' })
+      },
+    )
+  }
+  poll()
+  const id = setInterval(poll, 6000)
+  document.addEventListener('visibilitychange', poll)
+  return () => {
+    clearInterval(id)
+    document.removeEventListener('visibilitychange', poll)
+    ctl?.abort()
+  }
+}
+
+/** loading until the first answer, then live or down. */
+export function useChain(): ChainState {
+  const [state, setState] = useState<ChainState>({ status: 'loading' })
+  useEffect(() => watchChain(setState), [])
+  return state
 }
