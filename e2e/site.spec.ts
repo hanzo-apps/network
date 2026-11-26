@@ -7,7 +7,7 @@ test.beforeEach(async ({ page }) => {
   await serveModels(page)
 })
 
-const PAGES = ['/', '/pricing']
+const PAGES = ['/', '/build', '/economics', '/pricing', '/early']
 
 // Hosts that answer automated requests with 403/429 although a person gets in.
 // Add one only after seeing it block a bot, and say which host and why.
