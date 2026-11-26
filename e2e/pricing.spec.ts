@@ -148,3 +148,16 @@ test('aliases of one model are one row with all their ids, and the count is of d
   await expect(rows).toHaveCount(1)
   await expect(page.getByText('models, live').locator('xpath=preceding-sibling::p')).toHaveText('5')
 })
+
+for (const [width, height] of [[1440, 900], [375, 812]]) {
+  test(`See all prices lands the Featured models heading below the sticky nav at ${width}`, async ({ page }) => {
+    await page.setViewportSize({ width, height })
+    await serveModels(page)
+    await page.goto('/pricing')
+    await page.getByRole('link', { name: 'See all prices' }).click()
+    const heading = page.getByRole('heading', { name: 'Featured models' })
+    await expect(heading).toBeVisible()
+    const nav = (await page.locator('header').first().boundingBox())!
+    await expect.poll(async () => (await heading.boundingBox())!.y).toBeGreaterThanOrEqual(nav.y + nav.height)
+  })
+}

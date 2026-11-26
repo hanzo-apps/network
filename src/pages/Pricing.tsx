@@ -8,7 +8,7 @@ import { container, Eyebrow, H2 } from '@/components/home/Section'
 import { NODE_GUIDE } from '@/lib/links'
 import { featured, fetchModels, freeModel, group, perToken, sortModels, type Model } from '@/lib/catalog'
 
-const section = `${container} mt-24 md:mt-32`
+const section = `${container} mt-24 scroll-mt-16 md:mt-32`
 
 type State = { models: Model[] } | { error: true } | null
 
