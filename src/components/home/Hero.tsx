@@ -51,7 +51,7 @@ export default function Hero() {
           Provable AI compute.
         </h1>
         <p className="mx-auto mt-6 max-w-[60ch] text-balance text-xl leading-relaxed text-muted-foreground">
-          Run any model through one API today. Providers will be paid only for work that is proved.
+          Run Zen and leading models through one API today. Proof of AI is designed to reward providers only for work that is proved.
         </p>
         <div className="mt-10 flex flex-wrap justify-center gap-4">
           <a href="https://platform.hanzo.ai/api-keys" className={buttonClass('primary')}>
