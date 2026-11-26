@@ -5,7 +5,7 @@ export const container = 'mx-auto w-full max-w-[1200px] px-4 md:px-8'
 /** A page section: the container, the vertical rhythm, an optional anchor. */
 export default function Section({ id, children, className = '', glow = false }: { id?: string; children: ReactNode; className?: string; glow?: boolean }) {
   return (
-    <section id={id} className={`relative isolate scroll-mt-14 border-t border-border py-[72px] md:py-32 ${className}`}>
+    <section id={id} className={`relative isolate border-t border-border py-[72px] md:py-32 ${className}`}>
       {glow && (
         <div
           aria-hidden
