@@ -88,7 +88,7 @@ test('the header, the gate, the queue, where invites come from, what you can do 
   expect(await top(page.getByRole('heading', { level: 1 }))).toBeLessThan(await top(gate(page)))
   expect(await top(gate(page))).toBeLessThan(await top(queue(page)))
   expect(await top(queue(page))).toBeLessThan(await top(page.getByRole('heading', { level: 2, name: 'Where invites come from.' })))
-  await expect(page.locator('main')).toContainText('Invites are issued by Hanzo and passed on by members.')
+  await expect(page.locator('main')).toContainText('Hanzo issues invite codes.')
   const main = page.locator('main')
   await expect(main.getByRole('link', { name: 'Join the Hanzo server.' })).toHaveAttribute('href', DISCORD)
   await expect(main.getByRole('link', { name: 'Follow @hanzoai.' })).toHaveAttribute('href', X)
@@ -112,7 +112,7 @@ test('at 1440 both cards are as wide as the card row below them', async ({ page 
 test('the gate card says how it works in three plain lines, before and after a code is accepted', async ({ page }) => {
   await serve(page)
   await open(page)
-  const lines = ['Check your code here.', 'Keep it. It is not used up by checking.', 'Bind it to your wallet when the private terminal opens.']
+  const lines = ['Check your code here.', 'Keep it. It is not used up by checking.', 'It does not unlock anything yet.']
   const panel = gate(page).locator('aside')
   await expect(panel).toContainText('How it works')
   await expect(panel.locator('ol li')).toHaveCount(3)
@@ -121,7 +121,7 @@ test('the gate card says how it works in three plain lines, before and after a c
     await expect(panel.locator('ol li').nth(i)).toContainText(`0${i + 1}`)
   }
   await send(page, CODE)
-  await expect(gate(page)).toContainText('CODE ACCEPTED')
+  await expect(gate(page)).toContainText(/code accepted/i)
   for (const l of lines) await expect(panel).toContainText(l)
 })
 
@@ -129,7 +129,7 @@ test('the queue note sits after the form in the page order, with its own eyebrow
   await serve(page)
   await open(page)
   await expect(queue(page).locator('aside')).toContainText('What we store')
-  await expect(queue(page).locator('aside')).toContainText('We store your email or handle, your role and that you signed up here. Nothing else.')
+  await expect(queue(page).locator('aside')).toContainText('We keep your email or handle, your role and that you signed up here.')
   expect(await queue(page).evaluate((q) => !!(q.querySelector('form')!.compareDocumentPosition(q.querySelector('aside')!) & Node.DOCUMENT_POSITION_FOLLOWING))).toBe(true)
 })
 
@@ -187,15 +187,15 @@ test('while checking, the input and the button are off and the status says so', 
   await expect(code(page)).toBeDisabled()
   await expect(check(page)).toBeDisabled()
   release()
-  await expect(gate(page)).toContainText('CODE ACCEPTED')
+  await expect(gate(page)).toContainText(/code accepted/i)
 })
 
 test('a valid code: the request is exactly the typed code, anonymous; the card says accepted and nothing is unlocked', async ({ page }) => {
   const seen = await serve(page)
   await open(page)
   await send(page, `  ${CODE}  `)
-  await expect(gate(page)).toContainText('CODE ACCEPTED')
-  await expect(gate(page)).toContainText('This code is valid. Keep it: you will bind it to your wallet when the private terminal opens. Nothing is unlocked yet.')
+  await expect(gate(page)).toContainText(/code accepted/i)
+  await expect(gate(page)).toContainText('This code is valid. It does not unlock anything yet.')
   await expect(gate(page).locator('svg')).toHaveCount(1)
   await expect(gate(page).getByRole('button', { name: 'Check code' })).toHaveCount(0)
   expect(seen.verify).toHaveLength(1)
@@ -209,7 +209,7 @@ test('the code is sent as typed (trimmed) and kept upper-cased in sessionStorage
   const seen = await serve(page)
   await open(page)
   await send(page, '  hnz-7k9q2m ')
-  await expect(gate(page)).toContainText('CODE ACCEPTED')
+  await expect(gate(page)).toContainText(/code accepted/i)
   expect(seen.verify[0].body).toEqual({ code: 'hnz-7k9q2m' })
   expect(await page.evaluate((k) => sessionStorage.getItem(k), KEY)).toBe(CODE)
   // Other scripts on the site may keep their own session keys; none of them may hold the code.
@@ -223,16 +223,16 @@ test('the accepted state survives a reload; "Use a different code" clears it and
   const seen = await serve(page)
   await open(page)
   await send(page, CODE)
-  await expect(gate(page)).toContainText('CODE ACCEPTED')
+  await expect(gate(page)).toContainText(/code accepted/i)
   await page.reload()
-  await expect(gate(page)).toContainText('CODE ACCEPTED')
+  await expect(gate(page)).toContainText(/code accepted/i)
   await expect(gate(page)).toContainText(CODE)
   expect(seen.verify).toHaveLength(1)
   await gate(page).getByRole('button', { name: 'Use a different code' }).click()
   expect(await page.evaluate((k) => sessionStorage.getItem(k), KEY)).toBeNull()
   await expect(code(page)).toHaveValue('')
   await expect(code(page)).toBeFocused()
-  await expect(gate(page)).not.toContainText('CODE ACCEPTED')
+  await expect(gate(page)).not.toContainText(/code accepted/i)
   await page.reload()
   await expect(code(page)).toBeVisible()
 })
@@ -250,11 +250,11 @@ test('a code that is not valid: no reason, the value stays, focused and selected
   expect(await page.evaluate((k) => sessionStorage.getItem(k), KEY)).toBeNull()
 })
 
-test('too many tries: 429 says to wait an hour', async ({ page }) => {
+test('too many tries: 429 says to try again later', async ({ page }) => {
   await serve(page, { verify: { status: 429 } })
   await open(page)
   await send(page, CODE)
-  await expect(status(gate(page))).toHaveText('Too many tries. Wait an hour and try again.')
+  await expect(status(gate(page))).toHaveText('Too many tries. Try again later.')
   await expect(check(page)).toBeEnabled()
   await expect(gate(page)).not.toContainText(/accepted|not valid/i)
 })
@@ -288,7 +288,7 @@ test('after an unavailable answer, trying again can succeed', async ({ page }) =
   await send(page, CODE)
   await expect(status(gate(page))).toHaveText('The invite service did not answer. Try again.')
   await check(page).click()
-  await expect(gate(page)).toContainText('CODE ACCEPTED')
+  await expect(gate(page)).toContainText(/code accepted/i)
 })
 
 test('the gate by keyboard alone: Tab to the input, type, Enter', async ({ page }) => {
@@ -297,7 +297,7 @@ test('the gate by keyboard alone: Tab to the input, type, Enter', async ({ page 
   await tabTo(page, code(page))
   await page.keyboard.type(CODE)
   await page.keyboard.press('Enter')
-  await expect(gate(page)).toContainText('CODE ACCEPTED')
+  await expect(gate(page)).toContainText(/code accepted/i)
   expect(seen.verify[0].body).toEqual({ code: CODE })
   await tabTo(page, gate(page).getByRole('button', { name: 'Use a different code' }))
   await page.keyboard.press('Enter')
@@ -313,6 +313,13 @@ const ROLES = [
 
 const joinForm = (page: Page) => queue(page).locator('form')
 const contact = (page: Page) => joinForm(page).locator('input:not([type=radio])')
+const handleBox = (page: Page) => queue(page).getByRole('textbox', { name: 'Handle', exact: true })
+/** The visible error tied to the contact input: the id in aria-describedby that ends in "error". */
+const errorOf = async (page: Page) => {
+  await expect(contact(page)).toHaveAttribute('aria-describedby', /error/)
+  const ids = ((await contact(page).getAttribute('aria-describedby')) ?? '').split(' ')
+  return queue(page).locator(`#${ids.find((i) => i.endsWith('error'))}`)
+}
 const submit = (page: Page) => queue(page).getByRole('button', { name: 'Join the queue' })
 
 for (const [label, role] of ROLES) {
@@ -331,17 +338,17 @@ for (const [label, role] of ROLES) {
     expect(seen.join[0].headers.authorization).toBeUndefined()
     await expect(joinForm(page)).toHaveCount(0)
     await expect(queue(page)).toContainText(label)
-    await expect(queue(page)).toContainText('We store your email or handle, your role and that you signed up here. Nothing else.')
+    await expect(queue(page)).toContainText('We keep your email or handle, your role and that you signed up here.')
   })
 
   test(`the queue takes a handle as ${role}`, async ({ page }) => {
     const seen = await serve(page)
     await open(page)
     await queue(page).getByRole('radio', { name: 'Handle', exact: true }).check()
-    await expect(queue(page).getByLabel('Hanzo handle')).toBeVisible()
+    await expect(handleBox(page)).toBeVisible()
     await expect(contact(page)).toHaveAttribute('type', 'text')
     await expect(contact(page)).toHaveAttribute('inputmode', 'text')
-    await queue(page).getByLabel('Hanzo handle').fill('Ada_9')
+    await handleBox(page).fill('Ada_9')
     await queue(page).getByRole('radio', { name: label, exact: true }).check()
     await submit(page).click()
     await expect(status(queue(page))).toHaveText(/You are on the list\./)
@@ -390,7 +397,7 @@ test('a bad email is stopped in the page, with a visible error tied to the input
   await contact(page).fill('not-an-email')
   await queue(page).getByRole('radio', { name: 'Builder', exact: true }).check()
   await submit(page).click()
-  const err = queue(page).locator(`#${await contact(page).getAttribute('aria-describedby')}`)
+  const err = await errorOf(page)
   await expect(err).toBeVisible()
   await expect(err).toContainText('email')
   await expect(contact(page)).toHaveAttribute('aria-invalid', 'true')
@@ -406,10 +413,10 @@ for (const bad of ['a', 'has space', 'bad!', 'x'.repeat(33), '']) {
     const seen = await serve(page)
     await open(page)
     await queue(page).getByRole('radio', { name: 'Handle', exact: true }).check()
-    await queue(page).getByLabel('Hanzo handle').fill(bad)
+    await handleBox(page).fill(bad)
     await queue(page).getByRole('radio', { name: 'Builder', exact: true }).check()
     await submit(page).click()
-    const err = queue(page).locator(`#${await contact(page).getAttribute('aria-describedby')}`)
+    const err = await errorOf(page)
     await expect(err).toBeVisible()
     await expect(err).toContainText('2 to 32')
     await page.waitForTimeout(300)
@@ -479,13 +486,13 @@ test('the contact choice by keyboard: arrow keys switch Email and Handle', async
   await tabTo(page, queue(page).getByRole('radio', { name: 'Email', exact: true }))
   await page.keyboard.press('ArrowRight')
   await expect(queue(page).getByRole('radio', { name: 'Handle', exact: true })).toBeChecked()
-  await expect(queue(page).getByLabel('Hanzo handle')).toBeVisible()
+  await expect(handleBox(page)).toBeVisible()
 })
 
 test('what is stored, and the Privacy link, are always visible', async ({ page }) => {
   await serve(page)
   await open(page)
-  const sentence = queue(page).getByText('We store your email or handle, your role and that you signed up here. Nothing else.')
+  const sentence = queue(page).getByText('We keep your email or handle, your role and that you signed up here.')
   await expect(sentence).toBeVisible()
   const link = queue(page).getByRole('link', { name: 'Privacy' })
   await expect(link).toBeVisible()
@@ -504,7 +511,7 @@ test('exactly one live region in each form, and none of it sits inside an aria-b
   await expect(gate(page).locator('[aria-live], [role=status], [role=alert], [role=log]')).toHaveCount(1)
   await expect(queue(page).locator('[aria-live], [role=status], [role=alert], [role=log]')).toHaveCount(1)
   await send(page, CODE)
-  await expect(gate(page)).toContainText('CODE ACCEPTED')
+  await expect(gate(page)).toContainText(/code accepted/i)
   await expect(gate(page).locator('[aria-live], [role=status], [role=alert], [role=log]')).toHaveCount(1)
   await expect(page.locator('#gate [aria-busy] [aria-live], #queue [aria-busy] [aria-live]')).toHaveCount(0)
   await contact(page).fill('nope')
@@ -512,15 +519,198 @@ test('exactly one live region in each form, and none of it sits inside an aria-b
   await expect(queue(page).locator('[aria-live], [role=status], [role=alert], [role=log]')).toHaveCount(1)
 })
 
+test('the handle: labelled Handle, with a hint; a leading @ is stripped before it is checked and sent', async ({ page }) => {
+  const seen = await serve(page)
+  await open(page)
+  await queue(page).getByRole('radio', { name: 'Handle', exact: true }).check()
+  await expect(handleBox(page)).toBeVisible()
+  await expect(queue(page).getByText('Your X or Discord handle.')).toBeVisible()
+  await expect(queue(page).getByText('Hanzo handle')).toHaveCount(0)
+  await handleBox(page).fill('@Ada_9')
+  await expect(handleBox(page)).toHaveValue('ada_9')
+  await queue(page).getByRole('radio', { name: 'Holder', exact: true }).check()
+  await submit(page).click()
+  await expect(status(queue(page))).toHaveText(/You are on the list\./)
+  expect(seen.join[0].body).toEqual({ handle: 'ada_9', role: 'holder', source: 'hanzo.network/early' })
+})
+
+test('the email box holds at most 254 characters', async ({ page }) => {
+  await serve(page)
+  await open(page)
+  await expect(contact(page)).toHaveAttribute('maxlength', '254')
+})
+
+test('a 400 from the queue is the visitor\'s entry, not a service problem: an error on the field, focus on it, never "did not answer"', async ({ page }) => {
+  await serve(page, { join: { status: 400 } })
+  await open(page)
+  await contact(page).fill('ada@example.com')
+  await queue(page).getByRole('radio', { name: 'Builder', exact: true }).check()
+  await submit(page).click()
+  const err = await errorOf(page)
+  await expect(err).toHaveText('Check your email or handle.')
+  await expect(contact(page)).toHaveAttribute('aria-invalid', 'true')
+  await expect(contact(page)).toBeFocused()
+  await expect(contact(page)).toHaveValue('ada@example.com')
+  await expect(queue(page)).not.toContainText(/did not answer|on the list/i)
+  await expect(submit(page)).toBeEnabled()
+})
+
+test('after the queue answers, focus goes where the answer is: the confirmation, or back to the button', async ({ page }) => {
+  await serve(page)
+  await open(page)
+  await contact(page).fill('ada@example.com')
+  await queue(page).getByRole('radio', { name: 'Builder', exact: true }).check()
+  await submit(page).click()
+  await expect(status(queue(page))).toHaveText(/You are on the list\./)
+  await expect(queue(page).locator('[tabindex="-1"]')).toBeFocused()
+  await expect(queue(page).locator('[tabindex="-1"]')).toContainText('You are on the list.')
+  for (const reply of [{ status: 429 }, { status: 500 }]) {
+    const p = await page.context().newPage()
+    await serve(p, { join: reply })
+    await open(p)
+    await contact(p).fill('ada@example.com')
+    await queue(p).getByRole('radio', { name: 'Builder', exact: true }).check()
+    await submit(p).click()
+    await expect(status(queue(p))).not.toHaveText('')
+    await expect(submit(p)).toBeFocused()
+    await p.close()
+  }
+})
+
+test('a validation error gets focus once its text and aria-invalid are on the page', async ({ page }) => {
+  await serve(page)
+  await open(page)
+  await contact(page).fill('nope')
+  await submit(page).click()
+  await expect(contact(page)).toBeFocused()
+  expect(await contact(page).evaluate((el) => el.getAttribute('aria-invalid') === 'true' && !!document.getElementById(el.getAttribute('aria-describedby')!.split(' ').find((i) => i.endsWith('error'))!)?.textContent)).toBe(true)
+})
+
+test('the gate input is described by its hint and its status; an accepted code moves focus to the explanation', async ({ page }) => {
+  await serve(page)
+  await open(page)
+  const ids = ((await code(page).getAttribute('aria-describedby')) ?? '').split(' ')
+  expect(ids).toHaveLength(2)
+  expect(await page.evaluate((i) => document.getElementById(i[0])?.textContent, ids)).toBe('HNZ- and six characters.')
+  expect(await page.evaluate((i) => document.getElementById(i[1])?.getAttribute('aria-live'), ids)).toBe('polite')
+  await send(page, CODE)
+  await expect(gate(page)).toContainText(/code accepted/i)
+  await expect(gate(page).locator('[tabindex="-1"]')).toBeFocused()
+  await expect(gate(page).locator('[tabindex="-1"]')).toContainText('This code is valid. It does not unlock anything yet.')
+  expect(await status(gate(page)).evaluate((e) => e.textContent)).toBe('Code accepted')
+})
+
+test('after a reload the accepted state does not steal focus', async ({ page }) => {
+  await serve(page)
+  await open(page)
+  await send(page, CODE)
+  await expect(gate(page)).toContainText(/code accepted/i)
+  await page.reload()
+  await expect(gate(page)).toContainText(/code accepted/i)
+  await expect(gate(page).locator('[tabindex="-1"]')).not.toBeFocused()
+})
+
+test('each form keeps the very same live-region element from idle through checking to the answer', async ({ page }) => {
+  let release!: () => void
+  const hold = new Promise<void>((r) => (release = r))
+  await serve(page, { hold })
+  await open(page)
+  const live = (root: Locator) => root.locator('[aria-live]').elementHandle()
+  const same = (a: Awaited<ReturnType<typeof live>>, b: Awaited<ReturnType<typeof live>>) => page.evaluate(([x, y]) => x === y && x!.isConnected, [a, b])
+  const gateIdle = await live(gate(page))
+  const queueIdle = await live(queue(page))
+  await send(page, CODE)
+  await expect(status(gate(page))).toHaveText('Checking…')
+  expect(await same(gateIdle, await live(gate(page)))).toBe(true)
+  await contact(page).fill('ada@example.com')
+  await queue(page).getByRole('radio', { name: 'Builder', exact: true }).check()
+  await submit(page).click()
+  await expect(status(queue(page))).toHaveText('Sending…')
+  expect(await same(queueIdle, await live(queue(page)))).toBe(true)
+  release()
+  await expect(gate(page)).toContainText(/code accepted/i)
+  await expect(status(queue(page))).toHaveText(/You are on the list\./)
+  expect(await same(gateIdle, await live(gate(page)))).toBe(true)
+  expect(await same(queueIdle, await live(queue(page)))).toBe(true)
+})
+
+// ---------------------------------------------------------------- what leaves the page
+/** Every request the page makes to anyone but this site and the two invite endpoints, as "url body". */
+const watchOthers = (page: Page) => {
+  const seen: string[] = []
+  page.on('request', (r) => {
+    const u = r.url()
+    if (u.startsWith('http://localhost') || u === VERIFY || u === WAITLIST) return
+    seen.push(`${u} ${r.postData() ?? ''}`)
+  })
+  return seen
+}
+
+test('no analytics or other request carries the typed code, email or handle', async ({ page }) => {
+  await page.route(/api\.hanzo\.ai\/v1\/(event|project\/tags)/, (route) => (route.request().method() === 'OPTIONS' ? route.fulfill({ status: 204, headers: cors }) : route.fulfill({ status: 204, headers: cors })))
+  await serve(page)
+  const others = watchOthers(page)
+  await open(page)
+  await send(page, 'hnz-7k9q2m')
+  await expect(gate(page)).toContainText(/code accepted/i)
+  await contact(page).fill('secret.person@example.com')
+  await queue(page).getByRole('radio', { name: 'Builder', exact: true }).check()
+  await submit(page).click()
+  await expect(status(queue(page))).toHaveText(/You are on the list\./)
+  await page.reload()
+  await queue(page).getByRole('radio', { name: 'Handle', exact: true }).check()
+  await handleBox(page).fill('SecretHandle_9')
+  await queue(page).getByRole('radio', { name: 'Holder', exact: true }).check()
+  await submit(page).click()
+  await expect(status(queue(page))).toHaveText(/You are on the list\./)
+  // The stream flushes on its own cadence; wait for it, so the watch is not blind, then leave to flush the rest.
+  await expect.poll(() => others.some((o) => o.includes('/v1/event')), { timeout: 15_000, message: 'the watch must see the stream, or it proves nothing' }).toBe(true)
+  await page.goto('about:blank')
+  await page.waitForTimeout(500)
+  for (const o of others) expect(o).not.toMatch(/7k9q2m|secret\.person|secrethandle|example\.com/i)
+})
+
+test('an unexpected answer is reported as the endpoint and the status only', async ({ page }) => {
+  await page.route(/api\.hanzo\.ai\/v1\/(event|project\/tags)/, (route) => route.fulfill({ status: 204, headers: cors }))
+  await serve(page, { verify: { status: 503 }, join: { status: 500 } })
+  const others = watchOthers(page)
+  await open(page)
+  await send(page, 'hnz-7k9q2m')
+  await expect(status(gate(page))).toHaveText('The invite service did not answer. Try again.')
+  await contact(page).fill('secret.person@example.com')
+  await queue(page).getByRole('radio', { name: 'Builder', exact: true }).check()
+  await submit(page).click()
+  await expect(status(queue(page))).toHaveText('The queue did not answer. Try again.')
+  await expect.poll(() => others.some((o) => o.includes('invite/verify answered 503'))).toBe(true)
+  await expect.poll(() => others.some((o) => o.includes('waitlist answered 500'))).toBe(true)
+  for (const o of others) expect(o).not.toMatch(/7k9q2m|secret\.person|example\.com/i)
+})
+
+test('a 429 or a refused entry is not reported as drift', async ({ page }) => {
+  await page.route(/api\.hanzo\.ai\/v1\/(event|project\/tags)/, (route) => route.fulfill({ status: 204, headers: cors }))
+  await serve(page, { verify: { status: 429 }, join: { status: 400 } })
+  const others = watchOthers(page)
+  await open(page)
+  await send(page, CODE)
+  await expect(status(gate(page))).toHaveText('Too many tries. Try again later.')
+  await contact(page).fill('ada@example.com')
+  await queue(page).getByRole('radio', { name: 'Builder', exact: true }).check()
+  await submit(page).click()
+  await expect(await errorOf(page)).toHaveText('Check your email or handle.')
+  await page.goto('about:blank')
+  await page.waitForTimeout(500)
+  for (const o of others) expect(o).not.toMatch(/answered \d{3}/)
+})
+
 // ---------------------------------------------------------------- words
 test('no sale, offer, staking, points, leaderboard, balance or date: idle, accepted and joined', async ({ page }) => {
   await serve(page)
   await open(page)
-  const forbidden = /sale|presale|investment|yield|APY|stak|points|leaderboard|soon/i
+  const forbidden = /sale|presale|investment|yield|APY|stak|points|leaderboard|soon|terminal|bind|wallet|members|nothing else|an hour/i
   const main = page.locator('main')
   expect(await main.innerText()).not.toMatch(forbidden)
   await send(page, CODE)
-  await expect(gate(page)).toContainText('CODE ACCEPTED')
+  await expect(gate(page)).toContainText(/code accepted/i)
   await contact(page).fill('ada@example.com')
   await queue(page).getByRole('radio', { name: 'Builder', exact: true }).check()
   await submit(page).click()
@@ -549,7 +739,7 @@ for (const colorScheme of ['dark', 'light'] as const) {
       await page.unroute(VERIFY)
       await page.route(VERIFY, (route) => (route.request().method() === 'OPTIONS' ? route.fulfill({ status: 204, headers: cors }) : route.fulfill({ json: { valid: true }, headers: cors })))
       await check(page).click()
-      await expect(gate(page)).toContainText('CODE ACCEPTED')
+      await expect(gate(page)).toContainText(/code accepted/i)
       expect(await axeViolations(page)).toEqual([])
     })
   }
@@ -562,7 +752,7 @@ test('early is readable with reduced motion (axe), idle and accepted', async ({ 
   await scrollThrough(page)
   expect(await axeViolations(page)).toEqual([])
   await send(page, CODE)
-  await expect(gate(page)).toContainText('CODE ACCEPTED')
+  await expect(gate(page)).toContainText(/code accepted/i)
   expect(await axeViolations(page)).toEqual([])
 })
 
@@ -573,7 +763,7 @@ test('at phone width nothing scrolls sideways: idle, accepted, joined', async ({
   await scrollThrough(page)
   expect(await wide()).toBe(false)
   await send(page, CODE)
-  await expect(gate(page)).toContainText('CODE ACCEPTED')
+  await expect(gate(page)).toContainText(/code accepted/i)
   await contact(page).fill('a-rather-long-address-for-a-phone@subdomain.example-company.com')
   await queue(page).getByRole('radio', { name: 'Node operator', exact: true }).check()
   await submit(page).click()

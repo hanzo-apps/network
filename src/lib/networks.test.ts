@@ -81,6 +81,10 @@ describe('public/llms.txt', () => {
     expect(llms).toContain(`POST ${INVITE_VERIFY}`)
     expect(llms).toContain(`POST ${WAITLIST}`)
     expect(llms).toContain('https://hanzo.network/early')
+    expect(llms).toContain('A valid code unlocks nothing yet.')
+    expect(llms).toContain('The queue keeps an email or a handle, a role and that the entry came from the page.')
+    const early = llms.split('## Early access')[1].split('\n## ')[0]
+    expect(early).not.toMatch(/wallet|terminal|nothing else|members|an hour/i)
   })
 
   it('lists every solution the home cards show, with the same title, status word and address', () => {

@@ -2,7 +2,8 @@ import { useEffect, useRef, useState, type FormEvent } from 'react'
 import { Check } from 'lucide-react'
 import { buttonClass, textLink } from '@/components/ui/button'
 import Card from '@/components/ui/card'
-import { verify, InviteError } from '@/lib/invite'
+import { useAnalytics } from '@hanzo/event/react'
+import { drift, verify, InviteError } from '@/lib/invite'
 
 /** The one place an accepted code is kept: this tab's session, never the URL, never local storage. */
 const KEY = 'hn.invite'
@@ -29,11 +30,11 @@ const SAYS: Record<Phase, string> = {
   empty: 'Enter a code.',
   checking: 'Checking…',
   invalid: 'That code is not valid.',
-  limited: 'Too many tries. Wait an hour and try again.',
+  limited: 'Too many tries. Try again later.',
   unavailable: 'The invite service did not answer. Try again.',
 }
 
-const STEPS = ['Check your code here.', 'Keep it. It is not used up by checking.', 'Bind it to your wallet when the private terminal opens.']
+const STEPS = ['Check your code here.', 'Keep it. It is not used up by checking.', 'It does not unlock anything yet.']
 
 const label = 'block font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground'
 
@@ -45,8 +46,16 @@ export default function Gate() {
   const input = useRef<HTMLInputElement>(null)
   const inflight = useRef<AbortController>()
   const checking = phase === 'checking'
+  const [fresh, setFresh] = useState(0)
+  const explanation = useRef<HTMLDivElement>(null)
+  const analytics = useAnalytics()
 
   useEffect(() => () => inflight.current?.abort(), [])
+
+  // A code accepted just now moves focus to the explanation; one restored from the session does not.
+  useEffect(() => {
+    if (fresh) explanation.current?.focus()
+  }, [fresh])
 
   // The input is disabled while checking, so it takes focus back once the answer is in.
   useEffect(() => {
@@ -72,9 +81,12 @@ export default function Gate() {
         keep(code.toUpperCase())
         setAccepted(code.toUpperCase())
         setPhase('idle')
+        setFresh((n) => n + 1)
       } else setPhase('invalid')
     } catch (err) {
       if (ctl.signal.aborted) return
+      const d = drift(err)
+      if (d) analytics.captureError(d)
       setPhase(err instanceof InviteError && err.kind === 'limited' ? 'limited' : 'unavailable')
     }
   }
@@ -109,7 +121,7 @@ export default function Gate() {
                 spellCheck={false}
                 inputMode="text"
                 aria-invalid={phase === 'invalid' || phase === 'empty'}
-                aria-describedby="invite-hint"
+                aria-describedby="invite-hint invite-status"
                 className="mt-3 h-16 w-full min-w-0 max-w-[32rem] rounded-lg border border-border-strong bg-transparent px-4 font-mono text-2xl uppercase tracking-[0.06em] text-foreground placeholder:text-muted-foreground disabled:opacity-60 md:text-3xl"
               />
               <p id="invite-hint" className="mt-3 font-mono text-sm text-muted-foreground">
@@ -118,11 +130,11 @@ export default function Gate() {
             </div>
           )}
 
-          <p role="status" aria-live="polite" className={`font-mono text-sm ${accepted ? 'flex items-center gap-2 text-base tracking-[0.14em]' : 'mt-4 min-h-5 text-foreground empty:mt-0 empty:min-h-0'}`}>
+          <p id="invite-status" role="status" aria-live="polite" className={`font-mono text-sm ${accepted ? 'flex items-center gap-2 text-base uppercase tracking-[0.14em]' : 'mt-4 min-h-5 text-foreground empty:mt-0 empty:min-h-0'}`}>
             {accepted ? (
               <>
                 <Check size={18} aria-hidden="true" />
-                CODE ACCEPTED
+                Code accepted
               </>
             ) : (
               SAYS[phase]
@@ -138,10 +150,10 @@ export default function Gate() {
           )}
 
           {accepted && (
-            <div className="mt-6">
+            <div ref={explanation} tabIndex={-1} className="mt-6 outline-offset-8">
               <p className="font-mono text-3xl tabular-nums tracking-[0.06em] md:text-4xl">{accepted}</p>
               <p className="mt-6 max-w-[56ch] text-lg leading-relaxed text-muted-foreground">
-                This code is valid. Keep it: you will bind it to your wallet when the private terminal opens. Nothing is unlocked yet.
+                This code is valid. It does not unlock anything yet.
               </p>
               <button type="button" onClick={another} className={`${textLink} mt-4`}>
                 Use a different code

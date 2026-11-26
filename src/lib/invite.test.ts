@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, expect, test, vi } from 'vitest'
 import { INVITE_VERIFY, WAITLIST } from './links'
-import { join, verify, InviteError } from './invite'
+import { drift, join, verify, InviteError } from './invite'
 
 const reply = (body: unknown, init?: ResponseInit) =>
   vi.stubGlobal('fetch', vi.fn(async () => new Response(typeof body === 'string' ? body : JSON.stringify(body), init)))
@@ -130,9 +130,24 @@ test('join: 429 is limited', async () => {
   await expect(join({ email: 'a@b.co', role: 'builder' })).rejects.toMatchObject({ kind: 'limited' })
 })
 
-test.each([400, 500, 503, 200, 204])('join: a %i is unavailable', async (status) => {
+test.each([500, 503, 200, 204, 401])('join: a %i is unavailable', async (status) => {
   reply({ status: 'pending' }, { status })
   await expect(join({ email: 'a@b.co', role: 'builder' })).rejects.toMatchObject({ kind: 'unavailable' })
+})
+
+test('join: a 400 is rejected: the entry itself was refused, which is not a service problem', async () => {
+  reply({ error: 'bad' }, { status: 400 })
+  await expect(join({ email: 'nope', role: 'builder' })).rejects.toMatchObject({ kind: 'rejected' })
+})
+
+test('a caller who aborts a join gets the abort, not a verdict', async () => {
+  hangs()
+  const ctl = new AbortController()
+  const pending = join({ email: 'a@b.co', role: 'builder' }, ctl.signal).catch((e) => e)
+  ctl.abort()
+  const err = await pending
+  expect(err).not.toBeInstanceOf(InviteError)
+  expect(err.name).toBe('AbortError')
 })
 
 test('join: a failed request is unavailable; a hang ends after 15 seconds', async () => {
@@ -142,4 +157,27 @@ test('join: a failed request is unavailable; a hang ends after 15 seconds', asyn
   const pending = join({ email: 'a@b.co', role: 'builder' }).catch((e) => e)
   await vi.advanceTimersByTimeAsync(15_000)
   expect(await pending).toMatchObject({ kind: 'unavailable' })
+})
+
+test('an unexpected status is reported as the endpoint and the status, and nothing else', async () => {
+  reply({ valid: false }, { status: 503 })
+  const v = await verify('HNZ-7K9Q2M').catch((e) => e)
+  expect(drift(v)?.message).toBe('invite/verify answered 503')
+  reply({ valid: 'yes' }, { status: 200 })
+  expect(drift(await verify('HNZ-7K9Q2M').catch((e) => e))?.message).toBe('invite/verify answered 200')
+  reply({}, { status: 500 })
+  expect(drift(await join({ email: 'secret@b.co', role: 'builder' }).catch((e) => e))?.message).toBe('waitlist answered 500')
+  reply({}, { status: 400 })
+  expect(drift(await verify('HNZ-7K9Q2M').catch((e) => e))?.message).toBe('invite/verify answered 400')
+})
+
+test('a 429, a refused entry, a network failure, a timeout and an abort are not drift', async () => {
+  reply({}, { status: 429 })
+  expect(drift(await verify('HNZ-7K9Q2M').catch((e) => e))).toBeNull()
+  reply({}, { status: 400 })
+  expect(drift(await join({ email: 'a@b.co', role: 'builder' }).catch((e) => e))).toBeNull()
+  vi.stubGlobal('fetch', vi.fn(async () => Promise.reject(new TypeError('offline'))))
+  expect(drift(await verify('HNZ-7K9Q2M').catch((e) => e))).toBeNull()
+  expect(drift(new DOMException('aborted', 'AbortError'))).toBeNull()
+  expect(drift(new Error('other'))).toBeNull()
 })

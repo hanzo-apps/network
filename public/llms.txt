@@ -90,7 +90,7 @@ curl -s -X POST https://api.hanzo.network/v1/bc/hanzo/rpc -H 'content-type: appl
 
 ## Early access
 
-Early access to the network is invite-only. The page https://hanzo.network/early checks an invite code through `POST https://api.hanzo.ai/v1/network/invite/verify` and takes queue entries through `POST https://api.hanzo.ai/v1/network/waitlist`. A valid code unlocks nothing yet; it is kept so it can be bound to a wallet when the private terminal opens. The queue stores an email or a handle, a role and that the entry came from the page, and nothing else.
+Early access to the network is invite-only. The page https://hanzo.network/early checks an invite code through `POST https://api.hanzo.ai/v1/network/invite/verify` and takes queue entries through `POST https://api.hanzo.ai/v1/network/waitlist`. A valid code unlocks nothing yet. The queue keeps an email or a handle, a role and that the entry came from the page.
 
 ## Economics
 
