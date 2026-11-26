@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router'
 import { HanzoLogo } from '@hanzo/logo'
 import { buttonClass, navLink } from '@/components/ui/button'
 import { DOCS } from '@/lib/links'

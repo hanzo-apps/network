@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 import { navLink } from '@/components/ui/button'
 import { DISCORD, DOCS, HANZO, NODE_REPO, PRIVACY, TERMS } from '@/lib/links'
 import { PrivacyChoicesIcon } from './Consent'

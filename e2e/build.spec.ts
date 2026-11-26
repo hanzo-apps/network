@@ -228,6 +228,13 @@ test('the three earn cards, their tags and links', async ({ page }) => {
   await expect(earn.getByRole('link', { name: 'Activation phases' })).toHaveAttribute('href', '/#phases')
 })
 
+test('Activation phases leaves /build and lands on the phases section of the home page', async ({ page }) => {
+  await page.goto('/build')
+  await page.getByRole('link', { name: 'Activation phases' }).click()
+  await expect(page).toHaveURL(/\/#phases$/)
+  await expect(page.locator('#phases')).toBeInViewport()
+})
+
 test('no wrong words anywhere', async ({ page }) => {
   await open(page)
   const text = await page.locator('main').innerText()

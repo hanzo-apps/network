@@ -1,6 +1,6 @@
 import { motion, useReducedMotion } from 'motion/react'
 import { buttonClass } from '@/components/ui/button'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 import Glow from '@/components/ui/glow'
 import { container, H1 } from '@/components/ui/section'
 import HeroArt from './HeroArt'

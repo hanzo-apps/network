@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 import { textLink } from '@/components/ui/button'
 import Card from '@/components/ui/card'
 import Tag from '@/components/ui/tag'

@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 import { motion, useReducedMotion } from 'motion/react'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 import Tag from '@/components/ui/tag'
 import { useChain } from '@/lib/chain'
 import { useCounts } from '@/lib/catalog'

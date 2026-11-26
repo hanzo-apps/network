@@ -1,5 +1,5 @@
 import { useEffect, type ReactNode } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation } from "react-router";
 import { startTags } from "@hanzo/event";
 import { AnalyticsProvider, usePageview } from "@hanzo/event/react";
 

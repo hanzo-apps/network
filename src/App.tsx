@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { BrowserRouter, Navigate, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Navigate, Routes, Route, useLocation } from "react-router";
 import { Consent } from "./components/Consent";
 import Chat from "./components/Chat";
 import { Measure } from "./components/Measure";
