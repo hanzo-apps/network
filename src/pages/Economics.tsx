@@ -108,7 +108,7 @@ export default function Economics() {
           </div>
           <Reveal>
             <Card className="flex h-full flex-col justify-center p-6 md:p-8">
-              <p data-formula className="font-mono text-2xl text-foreground sm:text-3xl lg:text-4xl">ΔS = issuance − β × fees</p>
+              <p data-formula className="font-mono text-lg text-foreground sm:text-3xl lg:text-4xl">ΔS = issuance − β × fees</p>
               <p className="mt-4 text-sm text-muted-foreground">β is set by governance. It is not set yet.</p>
             </Card>
           </Reveal>
