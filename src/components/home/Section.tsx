@@ -23,7 +23,7 @@ export const Eyebrow = ({ children }: { children: ReactNode }) => (
 )
 
 export const H2 = ({ children }: { children: ReactNode }) => (
-  <h2 className="text-5xl font-semibold leading-[1.05] tracking-[-0.02em] md:text-6xl">{children}</h2>
+  <h2 className="text-5xl font-[560] leading-[1.05] tracking-[-0.035em] md:text-6xl">{children}</h2>
 )
 
 /** The 40px round holder for a step or card icon. */

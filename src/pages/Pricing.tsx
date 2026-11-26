@@ -61,7 +61,7 @@ export default function Pricing() {
     <div className="pb-[72px] pt-[72px] md:pb-32 md:pt-32">
       <header className={container}>
         <Eyebrow>Pricing</Eyebrow>
-        <h1 className=" text-6xl font-semibold leading-[1.02] tracking-[-0.03em] md:text-7xl">
+        <h1 className="text-6xl font-[560] leading-[1.0] tracking-[-0.045em] md:text-7xl">
           {free ? 'Start free. Pay per token.' : 'Pay per token.'}
         </h1>
         <p className="mt-6 max-w-[60ch] text-xl leading-relaxed text-muted-foreground">

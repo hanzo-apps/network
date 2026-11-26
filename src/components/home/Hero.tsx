@@ -50,7 +50,7 @@ export default function Hero() {
         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       >
         <Eyebrow>Proof of AI</Eyebrow>
-        <h1 className="mx-auto max-w-[18ch] text-balance text-6xl font-semibold leading-[1.02] tracking-[-0.03em] md:text-8xl">
+        <h1 className="mx-auto max-w-[18ch] text-balance text-6xl font-[560] leading-[1.0] tracking-[-0.045em] md:text-8xl">
           Provable AI compute.
         </h1>
         <p className="mx-auto mt-6 max-w-[60ch] text-xl leading-relaxed text-muted-foreground">
