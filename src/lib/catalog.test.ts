@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { FEATURED, context, fetchModels, price, sortModels, toModel } from './catalog'
+import { FEATURED, context, fetchModels, freeModel, price, sortModels, toModel, topLabs } from './catalog'
 
 const raw = (o: object = {}) => ({
   id: 'anthropic/claude-opus-5.5',
@@ -107,5 +107,31 @@ describe('sortModels', () => {
     const copy = [...list]
     expect(sortModels(list).map((x) => x.name)).toEqual(['Zen6', 'Zen6 Max', 'Aion', 'Nova', 'Claude Haiku', 'Claude Opus'])
     expect(list).toEqual(copy)
+  })
+})
+
+describe('freeModel', () => {
+  const m = (id: string, input: number, output: number) => ({ id, name: id, lab: 'Hanzo', input, output, context: 1 })
+  it('returns hanzo/zen when it is free', () => {
+    const zen = m('hanzo/zen', 0, 0)
+    expect(freeModel([m('zen6', 0.6, 2.4), zen])).toBe(zen)
+  })
+  it('is undefined when zen is priced', () => {
+    expect(freeModel([m('hanzo/zen', 0, 1)])).toBeUndefined()
+    expect(freeModel([m('hanzo/zen', 1, 0)])).toBeUndefined()
+  })
+  it('is undefined when zen is absent, even if another model is free', () => {
+    expect(freeModel([m('other/free', 0, 0)])).toBeUndefined()
+  })
+})
+
+describe('topLabs', () => {
+  const m = (lab: string) => ({ id: Math.random() + lab, name: lab, lab, input: 1, output: 1, context: 1 })
+  it('ranks labs by model count, Hanzo first when present, ignoring blank labs', () => {
+    const list = [m('A'), m('A'), m('A'), m('B'), m('B'), m('Hanzo'), m(''), m('C')]
+    expect(topLabs(list, 3)).toEqual(['Hanzo', 'A', 'B'])
+  })
+  it('breaks ties A-Z and omits Hanzo when absent', () => {
+    expect(topLabs([m('Z'), m('Y'), m('X')], 2)).toEqual(['X', 'Y'])
   })
 })

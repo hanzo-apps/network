@@ -88,3 +88,15 @@ export const sortModels = (list: Model[]) =>
       a.lab.localeCompare(b.lab) ||
       a.name.localeCompare(b.name),
   )
+
+/** The one rule behind every "free" claim: hanzo/zen exists in the live catalog at input 0 and output 0. */
+export const freeModel = (models: Model[]) => models.find((m) => m.id === 'hanzo/zen' && m.input === 0 && m.output === 0)
+
+/** The n labs with the most models (A-Z on ties), Hanzo first when present. */
+export function topLabs(models: Model[], n: number) {
+  const count = new Map<string, number>()
+  for (const m of models) if (m.lab) count.set(m.lab, (count.get(m.lab) ?? 0) + 1)
+  const ranked = [...count].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).map(([lab]) => lab)
+  const top = ranked.slice(0, n)
+  return count.has('Hanzo') ? ['Hanzo', ...top.filter((l) => l !== 'Hanzo')].slice(0, n) : top
+}
