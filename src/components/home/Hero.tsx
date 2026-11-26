@@ -50,7 +50,7 @@ export default function Hero() {
         <h1 className="mx-auto max-w-[18ch] text-balance text-6xl font-[560] leading-[1.0] tracking-[-0.045em] md:text-8xl">
           Provable AI compute.
         </h1>
-        <p className="mx-auto mt-6 max-w-[60ch] text-xl leading-relaxed text-muted-foreground">
+        <p className="mx-auto mt-6 max-w-[60ch] text-balance text-xl leading-relaxed text-muted-foreground">
           Run any model through one API today. Providers will be paid only for work that is proved.
         </p>
         <div className="mt-10 flex flex-wrap justify-center gap-4">
