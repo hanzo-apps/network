@@ -10,7 +10,7 @@ const link = 'inline-flex min-h-11 flex-wrap items-center gap-x-2 rounded-sm und
 
 /** One label and one value. The value box is always 44px tall, so an empty one (still loading) is the same size as a full one. */
 const Cell = ({ label, children }: { label: string; children?: ReactNode }) => (
-  <div className="min-w-0 border-border px-4 py-3 text-left [&:nth-child(n+3)]:border-t max-md:[&:nth-child(even)]:border-l md:[&:nth-child(n+3)]:border-t-0 md:[&:not(:first-child)]:border-l">
+  <div className="min-w-0 border-border px-4 py-3 text-left [&:nth-child(n+3)]:border-t max-lg:[&:nth-child(even)]:border-l lg:[&:nth-child(n+3)]:border-t-0 lg:[&:not(:first-child)]:border-l">
     <dt className="font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground">{label}</dt>
     <dd className="flex min-h-11 items-center gap-2 break-words text-sm tabular-nums">{children}</dd>
   </div>
@@ -57,8 +57,8 @@ function ModelsCell() {
 /** Four facts under the hero. Chain and Models are read live; Supply cap is a design, tagged so; Status links out because that page cannot be read from a browser. */
 export default function Telemetry() {
   return (
-    <div role="group" aria-label="Network telemetry" className="mx-auto w-full max-w-[920px] overflow-hidden rounded-2xl border border-border">
-      <dl className="m-0 grid grid-cols-2 md:grid-cols-4">
+    <div role="group" aria-label="Network telemetry" className="mx-auto w-full max-w-[1040px] overflow-hidden rounded-2xl border border-border">
+      <dl className="m-0 grid grid-cols-2 lg:grid-cols-[1fr_1fr_1.6fr_1.2fr]">
         <ChainCell />
         <ModelsCell />
         <Cell label="Supply cap">

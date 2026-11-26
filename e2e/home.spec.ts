@@ -183,6 +183,46 @@ test('telemetry, loading: empty reserved boxes, no "Live", nothing unavailable, 
   expect(after.below).toBe(before.below)
 })
 
+const heights = (page: Page) => telemetry(page).locator('dt').locator('xpath=..').evaluateAll((els) => els.map((e) => Math.round(e.getBoundingClientRect().height)))
+
+for (const width of [1440, 700]) {
+  test(`telemetry at ${width}: the Designed tag sits after the supply value on one line`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 })
+    await page.goto('/')
+    const link = cell(page, 'Supply cap').getByRole('link')
+    const text = (await link.evaluate((e) => { const r = document.createRange(); r.selectNodeContents(e.firstChild!); const b = r.getBoundingClientRect(); return { x: b.right, y: b.top + b.height / 2 } }))
+    const tag = (await link.getByText('Designed', { exact: true }).boundingBox())!
+    expect(tag.x).toBeGreaterThanOrEqual(text.x)
+    expect(Math.abs(tag.y + tag.height / 2 - text.y)).toBeLessThan(6)
+  })
+}
+
+test('telemetry: the four cells are the same height, and the same in loading, live and down states', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 })
+  await page.unroute(RPC_URL)
+  await page.unroute(MODELS_URL)
+  let answer!: () => void
+  const held = new Promise<void>((r) => (answer = r))
+  await page.route(RPC_URL, async (route) => { await held; await route.fulfill({ json: { jsonrpc: '2.0', id: 1, result: '0x101039' } }) })
+  await page.route(MODELS_URL, async (route) => { await held; await route.fulfill({ path: 'e2e/fixtures/models.json', contentType: 'application/json' }) })
+  await page.goto('/')
+  await page.waitForTimeout(800)
+  const loading = await heights(page)
+  expect(new Set(loading).size).toBe(1)
+  answer()
+  await expect(cell(page, 'Models')).toContainText('Zen')
+  expect(await heights(page)).toEqual(loading)
+
+  await page.unroute(RPC_URL)
+  await page.unroute(MODELS_URL)
+  await page.route(RPC_URL, (route) => route.fulfill({ status: 503, body: 'down' }))
+  await page.route(MODELS_URL, (route) => route.fulfill({ status: 500, body: 'down' }))
+  await page.reload()
+  await expect(cell(page, 'Models')).toContainText('unavailable')
+  await expect(cell(page, 'Chain 36963')).toContainText('unavailable')
+  expect(await heights(page)).toEqual(loading)
+})
+
 test('telemetry, chain never answers: after 5 s the chain cell says unavailable', async ({ page }) => {
   await page.unroute(RPC_URL)
   await page.route(RPC_URL, () => {}) // never answers
