@@ -12,10 +12,12 @@ function Heartbeat() {
   if (chain.status === 'down') {
     return <p className="text-sm text-muted-foreground">Network status unavailable</p>
   }
+  // An empty box the chip's size while loading, so nothing jumps and nothing claims "Live" yet.
+  if (chain.status === 'loading') return <p aria-hidden className="h-10 w-[182px]" />
   const dot = 'block h-2 w-2 rounded-full bg-foreground'
   return (
     <p className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm tabular-nums">
-      {still || chain.status === 'loading' ? (
+      {still ? (
         <span className={dot} />
       ) : (
         <motion.span
@@ -27,14 +29,10 @@ function Heartbeat() {
         />
       )}
       <span className="font-medium">Live</span>
-      {/* Same width while loading, so the chip does not jump when the height arrives. */}
-      <span className="text-muted-foreground" aria-hidden={chain.status === 'loading'}>
-        {chain.status === 'live' ? `Block ${chain.height.toLocaleString('en-US')}` : <span className="invisible">Block 0,000,000</span>}
-      </span>
+      <span className="text-muted-foreground">Block {chain.height.toLocaleString('en-US')}</span>
     </p>
   )
 }
-
 
 export default function Hero() {
   const still = useReducedMotion()
@@ -48,8 +46,8 @@ export default function Hero() {
       <HeroArt />
       <motion.div
         className={`${container} relative text-center`}
-        initial={still ? false : { opacity: 0, y: 12, filter: 'blur(6px)' }}
-        animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+        initial={still ? false : { y: 12, filter: 'blur(6px)' }}
+        animate={{ y: 0, filter: 'blur(0px)' }}
         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       >
         <Eyebrow>Proof of AI</Eyebrow>

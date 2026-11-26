@@ -82,10 +82,21 @@ describe('watchChain', () => {
     expect(seen.at(-1)).toEqual({ status: 'live', height: 17 })
   })
 
-  test('a slow request cut off by the next poll is not "down"', async () => {
-    slowFetch([{ ms: 7000, result: '0x1' }, { ms: 10, result: '0x2' }])
+  test('a request that never answers is "down" after 5 s', async () => {
+    slowFetch([{ ms: 60000, result: '0x1' }])
     stop = watchChain((s) => seen.push(s))
-    await tick(6010) // second poll aborts the first, which is still waiting
+    await tick(4900)
+    expect(seen).toEqual([])
+    await tick(200)
+    expect(seen).toEqual([{ status: 'down' }])
+  })
+
+  test('a request superseded by a newer poll stays silent', async () => {
+    slowFetch([{ ms: 4000, result: '0x1' }, { ms: 10, result: '0x2' }])
+    stop = watchChain((s) => seen.push(s))
+    await tick(1000)
+    const onVisible = vi.mocked(document.addEventListener).mock.calls.find((c) => c[0] === 'visibilitychange')![1] as () => void
+    onVisible() // newer poll aborts the first
     await tick(20)
     expect(seen).toEqual([{ status: 'live', height: 2 }])
   })

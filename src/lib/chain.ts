@@ -18,19 +18,27 @@ export async function blockHeight(signal?: AbortSignal): Promise<number> {
 
 export type ChainState = { status: 'loading' } | { status: 'live'; height: number } | { status: 'down' }
 
-/** Polls the chain every 6 s while the tab is visible and reports each answer. Returns the stop function. */
+/** Polls the chain every 6 s while the tab is visible and reports each answer. A request with no answer in 5 s is "down". Returns the stop function. */
 export function watchChain(report: (s: ChainState) => void): () => void {
   let ctl: AbortController | undefined
   const poll = () => {
     if (document.visibilityState !== 'visible') return
     ctl?.abort()
     const c = (ctl = new AbortController())
-    blockHeight(c.signal).then(
-      (height) => report({ status: 'live', height }),
-      () => {
-        if (!c.signal.aborted) report({ status: 'down' })
-      },
-    )
+    let timedOut = false
+    const timer = setTimeout(() => {
+      timedOut = true
+      c.abort()
+    }, 5000)
+    blockHeight(c.signal)
+      .then(
+        (height) => report({ status: 'live', height }),
+        () => {
+          // Aborted by a newer poll: stay silent. Aborted by the timeout, or failed: down.
+          if (timedOut || !c.signal.aborted) report({ status: 'down' })
+        },
+      )
+      .finally(() => clearTimeout(timer))
   }
   poll()
   const id = setInterval(poll, 6000)

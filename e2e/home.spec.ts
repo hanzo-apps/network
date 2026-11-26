@@ -72,12 +72,14 @@ test('home shows the live network heartbeat', async ({ page }) => {
   await expect(page.getByText('1,052,729').first()).toBeVisible()
 })
 
-test('while the chain has not answered, the chip does not say unavailable', async ({ page }) => {
+test('while the chain has not answered there is no "Live"; after the timeout it says unavailable', async ({ page }) => {
   await page.unroute(RPC_URL)
   await page.route(RPC_URL, () => {}) // never answers
   await page.goto('/')
-  await expect(page.getByText('Live', { exact: true })).toBeVisible()
+  await expect(page.getByText('Live', { exact: true })).toHaveCount(0)
   await expect(page.getByText('Network status unavailable')).toHaveCount(0)
+  await expect(page.getByText('Network status unavailable')).toBeVisible({ timeout: 8000 })
+  await expect(page.getByText('Live', { exact: true })).toHaveCount(0)
 })
 
 test('when the chain is down, the chip says so', async ({ page }) => {
