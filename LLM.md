@@ -40,7 +40,9 @@ pnpm exec playwright test --grep-invert @network   # e2e on the production build
 pnpm exec playwright test --grep @network          # live-internet link check (own CI step)
 ```
 
-Tests: vitest for `src/lib` and CSS variables (`test/`); Playwright for axe (WCAG 2.2 AA), phone width, the font shipping, redirects, the heartbeat and the pause control. The home specs mock the chain, so CI never depends on it.
+Tests: vitest for `src/lib` and CSS variables (`test/`); Playwright for axe (WCAG 2.2 AA), phone width, the font shipping, redirects, the heartbeat and the still hero. The home specs mock the chain, so CI never depends on it.
+
+James's hero choices (26 Nov): no pause button; the hero picture does not react to the mouse; the art is inverted in light mode (one place); the globe sits below the words, not behind them.
 
 ## Serving chain
 
