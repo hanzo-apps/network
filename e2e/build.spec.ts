@@ -172,6 +172,14 @@ test('make a call: the shared quickstart, the chain read, and the one filled but
   await expect(page.locator('main a.bg-primary, main button.bg-primary')).toHaveCount(1)
 })
 
+test('the shared quickstart does not point at models listed "below" on a page that lists none', async ({ page }) => {
+  await open(page)
+  const call = page.locator('#call')
+  await expect(call).not.toContainText(/\bbelow\b/)
+  await expect(call).toContainText('Swap the model name to use any chat model.')
+  await expect(call).toContainText('Each request is billed per token.')
+})
+
 test('the See all prices link in the shared quickstart points at the pricing page', async ({ page }) => {
   await open(page)
   await expect(page.locator('#call').getByRole('link', { name: 'See all prices' })).toHaveAttribute('href', '/pricing#models')
