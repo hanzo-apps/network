@@ -7,6 +7,7 @@ const link = 'https://hanzo.chat/?q='
 export default function GlobalChatWidget() {
   const [open, setOpen] = useState(false)
   const [asked, setAsked] = useState('')
+  const [said, setSaid] = useState('')
   const [text, setText] = useState('')
   const opener = useRef<HTMLButtonElement>(null)
   const input = useRef<HTMLInputElement>(null)
@@ -25,6 +26,9 @@ export default function GlobalChatWidget() {
     const q = text.trim()
     if (!q) return
     setAsked(q)
+    setSaid('')
+    // Clear first so a repeated question is a change a screen reader announces again.
+    setTimeout(() => setSaid(`Opening in Hanzo Chat: ${q}`), 50)
     setText('')
   }
 
@@ -49,7 +53,7 @@ export default function GlobalChatWidget() {
           {asked && (
             <div className="flex flex-col gap-2 overflow-y-auto text-sm">
               <p className="max-w-[85%] self-end break-words rounded-lg bg-primary px-3 py-2 text-primary-foreground">{asked}</p>
-              <p role="status" className="max-w-[85%] rounded-lg border border-border px-3 py-2">
+              <p className="max-w-[85%] rounded-lg border border-border px-3 py-2">
                 Hanzo Chat will answer this.{' '}
                 <a
                   href={link + encodeURIComponent(asked)}
@@ -62,6 +66,7 @@ export default function GlobalChatWidget() {
               </p>
             </div>
           )}
+          <p role="status" className="sr-only">{said}</p>
           <form onSubmit={submit} className="flex gap-2">
             <input
               ref={input}
