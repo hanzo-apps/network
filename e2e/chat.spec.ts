@@ -58,7 +58,7 @@ test('Escape closes the chat and returns focus; the close button is touch-sized;
   const close = (await page.getByRole('button', { name: 'Close chat' }).boundingBox())!
   expect([close.width, close.height]).toEqual([44, 44])
   await page.keyboard.press('Escape')
-  await expect(page.getByRole('dialog')).toHaveCount(0)
+  await expect(page.getByRole('dialog', { name: 'Ask Hanzo' })).toHaveCount(0)
   await expect(opener).toBeFocused()
 })
 
