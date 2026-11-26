@@ -5,7 +5,7 @@ import GlobalChatWidget from "./components/GlobalChatWidget";
 import { Measure } from "./components/Measure";
 import ScrollToTop from "./components/ScrollToTop";
 import Shell from "./components/Shell";
-import { Away } from "./components/Try";
+import { Away } from "./components/Away";
 import Build from "./pages/Build";
 import Early from "./pages/Early";
 import Economics from "./pages/Economics";
