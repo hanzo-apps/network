@@ -7,14 +7,17 @@ import Section, { container, Disc, Eyebrow, H2 } from '@/components/home/Section
 import { buttonClass, textLink } from '@/components/ui/button'
 import Card from '@/components/ui/card'
 import Tag from '@/components/ui/tag'
+import { count } from '@/lib/format'
 import { MARKET_PAPER, WHITEPAPER, WHITEPAPER_PDF } from '@/lib/links'
+import { NETWORKS } from '@/lib/networks'
+import { CAP, DAO, POOL, eraCap, shortAI } from '@/lib/supply'
 
 // tsgo reads a bare JSX string as 'needs several children' for a union prop; a typed constant is the one way round it.
 
 const SUPPLY = [
-  ['2T AI', 'Maximum supply'],
-  ['1T AI', 'Hanzo DAO, fixed at genesis. It can never be mined.'],
-  ['1T AI', 'Earned by proved work, nothing else.'],
+  [shortAI(CAP), 'Maximum supply'],
+  [shortAI(DAO), 'Hanzo DAO, fixed at genesis. It can never be mined.'],
+  [shortAI(POOL), 'Earned by proved work, nothing else.'],
   ['0 AI', 'Inflation on destination chains.'],
 ] as const
 
@@ -26,6 +29,8 @@ const RULES = [
   'Every finalized receipt uses up one global nullifier.',
   "Total payouts never exceed the era's allowance.",
 ] as const
+
+const billions = (k: number) => count(eraCap(k) / 1e9)
 
 const formula = 'font-mono text-base text-foreground md:text-lg'
 
@@ -39,7 +44,7 @@ export default function Economics() {
           <span className="shrink-0">
             <Tag is="Designed" />
           </span>
-          <p className="text-base text-foreground">AI is already the native coin of chain 36963. The supply cap and mining policy on this page are designed and not active: mining stays disabled until governance fixes the parameters and the launch gates pass.</p>
+          <p className="text-base text-foreground">AI is already the native coin of chain {NETWORKS[0].chainId}. The supply cap and mining policy on this page are designed and not active: mining stays disabled until governance fixes the parameters and the launch gates pass.</p>
           <a href={WHITEPAPER_PDF} className={`${textLink} shrink-0 sm:ml-auto`}>
             Whitepaper, sections 3 and 10
           </a>
@@ -77,7 +82,7 @@ export default function Economics() {
             <Eyebrow>Halving</Eyebrow>
             <H2>Each era pays half the last.</H2>
             <p className="mt-6 max-w-[60ch] text-xl leading-relaxed text-muted-foreground">
-              The first era may emit at most 500 billion AI, the second 250 billion, the third 125 billion. An era is a fixed number of chain blocks set by governance, nominally four years.
+              {`The first era may emit at most ${billions(0)} billion AI, the second ${billions(1)} billion, the third ${billions(2)} billion. An era is a fixed number of chain blocks set by governance, nominally four years.`}
             </p>
             <div className="mt-8 rounded-xl border border-border p-4">
               <p data-formula aria-hidden className={formula}>

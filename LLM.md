@@ -15,8 +15,8 @@ The site for Hanzo Network: the blockchain for global intelligence (hanzo.networ
 src/
   App.tsx                    the five routes inside Shell (nav, footer, browser title); the chain's old paths; `*` hands off to hanzo.ai
   pages/NetworkLanding.tsx   `/`         hero + live telemetry, solutions, the six-part loop, how Proof of AI checks, gated phases, token, sources, closing
-  pages/Build.tsx            `/build`     connect an agent, network details, a first call, what builders can earn
-  pages/Economics.tsx        `/economics` the 2T cap, halving eras, fee burn, rules, an illustrative calculator
+  pages/Build.tsx            `/build`     connect an agent, network details (with the native currency), run a validator, a first call, what builders can earn
+  pages/Economics.tsx        `/economics` the 2T cap, halving eras (a bar list under 640px), fee burn, a Designed market section, rules, an illustrative calculator
   pages/Pricing.tsx          `/pricing`   live model catalog from api.hanzo.ai/v1/models
   pages/Early.tsx            `/early`     early access is invite-only; no form, no code box (see below)
   components/home/           home sections; Section.tsx holds container, Eyebrow, H2, Disc
@@ -52,7 +52,10 @@ docs/proof-of-ai.md          the Proof of AI spec: designed, not live
 - `Compare` is the one proof-versus-votes table.
 - `request.ts` is the one place a network call is made (chain, models, chat); each caller names its own deadline and the timeout never lives in a component.
 - `format.ts` is the one number formatter; `supply.ts` is the one place the supply formulas and their short forms live; the calculator and chart call them.
-- `networks.ts` is the one list of chains; /build and `llms.txt` agree with it (a unit test checks).
+- `networks.ts` is the one list of chains, with each chain's native currency (mainnet "AI"; none for testnet and devnet, which no source names); /build and `llms.txt` agree with it (a unit test checks).
+- The validator command (`hanzo chain up testnet`) is `VALIDATOR_COMMAND` in `commands.ts`; `hanzo fabric` is a deprecated alias and is never printed.
+- Numbers become text in `format.ts` (`count`, `decimals`, `significant`) and `supply.ts` (`short`, `shortAI`); components do not retype chain ids or supply figures.
+- Page heads and the first section of each page have no entrance animation (`e2e/site.spec.ts`), so the heading paints in the first frame.
 - `chat.ts` is the one place the chat endpoint is called.
 - `catalog.ts`: Home's telemetry and Pricing both call `loadModels()` (one request) and `countModels()` (one number).
 - The browser title of each route is one map in `Shell.tsx`.

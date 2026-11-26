@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import { count, decimals } from './format'
+import { count, decimals, significant } from './format'
 
 test('count groups whole numbers the en-US way', () => {
   expect(count(0)).toBe('0')
@@ -28,4 +28,13 @@ test('decimals shows up to the given places and drops trailing zeros', () => {
 
 test('decimals refuses a number that is not one', () => {
   expect(() => decimals(NaN, 2)).toThrow(RangeError)
+})
+
+test('significant keeps the first digits and drops the rest', () => {
+  expect(significant(500, 3)).toBe('500')
+  expect(significant(62.5, 3)).toBe('62.5')
+  expect(significant(7.8125, 3)).toBe('7.81')
+  expect(significant(3.90625, 3)).toBe('3.91')
+  expect(significant(1234567, 3)).toBe('1,230,000')
+  expect(() => significant(NaN, 3)).toThrow(RangeError)
 })

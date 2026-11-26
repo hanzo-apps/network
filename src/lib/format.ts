@@ -18,3 +18,9 @@ export function decimals(n: number, max: number): string {
   finite(n)
   return places(max).format(n)
 }
+
+/** A number with thousands separators rounded to `digits` significant digits: 7.8125 at 3 is "7.81". */
+export function significant(n: number, digits: number): string {
+  finite(n)
+  return new Intl.NumberFormat('en-US', { maximumSignificantDigits: digits, useGrouping: true }).format(n)
+}

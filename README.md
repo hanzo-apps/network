@@ -5,8 +5,8 @@ The site for Hanzo Network: the blockchain for global intelligence. Five routes:
 | Route | What it is |
 |---|---|
 | `/` | Hero with live chain and model counts, five solutions, the six-part loop, how Proof of AI checks work, gated phases, the token, sources |
-| `/build` | Connect an agent, network details, a first call, what builders earn today |
-| `/economics` | The 2T cap, halving eras, fee burn, and an illustrative calculator |
+| `/build` | Connect an agent, network details and currency, run a validator, a first call, what builders earn today |
+| `/economics` | The 2T cap, halving eras, fee burn, a designed market, and an illustrative calculator |
 | `/pricing` | Live per-token model prices from api.hanzo.ai |
 | `/early` | Early access is invite-only; no form, no code box yet |
 

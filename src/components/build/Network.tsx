@@ -4,6 +4,7 @@ import Reveal from '@/components/home/Reveal'
 import Card from '@/components/ui/card'
 import { CopyButton } from '@/components/ui/code'
 import { useChain } from '@/lib/chain'
+import { count } from '@/lib/format'
 import { Link } from 'react-router-dom'
 import Code from '@/components/ui/code'
 import Tag from '@/components/ui/tag'
@@ -46,7 +47,7 @@ function Block({ rpc }: { rpc: string }) {
   const s = useChain(rpc)
   return (
     <span className="inline-block min-h-6 tabular-nums">
-      {s.status === 'live' ? s.height.toLocaleString('en-US') : s.status === 'down' ? <span className="text-muted-foreground">unavailable</span> : null}
+      {s.status === 'live' ? count(s.height) : s.status === 'down' ? <span className="text-muted-foreground">unavailable</span> : null}
     </span>
   )
 }

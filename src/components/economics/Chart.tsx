@@ -1,3 +1,4 @@
+import { decimals, significant } from '@/lib/format'
 import { eraCap } from '@/lib/supply'
 
 const ERAS = 8
@@ -12,18 +13,15 @@ const MOST = eraCap(0)
 /** The seventh bar's label sits one line higher, so the three longest decimals never touch. */
 const LIFT = 15
 
-const billions = new Intl.NumberFormat('en-US', { maximumFractionDigits: 5 })
 /** An era's cap in billions of AI, exact: halving a 500 never needs more than five decimals in eight eras. */
-const inBillions = (k: number) => billions.format(eraCap(k) / 1e9)
+const inBillions = (k: number) => decimals(eraCap(k) / 1e9, 5)
 
 /** The phone list rounds to three significant digits (7.8125 reads 7.81); the table and the chart's label keep every digit. */
-const short = new Intl.NumberFormat('en-US', { maximumSignificantDigits: 3 })
-
 const eras = Array.from({ length: ERAS }, (_, k) => ({
   k,
   label: `Era ${k + 1}`,
   value: inBillions(k),
-  rounded: short.format(eraCap(k) / 1e9),
+  rounded: significant(eraCap(k) / 1e9, 3),
   share: eraCap(k) / MOST,
   height: (eraCap(k) / MOST) * PLOT,
 }))
