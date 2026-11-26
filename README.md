@@ -1,12 +1,13 @@
 # hanzo.network
 
-The site for Hanzo Network: the blockchain for global intelligence. Five routes:
+The site for Hanzo Network: the blockchain for global intelligence. Six routes:
 
 | Route | What it is |
 |---|---|
-| `/` | Hero with live chain and model counts, five solutions, the six-part loop, how Proof of AI checks work, gated phases, the token, sources |
+| `/` | Hero with live chain and model counts, five solutions, the six pillars, how Proof of AI checks work, gated phases, the token, sources |
 | `/build` | Connect an agent, network details and currency, run a validator, a first call, what builders earn today |
 | `/economics` | The 2T cap, halving eras, fee burn, a designed market, and an illustrative calculator |
+| `/ecosystem` | What exists around the network: Hanzo, Lux, community and research, each tagged by what its page showed |
 | `/pricing` | Live per-token model prices from api.hanzo.ai |
 | `/early` | Early access is invite-only; no form, no code box yet |
 
@@ -22,7 +23,7 @@ pnpm dev          # Vite dev server
 pnpm build        # production build to dist/
 pnpm typecheck && pnpm lint && pnpm test
 pnpm exec playwright test --grep-invert @network   # e2e on the production build
-pnpm links        # live-internet link check, all five routes (on demand; CI does not run it)
+pnpm links        # live-internet link check, all six routes (on demand; CI does not run it)
 ```
 
 ## Publish
@@ -35,6 +36,6 @@ Merging to `main` publishes: GitHub runs the checks, then the Sites plane serves
 - **Font:** Zen and Zen Mono from `@hanzo/font`, imported in `src/main.tsx` so Vite ships the files.
 - **Logo:** the block-H mark from `@hanzo/logo`.
 - **Colour:** pure monochrome, no accent. Dark is true black; cards are glass (`.glass`, `src/components/ui/card.tsx`).
-- **Type:** eyebrows and small tags are Zen Mono, uppercase, letter-spaced (`Eyebrow` in `src/components/home/Section.tsx`).
+- **Type:** eyebrows and small tags are Zen Mono, uppercase, letter-spaced (`Label` and `Eyebrow` in `src/components/ui/section.tsx`).
 - **Motion:** `motion` (motion/react). Everything stills under `prefers-reduced-motion`; the hero art is still and never follows the pointer.
 - **Accessibility:** WCAG 2.2 AA, checked with axe in `e2e/`.
