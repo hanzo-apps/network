@@ -38,7 +38,7 @@ export default function HeroArt({ paused }: { paused: boolean }) {
 
   return (
     <div ref={stage} aria-hidden className="pointer-events-none absolute inset-0">
-      <motion.div className="absolute inset-0" style={{ x, y, scale: 1.04 }}>
+      <motion.div className="hero-art absolute inset-0" style={{ x, y, scale: 1.04 }}>
       {posterOk && (
         <img
           src={POSTER}
@@ -63,7 +63,7 @@ export default function HeroArt({ paused }: { paused: boolean }) {
         />
       )}
       </motion.div>
-      <div className="absolute inset-0" style={{ background: 'radial-gradient(closest-side at 50% 45%, color-mix(in srgb, var(--pure-black) 75%, transparent), transparent)' }} />
+      <div className="absolute inset-0" style={{ background: 'radial-gradient(closest-side at 50% 45%, color-mix(in srgb, var(--background) 75%, transparent), transparent)' }} />
       <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-b from-transparent to-background" />
     </div>
   )

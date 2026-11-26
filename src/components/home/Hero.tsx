@@ -62,7 +62,7 @@ export default function Hero() {
   const [paused, toggle] = usePaused()
   const Icon = paused ? Play : Pause
   return (
-    <section className="room-dark relative flex min-h-[88svh] items-center overflow-hidden py-[72px] md:py-32">
+    <section className="relative flex min-h-[88svh] items-center overflow-hidden py-[72px] md:py-32">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0"

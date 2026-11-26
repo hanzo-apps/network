@@ -52,20 +52,9 @@
 /* True black on dark devices, like hanzo.ai; light keeps the tokens' own canvas. */
 :root:not(.light) { --background: var(--pure-black); }
 
-/* A room that stays dark in both modes (the hero's Earth render): Hanzo's own dark semantics,
-   restated from its raw ladders. Anything inside reads light-on-dark whatever the page theme. */
-.room-dark {
-  --background: var(--pure-black);
-  --foreground: var(--neutral-200);
-  --muted-foreground: var(--neutral-400);
-  --primary: var(--neutral-50);
-  --primary-hover: var(--neutral-200);
-  --primary-foreground: var(--neutral-950);
-  --border: var(--white-10);
-  --border-strong: var(--white-16);
-  --ring: var(--white-40);
-  color: var(--foreground);
-}
+/* Light mode flips the hero art (poster and video, one place): the black sky becomes the page's
+   light canvas and the white network becomes dark line work. */
+.light .hero-art { filter: invert(1) brightness(0.97); }
 
 @layer base {
   * { border-color: var(--border); }
