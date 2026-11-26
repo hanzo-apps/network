@@ -3,7 +3,7 @@ import Tag, { type Status } from '@/components/ui/tag'
 import { WHITEPAPER_PDF } from '@/lib/links'
 import Reveal from './Reveal'
 import Section, { Eyebrow, H2 } from './Section'
-import { textLink } from './Solutions'
+import { textLink } from '@/components/ui/button'
 
 const PHASES: { tag: Status; title: string; text: string }[] = [
   { tag: 'In progress', title: 'Arithmetic and wire freeze', text: 'Freeze the field, formats and challenge rules. The integer core, Go and Rust vectors and Solidity fixtures exist.' },
@@ -28,7 +28,7 @@ export default function Phases() {
               <Card className="flex h-full flex-col items-start p-6 lg:p-5 xl:p-6">
                 <div className="flex w-full flex-wrap items-center justify-between gap-2">
                   <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground">Phase {i}</p>
-                  <Tag>{p.tag}</Tag>
+                  <Tag is={p.tag} />
                 </div>
                 <h3 className="mt-5 text-balance text-xl font-semibold tracking-[-0.01em]">{p.title}</h3>
                 <p className="mt-3 text-base leading-relaxed text-muted-foreground">{p.text}</p>

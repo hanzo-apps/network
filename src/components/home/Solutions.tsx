@@ -1,12 +1,11 @@
 import { Link } from 'react-router-dom'
+import { textLink } from '@/components/ui/button'
 import Card from '@/components/ui/card'
 import Tag, { type Status } from '@/components/ui/tag'
 import { useCounts } from '@/lib/catalog'
 import { DOCS_AGENTS, HIP_0901, NODE_GUIDE, WHITEPAPER } from '@/lib/links'
 import Reveal from './Reveal'
 import Section, { Eyebrow, H2 } from './Section'
-
-export const textLink = 'inline-flex min-h-11 items-center rounded-sm text-base font-medium text-foreground underline underline-offset-4 hover:text-muted-foreground'
 
 type Item = { tag: Status; title: string; text: string; link: string; to: string }
 
@@ -62,7 +61,7 @@ export default function Solutions() {
           <li key={c.title} className={`${i < 3 ? 'lg:col-span-2' : 'lg:col-span-3'}`}>
             <Reveal index={i % 3} className="h-full">
               <Card className="flex h-full flex-col items-start p-6 md:p-8">
-                <Tag>{c.tag}</Tag>
+                <Tag is={c.tag} />
                 <h3 className="mt-5 text-2xl font-semibold tracking-[-0.01em]">{c.title}</h3>
                 <p className="mt-3 text-base leading-relaxed text-muted-foreground">{c.text}</p>
                 {c.to.startsWith('/') ? (

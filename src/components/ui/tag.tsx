@@ -9,7 +9,7 @@ const looks = {
 
 export type Status = keyof typeof looks
 
-/** How real a thing is today. The site's only status words. */
-export default function Tag({ children }: { children: Status }) {
-  return <span className={looks[children]}>{children}</span>
+/** How real a thing is today. The site's only status words: <Tag is="Designed" />. */
+export default function Tag({ is }: { is: Status }) {
+  return <span className={looks[is]}>{is}</span>
 }

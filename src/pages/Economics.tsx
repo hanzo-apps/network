@@ -4,14 +4,12 @@ import Calculator from '@/components/economics/Calculator'
 import Chart from '@/components/economics/Chart'
 import Reveal from '@/components/home/Reveal'
 import Section, { container, Disc, Eyebrow, H2 } from '@/components/home/Section'
-import { textLink } from '@/components/home/Solutions'
-import { buttonClass } from '@/components/ui/button'
+import { buttonClass, textLink } from '@/components/ui/button'
 import Card from '@/components/ui/card'
-import Tag, { type Status } from '@/components/ui/tag'
+import Tag from '@/components/ui/tag'
 import { WHITEPAPER, WHITEPAPER_PDF } from '@/lib/links'
 
 // tsgo reads a bare JSX string as 'needs several children' for a union prop; a typed constant is the one way round it.
-const designed: Status = 'Designed'
 
 const SUPPLY = [
   ['2T AI', 'Maximum supply'],
@@ -39,7 +37,7 @@ export default function Economics() {
         <h1 className="text-6xl font-[560] leading-[1.0] tracking-[-0.045em] md:text-7xl">A hard cap of two trillion AI.</h1>
         <div data-notice className="mt-8 flex flex-col gap-3 rounded-xl border border-border-strong p-4 sm:flex-row sm:items-center sm:gap-4 md:p-5">
           <span className="shrink-0">
-            <Tag>{designed}</Tag>
+            <Tag is="Designed" />
           </span>
           <p className="text-base text-foreground">Not active. Mining and this supply policy stay disabled until governance fixes the parameters and the launch gates pass.</p>
           <a href={WHITEPAPER_PDF} className={`${textLink} shrink-0 sm:ml-auto`}>

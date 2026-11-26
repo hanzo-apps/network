@@ -2,7 +2,7 @@ import Tag, { type Status } from '@/components/ui/tag'
 import { DOCS_AGENTS, EXPLORER, HIP_0901, HIP_1334, NODE_GUIDE, WORK } from '@/lib/links'
 import Reveal from './Reveal'
 import Section, { Disc, Eyebrow, H2 } from './Section'
-import { textLink } from './Solutions'
+import { textLink } from '@/components/ui/button'
 
 const PILLARS: { tag: Status; title: string; text: string; link: string; href: string }[] = [
   { tag: 'Live', title: 'Nodes that do paid work', text: 'A node enrolls, advertises tools and agents, runs requests and is paid per job in stablecoins.', link: 'Node operator guide', href: NODE_GUIDE },
@@ -87,7 +87,7 @@ export default function Pillars() {
                 <div className="min-w-0 flex-1">
                   <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
                     <h3 className="text-xl font-semibold tracking-[-0.01em]">{p.title}</h3>
-                    <Tag>{p.tag}</Tag>
+                    <Tag is={p.tag} />
                   </div>
                   <p className="mt-2 text-base leading-relaxed text-muted-foreground">{p.text}</p>
                   <a href={p.href} className={`${textLink} text-sm`}>{p.link}</a>

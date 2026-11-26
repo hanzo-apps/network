@@ -1,13 +1,11 @@
 import type { ReactNode } from 'react'
 import { motion, useReducedMotion } from 'motion/react'
 import { Link } from 'react-router-dom'
-import Tag, { type Status } from '@/components/ui/tag'
+import Tag from '@/components/ui/tag'
 import { useChain } from '@/lib/chain'
 import { useCounts } from '@/lib/catalog'
 import { STATUS } from '@/lib/links'
 
-// A typed const: a JSX text child is a plain string, which Tag's one-status-word type refuses (TS2745).
-const designed: Status = 'Designed'
 const link = 'inline-flex min-h-11 flex-wrap items-center gap-x-2 rounded-sm underline-offset-4 hover:underline'
 
 /** One label and one value. The value box is always 44px tall, so an empty one (still loading) is the same size as a full one. */
@@ -66,7 +64,7 @@ export default function Telemetry() {
         <Cell label="Supply cap">
           <Link to="/economics" className={link}>
             2T AI · 500B era 1
-            <Tag>{designed}</Tag>
+            <Tag is="Designed" />
           </Link>
         </Cell>
         <Cell label="Status">

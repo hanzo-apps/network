@@ -42,7 +42,7 @@ export default function Earn() {
           <li key={c.title}>
             <Reveal index={i} className="h-full">
               <Card className="flex h-full flex-col items-start p-6">
-                <Tag>{c.tag}</Tag>
+                <Tag is={c.tag} />
                 <h3 className="mt-4 text-xl font-semibold">{c.title}</h3>
                 <p className="mt-2 text-muted-foreground">{c.text}</p>
                 <a href={c.href} className="mt-6 inline-flex min-h-11 items-center text-foreground underline underline-offset-4">

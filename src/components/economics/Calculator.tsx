@@ -1,11 +1,10 @@
 import { useId, useState } from 'react'
 import Card from '@/components/ui/card'
-import Tag, { type Status } from '@/components/ui/tag'
+import Tag from '@/components/ui/tag'
 import { H2 } from '@/components/home/Section'
 import { ERA_YEARS, POOL, allowance, eraCap, netChange, position, signed, whole } from '@/lib/supply'
 
 // tsgo reads a bare JSX string as 'needs several children' for a union prop; a typed constant is the one way round it.
-const designed: Status = 'Designed'
 
 /** A whole number in a range, held two ways: the slider's value, and the text being typed (which may be wrong for a moment). */
 function useWhole(min: number, max: number) {
@@ -110,7 +109,7 @@ export default function Calculator() {
     <>
       <H2>Try the numbers.</H2>
       <div className="mt-4">
-        <Tag>{designed}</Tag>
+        <Tag is="Designed" />
       </div>
       <Card className="mt-8 p-4 md:p-8">
         <p data-notice className="rounded-xl border border-border-strong p-4 text-base text-foreground">

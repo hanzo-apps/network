@@ -1,13 +1,12 @@
 import { motion, useReducedMotion } from 'motion/react'
 import { Link } from 'react-router-dom'
 import Card from '@/components/ui/card'
-import Tag, { type Status } from '@/components/ui/tag'
+import Tag from '@/components/ui/tag'
 import { WHITEPAPER_PDF } from '@/lib/links'
 import Reveal from './Reveal'
 import Section, { Eyebrow, H2 } from './Section'
-import { textLink } from './Solutions'
+import { textLink } from '@/components/ui/button'
 
-const designed: Status = 'Designed'
 
 const FIGURES = [
   { value: '2T AI', label: 'Maximum supply' },
@@ -37,7 +36,7 @@ export default function Token() {
     <Section glow>
       <div className="grid gap-12 lg:grid-cols-[5fr_7fr] lg:gap-16">
         <Reveal>
-          <Eyebrow>The AI token<span className="ml-3 align-middle"><Tag>{designed}</Tag></span></Eyebrow>
+          <Eyebrow>The AI token<span className="ml-3 align-middle"><Tag is="Designed" /></span></Eyebrow>
           <H2>Compute once. Earn twice.</H2>
           <p className="mt-4 text-xl text-foreground">Providers keep the customer fee and, once Proof of AI is live, also earn AI.</p>
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">

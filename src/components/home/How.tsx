@@ -6,7 +6,7 @@ import Card from '@/components/ui/card'
 import { WHITEPAPER_PDF } from '@/lib/links'
 import Reveal from './Reveal'
 import Section, { Disc, Eyebrow, H2 } from './Section'
-import { textLink } from './Solutions'
+import { textLink } from '@/components/ui/button'
 
 const math = 'whitespace-nowrap font-mono text-[0.9em] text-foreground'
 

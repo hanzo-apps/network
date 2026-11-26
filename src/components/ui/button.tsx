@@ -11,3 +11,6 @@ const variants = {
 
 /** The one button style. Put it on an <a> or a <button>. */
 export const buttonClass = (variant: keyof typeof variants = 'primary') => variants[variant]
+
+/** The one inline text link: underlined, 44px tall to touch. */
+export const textLink = 'inline-flex min-h-11 items-center rounded-sm text-base font-medium text-foreground underline underline-offset-4 hover:text-muted-foreground'

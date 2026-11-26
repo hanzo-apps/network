@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom'
 import Section, { container, Eyebrow, H2 } from '@/components/home/Section'
-import { textLink } from '@/components/home/Solutions'
 import Reveal from '@/components/home/Reveal'
-import { buttonClass } from '@/components/ui/button'
+import { buttonClass, textLink } from '@/components/ui/button'
 import Card from '@/components/ui/card'
 import { DISCORD, NODE_GUIDE, X } from '@/lib/links'
 

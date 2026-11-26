@@ -1,4 +1,4 @@
-import Tag, { type Status } from '@/components/ui/tag'
+import Tag from '@/components/ui/tag'
 import { WHITEPAPER_PDF } from '@/lib/links'
 
 const ROWS = [
@@ -8,14 +8,13 @@ const ROWS = [
   ['Idle hardware is paid for existing.', 'A raw GPU-hour earns nothing.'],
 ] as const
 
-const designed: Status = 'Designed'
 const HEADS = ['Other approaches', 'Proof of AI'] as const
 
 /** Proof of AI against the other ways to reward AI work. One table, shared by the home page and /economics. */
 export default function Compare() {
   return (
     <div>
-      <Tag>{designed}</Tag>
+      <Tag is="Designed" />
       <h3 className="mt-4 text-3xl font-semibold tracking-[-0.01em]">Why proof beats votes.</h3>
       <table className="mt-6 w-full border-collapse text-left text-base leading-relaxed">
         <caption className="sr-only">Other approaches to rewarding AI work, compared with Proof of AI</caption>
