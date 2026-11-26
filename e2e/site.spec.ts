@@ -40,9 +40,10 @@ for (const path of PAGES) {
 
 for (const path of ['/team', '/zen', '/contact', '/blockchain', '/dashboard']) {
   test(`${path} redirects to hanzo.ai`, async ({ page }) => {
+    // Our job ends at the hand-off: hanzo.ai may send on (e.g. /dashboard → /signup when signed out).
+    const handoff = page.waitForRequest((r) => r.isNavigationRequest() && r.url().startsWith('https://hanzo.ai/'))
     await page.goto(path)
-    await page.waitForURL(/^https:\/\/hanzo\.ai\//)
-    expect(new URL(page.url()).pathname.replace(/\/$/, '')).toBe(path)
+    expect(new URL((await handoff).url()).pathname.replace(/\/$/, '')).toBe(path)
   })
 }
 
