@@ -48,7 +48,16 @@ claude mcp add --transport http hanzo-cloud https://api.hanzo.ai/v1/mcp
 |---|---|---|---|
 | RPC | https://api.hanzo.network/v1/bc/hanzo/rpc | https://api.hanzo-test.network/v1/bc/hanzo/rpc | Local: `hanzod --network devnet` (needs a committee file, see https://github.com/hanzoai/node) |
 | Chain ID | 36963 | 36962 | 36964 |
+| Currency | AI | none | none |
 | Explorer | https://explore.hanzo.network | none | none |
+
+AI is the chain's native coin. The 2 trillion cap and mining policy are designed and not active (see Economics below).
+
+Run a validator (In progress). This opts the machine in: hanzod fetches, verifies and starts the chain as a child process. It works with mainnet, testnet or devnet; `hanzo chain status` shows where it stands and `hanzo chain down` opts out. Mining rewards stay off until the launch gates pass.
+
+```bash
+hanzo chain up testnet
+```
 
 - [Network docs](https://docs.hanzo.ai/docs/network): What the network is and how to connect.
 - [Node operator guide](https://docs.hanzo.ai/docs/proof-of-ai/node-operator): What a node does today and what is roadmap.
@@ -74,6 +83,12 @@ curl -s -X POST https://api.hanzo.network/v1/bc/hanzo/rpc -H 'content-type: appl
 - [API keys](https://platform.hanzo.ai/api-keys): Sign in with a Hanzo account and create a key.
 - [Pricing](https://hanzo.network/pricing): Per-token prices for every model billed per token, read live from the API.
 
+## How Proof of AI checks
+
+Designed, not active. About 95% of a model's forward pass is matrix multiplication, C = A*B. Redoing it costs cubic work. Checking it does not. After the provider commits C, the chain draws a random vector r, and an ordinary CPU checks A(Br) = Cr in quadratic work. A wrong product slips through with probability at most 1/p per vector, where p = 2^61 - 1; two vectors bring that to at most 2^-122. The committed trace frontier is about 768 bytes. This proves each opened product; it does not by itself prove a whole model, and sampling covers the rest.
+
+The Proof of AI paper and the related-work section are under Sources.
+
 ## Solutions
 
 - [Verifiable inference](https://hanzo.network/build): Designed. Call models through one OpenAI-compatible API today; Proof of AI receipts are designed for open models such as Zen and are not switched on.
@@ -85,10 +100,14 @@ curl -s -X POST https://api.hanzo.network/v1/bc/hanzo/rpc -H 'content-type: appl
 ## Status of the network
 
 - Live: chain 36963, the OpenAI-compatible API at api.hanzo.ai, and nodes that run tools and agents and are paid per job in stablecoins.
+- hanzod is one Rust daemon per machine: local inference, Dev, Bot and Team backends and an optional validator. Today a node runs tools and agents and is paid per job in stablecoins.
+- Blocks are produced on chain 36963 today, with a post-quantum handshake and ML-DSA validator identities. Post-quantum finality is designed and audit-gated.
 - Designed, not active: Proof of AI mining, the 2T AI supply policy and P3Q settlement. Mining stays disabled until the launch gates in the whitepaper pass.
 - [Status page](https://status.hanzo.network): Hanzo's platform status; it does not monitor the chain RPC.
 
 ## Economics
+
+AI is already the native coin of chain 36963. The supply cap and mining policy below are designed and not active: mining stays disabled until governance fixes the parameters and the launch gates pass.
 
 Designed in the whitepaper and not active:
 
@@ -97,6 +116,7 @@ Designed in the whitepaper and not active:
 - Earned by proved work, nothing else: 1T AI, in halving eras.
 - Era caps: the first era may emit at most 500B AI, the second 250B, the third 125B, and so on.
 - Fee burn: Delta S = issuance - beta * fees, where beta is the governed share of settled protocol fees that is burned. Beta is not set yet.
+- Market (Designed): compute pricing is designed around a market maker that conserves one quantity as supply and demand move: H(Psi,Theta) = Psi*Theta = kappa, where Psi and Theta are the two sides of the pool and kappa stays constant. It is a design; no market contract is deployed. The source is under Sources.
 - [Economics on hanzo.network](https://hanzo.network/economics): The supply, the halving eras and the burn, with an illustrative calculator.
 
 ## Sources
@@ -104,6 +124,9 @@ Designed in the whitepaper and not active:
 - [Hanzo AI Chain whitepaper](https://papers.hanzo.ai/hanzo-ai-chain/): The design: Proof of AI, supply and activation gates (working draft, 18 Aug 2026).
 - [Whitepaper PDF](https://papers.hanzo.ai/pdfs/hanzo-ai-chain.pdf): The full text; section numbers on this site refer to it.
 - [HIP-0901](https://hips.hanzo.ai/docs/hip-0901-proof-of-ai-native-execution-proofs): Proof of AI, native execution proofs; a draft proposal.
+- [Proof of AI paper](https://papers.hanzo.ai/pdfs/hanzo-proof-of-ai.pdf): The design and its soundness bounds.
+- [Related work](https://github.com/hanzoai/papers/blob/main/hanzo-consensus-ai/sections/09-related-work.tex): How Hanzo's design contrasts with validator-voted networks.
+- [Market maker design](https://github.com/hanzoai/papers/blob/main/sections/hmm.tex): Draft.
 - [Proof of AI explainer](https://hanzo.blog/proof-of-ai/): The plain-words introduction on the Hanzo blog.
 - [Node operator guide](https://docs.hanzo.ai/docs/proof-of-ai/node-operator): What a node does today and what is roadmap.
 - [Explorer](https://explore.hanzo.network): The Hanzo Network block explorer.

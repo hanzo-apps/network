@@ -1,8 +1,8 @@
 import { readFileSync } from 'node:fs'
 import { describe, expect, it } from 'vitest'
-import { COMMANDS, CHAIN_CURL, CURL_QUICKSTART, DEVNET_COMMAND } from '../components/build/commands'
+import { COMMANDS, CHAIN_CURL, CURL_QUICKSTART, DEVNET_COMMAND, VALIDATOR_COMMAND } from '../components/build/commands'
 import { NETWORKS } from './networks'
-import { RPC_MAINNET, RPC_TESTNET } from './links'
+import { MARKET_PAPER, POAI_PDF, RELATED_WORK, RPC_MAINNET, RPC_TESTNET } from './links'
 import { solutions } from './solutions'
 
 const llms = readFileSync('public/llms.txt', 'utf8')
@@ -20,6 +20,14 @@ describe('NETWORKS', () => {
     expect(NETWORKS.map((n) => n.rpc)).toEqual([RPC_MAINNET, RPC_TESTNET, null])
     expect(RPC_MAINNET).toBe('https://api.hanzo.network/v1/bc/hanzo/rpc')
     expect(RPC_TESTNET).toBe('https://api.hanzo-test.network/v1/bc/hanzo/rpc')
+  })
+
+  it('names the native coin of mainnet (the explorer config says AI) and none for testnet or devnet, which no source states', () => {
+    expect(NETWORKS.map((n) => [n.name, n.currency])).toEqual([
+      ['Mainnet', 'AI'],
+      ['Testnet', null],
+      ['Devnet', null],
+    ])
   })
 
   it('uses the hex chain id the RPC answers with', () => {
@@ -40,6 +48,11 @@ describe('commands', () => {
     expect(JSON.parse(COMMANDS[2].text)).toEqual({ mcpServers: { hanzo: { command: 'npx', args: ['-y', 'hanzo', 'mcp'] } } })
   })
 
+  it('opts a machine in with hanzo chain, never the deprecated alias', () => {
+    expect(VALIDATOR_COMMAND).toBe('hanzo chain up testnet')
+    expect(VALIDATOR_COMMAND).not.toMatch(/fabric/)
+  })
+
   it('reads the chain with the mainnet RPC and eth_blockNumber', () => {
     expect(CHAIN_CURL).toContain(RPC_MAINNET)
     expect(CHAIN_CURL).toContain('"method":"eth_blockNumber"')
@@ -54,7 +67,7 @@ describe('commands', () => {
 describe('public/llms.txt', () => {
   it('has the shape of docs.base.org/llms.txt', () => {
     expect(llms.startsWith('# Hanzo Network\n')).toBe(true)
-    for (const h of ['## Agent Instructions', '## Connect your agent', '## Network details', '## Solutions', '## Status of the network', '## Economics', '## Sources']) {
+    for (const h of ['## Agent Instructions', '## Connect your agent', '## Network details', '## How Proof of AI checks', '## Solutions', '## Status of the network', '## Economics', '## Sources']) {
       expect(llms).toContain(h)
     }
   })
@@ -67,7 +80,16 @@ describe('public/llms.txt', () => {
   })
 
   it('contains every command the build page prints, character for character', () => {
-    for (const text of [...COMMANDS.map((c) => c.text), CHAIN_CURL, CURL_QUICKSTART, DEVNET_COMMAND]) expect(llms).toContain(text)
+    for (const text of [...COMMANDS.map((c) => c.text), CHAIN_CURL, CURL_QUICKSTART, DEVNET_COMMAND, VALIDATOR_COMMAND]) expect(llms).toContain(text)
+  })
+
+  it('carries the currency row, the validator steps and the three paper links', () => {
+    expect(llms).toContain('| Currency | AI | none | none |')
+    expect(llms).toContain('hanzo chain status')
+    expect(llms).toContain('hanzo chain down')
+    for (const url of [POAI_PDF, RELATED_WORK, MARKET_PAPER]) expect(llms).toContain(`](${url})`)
+    expect(llms).toContain('2^61 - 1')
+    expect(llms).toContain('2^-122')
   })
 
   it('is plain ASCII and never points at the redirect page or the unsupported command', () => {
