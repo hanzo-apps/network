@@ -97,3 +97,12 @@ test('the page switches when the device does', async ({ page }) => {
   await page.emulateMedia({ colorScheme: 'light' })
   await expect(page.locator('html')).toHaveClass(/light/)
 })
+
+// Route audit, 26 Nov: /original was an old copy of the home page and hanzo.ai has no such page (404), so the old home aliases stay here.
+for (const path of ['/original', '/index', '/home2']) {
+  test(`${path} lands on this site's home, not a hanzo.ai 404`, async ({ page }) => {
+    await page.goto(path)
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText('Provable AI compute.')
+    expect(new URL(page.url()).pathname).toBe('/')
+  })
+}

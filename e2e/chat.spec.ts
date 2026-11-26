@@ -14,12 +14,13 @@ test('chat is one form that opens hanzo.chat with the question, and calls no API
   await expect(box).toHaveAttribute('name', 'q')
   await expect(box).toHaveAttribute('required', '')
   await box.fill(question)
-  const [popup] = await Promise.all([
-    page.waitForEvent('popup'),
+  // The new tab's first request is the hand-off itself; it is aborted above, so nothing reaches hanzo.chat.
+  const [handoff] = await Promise.all([
+    context.waitForEvent('request', (r) => r.url().startsWith('https://hanzo.chat/')),
     page.getByRole('button', { name: 'Ask in Hanzo Chat (opens in a new tab)' }).click(),
   ])
-  expect(popup.url().startsWith('https://hanzo.chat/?q=')).toBe(true)
-  expect(popup.url()).toContain(encodeURIComponent(question).replace(/%20/g, '+'))
+  expect(handoff.url().startsWith('https://hanzo.chat/?q=')).toBe(true)
+  expect(handoff.url()).toContain(encodeURIComponent(question).replace(/%20/g, '+'))
   expect(apiCalls).toEqual([])
 })
 

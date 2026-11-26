@@ -55,7 +55,7 @@ export default function GlobalChatWidget() {
         type="button"
         aria-label="Open chat"
         onClick={() => setOpen(true)}
-        className="relative grid h-14 w-14 place-items-center rounded-full border border-border-strong bg-background text-foreground"
+        className="relative grid h-14 w-14 place-items-center rounded-full bg-primary text-primary-foreground"
       >
         <span aria-hidden="true" className="absolute inset-0 animate-ping [animation-iteration-count:3] rounded-full bg-foreground opacity-20" />
         <HanzoLogo variant="current" size={20} aria-hidden="true" className="relative" />

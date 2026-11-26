@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Navigate, Routes, Route, useLocation } from "react-router-dom";
 import GlobalChatWidget from "./components/GlobalChatWidget";
 import ScrollToTop from "./components/ScrollToTop";
 import Shell from "./components/Shell";
@@ -24,6 +24,10 @@ const App = () => (
         <Route path="/" element={<NetworkLanding />} />
         <Route path="/pricing" element={<Pricing />} />
       </Route>
+      {/* Old copies of this site's own home page; hanzo.ai has no /original (route audit, 26 Nov). */}
+      {["/index", "/home2", "/original"].map((path) => (
+        <Route key={path} path={path} element={<Navigate to="/" replace />} />
+      ))}
       <Route path="*" element={<ToHanzo />} />
     </Routes>
     <GlobalChatWidget />

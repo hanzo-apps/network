@@ -9,7 +9,7 @@ const STEPS = [
   { name: 'Admit', term: 'A-Chain', Icon: FileCheck2, text: 'The job and its reward are fixed before it runs.' },
   { name: 'Execute', term: 'Provider', Icon: Cpu, text: 'A provider runs the job and commits the exact output.' },
   { name: 'Validate', term: 'CPU-verifiable', Icon: ShieldCheck, text: 'Ordinary CPUs check the work cheaply. Private jobs can add a secure enclave.' },
-  { name: 'Settle', term: 'Z-Chain and Lux', Icon: Landmark, text: 'The receipt is rolled up on Z-Chain and paid on any chain via Lux.' },
+  { name: 'Settle', term: 'Z-Chain and Lux', Icon: Landmark, text: 'The receipt is rolled up on Z-Chain and paid out via Lux on the chain you choose.' },
 ]
 
 /** A step lights when the job dot enters its quarter of the track. */
@@ -59,6 +59,7 @@ export default function How() {
       <Reveal>
         <Eyebrow>How it works</Eyebrow>
         <H2>Four steps from job to payout.</H2>
+        <p className="mt-4 max-w-[60ch] text-xl leading-relaxed text-muted-foreground">How Proof of AI is designed to work. Rewards switch on after its audits.</p>
       </Reveal>
       <div className="relative mt-12 md:mt-16">
         <div ref={track} aria-hidden className="absolute bottom-0 left-0 top-0 w-px bg-foreground/10 md:bottom-auto md:right-0 md:h-px md:w-auto">

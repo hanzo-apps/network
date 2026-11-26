@@ -133,7 +133,8 @@ test('home makes no claim the sources do not back', async ({ page }) => {
   await page.goto('/')
   await expect(page.getByText(/open[- ]source/i)).toHaveCount(0)
   await expect(page.getByText(/run on the network/i)).toHaveCount(0)
-  await expect(page.getByText(/any chain/i)).toHaveCount(0)
+  await expect(page.getByText(/any chain/i)).toHaveCount(0) // the old 'Any chain' token card and present-tense payout claims
+  await expect(page.getByText('How Proof of AI is designed to work.', { exact: false })).toBeVisible()
 })
 
 test('the hero says one thing: no eyebrow, no strip, a live chain chip', async ({ page }) => {
@@ -142,12 +143,20 @@ test('the hero says one thing: no eyebrow, no strip, a live chain chip', async (
   await expect(hero.getByText('Run any model through one API today. Providers will be paid only for work that is proved.')).toBeVisible()
   await expect(hero.getByText('Proof of AI', { exact: true })).toHaveCount(0)
   await expect(hero.locator('ul')).toHaveCount(0)
-  await expect(hero.getByText('Live · Hanzo chain · block 1,052,729')).toBeVisible()
+  await expect(hero.locator('p').filter({ hasText: 'Hanzo chain' })).toHaveText(/Live\s*·\s*Hanzo chain · block 1,052,729/)
 })
 
 test('the headline enters without blur', async ({ page }) => {
+  await page.clock.install() // time stands still, so we see the very first frame of the entrance
   await page.goto('/')
-  expect(await page.getByRole('heading', { level: 1 }).evaluate((el) => getComputedStyle(el).filter)).toBe('none')
+  const h1 = page.getByRole('heading', { level: 1 })
+  await expect(h1).toBeVisible()
+  // The blur sat on the block around the headline, so check the headline and every box it sits in.
+  const blur = await h1.evaluate((el) => {
+    for (let e: Element | null = el; e; e = e.parentElement) if (getComputedStyle(e).filter !== 'none') return getComputedStyle(e).filter
+    return 'none'
+  })
+  expect(blur).toBe('none')
 })
 
 test('the provider path is a real next step', async ({ page }) => {
@@ -157,6 +166,7 @@ test('the provider path is a real next step', async ({ page }) => {
   await expect(page.getByText(/payout to the chain/i)).toHaveCount(0)
 })
 
+// Page buttons only: the floating chat launcher is a filled H mark by design, like hanzo.ai's (James liked it).
 test('one filled button in the first viewport at 1440 light', async ({ page }) => {
   await page.emulateMedia({ colorScheme: 'light' })
   await page.setViewportSize({ width: 1440, height: 900 })
@@ -167,7 +177,7 @@ test('one filled button in the first viewport at 1440 light', async ({ page }) =
     document.body.append(probe)
     const primary = getComputedStyle(probe).backgroundColor
     probe.remove()
-    return [...document.querySelectorAll('a, button')].filter((el) => {
+    return [...document.querySelectorAll('header a, header button, main a, main button')].filter((el) => {
       const r = el.getBoundingClientRect()
       return r.width > 0 && r.top < innerHeight && r.bottom > 0 && getComputedStyle(el).backgroundColor === primary
     }).length
