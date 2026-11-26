@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test'
-import { serveChain, serveModels } from './helpers'
+import { CHAT_URL, MODELS_URL, RPC_TESTNET_URL, serveChain, serveModels } from './helpers'
 
 // Nothing here may depend on the live chain or the live catalog (the link check below is the one @network test).
 test.beforeEach(async ({ page }) => {
@@ -158,4 +158,63 @@ test('/pricing is still there', async ({ page }) => {
   await page.goto('/pricing')
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
   expect(new URL(page.url()).pathname).toBe('/pricing')
+})
+
+test('home and pricing share one models request and show the same count', async ({ page }) => {
+  let asked = 0
+  await page.unroute(MODELS_URL)
+  await page.route(MODELS_URL, (route) => {
+    asked++
+    return route.fulfill({ path: 'e2e/fixtures/models.json', contentType: 'application/json' })
+  })
+  await page.goto('/')
+  const models = page.getByRole('group', { name: 'Network telemetry' }).locator('div', { hasText: 'Models' }).locator('dd').first()
+  await expect(models).toContainText('Zen')
+  const onHome = Number((await models.innerText()).split('·')[0].replace(/,/g, ''))
+  await page.getByRole('link', { name: 'Pricing', exact: true }).first().click() // in-app: the page does not reload
+  await expect(page).toHaveURL(/\/pricing$/)
+  await expect(page.getByText('models, live')).toBeVisible()
+  const onPricing = Number((await page.getByText('models, live').locator('xpath=preceding-sibling::p').innerText()).replace(/,/g, ''))
+  await page.waitForLoadState('networkidle')
+  expect(asked).toBe(1)
+  expect(onPricing).toBe(onHome)
+})
+
+const TITLES = {
+  '/': 'Hanzo Network: the blockchain for global intelligence',
+  '/build': 'Build on Hanzo Network',
+  '/economics': 'Economics of the AI token · Hanzo Network',
+  '/pricing': 'Pricing · Hanzo Network',
+  '/early': 'Early access · Hanzo Network',
+} as const
+
+for (const [path, title] of Object.entries(TITLES)) {
+  test(`${path} has its own browser title`, async ({ page }) => {
+    await page.goto(path)
+    await expect(page).toHaveTitle(title)
+  })
+}
+
+test('the browser title follows an in-app move between pages', async ({ page }) => {
+  await page.goto('/')
+  await page.getByRole('link', { name: 'Build', exact: true }).first().click()
+  await expect(page).toHaveTitle(TITLES['/build'])
+  await page.getByRole('link', { name: 'Economics', exact: true }).first().click()
+  await expect(page).toHaveTitle(TITLES['/economics'])
+})
+
+test('no page logs a console error or throws, with the network mocked', async ({ page }) => {
+  const problems: string[] = []
+  page.on('console', (m) => m.type() === 'error' && problems.push(`console.error: ${m.text()}`))
+  page.on('pageerror', (e) => problems.push(`uncaught: ${e.message}`))
+  await page.route((url) => url.hostname !== 'localhost', (route) => route.fulfill({ status: 204 }))
+  await serveChain(page)
+  await serveChain(page, RPC_TESTNET_URL)
+  await serveModels(page)
+  await page.route(CHAT_URL, (route) => route.fulfill({ json: { choices: [{ message: { content: 'Hello.' } }] } }))
+  for (const path of Object.keys(TITLES)) {
+    await page.goto(path)
+    await page.waitForLoadState('networkidle')
+  }
+  expect(problems).toEqual([])
 })

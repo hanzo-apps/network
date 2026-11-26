@@ -4,6 +4,7 @@ import AxeBuilder from '@axe-core/playwright'
 export const MODELS_URL = 'https://api.hanzo.ai/v1/models'
 export const CHAT_URL = 'https://api.hanzo.ai/v1/chat/public'
 export const RPC_URL = 'https://api.hanzo.network/v1/bc/hanzo/rpc'
+export const RPC_TESTNET_URL = 'https://api.hanzo-test.network/v1/bc/hanzo/rpc'
 
 export const serveModels = (page: Page) =>
   page.route(MODELS_URL, (route) => route.fulfill({ path: 'e2e/fixtures/models.json', contentType: 'application/json' }))

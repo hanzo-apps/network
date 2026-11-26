@@ -6,7 +6,7 @@ import Glow from '@/components/pricing/Glow'
 import Start from '@/components/pricing/Start'
 import { container, Eyebrow, H2 } from '@/components/home/Section'
 import { NODE_GUIDE, PLANS } from '@/lib/links'
-import { FEATURED, featured, isZenFeatured, fetchModels, freeModel, group, perToken, sortModels, type Model } from '@/lib/catalog'
+import { FEATURED, countModels, featured, isZenFeatured, loadModels, freeModel, group, perToken, sortModels, type Model } from '@/lib/catalog'
 
 const section = `${container} mt-24 md:mt-32`
 
@@ -43,11 +43,14 @@ export default function Pricing() {
   const [attempt, setAttempt] = useState(0)
 
   useEffect(() => {
-    const ctl = new AbortController()
-    fetchModels(ctl.signal)
-      .then((models) => setState({ models }))
-      .catch(() => ctl.signal.aborted || setState({ error: true }))
-    return () => ctl.abort()
+    let gone = false
+    loadModels().then(
+      (models) => gone || setState({ models }),
+      () => gone || setState({ error: true }),
+    )
+    return () => {
+      gone = true
+    }
   }, [attempt])
 
   const retry = useCallback(() => {
@@ -73,7 +76,7 @@ export default function Pricing() {
           Pay only for the tokens you use. Every price comes live from api.hanzo.ai.
         </p>
         <ul className="mt-8 grid max-w-md grid-cols-2 gap-4">
-          {rows ? <Stat big={String(rows.length)} small="models, live" /> : <Stat still={!!state} />}
+          {all ? <Stat big={String(countModels(all).models)} small="models, live" /> : <Stat still={!!state} />}
           {free ? <Stat big="$0" small="to call Zen" /> : <Stat still={!!state} />}
         </ul>
         <p className="mt-4 text-sm text-muted-foreground">

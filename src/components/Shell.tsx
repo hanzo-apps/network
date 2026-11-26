@@ -1,9 +1,23 @@
-import { Outlet } from 'react-router-dom'
+import { useEffect } from 'react'
+import { Outlet, useLocation } from 'react-router-dom'
 import Footer from './Footer'
 import Nav from './Nav'
 
-/** The page frame both routes share: skip link, nav, content, footer. */
+/** The browser title of each page. */
+const TITLES: Record<string, string> = {
+  '/': 'Hanzo Network: the blockchain for global intelligence',
+  '/build': 'Build on Hanzo Network',
+  '/economics': 'Economics of the AI token · Hanzo Network',
+  '/pricing': 'Pricing · Hanzo Network',
+  '/early': 'Early access · Hanzo Network',
+}
+
+/** The page frame every route shares: skip link, nav, content, footer. Sets the browser title. */
 export default function Shell() {
+  const { pathname } = useLocation()
+  useEffect(() => {
+    document.title = TITLES[pathname] ?? TITLES['/']
+  }, [pathname])
   return (
     <>
       <a
