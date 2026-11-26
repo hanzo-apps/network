@@ -8,6 +8,7 @@ const LINKS = [
   { label: 'Solutions', to: '/#solutions' },
   { label: 'Build', to: '/build' },
   { label: 'Economics', to: '/economics' },
+  { label: 'Ecosystem', to: '/ecosystem' },
   { label: 'Pricing', to: '/pricing' },
   { label: 'Docs', href: DOCS },
 ]

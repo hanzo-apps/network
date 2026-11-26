@@ -36,13 +36,19 @@ export const PROOFS = 'https://proofs.hanzo.network'
 export const EXPLORER = 'https://explore.hanzo.network'
 export const STATUS = 'https://status.hanzo.network'
 export const WORK = 'https://work.hanzo.network'
+export const WORKS = 'https://hanzo.works'
+export const VOTE = 'https://hanzo.vote'
+export const HIPS = 'https://hips.hanzo.ai'
+export const PAPERS = 'https://papers.hanzo.ai'
 
 export const HANZO = 'https://hanzo.ai'
 export const LOGIN = 'https://hanzo.ai/login'
 export const PRIVACY = `${HANZO}/privacy`
 export const TERMS = `${HANZO}/terms`
-export const ZEN = `${HANZO}/zen`
+export const ZEN = 'https://hanzo.ai/zen'
 export const LUX = 'https://lux.network'
+/** Lux's DAO contracts, public on GitHub. Lux's own organisation there is hidden, so Lux code is linked here or on the Hanzo forge. */
+export const LUX_DAO = 'https://github.com/luxdao/contracts'
 export const ZOO = 'https://zoo.ngo'
 export const HANZO_CHAT = 'https://hanzo.chat'
 /** This site, for the one place an absolute address is needed: the chat's system message. */

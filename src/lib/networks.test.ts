@@ -68,7 +68,7 @@ describe('commands', () => {
 describe('public/llms.txt', () => {
   it('has the shape of docs.base.org/llms.txt', () => {
     expect(llms.startsWith('# Hanzo Network\n')).toBe(true)
-    for (const h of ['## Agent Instructions', '## Connect your agent', '## Network details', '## How Proof of AI checks', '## Solutions', '## Status of the network', '## Economics', '## Sources']) {
+    for (const h of ['## Agent Instructions', '## Connect your agent', '## Network details', '## How Proof of AI checks', '## Solutions', '## Status of the network', '## Economics', '## Ecosystem', '## Sources']) {
       expect(llms).toContain(h)
     }
   })

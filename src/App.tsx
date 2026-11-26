@@ -10,6 +10,7 @@ import { EXPLORER, HANZO, STATUS } from "./lib/links";
 import Build from "./pages/Build";
 import Early from "./pages/Early";
 import Economics from "./pages/Economics";
+import Ecosystem from "./pages/Ecosystem";
 import Home from "./pages/Home";
 import Pricing from "./pages/Pricing";
 
@@ -34,6 +35,7 @@ const App = () => (
           <Route path="/" element={<Home />} />
           <Route path="/build" element={<Build />} />
           <Route path="/economics" element={<Economics />} />
+          <Route path="/ecosystem" element={<Ecosystem />} />
           <Route path="/early" element={<Early />} />
           <Route path="/pricing" element={<Pricing />} />
         </Route>

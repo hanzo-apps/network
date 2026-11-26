@@ -8,6 +8,7 @@ const TITLES: Record<string, string> = {
   '/': 'Hanzo Network: the blockchain for global intelligence',
   '/build': 'Build on Hanzo Network',
   '/economics': 'Economics of the AI token · Hanzo Network',
+  '/ecosystem': 'Ecosystem · Hanzo Network',
   '/pricing': 'Pricing · Hanzo Network',
   '/early': 'Early access · Hanzo Network',
 }

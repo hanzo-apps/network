@@ -7,6 +7,7 @@ const LINKS = [
   { label: 'hanzo.ai', href: HANZO },
   { label: 'Build', href: '/build' },
   { label: 'Economics', href: '/economics' },
+  { label: 'Ecosystem', href: '/ecosystem' },
   { label: 'Pricing', href: '/pricing' },
   { label: 'Docs', href: DOCS },
   { label: 'GitHub', href: NODE_REPO },

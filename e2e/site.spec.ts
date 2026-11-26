@@ -7,7 +7,7 @@ test.beforeEach(async ({ page }) => {
   await serveModels(page)
 })
 
-const PAGES = ['/', '/build', '/economics', '/pricing', '/early']
+const PAGES = ['/', '/build', '/economics', '/ecosystem', '/pricing', '/early']
 
 // Hosts that answer automated requests with 403/429 although a person gets in.
 // Add one only after seeing it block a bot, and say which host and why.
@@ -153,17 +153,18 @@ test('title and description say what the network is, in the page, the share tags
   expect(await meta('twitter:description')).toBe(description)
 })
 
-test('the footer links Build, Economics and Pricing, and keeps the privacy choices', async ({ page }) => {
+test('the footer links Build, Economics, Ecosystem and Pricing, and keeps the privacy choices', async ({ page }) => {
   await page.goto('/')
   const footer = page.getByRole('contentinfo')
   await expect(footer.getByRole('link', { name: 'Build', exact: true })).toHaveAttribute('href', '/build')
   await expect(footer.getByRole('link', { name: 'Economics', exact: true })).toHaveAttribute('href', '/economics')
+  await expect(footer.getByRole('link', { name: 'Ecosystem', exact: true })).toHaveAttribute('href', '/ecosystem')
   await expect(footer.getByRole('link', { name: 'Pricing', exact: true })).toHaveAttribute('href', '/pricing')
   await expect(footer.getByRole('link', { name: 'Your Privacy Choices' })).toHaveAttribute('href', '#choices')
 })
 
 // Routes the other builders write: each must draw a page with one h1 inside the shared frame.
-for (const [path, h1] of [['/build', 'Start building.'], ['/economics', 'A hard cap of two trillion AI.'], ['/early', 'Early access is invite-only.']] as const) {
+for (const [path, h1] of [['/build', 'Start building.'], ['/economics', 'A hard cap of two trillion AI.'], ['/ecosystem', 'The ecosystem.'], ['/early', 'Early access is invite-only.']] as const) {
   test(`${path} is a page of this site with the h1 "${h1}"`, async ({ page }) => {
     await page.goto(path)
     await expect(page.getByRole('heading', { level: 1 })).toHaveText(h1)
@@ -202,6 +203,7 @@ const TITLES = {
   '/': 'Hanzo Network: the blockchain for global intelligence',
   '/build': 'Build on Hanzo Network',
   '/economics': 'Economics of the AI token · Hanzo Network',
+  '/ecosystem': 'Ecosystem · Hanzo Network',
   '/pricing': 'Pricing · Hanzo Network',
   '/early': 'Early access · Hanzo Network',
 } as const
@@ -248,7 +250,7 @@ for (const path of ['/pricing', '/build']) {
 }
 
 // A page head must paint in the first frame: LCP on a throttled phone waited on a fade-in (26 Nov 2026).
-for (const path of ['/build', '/economics', '/early', '/pricing']) {
+for (const path of ['/build', '/economics', '/ecosystem', '/early', '/pricing']) {
   test(`the head of ${path} has no entrance animation`, async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 812 })
     await page.goto(path)

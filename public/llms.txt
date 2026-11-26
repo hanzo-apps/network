@@ -127,6 +127,25 @@ Designed in the whitepaper and not active:
 - Market (Designed): compute pricing is designed around a market maker that conserves one quantity as supply and demand move: H(Psi,Theta) = Psi*Theta = kappa, where Psi and Theta are the two sides of the pool and kappa stays constant. It is a design; no market contract is deployed. The source is under Sources.
 - [Economics on hanzo.network](https://hanzo.network/economics): The supply, the halving eras and the burn, with an illustrative calculator.
 
+## Ecosystem
+
+What exists around the network. Each entry was loaded and read on 26 Nov 2026; the status word is what the page showed.
+
+- [Hanzo AI](https://hanzo.ai): Live. Frontier and open models and agents on one cloud. Train on your data and run on infrastructure you control.
+- [Zen models](https://hanzo.ai/zen): Live. Open-weight foundation models for agentic coding, served on Hanzo Cloud.
+- [Docs](https://docs.hanzo.ai): Live. Guides and references for the cloud, the API, MCP and the network.
+- [Hanzo Works](https://hanzo.works): Live. A browser extension, Hanzo Team, a bot for your team chat and 20 business apps on one login. Not part of the chain.
+- [Chain explorer](https://explore.hanzo.network): Live. Search blocks, transactions and addresses on the Hanzo chain.
+- [Platform status](https://status.hanzo.network): Live. Health of Hanzo's platform. It does not monitor the chain RPC.
+- [Work board](https://work.hanzo.network): Designed. A DAO work board for goals and bounties. The board is up; no Hanzo bounties are live yet.
+- [Hanzo Vote](https://hanzo.vote): In progress. A governance dashboard. It says no Governor address is on record yet.
+- [Lux Network](https://lux.network): Live. Lux's own site. It describes a multi-chain, post-quantum blockchain.
+- [Lux DAO contracts](https://github.com/luxdao/contracts): Live. Published code: the Lux Governor Protocol, a Safe module for composable DAO governance.
+- [Go verifier](https://git.hanzo.ai/luxfi/crypto/src/branch/main/poi): Live. Published code: the Go verifier for the matrix checks, with 22 tests.
+- [HIPs](https://hips.hanzo.ai): Live. Hanzo Improvement Proposals: the standards for Hanzo's infrastructure.
+- [Papers](https://papers.hanzo.ai): Live. Technical papers on AI and post-quantum cryptography, including the AI Chain whitepaper.
+- [Zoo Labs](https://zoo.ngo): Live. A non-profit that publishes open AI models and conservation research.
+
 ## Sources
 
 - [Hanzo AI Chain whitepaper](https://papers.hanzo.ai/hanzo-ai-chain/): The design: Proof of AI, supply and activation gates (working draft, 18 Aug 2026).
