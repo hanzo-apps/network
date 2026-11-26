@@ -29,4 +29,10 @@ test:
     run: |
       set -e
       pnpm exec playwright install chromium
-      pnpm exec playwright test
+      pnpm exec playwright test --grep-invert @network
+
+  - name: links
+    # Live-internet link check, on its own so a flaky external site cannot block the steps above.
+    run: |
+      set -e
+      pnpm exec playwright test --grep @network

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { HanzoLogo } from '@hanzo/logo'
 import { buttonClass } from '@/components/ui/button'
@@ -15,10 +15,15 @@ const item = 'rounded-sm text-sm text-muted-foreground transition-colors duratio
 export default function Nav() {
   const [open, setOpen] = useState(false)
   const { key } = useLocation()
+  const toggle = useRef<HTMLButtonElement>(null)
   useEffect(() => setOpen(false), [key])
   useEffect(() => {
     if (!open) return
-    const esc = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false)
+    const esc = (e: KeyboardEvent) => {
+      if (e.key !== 'Escape') return
+      setOpen(false)
+      toggle.current?.focus()
+    }
     document.addEventListener('keydown', esc)
     return () => document.removeEventListener('keydown', esc)
   }, [open])
@@ -47,6 +52,7 @@ export default function Nav() {
         </div>
         <div className="sm:hidden">
         <button
+          ref={toggle}
           type="button"
           className="-mr-2 inline-flex h-11 w-11 items-center justify-center rounded-full text-foreground"
           aria-expanded={open}
@@ -63,6 +69,9 @@ export default function Nav() {
       {open && (
         <nav id="menu" aria-label="Menu" className="flex flex-col border-t border-border px-4 pb-4 sm:hidden">
           {links('flex h-12 items-center text-base text-foreground')}
+          <a href="https://platform.hanzo.ai/api-keys" className={`${buttonClass('primary')} mt-2`}>
+            Get an API key
+          </a>
         </nav>
       )}
     </header>

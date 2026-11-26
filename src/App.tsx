@@ -19,13 +19,13 @@ const ToHanzo = () => {
 const App = () => (
   <BrowserRouter>
     <ScrollToTop />
-    <Shell>
-      <Routes>
+    <Routes>
+      <Route element={<Shell />}>
         <Route path="/" element={<NetworkLanding />} />
         <Route path="/pricing" element={<Pricing />} />
-        <Route path="*" element={<ToHanzo />} />
-      </Routes>
-    </Shell>
+      </Route>
+      <Route path="*" element={<ToHanzo />} />
+    </Routes>
     <GlobalChatWidget />
   </BrowserRouter>
 );

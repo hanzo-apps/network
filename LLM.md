@@ -1,50 +1,46 @@
 # hanzo.network
 
-Marketing site for Hanzo Network, the decentralized AI compute marketplace (hanzo.network). Provides the public-facing site for distributed GPU compute, AI inference, and provider marketplace features.
+The site for Hanzo Network: provable AI compute (hanzo.network). Two pages.
 
 ## Stack
 
-- React 18 + TypeScript (Vite 5, SWC)
-- React Router v6 (client-side routing)
-- Tailwind CSS v4 + Radix UI primitives
-- Framer Motion (animations), Three.js (3D)
+- React 18 + TypeScript, Vite 5 (SWC), React Router v6
+- Tailwind CSS 4 reading `@hanzo/tokens`; Zen and Zen Mono from `@hanzo/font` (imported in `src/main.tsx`); the mark from `@hanzo/logo`
+- `motion` for animation; pure monochrome, no accent colour
 
 ## Structure
 
 ```
 src/
-  App.tsx              # Root router -- NetworkLanding as homepage
-  pages/
-    NetworkLanding.tsx  # Homepage (/) -- GPU compute marketplace landing
-    ...                 # Shared pages (same as other Hanzo sites)
-  components/          # Shared component library
+  App.tsx                 two routes inside Shell (nav, footer); `*` hands off to hanzo.ai
+  pages/NetworkLanding.tsx   `/`  hero, how it works, doors, token, stack, closing
+  pages/Pricing.tsx          `/pricing`  live model catalog from api.hanzo.ai/v1/models
+  components/home/        the home sections; Section.tsx holds container, Eyebrow, H2
+  components/ui/          button and glass card
+  lib/chain.ts            block height from api.hanzo.network/v1/chain/hanzo (loading, live, down)
+docs/proof-of-ai.md       the Proof of AI spec: designed, not live
 ```
 
-## Key Routes
+## Live versus designed
 
-- `/` -- NetworkLanding (decentralized compute: GPU marketplace, pricing, provider network)
-- All other routes -- Shared product/marketing/account pages from common codebase
+Live: the Hanzo chain (block height on the hero) and the OpenAI-compatible API at api.hanzo.ai (pricing, chat widget). Designed, not live: Proof of AI rewards and the AI token (see the spec). The page must never state the second as the first.
+
+## Redirects
+
+Any other path goes to `https://hanzo.ai<path>` from the client (`ToHanzo` in `App.tsx`), rendered outside the page frame so nothing flashes. They are client-side because hanzoai/static serves the SPA fallback (`-spa`) for every path. A real server 301 belongs in the static server or the ingress config if Hanzo wants one.
 
 ## Commands
 
 ```bash
 pnpm install
-pnpm dev            # Vite dev server
-pnpm build          # Production build to dist/
-pnpm preview
-pnpm lint
+pnpm dev
+pnpm build
+pnpm typecheck && pnpm lint && pnpm test
+pnpm exec playwright test --grep-invert @network   # e2e on the production build
+pnpm exec playwright test --grep @network          # live-internet link check (own CI step)
 ```
 
-## NetworkLanding Focus
-
-The homepage highlights:
-- Distributed GPU compute (training + inference)
-- Cryptographic verification of workloads
-- Decentralized P2P infrastructure (no single point of failure)
-- Instant scaling (1 to 1000 GPUs)
-- Global edge network (sub-100ms latency)
-- Provider marketplace (contribute idle compute, set prices)
-- Stats: 100K+ GPU hours, 50+ regions, 99.9% SLA, $0.10/GPU-hour
+Tests: vitest for `src/lib` and CSS variables (`test/`); Playwright for axe (WCAG 2.2 AA), phone width, the font shipping, redirects, the heartbeat and the pause control. The home specs mock the chain, so CI never depends on it.
 
 ## Serving chain
 
@@ -61,11 +57,12 @@ push to main
 ```
 
 `hanzoai/static` is a Go binary on scratch, run with `-spa` because this is a
-98-route `BrowserRouter`: without the fallback every deep link 404s instead of
-reaching `index.html` for the router (and for the app's own `path="*"`
-NotFound). `HANZO_STATIC_CSP` in the CR allows `fonts.googleapis.com` /
-`fonts.gstatic.com` for the Inter stylesheet `index.html` links, and
-`api.hanzo.ai` in `connect-src` for the pricing fetch and the chat widgets.
+`BrowserRouter`: without the fallback every deep link such as `/pricing` 404s
+instead of reaching `index.html`. Fonts are self-hosted (copied by Vite), so
+`HANZO_STATIC_CSP` needs no font host. It does need `connect-src` for
+`api.hanzo.ai` (pricing fetch, chat widget) and `api.hanzo.network` (block
+height), and `media-src 'self'` for the hero loop. Not yet proved: that the CR's
+CSP allows exactly these.
 
 ## Not live from here yet
 
@@ -89,8 +86,3 @@ Promotion order: publish an image -> set `spec.image.tag` in
 200 -> only then repoint hanzo.network DNS off CF Pages. The CR is committed
 INERT (empty tag, absent from `kustomization.yaml`); promoting an App with no
 image tag takes the host down instead of leaving it alone.
-
-## Notes
-
-- Shares the same component library and routes as hanzo.app, hanzo.id, hanzo.one, and sensei.group. Only `NetworkLanding.tsx` and `index.html` metadata are unique.
-- Brand color is cyan (#06b6d4) in the dev console message, vs red for other Hanzo sites.

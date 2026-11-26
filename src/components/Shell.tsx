@@ -1,9 +1,9 @@
-import type { ReactNode } from 'react'
+import { Outlet } from 'react-router-dom'
 import Footer from './Footer'
 import Nav from './Nav'
 
 /** The page frame both routes share: skip link, nav, content, footer. */
-export default function Shell({ children }: { children: ReactNode }) {
+export default function Shell() {
   return (
     <>
       <a
@@ -13,7 +13,7 @@ export default function Shell({ children }: { children: ReactNode }) {
         Skip to content
       </a>
       <Nav />
-      <main id="main">{children}</main>
+      <main id="main"><Outlet /></main>
       <Footer />
     </>
   )

@@ -10,7 +10,7 @@ const BLOCKS_BOTS = [
 ]
 
 for (const path of PAGES) {
-  test(`every link on ${path} goes somewhere real`, async ({ page, request }) => {
+  test(`every link on ${path} goes somewhere real @network`, async ({ page, request }) => {
     await page.goto(path)
     const hrefs = await page.$$eval('a[href]', (as) => as.map((a) => (a as HTMLAnchorElement).href))
     const rawHrefs = await page.$$eval('a[href]', (as) => as.map((a) => a.getAttribute('href') ?? ''))
@@ -46,6 +46,22 @@ for (const path of ['/team', '/zen', '/contact', '/blockchain', '/dashboard']) {
     expect(new URL((await handoff).url()).pathname.replace(/\/$/, '')).toBe(path)
   })
 }
+
+test('an unknown path hands off to hanzo.ai without drawing our page frame', async ({ page }) => {
+  let drawn = false
+  await page.exposeFunction('frameDrawn', () => (drawn = true))
+  await page.addInitScript(() => {
+    if (location.hostname !== 'localhost') return
+    new MutationObserver(() => {
+      if (document.querySelector('header, footer, main')) (window as unknown as { frameDrawn(): void }).frameDrawn()
+    }).observe(document, { childList: true, subtree: true })
+  })
+  await page.route('https://hanzo.ai/**', (route) => route.fulfill({ body: 'hanzo.ai', contentType: 'text/html' }))
+  const handoff = page.waitForRequest((r) => r.isNavigationRequest() && r.url().startsWith('https://hanzo.ai/'))
+  await page.goto('/team')
+  await handoff
+  expect(drawn, 'page frame drawn before the jump').toBe(false)
+})
 
 test('footer year is current', async ({ page }) => {
   await page.goto('/')

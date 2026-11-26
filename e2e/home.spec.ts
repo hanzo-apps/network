@@ -1,9 +1,50 @@
-import { expect, test } from '@playwright/test'
-import { axeViolations, serveChain } from './helpers'
+import { expect, test, type Page } from '@playwright/test'
+import { RPC_URL, axeViolations, serveChain } from './helpers'
 
-test('home is readable everywhere (axe, WCAG 2.2 AA)', async ({ page }) => {
+// No test here may depend on the live chain: every one starts with a mocked answer.
+test.beforeEach(({ page }) => serveChain(page))
+
+/** Scroll the whole page in steps so every reveal fires, then let the animations end. */
+async function scrollThrough(page: Page) {
+  const h = await page.evaluate(() => document.scrollingElement!.scrollHeight)
+  for (let y = 0; y <= h; y += 400) {
+    await page.evaluate((top) => window.scrollTo(0, top), y)
+    await page.waitForTimeout(60)
+  }
+  await page.waitForTimeout(1200)
+}
+
+test('home is readable everywhere with reduced motion (axe, WCAG 2.2 AA)', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' })
   await page.goto('/')
   expect(await axeViolations(page)).toEqual([])
+})
+
+test('home is readable after scrolling through it with motion on (axe)', async ({ page }) => {
+  await page.goto('/')
+  await scrollThrough(page)
+  expect(await axeViolations(page)).toEqual([])
+})
+
+test('home with the phone menu open is readable (axe, 375px)', async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 812 })
+  await page.goto('/')
+  await page.getByRole('button', { name: 'Open menu' }).click()
+  await expect(page.getByRole('navigation', { name: 'Menu' })).toBeVisible()
+  expect(await axeViolations(page)).toEqual([])
+})
+
+test('phone menu: Escape closes it and returns focus to the toggle; the last item is the API key', async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 812 })
+  await page.goto('/')
+  const toggle = page.getByRole('button', { name: 'Open menu' })
+  await toggle.click()
+  const menu = page.getByRole('navigation', { name: 'Menu' })
+  await expect(menu.getByRole('link').last()).toHaveText('Get an API key')
+  await expect(menu.getByRole('link').last()).toHaveAttribute('href', 'https://platform.hanzo.ai/api-keys')
+  await page.keyboard.press('Escape')
+  await expect(menu).toHaveCount(0)
+  await expect(page.getByRole('button', { name: 'Open menu' })).toBeFocused()
 })
 
 test('home has one primary action and a compute path', async ({ page }) => {
@@ -13,10 +54,45 @@ test('home has one primary action and a compute path', async ({ page }) => {
   await expect(page.getByRole('link', { name: 'Provide compute' }).or(page.getByRole('button', { name: 'Provide compute' })).first()).toBeVisible()
 })
 
+test('home claims only what is live', async ({ page }) => {
+  await page.goto('/')
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Provable AI compute.')
+  await expect(page.getByText('Rewards switch on after Proof of AI passes its audits.')).toBeVisible()
+  await expect(page.getByText(/proved and paid|Every job is provable/)).toHaveCount(0)
+})
+
 test('home shows the live network heartbeat', async ({ page }) => {
-  await serveChain(page)
   await page.goto('/')
   await expect(page.getByText('1,052,729').first()).toBeVisible()
+})
+
+test('while the chain has not answered, the chip does not say unavailable', async ({ page }) => {
+  await page.unroute(RPC_URL)
+  await page.route(RPC_URL, () => {}) // never answers
+  await page.goto('/')
+  await expect(page.getByText('Live', { exact: true })).toBeVisible()
+  await expect(page.getByText('Network status unavailable')).toHaveCount(0)
+})
+
+test('when the chain is down, the chip says so', async ({ page }) => {
+  await page.unroute(RPC_URL)
+  await page.route(RPC_URL, (route) => route.fulfill({ status: 503, body: 'down' }))
+  await page.goto('/')
+  await expect(page.getByText('Network status unavailable')).toBeVisible()
+})
+
+test('the background video can be paused, and the choice is remembered', async ({ page }) => {
+  await page.goto('/')
+  const pause = page.getByRole('button', { name: 'Pause background video' })
+  await expect(pause).toHaveAttribute('aria-pressed', 'false')
+  const box = await pause.boundingBox()
+  expect(box?.width).toBeGreaterThanOrEqual(44)
+  expect(box?.height).toBeGreaterThanOrEqual(44)
+  await pause.click()
+  await expect(page.getByRole('button', { name: 'Play background video' })).toHaveAttribute('aria-pressed', 'true')
+  await expect.poll(() => page.evaluate(() => [...document.querySelectorAll('video')].every((v) => v.paused))).toBe(true)
+  await page.reload()
+  await expect(page.getByRole('button', { name: 'Play background video' })).toHaveAttribute('aria-pressed', 'true')
 })
 
 test('home is calm under reduced motion', async ({ page }) => {
@@ -28,5 +104,5 @@ test('home is calm under reduced motion', async ({ page }) => {
     () => document.getAnimations().filter((a) => a.playState === 'running').length,
   )
   expect(running).toBe(0)
-  await expect(page.locator('canvas')).toHaveCount(0)
+  await expect(page.locator('video')).toHaveCount(0)
 })
