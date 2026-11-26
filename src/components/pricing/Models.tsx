@@ -29,7 +29,7 @@ export function FeaturedCard({ m }: { m: Model }) {
 const LIMIT = 12
 const cols = 'md:grid-cols-[minmax(0,1fr)_7rem_6rem_6rem_5rem]'
 const chip =
-  'h-9 rounded-full border px-4 text-sm font-medium transition-colors duration-150 aria-pressed:border-foreground aria-pressed:bg-foreground aria-pressed:text-background border-border-strong text-foreground hover:bg-[var(--white-08)] aria-pressed:hover:bg-foreground'
+  'h-9 rounded-full border px-4 text-sm font-medium transition-colors duration-150 aria-pressed:border-foreground aria-pressed:bg-foreground aria-pressed:text-background border-border-strong text-foreground hover:bg-foreground/10 aria-pressed:hover:bg-foreground'
 
 export function AllModels({ models }: { models: Model[] }) {
   const [q, setQ] = useState('')

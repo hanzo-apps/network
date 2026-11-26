@@ -2,11 +2,14 @@ import { readFileSync } from 'node:fs'
 import { expect, test } from '@playwright/test'
 import { MODELS_URL, axeViolations, failModels, serveModels } from './helpers'
 
-test('pricing is readable everywhere (axe, WCAG 2.2 AA)', async ({ page }) => {
-  await serveModels(page)
-  await page.goto('/pricing')
-  expect(await axeViolations(page)).toEqual([])
-})
+for (const colorScheme of ['light', 'dark'] as const) {
+  test(`pricing is readable everywhere in ${colorScheme} (axe, WCAG 2.2 AA)`, async ({ page }) => {
+    await page.emulateMedia({ colorScheme })
+    await serveModels(page)
+    await page.goto('/pricing')
+    expect(await axeViolations(page)).toEqual([])
+  })
+}
 
 test('pricing shows the live model catalog', async ({ page }) => {
   await serveModels(page)

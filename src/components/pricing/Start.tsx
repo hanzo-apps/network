@@ -26,13 +26,13 @@ function Copy() {
     setTimeout(() => setDone(false), 2000)
   }
   return (
-    <div className="mt-4 overflow-hidden rounded-lg border border-border bg-[var(--white-03)]">
+    <div className="mt-4 overflow-hidden rounded-lg border border-border bg-foreground/5">
       <div className="flex items-center justify-between border-b border-border px-4 py-2">
         <span className="font-mono text-xs text-muted-foreground">curl</span>
         <button
           type="button"
           onClick={copy}
-          className="h-8 rounded-full border border-border-strong px-3 text-xs font-medium text-foreground hover:bg-[var(--white-08)]"
+          className="h-8 rounded-full border border-border-strong px-3 text-xs font-medium text-foreground hover:bg-foreground/10"
         >
           {done ? 'Copied' : 'Copy'}
         </button>

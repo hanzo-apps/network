@@ -35,14 +35,14 @@ export default function GlobalChatWidget() {
           role="dialog"
           aria-label="Ask Hanzo"
           onKeyDown={(e) => e.key === 'Escape' && close()}
-          className="flex max-h-[70vh] w-[min(380px,calc(100vw-32px))] flex-col gap-4 rounded-lg border border-border-strong bg-card p-4"
+          className="flex max-h-[70vh] w-[min(380px,calc(100vw-32px))] flex-col gap-4 rounded-lg border border-border-strong bg-background p-4"
         >
           <div className="flex items-start justify-between gap-4">
             <div>
               <h2 className="text-lg font-semibold">Ask Hanzo</h2>
               <p className="text-sm text-muted-foreground">Answers come from Hanzo Chat, free, in a new tab.</p>
             </div>
-            <button type="button" onClick={close} aria-label="Close chat" className="grid h-11 w-11 shrink-0 place-items-center rounded-full hover:bg-white/5">
+            <button type="button" onClick={close} aria-label="Close chat" className="grid h-11 w-11 shrink-0 place-items-center rounded-full hover:bg-foreground/10">
               <X size={18} aria-hidden="true" />
             </button>
           </div>

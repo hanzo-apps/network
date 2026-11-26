@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test'
+import AxeBuilder from '@axe-core/playwright'
 import { CHAT_URL } from './helpers'
 
 test('chat hands the question to hanzo.chat and never pretends', async ({ page }) => {
@@ -31,3 +32,16 @@ test('the hand-off is announced, the close button is touch-sized, and the pulse 
   const close = (await page.getByRole('button', { name: 'Close chat' }).boundingBox())!
   expect([close.width, close.height]).toEqual([44, 44])
 })
+
+for (const colorScheme of ['light', 'dark'] as const) {
+  test(`the open chat is readable in ${colorScheme} (axe)`, async ({ page }) => {
+    await page.emulateMedia({ colorScheme })
+    await page.goto('/')
+    await page.getByRole('button', { name: 'Open chat' }).click()
+    const box = page.getByRole('textbox', { name: 'Message' })
+    await box.fill('hello')
+    await box.press('Enter')
+    const { violations } = await new AxeBuilder({ page }).include('[role="dialog"]').withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa']).analyze()
+    expect(violations.map((v) => v.id)).toEqual([])
+  })
+}
