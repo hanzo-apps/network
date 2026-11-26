@@ -45,6 +45,7 @@ docs/proof-of-ai.md          the Proof of AI spec: designed, not live
 
 - `Tag` (`<Tag is="Designed" />`) is the only status marker. Its one prop is `Live`, `In progress` or `Designed`.
 - `links.ts` is the only place a URL is written; pages import the constant. `src/lib/links.test.ts` fails on any `https://` literal in `src/` outside `links.ts`, tests and two files (`Consent.tsx` and `Measure.tsx` keep their own: they must stay byte-identical to the upstream hanzo-apps/network copies they mirror, so upstream changes merge cleanly; that allow-list is exactly those two plus `links.ts`).
+- Never link `github.com/luxfi/*`: that organisation is hidden on GitHub and 404s for visitors. Link Lux code at `https://git.hanzo.ai/luxfi/*` or `https://github.com/luxdao/*`; the same test fails on `github.com/luxfi` anywhere in `src/` or `public/` (including `llms.txt`).
 - `solutions.ts` holds the five home solutions once; the cards draw them and a test holds `public/llms.txt` to the same titles, statuses and addresses.
 - "Get an API key" goes through `useAnalytics().link()` in `Start.tsx`, so the visitor's id travels, as it does for `/login`.
 - `Code` (`components/ui/code.tsx`) is the one copyable block; Pricing and /build both use it. `commands.ts` holds /build's commands, and `public/llms.txt` must contain every one (a unit test checks).

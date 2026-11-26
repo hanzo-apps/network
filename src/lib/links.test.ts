@@ -31,3 +31,25 @@ test('every https:// literal in src is in links.ts, or in one of the two upstrea
     .flatMap((f) => addresses(readFileSync(f, 'utf8')).map((a) => `${f}:${a}`))
   expect(stray).toEqual([])
 })
+
+// The luxfi organisation is hidden on GitHub and answers 404 to visitors. Lux code is linked at git.hanzo.ai/luxfi or github.com/luxdao.
+const HIDDEN = /github\.com\/luxfi/i
+
+/** Every file under `dir`, whatever its type, skipping binaries by extension. */
+const everything = (dir: string): string[] =>
+  readdirSync(dir).flatMap((f) => {
+    const p = join(dir, f)
+    return statSync(p).isDirectory() ? everything(p) : /\.(png|ico|jpe?g|webp|woff2?|mp4|webm)$/i.test(p) ? [] : [p]
+  })
+
+test('the hidden luxfi organisation is matched however it is written', () => {
+  expect(HIDDEN.test('https://github.com/luxfi/node')).toBe(true)
+  expect(HIDDEN.test('github.com/LuxFi/x')).toBe(true)
+  expect(HIDDEN.test('https://git.hanzo.ai/luxfi/node')).toBe(false)
+  expect(HIDDEN.test('https://github.com/luxdao/dao')).toBe(false)
+})
+
+test('no file in src or public links github.com/luxfi', () => {
+  const found = [...everything('src'), ...everything('public')].filter((f) => f !== 'src/lib/links.test.ts' && HIDDEN.test(readFileSync(f, 'utf8')))
+  expect(found).toEqual([])
+})
