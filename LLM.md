@@ -27,7 +27,7 @@ Live: the Hanzo chain (block height on the hero) and the OpenAI-compatible API a
 
 ## Redirects
 
-Any other path goes to `https://hanzo.ai<path>` from the client (`ToHanzo` in `App.tsx`), rendered outside the page frame so nothing flashes. They are client-side because hanzoai/static serves the SPA fallback (`-spa`) for every path. A real server 301 belongs in the static server or the ingress config if Hanzo wants one.
+`/index`, `/home2` and `/original` (old copies of this site's home page) stay on this site and go to `/`. Every other path hands off to `https://hanzo.ai<path>` from the client (`ToHanzo` in `App.tsx`), rendered outside the page frame so nothing flashes. They are client-side because hanzoai/static serves the SPA fallback (`-spa`) for every path. A real server 301 belongs in the static server or the ingress config if Hanzo wants one.
 
 ## Commands
 
@@ -67,7 +67,10 @@ push to main
 instead of reaching `index.html`. Fonts are self-hosted (copied by Vite), so
 `HANZO_STATIC_CSP` needs no font host. It does need `connect-src` for
 `api.hanzo.ai` (pricing fetch) and `api.hanzo.network` (block
-height), and `media-src 'self'` for the hero loop. Not yet proved: that the CR's
+height), `media-src 'self'` for the hero loop, and
+`form-action https://hanzo.chat https://hanzo.app`: the chat is a GET form to
+hanzo.chat, which redirects to hanzo.app, and a `form-action 'self'` policy would
+silently block it. Not yet proved: that the CR's
 CSP allows exactly these.
 
 ## Not live from here yet
