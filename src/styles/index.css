@@ -7,7 +7,7 @@
 /* Tailwind's utilities read Hanzo's tokens, so `bg-card`, `text-muted-foreground`,
    `text-8xl` and `rounded-lg` are Hanzo's values, never Tailwind's defaults. */
 @theme inline {
-  --color-background: var(--pure-black);
+  --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
@@ -49,11 +49,29 @@
   --font-weight-bold: 760;
 }
 
+/* True black on dark devices, like hanzo.ai; light keeps the tokens' own canvas. */
+:root:not(.light) { --background: var(--pure-black); }
+
+/* A room that stays dark in both modes (the hero's Earth render): Hanzo's own dark semantics,
+   restated from its raw ladders. Anything inside reads light-on-dark whatever the page theme. */
+.room-dark {
+  --background: var(--pure-black);
+  --foreground: var(--neutral-200);
+  --muted-foreground: var(--neutral-400);
+  --primary: var(--neutral-50);
+  --primary-hover: var(--neutral-200);
+  --primary-foreground: var(--neutral-950);
+  --border: var(--white-10);
+  --border-strong: var(--white-16);
+  --ring: var(--white-40);
+  color: var(--foreground);
+}
+
 @layer base {
   * { border-color: var(--border); }
-  html { background: var(--pure-black); }
+  html { background: var(--background); }
   body {
-    background: var(--pure-black);
+    background: var(--background);
     color: var(--foreground);
     font-family: var(--font-sans);
     font-weight: 497;
@@ -72,10 +90,10 @@
     isolation: isolate;
     overflow: hidden;
     border-radius: var(--radius-xl);
-    border: 1px solid var(--white-10);
-    background: linear-gradient(180deg, var(--white-05), var(--white-03) 45%, var(--white-03));
+    border: 1px solid color-mix(in oklab, var(--foreground) 10%, transparent);
+    background: linear-gradient(180deg, color-mix(in oklab, var(--foreground) 5%, transparent), color-mix(in oklab, var(--foreground) 3%, transparent) 45%);
     backdrop-filter: blur(16px) saturate(120%);
-    box-shadow: inset 0 1px 0 var(--white-08), 0 20px 40px -24px rgb(0 0 0 / 0.8);
+    box-shadow: inset 0 1px 0 color-mix(in oklab, var(--foreground) 8%, transparent), 0 20px 40px -24px rgb(0 0 0 / 0.8);
     transition: border-color 200ms, transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
   }
   .glass::before,
@@ -90,20 +108,26 @@
   }
   .glass::before {
     z-index: -1;
-    background: radial-gradient(420px circle at var(--x) var(--y), var(--white-08), transparent 45%);
+    background: radial-gradient(420px circle at var(--x) var(--y), color-mix(in oklab, var(--foreground) 8%, transparent), transparent 45%);
   }
   .glass::after {
     padding: 1px;
-    background: radial-gradient(260px circle at var(--x) var(--y), var(--white-40), transparent 60%);
+    background: radial-gradient(260px circle at var(--x) var(--y), color-mix(in oklab, var(--foreground) 40%, transparent), transparent 60%);
     -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
   }
   @media (hover: hover) {
-    .glass:hover { border-color: var(--white-16); transform: translateY(-2px); }
+    .glass:hover { border-color: color-mix(in oklab, var(--foreground) 16%, transparent); transform: translateY(-2px); }
     .glass:hover::before,
     .glass:hover::after { opacity: 1; }
   }
+}
+
+/* Light glass: a translucent white card with a dark hairline; the spotlight above turns dark. */
+.light .glass {
+  background: linear-gradient(180deg, color-mix(in oklab, var(--white) 85%, transparent), color-mix(in oklab, var(--white) 55%, transparent));
+  box-shadow: inset 0 1px 0 var(--white), 0 20px 40px -24px rgb(0 0 0 / 0.2);
 }
 
 /* A visitor who asks for less motion gets none: every animation and transition ends at once. */

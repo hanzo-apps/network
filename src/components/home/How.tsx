@@ -59,15 +59,15 @@ export default function How() {
         <H2>Four steps from job to payout.</H2>
       </Reveal>
       <ol ref={list} className="relative mt-12 grid gap-4 pl-6 md:mt-16 md:grid-cols-4 md:gap-6 md:pl-0 md:pt-8">
-        <div ref={track} aria-hidden className="absolute bottom-0 left-0 top-0 w-px bg-[var(--white-10)] md:bottom-auto md:right-0 md:h-px md:w-auto">
+        <div ref={track} aria-hidden className="absolute bottom-0 left-0 top-0 w-px bg-foreground/10 md:bottom-auto md:right-0 md:h-px md:w-auto">
           <motion.div
-            className="h-full w-full origin-top-left bg-[var(--white-60)]"
+            className="h-full w-full origin-top-left bg-foreground/60"
             style={still ? undefined : { scaleX: sx, scaleY: sy }}
           />
           {!still && (
             <motion.span
               className="absolute -left-[3.5px] -top-1 h-2 w-2 rounded-full bg-foreground will-change-transform md:-top-[3.5px] md:left-[-4px]"
-              style={{ x: dx, y: dy, boxShadow: '0 0 24px var(--white-40)' }}
+              style={{ x: dx, y: dy, boxShadow: '0 0 24px color-mix(in oklab, var(--foreground) 40%, transparent)' }}
             />
           )}
         </div>
@@ -75,10 +75,10 @@ export default function How() {
           const on = i < active
           return (
             <li key={name}>
-              <Card className={`h-full p-6 transition-colors duration-500 md:p-8 ${on ? 'border-[var(--white-22)]' : ''}`}>
-                <Disc className={on ? 'border-transparent bg-foreground text-background' : 'bg-[var(--white-05)] text-muted-foreground'}>
+              <Card className={`h-full p-6 transition-colors duration-500 md:p-8 ${on ? 'border-foreground/20' : ''}`}>
+                <Disc className={on ? 'border-transparent bg-foreground text-background' : 'bg-foreground/5 text-muted-foreground'}>
                   <Icon size={18} />
-                  {on && !still && <span className="step-ring pointer-events-none absolute inset-0 rounded-full border border-[var(--white-40)]" />}
+                  {on && !still && <span className="step-ring pointer-events-none absolute inset-0 rounded-full border border-foreground/40" />}
                 </Disc>
                 <p className="mt-5"><span className="rounded-full border border-border px-2 py-0.5 font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground">{term}</span></p>
                 <h3 className={`mt-1 text-2xl font-semibold transition-colors duration-500 ${on ? 'text-foreground' : 'text-muted-foreground'}`}>{name}</h3>

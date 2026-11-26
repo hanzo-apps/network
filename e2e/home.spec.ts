@@ -14,25 +14,31 @@ async function scrollThrough(page: Page) {
   await page.waitForTimeout(1200)
 }
 
-test('home is readable everywhere with reduced motion (axe, WCAG 2.2 AA)', async ({ page }) => {
-  await page.emulateMedia({ reducedMotion: 'reduce' })
-  await page.goto('/')
-  expect(await axeViolations(page)).toEqual([])
-})
+for (const scheme of ['light', 'dark'] as const) {
+  test.describe(`${scheme} mode`, () => {
+    test.beforeEach(({ page }) => page.emulateMedia({ colorScheme: scheme }))
 
-test('home is readable after scrolling through it with motion on (axe)', async ({ page }) => {
-  await page.goto('/')
-  await scrollThrough(page)
-  expect(await axeViolations(page)).toEqual([])
-})
+    test('home is readable everywhere with reduced motion (axe, WCAG 2.2 AA)', async ({ page }) => {
+      await page.emulateMedia({ colorScheme: scheme, reducedMotion: 'reduce' })
+      await page.goto('/')
+      expect(await axeViolations(page)).toEqual([])
+    })
 
-test('home with the phone menu open is readable (axe, 375px)', async ({ page }) => {
-  await page.setViewportSize({ width: 375, height: 812 })
-  await page.goto('/')
-  await page.getByRole('button', { name: 'Open menu' }).click()
-  await expect(page.getByRole('navigation', { name: 'Menu' })).toBeVisible()
-  expect(await axeViolations(page)).toEqual([])
-})
+    test('home is readable after scrolling through it with motion on (axe)', async ({ page }) => {
+      await page.goto('/')
+      await scrollThrough(page)
+      expect(await axeViolations(page)).toEqual([])
+    })
+
+    test('home with the phone menu open is readable (axe, 375px)', async ({ page }) => {
+      await page.setViewportSize({ width: 375, height: 812 })
+      await page.goto('/')
+      await page.getByRole('button', { name: 'Open menu' }).click()
+      await expect(page.getByRole('navigation', { name: 'Menu' })).toBeVisible()
+      expect(await axeViolations(page)).toEqual([])
+    })
+  })
+}
 
 test('phone menu: Escape closes it and returns focus to the toggle; the last item is the API key', async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 812 })

@@ -62,11 +62,11 @@ export default function Hero() {
   const [paused, toggle] = usePaused()
   const Icon = paused ? Play : Pause
   return (
-    <section className="relative flex min-h-[88svh] items-center overflow-hidden py-[72px] md:py-32">
+    <section className="room-dark relative flex min-h-[88svh] items-center overflow-hidden py-[72px] md:py-32">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0"
-        style={{ background: 'radial-gradient(60% 50% at 50% 85%, var(--white-08), transparent)' }}
+        style={{ background: 'radial-gradient(60% 50% at 50% 85%, color-mix(in oklab, var(--foreground) 8%, transparent), transparent)' }}
       />
       <HeroArt paused={paused} />
       <motion.div
@@ -108,7 +108,7 @@ export default function Hero() {
           onClick={toggle}
           aria-pressed={paused}
           aria-label={paused ? 'Play background video' : 'Pause background video'}
-          className="absolute bottom-4 right-4 inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--white-10)] bg-[var(--white-05)] text-muted-foreground backdrop-blur transition-colors hover:text-foreground md:bottom-6 md:right-6"
+          className="absolute bottom-4 right-4 inline-flex h-11 w-11 items-center justify-center rounded-full border border-foreground/10 bg-foreground/5 text-muted-foreground backdrop-blur transition-colors hover:text-foreground md:bottom-6 md:right-6"
         >
           <Icon size={16} aria-hidden />
         </button>

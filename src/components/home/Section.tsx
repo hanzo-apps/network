@@ -10,7 +10,7 @@ export default function Section({ id, children, className = '', glow = false }: 
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 -z-10"
-          style={{ background: 'radial-gradient(ellipse at 50% 55%, var(--white-06), transparent 60%)' }}
+          style={{ background: 'radial-gradient(ellipse at 50% 55%, color-mix(in oklab, var(--foreground) 6%, transparent), transparent 60%)' }}
         />
       )}
       <div className={container}>{children}</div>

@@ -19,7 +19,7 @@ export default function Doors() {
       <div className="mt-12 grid gap-4 md:mt-16 md:grid-cols-2 md:gap-6">
         <Reveal className="h-full">
           <Card className={card}>
-          <Disc className="mb-6 bg-[var(--white-05)] text-foreground"><Code2 size={18} /></Disc>
+          <Disc className="mb-6 bg-foreground/5 text-foreground"><Code2 size={18} /></Disc>
           <p className="text-sm text-muted-foreground">For developers</p>
           <h3 className="mt-2 text-3xl font-semibold tracking-[-0.01em]">Run AI on it</h3>
           <ul className={list}>
@@ -39,7 +39,7 @@ export default function Doors() {
         </Reveal>
         <Reveal index={1} id="provide" className="h-full scroll-mt-20">
           <Card className={card}>
-          <Disc className="mb-6 bg-[var(--white-05)] text-foreground"><Server size={18} /></Disc>
+          <Disc className="mb-6 bg-foreground/5 text-foreground"><Server size={18} /></Disc>
           <p className="text-sm text-muted-foreground">For providers</p>
           <h3 className="mt-2 text-3xl font-semibold tracking-[-0.01em]">Earn from it</h3>
           <ul className={list}>

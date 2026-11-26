@@ -26,7 +26,7 @@ export default function Stack() {
                 className="group block h-full rounded-lg p-6 outline-offset-[-3px] md:p-8"
               >
                 <div className="flex items-start justify-between">
-                  <Disc className="bg-[var(--white-05)] text-foreground"><p.Icon size={18} /></Disc>
+                  <Disc className="bg-foreground/5 text-foreground"><p.Icon size={18} /></Disc>
                   <ArrowUpRight aria-hidden size={20} className="text-muted-foreground transition-transform duration-300 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground" />
                 </div>
                 <p className="mt-6 text-sm text-muted-foreground">{p.role}</p>

@@ -24,7 +24,8 @@ for (const path of PAGES) {
     const dead: string[] = []
     for (const url of urls) {
       const res = await request.get(url, { timeout: 15_000 }).catch(() => null)
-      if (!res || res.status() >= 400) dead.push(`${res?.status() ?? 'no answer'} ${url}`)
+      // 429 is a rate limit (github.com answers it to repeated bot requests), not a dead link.
+      if (!res || (res.status() >= 400 && res.status() !== 429)) dead.push(`${res?.status() ?? 'no answer'} ${url}`)
     }
     expect(dead, 'dead links').toEqual([])
   })
@@ -77,4 +78,22 @@ test('the Zen font ships and is used', async ({ page }) => {
   await page.evaluate(() => document.fonts.ready)
   expect(await page.evaluate(() => document.fonts.check('16px Zen'))).toBe(true)
   expect(await page.evaluate(() => getComputedStyle(document.body).fontFamily)).toMatch(/^"?Zen/)
+})
+
+for (const scheme of ['light', 'dark'] as const) {
+  test(`the page follows the device: ${scheme}`, async ({ page }) => {
+    await page.emulateMedia({ colorScheme: scheme })
+    await page.goto('/')
+    const html = await page.evaluate(() => document.documentElement.classList.contains('light'))
+    const bg = await page.evaluate(() => getComputedStyle(document.body).backgroundColor)
+    expect(html).toBe(scheme === 'light')
+    expect(bg === 'rgb(0, 0, 0)').toBe(scheme === 'dark')
+  })
+}
+
+test('the page switches when the device does', async ({ page }) => {
+  await page.emulateMedia({ colorScheme: 'dark' })
+  await page.goto('/')
+  await page.emulateMedia({ colorScheme: 'light' })
+  await expect(page.locator('html')).toHaveClass(/light/)
 })
