@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom'
+import Gate from '@/components/early/Gate'
+import Queue from '@/components/early/Queue'
 import Section, { container, Eyebrow, H2 } from '@/components/home/Section'
 import Reveal from '@/components/home/Reveal'
 import { buttonClass, textLink } from '@/components/ui/button'
@@ -10,14 +12,18 @@ const CARD = 'flex h-full flex-col p-6'
 export default function Early() {
   return (
     <div>
-      <header className={`${container} pb-[72px] pt-[72px] md:pb-32 md:pt-32`}>
+      <header className={`${container} pb-12 pt-[72px] md:pb-16 md:pt-32`}>
         <Eyebrow>Early access</Eyebrow>
-        <h1 className="text-6xl font-[560] leading-[1.0] tracking-[-0.045em] md:text-7xl">Early access is invite-only.</h1>
-        <p className="mt-6 max-w-[60ch] text-xl leading-relaxed text-muted-foreground">Codes are not being issued yet.</p>
+        <h1 className="text-6xl font-[560] leading-[1.0] tracking-[-0.045em] md:text-7xl">Enter your invite code.</h1>
+        <p className="mt-6 max-w-[60ch] text-xl leading-relaxed text-muted-foreground">Early access to the network is invite-only.</p>
       </header>
 
+      <Gate />
+      <Queue />
+
       <Section>
-        <H2>Where invites will appear.</H2>
+        <H2>Where invites come from.</H2>
+        <p className="mt-6 max-w-[60ch] text-xl leading-relaxed text-muted-foreground">Invites are issued by Hanzo and passed on by members.</p>
         <ul className="mt-12 grid gap-4 md:grid-cols-2">
           <li>
             <Reveal index={0} className="h-full">
@@ -51,7 +57,7 @@ export default function Early() {
                 <h3 className="text-2xl font-semibold">Start building</h3>
                 <p className="mt-3 text-muted-foreground">Connect your agent, point it at the network, make a call.</p>
                 <div className="mt-auto pt-6">
-                  <Link to="/build" className={buttonClass('primary')}>
+                  <Link to="/build" className={buttonClass('secondary')}>
                     Start building
                   </Link>
                 </div>

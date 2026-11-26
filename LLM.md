@@ -17,7 +17,7 @@ src/
   pages/Build.tsx            `/build`     connect an agent, network details, a first call, what builders can earn
   pages/Economics.tsx        `/economics` the 2T cap, halving eras, fee burn, rules, an illustrative calculator
   pages/Pricing.tsx          `/pricing`   live model catalog from api.hanzo.ai/v1/models
-  pages/Early.tsx            `/early`     early access is invite-only; no form, no code box (see below)
+  pages/Early.tsx            `/early`     the invite gate (components/early/Gate.tsx), the queue (Queue.tsx), where invites come from (see below)
   components/home/           home sections; Section.tsx holds container, Eyebrow, H2, Disc
   components/build/          /build sections; components/economics/ the chart and calculator
   components/ui/             button (buttonClass, textLink), card, tag, code (copyable block)
@@ -34,6 +34,7 @@ src/
   lib/networks.ts            Mainnet, Testnet, Devnet: RPC and chain id
   lib/supply.ts              the whitepaper's supply formulas (eras, allowance, net change)
   lib/chat.ts                ask(): the public chat lane
+  lib/invite.ts              verify() and join(): the whole contract of the invite and queue endpoints
 docs/proof-of-ai.md          the Proof of AI spec: designed, not live
 ```
 
@@ -61,7 +62,9 @@ On 26 Nov 2026 `npx -y hanzo mcp` (npm `hanzo` 9.0.3) answered MCP `initialize` 
 
 ## `/early`
 
-Invites are not being issued, so `/early` has no input, no form and no code box. A code box arrives only when `/v1/network/invite/verify` exists; until then the page links to Discord and X, and the nav, hero and closing buttons read "Early access" and go to `/early`.
+The invite gate. A code input is checked by `POST https://api.hanzo.ai/v1/network/invite/verify`; a queue form posts to `POST https://api.hanzo.ai/v1/network/waitlist`. Both are anonymous JSON (`credentials: 'omit'`, no Authorization), built by the backend in another repo. **This branch is merged only after both endpoints are live.** The page never answers for them: accepted shows only on `{"valid":true}`, "not valid" only on `{"valid":false}`, and anything else (a 500, a 200 without a boolean, a timeout) says the service did not answer.
+
+The contract lives in `src/lib/invite.ts` and nowhere else; `src/lib/invite.test.ts` pins the URLs, headers, bodies and every outcome (429 is `limited`, anything unexpected is `unavailable`, 15 s timeout). The URLs are `INVITE_VERIFY` and `WAITLIST` in `links.ts`. A valid code is kept upper-cased in `sessionStorage` under `hn.invite` (so a reload shows the accepted state) and nowhere else, never in the URL; "Use a different code" clears it. Nothing is unlocked by a code yet; the page says so. The queue stores an email or a handle, a role and the source, and the page says exactly that beside a Privacy link. Each form has one polite live region outside any `aria-busy` element. The nav, hero and closing buttons read "Enter invite code" and go to `/early`; `public/llms.txt` names both endpoints. Tests: `e2e/early.spec.ts` mocks both endpoints with `page.route` and never reaches the real ones.
 
 ## Redirects
 

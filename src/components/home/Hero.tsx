@@ -28,7 +28,7 @@ export default function Hero() {
         </p>
         <div className="mt-10 flex flex-wrap justify-center gap-4">
           <Link to="/early" className={buttonClass('primary')}>
-            Early access
+            Enter invite code
           </Link>
           <Link to="/build" className={buttonClass('secondary')}>
             Start building

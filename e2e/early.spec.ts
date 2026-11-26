@@ -179,7 +179,6 @@ test('the code is sent as typed (trimmed) and kept upper-cased in sessionStorage
   expect(seen.verify[0].body).toEqual({ code: 'hnz-7k9q2m' })
   expect(await page.evaluate((k) => sessionStorage.getItem(k), KEY)).toBe(CODE)
   expect(await page.evaluate(() => sessionStorage.length)).toBe(1)
-  expect(await page.evaluate(() => localStorage.getItem('hn.invite') ?? localStorage.getItem(`${'hn.invite'}`))).toBeNull()
   expect(await page.evaluate(() => Object.keys(localStorage).filter((k) => /invite|code/i.test(k)))).toEqual([])
   expect(await page.evaluate(() => document.cookie)).not.toMatch(/HNZ/i)
   expect(page.url()).not.toMatch(/hnz|7k9q2m|code/i)
@@ -323,6 +322,7 @@ test('the same answer for a repeat entry', async ({ page }) => {
     await contact(page).fill('ada@example.com')
     await queue(page).getByRole('radio', { name: 'Builder', exact: true }).check()
     await submit(page).click()
+    await expect(status(queue(page))).toHaveText(/You are on the list\./)
     return status(queue(page)).innerText()
   }
   await expect(status(queue(page))).toHaveText('')

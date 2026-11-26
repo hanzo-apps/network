@@ -11,7 +11,7 @@ export default function Closing() {
         <Card className="p-10 md:p-16">
           <H2>Build on the network.</H2>
           <div className="mt-10 flex flex-wrap items-center gap-4">
-            <Link to="/early" className={buttonClass('primary')}>Early access</Link>
+            <Link to="/early" className={buttonClass('primary')}>Enter invite code</Link>
             <Link to="/build" className={buttonClass('secondary')}>Start building</Link>
           </div>
         </Card>
