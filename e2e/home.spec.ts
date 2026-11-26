@@ -63,7 +63,7 @@ test('home has one primary action and a compute path', async ({ page }) => {
 test('home claims only what is live', async ({ page }) => {
   await page.goto('/')
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Provable AI compute.')
-  await expect(page.getByText('Rewards switch on after Proof of AI passes its audits.')).toBeVisible()
+  await expect(page.getByText('GPU rewards follow once Proof of AI passes its audits.')).toBeVisible()
   await expect(page.getByText(/proved and paid|Every job is provable/)).toHaveCount(0)
 })
 
@@ -113,15 +113,15 @@ test('the hero picture stays still under the mouse (James, 26 Nov)', async ({ pa
   expect(before).toBe('none')
 })
 
-// The globe's horizon is 60% down its 16:9 picture; the hero's last line of text must sit on clear sky above it (James, 26 Nov).
+// The globe's horizon is 60% down its 16:9 picture; the hero's last text element (the chain chip) must sit on clear sky above it (James, 26 Nov).
 for (const [w, h] of [[1280, 720], [1366, 768], [1440, 900], [1920, 1080], [375, 812]]) {
   test(`hero text clears the globe's rim at ${w}x${h}`, async ({ page }) => {
     await page.setViewportSize({ width: w, height: h })
     await page.goto('/')
     const gap = await page.evaluate(() => {
       const art = document.querySelector('.hero-art')!.getBoundingClientRect()
-      const strip = document.querySelector('main section ul')!.getBoundingClientRect()
-      return art.top + 0.6 * art.height - strip.bottom
+      const last = [...document.querySelectorAll('main section:first-of-type p')].pop()!.getBoundingClientRect()
+      return art.top + 0.6 * art.height - last.bottom
     })
     expect(gap).toBeGreaterThanOrEqual(16)
   })
@@ -133,4 +133,51 @@ test('home makes no claim the sources do not back', async ({ page }) => {
   await page.goto('/')
   await expect(page.getByText(/open[- ]source/i)).toHaveCount(0)
   await expect(page.getByText(/run on the network/i)).toHaveCount(0)
+  await expect(page.getByText(/any chain/i)).toHaveCount(0)
+})
+
+test('the hero says one thing: no eyebrow, no strip, a live chain chip', async ({ page }) => {
+  await page.goto('/')
+  const hero = page.locator('main section').first()
+  await expect(hero.getByText('Run any model through one API today. Providers will be paid only for work that is proved.')).toBeVisible()
+  await expect(hero.getByText('Proof of AI', { exact: true })).toHaveCount(0)
+  await expect(hero.locator('ul')).toHaveCount(0)
+  await expect(hero.getByText('Live · Hanzo chain · block 1,052,729')).toBeVisible()
+})
+
+test('the headline enters without blur', async ({ page }) => {
+  await page.goto('/')
+  expect(await page.getByRole('heading', { level: 1 }).evaluate((el) => getComputedStyle(el).filter)).toBe('none')
+})
+
+test('the provider path is a real next step', async ({ page }) => {
+  await page.goto('/')
+  await expect(page.getByRole('link', { name: 'Run a node' })).toHaveAttribute('href', 'https://docs.hanzo.ai/docs/proof-of-ai/node-operator')
+  await expect(page.getByRole('link', { name: 'Running a GPU fleet? Talk to us' })).toHaveAttribute('href', 'https://hanzo.ai/contact')
+  await expect(page.getByText(/payout to the chain/i)).toHaveCount(0)
+})
+
+test('one filled button in the first viewport at 1440 light', async ({ page }) => {
+  await page.emulateMedia({ colorScheme: 'light' })
+  await page.setViewportSize({ width: 1440, height: 900 })
+  await page.goto('/')
+  const filled = await page.evaluate(() => {
+    const probe = document.createElement('i')
+    probe.className = 'bg-primary'
+    document.body.append(probe)
+    const primary = getComputedStyle(probe).backgroundColor
+    probe.remove()
+    return [...document.querySelectorAll('a, button')].filter((el) => {
+      const r = el.getBoundingClientRect()
+      return r.width > 0 && r.top < innerHeight && r.bottom > 0 && getComputedStyle(el).backgroundColor === primary
+    }).length
+  })
+  expect(filled).toBe(1)
+})
+
+test('the stack is one quiet row of links, not four cards', async ({ page }) => {
+  await page.goto('/')
+  await expect(page.getByText(/four parts/i)).toHaveCount(0)
+  await expect(page.getByRole('link', { name: /Lux Network/ })).toHaveAttribute('href', 'https://lux.network')
+  await expect(page.getByRole('link', { name: /Zoo Labs/ })).toHaveAttribute('href', 'https://zoo.ngo')
 })

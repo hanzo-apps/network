@@ -129,4 +129,22 @@ test('pricing makes no claim the sources do not back', async ({ page }) => {
   await expect(page.getByText(/no minimum/i)).toHaveCount(0)
   await expect(page.getByText(/use any model below/i)).toHaveCount(0)
   await expect(page.getByText(/any chat model below/i)).toBeVisible()
+  await expect(page.getByText(/in a minute/i)).toHaveCount(0)
+  await expect(page.getByText('billed by use')).toHaveCount(0)
+})
+
+test('the providers card sends people to the node guide', async ({ page }) => {
+  await page.goto('/pricing')
+  await expect(page.getByRole('link', { name: 'Run a node' })).toHaveAttribute('href', 'https://docs.hanzo.ai/docs/proof-of-ai/node-operator')
+})
+
+test('aliases of one model are one row with all their ids, and the count is of distinct models', async ({ page }) => {
+  const body = JSON.parse(readFileSync('e2e/fixtures/models.json', 'utf8'))
+  const base = body.data.find((m: { id: string }) => m.id === 'openai/gpt-5.4')
+  body.data.push({ ...base, id: 'gpt-5.4-alias' }, { ...base, id: 'openai/gpt-5.4-copy' })
+  await page.route(MODELS_URL, (route) => route.fulfill({ json: body }))
+  await page.goto('/pricing')
+  const rows = page.getByRole('listitem').filter({ hasText: 'openai/gpt-5.4, gpt-5.4-alias, openai/gpt-5.4-copy' })
+  await expect(rows).toHaveCount(1)
+  await expect(page.getByText('models, live').locator('xpath=preceding-sibling::p')).toHaveText('5')
 })
