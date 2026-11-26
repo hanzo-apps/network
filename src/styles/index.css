@@ -1,7 +1,74 @@
 @import 'tailwindcss';
+/* One source for colour, radius, type and spacing: Hanzo's tokens (dark by default), then
+   Zen from @hanzo/font. Nothing below restates a value either package already states. */
+@import '@hanzo/tokens/css';
+@import '@hanzo/font/css';
 
-/* Main CSS file that imports all other CSS files */
-@import "./base.css";
-@import "./typography.css";
-@import "./themes.css";
-@import "./utilities.css";
+/* Tailwind's utilities read Hanzo's tokens, so `bg-card`, `text-muted-foreground`,
+   `text-8xl` and `rounded-lg` are Hanzo's values, never Tailwind's defaults. */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-online: var(--state-online);
+  --color-error: var(--state-error-text);
+
+  --text-xs: var(--font-size-xs);
+  --text-sm: var(--font-size-sm);
+  --text-base: var(--font-size-base);
+  --text-lg: var(--font-size-lg);
+  --text-xl: var(--font-size-xl);
+  --text-2xl: var(--font-size-2xl);
+  --text-3xl: var(--font-size-3xl);
+  --text-4xl: var(--font-size-4xl);
+  --text-5xl: var(--font-size-5xl);
+  --text-6xl: var(--font-size-6xl);
+  --text-7xl: var(--font-size-7xl);
+  --text-8xl: var(--font-size-8xl);
+  --text-9xl: var(--font-size-9xl);
+
+  /* Zen's own optical weights (hanzoai/ui DESIGN.md §1), not the 400/500/600 ladder. */
+  --font-weight-light: 220;
+  --font-weight-normal: 497;
+  --font-weight-medium: 606;
+  --font-weight-semibold: 680;
+  --font-weight-bold: 760;
+}
+
+@layer base {
+  * { border-color: var(--border); }
+  html { background: var(--background); }
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    font-weight: 497;
+    -webkit-font-smoothing: antialiased;
+  }
+  :focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+}
+
+/* A visitor who asks for less motion gets none: every animation and transition ends at once. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
