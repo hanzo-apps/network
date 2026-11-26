@@ -18,3 +18,16 @@ test('chat hands the question to hanzo.chat and never pretends', async ({ page }
   await expect(page.getByText('connectivity issues')).toHaveCount(0)
   expect(apiCalls).toEqual([])
 })
+
+test('the hand-off is announced, the close button is touch-sized, and the pulse stops', async ({ page }) => {
+  await page.goto('/')
+  const opener = page.getByRole('button', { name: 'Open chat' })
+  expect(await opener.locator('span').evaluate((el) => getComputedStyle(el).animationIterationCount)).toBe('3')
+  await opener.click()
+  const box = page.getByRole('textbox', { name: 'Message' })
+  await box.fill('hello')
+  await box.press('Enter')
+  await expect(page.getByRole('status').getByRole('link', { name: 'Continue in Hanzo Chat' })).toBeVisible()
+  const close = (await page.getByRole('button', { name: 'Close chat' }).boundingBox())!
+  expect([close.width, close.height]).toEqual([44, 44])
+})

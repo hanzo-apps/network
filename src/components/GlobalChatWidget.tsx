@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react'
-import { MessageSquare, Send, X } from 'lucide-react'
+import { HanzoLogo } from '@hanzo/logo'
+import { Send, X } from 'lucide-react'
 
 const link = 'https://hanzo.chat/?q='
 
@@ -41,14 +42,14 @@ export default function GlobalChatWidget() {
               <h2 className="text-lg font-semibold">Ask Hanzo</h2>
               <p className="text-sm text-muted-foreground">Answers come from Hanzo Chat, free, in a new tab.</p>
             </div>
-            <button type="button" onClick={close} aria-label="Close chat" className="rounded-full p-2 hover:bg-white/5">
+            <button type="button" onClick={close} aria-label="Close chat" className="grid h-11 w-11 shrink-0 place-items-center rounded-full hover:bg-white/5">
               <X size={18} aria-hidden="true" />
             </button>
           </div>
           {asked && (
             <div className="flex flex-col gap-2 overflow-y-auto text-sm">
               <p className="max-w-[85%] self-end break-words rounded-lg bg-primary px-3 py-2 text-primary-foreground">{asked}</p>
-              <p className="max-w-[85%] rounded-lg border border-border px-3 py-2">
+              <p role="status" className="max-w-[85%] rounded-lg border border-border px-3 py-2">
                 Hanzo Chat will answer this.{' '}
                 <a
                   href={link + encodeURIComponent(asked)}
@@ -83,8 +84,8 @@ export default function GlobalChatWidget() {
         onClick={() => setOpen(true)}
         className="relative grid h-14 w-14 place-items-center rounded-full bg-primary text-primary-foreground"
       >
-        <span aria-hidden="true" className="absolute inset-0 animate-ping rounded-full bg-primary opacity-20" />
-        <MessageSquare size={24} aria-hidden="true" className="relative" />
+        <span aria-hidden="true" className="absolute inset-0 animate-ping [animation-iteration-count:3] rounded-full bg-primary opacity-20" />
+        <HanzoLogo variant="current" size={20} aria-hidden="true" className="relative" />
       </button>
     </div>
   )
