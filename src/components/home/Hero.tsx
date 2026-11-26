@@ -45,7 +45,7 @@ export default function Hero() {
       <HeroArt />
       <div className={`${container} relative text-center`}>
         <p className="mb-6 text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">Proof of AI</p>
-        <h1 className="mx-auto max-w-[18ch] text-6xl font-semibold leading-[1.02] tracking-[-0.03em] md:text-8xl">
+        <h1 className="mx-auto max-w-[18ch] text-balance text-6xl font-semibold leading-[1.02] tracking-[-0.03em] md:text-8xl">
           AI compute, proved and paid.
         </h1>
         <p className="mx-auto mt-6 max-w-[60ch] text-xl leading-relaxed text-muted-foreground">
