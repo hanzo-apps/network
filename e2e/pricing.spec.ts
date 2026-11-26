@@ -73,7 +73,7 @@ test('without a free Zen the page claims nothing free', async ({ page }) => {
 test('get started works without the catalog and never claims free', async ({ page }) => {
   await failModels(page)
   await page.goto('/pricing')
-  await expect(page.locator('#start').getByRole('link', { name: 'Get an API key' })).toHaveAttribute('href', 'https://platform.hanzo.ai/api-keys')
+  await expect(page.locator('#start').getByRole('link', { name: 'Get an API key' })).toHaveAttribute('href', /^https:\/\/platform\.hanzo\.ai\/api-keys\?hz_aid=/)
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Pay per token.')
   await expect(page.getByText('to call Zen')).toHaveCount(0)
   await expect(page.getByText('Zen is free to call')).toHaveCount(0)

@@ -167,7 +167,7 @@ test('make a call: the shared quickstart, the chain read, and the one filled but
   await call.getByRole('button', { name: 'Copy Read the chain, no key needed', exact: true }).click()
   expect(await page.evaluate(() => navigator.clipboard.readText())).toBe(CHAIN_CURL)
   const key = call.getByRole('link', { name: 'Get an API key' })
-  await expect(key).toHaveAttribute('href', 'https://platform.hanzo.ai/api-keys')
+  await expect(key).toHaveAttribute('href', /^https:\/\/platform\.hanzo\.ai\/api-keys\?hz_aid=/)
   await expect(key).toHaveClass(/bg-primary/)
   await expect(page.locator('main a.bg-primary, main button.bg-primary')).toHaveCount(1)
 })
