@@ -67,7 +67,7 @@ export default function Telemetry() {
             <Tag is="Designed" />
           </Link>
         </Cell>
-        <Cell label="Status">
+        <Cell label="Platform status">
           <a href={STATUS} className={link}>
             status.hanzo.network
           </a>

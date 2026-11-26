@@ -113,7 +113,7 @@ test('network table: values, links and copy', async ({ page, context }) => {
   await expect(docs.nth(0)).toHaveAttribute('href', 'https://docs.hanzo.ai/docs/network')
   await expect(docs.nth(1)).toHaveAttribute('href', 'https://docs.hanzo.ai/docs/network')
   await expect(docs.nth(2)).toHaveAttribute('href', 'https://docs.hanzo.ai/docs/proof-of-ai/node-operator')
-  await expect(net.getByRole('link', { name: 'Status' })).toHaveAttribute('href', 'https://status.hanzo.network')
+  await expect(net.getByRole('link', { name: 'Platform status' })).toHaveAttribute('href', 'https://status.hanzo.network')
   for (const [name, text] of [['Copy mainnet RPC', MAINNET], ['Copy testnet RPC', TESTNET]]) {
     await net.getByRole('button', { name, exact: true }).click()
     expect(await page.evaluate(() => navigator.clipboard.readText())).toBe(text)
@@ -188,7 +188,7 @@ test('the See all prices link in the shared quickstart points at the pricing pag
 test('the three earn cards, their tags and links', async ({ page }) => {
   await open(page)
   const earn = page.locator('#earn')
-  await expect(earn.getByRole('heading', { level: 2, name: 'What builders earn today.' })).toBeVisible()
+  await expect(earn.getByRole('heading', { level: 2, name: 'What builders can earn.' })).toBeVisible()
   await expect(earn.getByText('For builders', { exact: true })).toBeVisible()
   const cards = earn.getByRole('listitem')
   await expect(cards).toHaveCount(3)

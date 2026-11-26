@@ -15,7 +15,7 @@ export const solutions = (models: string): Solution[] => [
   {
     tag: 'Designed',
     title: 'Mine AI with useful compute',
-    text: 'Compute once, earn twice: keep the customer fee and, once mining activates, may earn a declining AI reward. Mining stays disabled until the launch gates pass. Today a node runs tools and agents and is paid per job in stablecoins.',
+    text: 'Compute once, earn twice: providers keep the customer fee and, if mining activates, may also earn a declining AI reward. Mining stays disabled until the launch gates pass. Today a node runs tools and agents and is paid per job in stablecoins.',
     link: 'Node operator guide',
     to: NODE_GUIDE,
   },

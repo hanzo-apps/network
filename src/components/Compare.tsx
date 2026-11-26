@@ -5,7 +5,6 @@ const ROWS = [
   ['Synthetic AI-like mining shows hardware was spent. Nobody asked for the result.', 'Only jobs someone requested and admitted beforehand count.'],
   ['Signed GPU attestors add a new authority to trust.', 'Any ordinary CPU can check the work.'],
   ['Validator votes are judgment. They can earn fees.', 'A vote alone can never mint. The math decides.'],
-  ['Idle hardware is paid for existing.', 'A raw GPU-hour earns nothing.'],
 ] as const
 
 const HEADS = ['Other approaches', 'Proof of AI'] as const

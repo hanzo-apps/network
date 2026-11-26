@@ -124,7 +124,7 @@ test('home claims only what is live', async ({ page }) => {
 
 test('the telemetry strip has four cells with the right labels', async ({ page }) => {
   await page.goto('/')
-  await expect(telemetry(page).locator('dt')).toHaveText(['Chain 36963', 'Models', 'Supply cap', 'Status'])
+  await expect(telemetry(page).locator('dt')).toHaveText(['Chain 36963', 'Models', 'Supply cap', 'Platform status'])
 })
 
 test('telemetry, live: block height, model counts from the catalog, supply cap tagged Designed, status link', async ({ page }) => {
@@ -136,7 +136,7 @@ test('telemetry, live: block height, model counts from the catalog, supply cap t
   await expect(supply).toContainText('2T AI · 500B era 1')
   await expect(supply.getByText('Designed', { exact: true })).toBeVisible()
   await expect(supply.getByRole('link')).toHaveAttribute('href', '/economics')
-  await expect(cell(page, 'Status').getByRole('link', { name: 'status.hanzo.network' })).toHaveAttribute('href', 'https://status.hanzo.network')
+  await expect(cell(page, 'Platform status').getByRole('link', { name: 'status.hanzo.network' })).toHaveAttribute('href', 'https://status.hanzo.network')
 })
 
 test('the Models cell merges aliases and drops per-second and batch ids', async ({ page }) => {
@@ -238,7 +238,7 @@ test('telemetry, chain down: the chain cell says unavailable and the rest still 
   await page.goto('/')
   await expect(cell(page, 'Chain 36963')).toContainText('unavailable')
   await expect(cell(page, 'Supply cap')).toContainText('2T AI')
-  await expect(cell(page, 'Status').getByRole('link')).toBeVisible()
+  await expect(cell(page, 'Platform status').getByRole('link')).toBeVisible()
 })
 
 test('telemetry, catalog down: the Models cell says unavailable and the chain cell still works', async ({ page }) => {

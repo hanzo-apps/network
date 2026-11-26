@@ -18,7 +18,7 @@ export default function Phases() {
     <Section id="phases" glow>
       <Reveal>
         <Eyebrow>Activation</Eyebrow>
-        <H2>Mining switches on in gated phases.</H2>
+        <H2>Mining is gated in phases.</H2>
         <p className="mt-4 max-w-[60ch] text-xl leading-relaxed text-muted-foreground">Mining stays disabled until these gates pass. No dates are promised.</p>
       </Reveal>
       <ol className="mt-12 grid gap-4 md:mt-16 md:grid-cols-2 lg:grid-cols-5">

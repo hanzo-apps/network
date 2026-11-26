@@ -38,7 +38,7 @@ export default function Token() {
         <Reveal>
           <Eyebrow>The AI token<span className="ml-3 align-middle"><Tag is="Designed" /></span></Eyebrow>
           <H2>Compute once. Earn twice.</H2>
-          <p className="mt-4 text-xl text-foreground">Providers keep the customer fee and, once mining activates, may also earn AI.</p>
+          <p className="mt-4 text-xl text-foreground">Providers keep the customer fee and, if mining activates, may also earn AI.</p>
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
             Designed in the whitepaper: a 2 trillion cap, half fixed with the Hanzo DAO and half earned by proved work in halving eras. Not active yet.
           </p>

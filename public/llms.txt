@@ -72,12 +72,12 @@ curl -s -X POST https://api.hanzo.network/v1/bc/hanzo/rpc -H 'content-type: appl
 ```
 
 - [API keys](https://platform.hanzo.ai/api-keys): Sign in with a Hanzo account and create a key.
-- [Pricing](https://hanzo.network/pricing): Per-token prices for every model, read live from the API.
+- [Pricing](https://hanzo.network/pricing): Per-token prices for every model billed per token, read live from the API.
 
 ## Solutions
 
 - [Verifiable inference](https://hanzo.network/build): Designed. Call models through one OpenAI-compatible API today; Proof of AI receipts are designed for open models such as Zen and are not switched on.
-- [Mine AI with useful compute](https://docs.hanzo.ai/docs/proof-of-ai/node-operator): Designed. Keep the customer fee and, once mining activates, may earn a declining AI reward; mining stays disabled until the launch gates pass, and today a node runs tools and agents and is paid per job in stablecoins.
+- [Mine AI with useful compute](https://docs.hanzo.ai/docs/proof-of-ai/node-operator): Designed. Providers keep the customer fee and, if mining activates, may also earn a declining AI reward; mining stays disabled until the launch gates pass, and today a node runs tools and agents and is paid per job in stablecoins.
 - [Agents and metered compute](https://docs.hanzo.ai/docs/agents): Live. Give an agent its own API key with a monthly budget and calls stop when it is spent; on-chain agent wallets with spend caps are designed.
 - [Models, training and contributions](https://hips.hanzo.ai/docs/hip-0901-proof-of-ai-native-execution-proofs): Designed. Zen open-weight models are served today; proofs for training and rewards for private contributions are specified in a draft proposal.
 - [Private post-quantum AI](https://papers.hanzo.ai/hanzo-ai-chain/): Designed. Prompt sealing with X-Wing (X25519 + ML-KEM-768) and optional secure enclaves are specified; succinct settlement on Z-Chain is audit-gated.
@@ -104,7 +104,6 @@ Designed in the whitepaper and not active:
 - [Hanzo AI Chain whitepaper](https://papers.hanzo.ai/hanzo-ai-chain/): The design: Proof of AI, supply and activation gates (working draft, 18 Aug 2026).
 - [Whitepaper PDF](https://papers.hanzo.ai/pdfs/hanzo-ai-chain.pdf): The full text; section numbers on this site refer to it.
 - [HIP-0901](https://hips.hanzo.ai/docs/hip-0901-proof-of-ai-native-execution-proofs): Proof of AI, native execution proofs; a draft proposal.
-- [Hanzo Improvement Proposals](https://hips.hanzo.ai): The index of HIPs.
 - [Proof of AI explainer](https://hanzo.blog/proof-of-ai/): The plain-words introduction on the Hanzo blog.
 - [Node operator guide](https://docs.hanzo.ai/docs/proof-of-ai/node-operator): What a node does today and what is roadmap.
 - [Explorer](https://explore.hanzo.network): The Hanzo Network block explorer.

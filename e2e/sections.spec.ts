@@ -156,6 +156,7 @@ test.describe('Pillars', () => {
     await page.goto('/')
     const rows = section(page, 'network').getByRole('list').locator('> li')
     await expect(rows.nth(2)).toContainText('Blocks are produced on chain 36963 today. Running as the Lux A-Chain with post-quantum finality is designed.')
+    await expect(rows.nth(5)).toContainText('A DAO work board for goals and bounties. No Hanzo bounties are live yet.')
     await expect(rows.nth(4)).toContainText("Hanzo's research runtime for datasets, runs, evaluations and claims. A draft spec, partly built, and not yet tied to the chain.")
   })
 
@@ -259,16 +260,15 @@ test.describe('Compare', () => {
     expect(await table.locator('caption').textContent()).toMatch(/\S/)
     await expect(table.locator('thead th[scope="col"]')).toHaveText(['Other approaches', 'Proof of AI'])
     const rows = table.locator('tbody tr')
-    await expect(rows).toHaveCount(4)
-    await expect(rows.locator('td')).toHaveCount(8)
+    await expect(rows).toHaveCount(3)
+    await expect(rows.locator('td')).toHaveCount(6)
+    await expect(table).not.toContainText('Idle hardware')
     await expect(rows.nth(0)).toContainText('Synthetic AI-like mining shows hardware was spent. Nobody asked for the result.')
     await expect(rows.nth(0)).toContainText('Only jobs someone requested and admitted beforehand count.')
     await expect(rows.nth(1)).toContainText('Signed GPU attestors add a new authority to trust.')
     await expect(rows.nth(1)).toContainText('Any ordinary CPU can check the work.')
     await expect(rows.nth(2)).toContainText('Validator votes are judgment. They can earn fees.')
     await expect(rows.nth(2)).toContainText('A vote alone can never mint. The math decides.')
-    await expect(rows.nth(3)).toContainText('Idle hardware is paid for existing.')
-    await expect(rows.nth(3)).toContainText('A raw GPU-hour earns nothing.')
     await link(c, 'Source: whitepaper sections 1, 2.6 and 3.4', WHITEPAPER_PDF)
   })
 
@@ -311,7 +311,7 @@ test.describe('Phases', () => {
     await page.goto('/')
     const s = section(page, 'phases')
     await expect(s.getByText('Activation', { exact: true })).toBeVisible()
-    await expect(s.getByRole('heading', { level: 2 })).toHaveText('Mining switches on in gated phases.')
+    await expect(s.getByRole('heading', { level: 2 })).toHaveText('Mining is gated in phases.')
     await expect(s.getByText('Mining stays disabled until these gates pass. No dates are promised.')).toBeVisible()
     await expect(s.locator('h3')).toHaveCount(5)
     for (const p of PHASES) {
@@ -352,7 +352,7 @@ test.describe('Token', () => {
     await expect(s).not.toContainText('Proposed')
     await expect(s.getByText('2T AI', { exact: true })).toBeVisible()
     await expect(s.getByText('1T AI', { exact: true })).toHaveCount(2)
-    await expect(s.getByText('Providers keep the customer fee and, once mining activates, may also earn AI.')).toBeVisible()
+    await expect(s.getByText('Providers keep the customer fee and, if mining activates, may also earn AI.')).toBeVisible()
     await expect(s.getByText('Reserved for the Hanzo DAO', { exact: true })).toBeVisible()
     await expect(s).not.toContainText('Held by')
     await expect(s.getByText('Designed in the whitepaper: a 2 trillion cap, half fixed with the Hanzo DAO and half earned by proved work in halving eras. Not active yet.')).toBeVisible()
@@ -367,7 +367,7 @@ const LATEST = [
   { title: 'Hanzo AI Chain whitepaper', line: 'The design: Proof of AI, supply, activation gates.', meta: 'Working draft · 18 Aug 2026', href: WHITEPAPER },
   { title: 'Proof of AI explainer', line: 'The plain-words introduction on the Hanzo blog.', meta: '26 Jun 2026', href: POAI_BLOG },
   { title: 'HIP-0901', line: 'Proof of AI: native execution proofs. Draft proposal.', meta: 'Draft', href: HIP_0901 },
-  { title: 'Formal proofs', line: "Machine-checked proofs for Hanzo's agent and ML systems.", meta: 'Lean and Coq', href: PROOFS },
+  { title: 'Formal proofs', line: "Machine-checked proofs for Hanzo's agent and ML systems. None is about Proof of AI.", meta: 'Lean and Coq', href: PROOFS },
 ]
 
 test.describe('Latest', () => {
@@ -431,7 +431,7 @@ test.describe('all sections', () => {
     for (const t of texts) expect(['Live', 'In progress', 'Designed']).toContain(t)
     await expect(body.getByText(/\b(Proposed|Beta|Soon|Coming)\b/)).toHaveCount(0)
     await expect(page.getByText('Use the network. Or power it.')).toHaveCount(0)
-    await expect(page.getByRole('heading', { level: 2 })).toContainText(['Five things you can do.', 'Six parts, one loop.', 'How Proof of AI works.', 'Mining switches on in gated phases.', 'Compute once. Earn twice.', 'Read the sources.', 'Build on the network.'])
+    await expect(page.getByRole('heading', { level: 2 })).toContainText(['Five things you can do.', 'Six parts, one loop.', 'How Proof of AI works.', 'Mining is gated in phases.', 'Compute once. Earn twice.', 'Read the sources.', 'Build on the network.'])
   })
 
   test('copy has no em dashes and no hype', async ({ page }) => {

@@ -10,7 +10,7 @@ const PILLARS: { tag: Status; title: string; text: string; link: string; href: s
   { tag: 'Live', title: 'A live chain, ID 36963', text: 'Blocks are produced on chain 36963 today. Running as the Lux A-Chain with post-quantum finality is designed.', link: 'Explorer', href: EXPLORER },
   { tag: 'In progress', title: 'Agents that pay their way', text: 'Agents sign up with a wallet, hold a budgeted key and pay per call today. Fee burn and on-chain spend caps are designed.', link: 'Agent docs', href: DOCS_AGENTS },
   { tag: 'In progress', title: 'Research with a record', text: "Hanzo's research runtime for datasets, runs, evaluations and claims. A draft spec, partly built, and not yet tied to the chain.", link: 'HIP-1334', href: HIP_1334 },
-  { tag: 'Designed', title: 'People and agents on one work board', text: "A DAO work board for goals and bounties. Bounties open once Hanzo's contracts deploy.", link: 'Work board', href: WORK },
+  { tag: 'Designed', title: 'People and agents on one work board', text: "A DAO work board for goals and bounties. No Hanzo bounties are live yet.", link: 'Work board', href: WORK },
 ]
 
 // Six nodes on a ring, numbered clockwise from the top. Arrows run along the ring between neighbours.

@@ -112,7 +112,7 @@ export default function Network() {
         </Card>
       </Reveal>
       <p className="mt-6">
-        <a href={STATUS} className={`${link} inline-flex min-h-11 items-center`}>Status</a>
+        <a href={STATUS} className={`${link} inline-flex min-h-11 items-center`}>Platform status</a>
       </p>
     </Section>
   )

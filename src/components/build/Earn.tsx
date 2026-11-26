@@ -35,7 +35,7 @@ export default function Earn() {
     <Section id="earn">
       <Reveal>
         <Eyebrow>For builders</Eyebrow>
-        <H2>What builders earn today.</H2>
+        <H2>What builders can earn.</H2>
       </Reveal>
       <ul className="mt-10 grid gap-4 md:grid-cols-3">
         {CARDS.map((c, i) => (
