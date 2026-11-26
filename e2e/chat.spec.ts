@@ -9,10 +9,13 @@ const okBody = { choices: [{ message: { role: 'assistant', content: ANSWER, reas
 
 /** Stands in for the public lane. Each request is recorded; `reply` decides the answer. Never reaches the real API. */
 async function serveChat(page: Page, reply: (route: Route, n: number) => Promise<void> | void = (r) => r.fulfill({ json: okBody, headers: cors })) {
-  const seen: { headers: Record<string, string>; body: { messages: { role: string; content: string }[] } }[] = []
+  const seen: { headers: Record<string, string>; body: { messages: { role: string; content: string }[] }; system: string; maxTokens: number }[] = []
   await page.route(CHAT_URL, async (route) => {
     if (route.request().method() === 'OPTIONS') return route.fulfill({ status: 204, headers: cors })
-    seen.push({ headers: route.request().headers(), body: route.request().postDataJSON() })
+    const sent = route.request().postDataJSON() as { messages: { role: string; content: string }[]; max_tokens: number }
+    // Every request opens with the system message; `body` is the conversation after it.
+    expect(sent.messages[0].role).toBe('system')
+    seen.push({ headers: route.request().headers(), body: { messages: sent.messages.slice(1) }, system: sent.messages[0].content, maxTokens: sent.max_tokens })
     await reply(route, seen.length)
   })
   return seen
@@ -43,6 +46,9 @@ test('a question is answered in place: the question, then the answer, with no ke
   expect(await page.content()).not.toContain(THOUGHTS)
   expect(seen).toHaveLength(1)
   expect(seen[0].body).toEqual({ messages: [{ role: 'user', content: 'What is Proof of AI?' }] })
+  expect(seen[0].system).toContain('You answer questions about Hanzo Network for visitors to hanzo.network.')
+  expect(seen[0].maxTokens).toBe(800)
+  expect(await page.content()).not.toContain('You answer questions about Hanzo Network')
   expect(seen[0].headers.authorization).toBeUndefined()
   expect(seen[0].headers.cookie).toBeUndefined()
   await expect(page.getByRole('textbox', { name: 'Message' })).toBeFocused()

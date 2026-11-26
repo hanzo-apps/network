@@ -3,10 +3,11 @@ import { HanzoLogo } from '@hanzo/logo'
 import { X } from 'lucide-react'
 import { buttonClass } from '@/components/ui/button'
 import { ask, ChatError, type Message } from '@/lib/chat'
+import { HANZO_CHAT } from '@/lib/links'
 
 const KEEP = 10
 const WAIT_MS = 30_000
-const handoff = (q?: string) => (q ? `https://hanzo.chat/?q=${encodeURIComponent(q)}` : 'https://hanzo.chat')
+const handoff = (q?: string) => (q ? `${HANZO_CHAT}/?q=${encodeURIComponent(q)}` : HANZO_CHAT)
 
 type Failure = 'busy' | 'failed'
 
@@ -134,7 +135,7 @@ export default function GlobalChatWidget() {
               onChange={(e) => setDraft(e.target.value)}
               disabled={sending}
               aria-label="Message"
-              placeholder="Ask anything about Hanzo Network"
+              placeholder="Ask about Hanzo Network"
               className="h-11 min-w-0 rounded-full border border-border-strong bg-background px-4 text-sm text-foreground disabled:opacity-60"
             />
             <button type="submit" disabled={sending} className={`${buttonClass('primary')} disabled:opacity-60`}>
