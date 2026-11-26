@@ -11,6 +11,11 @@ const raw = (o: object = {}) => ({
 })
 
 describe('toModel', () => {
+  it('strips the ~ from latest-alias owners so the lab reads as its real name', () => {
+    expect(toModel(raw({ id: '~anthropic/claude-fable-latest', owned_by: '~anthropic' })).lab).toBe('Anthropic')
+    expect(toModel(raw({ id: '~x-ai/grok-latest', owned_by: '~x-ai' })).lab).toBe('xAI')
+    expect(toModel(raw({ id: '~openai/gpt-sol-latest', owned_by: null })).lab).toBe('OpenAI')
+  })
   it('maps a full item', () => {
     expect(toModel(raw())).toEqual({
       id: 'anthropic/claude-opus-5.5',

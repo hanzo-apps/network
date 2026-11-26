@@ -46,7 +46,8 @@ const words = (s: string) => s.split('-').map(cap).join(' ')
 const title = (id: string) => words(id.split('/').pop()!)
 
 function labOf(id: string, owner?: string | null) {
-  const key = owner || (id.includes('/') ? id.split('/')[0] : '')
+  // "~lab" marks a "latest" alias of that lab's model.
+  const key = (owner || (id.includes('/') ? id.split('/')[0] : '')).replace(/^~/, '')
   if (!key) return id.startsWith('zen') ? 'Hanzo' : ''
   return LABS[key] ?? (key.startsWith('zen') ? 'Hanzo' : words(key))
 }
