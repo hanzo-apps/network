@@ -269,3 +269,25 @@ describe('loadModels', () => {
     expect(f).toHaveBeenCalledTimes(2)
   })
 })
+
+describe('a models request that never answers', () => {
+  afterEach(() => {
+    vi.useRealTimers()
+    vi.unstubAllGlobals()
+  })
+  it('ends in the error state after 10 s, so the page stops saying "loading"', async () => {
+    vi.useFakeTimers()
+    vi.stubGlobal(
+      'fetch',
+      vi.fn((_url: string, init: RequestInit) => new Promise<Response>((_, reject) => init.signal?.addEventListener('abort', () => reject(init.signal?.reason)))),
+    )
+    vi.resetModules()
+    const { loadModels } = await import('./catalog')
+    let outcome = 'pending'
+    loadModels().then(() => (outcome = 'live'), () => (outcome = 'down'))
+    await vi.advanceTimersByTimeAsync(9_999)
+    expect(outcome).toBe('pending')
+    await vi.advanceTimersByTimeAsync(1)
+    expect(outcome).toBe('down')
+  })
+})
