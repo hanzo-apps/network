@@ -4,20 +4,15 @@ import Section, { H2 } from '@/components/home/Section'
 import { buttonClass, textLink } from '@/components/ui/button'
 import Card from '@/components/ui/card'
 import { useAnalytics } from '@hanzo/event/react'
-import { drift, join, InviteError, type Role } from '@/lib/invite'
+import { drift, join, InviteError, ROLES, X_HANDLE, type Role } from '@/lib/invite'
 import { PRIVACY } from '@/lib/links'
 
-type Mode = 'email' | 'handle'
+type Mode = 'email' | 'xHandle'
 type Phase = 'idle' | 'sending' | 'done' | 'limited' | 'unavailable'
 
 const MODES: Option<Mode>[] = [
   { value: 'email', label: 'Email' },
-  { value: 'handle', label: 'Handle' },
-]
-const ROLES: Option<Role>[] = [
-  { value: 'operator', label: 'Node operator' },
-  { value: 'builder', label: 'Builder' },
-  { value: 'holder', label: 'Holder' },
+  { value: 'xHandle', label: 'X handle' },
 ]
 
 const SAYS: Record<Phase, string> = {
@@ -30,7 +25,7 @@ const SAYS: Record<Phase, string> = {
 
 const FIELD = {
   email: { label: 'Email address', error: 'Enter an email address like name@example.com.' },
-  handle: { label: 'Handle', error: 'Use 2 to 32 lower-case letters, numbers or underscores.' },
+  xHandle: { label: 'X handle', error: 'Use 1 to 15 letters, numbers or underscores.' },
 }
 
 const REJECTED = 'Check your email or handle.'
@@ -83,7 +78,7 @@ export default function Queue() {
     const ctl = (inflight.current = new AbortController())
     setPhase('sending')
     try {
-      await join(mode === 'email' ? { email: value.trim(), role } : { handle: value, role }, ctl.signal)
+      await join(mode === 'email' ? { email: value.trim(), role } : { xHandle: value, role }, ctl.signal)
       setPhase('done')
       setFocus({ on: 'done' })
     } catch (err) {
@@ -120,7 +115,7 @@ export default function Queue() {
                 id="queue-contact"
                 value={value}
                 onChange={(e) => {
-                  setValue(mode === 'handle' ? e.target.value.toLowerCase().replace(/^@/, '') : e.target.value)
+                  setValue(mode === 'xHandle' ? e.target.value.replace(/^@/, '') : e.target.value)
                   setFieldError(null)
                 }}
                 disabled={sending}
@@ -128,17 +123,17 @@ export default function Queue() {
                 type={mode === 'email' ? 'email' : 'text'}
                 autoComplete={mode === 'email' ? 'email' : 'off'}
                 inputMode={mode === 'email' ? 'email' : 'text'}
-                pattern={mode === 'handle' ? '[a-z0-9_]{2,32}' : undefined}
+                pattern={mode === 'xHandle' ? X_HANDLE : undefined}
                 maxLength={mode === 'email' ? 254 : undefined}
                 autoCapitalize="none"
                 spellCheck={false}
                 aria-invalid={fieldError !== null}
-                aria-describedby={[mode === 'handle' && 'queue-contact-hint', fieldError && 'queue-contact-error'].filter(Boolean).join(' ') || undefined}
+                aria-describedby={[mode === 'xHandle' && 'queue-contact-hint', fieldError && 'queue-contact-error'].filter(Boolean).join(' ') || undefined}
                 className="mt-3 h-12 w-full min-w-0 max-w-[32rem] rounded-lg border border-border-strong bg-transparent px-4 font-mono text-lg text-foreground disabled:opacity-60"
               />
-              {mode === 'handle' && (
+              {mode === 'xHandle' && (
                 <p id="queue-contact-hint" className="mt-3 font-mono text-sm text-muted-foreground">
-                  Your X or Discord handle.
+                  Without the @.
                 </p>
               )}
               {fieldError && (
@@ -148,7 +143,7 @@ export default function Queue() {
               )}
             </div>
             <div ref={roles}>
-              <Segments legend="I am a" name="role" options={ROLES} value={role} onChange={(r) => { setRole(r); setRoleError(false) }} describedBy={roleError ? 'queue-role-error' : undefined}>
+              <Segments legend="I am a" name="role" options={[...ROLES]} value={role} onChange={(r) => { setRole(r); setRoleError(false) }} describedBy={roleError ? 'queue-role-error' : undefined}>
                 {roleError && (
                   <p id="queue-role-error" className={errorText}>
                     Choose a role.

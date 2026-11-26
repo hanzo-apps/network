@@ -3,13 +3,14 @@ import { Check } from 'lucide-react'
 import { buttonClass, textLink } from '@/components/ui/button'
 import Card from '@/components/ui/card'
 import { useAnalytics } from '@hanzo/event/react'
-import { drift, verify, InviteError } from '@/lib/invite'
+import Slots from './Slots'
+import { body, drift, normalize, verify, InviteError } from '@/lib/invite'
 
 /** The one place an accepted code is kept: this tab's session, never the URL, never local storage. */
 const KEY = 'hn.invite'
 const kept = () => {
   try {
-    return sessionStorage.getItem(KEY)
+    return normalize(sessionStorage.getItem(KEY) ?? '') // anything that is not a code is not remembered
   } catch {
     return null // storage blocked: the code is simply not remembered
   }
@@ -23,11 +24,12 @@ const keep = (code: string | null) => {
   }
 }
 
-type Phase = 'idle' | 'empty' | 'checking' | 'invalid' | 'limited' | 'unavailable'
+type Phase = 'idle' | 'empty' | 'short' | 'checking' | 'invalid' | 'limited' | 'unavailable'
 
 const SAYS: Record<Phase, string> = {
   idle: '',
   empty: 'Enter a code.',
+  short: 'Enter HNZ- and ten characters.',
   checking: 'Checking…',
   invalid: 'That code is not valid.',
   limited: 'Too many tries. Try again later.',
@@ -43,6 +45,8 @@ export default function Gate() {
   const [accepted, setAccepted] = useState<string | null>(kept)
   const [value, setValue] = useState('')
   const [phase, setPhase] = useState<Phase>('idle')
+  const [focused, setFocused] = useState(false)
+  const [all, setAll] = useState(false)
   const input = useRef<HTMLInputElement>(null)
   const inflight = useRef<AbortController>()
   const checking = phase === 'checking'
@@ -67,9 +71,9 @@ export default function Gate() {
 
   const submit = async (e: FormEvent) => {
     e.preventDefault()
-    const code = value.trim()
+    const code = normalize(`HNZ${value}`)
     if (!code) {
-      setPhase('empty')
+      setPhase(value ? 'short' : 'empty')
       input.current?.focus()
       return
     }
@@ -78,8 +82,8 @@ export default function Gate() {
     setPhase('checking')
     try {
       if (await verify(code, ctl.signal)) {
-        keep(code.toUpperCase())
-        setAccepted(code.toUpperCase())
+        keep(code)
+        setAccepted(code)
         setPhase('idle')
         setFresh((n) => n + 1)
       } else setPhase('invalid')
@@ -108,24 +112,29 @@ export default function Gate() {
               <label htmlFor="invite-code" className={label}>
                 Invite code
               </label>
-              <input
-                ref={input}
-                id="invite-code"
-                value={value}
-                onChange={(e) => setValue(e.target.value)}
-                disabled={checking}
-                placeholder="HNZ-______"
-                maxLength={32}
-                autoCapitalize="characters"
-                autoComplete="off"
-                spellCheck={false}
-                inputMode="text"
-                aria-invalid={phase === 'invalid' || phase === 'empty'}
-                aria-describedby="invite-hint invite-status"
-                className="mt-3 h-16 w-full min-w-0 max-w-[32rem] rounded-lg border border-border-strong bg-transparent px-4 font-mono text-2xl uppercase tracking-[0.06em] text-foreground placeholder:text-muted-foreground disabled:opacity-60 md:text-3xl"
-              />
+              <div className="relative mt-3 max-w-[32rem] rounded-md has-[input:disabled]:opacity-60 has-[input:focus-visible]:outline has-[input:focus-visible]:outline-2 has-[input:focus-visible]:outline-offset-4 has-[input:focus-visible]:outline-ring">
+                <Slots value={value} active={focused ? Math.min(value.length, 9) : -1} selected={focused && all} />
+                <input
+                  ref={input}
+                  id="invite-code"
+                  value={value}
+                  onChange={(e) => setValue(body(e.target.value))}
+                  onSelect={(e) => setAll(e.currentTarget.value.length > 0 && e.currentTarget.selectionStart === 0 && e.currentTarget.selectionEnd === e.currentTarget.value.length)}
+                  onFocus={() => setFocused(true)}
+                  onBlur={() => setFocused(false)}
+                  disabled={checking}
+                  maxLength={20}
+                  autoCapitalize="characters"
+                  autoComplete="off"
+                  spellCheck={false}
+                  inputMode="text"
+                  aria-invalid={phase === 'invalid' || phase === 'empty' || phase === 'short'}
+                  aria-describedby="invite-hint invite-status"
+                  className="absolute inset-0 h-full w-full cursor-text font-mono opacity-0"
+                />
+              </div>
               <p id="invite-hint" className="mt-3 font-mono text-sm text-muted-foreground">
-                HNZ- and six characters.
+                HNZ- and ten characters.
               </p>
             </div>
           )}
@@ -151,7 +160,10 @@ export default function Gate() {
 
           {accepted && (
             <div ref={explanation} tabIndex={-1} className="mt-6 outline-offset-8">
-              <p className="font-mono text-3xl tabular-nums tracking-[0.06em] md:text-4xl">{accepted}</p>
+              <div className="max-w-[32rem]">
+                <Slots value={body(accepted)} />
+                <span className="sr-only">{accepted}</span>
+              </div>
               <p className="mt-6 max-w-[56ch] text-lg leading-relaxed text-muted-foreground">
                 This code is valid. It does not unlock anything yet.
               </p>

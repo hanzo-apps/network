@@ -4,9 +4,34 @@ import { INVITE_VERIFY, WAITLIST } from './links'
 
 const WAIT_MS = 15_000
 
-export type Role = 'operator' | 'builder' | 'holder'
-/** Exactly one of email or handle. */
-export type Entry = ({ email: string } | { handle: string }) & { role: Role }
+/** The four roles the queue knows, in the order it shows them. */
+export const ROLES = [
+  { value: 'miner', label: 'Miner' },
+  { value: 'builder', label: 'Builder' },
+  { value: 'researcher', label: 'Researcher' },
+  { value: 'staker', label: 'Staker' },
+] as const
+export type Role = (typeof ROLES)[number]['value']
+
+/** An X handle without the @: 1 to 15 letters, digits or underscores. As a pattern string, it is anchored by the input and by tests. */
+export const X_HANDLE = '[A-Za-z0-9_]{1,15}'
+
+/** Exactly one of email or xHandle. */
+export type Entry = ({ email: string } | { xHandle: string }) & { role: Role }
+
+const DIGITS = 10
+
+/** An invite code is `HNZ-` and ten characters in two groups of five: `HNZ-XXXXX-XXXXX`. Upper-case, drop everything that is not A-Z or 0-9, then require `HNZ` and exactly ten. Null when the text is not a code, and then nothing is sent. */
+export function normalize(text: string): string | null {
+  const m = /^HNZ([A-Z0-9]{5})([A-Z0-9]{5})$/.exec(text.toUpperCase().replace(/[^A-Z0-9]/g, ''))
+  return m ? `HNZ-${m[1]}-${m[2]}` : null
+}
+
+/** What the code input keeps of what was typed or pasted: the ten characters after the fixed `HNZ-` prefix. A pasted whole code (more than ten once cleaned, beginning HNZ) loses its prefix; ten characters that happen to begin HNZ are a body. */
+export function body(text: string): string {
+  const clean = text.toUpperCase().replace(/[^A-Z0-9]/g, '')
+  return (clean.length > DIGITS && clean.startsWith('HNZ') ? clean.slice(3) : clean).slice(0, DIGITS)
+}
 
 type Endpoint = 'invite/verify' | 'waitlist'
 

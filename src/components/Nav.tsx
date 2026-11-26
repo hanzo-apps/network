@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { HanzoLogo } from '@hanzo/logo'
 import { buttonClass } from '@/components/ui/button'
 import { DOCS } from '@/lib/links'
+import { EARLY, INVITE_LABEL } from '@/lib/early'
 
 const LINKS = [
   { label: 'Solutions', to: '/#solutions' },
@@ -48,8 +49,8 @@ export default function Nav() {
         </Link>
         <nav aria-label="Main" className="hidden items-center gap-8 sm:flex">{links(item)}</nav>
         <div className="hidden sm:block">
-          <Link to="/early" className={buttonClass('small')}>
-            Enter invite code
+          <Link to={EARLY} className={buttonClass('small')}>
+            {INVITE_LABEL}
           </Link>
         </div>
         <div className="sm:hidden">
@@ -71,8 +72,8 @@ export default function Nav() {
       {open && (
         <nav id="menu" aria-label="Menu" className="flex flex-col border-t border-border px-4 pb-4 sm:hidden">
           {links('flex h-12 items-center text-base text-foreground')}
-          <Link to="/early" className={`${buttonClass('primary')} mt-2`}>
-            Enter invite code
+          <Link to={EARLY} className={`${buttonClass('primary')} mt-2`}>
+            {INVITE_LABEL}
           </Link>
         </nav>
       )}
