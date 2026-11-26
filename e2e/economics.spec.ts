@@ -1,5 +1,5 @@
 import { expect, test, type Page } from '@playwright/test'
-import { allowance, eraCap, netChange, position, POOL, signed, whole } from '../src/lib/supply'
+import { eraCap } from '../src/lib/supply'
 import { axeViolations, serveChain, serveModels } from './helpers'
 
 const WHITEPAPER = 'https://papers.hanzo.ai/hanzo-ai-chain/'
@@ -166,18 +166,25 @@ const YEARS = 'Years since activation'
 const BETA = 'Share of fees burned (β)'
 const FEES = 'Fees settled that year (AI)'
 
-async function expectOutputs(page: Page, years: number, betaPct: number, feesBillions: number) {
-  const { k, f } = position(years)
-  const cap = eraCap(k)
-  const mined = allowance(k, f)
-  const year = cap / 4
-  await expect(out(page, 'Era')).toHaveText(String(k + 1))
-  await expect(out(page, 'Era cap')).toHaveText(`${whole(cap)} AI`)
-  await expect(out(page, 'Most that could have been mined by then')).toHaveText(`${whole(mined)} AI`)
-  await expect(out(page, 'Left in the pool')).toHaveText(`${whole(POOL - mined)} AI`)
-  await expect(out(page, 'Most that could be issued that year')).toHaveText(`${whole(year)} AI`)
-  await expect(out(page, 'Net supply change that year, at most')).toHaveText(`${signed(netChange(year, betaPct / 100, feesBillions * 1e9))} AI`)
+const YEARLY = 'If issued evenly, issued that year'
+const NET = 'If issued evenly, net supply change that year'
+
+type Expected = { era: string; cap: string; mined: string; left: string; yearly: string; net: string }
+
+/** Every figure is typed in by hand from the whitepaper's equations (see the comment on each case), never recomputed from supply.ts. */
+async function expectOutputs(page: Page, e: Expected) {
+  await expect(out(page, 'Era')).toHaveText(e.era)
+  await expect(out(page, 'Era cap')).toHaveText(`${e.cap} AI`)
+  await expect(out(page, 'Most that could have been mined by then')).toHaveText(`${e.mined} AI`)
+  await expect(out(page, 'Left in the pool')).toHaveText(`${e.left} AI`)
+  await expect(out(page, YEARLY)).toHaveText(`${e.yearly} AI`)
+  await expect(out(page, NET)).toHaveText(`${e.net} AI`)
 }
+
+// 5 years: era 2 (k=1), a quarter through. Cap 1e12/4. Mined 1e12*(1-1/2) + 0.25*1e12/4. Yearly cap/4. Net 62.5e9 - 0.5*100e9.
+const FIVE_YEARS: Expected = { era: '2', cap: '250,000,000,000', mined: '562,500,000,000', left: '437,500,000,000', yearly: '62,500,000,000', net: '+12,500,000,000' }
+// 13 years: era 4 (k=3), a quarter through. Cap 1e12/16. Mined 1e12*(1-1/8) + 0.25*1e12/16. Yearly cap/4. Net 15.625e9 - 1.0*40e9.
+const THIRTEEN_YEARS: Expected = { era: '4', cap: '62,500,000,000', mined: '890,625,000,000', left: '109,375,000,000', yearly: '15,625,000,000', net: '−24,375,000,000' }
 
 test('the calculator says it is illustrative, always visible, with the Designed tag', async ({ page }) => {
   for (const size of sizes) {
@@ -185,7 +192,7 @@ test('the calculator says it is illustrative, always visible, with the Designed 
     const calc = page.locator('#calculator')
     await expect(calc.getByRole('heading', { level: 2 })).toHaveText('Try the numbers.')
     await expect(calc.getByText('Designed', { exact: true }).first()).toBeVisible()
-    const note = calc.getByText("Illustrative until activation. These are upper bounds from the whitepaper's formulas with your own inputs. Real issuance depends on proved work.")
+    const note = calc.getByText("Illustrative until activation. Era cap and the total that could have been mined are upper bounds from the whitepaper's formulas. The yearly figures assume the era's cap is issued evenly over four years. Real issuance depends on proved work.")
     await note.scrollIntoViewIfNeeded()
     await expect(note).toBeVisible()
     await expect(calc).toContainText('Node earnings cannot be estimated yet: reward weights are not set (whitepaper, section 3.3).')
@@ -194,9 +201,8 @@ test('the calculator says it is illustrative, always visible, with the Designed 
 
 test('first values: nothing mined yet, whole pool left', async ({ page }) => {
   await open(page)
-  await expectOutputs(page, 0, 0, 0)
-  await expect(out(page, 'Era cap')).toHaveText('500,000,000,000 AI')
-  await expect(out(page, 'Left in the pool')).toHaveText('1,000,000,000,000 AI')
+  // 0 years: era 1, cap 500e9, nothing mined, yearly 125e9, no burn and no fees.
+  await expectOutputs(page, { era: '1', cap: '500,000,000,000', mined: '0', left: '1,000,000,000,000', yearly: '125,000,000,000', net: '+125,000,000,000' })
 })
 
 test('hand-computed: 5 years, 50% burned, 100 billion in fees', async ({ page }) => {
@@ -204,23 +210,23 @@ test('hand-computed: 5 years, 50% burned, 100 billion in fees', async ({ page })
   await field(page, YEARS).fill('5')
   await field(page, BETA).fill('50')
   await field(page, FEES).fill('100')
-  await expect(out(page, 'Era')).toHaveText('2')
-  await expect(out(page, 'Era cap')).toHaveText('250,000,000,000 AI')
-  await expect(out(page, 'Most that could have been mined by then')).toHaveText('562,500,000,000 AI')
-  await expect(out(page, 'Left in the pool')).toHaveText('437,500,000,000 AI')
-  await expect(out(page, 'Most that could be issued that year')).toHaveText('62,500,000,000 AI')
-  await expect(out(page, 'Net supply change that year, at most')).toHaveText('+12,500,000,000 AI')
+  await expectOutputs(page, FIVE_YEARS)
 })
 
-test('every output follows supply.ts across years, burn and fees, with a true minus when the burn wins', async ({ page }) => {
+test('hand-computed: 13 years, everything burned, 40 billion in fees: a true minus', async ({ page }) => {
   await open(page)
-  for (const [years, beta, fees] of [[0, 0, 0], [3, 100, 500], [4, 25, 40], [13, 7, 3], [28, 100, 1], [32, 100, 500]] as const) {
-    await field(page, YEARS).fill(String(years))
-    await field(page, BETA).fill(String(beta))
-    await field(page, FEES).fill(String(fees))
-    await expectOutputs(page, years, beta, fees)
-  }
-  await expect(out(page, 'Net supply change that year, at most')).toHaveText(/^−[\d,]+ AI$/)
+  await field(page, YEARS).fill('13')
+  await field(page, BETA).fill('100')
+  await field(page, FEES).fill('40')
+  await expectOutputs(page, THIRTEEN_YEARS)
+})
+
+test('the yearly figures say they assume an even spread, and nothing says "at most" about them', async ({ page }) => {
+  await open(page)
+  const calc = page.locator('#calculator')
+  await expect(calc.locator('dt', { hasText: YEARLY })).toBeVisible()
+  await expect(calc.locator('dt', { hasText: NET })).toBeVisible()
+  await expect(calc.locator('dt', { hasText: /Most that could be issued|at most/i })).toHaveCount(0)
 })
 
 test('keyboard only: each number is followed by its slider; arrows, Home and End move the sliders; the number follows', async ({ page }) => {
@@ -230,7 +236,7 @@ test('keyboard only: each number is followed by its slider; arrows, Home and End
   await expect(slider(page, YEARS)).toBeFocused()
   for (let i = 0; i < 5; i++) await page.keyboard.press('ArrowRight')
   await expect(field(page, YEARS)).toHaveValue('5')
-  await expectOutputs(page, 5, 0, 0)
+  await expectOutputs(page, { era: '2', cap: '250,000,000,000', mined: '562,500,000,000', left: '437,500,000,000', yearly: '62,500,000,000', net: '+62,500,000,000' })
   await page.keyboard.press('End')
   await expect(field(page, YEARS)).toHaveValue('32')
   await page.keyboard.press('Home')
@@ -249,7 +255,7 @@ test('keyboard only: each number is followed by its slider; arrows, Home and End
   await page.keyboard.press('ArrowRight')
   await page.keyboard.press('ArrowRight')
   await expect(field(page, FEES)).toHaveValue('2')
-  await expectOutputs(page, 0, 100, 2)
+  await expectOutputs(page, { era: '1', cap: '500,000,000,000', mined: '0', left: '1,000,000,000,000', yearly: '125,000,000,000', net: '+123,000,000,000' })
   await page.keyboard.press('Shift+Tab')
   await expect(field(page, FEES)).toBeFocused()
   await page.keyboard.press('ArrowUp')
@@ -262,7 +268,7 @@ test('typing keeps the slider in step, and a value out of range is not taken', a
   await expect(slider(page, YEARS)).toHaveValue('12')
   await field(page, YEARS).fill('99')
   await expect(field(page, YEARS)).toHaveAttribute('aria-invalid', 'true')
-  await expectOutputs(page, 12, 0, 0)
+  await expectOutputs(page, { era: '4', cap: '62,500,000,000', mined: '875,000,000,000', left: '125,000,000,000', yearly: '15,625,000,000', net: '+15,625,000,000' })
   await field(page, YEARS).blur()
   await expect(field(page, YEARS)).toHaveValue('12')
   await expect(field(page, YEARS)).not.toHaveAttribute('aria-invalid', 'true')
@@ -271,14 +277,20 @@ test('typing keeps the slider in step, and a value out of range is not taken', a
   await expect(field(page, BETA)).toHaveValue('0')
 })
 
-test('every input has a visible label, and the outputs are polite live regions', async ({ page }) => {
+test('every input has a visible label, and one polite live region says the result in a sentence once the inputs settle', async ({ page }) => {
   await open(page)
   for (const name of [YEARS, BETA, FEES]) {
     await expect(page.locator('#calculator label', { hasText: name })).toBeVisible()
     await expect(slider(page, name)).toBeVisible()
     await expect(field(page, name)).toBeVisible()
   }
-  await expect(page.locator('#calculator [aria-live="polite"]')).not.toHaveCount(0)
+  const live = page.locator('#calculator [aria-live]')
+  await expect(live).toHaveCount(1)
+  await expect(live).toHaveAttribute('aria-live', 'polite')
+  await field(page, YEARS).fill('5')
+  await field(page, BETA).fill('50')
+  await field(page, FEES).fill('100')
+  await expect(live).toHaveText('Era 2. Era cap 250,000,000,000 AI. If issued evenly, net supply change that year +12,500,000,000 AI.')
   await expect(page.locator('#calculator').getByText('assumes the nominal four-year era')).toBeVisible()
   // No node, hardware or staking calculator.
   await expect(page.locator('#calculator input')).toHaveCount(6)

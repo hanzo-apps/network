@@ -1,10 +1,8 @@
-import { useId, useState } from 'react'
+import { useEffect, useId, useState } from 'react'
 import Card from '@/components/ui/card'
 import Tag from '@/components/ui/tag'
 import { H2 } from '@/components/home/Section'
 import { ERA_YEARS, POOL, allowance, eraCap, netChange, position, signed, whole } from '@/lib/supply'
-
-// tsgo reads a bare JSX string as 'needs several children' for a union prop; a typed constant is the one way round it.
 
 /** A whole number in a range, held two ways: the slider's value, and the text being typed (which may be wrong for a moment). */
 function useWhole(min: number, max: number) {
@@ -85,14 +83,14 @@ function Control({ label, hint, unit, min, max, field, spoken }: { label: string
 
 function Output({ label, children }: { label: string; children: string }) {
   return (
-    <div aria-live="polite" aria-atomic="true" className="rounded-xl border border-border p-4">
+    <div className="rounded-xl border border-border p-4">
       <dt className="text-sm text-muted-foreground">{label}</dt>
       <dd className="mt-1 break-words text-2xl font-semibold tabular-nums">{children}</dd>
     </div>
   )
 }
 
-/** The whitepaper's formulas with the visitor's own inputs. Designed, not active: every figure is an upper bound. */
+/** The whitepaper's formulas with the visitor's own inputs. Designed, not active. */
 export default function Calculator() {
   const years = useWhole(0, 32)
   const burn = useWhole(0, 100)
@@ -104,6 +102,18 @@ export default function Calculator() {
   const year = cap / ERA_YEARS
   const change = netChange(year, burn.value / 100, fees.value * 1e9)
   const ai = (n: number) => `${whole(n)} AI`
+  const net = `${signed(change)} AI`
+
+  // The one live region: a sentence, said once the inputs have stopped moving. Empty until the visitor first changes something.
+  const summary = `Era ${k + 1}. Era cap ${ai(cap)}. If issued evenly, net supply change that year ${net}.`
+  const [said, setSaid] = useState('')
+  const [touched, setTouched] = useState(false)
+  useEffect(() => {
+    if (!touched) return
+    const t = setTimeout(() => setSaid(summary), 400)
+    return () => clearTimeout(t)
+  }, [summary, touched])
+  const edit = (f: Whole) => ({ ...f, type: (t: string) => (setTouched(true), f.type(t)), slide: (n: number) => (setTouched(true), f.slide(n)) })
 
   return (
     <>
@@ -113,23 +123,24 @@ export default function Calculator() {
       </div>
       <Card className="mt-8 p-4 md:p-8">
         <p data-notice className="rounded-xl border border-border-strong p-4 text-base text-foreground">
-          Illustrative until activation. These are upper bounds from the whitepaper's formulas with your own inputs. Real issuance depends on proved work.
+          Illustrative until activation. Era cap and the total that could have been mined are upper bounds from the whitepaper's formulas. The yearly figures assume the era's cap is issued evenly over four years. Real issuance depends on proved work.
         </p>
         <div className="mt-8 grid gap-10 lg:grid-cols-[5fr_7fr] lg:gap-12">
           <div className="space-y-8">
-            <Control label="Years since activation" hint="assumes the nominal four-year era" unit="years" min={0} max={32} field={years} spoken={(n) => `${n} years`} />
-            <Control label="Share of fees burned (β)" hint="From 0 to 100 percent." unit="%" min={0} max={100} field={burn} spoken={(n) => `${n} percent`} />
-            <Control label="Fees settled that year (AI)" hint="From 0 to 500 billion AI." unit="billion" min={0} max={500} field={fees} spoken={(n) => `${n} billion AI`} />
+            <Control label="Years since activation" hint="assumes the nominal four-year era" unit="years" min={0} max={32} field={edit(years)} spoken={(n) => `${n} years`} />
+            <Control label="Share of fees burned (β)" hint="From 0 to 100 percent." unit="%" min={0} max={100} field={edit(burn)} spoken={(n) => `${n} percent`} />
+            <Control label="Fees settled that year (AI)" hint="From 0 to 500 billion AI." unit="billion" min={0} max={500} field={edit(fees)} spoken={(n) => `${n} billion AI`} />
           </div>
           <dl className="grid content-start gap-3 sm:grid-cols-2">
             <Output label="Era">{String(k + 1)}</Output>
             <Output label="Era cap">{ai(cap)}</Output>
             <Output label="Most that could have been mined by then">{ai(mined)}</Output>
             <Output label="Left in the pool">{ai(POOL - mined)}</Output>
-            <Output label="Most that could be issued that year">{ai(year)}</Output>
-            <Output label="Net supply change that year, at most">{`${signed(change)} AI`}</Output>
+            <Output label="If issued evenly, issued that year">{ai(year)}</Output>
+            <Output label="If issued evenly, net supply change that year">{net}</Output>
           </dl>
         </div>
+        <p aria-live="polite" className="sr-only">{said}</p>
         <p className="mt-8 text-sm text-muted-foreground">Node earnings cannot be estimated yet: reward weights are not set (whitepaper, section 3.3).</p>
       </Card>
     </>

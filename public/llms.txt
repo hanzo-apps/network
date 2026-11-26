@@ -97,7 +97,7 @@ Designed in the whitepaper and not active:
 - Earned by proved work, nothing else: 1T AI, in halving eras.
 - Era caps: the first era may emit at most 500B AI, the second 250B, the third 125B, and so on.
 - Fee burn: Delta S = issuance - beta * fees, where beta is the governed share of settled protocol fees that is burned. Beta is not set yet.
-- [Economics on hanzo.network](https://hanzo.network/economics): The supply, the halving eras and the burn, with a calculator of upper bounds.
+- [Economics on hanzo.network](https://hanzo.network/economics): The supply, the halving eras and the burn, with an illustrative calculator.
 
 ## Sources
 
