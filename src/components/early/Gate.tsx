@@ -116,7 +116,7 @@ export default function Gate() {
             </div>
           )}
 
-          <p role="status" aria-live="polite" className={`font-mono text-sm ${accepted ? 'flex items-center gap-2 text-base tracking-[0.14em]' : 'mt-6 min-h-5 text-foreground'}`}>
+          <p role="status" aria-live="polite" className={`font-mono text-sm ${accepted ? 'flex items-center gap-2 text-base tracking-[0.14em]' : 'mt-4 min-h-5 text-foreground empty:mt-0 empty:min-h-0'}`}>
             {accepted ? (
               <>
                 <Check size={18} aria-hidden="true" />

@@ -133,13 +133,13 @@ export default function Queue() {
           </form>
         )}
 
-        <p role="status" aria-live="polite" className={`min-h-5 font-mono text-sm ${phase === 'done' ? 'text-xl' : 'mt-6'}`}>
+        <p role="status" aria-live="polite" className={`font-mono text-sm empty:min-h-0 ${phase === 'done' ? 'text-xl' : 'mt-6 min-h-5 empty:mt-0'}`}>
           {SAYS[phase]}
         </p>
         {phase === 'done' && <p className={`${eyebrow} mt-3`}>Role: {ROLES.find((r) => r.value === role)?.label}</p>}
 
         <div className="mt-8 border-t border-border pt-6">
-          <p className="max-w-[56ch] text-base text-muted-foreground">We store your email or handle, your role and that you signed up here. Nothing else.</p>
+          <p className="max-w-[64ch] text-base text-muted-foreground">We store your email or handle, your role and that you signed up here. Nothing else.</p>
           <a href={PRIVACY} className={`${textLink} mt-1`}>
             Privacy
           </a>
