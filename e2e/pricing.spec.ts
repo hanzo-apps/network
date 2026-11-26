@@ -236,6 +236,7 @@ test('loading is announced while the catalog is delayed, and cleared after', asy
 
 test('pricing says AI rewards, not GPU rewards (CPUs are paid too)', async ({ page }) => {
   await page.goto('/pricing')
-  await expect(page.getByText(/AI rewards follow once Proof of AI passes its audits/)).toBeVisible()
+  await expect(page.getByText(/AI rewards stay off until the launch gates pass/)).toBeVisible()
+  await expect(page.getByRole('link', { name: 'Read the whitepaper' })).toHaveAttribute('href', 'https://papers.hanzo.ai/hanzo-ai-chain/')
   await expect(page.getByText(/GPU rewards/)).toHaveCount(0)
 })

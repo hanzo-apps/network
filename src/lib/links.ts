@@ -40,7 +40,6 @@ export const ZOO = 'https://zoo.ngo'
 export const HANZO_CHAT = 'https://hanzo.chat'
 /** This site, for the one place an absolute address is needed: the chat's system message. */
 export const SITE = 'https://hanzo.network'
-export const POAI_SPEC = 'https://github.com/hanzoai/hanzo.network/blob/main/docs/proof-of-ai.md'
 
 export const API = 'https://api.hanzo.ai'
 export const API_MCP = `${API}/v1/mcp`

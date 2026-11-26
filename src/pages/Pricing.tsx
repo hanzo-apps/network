@@ -5,7 +5,7 @@ import { AllModels, FeaturedCard } from '@/components/pricing/Models'
 import Glow from '@/components/pricing/Glow'
 import Start from '@/components/pricing/Start'
 import { container, Eyebrow, H2 } from '@/components/home/Section'
-import { DOCS, NODE_GUIDE, PLANS, POAI_SPEC } from '@/lib/links'
+import { DOCS, NODE_GUIDE, PLANS, WHITEPAPER } from '@/lib/links'
 import { FEATURED, countModels, featured, isZenFeatured, loadModels, freeModel, group, perToken, sortModels, type Model } from '@/lib/catalog'
 
 const section = `${container} mt-24 md:mt-32`
@@ -151,17 +151,17 @@ export default function Pricing() {
           <Card className="p-6">
             <h2 className="text-2xl font-semibold">Have GPUs or CPUs?</h2>
             <p className="mt-2 text-muted-foreground">
-              Run a node today: offer tools and agents, and get paid per job. AI rewards follow once Proof of AI passes its audits.
+              Run a node today: offer tools and agents, and get paid per job. AI rewards stay off until the launch gates pass.
             </p>
             <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
               <a href={NODE_GUIDE} className={buttonClass('secondary')}>
                 Run a node
               </a>
               <a
-                href={POAI_SPEC}
+                href={WHITEPAPER}
                 className="text-foreground underline underline-offset-4"
               >
-                Read the spec
+                Read the whitepaper
               </a>
             </div>
           </Card>
