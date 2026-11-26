@@ -45,13 +45,13 @@ export default function Nav() {
           <HanzoLogo variant="current" size={20} />
           Hanzo Network
         </Link>
-        <nav aria-label="Main" className="hidden items-center gap-8 sm:flex">{links(navLink)}</nav>
-        <div className="hidden sm:block">
+        <nav aria-label="Main" className="hidden items-center gap-5 md:flex lg:gap-8">{links(navLink)}</nav>
+        <div className="hidden md:block">
           <Link to="/early" className={buttonClass('small')}>
             Early access
           </Link>
         </div>
-        <div className="sm:hidden">
+        <div className="md:hidden">
         <button
           ref={toggle}
           type="button"
@@ -68,7 +68,7 @@ export default function Nav() {
         </div>
       </div>
       {open && (
-        <nav id="menu" aria-label="Menu" className="flex flex-col border-t border-border px-4 pb-4 sm:hidden">
+        <nav id="menu" aria-label="Menu" className="flex flex-col border-t border-border px-4 pb-4 md:hidden">
           {links('flex h-12 items-center text-base text-foreground')}
           <Link to="/early" className={`${buttonClass('primary')} mt-2`}>
             Early access

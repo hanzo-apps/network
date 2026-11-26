@@ -268,14 +268,24 @@ for (const path of ['/build', '/economics', '/ecosystem', '/early', '/pricing'])
   })
 }
 
-test('the nav fits from 640px up: nothing scrolls sideways and the links stop before the invite button', async ({ page }) => {
+test('the header fits at every width: a menu button below 768px, the links from 768px, and nothing touches or scrolls sideways', async ({ page }) => {
   for (const width of [640, 700, 768, 900, 1024]) {
     await page.setViewportSize({ width, height: 800 })
     await page.goto('/')
-    const nav = page.getByRole('navigation', { name: 'Main' })
-    const last = (await nav.getByRole('link').last().boundingBox())!
-    const invite = (await page.locator('header').getByRole('link', { name: 'Early access' }).boundingBox())!
-    expect(last.x + last.width, `links meet the button at ${width}`).toBeLessThanOrEqual(invite.x)
+    const header = page.locator('header')
+    const home = (await header.getByRole('link', { name: 'Hanzo Network home' }).boundingBox())!
+    expect(home.height, `the name stays on one line at ${width}`).toBeLessThan(40)
+    if (width < 768) {
+      await expect(header.getByRole('button', { name: 'Open menu' }), `menu button at ${width}`).toBeVisible()
+    } else {
+      const links = header.getByRole('navigation', { name: 'Main' }).getByRole('link')
+      const first = (await links.first().boundingBox())!
+      const last = (await links.last().boundingBox())!
+      const invite = (await header.getByRole('link', { name: 'Early access' }).boundingBox())!
+      expect(first.x - (home.x + home.width), `room after the name at ${width}`).toBeGreaterThanOrEqual(16)
+      expect(invite.x - (last.x + last.width), `room before the button at ${width}`).toBeGreaterThanOrEqual(16)
+      expect(invite.x + invite.width, `the button keeps its gutter at ${width}`).toBeLessThanOrEqual(width - 32)
+    }
     expect(await page.evaluate(() => document.documentElement.scrollWidth), `sideways scroll at ${width}`).toBeLessThanOrEqual(width)
   }
 })
