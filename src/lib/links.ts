@@ -31,7 +31,7 @@ export const STATUS = 'https://status.hanzo.network'
 export const WORK = 'https://work.hanzo.network'
 
 export const HANZO = 'https://hanzo.ai'
-export const LOGIN = `${HANZO}/login`
+export const LOGIN = 'https://hanzo.ai/login'
 export const PRIVACY = `${HANZO}/privacy`
 export const TERMS = `${HANZO}/terms`
 export const ZEN = `${HANZO}/zen`
@@ -45,7 +45,7 @@ export const POAI_SPEC = 'https://github.com/hanzoai/hanzo.network/blob/main/doc
 export const API = 'https://api.hanzo.ai'
 export const API_MCP = `${API}/v1/mcp`
 export const API_CHAT = `${API}/v1/chat/completions`
-export const CHAT_LANE = `${API}/v1/chat/public`
+export const CHAT_LANE = 'https://api.hanzo.ai/v1/chat/public'
 export const MODELS_URL = `${API}/v1/models`
 
 export const API_KEYS = 'https://platform.hanzo.ai/api-keys'
