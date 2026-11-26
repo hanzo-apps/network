@@ -99,6 +99,40 @@ test('the header, the gate, the queue, where invites come from, what you can do 
   await expect(main.getByRole('link', { name: 'Run a node' })).toHaveAttribute('href', NODE_GUIDE)
 })
 
+test('at 1440 both cards are as wide as the card row below them', async ({ page }) => {
+  await serve(page)
+  await open(page, { width: 1440, height: 900 })
+  const row = page.locator('section', { has: page.getByRole('heading', { level: 2, name: 'Where invites come from.' }) }).locator('ul')
+  const width = async (l: Locator) => (await l.boundingBox())!.width
+  const want = await width(row)
+  expect(Math.abs((await width(gate(page).locator('.glass'))) - want)).toBeLessThanOrEqual(1)
+  expect(Math.abs((await width(queue(page).locator('.glass'))) - want)).toBeLessThanOrEqual(1)
+})
+
+test('the gate card says how it works in three plain lines, before and after a code is accepted', async ({ page }) => {
+  await serve(page)
+  await open(page)
+  const lines = ['Check your code here.', 'Keep it. It is not used up by checking.', 'Bind it to your wallet when the private terminal opens.']
+  const panel = gate(page).locator('aside')
+  await expect(panel).toContainText('How it works')
+  await expect(panel.locator('ol li')).toHaveCount(3)
+  for (const [i, l] of lines.entries()) {
+    await expect(panel.locator('ol li').nth(i)).toContainText(l)
+    await expect(panel.locator('ol li').nth(i)).toContainText(`0${i + 1}`)
+  }
+  await send(page, CODE)
+  await expect(gate(page)).toContainText('CODE ACCEPTED')
+  for (const l of lines) await expect(panel).toContainText(l)
+})
+
+test('the queue note sits after the form in the page order, with its own eyebrow', async ({ page }) => {
+  await serve(page)
+  await open(page)
+  await expect(queue(page).locator('aside')).toContainText('What we store')
+  await expect(queue(page).locator('aside')).toContainText('We store your email or handle, your role and that you signed up here. Nothing else.')
+  expect(await queue(page).evaluate((q) => !!(q.querySelector('form')!.compareDocumentPosition(q.querySelector('aside')!) & Node.DOCUMENT_POSITION_FOLLOWING))).toBe(true)
+})
+
 test('Check code is the one filled button in the page content', async ({ page }) => {
   await serve(page)
   await open(page)
@@ -178,8 +212,9 @@ test('the code is sent as typed (trimmed) and kept upper-cased in sessionStorage
   await expect(gate(page)).toContainText('CODE ACCEPTED')
   expect(seen.verify[0].body).toEqual({ code: 'hnz-7k9q2m' })
   expect(await page.evaluate((k) => sessionStorage.getItem(k), KEY)).toBe(CODE)
-  expect(await page.evaluate(() => sessionStorage.length)).toBe(1)
-  expect(await page.evaluate(() => Object.keys(localStorage).filter((k) => /invite|code/i.test(k)))).toEqual([])
+  // Other scripts on the site may keep their own session keys; none of them may hold the code.
+  expect(await page.evaluate((k) => Object.entries(sessionStorage).filter(([key, v]) => key !== k && /7k9q2m/i.test(v)), KEY)).toEqual([])
+  expect(await page.evaluate(() => Object.entries(localStorage).filter(([k, v]) => /invite|code/i.test(k) || /7k9q2m/i.test(v)))).toEqual([])
   expect(await page.evaluate(() => document.cookie)).not.toMatch(/HNZ/i)
   expect(page.url()).not.toMatch(/hnz|7k9q2m|code/i)
 })
@@ -211,7 +246,7 @@ test('a code that is not valid: no reason, the value stays, focused and selected
   await expect(code(page)).toBeFocused()
   expect(await code(page).evaluate((el: HTMLInputElement) => [el.selectionStart, el.selectionEnd])).toEqual([0, 10])
   await expect(check(page)).toBeEnabled()
-  await expect(gate(page)).not.toContainText(/accepted|expired|used|revoked|exist/i)
+  await expect(gate(page).locator('form')).not.toContainText(/accepted|expired|used|revoked|exist/i)
   expect(await page.evaluate((k) => sessionStorage.getItem(k), KEY)).toBeNull()
 })
 

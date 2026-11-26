@@ -33,7 +33,9 @@ const SAYS: Record<Phase, string> = {
   unavailable: 'The invite service did not answer. Try again.',
 }
 
-const label = 'font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground'
+const STEPS = ['Check your code here.', 'Keep it. It is not used up by checking.', 'Bind it to your wallet when the private terminal opens.']
+
+const label = 'block font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground'
 
 /** The invite code gate. It shows accepted only when the endpoint said valid:true, rejected only on valid:false, and says nothing else about a code. */
 export default function Gate() {
@@ -87,8 +89,8 @@ export default function Gate() {
 
   return (
     <div id="gate" className="mx-auto w-full max-w-[1200px] px-4 pb-[72px] md:px-8 md:pb-32">
-      <Card className="max-w-3xl p-6 md:p-10">
-        <form onSubmit={submit} noValidate>
+      <Card className="grid lg:grid-cols-[7fr_5fr]">
+        <form onSubmit={submit} noValidate className="min-w-0 p-6 md:p-10">
           {!accepted && (
             <div aria-busy={checking}>
               <label htmlFor="invite-code" className={label}>
@@ -108,7 +110,7 @@ export default function Gate() {
                 inputMode="text"
                 aria-invalid={phase === 'invalid' || phase === 'empty'}
                 aria-describedby="invite-hint"
-                className="mt-3 h-16 w-full min-w-0 rounded-lg border border-border-strong bg-transparent px-4 font-mono text-2xl uppercase tracking-[0.06em] text-foreground placeholder:text-muted-foreground disabled:opacity-60 md:text-3xl"
+                className="mt-3 h-16 w-full min-w-0 max-w-[32rem] rounded-lg border border-border-strong bg-transparent px-4 font-mono text-2xl uppercase tracking-[0.06em] text-foreground placeholder:text-muted-foreground disabled:opacity-60 md:text-3xl"
               />
               <p id="invite-hint" className="mt-3 font-mono text-sm text-muted-foreground">
                 HNZ- and six characters.
@@ -147,6 +149,17 @@ export default function Gate() {
             </div>
           )}
         </form>
+        <aside className="border-t border-border p-6 md:p-10 lg:border-l lg:border-t-0">
+          <p className={label}>How it works</p>
+          <ol className="mt-6 flex flex-col gap-5">
+            {STEPS.map((t, i) => (
+              <li key={t} className="flex gap-4 text-base leading-relaxed text-muted-foreground">
+                <span className="font-mono text-sm tabular-nums text-foreground">{String(i + 1).padStart(2, '0')}</span>
+                {t}
+              </li>
+            ))}
+          </ol>
+        </aside>
       </Card>
     </div>
   )

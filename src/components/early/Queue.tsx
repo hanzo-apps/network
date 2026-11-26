@@ -32,7 +32,7 @@ const FIELD = {
   handle: { label: 'Hanzo handle', error: 'Use 2 to 32 lower-case letters, numbers or underscores.' },
 }
 
-const eyebrow = 'font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground'
+const eyebrow = 'block font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground'
 const errorText = 'mt-3 font-mono text-sm text-foreground'
 
 /** The queue: an email or a handle, a role, and nothing else. The server answers the same for a new and a repeat entry, so the page does too. */
@@ -81,7 +81,8 @@ export default function Queue() {
   return (
     <Section id="queue">
       <H2>No code? Join the queue.</H2>
-      <Card className="mt-12 max-w-3xl p-6 md:p-10">
+      <Card className="mt-12 grid lg:grid-cols-[7fr_5fr]">
+        <div className="min-w-0 p-6 md:p-10">
         {phase !== 'done' && (
           <form onSubmit={submit} noValidate aria-busy={sending} className="flex flex-col gap-8">
             <Segments legend="Sign up with" hideLegend name="contact" options={MODES} value={mode} onChange={pickMode} />
@@ -108,7 +109,7 @@ export default function Queue() {
                 spellCheck={false}
                 aria-invalid={fieldError}
                 aria-describedby={fieldError ? 'queue-contact-error' : undefined}
-                className="mt-3 h-12 w-full min-w-0 rounded-lg border border-border-strong bg-transparent px-4 font-mono text-lg text-foreground disabled:opacity-60"
+                className="mt-3 h-12 w-full min-w-0 max-w-[32rem] rounded-lg border border-border-strong bg-transparent px-4 font-mono text-lg text-foreground disabled:opacity-60"
               />
               {fieldError && (
                 <p id="queue-contact-error" className={errorText}>
@@ -138,12 +139,14 @@ export default function Queue() {
         </p>
         {phase === 'done' && <p className={`${eyebrow} mt-3`}>Role: {ROLES.find((r) => r.value === role)?.label}</p>}
 
-        <div className="mt-8 border-t border-border pt-6">
-          <p className="max-w-[64ch] text-base text-muted-foreground">We store your email or handle, your role and that you signed up here. Nothing else.</p>
+        </div>
+        <aside className="border-t border-border p-6 md:p-10 lg:border-l lg:border-t-0">
+          <p className={eyebrow}>What we store</p>
+          <p className="mt-6 max-w-[64ch] text-base text-muted-foreground">We store your email or handle, your role and that you signed up here. Nothing else.</p>
           <a href={PRIVACY} className={`${textLink} mt-1`}>
             Privacy
           </a>
-        </div>
+        </aside>
       </Card>
     </Section>
   )
