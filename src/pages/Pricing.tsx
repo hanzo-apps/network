@@ -5,7 +5,8 @@ import { AllModels, FeaturedCard } from '@/components/pricing/Models'
 import Glow from '@/components/pricing/Glow'
 import Start from '@/components/pricing/Start'
 import { container, Eyebrow, H2 } from '@/components/home/Section'
-import { featured, fetchModels, freeModel, perToken, sortModels, type Model } from '@/lib/catalog'
+import { NODE_GUIDE } from '@/lib/links'
+import { featured, fetchModels, freeModel, group, perToken, sortModels, type Model } from '@/lib/catalog'
 
 const section = `${container} mt-24 md:mt-32`
 
@@ -55,6 +56,7 @@ export default function Pricing() {
   const top = models ? featured(models) : []
   const zen = top.filter((m) => m.lab === 'Hanzo')
   const others = top.filter((m) => m.lab !== 'Hanzo')
+  const rows = models ? group(sortModels(models)) : null
   const free = models ? freeModel(models) : undefined
 
   return (
@@ -66,18 +68,17 @@ export default function Pricing() {
         </h1>
         <p className="mt-6 max-w-[60ch] text-xl leading-relaxed text-muted-foreground">
           {free ? "Call Hanzo's Zen model for free, then pay" : 'Pay'} only for the tokens you use on any
-          {models ? ` of ${models.length} models` : ' model'}, at today's prices from api.hanzo.ai.
+          {rows ? ` of ${rows.length} models` : ' model'}, at today's prices from api.hanzo.ai.
         </p>
         <ul className="mt-8 grid max-w-2xl gap-4 sm:grid-cols-3">
-          {models && <Stat big={String(models.length)} small="models, live" />}
+          {rows && <Stat big={String(rows.length)} small="models, live" />}
           {free && <Stat big="$0" small="to call Zen" />}
-          <Stat big="Per token" small="billed by use" />
         </ul>
       </header>
 
       <section className={section} id="start">
         <Eyebrow>Get started</Eyebrow>
-        <H2>Your first call in a minute.</H2>
+        <H2>Your first call.</H2>
         <Start />
       </section>
 
@@ -116,7 +117,7 @@ export default function Pricing() {
               <p className="mb-8 mt-3 text-sm text-muted-foreground">
                 Prices per 1M tokens. Batch-rate versions are also available through the API.
               </p>
-              <AllModels models={sortModels(models)} />
+              <AllModels models={rows!} />
               {variable > 0 && (
                 <p className="mt-6 text-sm text-muted-foreground">
                   {variable} more models are priced per second, per image, or are not billed per token; see{' '}
@@ -144,11 +145,11 @@ export default function Pricing() {
           <Card className="p-6">
             <h2 className="text-2xl font-semibold">Have GPUs or CPUs?</h2>
             <p className="mt-2 text-muted-foreground">
-              Providers keep the customer fee and, once Proof of AI switches on, earn AI rewards for verified work.
+              Run a node today: offer tools and agents, and get paid per job. GPU rewards follow once Proof of AI passes its audits.
             </p>
             <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
-              <a href="/#provide" className={buttonClass('secondary')}>
-                How providers earn
+              <a href={NODE_GUIDE} className={buttonClass('secondary')}>
+                Run a node
               </a>
               <a
                 href="https://github.com/hanzoai/hanzo.network/blob/main/docs/proof-of-ai.md"
