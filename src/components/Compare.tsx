@@ -1,5 +1,5 @@
 import Tag from '@/components/ui/tag'
-import { WHITEPAPER_PDF } from '@/lib/links'
+import { RELATED_WORK, WHITEPAPER_PDF } from '@/lib/links'
 
 const ROWS = [
   ['Synthetic AI-like mining shows hardware was spent. Nobody asked for the result.', 'Only jobs someone requested and admitted beforehand count.'],
@@ -15,6 +15,12 @@ export default function Compare() {
     <div>
       <Tag is="Designed" />
       <h3 className="mt-4 text-3xl font-semibold tracking-[-0.01em]">Why proof beats votes.</h3>
+      <p className="mt-2 flex flex-wrap items-center gap-x-3 text-sm text-muted-foreground">
+        Compared with validator-voted networks such as Bittensor.
+        <a href={RELATED_WORK} className="inline-flex min-h-11 items-center rounded-sm text-foreground underline underline-offset-4 hover:text-muted-foreground">
+          Related work, Hanzo consensus paper
+        </a>
+      </p>
       <table className="mt-6 w-full border-collapse text-left text-base leading-relaxed">
         <caption className="sr-only">Other approaches to rewarding AI work, compared with Proof of AI</caption>
         <thead className="max-md:sr-only">
