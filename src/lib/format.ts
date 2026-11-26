@@ -7,7 +7,7 @@ const finite = (n: number) => {
   if (!Number.isFinite(n)) throw new RangeError(`not a number: ${n}`)
 }
 
-/** A count with thousands separators, rounded to a whole number: 1052729 is "1,052,729". */
+/** A count with thousands separators, to the nearest whole number: 1052729 is "1,052,729". */
 export function count(n: number): string {
   finite(n)
   return whole.format(n)
