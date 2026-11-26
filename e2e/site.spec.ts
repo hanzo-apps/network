@@ -163,7 +163,7 @@ test('the footer links Build, Economics and Pricing, and keeps the privacy choic
 })
 
 // Routes the other builders write: each must draw a page with one h1 inside the shared frame.
-for (const [path, h1] of [['/build', 'Start building.'], ['/economics', 'A hard cap of two trillion AI.'], ['/early', 'Early access is invite-only.']] as const) {
+for (const [path, h1] of [['/build', 'Start building.'], ['/economics', 'A hard cap of two trillion AI.'], ['/early', 'Enter your invite code.']] as const) {
   test(`${path} is a page of this site with the h1 "${h1}"`, async ({ page }) => {
     await page.goto(path)
     await expect(page.getByRole('heading', { level: 1 })).toHaveText(h1)

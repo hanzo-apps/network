@@ -88,6 +88,10 @@ curl -s -X POST https://api.hanzo.network/v1/bc/hanzo/rpc -H 'content-type: appl
 - Designed, not active: Proof of AI mining, the 2T AI supply policy and P3Q settlement. Mining stays disabled until the launch gates in the whitepaper pass.
 - [Status page](https://status.hanzo.network): Hanzo's platform status; it does not monitor the chain RPC.
 
+## Early access
+
+Early access to the network is invite-only. The page https://hanzo.network/early checks an invite code through `POST https://api.hanzo.ai/v1/network/invite/verify` and takes queue entries through `POST https://api.hanzo.ai/v1/network/waitlist`. A valid code unlocks nothing yet; it is kept so it can be bound to a wallet when the private terminal opens. The queue stores an email or a handle, a role and that the entry came from the page, and nothing else.
+
 ## Economics
 
 Designed in the whitepaper and not active:

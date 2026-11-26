@@ -400,7 +400,7 @@ test.describe('Closing', () => {
     await page.goto('/')
     const s = page.locator('main > section').last()
     await expect(s.getByRole('heading', { level: 2 })).toHaveText('Build on the network.')
-    const invite = s.getByRole('link', { name: 'Early access', exact: true })
+    const invite = s.getByRole('link', { name: 'Enter invite code', exact: true })
     const build = s.getByRole('link', { name: 'Start building', exact: true })
     await expect(invite).toHaveAttribute('href', '/early')
     await expect(build).toHaveAttribute('href', '/build')

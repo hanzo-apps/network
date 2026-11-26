@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs'
 import { describe, expect, it } from 'vitest'
 import { COMMANDS, CHAIN_CURL, CURL_QUICKSTART, DEVNET_COMMAND } from '../components/build/commands'
 import { NETWORKS } from './networks'
-import { RPC_MAINNET, RPC_TESTNET } from './links'
+import { INVITE_VERIFY, RPC_MAINNET, RPC_TESTNET, WAITLIST } from './links'
 import { solutions } from './solutions'
 
 const llms = readFileSync('public/llms.txt', 'utf8')
@@ -74,6 +74,13 @@ describe('public/llms.txt', () => {
     expect([...llms].filter((c) => c !== '\n' && (c < ' ' || c > '~'))).toEqual([])
     expect(llms).not.toMatch(/fabric/)
     expect(llms).not.toContain('docs.hanzo.ai/mcp')
+  })
+
+  it('describes early access and names the two endpoints the /early page calls', () => {
+    expect(llms).toContain('## Early access')
+    expect(llms).toContain(`POST ${INVITE_VERIFY}`)
+    expect(llms).toContain(`POST ${WAITLIST}`)
+    expect(llms).toContain('https://hanzo.network/early')
   })
 
   it('lists every solution the home cards show, with the same title, status word and address', () => {
