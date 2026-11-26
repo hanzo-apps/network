@@ -1,5 +1,9 @@
 import { useEffect, useState } from 'react'
 import { MODELS_URL } from './links'
+import { request } from './request'
+
+/** How long the models list has to answer before the page stops saying "loading". */
+const WAIT_MS = 10_000
 
 /** `variable` is true when the model is not priced per token (per second, per image, or no price at all). */
 export type Model = { id: string; name: string; lab: string; input: number; output: number; context: number; free: boolean; variable: boolean }
@@ -72,8 +76,7 @@ export const toModel = (r: Raw): Model => ({
 })
 
 export async function fetchModels(signal?: AbortSignal): Promise<Model[]> {
-  const res = await fetch(MODELS_URL, { signal })
-  if (!res.ok) throw new Error(`models ${res.status}`)
+  const res = await request(MODELS_URL, { signal }, WAIT_MS)
   const body = (await res.json()) as { data?: Raw[] }
   if (!Array.isArray(body.data)) throw new Error('bad models response')
   return body.data.filter((r) => !r.id.endsWith(':batch')).map(toModel)

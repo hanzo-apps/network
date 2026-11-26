@@ -22,7 +22,7 @@ pnpm dev          # Vite dev server
 pnpm build        # production build to dist/
 pnpm typecheck && pnpm lint && pnpm test
 pnpm exec playwright test --grep-invert @network   # e2e on the production build
-pnpm exec playwright test --grep @network          # live-internet link check, all five routes
+pnpm links        # live-internet link check, all five routes (on demand; CI does not run it)
 ```
 
 ## Publish

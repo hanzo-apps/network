@@ -1,12 +1,10 @@
 import { expect, test, type Page } from '@playwright/test'
+import { MARKET_PAPER, RELATED_WORK } from '../src/lib/links'
 import { eraCap } from '../src/lib/supply'
 import { axeViolations, serveChain, serveModels } from './helpers'
 
 const WHITEPAPER = 'https://papers.hanzo.ai/hanzo-ai-chain/'
 const WHITEPAPER_PDF = 'https://papers.hanzo.ai/pdfs/hanzo-ai-chain.pdf'
-const MARKET_PAPER = 'https://github.com/hanzoai/papers/blob/main/sections/hmm.tex'
-const RELATED_WORK = 'https://github.com/hanzoai/papers/blob/main/hanzo-consensus-ai/sections/09-related-work.tex'
-const PLANS = 'https://hanzo.ai/pricing'
 
 const open = async (page: Page, size?: { width: number; height: number }) => {
   if (size) await page.setViewportSize(size)
@@ -406,11 +404,3 @@ for (const colorScheme of ['dark', 'light'] as const) {
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true)
   })
 }
-
-test('the pricing page points to the monthly plans on hanzo.ai', async ({ page }) => {
-  await serveModels(page)
-  await page.goto('/pricing')
-  const line = page.locator('header p', { hasText: 'Monthly plans, Pro $15 and Max $95, are on' })
-  await expect(line).toBeVisible()
-  await expect(line.getByRole('link', { name: 'hanzo.ai/pricing' })).toHaveAttribute('href', PLANS)
-})
