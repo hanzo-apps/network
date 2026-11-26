@@ -1,29 +1,24 @@
 # Hanzo Network
 
-> Decentralized AI compute network and infrastructure.
+> AI compute, proved and paid. Developers run AI on the network; anyone with GPUs or CPUs earns by doing that work; every job is proved before anyone is paid (Proof of AI).
 
-## About
-Hanzo Network is a decentralized AI compute network providing distributed GPU clusters, model training infrastructure, and inference serving at scale. It enables distributed AI workloads across a global network of compute providers, offering cost-effective access to high-performance GPUs for training, fine-tuning, and serving AI models.
+## For developers
+An OpenAI-compatible API at api.hanzo.ai serves Hanzo's Zen models and leading models from other labs. Every job is provable. Get an API key at https://platform.hanzo.ai/api-keys.
 
-## Key Features
-- Decentralized GPU compute marketplace
-- Distributed training across multiple nodes
-- Model serving and inference at scale
-- Global network of compute providers
-- Automatic load balancing and failover
-- Cost-effective GPU access (A100, H100, H200)
-- Support for PyTorch, JAX, and custom frameworks
-- Encrypted data transfer and model privacy
-- Pay-per-use pricing with no lock-in
-- Integration with Hanzo AI platform
+## For compute providers
+Keep the customer fee and earn AI rewards when your work is proved. Proofs are CPU-verifiable. Payout goes to any supported chain. Run a node (https://github.com/hanzoai/node) or apply at https://hanzo.ai/contact.
+
+## How a job runs
+1. Admit: the job and its reward are fixed on A-Chain before it runs.
+2. Execute: a provider runs it and commits the exact output.
+3. Validate: ordinary CPUs check the work; TEEs are optional for private jobs.
+4. Settle: the receipt is rolled up on Z-Chain and paid on any chain via Lux.
 
 ## Links
-- [Website](https://hanzo.network)
+- [Hanzo Network](https://hanzo.network)
+- [Pricing](https://hanzo.network/pricing)
+- [Docs](https://docs.hanzo.ai)
+- [API](https://api.hanzo.ai)
+- [Node on GitHub](https://github.com/hanzoai/node)
 - [Hanzo AI](https://hanzo.ai)
-- [Documentation](https://docs.hanzo.ai/network)
-- [Network Status](https://status.hanzo.network)
-- [GitHub](https://github.com/hanzoai)
-
-## Contact
-- Support: support@hanzo.ai
-- Network Operations: network@hanzo.ai
+- [Status](https://status.hanzo.network)

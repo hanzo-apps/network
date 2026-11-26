@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import GlobalChatWidget from "./components/GlobalChatWidget";
 import ScrollToTop from "./components/ScrollToTop";
+import Shell from "./components/Shell";
 import NetworkLanding from "./pages/NetworkLanding";
 import Pricing from "./pages/Pricing";
 
@@ -18,11 +19,13 @@ const ToHanzo = () => {
 const App = () => (
   <BrowserRouter>
     <ScrollToTop />
-    <Routes>
-      <Route path="/" element={<NetworkLanding />} />
-      <Route path="/pricing" element={<Pricing />} />
-      <Route path="*" element={<ToHanzo />} />
-    </Routes>
+    <Shell>
+      <Routes>
+        <Route path="/" element={<NetworkLanding />} />
+        <Route path="/pricing" element={<Pricing />} />
+        <Route path="*" element={<ToHanzo />} />
+      </Routes>
+    </Shell>
     <GlobalChatWidget />
   </BrowserRouter>
 );
