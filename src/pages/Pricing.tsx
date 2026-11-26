@@ -6,9 +6,9 @@ import Glow from '@/components/pricing/Glow'
 import Start from '@/components/pricing/Start'
 import { container, Eyebrow, H2 } from '@/components/home/Section'
 import { NODE_GUIDE } from '@/lib/links'
-import { FEATURED, featured, fetchModels, freeModel, group, perToken, sortModels, type Model } from '@/lib/catalog'
+import { FEATURED, featured, isHanzo, fetchModels, freeModel, group, perToken, sortModels, type Model } from '@/lib/catalog'
 
-const section = `${container} mt-24 scroll-mt-16 md:mt-32`
+const section = `${container} mt-24 md:mt-32`
 
 type State = { models: Model[] } | { error: true } | null
 
@@ -34,7 +34,7 @@ const Group = ({ label, models, count, cols }: { label: string; models?: Model[]
     </div>
   )
 
-const ZEN = FEATURED.filter((id) => !id.includes('/')).length
+const ZEN = FEATURED.filter(isHanzo).length
 
 export default function Pricing() {
   const [state, setState] = useState<State>(null)
@@ -57,8 +57,8 @@ export default function Pricing() {
   const models = all ? perToken(all) : null
   const variable = all && models ? all.length - models.length : 0
   const top = models ? featured(models) : []
-  const zen = top.filter((m) => m.lab === 'Hanzo')
-  const others = top.filter((m) => m.lab !== 'Hanzo')
+  const zen = top.filter((m) => isHanzo(m.id))
+  const others = top.filter((m) => !isHanzo(m.id))
   const rows = models ? group(sortModels(models)) : null
   const free = models ? freeModel(models) : undefined
 
@@ -66,13 +66,6 @@ export default function Pricing() {
     <div className="pb-[72px] pt-[72px] md:pb-32 md:pt-32">
       <header className={container}>
         <Eyebrow>Pricing</Eyebrow>
-        <div className="mb-6 h-8" aria-hidden={free ? undefined : true}>
-          {free && (
-            <span className="inline-flex h-8 items-center rounded-full border border-border px-3 font-mono text-xs uppercase tracking-[0.12em] text-muted-foreground">
-              Zen is free to call · $0
-            </span>
-          )}
-        </div>
         <h1 className="text-6xl font-[560] leading-[1.0] tracking-[-0.045em] md:text-7xl">Pay per token.</h1>
         <p className="mt-6 max-w-[60ch] text-xl leading-relaxed text-muted-foreground">
           Pay only for the tokens you use. Every price comes live from api.hanzo.ai.
@@ -90,6 +83,9 @@ export default function Pricing() {
       </section>
 
       <div aria-busy={state === null}>
+        <p role="status" className="sr-only">
+          {state === null ? "Loading today's prices from api.hanzo.ai…" : ''}
+        </p>
         {state && 'error' in state && (
           <section className={section}>
             <Card role="alert" className="p-6">
@@ -145,7 +141,7 @@ export default function Pricing() {
           <Card className="p-6">
             <h2 className="text-2xl font-semibold">Have GPUs or CPUs?</h2>
             <p className="mt-2 text-muted-foreground">
-              Run a node today: offer tools and agents, and get paid per job. GPU rewards follow once Proof of AI passes its audits.
+              Run a node today: offer tools and agents, and get paid per job. AI rewards follow once Proof of AI passes its audits.
             </p>
             <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
               <a href={NODE_GUIDE} className={buttonClass('secondary')}>

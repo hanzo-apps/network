@@ -35,13 +35,27 @@ const CURL = `curl https://api.hanzo.ai/v1/chat/completions \\
   -H "Content-Type: application/json" \\
   -d '{"model":"hanzo/zen","messages":[{"role":"user","content":"Hello"}]}'`
 
-test('a free Zen shows the "free" pill and a $0 card; the headline stays true without data', async ({ page }) => {
+test('a free Zen shows as the $0 stat card only; the headline stays true without data', async ({ page }) => {
   await serveModels(page)
   await page.goto('/pricing')
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Pay per token.')
-  await expect(page.getByText('Zen is free to call · $0')).toBeVisible()
+  await expect(page.getByText('Zen is free to call')).toHaveCount(0)
   await expect(page.getByText('to call Zen')).toBeVisible()
-  await expect(page.getByText('$0', { exact: true })).toBeVisible()
+  await expect(page.getByText('$0', { exact: true })).toHaveCount(1)
+})
+
+test('without a free Zen the stat card slot stays a same-size spacer', async ({ page }) => {
+  const body = JSON.parse(readFileSync('e2e/fixtures/models.json', 'utf8'))
+  body.data = body.data.filter((m: { id: string }) => m.id !== 'hanzo/zen')
+  await page.route(MODELS_URL, (route) => route.fulfill({ json: body }))
+  await page.goto('/pricing')
+  await expect(page.getByText('models, live')).toBeVisible()
+  const cards = page.locator('header ul > li')
+  await expect(cards).toHaveCount(2)
+  const [a, b] = [(await cards.nth(0).boundingBox())!, (await cards.nth(1).boundingBox())!]
+  expect(Math.abs(a.height - b.height)).toBeLessThanOrEqual(1)
+  expect(Math.abs(a.width - b.width)).toBeLessThanOrEqual(1)
+  await expect(cards.nth(1)).toBeHidden()
 })
 
 test('without a free Zen the page claims nothing free', async ({ page }) => {
@@ -182,6 +196,44 @@ for (const [width, height] of [[375, 812], [1440, 900]]) {
     await page.goto('/pricing')
     await expect(page.getByText('Claude Opus 5.5').first()).toBeVisible()
     await page.waitForTimeout(1500)
-    expect(await page.evaluate(() => (window as unknown as { cls: number }).cls)).toBeLessThan(0.05)
+    expect(await page.evaluate(() => (window as unknown as { cls: number }).cls)).toBeLessThan(0.01)
   })
 }
+
+test('a featured placeholder card and a loaded one are the same height', async ({ page }) => {
+  let release!: () => void
+  const gate = new Promise<void>((r) => (release = r))
+  await page.route(MODELS_URL, async (route) => {
+    await gate
+    await route.fulfill({ path: 'e2e/fixtures/models.json', contentType: 'application/json' })
+  })
+  await page.goto('/pricing')
+  const card = page.locator('#models li').first()
+  await expect(card).toBeVisible()
+  const before = (await card.boundingBox())!.height
+  release()
+  await expect(page.getByText('Claude Opus 5.5').first()).toBeVisible()
+  const after = (await page.locator('#models li').first().boundingBox())!.height
+  expect(Math.abs(before - after)).toBeLessThanOrEqual(1)
+})
+
+test('loading is announced while the catalog is delayed, and cleared after', async ({ page }) => {
+  let release!: () => void
+  const gate = new Promise<void>((r) => (release = r))
+  await page.route(MODELS_URL, async (route) => {
+    await gate
+    await route.fulfill({ path: 'e2e/fixtures/models.json', contentType: 'application/json' })
+  })
+  await page.goto('/pricing')
+  const status = page.getByRole('status')
+  await expect(status).toHaveText("Loading today's prices from api.hanzo.ai…")
+  release()
+  await expect(page.getByText('Claude Opus 5.5').first()).toBeVisible()
+  await expect(status).toHaveText('')
+})
+
+test('pricing says AI rewards, not GPU rewards (CPUs are paid too)', async ({ page }) => {
+  await page.goto('/pricing')
+  await expect(page.getByText(/AI rewards follow once Proof of AI passes its audits/)).toBeVisible()
+  await expect(page.getByText(/GPU rewards/)).toHaveCount(0)
+})

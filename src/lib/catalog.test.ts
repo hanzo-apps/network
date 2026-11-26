@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { FEATURED, context, featured, fetchModels, freeModel, group, perToken, price, sortModels, toModel, topLabs } from './catalog'
+import { FEATURED, isHanzo, context, featured, fetchModels, freeModel, group, perToken, price, sortModels, toModel, topLabs } from './catalog'
 
 const raw = (o: object = {}) => ({
   id: 'anthropic/claude-opus-5.5',
@@ -202,5 +202,17 @@ describe('group', () => {
   })
   it('keeps the order of first appearance', () => {
     expect(group([enso('a'), enso('x', { name: 'Kai' }), enso('b')]).map((r) => r.ids)).toEqual([['a', 'b'], ['x']])
+  })
+})
+
+describe('isHanzo', () => {
+  it('is true for bare zen ids and false for other labs', () => {
+    expect(isHanzo('zen6')).toBe(true)
+    expect(isHanzo('zen6-max')).toBe(true)
+    expect(isHanzo('anthropic/claude-opus-5.5')).toBe(false)
+  })
+  it('splits FEATURED into 4 Zen and 6 others', () => {
+    expect(FEATURED.filter(isHanzo)).toHaveLength(4)
+    expect(FEATURED.filter((id) => !isHanzo(id))).toHaveLength(6)
   })
 })

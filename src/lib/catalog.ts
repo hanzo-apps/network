@@ -25,6 +25,9 @@ export const FEATURED = [
   'google/gemini-3.8-flash',
 ]
 
+/** The one rule for Zen versus other labs among FEATURED: Zen ids have no "lab/" prefix. */
+export const isHanzo = (id: string) => !id.includes('/')
+
 const LABS: Record<string, string> = {
   anthropic: 'Anthropic',
   openai: 'OpenAI',
