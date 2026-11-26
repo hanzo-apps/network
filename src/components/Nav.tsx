@@ -2,12 +2,14 @@ import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { HanzoLogo } from '@hanzo/logo'
 import { buttonClass } from '@/components/ui/button'
+import { DOCS } from '@/lib/links'
 
 const LINKS = [
-  { label: 'How it works', to: '/#how' },
-  { label: 'Providers', to: '/#provide' },
+  { label: 'Solutions', to: '/#solutions' },
+  { label: 'Build', to: '/build' },
+  { label: 'Economics', to: '/economics' },
   { label: 'Pricing', to: '/pricing' },
-  { label: 'Docs', href: 'https://docs.hanzo.ai' },
+  { label: 'Docs', href: DOCS },
 ]
 
 const item = 'rounded-sm text-sm text-muted-foreground transition-colors duration-150 hover:text-foreground'
@@ -46,9 +48,9 @@ export default function Nav() {
         </Link>
         <nav aria-label="Main" className="hidden items-center gap-8 sm:flex">{links(item)}</nav>
         <div className="hidden sm:block">
-          <a href="https://platform.hanzo.ai/api-keys" className={buttonClass('small')}>
-            Get an API key
-          </a>
+          <Link to="/early" className={buttonClass('small')}>
+            Get an invite
+          </Link>
         </div>
         <div className="sm:hidden">
         <button
@@ -69,9 +71,9 @@ export default function Nav() {
       {open && (
         <nav id="menu" aria-label="Menu" className="flex flex-col border-t border-border px-4 pb-4 sm:hidden">
           {links('flex h-12 items-center text-base text-foreground')}
-          <a href="https://platform.hanzo.ai/api-keys" className={`${buttonClass('primary')} mt-2`}>
-            Get an API key
-          </a>
+          <Link to="/early" className={`${buttonClass('primary')} mt-2`}>
+            Get an invite
+          </Link>
         </nav>
       )}
     </header>

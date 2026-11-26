@@ -1,4 +1,11 @@
 import { expect, test } from '@playwright/test'
+import { serveChain, serveModels } from './helpers'
+
+// Nothing here may depend on the live chain or the live catalog (the link check below is the one @network test).
+test.beforeEach(async ({ page }) => {
+  await serveChain(page)
+  await serveModels(page)
+})
 
 const PAGES = ['/', '/pricing']
 
@@ -102,7 +109,7 @@ test('the page switches when the device does', async ({ page }) => {
 for (const path of ['/original', '/index', '/home2']) {
   test(`${path} lands on this site's home, not a hanzo.ai 404`, async ({ page }) => {
     await page.goto(path)
-    await expect(page.getByRole('heading', { level: 1 })).toHaveText('Provable AI compute.')
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText('The blockchain for global intelligence.')
     expect(new URL(page.url()).pathname).toBe('/')
   })
 }
@@ -113,4 +120,42 @@ test('share tags are absolute so link previews work off-site', async ({ page }) 
   expect(await meta('og:image')).toBe('https://hanzo.network/og-image.png')
   expect(await meta('twitter:image')).toBe('https://hanzo.network/og-image.png')
   expect(await meta('og:url')).toBe('https://hanzo.network/')
+})
+
+test('title and description say what the network is, in the page, the share tags and the twitter tags', async ({ page }) => {
+  await page.goto('/')
+  const title = 'Hanzo Network: the blockchain for global intelligence'
+  const description = 'Run AI workloads through one API today. Proof of AI is designed to verify them on ordinary CPUs and settle with post-quantum finality.'
+  const meta = (k: string) => page.locator(`head meta[property="${k}"], head meta[name="${k}"]`).getAttribute('content')
+  await expect(page).toHaveTitle(title)
+  expect(await meta('description')).toBe(description)
+  expect(await meta('og:title')).toBe(title)
+  expect(await meta('og:description')).toBe(description)
+  expect(await meta('twitter:title')).toBe(title)
+  expect(await meta('twitter:description')).toBe(description)
+})
+
+test('the footer links Build, Economics and Pricing, and keeps the privacy choices', async ({ page }) => {
+  await page.goto('/')
+  const footer = page.getByRole('contentinfo')
+  await expect(footer.getByRole('link', { name: 'Build', exact: true })).toHaveAttribute('href', '/build')
+  await expect(footer.getByRole('link', { name: 'Economics', exact: true })).toHaveAttribute('href', '/economics')
+  await expect(footer.getByRole('link', { name: 'Pricing', exact: true })).toHaveAttribute('href', '/pricing')
+  await expect(footer.getByRole('link', { name: 'Your Privacy Choices' })).toHaveAttribute('href', '#choices')
+})
+
+// Routes the other builders write: each must draw a page with one h1 inside the shared frame.
+for (const [path, h1] of [['/build', 'Start building.'], ['/economics', 'A hard cap of two trillion AI.'], ['/early', 'Invites are opening soon.']] as const) {
+  test(`${path} is a page of this site with the h1 "${h1}"`, async ({ page }) => {
+    await page.goto(path)
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText(h1)
+    await expect(page.getByRole('navigation', { name: 'Main' })).toBeVisible()
+    expect(new URL(page.url()).pathname).toBe(path)
+  })
+}
+
+test('/pricing is still there', async ({ page }) => {
+  await page.goto('/pricing')
+  await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
+  expect(new URL(page.url()).pathname).toBe('/pricing')
 })

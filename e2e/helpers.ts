@@ -3,7 +3,7 @@ import AxeBuilder from '@axe-core/playwright'
 
 export const MODELS_URL = 'https://api.hanzo.ai/v1/models'
 export const CHAT_URL = 'https://api.hanzo.ai/v1/chat/public'
-export const RPC_URL = 'https://api.hanzo.network/v1/chain/hanzo'
+export const RPC_URL = 'https://api.hanzo.network/v1/bc/hanzo/rpc'
 
 export const serveModels = (page: Page) =>
   page.route(MODELS_URL, (route) => route.fulfill({ path: 'e2e/fixtures/models.json', contentType: 'application/json' }))
@@ -11,8 +11,8 @@ export const serveModels = (page: Page) =>
 export const failModels = (page: Page) =>
   page.route(MODELS_URL, (route) => route.fulfill({ status: 500, body: 'down' }))
 
-export const serveChain = (page: Page) =>
-  page.route(RPC_URL, (route) =>
+export const serveChain = (page: Page, url = RPC_URL) =>
+  page.route(url, (route) =>
     route.fulfill({ json: { jsonrpc: '2.0', id: 1, result: '0x101039' } }),
   )
 

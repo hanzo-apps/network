@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react'
+
 /** `variable` is true when the model is not priced per token (per second, per image, or no price at all). */
 export type Model = { id: string; name: string; lab: string; input: number; output: number; context: number; free: boolean; variable: boolean }
 
@@ -126,4 +128,46 @@ export function group(models: Model[]): Row[] {
     else rows.set(key, { ...m, ids: [m.id] })
   }
   return [...rows.values()]
+}
+
+/** A Zen model: any id with "zen" in it, so zen6, hanzo/zen and zenlm/zen6-max all count. */
+export const isZen = (id: string) => /zen/i.test(id)
+
+/** The one model count on the site: distinct per-token models (aliases merged) and how many of them are Zen. Pricing's header stat is the first number. */
+export function countModels(models: Model[]) {
+  const rows = group(perToken(models))
+  return { models: rows.length, zen: rows.filter((r) => r.ids.some(isZen)).length }
+}
+
+let catalog: Promise<Model[]> | undefined
+
+/** The catalog, fetched once for the whole page however many callers ask. A failure is forgotten so the next call tries again. */
+export function loadModels(): Promise<Model[]> {
+  catalog ??= fetchModels().catch((e) => {
+    catalog = undefined
+    throw e
+  })
+  return catalog
+}
+
+export type Counts = { status: 'loading' } | { status: 'live'; models: number; zen: number } | { status: 'down' }
+
+/** loading until the catalog answers, then live with the counts or down. Waits for the page to finish loading before asking, so it never competes with first paint. */
+export function useCounts(): Counts {
+  const [state, setState] = useState<Counts>({ status: 'loading' })
+  useEffect(() => {
+    let gone = false
+    const ask = () =>
+      loadModels().then(
+        (m) => gone || setState({ status: 'live', ...countModels(m) }),
+        () => gone || setState({ status: 'down' }),
+      )
+    if (document.readyState === 'complete') ask()
+    else window.addEventListener('load', ask, { once: true })
+    return () => {
+      gone = true
+      window.removeEventListener('load', ask)
+    }
+  }, [])
+  return state
 }

@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { FEATURED, isZenFeatured, context, featured, fetchModels, freeModel, group, perToken, price, sortModels, toModel, topLabs } from './catalog'
+import { FEATURED, countModels, isZen, isZenFeatured, context, featured, fetchModels, freeModel, group, perToken, price, sortModels, toModel, topLabs, type Model } from './catalog'
 
 const raw = (o: object = {}) => ({
   id: 'anthropic/claude-opus-5.5',
@@ -214,5 +214,58 @@ describe('isZenFeatured', () => {
   it('splits FEATURED into 4 Zen and 6 others', () => {
     expect(FEATURED.filter(isZenFeatured)).toHaveLength(4)
     expect(FEATURED.filter((id) => !isZenFeatured(id))).toHaveLength(6)
+  })
+})
+
+const mk = (id: string, o: Partial<Model> = {}): Model => ({ id, name: id, lab: 'X', input: 1, output: 2, context: 1000, free: false, variable: false, ...o })
+
+describe('isZen', () => {
+  it.each(['zen6', 'hanzo/zen', 'zen-3d', 'zen3-tts', 'hanzo/ZEN-Coder', 'zenlm/zen6-max'])('%s is Zen', (id) => expect(isZen(id)).toBe(true))
+  it.each(['anthropic/claude-opus-5.5', 'openai/gpt-5.4', 'qwen/qwen3', 'hanzo/enso'])('%s is not', (id) => expect(isZen(id)).toBe(false))
+})
+
+describe('countModels', () => {
+  it('counts distinct per-token models, aliases merged, exactly as the Pricing stat does', () => {
+    const list = [
+      mk('enso', { name: 'Enso' }),
+      mk('hanzo/enso', { name: 'Enso' }),
+      mk('zen6', { name: 'Zen6' }),
+      mk('anthropic/claude-opus-5.5', { name: 'Opus' }),
+      mk('fal/video', { variable: true }),
+    ]
+    expect(countModels(list)).toEqual({ models: 3, zen: 1 })
+  })
+  it('counts a model once when any of its alias ids is Zen', () => {
+    const list = [mk('zen6', { name: 'Zen6' }), mk('hanzo/zen6', { name: 'Zen6' }), mk('zenlm/zen6', { name: 'Zen6' })]
+    expect(countModels(list)).toEqual({ models: 1, zen: 1 })
+  })
+  it('is zero for an empty catalog, and ignores per-second models', () => {
+    expect(countModels([])).toEqual({ models: 0, zen: 0 })
+    expect(countModels([mk('zen-video', { variable: true })])).toEqual({ models: 0, zen: 0 })
+  })
+})
+
+describe('loadModels', () => {
+  // The cache lives in the module, so each test loads a fresh copy of it.
+  const fresh = async () => {
+    vi.resetModules()
+    return (await import('./catalog')).loadModels
+  }
+  afterEach(() => vi.unstubAllGlobals())
+  it('fetches the catalog once however many callers ask', async () => {
+    const f = vi.fn(async () => new Response(JSON.stringify({ data: [raw()] })))
+    vi.stubGlobal('fetch', f)
+    const loadModels = await fresh()
+    const [a, b] = await Promise.all([loadModels(), loadModels()])
+    expect(f).toHaveBeenCalledTimes(1)
+    expect(a).toBe(b)
+  })
+  it('forgets a failure so the next call tries again', async () => {
+    const f = vi.fn().mockResolvedValueOnce(new Response('down', { status: 500 })).mockResolvedValue(new Response(JSON.stringify({ data: [raw()] })))
+    vi.stubGlobal('fetch', f)
+    const loadModels = await fresh()
+    await expect(loadModels()).rejects.toThrow()
+    expect((await loadModels()).map((m) => m.id)).toEqual(['anthropic/claude-opus-5.5'])
+    expect(f).toHaveBeenCalledTimes(2)
   })
 })

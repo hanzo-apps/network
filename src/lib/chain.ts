@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react'
+import { RPC_MAINNET } from './links'
 
-const RPC = 'https://api.hanzo.network/v1/chain/hanzo'
-
-/** Height of the Hanzo chain, read with eth_blockNumber. Throws on any bad answer. */
-export async function blockHeight(signal?: AbortSignal): Promise<number> {
-  const res = await fetch(RPC, {
+/** Height of the chain behind `rpc`, read with eth_blockNumber. Throws on any bad answer. */
+export async function blockHeight(rpc: string, signal?: AbortSignal): Promise<number> {
+  const res = await fetch(rpc, {
     method: 'POST',
     headers: { 'content-type': 'application/json' },
     body: JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'eth_blockNumber', params: [] }),
@@ -18,8 +17,8 @@ export async function blockHeight(signal?: AbortSignal): Promise<number> {
 
 export type ChainState = { status: 'loading' } | { status: 'live'; height: number } | { status: 'down' }
 
-/** Polls the chain every 6 s while the tab is visible and reports each answer. A request with no answer in 5 s is "down". Returns the stop function. */
-export function watchChain(report: (s: ChainState) => void): () => void {
+/** Polls the chain at `rpc` (mainnet by default) every 6 s while the tab is visible and reports each answer. A request with no answer in 5 s is "down". Returns the stop function. */
+export function watchChain(report: (s: ChainState) => void, rpc: string = RPC_MAINNET): () => void {
   let ctl: AbortController | undefined
   const poll = () => {
     if (document.visibilityState !== 'visible') return
@@ -30,7 +29,7 @@ export function watchChain(report: (s: ChainState) => void): () => void {
       timedOut = true
       c.abort()
     }, 5000)
-    blockHeight(c.signal)
+    blockHeight(rpc, c.signal)
       .then(
         (height) => report({ status: 'live', height }),
         () => {
@@ -51,8 +50,11 @@ export function watchChain(report: (s: ChainState) => void): () => void {
 }
 
 /** loading until the first answer, then live or down. */
-export function useChain(): ChainState {
+export function useChain(rpc: string = RPC_MAINNET): ChainState {
   const [state, setState] = useState<ChainState>({ status: 'loading' })
-  useEffect(() => watchChain(setState), [])
+  useEffect(() => {
+    setState({ status: 'loading' })
+    return watchChain(setState, rpc)
+  }, [rpc])
   return state
 }

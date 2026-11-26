@@ -1,4 +1,5 @@
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest'
+import { RPC_MAINNET, RPC_TESTNET } from './links'
 import { blockHeight, watchChain, type ChainState } from './chain'
 
 const reply = (body: unknown, init?: ResponseInit) =>
@@ -8,26 +9,39 @@ afterEach(() => vi.unstubAllGlobals())
 
 test('reads the hex block number as a number', async () => {
   reply({ jsonrpc: '2.0', id: 1, result: '0x101039' })
-  expect(await blockHeight()).toBe(1052729)
+  expect(await blockHeight(RPC_MAINNET)).toBe(1052729)
 })
 
 test('asks eth_blockNumber over JSON-RPC', async () => {
   reply({ result: '0x1' })
-  await blockHeight()
+  await blockHeight(RPC_MAINNET)
   const [url, init] = vi.mocked(fetch).mock.calls[0]
-  expect(url).toBe('https://api.hanzo.network/v1/chain/hanzo')
+  expect(url).toBe('https://api.hanzo.network/v1/bc/hanzo/rpc')
   expect(init?.method).toBe('POST')
   expect(JSON.parse(String(init?.body))).toEqual({ jsonrpc: '2.0', id: 1, method: 'eth_blockNumber', params: [] })
 })
 
+test('asks the RPC it is given, so a testnet reads the same way', async () => {
+  reply({ result: '0xff6c3' })
+  expect(await blockHeight(RPC_TESTNET)).toBe(1046211)
+  expect(vi.mocked(fetch).mock.calls[0][0]).toBe('https://api.hanzo-test.network/v1/bc/hanzo/rpc')
+})
+
+test('passes the abort signal to fetch', async () => {
+  reply({ result: '0x1' })
+  const ctl = new AbortController()
+  await blockHeight(RPC_MAINNET, ctl.signal)
+  expect(vi.mocked(fetch).mock.calls[0][1]?.signal).toBe(ctl.signal)
+})
+
 test.each([{}, { result: 'nope' }, { result: 5 }, { error: { code: -1 } }])('a bad reply throws: %j', async (body) => {
   reply(body)
-  await expect(blockHeight()).rejects.toThrow()
+  await expect(blockHeight(RPC_MAINNET)).rejects.toThrow()
 })
 
 test('a non-2xx answer throws', async () => {
   reply({ result: '0x1' }, { status: 503 })
-  await expect(blockHeight()).rejects.toThrow()
+  await expect(blockHeight(RPC_MAINNET)).rejects.toThrow()
 })
 
 describe('watchChain', () => {
@@ -65,6 +79,18 @@ describe('watchChain', () => {
       }),
     )
   }
+
+  test('watches the RPC it is given, and mainnet by default', async () => {
+    slowFetch([{ ms: 10, result: '0x10' }])
+    stop = watchChain((s) => seen.push(s), RPC_TESTNET)
+    await tick(20)
+    expect(vi.mocked(fetch).mock.calls[0][0]).toBe(RPC_TESTNET)
+    stop()
+    slowFetch([{ ms: 10, result: '0x10' }])
+    stop = watchChain((s) => seen.push(s))
+    await tick(20)
+    expect(vi.mocked(fetch).mock.calls[0][0]).toBe(RPC_MAINNET)
+  })
 
   test('reports live with the height', async () => {
     slowFetch([{ ms: 10, result: '0x10' }])
