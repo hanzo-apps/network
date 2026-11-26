@@ -316,7 +316,7 @@ test('home makes no claim the sources do not back', async ({ page }) => {
   await expect(page.getByText(/any chain/i)).toHaveCount(0)
   await expect(page.getByText(/paid only for work/i)).toHaveCount(0)
   await expect(page.getByText(/any model through one API/i)).toHaveCount(0)
-  await expect(page.getByText(/bittensor/i)).toHaveCount(0)
+  await expect(page.getByText(/bittensor/i)).toHaveCount(1) // only in the Compare block (sections.spec holds it there)
 })
 
 test('the headline enters without blur', async ({ page }) => {

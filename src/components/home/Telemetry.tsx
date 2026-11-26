@@ -4,7 +4,10 @@ import { Link } from 'react-router-dom'
 import Tag from '@/components/ui/tag'
 import { useChain } from '@/lib/chain'
 import { useCounts } from '@/lib/catalog'
+import { count } from '@/lib/format'
 import { STATUS } from '@/lib/links'
+import { NETWORKS } from '@/lib/networks'
+import { CAP, eraCap, short, shortAI } from '@/lib/supply'
 
 const link = 'inline-flex min-h-11 flex-wrap items-center gap-x-2 rounded-sm underline-offset-4 hover:underline'
 
@@ -21,7 +24,7 @@ function ChainCell() {
   const still = useReducedMotion()
   const dot = 'block h-2 w-2 shrink-0 rounded-full bg-foreground'
   return (
-    <Cell label="Chain 36963">
+    <Cell label={`Chain ${NETWORKS[0].chainId}`}>
       {chain.status === 'down' && 'unavailable'}
       {chain.status === 'live' && (
         <>
@@ -37,7 +40,7 @@ function ChainCell() {
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             />
           )}
-          <span>block {chain.height.toLocaleString('en-US')}</span>
+          <span>block {count(chain.height)}</span>
         </>
       )}
     </Cell>
@@ -49,7 +52,7 @@ function ModelsCell() {
   return (
     <Cell label="Models">
       {counts.status === 'down' && 'unavailable'}
-      {counts.status === 'live' && `${counts.models.toLocaleString('en-US')} · ${counts.zen.toLocaleString('en-US')} Zen`}
+      {counts.status === 'live' && `${count(counts.models)} · ${count(counts.zen)} Zen`}
     </Cell>
   )
 }
@@ -63,7 +66,7 @@ export default function Telemetry() {
         <ModelsCell />
         <Cell label="Supply cap">
           <Link to="/economics" className={link}>
-            2T AI · 500B era 1
+            {shortAI(CAP)} · {short(eraCap(0))} era 1
             <Tag is="Designed" />
           </Link>
         </Cell>

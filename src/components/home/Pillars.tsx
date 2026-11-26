@@ -1,13 +1,16 @@
 import Tag, { type Status } from '@/components/ui/tag'
 import { DOCS_AGENTS, EXPLORER, HIP_0901, HIP_1334, NODE_GUIDE, WORK } from '@/lib/links'
+import { NETWORKS } from '@/lib/networks'
 import Reveal from './Reveal'
 import Section, { Disc, Eyebrow, H2 } from './Section'
 import { textLink } from '@/components/ui/button'
 
+const ID = NETWORKS[0].chainId
+
 const PILLARS: { tag: Status; title: string; text: string; link: string; href: string }[] = [
-  { tag: 'Live', title: 'Nodes that do paid work', text: 'A node enrolls, advertises tools and agents, runs requests and is paid per job in stablecoins.', link: 'Node operator guide', href: NODE_GUIDE },
+  { tag: 'Live', title: 'Nodes that do paid work', text: 'hanzod is one Rust daemon per machine: local inference, Dev, Bot and Team backends and an optional validator. Today a node runs tools and agents and is paid per job in stablecoins.', link: 'Node operator guide', href: NODE_GUIDE },
   { tag: 'Designed', title: 'Many models, one verdict', text: 'Bonded operator models vote on policy and their median sets parameters. A vote alone can never mint.', link: 'HIP-0901', href: HIP_0901 },
-  { tag: 'Live', title: 'A live chain, ID 36963', text: 'Blocks are produced on chain 36963 today. Running as the Lux A-Chain with post-quantum finality is designed.', link: 'Explorer', href: EXPLORER },
+  { tag: 'Live', title: `A live chain, ID ${ID}`, text: `Blocks are produced on chain ${ID} today, with a post-quantum handshake and ML-DSA validator identities. Post-quantum finality is designed and audit-gated.`, link: 'Explorer', href: EXPLORER },
   { tag: 'In progress', title: 'Agents that pay their way', text: 'Agents sign up with a wallet, hold a budgeted key and pay per call today. Fee burn and on-chain spend caps are designed.', link: 'Agent docs', href: DOCS_AGENTS },
   { tag: 'In progress', title: 'Research with a record', text: "Hanzo's research runtime for datasets, runs, evaluations and claims. A draft spec, partly built, and not yet tied to the chain.", link: 'HIP-1334', href: HIP_1334 },
   { tag: 'Designed', title: 'People and agents on one work board', text: "A DAO work board for goals and bounties. No Hanzo bounties are live yet.", link: 'Work board', href: WORK },

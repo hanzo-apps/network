@@ -1,3 +1,4 @@
+import { decimals, significant } from '@/lib/format'
 import { eraCap } from '@/lib/supply'
 
 const ERAS = 8
@@ -12,11 +13,20 @@ const MOST = eraCap(0)
 /** The seventh bar's label sits one line higher, so the three longest decimals never touch. */
 const LIFT = 15
 
-const billions = new Intl.NumberFormat('en-US', { maximumFractionDigits: 5 })
 /** An era's cap in billions of AI, exact: halving a 500 never needs more than five decimals in eight eras. */
-const inBillions = (k: number) => billions.format(eraCap(k) / 1e9)
+const inBillions = (k: number) => decimals(eraCap(k) / 1e9, 5)
 
-const eras = Array.from({ length: ERAS }, (_, k) => ({ k, label: `Era ${k + 1}`, value: inBillions(k), height: (eraCap(k) / MOST) * PLOT }))
+/** The phone list rounds to three significant digits (7.8125 reads 7.81); the table and the chart's label keep every digit. */
+const eras = Array.from({ length: ERAS }, (_, k) => ({
+  k,
+  label: `Era ${k + 1}`,
+  value: inBillions(k),
+  rounded: significant(eraCap(k) / 1e9, 3),
+  share: eraCap(k) / MOST,
+  height: (eraCap(k) / MOST) * PLOT,
+}))
+
+const NAME = `Bar chart. The most each era may emit, in billions of AI: ${inBillions(0)} in era 1, halving every era to ${inBillions(ERAS - 1)} in era ${ERAS}. The same figures are in the table below.`
 
 /** The most each of the first eight eras may emit. Plain bars, ink from the theme, values on the bars, the same numbers in a table for screen readers. */
 export default function Chart() {
@@ -26,8 +36,8 @@ export default function Chart() {
       <svg
         viewBox={`0 0 ${W} ${H}`}
         role="img"
-        aria-label={`Bar chart. The most each era may emit, in billions of AI: ${inBillions(0)} in era 1, halving every era to ${inBillions(ERAS - 1)} in era ${ERAS}. The same figures are in the table below.`}
-        className="block h-auto w-full max-w-[640px] text-foreground"
+        aria-label={NAME}
+        className="hidden h-auto w-full max-w-[640px] text-foreground sm:block"
       >
         <line x1="0" x2={W} y1={H - BOTTOM} y2={H - BOTTOM} className="stroke-border-strong" strokeWidth="1" />
         {eras.map(({ k, label, value, height }) => {
@@ -46,6 +56,20 @@ export default function Chart() {
           )
         })}
       </svg>
+      {/* Under 640px the eight bars would crowd their labels, so the same data is a list: one row per era. */}
+      <div role="img" aria-label={NAME} className="sm:hidden">
+        <ol className="space-y-3">
+          {eras.map(({ k, label, rounded, share }) => (
+            <li key={k} className="grid grid-cols-[3.5rem_minmax(0,1fr)_3.5rem] items-center gap-3">
+              <span className="font-mono text-xs text-muted-foreground">{label}</span>
+              <span className="block h-3 w-full">
+                <span data-row-bar className="block h-full min-w-px bg-foreground" style={{ width: `${(share * 100).toFixed(3)}%` }} />
+              </span>
+              <span data-value className="text-right font-mono text-sm tabular-nums text-foreground">{rounded}</span>
+            </li>
+          ))}
+        </ol>
+      </div>
       <table className="sr-only">
         <caption>Most each era may emit, in billions of AI</caption>
         <thead>

@@ -2,11 +2,11 @@ import { useEffect, useRef, useState, type FormEvent } from 'react'
 import { HanzoLogo } from '@hanzo/logo'
 import { X } from 'lucide-react'
 import { buttonClass } from '@/components/ui/button'
-import { ask, ChatError, type Message } from '@/lib/chat'
+import { ask, type Message } from '@/lib/chat'
 import { HANZO_CHAT } from '@/lib/links'
+import { RequestError } from '@/lib/request'
 
 const KEEP = 10
-const WAIT_MS = 30_000
 const handoff = (q?: string) => (q ? `${HANZO_CHAT}/?q=${encodeURIComponent(q)}` : HANZO_CHAT)
 
 type Failure = 'busy' | 'failed'
@@ -40,7 +40,6 @@ export default function GlobalChatWidget() {
   const send = async (thread: Message[]) => {
     stop()
     const ctl = (inflight.current = new AbortController())
-    const timer = setTimeout(() => ctl.abort('timeout'), WAIT_MS)
     setFailure(null)
     setSending(true)
     try {
@@ -48,10 +47,9 @@ export default function GlobalChatWidget() {
       setMessages([...thread, { role: 'assistant', content: answer }])
     } catch (e) {
       // A closed dialog or a newer question aborted this one on purpose: stay silent. A timeout is a failure.
-      if (ctl.signal.aborted && ctl.signal.reason !== 'timeout') return
-      setFailure(e instanceof ChatError && e.status === 429 ? 'busy' : 'failed')
+      if (e instanceof RequestError && e.kind === 'aborted') return
+      setFailure(e instanceof RequestError && e.status === 429 ? 'busy' : 'failed')
     } finally {
-      clearTimeout(timer)
       if (inflight.current === ctl) {
         setSending(false)
         requestAnimationFrame(() => input.current?.focus())
