@@ -217,9 +217,9 @@ test('/llms.txt is served', async ({ page }) => {
   expect(body).toBe(readFileSync('public/llms.txt', 'utf8'))
 })
 
-test('the page keeps the site title and description, as Pricing does (index.html sets them; no page sets its own)', async ({ page }) => {
+test('the page has its own title and keeps the site description (Shell sets the title, index.html the description)', async ({ page }) => {
   await open(page)
-  await expect(page).toHaveTitle('Hanzo Network: the blockchain for global intelligence')
+  await expect(page).toHaveTitle('Build on Hanzo Network')
   await expect(page.locator('meta[name="description"]')).toHaveAttribute('content', /\S/)
 })
 
