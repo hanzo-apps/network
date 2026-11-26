@@ -267,3 +267,15 @@ for (const path of ['/build', '/economics', '/ecosystem', '/early', '/pricing'])
     expect(faint).toEqual([])
   })
 }
+
+test('the nav fits from 640px up: nothing scrolls sideways and the links stop before the invite button', async ({ page }) => {
+  for (const width of [640, 700, 768, 900, 1024]) {
+    await page.setViewportSize({ width, height: 800 })
+    await page.goto('/')
+    const nav = page.getByRole('navigation', { name: 'Main' })
+    const last = (await nav.getByRole('link').last().boundingBox())!
+    const invite = (await page.locator('header').getByRole('link', { name: 'Early access' }).boundingBox())!
+    expect(last.x + last.width, `links meet the button at ${width}`).toBeLessThanOrEqual(invite.x)
+    expect(await page.evaluate(() => document.documentElement.scrollWidth), `sideways scroll at ${width}`).toBeLessThanOrEqual(width)
+  }
+})

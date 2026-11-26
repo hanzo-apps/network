@@ -228,7 +228,8 @@ test('loading is announced while the catalog is delayed, and cleared after', asy
     await route.fulfill({ path: 'e2e/fixtures/models.json', contentType: 'application/json' })
   })
   await page.goto('/pricing')
-  const status = page.getByRole('status')
+  // The page's own announcement; the copy buttons in the first-call block each have a status region too.
+  const status = page.locator('section#start ~ [role="status"]')
   // Screen readers hold back announcements inside a busy region, so the line sits outside it (review, 26 Nov).
   expect(await status.evaluate((el) => el.closest('[aria-busy]') === null)).toBe(true)
   await expect(status).toHaveText("Loading today's prices from api.hanzo.ai…")
