@@ -1,58 +1,64 @@
 # hanzo.network
 
-Marketing site for Hanzo Network, the decentralized AI compute marketplace (hanzo.network). Provides the public-facing site for distributed GPU compute, AI inference, and provider marketplace features.
+The site for Hanzo Network: provable AI compute (hanzo.network). Two pages.
 
 ## Stack
 
-- React 18 + TypeScript (Vite 5, SWC)
-- React Router v6 (client-side routing)
-- Tailwind CSS v4 + Radix UI primitives
-- Framer Motion (animations), Three.js (3D)
+- React 18 + TypeScript, Vite 5 (SWC), React Router v6
+- Tailwind CSS 4 reading `@hanzo/tokens`; Zen and Zen Mono from `@hanzo/font` (imported in `src/main.tsx`); the mark from `@hanzo/logo`
+- `motion` for animation; pure monochrome, no accent colour
 
 ## Structure
 
 ```
 src/
-  App.tsx              # Root router -- NetworkLanding as homepage
-  pages/
-    NetworkLanding.tsx  # Homepage (/) -- GPU compute marketplace landing
-    ...                 # Shared pages (same as other Hanzo sites)
-  components/          # Shared component library
+  App.tsx                 two routes inside Shell (nav, footer); `*` hands off to hanzo.ai
+  pages/NetworkLanding.tsx   `/`  hero, how it works, doors, token, closing, then a quiet row of Hanzo stack links
+  pages/Pricing.tsx          `/pricing`  live model catalog from api.hanzo.ai/v1/models
+  components/home/        the home sections; Section.tsx holds container, Eyebrow, H2
+  components/Measure.tsx  @hanzo/event: the first-party stream and the tag manager, one pageview per route
+  components/Consent.tsx  the cookie bar and sheet, and "Your Privacy Choices" (the footer links to #choices)
+  components/Try.tsx      LOGIN (https://hanzo.ai/login), useLogin, and Away for /login and /signup
+  components/ui/          button and glass card
+  lib/chain.ts            block height from api.hanzo.network/v1/chain/hanzo (loading, live, down)
+docs/proof-of-ai.md       the Proof of AI spec: designed, not live
 ```
 
-## Key Routes
+## Live versus designed
 
-- `/` -- NetworkLanding (decentralized compute: GPU marketplace, pricing, provider network)
-- All other routes -- Shared product/marketing/account pages from common codebase
+Live: the Hanzo chain (block height on the hero) and the OpenAI-compatible API at api.hanzo.ai (pricing). Designed, not live: Proof of AI rewards and the AI token (see the spec). The page must never state the second as the first.
+
+## Redirects
+
+`/login` and `/signup` render `Away` (`Try.tsx`), which replaces the location with `https://hanzo.ai/login` carrying the visitor's anonymous id. `/index`, `/home2` and `/original` (old copies of this site's home page) stay on this site and go to `/`. Every other path hands off to `https://hanzo.ai<path>` from the client (`ToHanzo` in `App.tsx`), rendered outside the page frame so nothing flashes. They are client-side because hanzoai/static serves the SPA fallback (`-spa`) for every path. A real server 301 belongs in the static server or the ingress config if Hanzo wants one.
 
 ## Commands
 
 ```bash
 pnpm install
-pnpm dev            # Vite dev server
-pnpm build          # Production build to dist/
-node scripts/check.mjs  # the gate CI runs over dist/
-pnpm preview
-pnpm lint
+pnpm dev
+pnpm build
+pnpm typecheck && pnpm lint && pnpm test
+pnpm exec playwright test --grep-invert @network   # e2e on the production build
+pnpm exec playwright test --grep @network          # live-internet link check (own CI step)
 ```
 
-## NetworkLanding Focus
+Tests: vitest for `src/lib` and CSS variables (`test/`); Playwright for axe (WCAG 2.2 AA), phone width, the font shipping, redirects, the heartbeat, the still hero, and privacy (`e2e/privacy.spec.ts`: Your Privacy Choices in the footer, the opt-in bar, no hanzo.id link, sign-in to hanzo.ai/login). The home specs mock the chain, so CI never depends on it.
 
-The homepage highlights:
-- Distributed GPU compute (training + inference)
-- Cryptographic verification of workloads
-- Decentralized P2P infrastructure (no single point of failure)
-- Instant scaling (1 to 1000 GPUs)
-- Global edge network (sub-100ms latency)
-- Provider marketplace (contribute idle compute, set prices)
-- Stats: 100K+ GPU hours, 50+ regions, 99.9% SLA, $0.10/GPU-hour
+The chat widget is a plain form hand-off: `<form action="https://hanzo.chat/" method="get" target="_blank">` with a `q` field. It calls no API and holds no state.
+
+`node scripts/check.mjs` is the gate CI runs over `dist/` (no tag in index.html, no hanzo.id, the ingest key resolves). It also asserts the export names `https://api.hanzo.ai/v1/chat/public`; the plain-form widget calls no API, so that one assertion fails until it is decided whether the widget asks the public chat lane or the assertion goes.
+
+`hanzoai/node` is source-available (Hanzo Ecosystem License), not open source; the site never says open source about it.
+
+James's hero choices (26 Nov): no pause button; the hero picture does not react to the mouse; the art is inverted in light mode (one place); the globe sits below the words, not behind them.
 
 ## Serving chain
 
 ```
 push to main (hanzo-apps/network, GitHub is home)
   -> .github/workflows/cicd.yml   hanzoai/ci build.yml@v2, reads hanzo.yml
-       test:  pnpm build + scripts/check.mjs over dist/
+       test:  build + scripts/check.mjs, then typecheck, lint, unit, e2e (Playwright, not @network)
        site:  slug `network`, dir dist -> Sites plane (api.hanzo.ai/v1/projects)
   -> s3://hanzo-sites/hanzo/network   org hanzo (hanzo-apps maps to it) + slug
   -> hanzoai/ingress staticFiles      universe infra/aws/routes/sites.yaml,
@@ -60,17 +66,14 @@ push to main (hanzo-apps/network, GitHub is home)
                                       reach index.html for the router)
 ```
 
-No image and no pod. Cloudflare proxies hanzo.network to the AWS balancer.
+No image and no pod. Cloudflare proxies hanzo.network to the AWS balancer. The
+`@network` link check runs on demand (`pnpm exec playwright test --grep @network`), not in CI.
 
-## Sign-in, CTAs, measurement
+## Sign-in and measurement
 
-- Sign-in is hanzo.ai's page: `LOGIN` in `src/components/Try.tsx`
-  (`https://hanzo.ai/login`, which goes on to pay). `/login`, `/signup`,
-  `/account/*`, `/dashboard`, `/user-profile` and `/organization-profile`
-  render `Away`, which replaces the location with it. Nothing links to hanzo.id.
-- Every call to action is `<Try>`: it reads "Try Hanzo" and carries the
-  visitor's anonymous id to hanzo.ai (@hanzo/event `link`) while Analytics is
-  allowed.
+- Sign-in is hanzo.ai's page: `LOGIN` in `src/components/Try.tsx` (`https://hanzo.ai/login`).
+  `Away` carries the visitor's anonymous id there (`useAnalytics().link`). Nothing links
+  to hanzo.id; `check.mjs` and `e2e/privacy.spec.ts` fail a build that does.
 - Measurement is @hanzo/event, mounted by `Measure` in `src/components/Measure.tsx`:
   the stream to api.hanzo.ai/v1/event (one pageview per route) and the tag
   manager, which loads GA4 and the Meta Pixel from project `network`'s tag set
@@ -85,12 +88,6 @@ No image and no pod. Cloudflare proxies hanzo.network to the AWS balancer.
   rule cloud serves (@hanzo/event `consentPolicy().mode`): eu the bar and opt-in
   sheet, us_privacy no bar and an opt-out sheet saved as each switch moves, global
   a notice whose × records it seen. "Your Privacy Choices" (California's icon) is
-  in the footer and, on a page whose footer has none (the landing), fixed to the
-  foot of the window. Theme tokens for every colour and state, 12px buttons in a
+  in the footer (both pages share it); a page without one gets it fixed to the foot of the window. Theme tokens for every colour and state, 12px buttons in a
   16px card, 13px type.
-- API calls go to api.hanzo.ai/v1 only.
-
-## Notes
-
-- Shares the same component library and routes as hanzo.app, hanzo.id, hanzo.one, and sensei.group. Only `NetworkLanding.tsx` and `index.html` metadata are unique.
-- Brand color is cyan (#06b6d4) in the dev console message, vs red for other Hanzo sites.
+- API calls go to api.hanzo.ai/v1 (models, event, tags); the block height comes from api.hanzo.network.

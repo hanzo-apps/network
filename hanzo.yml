@@ -13,6 +13,29 @@ test:
       pnpm build
       node scripts/check.mjs
 
+  - name: typecheck
+    run: |
+      set -e
+      pnpm typecheck
+
+  - name: lint
+    run: |
+      set -e
+      pnpm lint
+
+  - name: unit
+    run: |
+      set -e
+      pnpm test
+
+  - name: e2e
+    # Builds and serves the site itself (playwright.config.ts webServer).
+    # Chromium only; the browser is fetched on first run.
+    run: |
+      set -e
+      pnpm exec playwright install chromium
+      pnpm exec playwright test --grep-invert @network
+
 site:
   slug: network
   dir: dist
