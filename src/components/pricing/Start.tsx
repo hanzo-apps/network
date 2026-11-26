@@ -1,55 +1,13 @@
-import { useRef, useState } from 'react'
 import Card from '@/components/ui/card'
 import { buttonClass } from '@/components/ui/button'
+import Code from '@/components/ui/code'
 import Glow from '@/components/pricing/Glow'
-
-const CODE = `curl https://api.hanzo.ai/v1/chat/completions \\
-  -H "Authorization: Bearer $HANZO_API_KEY" \\
-  -H "Content-Type: application/json" \\
-  -d '{"model":"hanzo/zen","messages":[{"role":"user","content":"Hello"}]}'`
+import { CURL_QUICKSTART } from '@/components/build/commands'
 
 const num = 'text-5xl font-semibold text-foreground/90'
 
-function Copy() {
-  const [done, setDone] = useState(false)
-  const pre = useRef<HTMLPreElement>(null)
-  const copy = async () => {
-    try {
-      await navigator.clipboard.writeText(CODE)
-    } catch {
-      const sel = getSelection()
-      if (!pre.current || !sel) return
-      sel.selectAllChildren(pre.current)
-      return
-    }
-    setDone(true)
-    setTimeout(() => setDone(false), 2000)
-  }
-  return (
-    <div className="mt-4 overflow-hidden rounded-lg border border-border bg-foreground/5">
-      <div className="flex items-center justify-between border-b border-border px-4 py-2">
-        <span className="font-mono text-xs text-muted-foreground">curl</span>
-        <button
-          type="button"
-          onClick={copy}
-          className={buttonClass('tiny')}
-        >
-          {done ? 'Copied' : 'Copy'}
-        </button>
-      </div>
-      <pre
-        ref={pre}
-        tabIndex={0}
-        aria-label="curl command"
-        className="overflow-x-auto p-4 font-mono text-sm leading-relaxed text-foreground"
-      >
-        {CODE}
-      </pre>
-    </div>
-  )
-}
-
-export default function Start() {
+/** The three-step first call. `prices` is where "See all prices" goes: the models list on /pricing itself. */
+export default function Start({ prices = '#models' }: { prices?: string }) {
   return (
     <>
       <div className="relative mt-10">
@@ -69,7 +27,7 @@ export default function Start() {
             <Card className="h-full p-6">
               <p className={num}>02</p>
               <h3 className="mt-4 text-xl font-semibold">Make your first call</h3>
-              <Copy />
+              <Code label="curl" name="curl command" text={CURL_QUICKSTART} className="mt-4" />
               <p className="mt-3 text-sm text-muted-foreground">
                 OpenAI-compatible. Swap the model name to use any chat model below.
               </p>
@@ -82,7 +40,7 @@ export default function Start() {
               <p className="mt-2 text-muted-foreground">
                 Each request is billed per token at the prices below.
               </p>
-              <a href="#models" className="mt-6 inline-block text-foreground underline underline-offset-4">
+              <a href={prices} className="mt-6 inline-block text-foreground underline underline-offset-4">
                 See all prices
               </a>
             </Card>
