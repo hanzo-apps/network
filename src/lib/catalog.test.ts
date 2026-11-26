@@ -79,6 +79,11 @@ describe('variable and unpriced models', () => {
     expect(price(v.input, v.free)).not.toBe('Free')
     expect(perToken(models).map((m) => m.id)).toEqual(['hanzo/zen', 'anthropic/claude-opus-5.5'])
   })
+  it('a paid model priced at exactly 0 shows $0.00, not <$0.01', () => {
+    expect(price(0, false)).toBe('$0.00')
+    expect(price(0.004, false)).toBe('<$0.01')
+    expect(price(0, true)).toBe('Free')
+  })
   it('freeModel needs free === true', () => {
     expect(freeModel([toModel({ ...zen, free: false })])).toBeUndefined()
     expect(freeModel([toModel(zen)])?.id).toBe('hanzo/zen')

@@ -75,7 +75,7 @@ export async function fetchModels(signal?: AbortSignal): Promise<Model[]> {
 
 export function price(n: number, free = false) {
   if (free) return 'Free'
-  return n < 0.005 ? '<$0.01' : '$' + n.toFixed(2)
+  return n > 0 && n < 0.005 ? '<$0.01' : '$' + n.toFixed(2)
 }
 
 export function context(n: number) {

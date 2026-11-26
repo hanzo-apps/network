@@ -119,7 +119,7 @@ export default function Pricing() {
               <AllModels models={sortModels(models)} />
               {variable > 0 && (
                 <p className="mt-6 text-sm text-muted-foreground">
-                  {variable} image, audio and video models are priced per second or per image; see{' '}
+                  {variable} more models are priced per second, per image, or are not billed per token; see{' '}
                   <a href="https://docs.hanzo.ai" className="text-foreground underline underline-offset-4">
                     docs.hanzo.ai
                   </a>
@@ -131,7 +131,7 @@ export default function Pricing() {
         )}
       </div>
 
-      <section className={`${section} relative`} id="providers">
+      <section className={`${section} relative`}>
         <Glow />
         <div className="grid gap-4 md:grid-cols-2">
           <Card className="p-6">
