@@ -449,11 +449,11 @@ test.describe('all sections', () => {
     await page.goto('/')
     const body = page.locator('main > section:not(:first-child)')
     const texts = await tags(body).allTextContents()
-    expect(texts).toHaveLength(5 + 6 + 1 + 5 + 1)
+    expect(texts).toHaveLength(5 + 6 + 1 + 5 + 1 + 1)
     for (const t of texts) expect(['Live', 'In progress', 'Designed']).toContain(t)
     await expect(body.getByText(/\b(Proposed|Beta|Soon|Coming)\b/)).toHaveCount(0)
     await expect(page.getByText('Use the network. Or power it.')).toHaveCount(0)
-    await expect(page.getByRole('heading', { level: 2 })).toContainText(['Five things you can do.', 'Six parts, one loop.', 'How Proof of AI works.', 'Mining is gated in phases.', 'Compute once. Earn twice.', 'Read the sources.', 'Build on the network.'])
+    await expect(page.getByRole('heading', { level: 2 })).toContainText(['Five things you can do.', 'Six parts, one loop.', 'How Proof of AI works.', 'Mining is gated in phases.', 'Compute once. Earn twice.', '369 daily windows for native AI.', 'Read the sources.', 'Build on the network.'])
   })
 
   test('copy has no em dashes and no hype', async ({ page }) => {

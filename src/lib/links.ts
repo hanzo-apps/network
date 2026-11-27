@@ -68,3 +68,7 @@ export const API_KEYS = 'https://platform.hanzo.ai/api-keys'
 export const PLANS = 'https://hanzo.ai/pricing'
 export const DISCORD = 'https://discord.gg/CJCyAsm9Vr'
 export const X = 'https://x.com/hanzoai'
+
+export const TOKEN_PURCHASE = 'https://token.hanzo.ai/purchase'
+export const TOKEN_AUCTION_URL = 'https://token.hanzo.ai/v1/auction'
+export const LUX_BRIDGE = 'https://bridge.lux.network'
