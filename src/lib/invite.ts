@@ -25,9 +25,13 @@ const DIGITS = 10
 /** Upper-case ASCII letters only, as the server reads a code: a letter that merely folds to an ASCII one (long s, sharp s) stays what it is, and is then dropped. */
 const upper = (text: string) => text.replace(/[a-z]/g, (c) => c.toUpperCase())
 
-/** An invite code is `HNZ-` and ten characters in two groups of five: `HNZ-XXXXX-XXXXX`. Upper-case, drop everything that is not A-Z or 0-9, then require `HNZ` and exactly ten. Null when the text is not a code, and then nothing is sent. */
+/** The server's alphabet, Crockford base32: the digits and the letters but I, L, O and U. It reads I and L as 1 and O as 0, so those are folded here; U is not read as anything. */
+const CROCKFORD = '[0-9A-HJKMNP-TV-Z]'
+const CODE = new RegExp(`^HNZ(${CROCKFORD}{5})(${CROCKFORD}{5})$`)
+
+/** An invite code is `HNZ-` and ten characters of the server's alphabet in two groups of five: `HNZ-XXXXX-XXXXX`. Upper-case, drop everything that is not A-Z or 0-9, fold I and L to 1 and O to 0 (as the server does), then require `HNZ` and exactly ten. Null when the text is not a code, a U included, and then nothing is sent: the server counts a miss against five an hour for a code that could be refused here. */
 export function normalize(text: string): string | null {
-  const m = /^HNZ([A-Z0-9]{5})([A-Z0-9]{5})$/.exec(upper(text).replace(/[^A-Z0-9]/g, ''))
+  const m = CODE.exec(upper(text).replace(/[^A-Z0-9]/g, '').replace(/[IL]/g, '1').replace(/O/g, '0'))
   return m ? `HNZ-${m[1]}-${m[2]}` : null
 }
 

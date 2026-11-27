@@ -13,9 +13,9 @@ test('the invite button label and the page path are written once, in early.ts', 
   }
 })
 
-test('Nav (twice), Hero and Closing each draw the one constant', () => {
+test('Nav (its stable name, its long text and the phone menu), Hero and Closing each draw the one constant', () => {
   const uses = (f: string) => read(f).split('{INVITE_LABEL}').length - 1
-  expect(uses('src/components/Nav.tsx')).toBe(2)
+  expect(uses('src/components/Nav.tsx')).toBe(3)
   expect(uses('src/components/home/Hero.tsx')).toBe(1)
   expect(uses('src/components/home/Closing.tsx')).toBe(1)
 })

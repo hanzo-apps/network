@@ -102,6 +102,7 @@ test('verify with a signal already aborted rejects as an abort', async () => {
   ctl.abort()
   const err = await verify(CODE, ctl.signal).catch((e) => e)
   expect(err).not.toBeInstanceOf(InviteError)
+  expect(err).toMatchObject({ kind: 'aborted' })
 })
 
 test('join posts an email, a role and the source, anonymously', async () => {
@@ -313,4 +314,28 @@ test('a 503 from either endpoint is unavailable and is not drift to hide: the st
   reply({ type: 'about:blank', status: 503 }, { status: 503, headers: { 'content-type': 'application/problem+json', 'retry-after': '5' } })
   expect(await verify(CODE).catch((e) => e)).toMatchObject({ kind: 'unavailable', status: 503 })
   expect(await join({ email: 'a@b.co', role: 'builder' }).catch((e) => e)).toMatchObject({ kind: 'unavailable', status: 503 })
+})
+
+test.each([
+  ['HNZ-7K9QU-M4XWP', 'U is not in the alphabet'],
+  ['HNZ-UUUUU-UUUUU', 'U everywhere'],
+  ['hnz-7k9q2-m4xwu', 'lower-case u'],
+])('normalize refuses %s: %s, so nothing is sent', (input) => {
+  expect(normalize(input)).toBeNull()
+})
+
+test.each([
+  ['HNZ-7K9Q2-M4XWI', 'HNZ-7K9Q2-M4XW1'],
+  ['HNZ-7K9Q2-M4XWL', 'HNZ-7K9Q2-M4XW1'],
+  ['HNZ-7K9Q2-M4XWO', 'HNZ-7K9Q2-M4XW0'],
+  ['hnz-ilolo-ilolo', 'HNZ-11010-11010'],
+])('normalize reads %s as the server does: I and L are 1, O is 0 (%s)', (input, want) => {
+  expect(normalize(input)).toBe(want)
+})
+
+test('a code with a U makes no request at all', async () => {
+  const f = vi.fn()
+  vi.stubGlobal('fetch', f)
+  expect(normalize('HNZ-7K9QU-M4XWP')).toBeNull()
+  expect(f).not.toHaveBeenCalled()
 })
