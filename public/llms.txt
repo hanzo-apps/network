@@ -113,6 +113,10 @@ The Proof of AI paper and the related-work section are under Sources.
 - Designed, not active: Proof of AI mining, the 2T AI supply policy and P3Q settlement. Mining stays disabled until the launch gates in the whitepaper pass.
 - [Status page](https://status.hanzo.network): Hanzo's platform status; it does not monitor the chain RPC.
 
+## Early access
+
+Early access to the network is invite-only. The page https://hanzo.network/early checks an invite code through `POST https://api.hanzo.ai/v1/network/invite/verify` and takes queue entries through `POST https://api.hanzo.ai/v1/network/waitlist`. A valid code unlocks nothing yet. The queue keeps an email or an X handle, a role and that the entry came from the page.
+
 ## Economics
 
 AI is already the native coin of chain 36963. The supply cap and mining policy below are designed and not active: mining stays disabled until governance fixes the parameters and the launch gates pass.

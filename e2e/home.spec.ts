@@ -80,7 +80,7 @@ test('the nav: Solutions, Build, Economics, Ecosystem, Pricing, Docs, in that or
   const hrefs = await nav.getByRole('link').evaluateAll((as) => as.map((a) => a.getAttribute('href')))
   expect(hrefs).toEqual(['/#solutions', '/build', '/economics', '/ecosystem', '/pricing', 'https://docs.hanzo.ai'])
   await expect(page.locator('header, footer').getByText(/How it works|Providers/)).toHaveCount(0)
-  const invite = page.locator('header').getByRole('link', { name: 'Early access' })
+  const invite = page.locator('header').getByRole('link', { name: 'Enter invite code' })
   await expect(invite).toHaveAttribute('href', '/early')
   await expect(page.locator('header').getByRole('link', { name: 'Get an API key' })).toHaveCount(0)
 })
@@ -93,13 +93,23 @@ test('the nav link Solutions lands on the Solutions section', async ({ page }) =
   await expect(page.locator('#solutions')).toBeInViewport()
 })
 
+test('the header button reads "Invite code" from 768px and "Enter invite code" from 1024px, with one stable accessible name', async ({ page }) => {
+  for (const [width, text] of [[768, 'Invite code'], [900, 'Invite code'], [1023, 'Invite code'], [1024, 'Enter invite code'], [1440, 'Enter invite code']] as const) {
+    await page.setViewportSize({ width, height: 800 })
+    await page.goto('/')
+    const link = page.locator('header').getByRole('link', { name: 'Enter invite code' })
+    await expect(link, `accessible name at ${width}`).toHaveAttribute('aria-label', 'Enter invite code')
+    expect((await link.innerText()).trim(), `visible text at ${width}`).toBe(text)
+  }
+})
+
 test('phone menu: Escape closes it and returns focus to the toggle; the links are the same and the last is the invite', async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 812 })
   await page.goto('/')
   const toggle = page.getByRole('button', { name: 'Open menu' })
   await toggle.click()
   const menu = page.getByRole('navigation', { name: 'Menu' })
-  await expect(menu.getByRole('link')).toHaveText(['Solutions', 'Build', 'Economics', 'Ecosystem', 'Pricing', 'Docs', 'Early access'])
+  await expect(menu.getByRole('link')).toHaveText(['Solutions', 'Build', 'Economics', 'Ecosystem', 'Pricing', 'Docs', 'Enter invite code'])
   await expect(menu.getByRole('link').last()).toHaveAttribute('href', '/early')
   for (const link of await menu.getByRole('link').all()) expect((await link.boundingBox())!.height).toBeGreaterThanOrEqual(44)
   await page.keyboard.press('Escape')
@@ -112,7 +122,7 @@ test('the hero: the new h1, sub and two buttons', async ({ page }) => {
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('The blockchain for global intelligence.')
   const hero = page.locator('main section').first()
   await expect(hero.getByText('Run real AI workloads through one API today. Proof of AI is designed to verify open-model work on ordinary CPUs and settle it with post-quantum finality.')).toBeVisible()
-  await expect(hero.getByRole('link', { name: 'Early access' })).toHaveAttribute('href', '/early')
+  await expect(hero.getByRole('link', { name: 'Enter invite code' })).toHaveAttribute('href', '/early')
   await expect(hero.getByRole('link', { name: 'Start building' })).toHaveAttribute('href', '/build')
   await expect(page.getByText('Provable AI compute.')).toHaveCount(0)
 })

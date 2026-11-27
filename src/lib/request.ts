@@ -1,12 +1,13 @@
 /** Why a request failed: no answer in time, the caller gave up, the server said no, or nothing came back. */
 export type RequestFailure = 'timeout' | 'aborted' | 'status' | 'network'
 
-/** `status` is the HTTP status when `kind` is 'status', otherwise 0. */
+/** `status` is the HTTP status when `kind` is 'status', otherwise 0; `headers` are that answer's headers (empty otherwise), so a caller can read Retry-After. */
 export class RequestError extends Error {
   constructor(
     readonly kind: RequestFailure,
     message: string,
     readonly status = 0,
+    readonly headers: Headers = new Headers(),
   ) {
     super(message)
   }
@@ -26,7 +27,7 @@ export async function request(url: string, init: RequestInit = {}, ms: number): 
   const signal = init.signal ? AbortSignal.any([init.signal, deadline.signal]) : deadline.signal
   try {
     const res = await fetch(url, { credentials: 'omit', ...init, signal })
-    if (!res.ok) throw new RequestError('status', `${url} answered ${res.status}`, res.status)
+    if (!res.ok) throw new RequestError('status', `${url} answered ${res.status}`, res.status, res.headers)
     return res
   } catch (e) {
     if (e instanceof RequestError) throw e

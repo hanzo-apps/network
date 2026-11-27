@@ -59,6 +59,10 @@ export const API_MCP = `${API}/v1/mcp`
 export const API_CHAT = `${API}/v1/chat/completions`
 export const CHAT_LANE = 'https://api.hanzo.ai/v1/chat/public'
 export const MODELS_URL = `${API}/v1/models`
+/** The invite gate: POST a code, get {valid}. */
+export const INVITE_VERIFY = `${API}/v1/network/invite/verify`
+/** The queue: POST an email or handle and a role, get 202. */
+export const WAITLIST = `${API}/v1/network/waitlist`
 
 export const API_KEYS = 'https://platform.hanzo.ai/api-keys'
 export const PLANS = 'https://hanzo.ai/pricing'

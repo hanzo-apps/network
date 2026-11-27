@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router'
 import { HanzoLogo } from '@hanzo/logo'
 import { buttonClass, navLink } from '@/components/ui/button'
 import { DOCS } from '@/lib/links'
+import { EARLY, INVITE_LABEL } from '@/lib/early'
 
 const LINKS = [
   { label: 'Solutions', to: '/#solutions' },
@@ -47,8 +48,10 @@ export default function Nav() {
         </Link>
         <nav aria-label="Main" className="hidden items-center gap-5 md:flex lg:gap-8">{links(navLink)}</nav>
         <div className="hidden md:block">
-          <Link to="/early" className={buttonClass('small')}>
-            Early access
+          {/* "Invite code" between md and lg keeps the row clear of the links at 768px; the name stays whole for everyone. */}
+          <Link to={EARLY} aria-label={INVITE_LABEL} className={buttonClass('small')}>
+            <span className="lg:hidden">Invite code</span>
+            <span className="hidden lg:inline">{INVITE_LABEL}</span>
           </Link>
         </div>
         <div className="md:hidden">
@@ -70,8 +73,8 @@ export default function Nav() {
       {open && (
         <nav id="menu" aria-label="Menu" className="flex flex-col border-t border-border px-4 pb-4 md:hidden">
           {links('flex h-12 items-center text-base text-foreground')}
-          <Link to="/early" className={`${buttonClass('primary')} mt-2`}>
-            Early access
+          <Link to={EARLY} className={`${buttonClass('primary')} mt-2`}>
+            {INVITE_LABEL}
           </Link>
         </nav>
       )}

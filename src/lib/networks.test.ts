@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest'
 import { COMMANDS, CHAIN_CURL, DEVNET_COMMAND, VALIDATOR_COMMAND } from '../components/build/commands'
 import { CURL_QUICKSTART } from './quickstart'
 import { NETWORKS } from './networks'
-import { MARKET_PAPER, POAI_PDF, RELATED_WORK, RPC_MAINNET, RPC_TESTNET } from './links'
+import { INVITE_VERIFY, MARKET_PAPER, POAI_PDF, RELATED_WORK, RPC_MAINNET, RPC_TESTNET, WAITLIST } from './links'
 import { solutions } from './solutions'
 
 const llms = readFileSync('public/llms.txt', 'utf8')
@@ -97,6 +97,17 @@ describe('public/llms.txt', () => {
     expect([...llms].filter((c) => c !== '\n' && (c < ' ' || c > '~'))).toEqual([])
     expect(llms).not.toMatch(/fabric/)
     expect(llms).not.toContain('docs.hanzo.ai/mcp')
+  })
+
+  it('describes early access and names the two endpoints the /early page calls', () => {
+    expect(llms).toContain('## Early access')
+    expect(llms).toContain(`POST ${INVITE_VERIFY}`)
+    expect(llms).toContain(`POST ${WAITLIST}`)
+    expect(llms).toContain('https://hanzo.network/early')
+    expect(llms).toContain('A valid code unlocks nothing yet.')
+    expect(llms).toContain('The queue keeps an email or an X handle, a role and that the entry came from the page.')
+    const early = llms.split('## Early access')[1].split('\n## ')[0]
+    expect(early).not.toMatch(/wallet|terminal|nothing else|members|an hour/i)
   })
 
   it('lists every solution the home cards show, with the same title, status word and address', () => {

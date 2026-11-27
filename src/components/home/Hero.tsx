@@ -5,6 +5,7 @@ import Glow from '@/components/ui/glow'
 import { container, H1 } from '@/components/ui/section'
 import HeroArt from './HeroArt'
 import Telemetry from './Telemetry'
+import { EARLY, INVITE_LABEL } from '@/lib/early'
 
 export default function Hero() {
   const still = useReducedMotion()
@@ -24,8 +25,8 @@ export default function Hero() {
           Run real AI workloads through one API today. Proof of AI is designed to verify open-model work on ordinary CPUs and settle it with post-quantum finality.
         </p>
         <div className="mt-10 flex flex-wrap justify-center gap-4">
-          <Link to="/early" className={buttonClass('primary')}>
-            Early access
+          <Link to={EARLY} className={buttonClass('primary')}>
+            {INVITE_LABEL}
           </Link>
           <Link to="/build" className={buttonClass('secondary')}>
             Start building

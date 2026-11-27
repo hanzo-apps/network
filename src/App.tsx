@@ -6,6 +6,7 @@ import { Measure } from "./components/Measure";
 import Scroll from "./components/Scroll";
 import Shell from "./components/Shell";
 import { Away } from "./components/Away";
+import { EARLY } from "./lib/early";
 import { EXPLORER, HANZO, STATUS } from "./lib/links";
 import Build from "./pages/Build";
 import Early from "./pages/Early";
@@ -36,7 +37,7 @@ const App = () => (
           <Route path="/build" element={<Build />} />
           <Route path="/economics" element={<Economics />} />
           <Route path="/ecosystem" element={<Ecosystem />} />
-          <Route path="/early" element={<Early />} />
+          <Route path={EARLY} element={<Early />} />
           <Route path="/pricing" element={<Pricing />} />
         </Route>
         {/* hanzo.ai signs people in; Away carries the visitor's anonymous id to its login. Account pages go to hanzo.ai by path, like the rest. */}

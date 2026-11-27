@@ -9,7 +9,7 @@ The site for Hanzo Network: the blockchain for global intelligence. Six routes:
 | `/economics` | The 2T cap, halving eras, fee burn, a designed market, and an illustrative calculator |
 | `/ecosystem` | What exists around the network: Hanzo, Lux, community and research, each tagged by what its page showed |
 | `/pricing` | Live per-token model prices from api.hanzo.ai |
-| `/early` | Early access is invite-only; no form, no code box yet |
+| `/early` | The invite gate: a code checked by `api.hanzo.ai/v1/network/invite/verify`, and a queue form (`/v1/network/waitlist`) |
 
 Every other path hands off to hanzo.ai (except `/status` and `/explorer`, which redirect to status.hanzo.network and explore.hanzo.network, and `/blockchain` and `/web3`, which go to this site's home).
 

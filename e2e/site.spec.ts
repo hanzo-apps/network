@@ -164,7 +164,7 @@ test('the footer links Build, Economics, Ecosystem and Pricing, and keeps the pr
 })
 
 // Routes the other builders write: each must draw a page with one h1 inside the shared frame.
-for (const [path, h1] of [['/build', 'Start building.'], ['/economics', 'A hard cap of two trillion AI.'], ['/ecosystem', 'The ecosystem.'], ['/early', 'Early access is invite-only.']] as const) {
+for (const [path, h1] of [['/build', 'Start building.'], ['/economics', 'A hard cap of two trillion AI.'], ['/ecosystem', 'The ecosystem.'], ['/early', 'Enter your invite code.']] as const) {
   test(`${path} is a page of this site with the h1 "${h1}"`, async ({ page }) => {
     await page.goto(path)
     await expect(page.getByRole('heading', { level: 1 })).toHaveText(h1)
@@ -286,7 +286,7 @@ test('the header fits at every width: a menu button below 768px, the links from 
       const links = main.getByRole('link')
       const first = (await links.first().boundingBox())!
       const last = (await links.last().boundingBox())!
-      const invite = (await header.getByRole('link', { name: 'Early access' }).boundingBox())!
+      const invite = (await header.getByRole('link', { name: 'Enter invite code' }).boundingBox())!
       expect(first.x - (home.x + home.width), `room after the name at ${width}`).toBeGreaterThanOrEqual(16)
       expect(invite.x - (last.x + last.width), `room before the button at ${width}`).toBeGreaterThanOrEqual(16)
       expect(invite.x + invite.width, `the button keeps its gutter at ${width}`).toBeLessThanOrEqual(width - 32)

@@ -20,7 +20,8 @@ src/
   pages/Economics.tsx        `/economics` the 2T cap, halving eras (a bar list under 640px), fee burn, a Designed market section, rules, an illustrative calculator
   pages/Ecosystem.tsx        `/ecosystem` what exists around the network: three groups of cards from lib/ecosystem.ts
   pages/Pricing.tsx          `/pricing`   live model catalog from api.hanzo.ai/v1/models
-  pages/Early.tsx            `/early`     early access is invite-only; no form, no code box (see below)
+  pages/Early.tsx            `/early`     the invite gate (components/early/Gate.tsx), the queue (Queue.tsx), where invites come from (see below)
+  components/early/          the gate (Gate), the queue (Queue), the shared slots and segments
   components/home/           home sections
   components/build/          /build sections; components/economics/ the chart and calculator
   components/pricing/        /pricing sections: Models (the table)
@@ -44,6 +45,7 @@ src/
   lib/networks.ts            Mainnet, Testnet, Devnet: RPC and chain id
   lib/supply.ts              the whitepaper's supply formulas (eras, allowance, net change) and the short forms 2T AI, 500B
   lib/chat.ts                ask(): the public chat lane (30 s deadline)
+  lib/invite.ts              verify() and join(): the whole contract of the invite and queue endpoints
 docs/proof-of-ai.md          the Proof of AI spec: designed, not live
 ```
 
@@ -77,7 +79,9 @@ On 26 Nov 2026 `npx -y hanzo mcp` (npm `hanzo` 9.0.3) answered MCP `initialize` 
 
 ## `/early`
 
-Invites are not being issued, so `/early` has no input, no form and no code box. A code box arrives only when `/v1/network/invite/verify` exists; until then the page links to Discord and X, and the nav, hero and closing buttons read "Early access" and go to `/early`.
+The invite gate. A code input is checked by `POST https://api.hanzo.ai/v1/network/invite/verify`; a queue form posts to `POST https://api.hanzo.ai/v1/network/waitlist`. Both are anonymous JSON (`credentials: 'omit'`, no Authorization), built by the backend in another repo. **This branch is merged only after both endpoints are live.** The page never answers for them: accepted shows only on `{"valid":true}`, "not valid" only on `{"valid":false}`, and anything else (a 503, a 500, a 200 without a boolean, a timeout, no network) says "Invite checking is not available right now", never that the code is wrong, and offers the queue and where invites come from. The backend answers 503 on both endpoints until a Hanzo admin has issued the first code, so this is the expected state at launch, and it is not reported as drift. A 429 reads its `Retry-After` (whole seconds or an HTTP date; the API exposes it to pages) and says "Try again in N minutes" (`wait()` in `invite.ts`), or "Try again later" when it names none. A queue that answers anything but 202 says "Your entry could not be saved", never that you are on the list.
+
+The contract lives in `src/lib/invite.ts` and nowhere else (codes are `HNZ-XXXXX-XXXXX`, ten characters of the server's Crockford alphabet (no U; I and L fold to 1, O to 0): `normalize()` before sending, and a code it refuses is not sent, `body()` for the input; the queue body is `{email|xHandle, role, source}`; verify reads only a boolean `valid`, never who issued a code; the page route and the button label are `EARLY` and `INVITE_LABEL` in `early.ts`); Both calls go through `request()` in `request.ts` (the one fetch helper; its `RequestError` carries the refused answer's headers); `src/lib/invite.test.ts` pins the URLs, headers, bodies and every outcome (429 is `limited` with its wait, anything unexpected is `unavailable`, 15 s timeout, ASCII-only like the server). The URLs are `INVITE_VERIFY` and `WAITLIST` in `links.ts`. An accepted code lives in component state only: it is never written to `sessionStorage`, `localStorage`, a cookie or the URL (any script on the page could read it, and the backend treats it as the key), and a reload asks the server again. Editing the input clears what was said about the previous text (a rate-limit wait stays). "Use a different code" returns to the empty input. Nothing is unlocked by a code yet; the page says so, and promises nothing else about codes (no wallet, no terminal, no dates; a forbidden-words test holds it). The queue keeps an email or an X handle, a role (miner, builder, researcher, staker: `ROLES` in `invite.ts`) and the source, and the page says so beside a Privacy link. A 400 from the queue is shown as a field error (kind `rejected`), never as "did not answer". An unexpected status from either endpoint is reported through `@hanzo/event` `captureError` as the endpoint name and the status only (`drift()` in `invite.ts`), never a body, code, email or handle. Each form has one polite live region outside any `aria-busy` element. The nav, hero and closing buttons read "Enter invite code" and go to `/early`; `public/llms.txt` names both endpoints. Tests: `e2e/early.spec.ts` mocks both endpoints with `page.route` and never reaches the real ones.
 
 ## Redirects
 

@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router'
 import Footer from './Footer'
 import Nav from './Nav'
+import { EARLY } from '@/lib/early'
 
 /** The browser title of each page. */
 const TITLES: Record<string, string> = {
@@ -10,7 +11,7 @@ const TITLES: Record<string, string> = {
   '/economics': 'Economics of the AI token · Hanzo Network',
   '/ecosystem': 'Ecosystem · Hanzo Network',
   '/pricing': 'Pricing · Hanzo Network',
-  '/early': 'Early access · Hanzo Network',
+  [EARLY]: 'Early access · Hanzo Network',
 }
 
 /** The page frame every route shares: skip link, nav, content, footer. Sets the browser title. */
