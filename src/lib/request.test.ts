@@ -112,3 +112,11 @@ test('the timer is cleared once the answer is in', async () => {
   await p
   expect(vi.getTimerCount()).toBe(0)
 })
+
+test('a refused answer carries its headers, so a caller can read Retry-After', async () => {
+  vi.stubGlobal('fetch', vi.fn(async () => new Response('no', { status: 429, headers: { 'retry-after': '120' } })))
+  const e = await request('https://x.test/a', {}, 1000).catch((x: unknown) => x)
+  expect(e).toBeInstanceOf(RequestError)
+  expect(e).toMatchObject({ kind: 'status', status: 429 })
+  expect((e as RequestError).headers.get('retry-after')).toBe('120')
+})

@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, expect, test, vi } from 'vitest'
 import { INVITE_VERIFY, WAITLIST } from './links'
-import { body, drift, join, normalize, ROLES, verify, InviteError, X_HANDLE } from './invite'
+import { body, drift, join, normalize, ROLES, verify, wait, InviteError, X_HANDLE } from './invite'
 
 const CODE = 'HNZ-7K9Q2-M4XWP'
 
@@ -93,7 +93,7 @@ test('a caller who aborts gets the abort, not a verdict', async () => {
   ctl.abort()
   const err = await pending
   expect(err).not.toBeInstanceOf(InviteError)
-  expect(err.name).toBe('AbortError')
+  expect(err).toMatchObject({ kind: 'aborted' }) // request.ts's own word for a caller who gave up
 })
 
 test('verify with a signal already aborted rejects as an abort', async () => {
@@ -149,7 +149,7 @@ test('a caller who aborts a join gets the abort, not a verdict', async () => {
   ctl.abort()
   const err = await pending
   expect(err).not.toBeInstanceOf(InviteError)
-  expect(err.name).toBe('AbortError')
+  expect(err).toMatchObject({ kind: 'aborted' }) // request.ts's own word for a caller who gave up
 })
 
 test('join: a failed request is unavailable; a hang ends after 15 seconds', async () => {
@@ -162,15 +162,21 @@ test('join: a failed request is unavailable; a hang ends after 15 seconds', asyn
 })
 
 test('an unexpected status is reported as the endpoint and the status, and nothing else', async () => {
-  reply({ valid: false }, { status: 503 })
+  reply({ valid: false }, { status: 502 })
   const v = await verify(CODE).catch((e) => e)
-  expect(drift(v)?.message).toBe('invite/verify answered 503')
+  expect(drift(v)?.message).toBe('invite/verify answered 502')
   reply({ valid: 'yes' }, { status: 200 })
   expect(drift(await verify(CODE).catch((e) => e))?.message).toBe('invite/verify answered 200')
   reply({}, { status: 500 })
   expect(drift(await join({ email: 'secret@b.co', role: 'builder' }).catch((e) => e))?.message).toBe('waitlist answered 500')
   reply({}, { status: 400 })
   expect(drift(await verify(CODE).catch((e) => e))?.message).toBe('invite/verify answered 400')
+})
+
+test('a 503 is the documented answer until the first invite is issued: it is not drift', async () => {
+  reply({}, { status: 503 })
+  expect(drift(await verify(CODE).catch((e) => e))).toBeNull()
+  expect(drift(await join({ email: 'a@b.co', role: 'builder' }).catch((e) => e))).toBeNull()
 })
 
 test('a 429, a refused entry, a network failure, a timeout and an abort are not drift', async () => {
@@ -255,4 +261,56 @@ test('an X handle is 1 to 15 letters, digits or underscores', () => {
   const ok = (h: string) => new RegExp(`^${X_HANDLE}$`).test(h)
   for (const h of ['a', 'Ada_9', 'x'.repeat(15), '_']) expect(ok(h)).toBe(true)
   for (const h of ['', 'has space', 'bad!', 'x'.repeat(16), '@ada', 'ada.lovelace']) expect(ok(h)).toBe(false)
+})
+
+test('the server reads ASCII only: a letter that merely upper-cases to an ASCII one is not that letter', () => {
+  expect(normalize('HNZ-7K9Q2-M4XW\u017F')).toBeNull() // long s upper-cases to S
+  expect(normalize('hnz-7k9q2-m4xw\u00DF')).toBeNull() // sharp s upper-cases to SS
+  expect(body('7K9Q2M4XW\u017F')).toBe('7K9Q2M4XW')
+})
+
+test.each([
+  ['120', 120],
+  ['5', 5],
+  ['3600', 3600],
+])('verify: a 429 with Retry-After %s says to wait %i seconds', async (header, seconds) => {
+  reply({}, { status: 429, headers: { 'retry-after': header } })
+  const err = await verify(CODE).catch((e) => e)
+  expect(err).toMatchObject({ kind: 'limited', retryAfter: seconds })
+})
+
+test('join: a 429 carries its Retry-After too', async () => {
+  reply({}, { status: 429, headers: { 'retry-after': '90' } })
+  await expect(join({ email: 'a@b.co', role: 'builder' })).rejects.toMatchObject({ kind: 'limited', retryAfter: 90 })
+})
+
+test('a Retry-After that is an HTTP date counts from now', async () => {
+  vi.setSystemTime(new Date('2026-11-27T10:00:00Z'))
+  reply({}, { status: 429, headers: { 'retry-after': 'Fri, 27 Nov 2026 10:05:00 GMT' } })
+  expect(await verify(CODE).catch((e) => e)).toMatchObject({ kind: 'limited', retryAfter: 300 })
+})
+
+test.each([[undefined], ['soon'], ['0'], ['-5'], ['1.5']])('a 429 without a usable Retry-After (%s) has no wait to show', async (header) => {
+  reply({}, { status: 429, headers: header === undefined ? {} : { 'retry-after': header } })
+  expect(await verify(CODE).catch((e) => e)).toMatchObject({ kind: 'limited', retryAfter: null })
+})
+
+test.each([
+  [1, 'in a minute'],
+  [60, 'in a minute'],
+  [61, 'in 2 minutes'],
+  [300, 'in 5 minutes'],
+  [3599, 'in 60 minutes'],
+  [3600, 'in 60 minutes'],
+  [3601, 'in 2 hours'],
+  [7200, 'in 2 hours'],
+  [null, 'later'],
+])('wait(%j) reads "%s"', (seconds, said) => {
+  expect(wait(seconds)).toBe(said)
+})
+
+test('a 503 from either endpoint is unavailable and is not drift to hide: the status stays on the error', async () => {
+  reply({ type: 'about:blank', status: 503 }, { status: 503, headers: { 'content-type': 'application/problem+json', 'retry-after': '5' } })
+  expect(await verify(CODE).catch((e) => e)).toMatchObject({ kind: 'unavailable', status: 503 })
+  expect(await join({ email: 'a@b.co', role: 'builder' }).catch((e) => e)).toMatchObject({ kind: 'unavailable', status: 503 })
 })
