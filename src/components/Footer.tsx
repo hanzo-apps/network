@@ -223,7 +223,7 @@ export default function Footer() {
             <a
               href={col.href}
               {...(col.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-              className="pb-1 text-[13.5px] font-semibold text-foreground no-underline"
+              className="inline-flex min-h-6 min-w-6 items-center pb-1 text-[13.5px] font-semibold text-foreground no-underline"
             >
               {col.title}
               {col.external ? ' ↗' : ''}
@@ -234,7 +234,7 @@ export default function Footer() {
                   key={l.label}
                   href={l.href}
                   {...(l.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                  className="py-px text-[13px] leading-[1.38] text-muted-foreground no-underline transition-colors duration-150 hover:text-foreground"
+                  className="flex min-h-6 min-w-6 items-center py-0.5 text-[13px] leading-[1.38] text-muted-foreground no-underline transition-colors duration-150 hover:text-foreground"
                 >
                   {l.label}
                   {l.external ? ' ↗' : ''}
@@ -257,7 +257,7 @@ export default function Footer() {
               href={s.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="py-0.5 text-[13px] leading-[1.35] text-muted-foreground no-underline transition-colors duration-150 hover:text-foreground"
+              className="inline-flex min-h-6 min-w-6 items-center py-0.5 text-[13px] leading-[1.35] text-muted-foreground no-underline transition-colors duration-150 hover:text-foreground"
             >
               {s.label} ↗
             </a>
@@ -268,17 +268,17 @@ export default function Footer() {
       <div className="flex min-h-[30px] w-full flex-wrap items-center gap-x-4 gap-y-2 pt-0.5 pr-[36px] sm:pr-[42px]">
         <span className="text-[13px] text-muted-foreground">© {new Date().getFullYear()} Hanzo AI, Inc.</span>
         <nav aria-label="Terms & Policies" className="flex min-w-0 flex-wrap items-center gap-x-[22px] gap-y-2 sm:ml-auto">
-          <a href={TERMS} className="inline-flex items-center text-[13px] leading-[1.35] text-muted-foreground no-underline transition-colors duration-150 hover:text-foreground">
+          <a href={TERMS} className="inline-flex min-h-6 items-center text-[13px] leading-[1.35] text-muted-foreground no-underline transition-colors duration-150 hover:text-foreground">
             Terms
           </a>
-          <a href={PRIVACY} className="inline-flex items-center text-[13px] leading-[1.35] text-muted-foreground no-underline transition-colors duration-150 hover:text-foreground">
+          <a href={PRIVACY} className="inline-flex min-h-6 items-center text-[13px] leading-[1.35] text-muted-foreground no-underline transition-colors duration-150 hover:text-foreground">
             Privacy
           </a>
-          <a href={AUP} className="inline-flex items-center text-[13px] leading-[1.35] text-muted-foreground no-underline transition-colors duration-150 hover:text-foreground">
+          <a href={AUP} className="inline-flex min-h-6 items-center text-[13px] leading-[1.35] text-muted-foreground no-underline transition-colors duration-150 hover:text-foreground">
             Usage policy
           </a>
           {/* The cookie sheet: components/Consent.tsx answers #choices. */}
-          <a href="#choices" className="inline-flex items-center gap-1.5 text-[13px] leading-[1.35] text-muted-foreground no-underline transition-colors duration-150 hover:text-foreground">
+          <a href="#choices" className="inline-flex min-h-6 items-center gap-1.5 text-[13px] leading-[1.35] text-muted-foreground no-underline transition-colors duration-150 hover:text-foreground">
             <PrivacyChoicesIcon height={12} />
             Privacy choices
           </a>

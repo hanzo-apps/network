@@ -40,7 +40,7 @@ export default function Nav() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background/80 backdrop-blur">
-      <div className="flex h-[60px] w-full items-center justify-between px-[clamp(20px,2.5vw,36px)]">
+      <div className="flex h-[60px] w-full items-center justify-between px-5 md:px-8 lg:px-9">
         <Link
           to="/"
           aria-label="Hanzo home"

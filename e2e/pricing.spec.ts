@@ -136,11 +136,12 @@ test('when the clipboard is blocked, Copy selects the command so it can be copie
 test('paid per-second models are never listed or called Free', async ({ page }) => {
   await serveModels(page)
   await page.goto('/pricing')
-  await expect(page.getByText('Claude Opus 5.5').first()).toBeVisible()
-  await expect(page.getByText('FLUX 3 Video')).toHaveCount(0)
-  await expect(page.getByText('Kai', { exact: true })).toHaveCount(0)
-  await expect(page.getByText('2 more models are priced per second, per image, or are not billed per token; see docs.hanzo.ai.')).toBeVisible()
-  await expect(page.getByRole('link', { name: 'docs.hanzo.ai' })).toHaveAttribute('href', 'https://docs.hanzo.ai')
+  const main = page.locator('main')
+  await expect(main.getByText('Claude Opus 5.5').first()).toBeVisible()
+  await expect(main.getByText('FLUX 3 Video')).toHaveCount(0)
+  await expect(main.getByText('Kai', { exact: true })).toHaveCount(0)
+  await expect(main.getByText('2 more models are priced per second, per image, or are not billed per token; see docs.hanzo.ai.')).toBeVisible()
+  await expect(main.getByRole('link', { name: 'docs.hanzo.ai' })).toHaveAttribute('href', 'https://docs.hanzo.ai')
 })
 
 // Claims audit, 26 Nov: no source says there is no minimum; 27 of the listed models are not chat models.

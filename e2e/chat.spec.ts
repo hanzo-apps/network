@@ -22,6 +22,8 @@ async function serveChat(page: Page, reply: (route: Route, n: number) => Promise
 }
 
 const open = async (page: Page) => {
+  // Stub /v1/project/tags so a late live consent-policy reply never detaches the EU banner mid-click.
+  await page.route(/api\.hanzo\.ai\/v1\/project\/tags/, (route) => route.fulfill({ status: 204, headers: cors }))
   await page.goto('/')
   await page.waitForLoadState('networkidle')
   // On a phone the opt-in cookie bar sits over the launcher until it is closed.

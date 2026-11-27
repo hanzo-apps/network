@@ -76,7 +76,7 @@ export const WAITLIST = `${API}/v1/network/waitlist`
 
 export const API_KEYS = 'https://platform.hanzo.ai/api-keys'
 export const PLANS = 'https://hanzo.ai/pricing'
-export const DISCORD = 'https://discord.gg/XthHQQj'
+export const DISCORD = 'https://discord.gg/CJCyAsm9Vr'
 export const TELEGRAM = 'https://t.me/hanzoai'
 export const X = 'https://x.com/hanzoai'
 export const LINKEDIN = 'https://linkedin.com/company/hanzo-ai'

@@ -276,7 +276,7 @@ test('the header fits at every width: a menu button below 768px, the links from 
     const header = page.locator('header')
     const main = header.getByRole('navigation', { name: 'Main' })
     const menu = header.getByRole('button', { name: 'Open menu' })
-    const home = (await header.getByRole('link', { name: 'Hanzo Network home' }).boundingBox())!
+    const home = (await header.getByRole('link', { name: 'Hanzo home' }).boundingBox())!
     expect(home.height, `the name stays on one line at ${width}`).toBeLessThan(40)
     if (width < 768) {
       await expect(menu, `menu button at ${width}`).toBeVisible()

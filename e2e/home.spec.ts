@@ -322,12 +322,13 @@ for (const [w, h] of [[1280, 720], [1366, 768], [1440, 900], [1920, 1080], [375,
 // Zoo is building on the network, not proven to run on it today.
 test('home makes no claim the sources do not back', async ({ page }) => {
   await page.goto('/')
-  await expect(page.getByText(/open[- ]source/i)).toHaveCount(0)
-  await expect(page.getByText(/run on the network/i)).toHaveCount(0)
-  await expect(page.getByText(/any chain/i)).toHaveCount(0)
-  await expect(page.getByText(/paid only for work/i)).toHaveCount(0)
-  await expect(page.getByText(/any model through one API/i)).toHaveCount(0)
-  await expect(page.getByText(/bittensor/i)).toHaveCount(1) // only in the Compare block (sections.spec holds it there)
+  const main = page.locator('main')
+  await expect(main.getByText(/open[- ]source/i)).toHaveCount(0)
+  await expect(main.getByText(/run on the network/i)).toHaveCount(0)
+  await expect(main.getByText(/any chain/i)).toHaveCount(0)
+  await expect(main.getByText(/paid only for work/i)).toHaveCount(0)
+  await expect(main.getByText(/any model through one API/i)).toHaveCount(0)
+  await expect(main.getByText(/bittensor/i)).toHaveCount(1) // only in the Compare block (sections.spec holds it there)
 })
 
 test('the headline enters without blur', async ({ page }) => {

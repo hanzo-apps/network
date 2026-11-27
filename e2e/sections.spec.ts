@@ -158,7 +158,7 @@ test.describe('Pillars', () => {
     const says = [
       'hanzod is one Rust daemon per machine: local inference, Dev, Bot and Team backends and an optional validator. Today a node runs tools and agents and is paid per job in stablecoins.',
       'Different models on bonded nodes settle policy votes and parameter medians on chain. A vote alone can never mint.',
-      'A chain per model family or domain on Lux, with its own validators. Today there is one live chain, ID 36963, with a post-quantum handshake and ML-DSA validator identities.',
+      'A chain per model family or domain on Hanzo Network, with its own validators. Today there is one live chain, ID 36963, with a post-quantum handshake and ML-DSA validator identities.',
       'Agents sign up with a wallet, hold a budgeted key and pay per call today. Fee burn, on-chain spend caps and a compute market are designed.',
       "Hanzo's research runtime records datasets, runs, evaluations and claims. Promotion only by beating gates frozen in advance is designed. A draft spec, partly built, not yet tied to the chain.",
       'A DAO work board for goals and bounties. No Hanzo bounties are live yet.',

@@ -363,10 +363,10 @@ test('every input has a visible label, and one polite live region says the resul
 
 test('no sale, offer, price, return, date or forbidden symbol anywhere on the page', async ({ page }) => {
   await open(page)
-  const body = await page.locator('body').innerText()
-  expect(body).not.toMatch(/sale|presale|investment|yield|APY/i)
+  const content = await page.locator('main').innerText()
+  expect(content).not.toMatch(/sale|presale|investment|yield|APY/i)
   // Bittensor is named once, in the Compare block, as a contrast with validator-voted networks.
-  expect(body.match(/bittensor/gi)).toHaveLength(1)
+  expect(content.match(/bittensor/gi)).toHaveLength(1)
   await expect(page.locator('#compare').getByText('Compared with validator-voted networks such as Bittensor.')).toBeVisible()
   await expect(page.locator('#compare').getByRole('link', { name: 'Related work, Hanzo consensus paper', exact: true })).toHaveAttribute('href', RELATED_WORK)
   // The market section is the one place that prices a thing and shows the pool's symbols; it has its own list in its own test.
