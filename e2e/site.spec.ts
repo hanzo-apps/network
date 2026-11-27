@@ -286,7 +286,7 @@ test('the header fits at every width: a menu button below 768px, the links from 
       const links = main.getByRole('link')
       const first = (await links.first().boundingBox())!
       const last = (await links.last().boundingBox())!
-      const invite = (await header.getByRole('link', { name: 'Early access' }).boundingBox())!
+      const invite = (await header.getByRole('link', { name: 'Enter invite code' }).boundingBox())!
       expect(first.x - (home.x + home.width), `room after the name at ${width}`).toBeGreaterThanOrEqual(16)
       expect(invite.x - (last.x + last.width), `room before the button at ${width}`).toBeGreaterThanOrEqual(16)
       expect(invite.x + invite.width, `the button keeps its gutter at ${width}`).toBeLessThanOrEqual(width - 32)

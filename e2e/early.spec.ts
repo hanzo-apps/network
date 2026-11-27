@@ -11,9 +11,9 @@ const NODE_GUIDE = 'https://docs.hanzo.ai/docs/proof-of-ai/node-operator'
 const KEY = 'hn.invite'
 const CODE = 'HNZ-7K9Q2-M4XWP'
 const BODY = '7K9Q2M4XWP'
-const cors = { 'access-control-allow-origin': '*', 'access-control-allow-headers': '*' }
+const cors = { 'access-control-allow-origin': '*', 'access-control-allow-headers': '*', 'access-control-expose-headers': 'Retry-After' } // the real API exposes Retry-After to pages
 
-type Reply = { status?: number; json?: unknown; body?: string; abort?: boolean }
+type Reply = { status?: number; json?: unknown; body?: string; abort?: boolean; headers?: Record<string, string> }
 type Seen = { headers: Record<string, string>; body: unknown }
 type Mock = { verify?: Reply; join?: Reply; hold?: Promise<void> }
 
@@ -26,7 +26,7 @@ async function serve(page: Page, mock: Mock = {}) {
       into.push({ headers: route.request().headers(), body: route.request().postDataJSON() })
       await mock.hold
       if (reply.abort) return route.abort()
-      await route.fulfill({ status: reply.status ?? 200, headers: cors, ...(reply.body === undefined ? { json: reply.json ?? {} } : { body: reply.body }) })
+      await route.fulfill({ status: reply.status ?? 200, headers: { ...cors, ...reply.headers }, ...(reply.body === undefined ? { json: reply.json ?? {} } : { body: reply.body }) })
     })
   await answer(VERIFY, seen.verify, mock.verify ?? { json: { valid: true } })
   await answer(WAITLIST, seen.join, mock.join ?? { status: 202, json: { status: 'pending' } })
@@ -333,17 +333,49 @@ test('a code that is not valid: no reason, the value stays, focused and selected
   expect(await page.evaluate((k) => sessionStorage.getItem(k), KEY)).toBeNull()
 })
 
-test('too many tries: 429 says to try again later', async ({ page }) => {
+test('too many tries: a 429 with Retry-After says when to try again, and the page is usable', async ({ page }) => {
+  await serve(page, { verify: { status: 429, headers: { 'retry-after': '1380' } } })
+  await open(page)
+  await send(page, CODE)
+  await expect(status(gate(page))).toHaveText('Too many tries. Try again in 23 minutes.')
+  await expect(check(page)).toBeEnabled()
+  await expect(code(page)).toBeEnabled()
+  await expect(gate(page).locator('form')).not.toContainText(/accepted|not valid|Checking/i)
+})
+
+test('too many tries: a 429 that names no time still says so, and never leaves a spinner', async ({ page }) => {
   await serve(page, { verify: { status: 429 } })
   await open(page)
   await send(page, CODE)
   await expect(status(gate(page))).toHaveText('Too many tries. Try again later.')
+  await expect(gate(page).locator('form [aria-busy="true"]')).toHaveCount(0)
+})
+
+test('while no invite has been issued the API answers 503: the page says checking is not available, never that the code is wrong, and offers the queue and where invites come from', async ({ page }) => {
+  await serve(page, { verify: { status: 503, headers: { 'content-type': 'application/problem+json' }, body: '{"type":"about:blank","status":503,"title":"Service Unavailable"}' } })
+  await open(page)
+  await send(page, CODE)
+  await expect(status(gate(page))).toHaveText('Invite checking is not available right now. Try again later.')
+  await expect(gate(page)).not.toContainText(/not valid|accepted|wrong/i)
+  await expect(gate(page).getByRole('link', { name: 'join the queue' })).toBeVisible()
+  await gate(page).getByRole('link', { name: 'where invites come from' }).click()
+  await expect(page).toHaveURL(/\/early#invites$/)
+  await expect(page.getByRole('heading', { name: 'Where invites come from.' })).toBeInViewport()
   await expect(check(page)).toBeEnabled()
-  await expect(gate(page)).not.toContainText(/accepted|not valid/i)
+})
+
+test('the queue offer in the unavailable state lands on the queue', async ({ page }) => {
+  await serve(page, { verify: { status: 503 } })
+  await open(page)
+  await send(page, CODE)
+  await gate(page).getByRole('link', { name: 'join the queue' }).click()
+  await expect(page).toHaveURL(/\/early#queue$/)
+  await expect(page.getByRole('heading', { name: 'No code? Join the queue.' })).toBeInViewport()
 })
 
 for (const [name, reply] of [
   ['a 500', { status: 500, body: 'down' }],
+  ['a 503', { status: 503 }],
   ['a 200 that is not JSON', { status: 200, body: '<html>proxy</html>' }],
   ['a 200 without a boolean', { status: 200, json: { valid: 'yes' } }],
   ['no answer at all', { abort: true }],
@@ -352,7 +384,7 @@ for (const [name, reply] of [
     await serve(page, { verify: reply })
     await open(page)
     await send(page, CODE)
-    await expect(status(gate(page))).toHaveText('The invite service did not answer. Try again.')
+    await expect(status(gate(page))).toHaveText('Invite checking is not available right now. Try again later.')
     await expect(gate(page)).not.toContainText(/accepted|not valid/i)
     await expect(check(page)).toBeEnabled()
     await expect(code(page)).toBeEnabled()
@@ -369,7 +401,7 @@ test('after an unavailable answer, trying again can succeed', async ({ page }) =
   })
   await open(page)
   await send(page, CODE)
-  await expect(status(gate(page))).toHaveText('The invite service did not answer. Try again.')
+  await expect(status(gate(page))).toHaveText('Invite checking is not available right now. Try again later.')
   await check(page).click()
   await expect(gate(page)).toContainText(/code accepted/i)
 })
@@ -521,18 +553,40 @@ test('no role chosen is stopped in the page, and nothing is pre-chosen', async (
   expect(seen.join).toHaveLength(0)
 })
 
-test('the queue says when there have been too many tries', async ({ page }) => {
-  await serve(page, { join: { status: 429 } })
+test('the queue says when there have been too many tries, and when to try again', async ({ page }) => {
+  await serve(page, { join: { status: 429, headers: { 'retry-after': '7200' } } })
   await open(page)
   await contact(page).fill('ada@example.com')
   await queue(page).getByRole('radio', { name: 'Builder', exact: true }).check()
   await submit(page).click()
-  await expect(status(queue(page))).toHaveText('Too many tries. Try again later.')
+  await expect(status(queue(page))).toHaveText('Too many tries. Try again in 2 hours.')
   await expect(submit(page)).toBeEnabled()
   await expect(queue(page)).not.toContainText('You are on the list.')
 })
 
-test('the queue says when it did not answer, keeps what was typed, and a retry can succeed', async ({ page }) => {
+test('a queue that answers 503 says the entry could not be saved, never that you are on the list', async ({ page }) => {
+  await serve(page, { join: { status: 503 } })
+  await open(page)
+  await contact(page).fill('ada@example.com')
+  await queue(page).getByRole('radio', { name: 'Builder', exact: true }).check()
+  await submit(page).click()
+  await expect(status(queue(page))).toHaveText('Your entry could not be saved. Try again later.')
+  await expect(queue(page)).not.toContainText(/on the list/i)
+  await expect(contact(page)).toHaveValue('ada@example.com')
+  await expect(submit(page)).toBeEnabled()
+})
+
+test('a queue that cannot be reached says the entry could not be saved', async ({ page }) => {
+  await serve(page, { join: { abort: true } })
+  await open(page)
+  await contact(page).fill('ada@example.com')
+  await queue(page).getByRole('radio', { name: 'Builder', exact: true }).check()
+  await submit(page).click()
+  await expect(status(queue(page))).toHaveText('Your entry could not be saved. Try again later.')
+  await expect(queue(page)).not.toContainText(/on the list/i)
+})
+
+test('the queue says when it could not save, keeps what was typed, and a retry can succeed', async ({ page }) => {
   let n = 0
   await page.route(WAITLIST, (route) => {
     if (route.request().method() === 'OPTIONS') return route.fulfill({ status: 204, headers: cors })
@@ -542,7 +596,7 @@ test('the queue says when it did not answer, keeps what was typed, and a retry c
   await contact(page).fill('ada@example.com')
   await queue(page).getByRole('radio', { name: 'Staker', exact: true }).check()
   await submit(page).click()
-  await expect(status(queue(page))).toHaveText('The queue did not answer. Try again.')
+  await expect(status(queue(page))).toHaveText('Your entry could not be saved. Try again later.')
   await expect(contact(page)).toHaveValue('ada@example.com')
   await expect(queue(page).getByRole('radio', { name: 'Staker', exact: true })).toBeChecked()
   await expect(queue(page)).not.toContainText('You are on the list.')
@@ -756,18 +810,34 @@ test('no analytics or other request carries the typed code, email or handle', as
 
 test('an unexpected answer is reported as the endpoint and the status only', async ({ page }) => {
   await page.route(/api\.hanzo\.ai\/v1\/(event|project\/tags)/, (route) => route.fulfill({ status: 204, headers: cors }))
-  await serve(page, { verify: { status: 503 }, join: { status: 500 } })
+  await serve(page, { verify: { status: 502 }, join: { status: 500 } })
   const others = watchOthers(page)
   await open(page)
   await send(page, 'hnz-7k9q2-m4xwp')
-  await expect(status(gate(page))).toHaveText('The invite service did not answer. Try again.')
+  await expect(status(gate(page))).toHaveText('Invite checking is not available right now. Try again later.')
   await contact(page).fill('secret.person@example.com')
   await queue(page).getByRole('radio', { name: 'Builder', exact: true }).check()
   await submit(page).click()
-  await expect(status(queue(page))).toHaveText('The queue did not answer. Try again.')
-  await expect.poll(() => others.some((o) => o.includes('invite/verify answered 503'))).toBe(true)
+  await expect(status(queue(page))).toHaveText('Your entry could not be saved. Try again later.')
+  await expect.poll(() => others.some((o) => o.includes('invite/verify answered 502'))).toBe(true)
   await expect.poll(() => others.some((o) => o.includes('waitlist answered 500'))).toBe(true)
   for (const o of others) expect(o).not.toMatch(/7k9q2|secret\.person|example\.com/i)
+})
+
+test('a 503, the documented answer before the first invite, is not reported as drift', async ({ page }) => {
+  await page.route(/api\.hanzo\.ai\/v1\/(event|project\/tags)/, (route) => route.fulfill({ status: 204, headers: cors }))
+  await serve(page, { verify: { status: 503 }, join: { status: 503 } })
+  const others = watchOthers(page)
+  await open(page)
+  await send(page, CODE)
+  await expect(status(gate(page))).toHaveText('Invite checking is not available right now. Try again later.')
+  await contact(page).fill('ada@example.com')
+  await queue(page).getByRole('radio', { name: 'Builder', exact: true }).check()
+  await submit(page).click()
+  await expect(status(queue(page))).toHaveText('Your entry could not be saved. Try again later.')
+  await page.goto('about:blank')
+  await page.waitForTimeout(500)
+  for (const o of others) expect(o).not.toMatch(/answered \d{3}/)
 })
 
 test('a 429 or a refused entry is not reported as drift', async ({ page }) => {

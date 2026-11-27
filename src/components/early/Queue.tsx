@@ -4,7 +4,7 @@ import Section, { H2 } from '@/components/ui/section'
 import { buttonClass, textLink } from '@/components/ui/button'
 import Card from '@/components/ui/card'
 import { useAnalytics } from '@hanzo/event/react'
-import { drift, join, InviteError, ROLES, X_HANDLE, type Role } from '@/lib/invite'
+import { drift, join, wait, InviteError, ROLES, X_HANDLE, type Role } from '@/lib/invite'
 import { PRIVACY } from '@/lib/links'
 
 type Mode = 'email' | 'xHandle'
@@ -15,13 +15,15 @@ const MODES: Option<Mode>[] = [
   { value: 'xHandle', label: 'X handle' },
 ]
 
-const SAYS: Record<Phase, string> = {
-  idle: '',
-  sending: 'Sending…',
-  done: 'You are on the list.',
-  limited: 'Too many tries. Try again later.',
-  unavailable: 'The queue did not answer. Try again.',
-}
+/** What the status says. `after` is the seconds the server asked for, when it did. */
+const says = (phase: Phase, after: number | null) =>
+  ({
+    idle: '',
+    sending: 'Sending…',
+    done: 'You are on the list.',
+    limited: `Too many tries. Try again ${wait(after)}.`,
+    unavailable: 'Your entry could not be saved. Try again later.',
+  })[phase]
 
 const FIELD = {
   email: { label: 'Email address', error: 'Enter an email address like name@example.com.' },
@@ -42,6 +44,7 @@ export default function Queue() {
   const [focus, setFocus] = useState<{ on: 'field' | 'role' | 'done' | 'button' } | null>(null)
   const [roleError, setRoleError] = useState(false)
   const [phase, setPhase] = useState<Phase>('idle')
+  const [after, setAfter] = useState<number | null>(null)
   const contact = useRef<HTMLInputElement>(null)
   const roles = useRef<HTMLDivElement>(null)
   const button = useRef<HTMLButtonElement>(null)
@@ -90,6 +93,7 @@ export default function Queue() {
         setPhase('idle')
         setFocus({ on: 'field' })
       } else {
+        setAfter(err instanceof InviteError ? err.retryAfter : null)
         setPhase(err instanceof InviteError && err.kind === 'limited' ? 'limited' : 'unavailable')
         setFocus({ on: 'button' })
       }
@@ -161,7 +165,7 @@ export default function Queue() {
 
         <div ref={confirmation} tabIndex={phase === 'done' ? -1 : undefined} className="outline-offset-8">
           <p role="status" aria-live="polite" className={`font-mono text-sm empty:min-h-0 ${phase === 'done' ? 'text-xl' : 'mt-6 min-h-5 empty:mt-0'}`}>
-            {SAYS[phase]}
+            {says(phase, after)}
           </p>
           {phase === 'done' && <p className={`${eyebrow} mt-3`}>Role: {ROLES.find((r) => r.value === role)?.label}</p>}
         </div>

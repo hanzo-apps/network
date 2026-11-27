@@ -21,7 +21,7 @@ export default function Early() {
       <Gate />
       <Queue />
 
-      <Section>
+      <Section id="invites">
         <H2>Where invites come from.</H2>
         <p className="mt-6 max-w-[60ch] text-xl leading-relaxed text-muted-foreground">Hanzo issues invite codes.</p>
         <ul className="mt-12 grid gap-4 md:grid-cols-2">

@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react'
 import { Check } from 'lucide-react'
-import { buttonClass, textLink } from '@/components/ui/button'
+import { buttonClass, inlineLink, textLink } from '@/components/ui/button'
 import Card from '@/components/ui/card'
 import { useAnalytics } from '@hanzo/event/react'
 import Slots from './Slots'
-import { body, drift, normalize, verify, InviteError } from '@/lib/invite'
+import { Link } from 'react-router'
+import { body, drift, normalize, verify, wait, InviteError } from '@/lib/invite'
 
 /** The one place an accepted code is kept: this tab's session, never the URL, never local storage. */
 const KEY = 'hn.invite'
@@ -26,15 +27,17 @@ const keep = (code: string | null) => {
 
 type Phase = 'idle' | 'empty' | 'short' | 'checking' | 'invalid' | 'limited' | 'unavailable'
 
-const SAYS: Record<Phase, string> = {
-  idle: '',
-  empty: 'Enter a code.',
-  short: 'Enter HNZ- and ten characters.',
-  checking: 'Checking…',
-  invalid: 'That code is not valid.',
-  limited: 'Too many tries. Try again later.',
-  unavailable: 'The invite service did not answer. Try again.',
-}
+/** What the status says. `after` is the seconds the server asked for, when it did. */
+const says = (phase: Phase, after: number | null) =>
+  ({
+    idle: '',
+    empty: 'Enter a code.',
+    short: 'Enter HNZ- and ten characters.',
+    checking: 'Checking…',
+    invalid: 'That code is not valid.',
+    limited: `Too many tries. Try again ${wait(after)}.`,
+    unavailable: 'Invite checking is not available right now. Try again later.',
+  })[phase]
 
 const STEPS = ['Check your code here.', 'Keep it. It is not used up by checking.', 'It does not unlock anything yet.']
 
@@ -45,6 +48,7 @@ export default function Gate() {
   const [accepted, setAccepted] = useState<string | null>(kept)
   const [value, setValue] = useState('')
   const [phase, setPhase] = useState<Phase>('idle')
+  const [after, setAfter] = useState<number | null>(null)
   const [focused, setFocused] = useState(false)
   const [all, setAll] = useState(false)
   const input = useRef<HTMLInputElement>(null)
@@ -91,6 +95,7 @@ export default function Gate() {
       if (ctl.signal.aborted) return
       const d = drift(err)
       if (d) analytics.captureError(d)
+      setAfter(err instanceof InviteError ? err.retryAfter : null)
       setPhase(err instanceof InviteError && err.kind === 'limited' ? 'limited' : 'unavailable')
     }
   }
@@ -146,9 +151,23 @@ export default function Gate() {
                 Code accepted
               </>
             ) : (
-              SAYS[phase]
+              says(phase, after)
             )}
           </p>
+
+          {phase === 'unavailable' && (
+            <p className="mt-2 max-w-[56ch] text-base leading-relaxed text-muted-foreground">
+              You can{' '}
+              <Link to={{ hash: '#queue' }} className={inlineLink}>
+                join the queue
+              </Link>{' '}
+              or see{' '}
+              <Link to={{ hash: '#invites' }} className={inlineLink}>
+                where invites come from
+              </Link>
+              .
+            </p>
+          )}
 
           {!accepted && (
             <div className="mt-6">
