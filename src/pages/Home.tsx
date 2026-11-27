@@ -1,4 +1,5 @@
 import Closing from '@/components/home/Closing'
+import GenesisSale from '@/components/home/GenesisSale'
 import Hero from '@/components/home/Hero'
 import How from '@/components/home/How'
 import Latest from '@/components/home/Latest'
@@ -17,6 +18,7 @@ export default function Home() {
       <How />
       <Phases />
       <Token />
+      <GenesisSale />
       <Latest />
       <Closing />
       <Stack />
