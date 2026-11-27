@@ -35,8 +35,8 @@ export default function Chat() {
   }
 
   useEffect(() => {
-    if (open) input.current?.focus()
-  }, [open])
+    if (open && !sending) input.current?.focus()
+  }, [open, sending])
 
   const send = async (thread: Message[]) => {
     stop()
@@ -53,7 +53,6 @@ export default function Chat() {
     } finally {
       if (inflight.current === ctl) {
         setSending(false)
-        requestAnimationFrame(() => input.current?.focus())
       }
     }
   }
