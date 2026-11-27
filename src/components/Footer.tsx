@@ -266,7 +266,7 @@ export default function Footer() {
       </div>
 
       <div className="flex min-h-[30px] w-full flex-wrap items-center gap-x-4 gap-y-2 pt-0.5 pr-[36px] sm:pr-[42px]">
-        <span className="text-[13px] text-muted-foreground">© {new Date().getFullYear()} Hanzo AI, Inc.</span>
+        <span className="text-[13px] text-muted-foreground">© {new Date().getFullYear()} Hanzo AI Inc</span>
         <nav aria-label="Terms & Policies" className="flex min-w-0 flex-wrap items-center gap-x-[22px] gap-y-2 sm:ml-auto">
           <a href={TERMS} className="inline-flex min-h-6 items-center text-[13px] leading-[1.35] text-muted-foreground no-underline transition-colors duration-150 hover:text-foreground">
             Terms

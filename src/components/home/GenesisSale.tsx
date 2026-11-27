@@ -37,7 +37,7 @@ export default function GenesisSale() {
               <Tag is="In progress" />
             </span>
           </Eyebrow>
-          <H2>Acquire native AI on token.hanzo.ai.</H2>
+          <H2>Acquire native AI on ico.hanzo.network.</H2>
           <p className="mt-4 text-xl text-foreground">
             Genesis participation lives on its own dedicated portal so this site stays focused on the network and protocol.
           </p>
@@ -46,7 +46,7 @@ export default function GenesisSale() {
           </p>
           <div className="mt-6 flex flex-wrap items-center gap-4">
             <a href={TOKEN_SITE} className={buttonClass('secondary')}>
-              Visit token.hanzo.ai
+              Visit ico.hanzo.network
             </a>
             <Link to="/economics" className={textLink}>
               Read supply economics
