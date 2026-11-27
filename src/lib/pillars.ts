@@ -26,7 +26,7 @@ export const PILLARS: Pillar[] = [
   {
     tag: 'Designed',
     title: 'Sovereign per-model chains',
-    text: `A chain per model family or domain on Lux, with its own validators. Today there is one live chain, ID ${NETWORKS[0].chainId}, with a post-quantum handshake and ML-DSA validator identities.`,
+    text: `A chain per model family or domain on Hanzo Network, with its own validators. Today there is one live chain, ID ${NETWORKS[0].chainId}, with a post-quantum handshake and ML-DSA validator identities.`,
     link: 'Explorer',
     href: EXPLORER,
   },

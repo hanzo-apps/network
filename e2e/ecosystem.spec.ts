@@ -26,7 +26,7 @@ test('the head: "The ecosystem." and what it is', async ({ page }) => {
   await expect(page).toHaveTitle('Ecosystem · Hanzo Network')
 })
 
-test('three groups, each a list of cards: a status, a name, one sentence and one link', async ({ page }) => {
+test('two Hanzo groups, each a list of cards: a status, a name, one sentence and one link', async ({ page }) => {
   await open(page)
   await expect(page.locator('main h2')).toHaveText(GROUPS.map((g) => g.title))
   for (const g of GROUPS) {
@@ -45,24 +45,21 @@ test('three groups, each a list of cards: a status, a name, one sentence and one
   }
 })
 
-test('only the three status words, and no sale, stake, reward, era or hidden organisation', async ({ page }) => {
+test('only the three status words, and no sale, stake, reward, era or third-party ecosystem entries', async ({ page }) => {
   await open(page)
   const tags = await page.locator('main span.font-mono.uppercase.rounded-full').allTextContents()
-  expect(tags.length).toBeGreaterThan(10)
+  expect(tags.length).toBeGreaterThanOrEqual(10)
   for (const t of tags) expect(['Live', 'In progress', 'Designed']).toContain(t)
   const text = await page.locator('main').innerText()
-  expect(text).not.toMatch(/staking|\bsale\b|mining|reward|Era 1|subnet|finalizes|invest|airdrop/i)
+  expect(text).not.toMatch(/staking|\bsale\b|mining|reward|Era 1|subnet|finalizes|invest|airdrop|Lux Network|Zoo Labs/i)
   expect(await page.content()).not.toMatch(/github\.com\/luxfi/i)
 })
 
-test('the nav and the footer both lead here, between Economics and Pricing', async ({ page }) => {
+test('the nav leads here, between Economics and Pricing', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 })
   await page.goto('/')
   await page.getByRole('navigation', { name: 'Main' }).getByRole('link', { name: 'Ecosystem' }).click()
   await expect(page).toHaveURL(/\/ecosystem$/)
-  const links = await page.getByRole('contentinfo').getByRole('link').allTextContents()
-  expect(links.indexOf('Ecosystem')).toBe(links.indexOf('Economics') + 1)
-  expect(links.indexOf('Pricing')).toBe(links.indexOf('Ecosystem') + 1)
 })
 
 for (const colorScheme of ['dark', 'light'] as const) {

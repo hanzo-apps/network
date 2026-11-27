@@ -153,14 +153,14 @@ test('title and description say what the network is, in the page, the share tags
   expect(await meta('twitter:description')).toBe(description)
 })
 
-test('the footer links Build, Economics, Ecosystem and Pricing, and keeps the privacy choices', async ({ page }) => {
+test('the footer matches hanzo.ai columns, socials, and privacy choices', async ({ page }) => {
   await page.goto('/')
   const footer = page.getByRole('contentinfo')
-  await expect(footer.getByRole('link', { name: 'Build', exact: true })).toHaveAttribute('href', '/build')
-  await expect(footer.getByRole('link', { name: 'Economics', exact: true })).toHaveAttribute('href', '/economics')
-  await expect(footer.getByRole('link', { name: 'Ecosystem', exact: true })).toHaveAttribute('href', '/ecosystem')
-  await expect(footer.getByRole('link', { name: 'Pricing', exact: true })).toHaveAttribute('href', '/pricing')
-  await expect(footer.getByRole('link', { name: 'Your Privacy Choices' })).toHaveAttribute('href', '#choices')
+  for (const col of ['Models', 'Apps', 'Creative AI', 'API Platform', 'Cloud', 'Developers', 'Solutions', 'Teams', 'Industries', 'Programs', 'Learn', 'Company']) {
+    await expect(footer.getByRole('navigation', { name: col })).toBeVisible()
+  }
+  await expect(footer.getByRole('navigation', { name: 'Hanzo Social Channels' })).toBeVisible()
+  await expect(footer.getByRole('link', { name: 'Privacy choices' })).toHaveAttribute('href', '#choices')
 })
 
 // Routes the other builders write: each must draw a page with one h1 inside the shared frame.

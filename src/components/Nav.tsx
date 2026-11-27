@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router'
-import { HanzoLogo } from '@hanzo/logo'
 import { buttonClass, navLink } from '@/components/ui/button'
 import { DOCS } from '@/lib/links'
 import { EARLY, INVITE_LABEL } from '@/lib/early'
@@ -41,10 +40,21 @@ export default function Nav() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background/80 backdrop-blur">
-      <div className="mx-auto flex h-14 w-full max-w-[1200px] items-center justify-between px-4 md:px-8">
-        <Link to="/" aria-label="Hanzo Network home" className="flex items-center gap-2.5 rounded-sm text-lg font-semibold tracking-[-0.01em] text-foreground">
-          <HanzoLogo variant="current" size={20} />
-          Hanzo Network
+      <div className="flex h-[60px] w-full items-center justify-between px-[clamp(20px,2.5vw,36px)]">
+        <Link
+          to="/"
+          aria-label="Hanzo home"
+          data-slot="wordmark"
+          className="inline-flex items-center rounded-sm text-foreground no-underline"
+          style={{
+            fontSize: '28px',
+            fontWeight: 700,
+            letterSpacing: '-0.04em',
+            lineHeight: 1,
+            transform: 'translateY(-0.08em)',
+          }}
+        >
+          hanzo
         </Link>
         <nav aria-label="Main" className="hidden items-center gap-5 md:flex lg:gap-8">{links(navLink)}</nav>
         <div className="hidden md:block">
@@ -55,23 +65,23 @@ export default function Nav() {
           </Link>
         </div>
         <div className="md:hidden">
-        <button
-          ref={toggle}
-          type="button"
-          className="-mr-2 inline-flex h-11 w-11 items-center justify-center rounded-full text-foreground"
-          aria-expanded={open}
-          aria-controls="menu"
-          aria-label={open ? 'Close menu' : 'Open menu'}
-          onClick={() => setOpen(!open)}
-        >
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden>
-            {open ? <path d="M4 4l12 12M16 4L4 16" /> : <path d="M3 6h14M3 14h14" />}
-          </svg>
-        </button>
+          <button
+            ref={toggle}
+            type="button"
+            className="-mr-2 inline-flex h-11 w-11 items-center justify-center rounded-full text-foreground"
+            aria-expanded={open}
+            aria-controls="menu"
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            onClick={() => setOpen(!open)}
+          >
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden>
+              {open ? <path d="M4 4l12 12M16 4L4 16" /> : <path d="M3 6h14M3 14h14" />}
+            </svg>
+          </button>
         </div>
       </div>
       {open && (
-        <nav id="menu" aria-label="Menu" className="flex flex-col border-t border-border px-4 pb-4 md:hidden">
+        <nav id="menu" aria-label="Menu" className="flex flex-col border-t border-border px-[clamp(20px,2.5vw,36px)] pb-4 md:hidden">
           {links('flex h-12 items-center text-base text-foreground')}
           <Link to={EARLY} className={`${buttonClass('primary')} mt-2`}>
             {INVITE_LABEL}

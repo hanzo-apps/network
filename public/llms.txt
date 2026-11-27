@@ -93,7 +93,7 @@ The Proof of AI paper and the related-work section are under Sources.
 
 - [Maximum utility per node](https://docs.hanzo.ai/docs/proof-of-ai/node-operator): Live. hanzod is one Rust daemon per machine: local inference, Dev, Bot and Team backends and an optional validator. Today a node runs tools and agents and is paid per job in stablecoins.
 - [Multi-intelligence consensus](https://hips.hanzo.ai/docs/hip-0901-proof-of-ai-native-execution-proofs): Designed. Different models on bonded nodes settle policy votes and parameter medians on chain. A vote alone can never mint.
-- [Sovereign per-model chains](https://explore.hanzo.network): Designed. A chain per model family or domain on Lux, with its own validators. Today there is one live chain, ID 36963, with a post-quantum handshake and ML-DSA validator identities.
+- [Sovereign per-model chains](https://explore.hanzo.network): Designed. A chain per model family or domain on Hanzo Network, with its own validators. Today there is one live chain, ID 36963, with a post-quantum handshake and ML-DSA validator identities.
 - [Decentralized agentic commerce](https://docs.hanzo.ai/docs/agents): In progress. Agents sign up with a wallet, hold a budgeted key and pay per call today. Fee burn, on-chain spend caps and a compute market are designed.
 - [Self-upgrading autonomous research](https://hips.hanzo.ai/docs/hip-1334-research-unified-runtime): In progress. Hanzo's research runtime records datasets, runs, evaluations and claims. Promotion only by beating gates frozen in advance is designed. A draft spec, partly built, not yet tied to the chain.
 - [DAO goal-setting and human de-work](https://work.hanzo.network): Designed. A DAO work board for goals and bounties. No Hanzo bounties are live yet.
@@ -143,12 +143,8 @@ What exists around the network. Each entry was loaded and read on 26 Nov 2026; t
 - [Platform status](https://status.hanzo.network): Live. Health of Hanzo's platform. It does not monitor the chain RPC.
 - [Work board](https://work.hanzo.network): Designed. A DAO work board for goals and bounties. The board is up; no Hanzo bounties are live yet.
 - [Hanzo Vote](https://hanzo.vote): In progress. A governance dashboard. It says no Governor address is on record yet.
-- [Lux Network](https://lux.network): Live. Lux's own site. It describes a multi-chain, post-quantum blockchain.
-- [Lux DAO contracts](https://github.com/luxdao/contracts): Live. Published code: the Lux Governor Protocol, a Safe module for composable DAO governance.
-- [Go verifier](https://git.hanzo.ai/luxfi/crypto/src/branch/main/poi): Live. Published code: the Go verifier for the matrix checks, with 22 tests.
 - [HIPs](https://hips.hanzo.ai): Live. Hanzo Improvement Proposals: the standards for Hanzo's infrastructure.
 - [Papers](https://papers.hanzo.ai): Live. Technical papers on AI and post-quantum cryptography, including the AI Chain whitepaper.
-- [Zoo Labs](https://zoo.ngo): Live. A non-profit that publishes open AI models and conservation research.
 
 ## Sources
 

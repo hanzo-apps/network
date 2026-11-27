@@ -11,9 +11,16 @@ export const DOCS_LLMS = 'https://docs.hanzo.ai/llms.txt'
 export const DOCS_LLMS_FULL = 'https://docs.hanzo.ai/llms-full.txt'
 export const DOCS_OSS_PAYOUTS = 'https://docs.hanzo.ai/docs/proof-of-ai/oss-payouts'
 export const DOCS_REFERRALS = 'https://docs.hanzo.ai/docs/referrals'
+export const DOCS_OPENAPI = 'https://docs.hanzo.ai/docs/openapi/'
+export const DOCS_QUICKSTART = 'https://docs.hanzo.ai/docs/quickstart/'
+export const DOCS_GUIDES = 'https://docs.hanzo.ai/docs/guides'
+export const DOCS_CHOOSE_ARCH = 'https://docs.hanzo.ai/docs/choose-architecture'
+export const DOCS_COOKBOOK = 'https://docs.hanzo.ai/docs/guides/cookbook/'
 /** The node operator guide: what runs today and what is roadmap. */
 export const NODE_GUIDE = 'https://docs.hanzo.ai/docs/proof-of-ai/node-operator'
 export const NODE_REPO = 'https://github.com/hanzoai/node'
+export const GITHUB_ORG = 'https://github.com/hanzoai'
+export const CLI_RELEASES = 'https://github.com/hanzoai/cli/releases'
 
 export const WHITEPAPER = 'https://papers.hanzo.ai/hanzo-ai-chain/'
 /** The page above shows only the abstract; section references point here. */
@@ -35,6 +42,7 @@ export const PROOFS = 'https://proofs.hanzo.network'
 
 export const EXPLORER = 'https://explore.hanzo.network'
 export const STATUS = 'https://status.hanzo.network'
+export const STATUS_AI = 'https://status.hanzo.ai'
 export const WORK = 'https://work.hanzo.network'
 export const WORKS = 'https://hanzo.works'
 export const VOTE = 'https://hanzo.vote'
@@ -42,14 +50,16 @@ export const HIPS = 'https://hips.hanzo.ai'
 export const PAPERS = 'https://papers.hanzo.ai'
 
 export const HANZO = 'https://hanzo.ai'
+export const HANZO_APP = 'https://hanzo.app'
+export const HANZO_APP_LEARN = 'https://hanzo.app/learn'
+export const HANZO_TEAM = 'https://hanzo.team'
+export const HANZO_AGENCY = 'https://hanzo.agency'
+export const HANZO_UNIVERSITY = 'https://hanzo.university'
 export const LOGIN = 'https://hanzo.ai/login'
 export const PRIVACY = `${HANZO}/privacy`
 export const TERMS = `${HANZO}/terms`
+export const AUP = `${HANZO}/aup`
 export const ZEN = 'https://hanzo.ai/zen'
-export const LUX = 'https://lux.network'
-/** Lux's DAO contracts, public on GitHub. Lux's own organisation there is hidden, so Lux code is linked here or on the Hanzo forge. */
-export const LUX_DAO = 'https://github.com/luxdao/contracts'
-export const ZOO = 'https://zoo.ngo'
 export const HANZO_CHAT = 'https://hanzo.chat'
 /** This site, for the one place an absolute address is needed: the chat's system message. */
 export const SITE = 'https://hanzo.network'
@@ -66,8 +76,15 @@ export const WAITLIST = `${API}/v1/network/waitlist`
 
 export const API_KEYS = 'https://platform.hanzo.ai/api-keys'
 export const PLANS = 'https://hanzo.ai/pricing'
-export const DISCORD = 'https://discord.gg/CJCyAsm9Vr'
+export const DISCORD = 'https://discord.gg/XthHQQj'
+export const TELEGRAM = 'https://t.me/hanzoai'
 export const X = 'https://x.com/hanzoai'
+export const LINKEDIN = 'https://linkedin.com/company/hanzo-ai'
+export const FACEBOOK = 'https://facebook.com/hanzoinc'
+export const BLUESKY = 'https://bsky.app/profile/hanzoai.bsky.social'
+export const REDDIT = 'https://www.reddit.com/r/HanzoAI/'
+export const TIKTOK = 'https://www.tiktok.com/@hanzoinc'
+export const INSTAGRAM = 'https://www.instagram.com/hanzoinc'
 
 export const TOKEN_PURCHASE = 'https://token.hanzo.ai/purchase'
 export const TOKEN_AUCTION_URL = 'https://token.hanzo.ai/v1/auction'

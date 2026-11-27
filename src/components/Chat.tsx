@@ -68,7 +68,13 @@ export default function Chat() {
   }
 
   return (
-    <div className="fixed bottom-4 right-4 z-50 flex flex-col items-end gap-3">
+    <div
+      className="fixed z-[60] flex flex-col items-end gap-3"
+      style={{
+        bottom: 'calc(14px + env(safe-area-inset-bottom, 0px))',
+        insetInlineEnd: 'calc(clamp(20px, 2.5vw, 36px) - 6px + env(safe-area-inset-right, 0px))',
+      }}
+    >
       {open && (
         <div
           role="dialog"
@@ -148,11 +154,12 @@ export default function Chat() {
         ref={opener}
         type="button"
         aria-label="Open chat"
-        onClick={() => setOpen(true)}
-        className="relative grid h-14 w-14 place-items-center rounded-full bg-primary text-primary-foreground"
+        aria-haspopup="dialog"
+        aria-expanded={open}
+        onClick={() => setOpen((o) => !o)}
+        className="grid h-[34px] w-[34px] cursor-pointer place-items-center rounded-full border-0 bg-transparent p-0 text-foreground opacity-85 transition-[opacity,transform] duration-200 hover:scale-[1.06] hover:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
       >
-        <span aria-hidden="true" className="absolute inset-0 animate-ping [animation-iteration-count:3] rounded-full bg-foreground opacity-20" />
-        <HanzoLogo variant="current" size={20} aria-hidden="true" className="relative" />
+        <HanzoLogo variant="current" size={22} aria-hidden="true" />
       </button>
     </div>
   )

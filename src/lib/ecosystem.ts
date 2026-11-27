@@ -1,11 +1,11 @@
 import type { Status } from './status'
-import { DOCS, EXPLORER, GO_VERIFIER, HANZO, HIPS, LUX, LUX_DAO, PAPERS, STATUS, VOTE, WORK, WORKS, ZEN, ZOO } from './links'
+import { DOCS, EXPLORER, HANZO, HIPS, PAPERS, STATUS, VOTE, WORK, WORKS, ZEN } from './links'
 
 export type Entry = { tag: Status; name: string; text: string; host: string; href: string }
 export type Group = { title: string; entries: Entry[] }
 
 /**
- * What exists around the network, once: /ecosystem draws it, the home strip picks four of it, and a test holds public/llms.txt to it.
+ * What exists around the network, once: /ecosystem draws it, and a test holds public/llms.txt to it.
  * Each entry was loaded and read on 26 Nov 2026; its tag is what the page showed, not what anyone says about it.
  */
 export const GROUPS: Group[] = [
@@ -23,19 +23,10 @@ export const GROUPS: Group[] = [
     ],
   },
   {
-    title: 'Lux',
-    entries: [
-      { tag: 'Live', name: 'Lux Network', text: "Lux's own site. It describes a multi-chain, post-quantum blockchain.", host: 'lux.network', href: LUX },
-      { tag: 'Live', name: 'Lux DAO contracts', text: 'Published code: the Lux Governor Protocol, a Safe module for composable DAO governance.', host: 'github.com/luxdao/contracts', href: LUX_DAO },
-      { tag: 'Live', name: 'Go verifier', text: 'Published code: the Go verifier for the matrix checks, with 22 tests.', host: 'git.hanzo.ai/luxfi/crypto', href: GO_VERIFIER },
-    ],
-  },
-  {
-    title: 'Community and research',
+    title: 'Research and standards',
     entries: [
       { tag: 'Live', name: 'HIPs', text: "Hanzo Improvement Proposals: the standards for Hanzo's infrastructure.", host: 'hips.hanzo.ai', href: HIPS },
       { tag: 'Live', name: 'Papers', text: 'Technical papers on AI and post-quantum cryptography, including the AI Chain whitepaper.', host: 'papers.hanzo.ai', href: PAPERS },
-      { tag: 'Live', name: 'Zoo Labs', text: 'A non-profit that publishes open AI models and conservation research.', host: 'zoo.ngo', href: ZOO },
     ],
   },
 ]

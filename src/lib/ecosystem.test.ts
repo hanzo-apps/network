@@ -4,12 +4,13 @@ import { ENTRIES, entry, GROUPS } from './ecosystem'
 
 const llms = readFileSync('public/llms.txt', 'utf8')
 
-test('three groups, in this order', () => {
-  expect(GROUPS.map((g) => g.title)).toEqual(['Hanzo', 'Lux', 'Community and research'])
+test('two Hanzo groups, in this order, with no third-party entries', () => {
+  expect(GROUPS.map((g) => g.title)).toEqual(['Hanzo', 'Research and standards'])
+  expect(JSON.stringify(GROUPS)).not.toMatch(/lux\.network|zoo\.ngo|Lux Network|Zoo Labs|Lux DAO/i)
 })
 
 test('every entry has a status word, one sentence ending in a full stop, and an https address', () => {
-  expect(ENTRIES.length).toBeGreaterThan(10)
+  expect(ENTRIES.length).toBeGreaterThanOrEqual(10)
   for (const e of ENTRIES) {
     expect(['Live', 'In progress', 'Designed']).toContain(e.tag)
     expect(e.text).toMatch(/\.$/)
@@ -24,8 +25,8 @@ test('nothing here is a sale, a stake, a reward or an unread claim', () => {
   expect(JSON.stringify(GROUPS)).not.toMatch(/staking|sale|mining|reward|Era 1|subnet|finalizes|github\.com\/luxfi/i)
 })
 
-test('the home strip can find its four', () => {
-  for (const n of ['Hanzo AI', 'Zen models', 'Lux Network', 'Zoo Labs']) expect(entry(n).name).toBe(n)
+test('entry() resolves Hanzo entries and throws on missing', () => {
+  for (const n of ['Hanzo AI', 'Zen models', 'HIPs', 'Papers']) expect(entry(n).name).toBe(n)
   expect(() => entry('nobody')).toThrow()
 })
 

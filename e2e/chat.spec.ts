@@ -171,10 +171,10 @@ test('the answer is plain text: markup in it is shown, never run', async ({ page
   expect(await dialog(page).locator('img').count()).toBe(0)
 })
 
-test('Escape closes the chat and returns focus; the close button is touch-sized; the pulse runs three times', async ({ page }) => {
+test('Escape closes the chat and returns focus; the close button is touch-sized; the launcher is transparent monochrome', async ({ page }) => {
   await page.goto('/')
   const opener = page.getByRole('button', { name: 'Open chat' })
-  expect(await opener.locator('span').evaluate((el) => getComputedStyle(el).animationIterationCount)).toBe('3')
+  expect(await opener.evaluate((el) => getComputedStyle(el).backgroundColor)).toBe('rgba(0, 0, 0, 0)')
   await opener.click()
   await expect(page.getByRole('heading', { name: 'Ask Hanzo' })).toBeVisible()
   const close = (await page.getByRole('button', { name: 'Close chat' }).boundingBox())!

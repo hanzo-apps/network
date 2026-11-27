@@ -362,17 +362,18 @@ test('one filled button in the first viewport at 1440 light', async ({ page }) =
   expect(filled).toBe(1)
 })
 
-test('the stack is one quiet row of links, not four cards', async ({ page }) => {
+test('the ecosystem stack strip and third-party ecosystem links are removed from home', async ({ page }) => {
   await page.goto('/')
-  await expect(page.getByText(/four parts/i)).toHaveCount(0)
-  await expect(page.getByRole('link', { name: /Lux Network/ })).toHaveAttribute('href', 'https://lux.network')
-  await expect(page.getByRole('link', { name: /Zoo Labs/ })).toHaveAttribute('href', 'https://zoo.ngo')
+  await expect(page.getByText('The Hanzo ecosystem', { exact: true })).toHaveCount(0)
+  await expect(page.getByRole('link', { name: /Lux Network/ })).toHaveCount(0)
+  await expect(page.getByRole('link', { name: /Zoo Labs/ })).toHaveCount(0)
 })
 
-test('the stack strip is named "The Hanzo ecosystem"', async ({ page }) => {
+test('top-left navbar uses lowercase hanzo wordmark only', async ({ page }) => {
   await page.goto('/')
-  await expect(page.getByText('The Hanzo ecosystem', { exact: true })).toBeVisible()
-  await expect(page.getByText('Part of the Hanzo stack')).toHaveCount(0)
+  const wm = page.locator('header [data-slot="wordmark"]')
+  await expect(wm).toHaveText('hanzo')
+  await expect(wm.locator('svg')).toHaveCount(0)
 })
 
 // The sections the SECTIONS builder writes: they must exist, in this order, and clear the sticky nav.

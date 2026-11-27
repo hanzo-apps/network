@@ -10,9 +10,9 @@ test.beforeEach(async ({ page }) => {
 })
 
 for (const path of ['/', '/pricing']) {
-  test(`${path} has Your Privacy Choices in the footer, and it opens the cookie sheet`, async ({ page }) => {
+  test(`${path} has Privacy choices in the footer, and it opens the cookie sheet`, async ({ page }) => {
     await page.goto(path)
-    const link = page.getByRole('contentinfo').getByRole('link', { name: 'Your Privacy Choices' })
+    const link = page.getByRole('contentinfo').getByRole('link', { name: 'Privacy choices' })
     await expect(link).toHaveAttribute('href', '#choices')
     await link.click()
     await expect(page.getByRole('dialog', { name: /cookie|privacy/i })).toBeVisible()

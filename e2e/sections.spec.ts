@@ -416,36 +416,9 @@ test.describe('Latest', () => {
   })
 })
 
-// ---------------------------------------------------------------- Closing
-test.describe('Closing', () => {
-  test('one filled button to the invite, one outline button to /build', async ({ page }) => {
-    await page.goto('/')
-    const s = page.locator('main > section').last()
-    await expect(s.getByRole('heading', { level: 2 })).toHaveText('Build on the network.')
-    const invite = s.getByRole('link', { name: 'Enter invite code', exact: true })
-    const build = s.getByRole('link', { name: 'Start building', exact: true })
-    await expect(invite).toHaveAttribute('href', '/early')
-    await expect(build).toHaveAttribute('href', '/build')
-    const bg = (l: Locator) => l.evaluate((e) => getComputedStyle(e).backgroundColor)
-    const probe = await page.evaluate(() => {
-      const i = document.createElement('i')
-      i.className = 'bg-primary'
-      document.body.append(i)
-      const c = getComputedStyle(i).backgroundColor
-      i.remove()
-      return c
-    })
-    expect(await bg(invite)).toBe(probe)
-    expect(await bg(build)).not.toBe(probe)
-    expect((await invite.boundingBox())!.height).toBeGreaterThanOrEqual(44)
-    expect((await build.boundingBox())!.height).toBeGreaterThanOrEqual(44)
-    await expect(s.getByRole('link', { name: /API key|provide compute/i })).toHaveCount(0)
-  })
-})
-
 // ---------------------------------------------------------------- the page as a whole
 test.describe('all sections', () => {
-  test('use only the three status words, and the old Doors section is gone', async ({ page }) => {
+  test('use only the three status words, and the old Doors/Closing/Stack sections are gone', async ({ page }) => {
     await page.goto('/')
     const body = page.locator('main > section:not(:first-child)')
     const texts = await tags(body).allTextContents()
@@ -453,7 +426,8 @@ test.describe('all sections', () => {
     for (const t of texts) expect(['Live', 'In progress', 'Designed']).toContain(t)
     await expect(body.getByText(/\b(Proposed|Beta|Soon|Coming)\b/)).toHaveCount(0)
     await expect(page.getByText('Use the network. Or power it.')).toHaveCount(0)
-    await expect(page.getByRole('heading', { level: 2 })).toContainText(['Five things you can do.', 'Six parts, one loop.', 'How Proof of AI works.', 'Mining is gated in phases.', 'Compute once. Earn twice.', '369 daily windows for native AI.', 'Read the sources.', 'Build on the network.'])
+    await expect(page.getByText('Build on the network.')).toHaveCount(0)
+    await expect(page.getByRole('heading', { level: 2 })).toContainText(['Five things you can do.', 'Six parts, one loop.', 'How Proof of AI works.', 'Mining is gated in phases.', 'Compute once. Earn twice.', '369 daily windows for native AI.', 'Read the sources.'])
   })
 
   test('copy has no em dashes and no hype', async ({ page }) => {
