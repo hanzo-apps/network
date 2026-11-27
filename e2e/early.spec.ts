@@ -29,6 +29,8 @@ async function serve(page: Page, mock: Mock = {}) {
     })
   await answer(VERIFY, seen.verify, mock.verify ?? { json: { valid: true } })
   await answer(WAITLIST, seen.join, mock.join ?? { status: 202, json: { status: 'pending' } })
+  // Stub /v1/project/tags so a late live consent-policy response never detaches the EU banner mid-click in open().
+  await page.route(/api\.hanzo\.ai\/v1\/project\/tags/, (route) => route.fulfill({ status: 204, headers: cors }))
   await serveChain(page)
   return seen
 }
