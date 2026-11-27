@@ -427,7 +427,14 @@ test.describe('all sections', () => {
     await expect(body.getByText(/\b(Proposed|Beta|Soon|Coming)\b/)).toHaveCount(0)
     await expect(page.getByText('Use the network. Or power it.')).toHaveCount(0)
     await expect(page.getByText('Build on the network.')).toHaveCount(0)
-    await expect(page.getByRole('heading', { level: 2 })).toContainText(['Five things you can do.', 'Six parts, one loop.', 'How Proof of AI works.', 'Mining is gated in phases.', 'Compute once. Earn twice.', '369 daily windows for native AI.', 'Read the sources.'])
+    await expect(page.getByRole('heading', { level: 2 })).toContainText(['Five things you can do.', 'Six parts, one loop.', 'How Proof of AI works.', 'Mining is gated in phases.', 'Compute once. Earn twice.', 'Acquire native AI on token.hanzo.ai.', 'Read the sources.'])
+  })
+
+  test('genesis section stays decoupled from bridge rails, countdowns and cap bars', async ({ page }) => {
+    await page.goto('/')
+    const s = section(page, 'genesis-sale')
+    await expect(s.getByRole('link', { name: 'Visit token.hanzo.ai' })).toHaveAttribute('href', 'https://token.hanzo.ai')
+    await expect(s.getByText(/bridge\.lux\.network|wLUX|wZOO|LBTC|10% daily cap|Next daily step/i)).toHaveCount(0)
   })
 
   test('copy has no em dashes and no hype', async ({ page }) => {

@@ -86,6 +86,6 @@ export const REDDIT = 'https://www.reddit.com/r/HanzoAI/'
 export const TIKTOK = 'https://www.tiktok.com/@hanzoinc'
 export const INSTAGRAM = 'https://www.instagram.com/hanzoinc'
 
+export const TOKEN_SITE = 'https://token.hanzo.ai'
 export const TOKEN_PURCHASE = 'https://token.hanzo.ai/purchase'
 export const TOKEN_AUCTION_URL = 'https://token.hanzo.ai/v1/auction'
-export const LUX_BRIDGE = 'https://bridge.lux.network'
