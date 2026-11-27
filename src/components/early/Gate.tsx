@@ -7,24 +7,6 @@ import Slots from './Slots'
 import { Link } from 'react-router'
 import { body, drift, normalize, verify, wait, InviteError } from '@/lib/invite'
 
-/** The one place an accepted code is kept: this tab's session, never the URL, never local storage. */
-const KEY = 'hn.invite'
-const kept = () => {
-  try {
-    return normalize(sessionStorage.getItem(KEY) ?? '') // anything that is not a code is not remembered
-  } catch {
-    return null // storage blocked: the code is simply not remembered
-  }
-}
-const keep = (code: string | null) => {
-  try {
-    if (code === null) sessionStorage.removeItem(KEY)
-    else sessionStorage.setItem(KEY, code)
-  } catch {
-    // storage blocked: nothing to do
-  }
-}
-
 type Phase = 'idle' | 'empty' | 'short' | 'checking' | 'invalid' | 'limited' | 'unavailable'
 
 /** What the status says. `after` is the seconds the server asked for, when it did. */
@@ -45,7 +27,8 @@ const label = 'block font-mono text-xs uppercase tracking-[0.18em] text-muted-fo
 
 /** The invite code gate. It shows accepted only when the endpoint said valid:true, rejected only on valid:false, and says nothing else about a code. */
 export default function Gate() {
-  const [accepted, setAccepted] = useState<string | null>(kept)
+  // An accepted code lives in this component only: a reload asks the server again, and no script can read it from storage.
+  const [accepted, setAccepted] = useState<string | null>(null)
   const [value, setValue] = useState('')
   const [phase, setPhase] = useState<Phase>('idle')
   const [after, setAfter] = useState<number | null>(null)
@@ -60,7 +43,7 @@ export default function Gate() {
 
   useEffect(() => () => inflight.current?.abort(), [])
 
-  // A code accepted just now moves focus to the explanation; one restored from the session does not.
+  // A code accepted just now moves focus to the explanation.
   useEffect(() => {
     if (fresh) explanation.current?.focus()
   }, [fresh])
@@ -86,7 +69,6 @@ export default function Gate() {
     setPhase('checking')
     try {
       if (await verify(code, ctl.signal)) {
-        keep(code)
         setAccepted(code)
         setPhase('idle')
         setFresh((n) => n + 1)
@@ -101,7 +83,6 @@ export default function Gate() {
   }
 
   const another = () => {
-    keep(null)
     setAccepted(null)
     setValue('')
     setPhase('idle')
@@ -123,7 +104,11 @@ export default function Gate() {
                   ref={input}
                   id="invite-code"
                   value={value}
-                  onChange={(e) => setValue(body(e.target.value))}
+                  onChange={(e) => {
+                    setValue(body(e.target.value))
+                    // What was said about the last text is not said about this one. A rate-limit wait is information, so it stays.
+                    if (phase !== 'limited') setPhase('idle')
+                  }}
                   onSelect={(e) => setAll(e.currentTarget.value.length > 0 && e.currentTarget.selectionStart === 0 && e.currentTarget.selectionEnd === e.currentTarget.value.length)}
                   onFocus={() => setFocused(true)}
                   onBlur={() => setFocused(false)}

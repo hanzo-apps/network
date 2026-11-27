@@ -8,7 +8,6 @@ const PRIVACY = 'https://hanzo.ai/privacy'
 const DISCORD = 'https://discord.gg/CJCyAsm9Vr'
 const X = 'https://x.com/hanzoai'
 const NODE_GUIDE = 'https://docs.hanzo.ai/docs/proof-of-ai/node-operator'
-const KEY = 'hn.invite'
 const CODE = 'HNZ-7K9Q2-M4XWP'
 const BODY = '7K9Q2M4XWP'
 const cors = { 'access-control-allow-origin': '*', 'access-control-allow-headers': '*', 'access-control-expose-headers': 'Retry-After' } // the real API exposes Retry-After to pages
@@ -42,6 +41,8 @@ const open = async (page: Page, size?: { width: number; height: number }) => {
   if (await bar.isVisible()) await bar.click()
 }
 
+/** Everything this tab keeps in either store that mentions the code. It must always be empty: the page keeps an accepted code in memory only. */
+const held = (page: Page) => page.evaluate(() => [...Object.entries(sessionStorage), ...Object.entries(localStorage)].filter(([k, v]) => /7k9q2|m4xwp|hn\.invite/i.test(k + v)))
 const gate = (page: Page) => page.locator('#gate')
 const queue = (page: Page) => page.locator('#queue')
 const code = (page: Page) => gate(page).getByRole('textbox', { name: 'Invite code' })
@@ -191,7 +192,6 @@ test('whatever is pasted or typed, the request is HNZ-XXXXX-XXXXX and the slots 
     await expect(gate(page)).toContainText(/code accepted/i)
     expect(seen.verify, pasted).toHaveLength(1)
     expect(seen.verify[0].body, pasted).toEqual({ code: CODE })
-    await page.evaluate(() => sessionStorage.clear())
     await page.unroute(VERIFY)
     await page.unroute(WAITLIST)
   }
@@ -288,36 +288,87 @@ test('a valid code: the request is exactly the typed code, anonymous; the card s
   expect(seen.verify[0].headers.cookie).toBeUndefined()
 })
 
-test('the code is sent as HNZ-XXXXX-XXXXX and kept in sessionStorage only; never in the URL, local storage or cookies', async ({ page }) => {
+test('the code is sent as HNZ-XXXXX-XXXXX and kept nowhere: not in session or local storage, the URL or cookies', async ({ page }) => {
   const seen = await serve(page)
   await open(page)
   await send(page, '  hnz-7k9q2-m4xwp ')
   await expect(gate(page)).toContainText(/code accepted/i)
   expect(seen.verify[0].body).toEqual({ code: CODE })
-  expect(await page.evaluate((k) => sessionStorage.getItem(k), KEY)).toBe(CODE)
-  // Other scripts on the site may keep their own session keys; none of them may hold the code.
-  expect(await page.evaluate((k) => Object.entries(sessionStorage).filter(([key, v]) => key !== k && /7k9q2/i.test(v)), KEY)).toEqual([])
-  expect(await page.evaluate(() => Object.entries(localStorage).filter(([k, v]) => /invite|code/i.test(k) || /7k9q2/i.test(v)))).toEqual([])
+  expect(await held(page)).toEqual([])
+  expect(await page.evaluate(() => Object.entries(localStorage).filter(([k]) => /invite|code/i.test(k)))).toEqual([])
   expect(await page.evaluate(() => document.cookie)).not.toMatch(/HNZ/i)
   expect(page.url()).not.toMatch(/hnz|7k9q2|code/i)
 })
 
-test('the accepted state survives a reload; "Use a different code" clears it and the input comes back empty and focused', async ({ page }) => {
+test('an accepted code is not remembered: a reload shows the empty form and asks the server again', async ({ page }) => {
   const seen = await serve(page)
   await open(page)
   await send(page, CODE)
   await expect(gate(page)).toContainText(/code accepted/i)
   await page.reload()
-  await expect(gate(page)).toContainText(/code accepted/i)
-  await expect(gate(page)).toContainText(CODE)
+  await expect(code(page)).toBeVisible()
+  await expect(code(page)).toHaveValue('')
+  await expect(gate(page)).not.toContainText(/code accepted|valid/i)
+  expect(await held(page)).toEqual([])
   expect(seen.verify).toHaveLength(1)
+})
+
+test('"Use a different code" brings the empty input back, focused', async ({ page }) => {
+  await serve(page)
+  await open(page)
+  await send(page, CODE)
+  await expect(gate(page)).toContainText(/code accepted/i)
   await gate(page).getByRole('button', { name: 'Use a different code' }).click()
-  expect(await page.evaluate((k) => sessionStorage.getItem(k), KEY)).toBeNull()
   await expect(code(page)).toHaveValue('')
   await expect(code(page)).toBeFocused()
   await expect(gate(page)).not.toContainText(/code accepted/i)
-  await page.reload()
-  await expect(code(page)).toBeVisible()
+})
+
+test('editing the code after an answer clears what was said about the last one', async ({ page }) => {
+  await serve(page, { verify: { json: { valid: false } } })
+  await open(page)
+  await send(page, 'HNZ-AAAAA-AAAAA')
+  await expect(status(gate(page))).toHaveText('That code is not valid.')
+  await expect(code(page)).toHaveAttribute('aria-invalid', 'true')
+  await code(page).press('End')
+  await code(page).press('Backspace')
+  await expect(status(gate(page))).toHaveText('')
+  await expect(code(page)).toHaveAttribute('aria-invalid', 'false')
+  await code(page).pressSequentially('B')
+  await expect(status(gate(page))).toHaveText('')
+})
+
+test('editing the code clears the short-code and empty-code messages too', async ({ page }) => {
+  await serve(page)
+  await open(page)
+  await check(page).click()
+  await expect(status(gate(page))).toHaveText('Enter a code.')
+  await code(page).pressSequentially('7')
+  await expect(status(gate(page))).toHaveText('')
+  await expect(code(page)).toHaveAttribute('aria-invalid', 'false')
+  await check(page).click()
+  await expect(status(gate(page))).toHaveText('Enter HNZ- and ten characters.')
+  await code(page).pressSequentially('K')
+  await expect(status(gate(page))).toHaveText('')
+  await expect(code(page)).toHaveAttribute('aria-invalid', 'false')
+})
+
+test('editing the code clears "not available" and its links; a rate-limit wait stays as information, never as a verdict', async ({ page }) => {
+  await serve(page, { verify: { status: 503 } })
+  await open(page)
+  await send(page, CODE)
+  await expect(status(gate(page))).toHaveText('Invite checking is not available right now. Try again later.')
+  await code(page).press('Backspace')
+  await expect(status(gate(page))).toHaveText('')
+  await expect(gate(page).getByRole('link', { name: 'join the queue' })).toHaveCount(0)
+  await page.unroute(VERIFY)
+  await page.route(VERIFY, (route) => route.request().method() === 'OPTIONS' ? route.fulfill({ status: 204, headers: cors }) : route.fulfill({ status: 429, headers: { ...cors, 'retry-after': '600' }, json: {} }))
+  await code(page).pressSequentially('P')
+  await check(page).click()
+  await expect(status(gate(page))).toHaveText('Too many tries. Try again in 10 minutes.')
+  await code(page).press('Backspace')
+  await expect(status(gate(page))).toHaveText('Too many tries. Try again in 10 minutes.')
+  await expect(code(page)).toHaveAttribute('aria-invalid', 'false')
 })
 
 test('a code that is not valid: no reason, the value stays, focused and selected', async ({ page }) => {
@@ -330,7 +381,7 @@ test('a code that is not valid: no reason, the value stays, focused and selected
   expect(await code(page).evaluate((el: HTMLInputElement) => [el.selectionStart, el.selectionEnd])).toEqual([0, 10])
   await expect(check(page)).toBeEnabled()
   await expect(gate(page).locator('form')).not.toContainText(/accepted|expired|used|revoked|exist/i)
-  expect(await page.evaluate((k) => sessionStorage.getItem(k), KEY)).toBeNull()
+  expect(await held(page)).toEqual([])
 })
 
 test('too many tries: a 429 with Retry-After says when to try again, and the page is usable', async ({ page }) => {
@@ -389,7 +440,7 @@ for (const [name, reply] of [
     await expect(check(page)).toBeEnabled()
     await expect(code(page)).toBeEnabled()
     await expect(code(page)).toHaveValue(BODY)
-    expect(await page.evaluate((k) => sessionStorage.getItem(k), KEY)).toBeNull()
+    expect(await held(page)).toEqual([])
   })
 }
 
@@ -505,6 +556,24 @@ test('sending: the form is off and the status says so', async ({ page }) => {
   await expect(contact(page)).toBeDisabled()
   release()
   await expect(status(queue(page))).toHaveText(/You are on the list\./)
+})
+
+test('while sending, the role and contact choices are off, and the confirmation shows the role that was sent', async ({ page }) => {
+  let release!: () => void
+  const hold = new Promise<void>((r) => (release = r))
+  const seen = await serve(page, { hold })
+  await open(page)
+  await contact(page).fill('ada@example.com')
+  await queue(page).getByRole('radio', { name: 'Staker', exact: true }).check()
+  await submit(page).click()
+  await expect(status(queue(page))).toHaveText('Sending…')
+  for (const name of ['Miner', 'Builder', 'Researcher', 'Staker', 'Email', 'X handle']) await expect(queue(page).getByRole('radio', { name, exact: true })).toBeDisabled()
+  // A script or an assistive tool that flips the radio anyway still cannot change what is shown as sent.
+  await queue(page).getByRole('radio', { name: 'Miner', exact: true }).evaluate((el: HTMLInputElement) => { el.disabled = false; el.click() })
+  release()
+  await expect(status(queue(page))).toHaveText(/You are on the list\./)
+  expect(seen.join[0].body).toMatchObject({ role: 'staker' })
+  await expect(queue(page)).toContainText('Role: Staker')
 })
 
 test('a bad email is stopped in the page, with a visible error tied to the input', async ({ page }) => {
@@ -736,16 +805,6 @@ test('the gate input is described by its hint and its status; an accepted code m
   await expect(gate(page).locator('[tabindex="-1"]')).toBeFocused()
   await expect(gate(page).locator('[tabindex="-1"]')).toContainText('This code is valid. It does not unlock anything yet.')
   expect(await status(gate(page)).evaluate((e) => e.textContent)).toBe('Code accepted')
-})
-
-test('after a reload the accepted state does not steal focus', async ({ page }) => {
-  await serve(page)
-  await open(page)
-  await send(page, CODE)
-  await expect(gate(page)).toContainText(/code accepted/i)
-  await page.reload()
-  await expect(gate(page)).toContainText(/code accepted/i)
-  await expect(gate(page).locator('[tabindex="-1"]')).not.toBeFocused()
 })
 
 test('each form keeps the very same live-region element from idle through checking to the answer', async ({ page }) => {

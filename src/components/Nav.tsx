@@ -46,10 +46,12 @@ export default function Nav() {
           <HanzoLogo variant="current" size={20} />
           Hanzo Network
         </Link>
-        <nav aria-label="Main" className="hidden items-center gap-4 md:flex lg:gap-8">{links(navLink)}</nav>
+        <nav aria-label="Main" className="hidden items-center gap-5 md:flex lg:gap-8">{links(navLink)}</nav>
         <div className="hidden md:block">
-          <Link to={EARLY} className={buttonClass('small')}>
-            {INVITE_LABEL}
+          {/* "Invite code" between md and lg keeps the row clear of the links at 768px; the name stays whole for everyone. */}
+          <Link to={EARLY} aria-label={INVITE_LABEL} className={buttonClass('small')}>
+            <span className="lg:hidden">Invite code</span>
+            <span className="hidden lg:inline">{INVITE_LABEL}</span>
           </Link>
         </div>
         <div className="md:hidden">

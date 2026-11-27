@@ -14,6 +14,7 @@ export default function Segments<T extends string>({
   value,
   onChange,
   describedBy,
+  disabled = false,
   children,
 }: {
   legend: string
@@ -23,11 +24,13 @@ export default function Segments<T extends string>({
   value: T | ''
   onChange: (v: T) => void
   describedBy?: string
+  /** Every choice is off, as the native fieldset makes them, while something is being sent. */
+  disabled?: boolean
   /** Under the pills, inside the group: a visible error. */
   children?: ReactNode
 }) {
   return (
-    <fieldset aria-describedby={describedBy} className="min-w-0">
+    <fieldset aria-describedby={describedBy} disabled={disabled} className="min-w-0">
       <legend className={hideLegend ? 'sr-only' : 'mb-3 font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground'}>{legend}</legend>
       <div className="flex flex-wrap gap-2">
         {options.map((o) => (

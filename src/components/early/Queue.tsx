@@ -44,6 +44,7 @@ export default function Queue() {
   const [focus, setFocus] = useState<{ on: 'field' | 'role' | 'done' | 'button' } | null>(null)
   const [roleError, setRoleError] = useState(false)
   const [phase, setPhase] = useState<Phase>('idle')
+  const [sent, setSent] = useState<Role | null>(null) // the role that went out, not whatever is picked now
   const [after, setAfter] = useState<number | null>(null)
   const contact = useRef<HTMLInputElement>(null)
   const roles = useRef<HTMLDivElement>(null)
@@ -79,6 +80,7 @@ export default function Queue() {
 
     inflight.current?.abort()
     const ctl = (inflight.current = new AbortController())
+    setSent(role)
     setPhase('sending')
     try {
       await join(mode === 'email' ? { email: value.trim(), role } : { xHandle: value, role }, ctl.signal)
@@ -108,7 +110,7 @@ export default function Queue() {
         <div className="min-w-0 p-6 md:p-10">
         {phase !== 'done' && (
           <form onSubmit={submit} noValidate aria-busy={sending} className="flex flex-col gap-8">
-            <Segments legend="Sign up with" hideLegend name="contact" options={MODES} value={mode} onChange={pickMode} />
+            <Segments legend="Sign up with" hideLegend name="contact" options={MODES} value={mode} onChange={pickMode} disabled={sending} />
             <div>
               <label htmlFor="queue-contact" className={eyebrow}>
                 {f.label}
@@ -147,7 +149,7 @@ export default function Queue() {
               )}
             </div>
             <div ref={roles}>
-              <Segments legend="I am a" name="role" options={[...ROLES]} value={role} onChange={(r) => { setRole(r); setRoleError(false) }} describedBy={roleError ? 'queue-role-error' : undefined}>
+              <Segments legend="I am a" name="role" options={[...ROLES]} value={role} disabled={sending} onChange={(r) => { setRole(r); setRoleError(false) }} describedBy={roleError ? 'queue-role-error' : undefined}>
                 {roleError && (
                   <p id="queue-role-error" className={errorText}>
                     Choose a role.
@@ -167,7 +169,7 @@ export default function Queue() {
           <p role="status" aria-live="polite" className={`font-mono text-sm empty:min-h-0 ${phase === 'done' ? 'text-xl' : 'mt-6 min-h-5 empty:mt-0'}`}>
             {says(phase, after)}
           </p>
-          {phase === 'done' && <p className={`${eyebrow} mt-3`}>Role: {ROLES.find((r) => r.value === role)?.label}</p>}
+          {phase === 'done' && <p className={`${eyebrow} mt-3`}>Role: {ROLES.find((r) => r.value === sent)?.label}</p>}
         </div>
 
         </div>

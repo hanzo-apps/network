@@ -93,6 +93,16 @@ test('the nav link Solutions lands on the Solutions section', async ({ page }) =
   await expect(page.locator('#solutions')).toBeInViewport()
 })
 
+test('the header button reads "Invite code" from 768px and "Enter invite code" from 1024px, with one stable accessible name', async ({ page }) => {
+  for (const [width, text] of [[768, 'Invite code'], [900, 'Invite code'], [1023, 'Invite code'], [1024, 'Enter invite code'], [1440, 'Enter invite code']] as const) {
+    await page.setViewportSize({ width, height: 800 })
+    await page.goto('/')
+    const link = page.locator('header').getByRole('link', { name: 'Enter invite code' })
+    await expect(link, `accessible name at ${width}`).toHaveAttribute('aria-label', 'Enter invite code')
+    expect((await link.innerText()).trim(), `visible text at ${width}`).toBe(text)
+  }
+})
+
 test('phone menu: Escape closes it and returns focus to the toggle; the links are the same and the last is the invite', async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 812 })
   await page.goto('/')
