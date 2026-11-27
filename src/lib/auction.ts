@@ -32,9 +32,11 @@ export interface AuctionState {
 }
 
 export function priceForWindowUsd(day: number): string {
-  const bps = 100 + day
-  const whole = Math.floor(bps / 10_000)
-  const frac = String(bps % 10_000).padStart(4, '0').replace(/0+$/, '') || '0'
+  // Canonical $20M initial FDV across 2T $AI: $0.00001 * (1 + 0.01 * day)
+  // Scaled by 10_000_000 (1e7): day 0 = 100 ($0.00001), day 1 = 101 ($0.0000101), day 368 = 468 ($0.0000468)
+  const units = 100 + day
+  const whole = Math.floor(units / 10_000_000)
+  const frac = String(units % 10_000_000).padStart(7, '0').replace(/0+$/, '') || '0'
   return `${whole}.${frac}`
 }
 
@@ -58,20 +60,20 @@ export function fallbackAuction(nowMs: number = Date.now()): AuctionState {
   let status: AuctionState['status'] = 'active'
   let dayIndex: number | null = 0
   let countdownSeconds = 0
-  let currentPriceUsd = '0.01'
-  let nextDayPriceUsd: string | null = '0.0101'
+  let currentPriceUsd = '0.00001'
+  let nextDayPriceUsd: string | null = '0.0000101'
 
   if (nowMs < AUCTION_START_MS) {
     status = 'pre_sale'
     dayIndex = null
     countdownSeconds = Math.max(0, Math.ceil((AUCTION_START_MS - nowMs) / 1000))
-    currentPriceUsd = '0.01'
-    nextDayPriceUsd = '0.0101'
+    currentPriceUsd = '0.00001'
+    nextDayPriceUsd = '0.0000101'
   } else if (nowMs >= endMs) {
     status = 'ended'
     dayIndex = null
     countdownSeconds = 0
-    currentPriceUsd = '0.0468'
+    currentPriceUsd = '0.0000468'
     nextDayPriceUsd = null
   } else {
     status = 'active'
@@ -88,7 +90,7 @@ export function fallbackAuction(nowMs: number = Date.now()): AuctionState {
     countdownSeconds,
     currentPriceUsd,
     nextDayPriceUsd,
-    finalDayPriceUsd: '0.0468',
+    finalDayPriceUsd: '0.0000468',
     lux: {
       symbol: 'LUX',
       bridgedSymbol: 'wLUX',

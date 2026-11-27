@@ -11,25 +11,25 @@ afterEach(() => {
   vi.restoreAllMocks()
 })
 
-test('priceForWindowUsd matches the 369-day simple non-compounding schedule', () => {
-  expect(priceForWindowUsd(0)).toBe('0.01')
-  expect(priceForWindowUsd(1)).toBe('0.0101')
-  expect(priceForWindowUsd(100)).toBe('0.02')
-  expect(priceForWindowUsd(368)).toBe('0.0468')
+test('priceForWindowUsd matches the 369-day canonical $20M FDV schedule', () => {
+  expect(priceForWindowUsd(0)).toBe('0.00001')
+  expect(priceForWindowUsd(1)).toBe('0.0000101')
+  expect(priceForWindowUsd(100)).toBe('0.00002')
+  expect(priceForWindowUsd(368)).toBe('0.0000468')
 })
 
 test('fallbackAuction computes pre_sale, active and ended windows deterministically', () => {
   const pre = fallbackAuction(AUCTION_START_MS - 3600_000)
   expect(pre.status).toBe('pre_sale')
   expect(pre.dayIndex).toBeNull()
-  expect(pre.currentPriceUsd).toBe('0.01')
+  expect(pre.currentPriceUsd).toBe('0.00001')
   expect(pre.countdownSeconds).toBe(3600)
 
   const day2 = fallbackAuction(AUCTION_START_MS + 2 * 86_400_000 + 60_000)
   expect(day2.status).toBe('active')
   expect(day2.dayIndex).toBe(2)
-  expect(day2.currentPriceUsd).toBe('0.0102')
-  expect(day2.nextDayPriceUsd).toBe('0.0103')
+  expect(day2.currentPriceUsd).toBe('0.0000102')
+  expect(day2.nextDayPriceUsd).toBe('0.0000103')
   expect(day2.lux.remainingUsd).toBe('25,000')
   expect(day2.zoo.remainingUsd).toBe('25,000')
 
@@ -42,7 +42,7 @@ test('loadAuction parses live /v1/auction JSON and falls back cleanly on 204 or 
   vi.spyOn(globalThis, 'fetch').mockResolvedValueOnce(new Response(null, { status: 204 }))
   const fromEmpty = await loadAuction(undefined, AUCTION_START_MS + 86_400_000)
   expect(fromEmpty.dayIndex).toBe(1)
-  expect(fromEmpty.currentPriceUsd).toBe('0.0101')
+  expect(fromEmpty.currentPriceUsd).toBe('0.0000101')
 
   vi.spyOn(globalThis, 'fetch').mockResolvedValueOnce(
     new Response(
@@ -51,9 +51,9 @@ test('loadAuction parses live /v1/auction JSON and falls back cleanly on 204 or 
           status: 'active',
           dayIndex: 10,
           countdownSeconds: 7200,
-          currentPriceUsd: '0.011',
-          nextDayPriceUsd: '0.0111',
-          finalDayPriceUsd: '0.0468',
+          currentPriceUsd: '0.000011',
+          nextDayPriceUsd: '0.0000111',
+          finalDayPriceUsd: '0.0000468',
         },
         dailyCaps: {
           LUX: { remainingUsd: '60000', fillPercent: 40 },
