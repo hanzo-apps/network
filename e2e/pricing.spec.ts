@@ -2,6 +2,9 @@ import { readFileSync } from 'node:fs'
 import { expect, test } from '@playwright/test'
 import { MODELS_URL, axeViolations, failModels, serveModels } from './helpers'
 
+// The address the Pricing page must send visitors to, typed here on purpose: the page's own constant would prove nothing.
+const PLANS = 'https://hanzo.ai/pricing'
+
 for (const colorScheme of ['light', 'dark'] as const) {
   test(`pricing is readable everywhere in ${colorScheme} (axe, WCAG 2.2 AA)`, async ({ page }) => {
     await page.emulateMedia({ colorScheme })
@@ -225,7 +228,8 @@ test('loading is announced while the catalog is delayed, and cleared after', asy
     await route.fulfill({ path: 'e2e/fixtures/models.json', contentType: 'application/json' })
   })
   await page.goto('/pricing')
-  const status = page.getByRole('status')
+  // The page's own announcement; the copy buttons in the first-call block each have a status region too.
+  const status = page.locator('section#start ~ [role="status"]')
   // Screen readers hold back announcements inside a busy region, so the line sits outside it (review, 26 Nov).
   expect(await status.evaluate((el) => el.closest('[aria-busy]') === null)).toBe(true)
   await expect(status).toHaveText("Loading today's prices from api.hanzo.ai…")
@@ -239,4 +243,12 @@ test('pricing says AI rewards, not GPU rewards (CPUs are paid too)', async ({ pa
   await expect(page.getByText(/AI rewards stay off until the launch gates pass/)).toBeVisible()
   await expect(page.getByRole('link', { name: 'Read the whitepaper' })).toHaveAttribute('href', 'https://papers.hanzo.ai/hanzo-ai-chain/')
   await expect(page.getByText(/GPU rewards/)).toHaveCount(0)
+})
+
+test('the pricing page points to the monthly plans on hanzo.ai', async ({ page }) => {
+  await serveModels(page)
+  await page.goto('/pricing')
+  const line = page.locator('header p', { hasText: 'Monthly plans, Pro $15 and Max $95, are on' })
+  await expect(line).toBeVisible()
+  await expect(line.getByRole('link', { name: 'hanzo.ai/pricing' })).toHaveAttribute('href', PLANS)
 })

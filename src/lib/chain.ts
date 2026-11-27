@@ -1,15 +1,22 @@
 import { useEffect, useState } from 'react'
 import { RPC_MAINNET } from './links'
+import { request, RequestError } from './request'
 
-/** Height of the chain behind `rpc`, read with eth_blockNumber. Throws on any bad answer. */
+/** How long the chain has to answer before it counts as down. */
+const WAIT_MS = 5000
+
+/** Height of the chain behind `rpc`, read with eth_blockNumber. Throws on any bad answer, or none in 5 s. */
 export async function blockHeight(rpc: string, signal?: AbortSignal): Promise<number> {
-  const res = await fetch(rpc, {
-    method: 'POST',
-    headers: { 'content-type': 'application/json' },
-    body: JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'eth_blockNumber', params: [] }),
-    signal,
-  })
-  if (!res.ok) throw new Error(`chain answered ${res.status}`)
+  const res = await request(
+    rpc,
+    {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'eth_blockNumber', params: [] }),
+      signal,
+    },
+    WAIT_MS,
+  )
   const { result } = (await res.json()) as { result?: unknown }
   if (typeof result !== 'string' || !/^0x[0-9a-f]+$/i.test(result)) throw new Error('chain gave no block number')
   return Number.parseInt(result, 16)
@@ -24,20 +31,13 @@ export function watchChain(report: (s: ChainState) => void, rpc: string = RPC_MA
     if (document.visibilityState !== 'visible') return
     ctl?.abort()
     const c = (ctl = new AbortController())
-    let timedOut = false
-    const timer = setTimeout(() => {
-      timedOut = true
-      c.abort()
-    }, 5000)
-    blockHeight(rpc, c.signal)
-      .then(
-        (height) => report({ status: 'live', height }),
-        () => {
-          // Aborted by a newer poll: stay silent. Aborted by the timeout, or failed: down.
-          if (timedOut || !c.signal.aborted) report({ status: 'down' })
-        },
-      )
-      .finally(() => clearTimeout(timer))
+    blockHeight(rpc, c.signal).then(
+      (height) => report({ status: 'live', height }),
+      (e: unknown) => {
+        // Cancelled by a newer poll or by stop: stay silent. A timeout or any failure is down.
+        if (!(e instanceof RequestError && e.kind === 'aborted')) report({ status: 'down' })
+      },
+    )
   }
   poll()
   const id = setInterval(poll, 6000)

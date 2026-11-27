@@ -1,5 +1,7 @@
+import { textLink } from '@/components/ui/button'
+import { Label } from '@/components/ui/section'
 import Tag from '@/components/ui/tag'
-import { WHITEPAPER_PDF } from '@/lib/links'
+import { RELATED_WORK, WHITEPAPER_PDF } from '@/lib/links'
 
 const ROWS = [
   ['Synthetic AI-like mining shows hardware was spent. Nobody asked for the result.', 'Only jobs someone requested and admitted beforehand count.'],
@@ -15,14 +17,20 @@ export default function Compare() {
     <div>
       <Tag is="Designed" />
       <h3 className="mt-4 text-3xl font-semibold tracking-[-0.01em]">Why proof beats votes.</h3>
+      <p className="mt-2 flex flex-wrap items-center gap-x-3 text-sm text-muted-foreground">
+        Compared with validator-voted networks such as Bittensor.
+        <a href={RELATED_WORK} className={textLink}>
+          Related work, Hanzo consensus paper
+        </a>
+      </p>
       <table className="mt-6 w-full border-collapse text-left text-base leading-relaxed">
         <caption className="sr-only">Other approaches to rewarding AI work, compared with Proof of AI</caption>
         <thead className="max-md:sr-only">
           <tr>
             {HEADS.map((h, i) => (
-              <th key={h} scope="col" className={`w-1/2 border-b border-border-strong pb-3 font-mono text-xs font-normal uppercase tracking-[0.18em] ${i ? 'pl-6 text-foreground' : 'pr-6 text-muted-foreground'}`}>
+              <Label key={h} as="th" tone={i ? 'strong' : 'muted'} scope="col" className={`w-1/2 border-b border-border-strong pb-3 ${i ? 'pl-6' : 'pr-6'}`}>
                 {h}
-              </th>
+              </Label>
             ))}
           </tr>
         </thead>
@@ -43,7 +51,7 @@ export default function Compare() {
         </tbody>
       </table>
       <p className="mt-5 text-sm">
-        <a href={WHITEPAPER_PDF} className="inline-flex min-h-11 items-center rounded-sm text-foreground underline underline-offset-4 hover:text-muted-foreground">
+        <a href={WHITEPAPER_PDF} className={textLink}>
           Source: whitepaper sections 1, 2.6 and 3.4
         </a>
       </p>

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router'
 import { HanzoLogo } from '@hanzo/logo'
-import { buttonClass } from '@/components/ui/button'
+import { buttonClass, navLink } from '@/components/ui/button'
 import { DOCS } from '@/lib/links'
 import { EARLY, INVITE_LABEL } from '@/lib/early'
 
@@ -9,11 +9,10 @@ const LINKS = [
   { label: 'Solutions', to: '/#solutions' },
   { label: 'Build', to: '/build' },
   { label: 'Economics', to: '/economics' },
+  { label: 'Ecosystem', to: '/ecosystem' },
   { label: 'Pricing', to: '/pricing' },
   { label: 'Docs', href: DOCS },
 ]
-
-const item = 'rounded-sm text-sm text-muted-foreground transition-colors duration-150 hover:text-foreground'
 
 export default function Nav() {
   const [open, setOpen] = useState(false)
@@ -47,13 +46,13 @@ export default function Nav() {
           <HanzoLogo variant="current" size={20} />
           Hanzo Network
         </Link>
-        <nav aria-label="Main" className="hidden items-center gap-8 sm:flex">{links(item)}</nav>
-        <div className="hidden sm:block">
+        <nav aria-label="Main" className="hidden items-center gap-5 md:flex lg:gap-8">{links(navLink)}</nav>
+        <div className="hidden md:block">
           <Link to={EARLY} className={buttonClass('small')}>
             {INVITE_LABEL}
           </Link>
         </div>
-        <div className="sm:hidden">
+        <div className="md:hidden">
         <button
           ref={toggle}
           type="button"
@@ -70,7 +69,7 @@ export default function Nav() {
         </div>
       </div>
       {open && (
-        <nav id="menu" aria-label="Menu" className="flex flex-col border-t border-border px-4 pb-4 sm:hidden">
+        <nav id="menu" aria-label="Menu" className="flex flex-col border-t border-border px-4 pb-4 md:hidden">
           {links('flex h-12 items-center text-base text-foreground')}
           <Link to={EARLY} className={`${buttonClass('primary')} mt-2`}>
             {INVITE_LABEL}

@@ -1,11 +1,11 @@
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 import { textLink } from '@/components/ui/button'
 import Card from '@/components/ui/card'
 import Tag from '@/components/ui/tag'
 import { useCounts } from '@/lib/catalog'
 import { solutions } from '@/lib/solutions'
-import Reveal from './Reveal'
-import Section, { Eyebrow, H2 } from './Section'
+import Reveal from '@/components/ui/reveal'
+import Section, { Eyebrow, H2 } from '@/components/ui/section'
 
 export default function Solutions() {
   const counts = useCounts()

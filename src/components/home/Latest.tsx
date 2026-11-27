@@ -1,7 +1,7 @@
 import { ArrowUpRight } from 'lucide-react'
 import { HIP_0901, POAI_BLOG, PROOFS, WHITEPAPER } from '@/lib/links'
-import Reveal from './Reveal'
-import Section, { Eyebrow, H2 } from './Section'
+import Reveal from '@/components/ui/reveal'
+import Section, { Eyebrow, H2, Label } from '@/components/ui/section'
 
 const ROWS = [
   { title: 'Hanzo AI Chain whitepaper', text: 'The design: Proof of AI, supply, activation gates.', meta: 'Working draft · 18 Aug 2026', href: WHITEPAPER },
@@ -26,10 +26,10 @@ export default function Latest() {
                   <span className="block text-2xl font-semibold tracking-[-0.01em] group-hover:text-muted-foreground">{r.title}</span>
                 </span>
                 <span className="flex-1 text-base leading-relaxed text-muted-foreground">{r.text}</span>
-                <span className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground lg:w-[28%] lg:justify-end">
+                <Label as="span" className="flex items-center gap-2 lg:w-[28%] lg:justify-end">
                   {r.meta}
                   <ArrowUpRight aria-hidden size={14} className="shrink-0" />
-                </span>
+                </Label>
               </a>
             </Reveal>
           </li>

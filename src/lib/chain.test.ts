@@ -27,11 +27,14 @@ test('asks the RPC it is given, so a testnet reads the same way', async () => {
   expect(vi.mocked(fetch).mock.calls[0][0]).toBe('https://api.hanzo-test.network/v1/bc/hanzo/rpc')
 })
 
-test('passes the abort signal to fetch', async () => {
+test('aborting the caller\'s signal aborts the request', async () => {
   reply({ result: '0x1' })
   const ctl = new AbortController()
   await blockHeight(RPC_MAINNET, ctl.signal)
-  expect(vi.mocked(fetch).mock.calls[0][1]?.signal).toBe(ctl.signal)
+  const sent = vi.mocked(fetch).mock.calls[0][1]?.signal
+  expect(sent?.aborted).toBe(false)
+  ctl.abort()
+  expect(sent?.aborted).toBe(true)
 })
 
 test.each([{}, { result: 'nope' }, { result: 5 }, { error: { code: -1 } }])('a bad reply throws: %j', async (body) => {

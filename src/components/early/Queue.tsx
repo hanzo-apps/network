@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react'
 import Segments, { type Option } from './Segments'
-import Section, { H2 } from '@/components/home/Section'
+import Section, { H2 } from '@/components/ui/section'
 import { buttonClass, textLink } from '@/components/ui/button'
 import Card from '@/components/ui/card'
 import { useAnalytics } from '@hanzo/event/react'

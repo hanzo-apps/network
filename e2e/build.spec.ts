@@ -104,7 +104,12 @@ test('network table: values, links and copy', async ({ page, context }) => {
   await expect(row(page, 'RPC')).toContainText('Local: hanzod --network devnet')
   await expect(row(page, 'RPC').getByRole('link', { name: 'needs a committee file, see the node README' })).toHaveAttribute('href', 'https://github.com/hanzoai/node')
   await expect(row(page, 'Chain ID').getByRole('cell')).toHaveText(['36963', '36962', '36964'], { useInnerText: true })
-  await expect(net.getByRole('rowheader', { name: 'Currency' })).toHaveCount(0)
+  const currency = row(page, 'Currency').getByRole('cell')
+  await expect(currency.nth(0)).toContainText('AI')
+  await expect(currency.nth(1)).toContainText('—')
+  await expect(currency.nth(2)).toContainText('—')
+  await expect(net.getByText("AI is the chain's native coin. The 2 trillion cap and mining policy are designed and not active.")).toBeVisible()
+  await expect(net.getByRole('link', { name: 'Economics', exact: true })).toHaveAttribute('href', '/economics')
   await expect(row(page, 'Explorer').getByRole('link', { name: 'explore.hanzo.network' })).toHaveAttribute('href', 'https://explore.hanzo.network')
   await expect(row(page, 'Explorer').getByRole('cell').nth(1)).toContainText('—')
   await expect(row(page, 'Explorer').getByRole('cell').nth(2)).toContainText('—')
@@ -118,6 +123,20 @@ test('network table: values, links and copy', async ({ page, context }) => {
     await net.getByRole('button', { name, exact: true }).click()
     expect(await page.evaluate(() => navigator.clipboard.readText())).toBe(text)
   }
+})
+
+test('run a validator: one copyable command, its status and the node repo', async ({ page, context }) => {
+  await context.grantPermissions(['clipboard-read', 'clipboard-write'])
+  await open(page)
+  const v = page.locator('#network')
+  await expect(v.getByRole('heading', { level: 3, name: 'Run a validator.' })).toBeVisible()
+  const block = v.locator('div').filter({ has: page.getByRole('heading', { level: 3, name: 'Run a validator.' }) }).last()
+  await expect(block.getByText('In progress', { exact: true })).toBeVisible()
+  await expect(block).toContainText('Opts this machine in: hanzod fetches, verifies and starts the chain as a child process. Works with mainnet, testnet or devnet; hanzo chain status shows where it stands and hanzo chain down opts out. Mining rewards stay off until the launch gates pass.')
+  await expect(v.getByLabel('Run a validator', { exact: true })).toHaveText('hanzo chain up testnet')
+  await expect(block.getByRole('link', { name: 'Node on GitHub', exact: true })).toHaveAttribute('href', 'https://github.com/hanzoai/node')
+  await v.getByRole('button', { name: 'Copy Run a validator', exact: true }).click()
+  expect(await page.evaluate(() => navigator.clipboard.readText())).toBe('hanzo chain up testnet')
 })
 
 test('latest block is live for mainnet and testnet and local for devnet', async ({ page }) => {
@@ -203,8 +222,17 @@ test('the three earn cards, their tags and links', async ({ page }) => {
     await expect(card.getByRole('heading', { level: 3 })).toHaveText(title)
     await expect(card.getByRole('link')).toHaveAttribute('href', href)
   }
+  await expect(cards.nth(1)).toContainText('Prove you control a repository and accrue a royalty on what others spend running projects built from it. Tracked in a ledger; payouts are settled by hand today.')
+  await expect(earn.getByText(/\d+%/)).toHaveCount(1) // only the referral share; the royalty figure is not on HIP-1000's public page
   await expect(earn.getByText('Rewards in AI for builders are not designed yet. Mining rewards are for proved compute.')).toBeVisible()
   await expect(earn.getByRole('link', { name: 'Activation phases' })).toHaveAttribute('href', '/#phases')
+})
+
+test('Activation phases leaves /build and lands on the phases section of the home page', async ({ page }) => {
+  await page.goto('/build')
+  await page.getByRole('link', { name: 'Activation phases' }).click()
+  await expect(page).toHaveURL(/\/#phases$/)
+  await expect(page.locator('#phases')).toBeInViewport()
 })
 
 test('no wrong words anywhere', async ({ page }) => {
@@ -212,6 +240,7 @@ test('no wrong words anywhere', async ({ page }) => {
   const text = await page.locator('main').innerText()
   expect(text).not.toContain('docs.hanzo.ai/mcp')
   expect(text).not.toMatch(/fabric/i)
+  expect(text).not.toMatch(/bittensor/i)
   expect(text).not.toMatch(/\d+\+? (MCP )?tools/i)
   expect(text).not.toMatch(/Proposed|Beta|Soon/)
   await expect(page.locator('a[href="https://docs.hanzo.ai/mcp"]')).toHaveCount(0)
@@ -280,8 +309,8 @@ test('every Copy button is at least 44px tall; the button never sits on top of t
   await page.setViewportSize({ width: 375, height: 812 })
   await open(page)
   const buttons = page.getByRole('button', { name: /^Copy / })
-  expect(await buttons.count()).toBe(8) // four connect, two RPC, quickstart, chain read
-  for (let i = 0; i < 8; i++) expect((await buttons.nth(i).boundingBox())!.height).toBeGreaterThanOrEqual(44)
+  expect(await buttons.count()).toBe(9) // four connect, two RPC, the validator command, quickstart, chain read
+  for (let i = 0; i < 9; i++) expect((await buttons.nth(i).boundingBox())!.height).toBeGreaterThanOrEqual(44)
   for (const label of ['Claude Code', 'Codex', 'Hosted, needs sign-in']) {
     const copy = (await page.getByRole('button', { name: `Copy ${label}`, exact: true }).boundingBox())!
     const code = (await page.getByLabel(label, { exact: true }).boundingBox())!

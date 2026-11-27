@@ -1,17 +1,18 @@
 import { motion, useReducedMotion } from 'motion/react'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 import Card from '@/components/ui/card'
 import Tag from '@/components/ui/tag'
 import { WHITEPAPER_PDF } from '@/lib/links'
-import Reveal from './Reveal'
-import Section, { Eyebrow, H2 } from './Section'
+import { CAP, DAO, POOL, shortAI } from '@/lib/supply'
+import Reveal from '@/components/ui/reveal'
+import Section, { Eyebrow, H2 } from '@/components/ui/section'
 import { textLink } from '@/components/ui/button'
 
 
 const FIGURES = [
-  { value: '2T AI', label: 'Maximum supply' },
-  { value: '1T AI', label: 'Reserved for the Hanzo DAO' },
-  { value: '1T AI', label: 'For miners and validators' },
+  { value: shortAI(CAP), label: 'Maximum supply' },
+  { value: shortAI(DAO), label: 'Reserved for the Hanzo DAO' },
+  { value: shortAI(POOL), label: 'For miners and validators' },
 ]
 
 function Figure({ value, index }: { value: string; index: number }) {

@@ -4,7 +4,7 @@ import AxeBuilder from '@axe-core/playwright'
 import { failModels, serveChain, serveModels } from './helpers'
 import { group, perToken, toModel } from '../src/lib/catalog'
 import {
-  DOCS_AGENTS, EXPLORER, HIP_0901, HIP_1334, NODE_GUIDE, POAI_BLOG, PROOFS, WHITEPAPER, WHITEPAPER_PDF, WORK,
+  DOCS_AGENTS, EXPLORER, GO_VERIFIER, HIP_0901, HIP_1334, NODE_GUIDE, POAI_BLOG, POAI_PDF, PROOFS, RELATED_WORK, WHITEPAPER, WHITEPAPER_PDF, WORK,
 } from '../src/lib/links'
 
 // Everything here belongs to the home page sections below the hero: Solutions, Pillars, How (+ Compare),
@@ -112,12 +112,12 @@ test.describe('Solutions', () => {
 
 // ---------------------------------------------------------------- Pillars
 const PILLARS = [
-  { tag: 'Live', title: 'Nodes that do paid work', link: 'Node operator guide', href: NODE_GUIDE },
-  { tag: 'Designed', title: 'Many models, one verdict', link: 'HIP-0901', href: HIP_0901 },
-  { tag: 'Live', title: 'A live chain, ID 36963', link: 'Explorer', href: EXPLORER },
-  { tag: 'In progress', title: 'Agents that pay their way', link: 'Agent docs', href: DOCS_AGENTS },
-  { tag: 'In progress', title: 'Research with a record', link: 'HIP-1334', href: HIP_1334 },
-  { tag: 'Designed', title: 'People and agents on one work board', link: 'Work board', href: WORK },
+  { tag: 'Live', title: 'Maximum utility per node', link: 'Node operator guide', href: NODE_GUIDE },
+  { tag: 'Designed', title: 'Multi-intelligence consensus', link: 'HIP-0901', href: HIP_0901 },
+  { tag: 'Designed', title: 'Sovereign per-model chains', link: 'Explorer', href: EXPLORER },
+  { tag: 'In progress', title: 'Decentralized agentic commerce', link: 'Agent docs', href: DOCS_AGENTS },
+  { tag: 'In progress', title: 'Self-upgrading autonomous research', link: 'HIP-1334', href: HIP_1334 },
+  { tag: 'Designed', title: 'DAO goal-setting and human de-work', link: 'Work board', href: WORK },
 ]
 
 test.describe('Pillars', () => {
@@ -152,12 +152,26 @@ test.describe('Pillars', () => {
     await expect(svg.locator('a, button, [tabindex]')).toHaveCount(0)
   })
 
-  test('the chain and research rows say only what is true today', async ({ page }) => {
+  test('each row says one honest sentence', async ({ page }) => {
     await page.goto('/')
     const rows = section(page, 'network').getByRole('list').locator('> li')
-    await expect(rows.nth(2)).toContainText('Blocks are produced on chain 36963 today. Running as the Lux A-Chain with post-quantum finality is designed.')
-    await expect(rows.nth(5)).toContainText('A DAO work board for goals and bounties. No Hanzo bounties are live yet.')
-    await expect(rows.nth(4)).toContainText("Hanzo's research runtime for datasets, runs, evaluations and claims. A draft spec, partly built, and not yet tied to the chain.")
+    const says = [
+      'hanzod is one Rust daemon per machine: local inference, Dev, Bot and Team backends and an optional validator. Today a node runs tools and agents and is paid per job in stablecoins.',
+      'Different models on bonded nodes settle policy votes and parameter medians on chain. A vote alone can never mint.',
+      'A chain per model family or domain on Lux, with its own validators. Today there is one live chain, ID 36963, with a post-quantum handshake and ML-DSA validator identities.',
+      'Agents sign up with a wallet, hold a budgeted key and pay per call today. Fee burn, on-chain spend caps and a compute market are designed.',
+      "Hanzo's research runtime records datasets, runs, evaluations and claims. Promotion only by beating gates frozen in advance is designed. A draft spec, partly built, not yet tied to the chain.",
+      'A DAO work board for goals and bounties. No Hanzo bounties are live yet.',
+    ]
+    for (const [i, text] of says.entries()) await expect(rows.nth(i)).toContainText(text)
+  })
+
+  test('the vocabulary: sovereign per-model chains, never "subnet"', async ({ page }) => {
+    await page.goto('/')
+    const text = await page.locator('main').innerText()
+    expect(text).toMatch(/sovereign/i)
+    expect(text).toMatch(/per-model chains/i)
+    expect(text).not.toMatch(/subnet/i)
   })
 
   test('one dot travels the ring every 12 seconds with motion on', async ({ page }) => {
@@ -237,15 +251,12 @@ test.describe('How', () => {
     await page.goto('/')
     const s = section(page, 'how')
     await expect(s.getByRole('heading', { level: 3, name: 'Check the math, not the machine.' })).toBeVisible()
-    await expect(s.getByText('C = A·B', { exact: false })).toBeVisible()
-    await expect(s.getByText('A(Br) = Cr', { exact: false })).toBeVisible()
-    await expect(s.getByText('p = 2', { exact: false })).toContainText('p = 261 − 1')
-    await expect(s.locator('sup', { hasText: '61' })).toBeVisible()
-    await expect(s.getByText('1/p', { exact: false })).toBeVisible()
+    const card = s.locator('div').filter({ has: page.getByRole('heading', { level: 3, name: 'Check the math, not the machine.' }) }).last()
+    await expect(card).toContainText("About 95% of a model's forward pass is matrix multiplication, C = A·B. Redoing it costs cubic work. Checking it does not. After the provider commits C, the chain draws a random vector r, and an ordinary CPU checks A(Br) = Cr in quadratic work. A wrong product slips through with probability at most 1/p per vector, where p = 2⁶¹ − 1; two vectors bring that to at most 2⁻¹²². The committed trace frontier is about 768 bytes.")
+    for (const m of ['C = A·B', 'A(Br) = Cr', '1/p', 'p = 2⁶¹ − 1', '2⁻¹²²']) await expect(s.locator('span.font-mono', { hasText: m }).first()).toBeVisible()
     await expect(s.getByText('This proves each opened product. It does not by itself prove a whole model; sampling covers the rest.')).toBeVisible()
     await link(s, 'Whitepaper, sections 5.3 and 9.2', WHITEPAPER_PDF)
-    // Only claims the whitepaper makes: none of the draft-proposal figures.
-    await expect(s).not.toContainText(/768|95%|2\^-122|2⁻¹²²/)
+    await link(s, 'Proof of AI paper', POAI_PDF)
   })
 })
 
@@ -290,10 +301,13 @@ test.describe('Compare', () => {
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
   })
 
-  test('names no other project, anywhere on the page', async ({ page }) => {
+  test('names Bittensor once, in the Compare block, with the related-work link, and nowhere else on the page', async ({ page }) => {
     await page.goto('/')
-    expect(await page.content()).not.toMatch(/bittensor/i)
-    await expect(page.getByText(/bittensor/i)).toHaveCount(0)
+    await expect(page.getByText(/bittensor/i)).toHaveCount(1)
+    expect((await page.content()).match(/bittensor/gi)).toHaveLength(1)
+    const c = section(page, 'how').locator('table').locator('xpath=ancestor::div[.//h3[normalize-space()="Why proof beats votes."]][1]')
+    await expect(c.getByText('Compared with validator-voted networks such as Bittensor.')).toBeVisible()
+    await link(c, 'Related work, Hanzo consensus paper', RELATED_WORK)
   })
 })
 
@@ -323,6 +337,14 @@ test.describe('Phases', () => {
     await expect(s.getByText('Then governance fixes the supply parameters: activation height, halving interval and fee-burn fraction.')).toBeVisible()
     await link(s, 'Whitepaper, section 10', WHITEPAPER_PDF)
     await expect(s).not.toContainText(/\b20\d\d\b/) // no dates
+  })
+
+  test('phase 0 says what is published: a Go verifier with 22 tests, linked, and no claim of other languages', async ({ page }) => {
+    await page.goto('/')
+    const card = item(section(page, 'phases'), 'Arithmetic and wire freeze')
+    await expect(card).toContainText('Freeze the field, formats and challenge rules. A Go verifier for the matrix checks is published, with 22 tests.')
+    await link(card, 'Go verifier', GO_VERIFIER)
+    await expect(card).not.toContainText(/Rust|Solidity/)
   })
 
   test('five columns on desktop with even heights, one column on a phone', async ({ page }) => {

@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 import Gate from '@/components/early/Gate'
 import Queue from '@/components/early/Queue'
-import Section, { container, Eyebrow, H2 } from '@/components/home/Section'
-import Reveal from '@/components/home/Reveal'
+import Section, { container, Eyebrow, H1, H2 } from '@/components/ui/section'
+import Reveal from '@/components/ui/reveal'
 import { buttonClass, textLink } from '@/components/ui/button'
 import Card from '@/components/ui/card'
 import { DISCORD, NODE_GUIDE, X } from '@/lib/links'
@@ -14,7 +14,7 @@ export default function Early() {
     <div>
       <header className={`${container} pb-12 pt-[72px] md:pb-16 md:pt-32`}>
         <Eyebrow>Early access</Eyebrow>
-        <h1 className="text-6xl font-[560] leading-[1.0] tracking-[-0.045em] md:text-7xl">Enter your invite code.</h1>
+        <H1>Enter your invite code.</H1>
         <p className="mt-6 max-w-[60ch] text-xl leading-relaxed text-muted-foreground">Early access to the network is invite-only.</p>
       </header>
 

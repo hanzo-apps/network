@@ -72,13 +72,13 @@ for (const scheme of ['light', 'dark'] as const) {
   })
 }
 
-test('the nav: Solutions, Build, Economics, Pricing, Docs, in that order, and the invite button', async ({ page }) => {
+test('the nav: Solutions, Build, Economics, Ecosystem, Pricing, Docs, in that order, and the invite button', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 })
   await page.goto('/')
   const nav = page.getByRole('navigation', { name: 'Main' })
-  await expect(nav.getByRole('link')).toHaveText(['Solutions', 'Build', 'Economics', 'Pricing', 'Docs'])
+  await expect(nav.getByRole('link')).toHaveText(['Solutions', 'Build', 'Economics', 'Ecosystem', 'Pricing', 'Docs'])
   const hrefs = await nav.getByRole('link').evaluateAll((as) => as.map((a) => a.getAttribute('href')))
-  expect(hrefs).toEqual(['/#solutions', '/build', '/economics', '/pricing', 'https://docs.hanzo.ai'])
+  expect(hrefs).toEqual(['/#solutions', '/build', '/economics', '/ecosystem', '/pricing', 'https://docs.hanzo.ai'])
   await expect(page.locator('header, footer').getByText(/How it works|Providers/)).toHaveCount(0)
   const invite = page.locator('header').getByRole('link', { name: 'Enter invite code' })
   await expect(invite).toHaveAttribute('href', '/early')
@@ -90,6 +90,7 @@ test('the nav link Solutions lands on the Solutions section', async ({ page }) =
   await page.goto('/pricing')
   await page.getByRole('navigation', { name: 'Main' }).getByRole('link', { name: 'Solutions' }).click()
   await expect(page).toHaveURL(/\/#solutions$/)
+  await expect(page.locator('#solutions')).toBeInViewport()
 })
 
 test('phone menu: Escape closes it and returns focus to the toggle; the links are the same and the last is the invite', async ({ page }) => {
@@ -98,7 +99,7 @@ test('phone menu: Escape closes it and returns focus to the toggle; the links ar
   const toggle = page.getByRole('button', { name: 'Open menu' })
   await toggle.click()
   const menu = page.getByRole('navigation', { name: 'Menu' })
-  await expect(menu.getByRole('link')).toHaveText(['Solutions', 'Build', 'Economics', 'Pricing', 'Docs', 'Enter invite code'])
+  await expect(menu.getByRole('link')).toHaveText(['Solutions', 'Build', 'Economics', 'Ecosystem', 'Pricing', 'Docs', 'Enter invite code'])
   await expect(menu.getByRole('link').last()).toHaveAttribute('href', '/early')
   for (const link of await menu.getByRole('link').all()) expect((await link.boundingBox())!.height).toBeGreaterThanOrEqual(44)
   await page.keyboard.press('Escape')
@@ -316,7 +317,7 @@ test('home makes no claim the sources do not back', async ({ page }) => {
   await expect(page.getByText(/any chain/i)).toHaveCount(0)
   await expect(page.getByText(/paid only for work/i)).toHaveCount(0)
   await expect(page.getByText(/any model through one API/i)).toHaveCount(0)
-  await expect(page.getByText(/bittensor/i)).toHaveCount(0)
+  await expect(page.getByText(/bittensor/i)).toHaveCount(1) // only in the Compare block (sections.spec holds it there)
 })
 
 test('the headline enters without blur', async ({ page }) => {

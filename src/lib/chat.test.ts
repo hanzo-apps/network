@@ -1,6 +1,7 @@
 import { afterEach, expect, test, vi } from 'vitest'
 import { ask, SYSTEM, type Message } from './chat'
 import { CHAT_LANE } from './links'
+import { NETWORKS } from './networks'
 
 const reply = (body: unknown, init?: ResponseInit) =>
   vi.stubGlobal('fetch', vi.fn(async () => new Response(JSON.stringify(body), init)))
@@ -12,18 +13,44 @@ afterEach(() => vi.unstubAllGlobals())
 
 test('posts the messages to the public lane with no key and no cookies', async () => {
   reply(answer('Hi.'))
-  const signal = new AbortController().signal
-  await ask(question, signal)
+  await ask(question)
   const [url, init] = vi.mocked(fetch).mock.calls[0]
   expect(url).toBe('https://api.hanzo.ai/v1/chat/public')
   expect(CHAT_LANE).toBe(url)
   expect(init?.method).toBe('POST')
   expect(init?.credentials).toBe('omit')
-  expect(init?.signal).toBe(signal)
   expect(JSON.parse(String(init?.body))).toEqual({ messages: [{ role: 'system', content: SYSTEM }, ...question], max_tokens: 800 })
   const headers = new Headers(init?.headers)
   expect(headers.get('content-type')).toBe('application/json')
   expect(headers.has('authorization')).toBe(false)
+})
+
+test('aborting the caller\'s signal aborts the request', async () => {
+  reply(answer('Hi.'))
+  const ctl = new AbortController()
+  await ask(question, ctl.signal)
+  const sent = vi.mocked(fetch).mock.calls[0][1]?.signal
+  expect(sent?.aborted).toBe(false)
+  ctl.abort()
+  expect(sent?.aborted).toBe(true)
+})
+
+test('no answer in 30 s is a timeout', async () => {
+  vi.useFakeTimers()
+  vi.stubGlobal('fetch', vi.fn((_u: string, init: RequestInit) => new Promise((_, reject) => init.signal?.addEventListener('abort', () => reject(init.signal?.reason)))))
+  const p = ask(question).catch((e: unknown) => e)
+  await vi.advanceTimersByTimeAsync(29_999)
+  let done = false
+  void p.then(() => (done = true))
+  await vi.advanceTimersByTimeAsync(0)
+  expect(done).toBe(false)
+  await vi.advanceTimersByTimeAsync(1)
+  expect(await p).toMatchObject({ kind: 'timeout' })
+  vi.useRealTimers()
+})
+
+test('the system message names the chain id networks.ts holds', () => {
+  expect(SYSTEM).toContain(`(ID ${NETWORKS[0].chainId})`)
 })
 
 test('returns the answer and nothing else', async () => {

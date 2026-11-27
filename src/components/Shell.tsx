@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { Outlet, useLocation } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router'
 import Footer from './Footer'
 import Nav from './Nav'
 import { EARLY } from '@/lib/early'
@@ -9,6 +9,7 @@ const TITLES: Record<string, string> = {
   '/': 'Hanzo Network: the blockchain for global intelligence',
   '/build': 'Build on Hanzo Network',
   '/economics': 'Economics of the AI token · Hanzo Network',
+  '/ecosystem': 'Ecosystem · Hanzo Network',
   '/pricing': 'Pricing · Hanzo Network',
   [EARLY]: 'Early access · Hanzo Network',
 }

@@ -7,7 +7,7 @@ test.beforeEach(async ({ page }) => {
   await serveModels(page)
 })
 
-const PAGES = ['/', '/build', '/economics', '/pricing', '/early']
+const PAGES = ['/', '/build', '/economics', '/ecosystem', '/pricing', '/early']
 
 // Hosts that answer automated requests with 403/429 although a person gets in.
 // Add one only after seeing it block a bot, and say which host and why.
@@ -153,17 +153,18 @@ test('title and description say what the network is, in the page, the share tags
   expect(await meta('twitter:description')).toBe(description)
 })
 
-test('the footer links Build, Economics and Pricing, and keeps the privacy choices', async ({ page }) => {
+test('the footer links Build, Economics, Ecosystem and Pricing, and keeps the privacy choices', async ({ page }) => {
   await page.goto('/')
   const footer = page.getByRole('contentinfo')
   await expect(footer.getByRole('link', { name: 'Build', exact: true })).toHaveAttribute('href', '/build')
   await expect(footer.getByRole('link', { name: 'Economics', exact: true })).toHaveAttribute('href', '/economics')
+  await expect(footer.getByRole('link', { name: 'Ecosystem', exact: true })).toHaveAttribute('href', '/ecosystem')
   await expect(footer.getByRole('link', { name: 'Pricing', exact: true })).toHaveAttribute('href', '/pricing')
   await expect(footer.getByRole('link', { name: 'Your Privacy Choices' })).toHaveAttribute('href', '#choices')
 })
 
 // Routes the other builders write: each must draw a page with one h1 inside the shared frame.
-for (const [path, h1] of [['/build', 'Start building.'], ['/economics', 'A hard cap of two trillion AI.'], ['/early', 'Enter your invite code.']] as const) {
+for (const [path, h1] of [['/build', 'Start building.'], ['/economics', 'A hard cap of two trillion AI.'], ['/ecosystem', 'The ecosystem.'], ['/early', 'Enter your invite code.']] as const) {
   test(`${path} is a page of this site with the h1 "${h1}"`, async ({ page }) => {
     await page.goto(path)
     await expect(page.getByRole('heading', { level: 1 })).toHaveText(h1)
@@ -202,6 +203,7 @@ const TITLES = {
   '/': 'Hanzo Network: the blockchain for global intelligence',
   '/build': 'Build on Hanzo Network',
   '/economics': 'Economics of the AI token · Hanzo Network',
+  '/ecosystem': 'Ecosystem · Hanzo Network',
   '/pricing': 'Pricing · Hanzo Network',
   '/early': 'Early access · Hanzo Network',
 } as const
@@ -246,3 +248,49 @@ for (const path of ['/pricing', '/build']) {
     expect(url.searchParams.get('hz_aid')).toBeTruthy()
   })
 }
+
+// A page head must paint in the first frame: LCP on a throttled phone waited on a fade-in (26 Nov 2026).
+for (const path of ['/build', '/economics', '/ecosystem', '/early', '/pricing']) {
+  test(`the head of ${path} has no entrance animation`, async ({ page }) => {
+    await page.setViewportSize({ width: 375, height: 812 })
+    await page.goto(path)
+    await page.locator('h1').waitFor()
+    // Every element the first screen shows, and every ancestor of it, is fully opaque the moment it exists.
+    const faint = await page.evaluate(() => {
+      const first = [document.querySelector('h1'), document.querySelector('h1 + p'), document.querySelector('main section h2')].filter(Boolean) as Element[]
+      return first.flatMap((el) => {
+        const bad: string[] = []
+        for (let e: Element | null = el; e; e = e.parentElement) if (Number(getComputedStyle(e).opacity) < 1) bad.push(`${el.tagName} inside ${e.tagName}.${e.className}`)
+        return bad
+      })
+    })
+    expect(faint).toEqual([])
+  })
+}
+
+test('the header fits at every width: a menu button below 768px, the links from 768px, and nothing touches or scrolls sideways', async ({ page }) => {
+  for (const width of [640, 700, 768, 900, 1024]) {
+    await page.setViewportSize({ width, height: 800 })
+    await page.goto('/')
+    await page.evaluate(() => document.fonts.ready)
+    const header = page.locator('header')
+    const main = header.getByRole('navigation', { name: 'Main' })
+    const menu = header.getByRole('button', { name: 'Open menu' })
+    const home = (await header.getByRole('link', { name: 'Hanzo Network home' }).boundingBox())!
+    expect(home.height, `the name stays on one line at ${width}`).toBeLessThan(40)
+    if (width < 768) {
+      await expect(menu, `menu button at ${width}`).toBeVisible()
+      await expect(main, `no row of links at ${width}`).toBeHidden()
+    } else {
+      await expect(menu, `no menu button at ${width}`).toBeHidden()
+      const links = main.getByRole('link')
+      const first = (await links.first().boundingBox())!
+      const last = (await links.last().boundingBox())!
+      const invite = (await header.getByRole('link', { name: 'Early access' }).boundingBox())!
+      expect(first.x - (home.x + home.width), `room after the name at ${width}`).toBeGreaterThanOrEqual(16)
+      expect(invite.x - (last.x + last.width), `room before the button at ${width}`).toBeGreaterThanOrEqual(16)
+      expect(invite.x + invite.width, `the button keeps its gutter at ${width}`).toBeLessThanOrEqual(width - 32)
+    }
+    expect(await page.evaluate(() => document.documentElement.scrollWidth), `sideways scroll at ${width}`).toBeLessThanOrEqual(width)
+  }
+})

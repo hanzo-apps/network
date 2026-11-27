@@ -1,20 +1,23 @@
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 import Compare from '@/components/Compare'
 import Calculator from '@/components/economics/Calculator'
 import Chart from '@/components/economics/Chart'
-import Reveal from '@/components/home/Reveal'
-import Section, { container, Disc, Eyebrow, H2 } from '@/components/home/Section'
+import Reveal from '@/components/ui/reveal'
+import Section, { container, Disc, Eyebrow, H1, H2 } from '@/components/ui/section'
 import { buttonClass, textLink } from '@/components/ui/button'
 import Card from '@/components/ui/card'
 import Tag from '@/components/ui/tag'
-import { WHITEPAPER, WHITEPAPER_PDF } from '@/lib/links'
+import { count } from '@/lib/format'
+import { MARKET_PAPER, WHITEPAPER, WHITEPAPER_PDF } from '@/lib/links'
+import { NETWORKS } from '@/lib/networks'
+import { CAP, DAO, POOL, eraCap, shortAI } from '@/lib/supply'
 
 // tsgo reads a bare JSX string as 'needs several children' for a union prop; a typed constant is the one way round it.
 
 const SUPPLY = [
-  ['2T AI', 'Maximum supply'],
-  ['1T AI', 'Hanzo DAO, fixed at genesis. It can never be mined.'],
-  ['1T AI', 'Earned by proved work, nothing else.'],
+  [shortAI(CAP), 'Maximum supply'],
+  [shortAI(DAO), 'Hanzo DAO, fixed at genesis. It can never be mined.'],
+  [shortAI(POOL), 'Earned by proved work, nothing else.'],
   ['0 AI', 'Inflation on destination chains.'],
 ] as const
 
@@ -27,6 +30,8 @@ const RULES = [
   "Total payouts never exceed the era's allowance.",
 ] as const
 
+const billions = (k: number) => count(eraCap(k) / 1e9)
+
 const formula = 'font-mono text-base text-foreground md:text-lg'
 
 export default function Economics() {
@@ -34,12 +39,12 @@ export default function Economics() {
     <div>
       <header className={`${container} pb-[72px] pt-[72px] md:pb-32 md:pt-32`}>
         <Eyebrow>Economics</Eyebrow>
-        <h1 className="text-6xl font-[560] leading-[1.0] tracking-[-0.045em] md:text-7xl">A hard cap of two trillion AI.</h1>
+        <H1>A hard cap of two trillion AI.</H1>
         <div data-notice className="mt-8 flex flex-col gap-3 rounded-xl border border-border-strong p-4 sm:flex-row sm:items-center sm:gap-4 md:p-5">
           <span className="shrink-0">
             <Tag is="Designed" />
           </span>
-          <p className="text-base text-foreground">Not active. Mining and this supply policy stay disabled until governance fixes the parameters and the launch gates pass.</p>
+          <p className="text-base text-foreground">AI is already the native coin of chain {NETWORKS[0].chainId}. The supply cap and mining policy on this page are designed and not active: mining stays disabled until governance fixes the parameters and the launch gates pass.</p>
           <a href={WHITEPAPER_PDF} className={`${textLink} shrink-0 sm:ml-auto`}>
             Whitepaper, sections 3 and 10
           </a>
@@ -77,7 +82,7 @@ export default function Economics() {
             <Eyebrow>Halving</Eyebrow>
             <H2>Each era pays half the last.</H2>
             <p className="mt-6 max-w-[60ch] text-xl leading-relaxed text-muted-foreground">
-              The first era may emit at most 500 billion AI, the second 250 billion, the third 125 billion. An era is a fixed number of chain blocks set by governance, nominally four years.
+              {`The first era may emit at most ${billions(0)} billion AI, the second ${billions(1)} billion, the third ${billions(2)} billion. An era is a fixed number of chain blocks set by governance, nominally four years.`}
             </p>
             <div className="mt-8 rounded-xl border border-border p-4">
               <p data-formula aria-hidden className={formula}>
@@ -110,6 +115,28 @@ export default function Economics() {
             <Card className="flex h-full flex-col justify-center p-6 md:p-8">
               <p data-formula className="font-mono text-lg text-foreground sm:text-3xl lg:text-4xl">ΔS = issuance − β × fees</p>
               <p className="mt-4 text-sm text-muted-foreground">β is set by governance. It is not set yet.</p>
+            </Card>
+          </Reveal>
+        </div>
+      </Section>
+
+      <Section id="market">
+        <div className="grid gap-12 lg:grid-cols-[5fr_7fr] lg:gap-16">
+          <div>
+            <Eyebrow>Market</Eyebrow>
+            <H2>A market that prices compute.</H2>
+            <p className="mt-6">
+              <Tag is="Designed" />
+            </p>
+            <p className="mt-4 max-w-[60ch] text-xl leading-relaxed text-muted-foreground">
+              Compute pricing is designed around a market maker that conserves one quantity as supply and demand move. It is a design; no market contract is deployed.
+            </p>
+          </div>
+          <Reveal>
+            <Card className="flex h-full flex-col justify-center p-6 md:p-8">
+              <p data-formula className="font-mono text-lg text-foreground sm:text-3xl lg:text-4xl">H(Ψ,Θ) = Ψ·Θ = κ</p>
+              <p className="mt-4 text-sm text-muted-foreground">Ψ and Θ are the two sides of the pool; κ stays constant.</p>
+              <a href={MARKET_PAPER} className={`${textLink} mt-2 self-start`}>Hamiltonian market maker, Hanzo papers</a>
             </Card>
           </Reveal>
         </div>

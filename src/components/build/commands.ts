@@ -1,4 +1,4 @@
-import { API_CHAT, API_MCP, RPC_MAINNET } from '../../lib/links'
+import { API_MCP, RPC_MAINNET } from '../../lib/links'
 
 /** The commands the Build page prints. public/llms.txt must carry every one (src/lib/networks.test.ts). */
 export const COMMANDS = [
@@ -20,11 +20,8 @@ export const COMMANDS = [
 
 export const DEVNET_COMMAND = 'hanzod --network devnet'
 
-/** The first call, shown on /pricing and /build. */
-export const CURL_QUICKSTART = `curl ${API_CHAT} \\
-  -H "Authorization: Bearer $HANZO_API_KEY" \\
-  -H "Content-Type: application/json" \\
-  -d '{"model":"hanzo/zen","messages":[{"role":"user","content":"Hello"}]}'`
+/** Opts this machine in to a chain (`hanzo fabric` is a deprecated alias of `hanzo chain`; never print it). */
+export const VALIDATOR_COMMAND = 'hanzo chain up testnet'
 
 /** Read the chain, no key needed. */
 export const CHAIN_CURL = `curl -s -X POST ${RPC_MAINNET} -H 'content-type: application/json' -d '{"jsonrpc":"2.0","id":1,"method":"eth_blockNumber","params":[]}'`

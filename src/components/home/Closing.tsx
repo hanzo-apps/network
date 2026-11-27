@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 import { buttonClass } from '@/components/ui/button'
 import Card from '@/components/ui/card'
-import Reveal from './Reveal'
-import Section, { H2 } from './Section'
+import Reveal from '@/components/ui/reveal'
+import Section, { H2 } from '@/components/ui/section'
 import { EARLY, INVITE_LABEL } from '@/lib/early'
 
 export default function Closing() {

@@ -18,6 +18,14 @@ export const NODE_REPO = 'https://github.com/hanzoai/node'
 export const WHITEPAPER = 'https://papers.hanzo.ai/hanzo-ai-chain/'
 /** The page above shows only the abstract; section references point here. */
 export const WHITEPAPER_PDF = 'https://papers.hanzo.ai/pdfs/hanzo-ai-chain.pdf'
+/** The Proof of AI paper: the design and its soundness bounds. */
+/** The Go verifier for the matrix checks (luxfi/crypto, poi): 22 `func Test` read on 26 Nov 2026. */
+export const GO_VERIFIER = 'https://git.hanzo.ai/luxfi/crypto/src/branch/main/poi'
+export const POAI_PDF = 'https://papers.hanzo.ai/pdfs/hanzo-proof-of-ai.pdf'
+/** Related work in the Hanzo consensus paper: how the design contrasts with validator-voted networks. */
+export const RELATED_WORK = 'https://github.com/hanzoai/papers/blob/main/hanzo-consensus-ai/sections/09-related-work.tex'
+/** The market-maker section of the network whitepaper source: a draft. */
+export const MARKET_PAPER = 'https://github.com/hanzoai/papers/blob/main/sections/hmm.tex'
 export const POAI_BLOG = 'https://hanzo.blog/proof-of-ai/'
 export const HIP_0901 = 'https://hips.hanzo.ai/docs/hip-0901-proof-of-ai-native-execution-proofs'
 export const HIP_1000 = 'https://hips.hanzo.ai/docs/hip-1000-author-royalty'
@@ -28,13 +36,19 @@ export const PROOFS = 'https://proofs.hanzo.network'
 export const EXPLORER = 'https://explore.hanzo.network'
 export const STATUS = 'https://status.hanzo.network'
 export const WORK = 'https://work.hanzo.network'
+export const WORKS = 'https://hanzo.works'
+export const VOTE = 'https://hanzo.vote'
+export const HIPS = 'https://hips.hanzo.ai'
+export const PAPERS = 'https://papers.hanzo.ai'
 
 export const HANZO = 'https://hanzo.ai'
 export const LOGIN = 'https://hanzo.ai/login'
 export const PRIVACY = `${HANZO}/privacy`
 export const TERMS = `${HANZO}/terms`
-export const ZEN = `${HANZO}/zen`
+export const ZEN = 'https://hanzo.ai/zen'
 export const LUX = 'https://lux.network'
+/** Lux's DAO contracts, public on GitHub. Lux's own organisation there is hidden, so Lux code is linked here or on the Hanzo forge. */
+export const LUX_DAO = 'https://github.com/luxdao/contracts'
 export const ZOO = 'https://zoo.ngo'
 export const HANZO_CHAT = 'https://hanzo.chat'
 /** This site, for the one place an absolute address is needed: the chat's system message. */

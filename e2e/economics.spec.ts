@@ -1,10 +1,10 @@
 import { expect, test, type Page } from '@playwright/test'
+import { MARKET_PAPER, RELATED_WORK } from '../src/lib/links'
 import { eraCap } from '../src/lib/supply'
 import { axeViolations, serveChain, serveModels } from './helpers'
 
 const WHITEPAPER = 'https://papers.hanzo.ai/hanzo-ai-chain/'
 const WHITEPAPER_PDF = 'https://papers.hanzo.ai/pdfs/hanzo-ai-chain.pdf'
-const PLANS = 'https://hanzo.ai/pricing'
 
 const open = async (page: Page, size?: { width: number; height: number }) => {
   if (size) await page.setViewportSize(size)
@@ -54,7 +54,7 @@ test('the heading, the Designed notice and the two buttons', async ({ page }) =>
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('A hard cap of two trillion AI.')
   const notice = page.locator('main header [data-notice]')
   await expect(notice).toContainText('Designed')
-  await expect(notice).toContainText('Not active. Mining and this supply policy stay disabled until governance fixes the parameters and the launch gates pass.')
+  await expect(notice).toContainText('AI is already the native coin of chain 36963. The supply cap and mining policy on this page are designed and not active: mining stays disabled until governance fixes the parameters and the launch gates pass.')
   await expect(notice.getByRole('link', { name: 'Whitepaper, sections 3 and 10' })).toHaveAttribute('href', WHITEPAPER_PDF)
   await expect(page.locator('main header').getByRole('link', { name: 'Read the whitepaper' })).toHaveAttribute('href', WHITEPAPER)
   await expect(page.locator('main header').getByRole('link', { name: 'Start building' })).toHaveAttribute('href', '/build')
@@ -105,6 +105,31 @@ test('the burn section has the halving rhythm: words on the left, the formula in
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(375)
 })
 
+test('the market section: Designed, a formula in a card, no pool, vault or yield wording', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 })
+  await open(page)
+  const m = page.locator('#market')
+  await expect(m.getByText('Market', { exact: true })).toBeVisible()
+  await expect(m.getByText('Designed', { exact: true })).toBeVisible()
+  await expect(m.getByRole('heading', { level: 2 })).toHaveText('A market that prices compute.')
+  await expect(m).toContainText('Compute pricing is designed around a market maker that conserves one quantity as supply and demand move. It is a design; no market contract is deployed.')
+  const card = m.locator('[data-formula]')
+  await expect(card).toHaveText('H(Ψ,Θ) = Ψ·Θ = κ')
+  await expect(m).toContainText('Ψ and Θ are the two sides of the pool; κ stays constant.')
+  await expect(m.getByRole('link', { name: 'Hamiltonian market maker, Hanzo papers', exact: true })).toHaveAttribute('href', MARKET_PAPER)
+  expect(await m.innerText()).not.toMatch(/vault|liquidity|yield|APY|APR|stak(e|ing)|return|profit|invest|offer|buy/i)
+  // it follows the burn section and has the burn section's rhythm: words left, card right
+  expect(await page.evaluate(() => document.getElementById('burn')!.compareDocumentPosition(document.getElementById('market')!) & Node.DOCUMENT_POSITION_FOLLOWING)).toBeTruthy()
+  const h2 = (await m.getByRole('heading', { level: 2 }).boundingBox())!
+  expect((await card.boundingBox())!.x).toBeGreaterThan(h2.x + 400)
+  for (const width of [375, 320]) {
+    await page.setViewportSize({ width, height: 812 })
+    expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width)
+    const box = (await card.boundingBox())!
+    expect(box.x + box.width).toBeLessThanOrEqual(width)
+  }
+})
+
 test('the chart has a name, eight labelled bars and the same data as a table', async ({ page }) => {
   await open(page)
   const chart = page.locator('#halving').getByRole('img', { name: /bar chart/i })
@@ -127,6 +152,44 @@ test('the chart has a name, eight labelled bars and the same data as a table', a
   const heights = await chart.locator('rect[data-bar]').evaluateAll((els) => els.map((e) => Number(e.getAttribute('height'))))
   expect(heights).toHaveLength(8)
   for (let k = 1; k < 8; k++) expect(heights[k]).toBeCloseTo(heights[k - 1] / 2, 1)
+})
+
+test('at 375 the era caps are a bar list whose value labels never touch or leave the card; at 1440 the vertical chart stays', async ({ page }) => {
+  const short = (k: number) => new Intl.NumberFormat('en-US', { maximumSignificantDigits: 3 }).format(eraCap(k) / 1e9)
+  await open(page, { width: 375, height: 812 })
+  const fig = page.locator('#halving figure')
+  await fig.scrollIntoViewIfNeeded()
+  await expect(fig.locator('svg')).toBeHidden()
+  const list = fig.getByRole('img', { name: /bar chart/i })
+  await expect(list).toBeVisible()
+  const values = fig.locator('[data-value]')
+  await expect(values).toHaveText(Array.from({ length: 8 }, (_, k) => short(k)))
+  await expect(values.nth(0)).toHaveText('500')
+  await expect(values.nth(6)).toHaveText('7.81')
+  await expect(values.nth(7)).toHaveText('3.91')
+  await expect(fig.locator('ol li')).toHaveCount(8)
+  await expect(fig.locator('ol li > span:first-child')).toHaveText(Array.from({ length: 8 }, (_, k) => `Era ${k + 1}`))
+  const card = (await page.locator('#halving figure').locator('xpath=..').boundingBox())!
+  const boxes = await Promise.all(Array.from({ length: 8 }, (_, i) => values.nth(i).boundingBox().then((b) => b!)))
+  for (const b of boxes) {
+    expect(b.x).toBeGreaterThanOrEqual(card.x)
+    expect(b.x + b.width).toBeLessThanOrEqual(card.x + card.width)
+  }
+  for (let i = 0; i < 8; i++) for (let j = i + 1; j < 8; j++) {
+    const a = boxes[i], b = boxes[j]
+    expect(a.x < b.x + b.width && b.x < a.x + a.width && a.y < b.y + b.height && b.y < a.y + a.height, `labels ${i} and ${j} intersect`).toBe(false)
+  }
+  // bar length is proportional to the cap, and the full-precision table is still there for screen readers
+  const widths = await fig.locator('[data-row-bar]').evaluateAll((els) => els.map((e) => e.getBoundingClientRect().width))
+  expect(widths[1]).toBeCloseTo(widths[0] / 2, 0)
+  expect(widths[3]).toBeCloseTo(widths[0] / 8, 0)
+  await expect(page.locator('#halving table tbody tr')).toHaveCount(8)
+  await expect(page.locator('#halving table tbody tr').nth(7).locator('td')).toHaveText('3.90625')
+
+  await page.setViewportSize({ width: 1440, height: 900 })
+  await expect(fig.locator('svg')).toBeVisible()
+  await expect(fig.locator('rect[data-bar]')).toHaveCount(8)
+  await expect(values.first()).toBeHidden()
 })
 
 test('six rules, in order, with their source', async ({ page }) => {
@@ -301,8 +364,17 @@ test('every input has a visible label, and one polite live region says the resul
 test('no sale, offer, price, return, date or forbidden symbol anywhere on the page', async ({ page }) => {
   await open(page)
   const body = await page.locator('body').innerText()
-  expect(body).not.toMatch(/sale|presale|investment|yield|APY|Bittensor/i)
-  const main = await page.locator('main').innerText()
+  expect(body).not.toMatch(/sale|presale|investment|yield|APY/i)
+  // Bittensor is named once, in the Compare block, as a contrast with validator-voted networks.
+  expect(body.match(/bittensor/gi)).toHaveLength(1)
+  await expect(page.locator('#compare').getByText('Compared with validator-voted networks such as Bittensor.')).toBeVisible()
+  await expect(page.locator('#compare').getByRole('link', { name: 'Related work, Hanzo consensus paper', exact: true })).toHaveAttribute('href', RELATED_WORK)
+  // The market section is the one place that prices a thing and shows the pool's symbols; it has its own list in its own test.
+  const main = await page.locator('main').evaluate((m) => {
+    const c = m.cloneNode(true) as HTMLElement
+    c.querySelector('#market')?.remove()
+    return c.innerText
+  })
   expect(main).not.toMatch(/price|return|offer|invest|profit|stak(e|ing)|airdrop|\bbuy\b|\bAPR\b|points|leaderboard/i)
   expect(main).not.toMatch(/[ΨΘκ]/)
   expect(main).not.toMatch(/\$\s?\d/)
@@ -332,11 +404,3 @@ for (const colorScheme of ['dark', 'light'] as const) {
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true)
   })
 }
-
-test('the pricing page points to the monthly plans on hanzo.ai', async ({ page }) => {
-  await serveModels(page)
-  await page.goto('/pricing')
-  const line = page.locator('header p', { hasText: 'Monthly plans, Pro $15 and Max $95, are on' })
-  await expect(line).toBeVisible()
-  await expect(line.getByRole('link', { name: 'hanzo.ai/pricing' })).toHaveAttribute('href', PLANS)
-})

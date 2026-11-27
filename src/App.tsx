@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import { BrowserRouter, Navigate, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Navigate, Routes, Route, useLocation } from "react-router";
 import { Consent } from "./components/Consent";
-import GlobalChatWidget from "./components/GlobalChatWidget";
+import Chat from "./components/Chat";
 import { Measure } from "./components/Measure";
-import ScrollToTop from "./components/ScrollToTop";
+import Scroll from "./components/Scroll";
 import Shell from "./components/Shell";
 import { Away } from "./components/Away";
 import { EARLY } from "./lib/early";
@@ -11,7 +11,8 @@ import { EXPLORER, HANZO, STATUS } from "./lib/links";
 import Build from "./pages/Build";
 import Early from "./pages/Early";
 import Economics from "./pages/Economics";
-import NetworkLanding from "./pages/NetworkLanding";
+import Ecosystem from "./pages/Ecosystem";
+import Home from "./pages/Home";
 import Pricing from "./pages/Pricing";
 
 // hanzo.network is five pages. Every other path was a copy of hanzo.ai, so it
@@ -29,12 +30,13 @@ const ToHanzo = () => {
 const App = () => (
   <BrowserRouter>
     <Measure>
-      <ScrollToTop />
+      <Scroll />
       <Routes>
         <Route element={<Shell />}>
-          <Route path="/" element={<NetworkLanding />} />
+          <Route path="/" element={<Home />} />
           <Route path="/build" element={<Build />} />
           <Route path="/economics" element={<Economics />} />
+          <Route path="/ecosystem" element={<Ecosystem />} />
           <Route path={EARLY} element={<Early />} />
           <Route path="/pricing" element={<Pricing />} />
         </Route>
@@ -54,7 +56,7 @@ const App = () => (
         ))}
         <Route path="*" element={<ToHanzo />} />
       </Routes>
-      <GlobalChatWidget />
+      <Chat />
       <Consent />
     </Measure>
   </BrowserRouter>

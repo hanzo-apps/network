@@ -3,9 +3,9 @@ import { FileCheck2, Cpu, ShieldCheck, Landmark } from 'lucide-react'
 import { motion, useMotionValue, useMotionValueEvent, useReducedMotion, useScroll } from 'motion/react'
 import Compare from '@/components/Compare'
 import Card from '@/components/ui/card'
-import { WHITEPAPER_PDF } from '@/lib/links'
-import Reveal from './Reveal'
-import Section, { Disc, Eyebrow, H2 } from './Section'
+import { POAI_PDF, WHITEPAPER_PDF } from '@/lib/links'
+import Reveal from '@/components/ui/reveal'
+import Section, { Disc, Eyebrow, H2, Label } from '@/components/ui/section'
 import { textLink } from '@/components/ui/button'
 
 const math = 'whitespace-nowrap font-mono text-[0.9em] text-foreground'
@@ -89,7 +89,7 @@ export default function How() {
                   <Icon size={18} />
                   {on && !still && <span className="step-ring pointer-events-none absolute inset-0 rounded-full border border-foreground/40" />}
                 </Disc>
-                <p className="mt-5"><span className="rounded-full border border-border px-2 py-0.5 font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground">{term}</span></p>
+                <p className="mt-5"><Label as="span" className="rounded-full border border-border px-2 py-0.5">{term}</Label></p>
                 <h3 className={`mt-1 text-2xl font-semibold transition-colors duration-500 ${on ? 'text-foreground' : 'text-muted-foreground'}`}>{name}</h3>
                 <p className="mt-2 text-base leading-relaxed text-muted-foreground">{text}</p>
               </Card>
@@ -103,12 +103,15 @@ export default function How() {
           <div>
             <h3 className="text-3xl font-semibold tracking-[-0.01em]">Check the math, not the machine.</h3>
             <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-              Most of a model's work is matrix multiplication, <span className={math}>C = A·B</span>. Redoing it costs cubic work. Checking it does not. After the provider commits <span className={math}>C</span>, the chain
+              About 95% of a model's forward pass is matrix multiplication, <span className={math}>C = A·B</span>. Redoing it costs cubic work. Checking it does not. After the provider commits <span className={math}>C</span>, the chain
               draws a random vector <span className={math}>r</span>, and an ordinary CPU checks <span className={math}>A(Br) = Cr</span> in quadratic work. A wrong product slips through with probability at most{' '}
-              <span className={math}>1/p</span> per vector, where <span className={math}>p = 2<sup className="text-[0.7em]">61</sup> − 1</span>.
+              <span className={math}>1/p</span> per vector, where <span className={math}>p = 2⁶¹ − 1</span>; two vectors bring that to at most <span className={math}>2⁻¹²²</span>. The committed trace frontier is about 768 bytes.
             </p>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">This proves each opened product. It does not by itself prove a whole model; sampling covers the rest.</p>
-            <a href={WHITEPAPER_PDF} className={`${textLink} mt-2`}>Whitepaper, sections 5.3 and 9.2</a>
+            <p className="mt-2 flex flex-wrap gap-x-6">
+              <a href={WHITEPAPER_PDF} className={textLink}>Whitepaper, sections 5.3 and 9.2</a>
+              <a href={POAI_PDF} className={textLink}>Proof of AI paper</a>
+            </p>
           </div>
           <Compare />
         </Card>

@@ -38,8 +38,8 @@ test('every CSS variable used in src/ is defined', () => {
     names(read(file), /(--[\w-]+)\s*:/g).forEach((n) => defined.add(n))
   }
 
-  // --radix-* and --tw-* are set by Radix and Tailwind at runtime, not by us.
-  const missing = [...used].filter(([name]) => !defined.has(name) && !/^--(radix|tw)-/.test(name))
+  // --tw-* is set by Tailwind at runtime, not by us.
+  const missing = [...used].filter(([name]) => !defined.has(name) && !/^--tw-/.test(name))
   const report = missing.map(([name, n]) => `${name} (${n} uses)`).join('\n')
   expect(report, `${missing.length} undefined CSS variables`).toBe('')
 })

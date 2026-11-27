@@ -1,10 +1,11 @@
 import { useCallback, useEffect, useState } from 'react'
-import { buttonClass } from '@/components/ui/button'
+import { buttonClass, inlineLink } from '@/components/ui/button'
+import Live from '@/components/ui/live'
 import Card from '@/components/ui/card'
 import { AllModels, FeaturedCard } from '@/components/pricing/Models'
-import Glow from '@/components/pricing/Glow'
-import Start from '@/components/pricing/Start'
-import { container, Eyebrow, H2 } from '@/components/home/Section'
+import Glow from '@/components/ui/glow'
+import Start from '@/components/ui/start'
+import { container, Eyebrow, H1, H2 } from '@/components/ui/section'
 import { DOCS, NODE_GUIDE, PLANS, WHITEPAPER } from '@/lib/links'
 import { FEATURED, countModels, featured, isZenFeatured, loadModels, freeModel, group, perToken, sortModels, type Model } from '@/lib/catalog'
 
@@ -71,7 +72,7 @@ export default function Pricing() {
     <div className="pb-[72px] pt-[72px] md:pb-32 md:pt-32">
       <header className={container}>
         <Eyebrow>Pricing</Eyebrow>
-        <h1 className="text-6xl font-[560] leading-[1.0] tracking-[-0.045em] md:text-7xl">Pay per token.</h1>
+        <H1>Pay per token.</H1>
         <p className="mt-6 max-w-[60ch] text-xl leading-relaxed text-muted-foreground">
           Pay only for the tokens you use. Every price comes live from api.hanzo.ai.
         </p>
@@ -81,7 +82,7 @@ export default function Pricing() {
         </ul>
         <p className="mt-4 text-sm text-muted-foreground">
           Monthly plans, Pro $15 and Max $95, are on{' '}
-          <a href={PLANS} className="text-foreground underline underline-offset-4">
+          <a href={PLANS} className={inlineLink}>
             hanzo.ai/pricing
           </a>
         </p>
@@ -90,11 +91,11 @@ export default function Pricing() {
       <section className={section} id="start">
         <Eyebrow>Get started</Eyebrow>
         <H2>Your first call.</H2>
-        <Start />
+        <Start prices="#models" swap="Swap the model name to use any chat model below." billed="Each request is billed per token at the prices below." />
       </section>
 
       {/* Outside the busy region and empty on first paint, so screen readers announce the change. */}
-      <p role="status" className="sr-only">{announce}</p>
+      <Live>{announce}</Live>
       <div aria-busy={state === null}>
         {state && 'error' in state && (
           <section className={section}>
@@ -127,7 +128,7 @@ export default function Pricing() {
               {variable > 0 && (
                 <p className="mt-6 text-sm text-muted-foreground">
                   {variable} more models are priced per second, per image, or are not billed per token; see{' '}
-                  <a href={DOCS} className="text-foreground underline underline-offset-4">
+                  <a href={DOCS} className={inlineLink}>
                     docs.hanzo.ai
                   </a>
                   .
@@ -157,10 +158,7 @@ export default function Pricing() {
               <a href={NODE_GUIDE} className={buttonClass('secondary')}>
                 Run a node
               </a>
-              <a
-                href={WHITEPAPER}
-                className="text-foreground underline underline-offset-4"
-              >
+              <a href={WHITEPAPER} className={inlineLink}>
                 Read the whitepaper
               </a>
             </div>

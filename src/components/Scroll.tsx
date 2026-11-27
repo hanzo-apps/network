@@ -1,8 +1,8 @@
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation } from "react-router";
 
 /** On every navigation: jump to the #anchor if there is one, else to the top. */
-const ScrollToTop = () => {
+const Scroll = () => {
   const { key, hash } = useLocation();
 
   useEffect(() => {
@@ -14,4 +14,4 @@ const ScrollToTop = () => {
   return null;
 };
 
-export default ScrollToTop;
+export default Scroll;
